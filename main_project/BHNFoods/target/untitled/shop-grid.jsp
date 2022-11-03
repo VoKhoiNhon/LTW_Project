@@ -863,6 +863,25 @@
 
 
 
+<script src="jsHeaderAndFooter/jquery.min.js"></script>
+<script src="jsHeaderAndFooter/jquery-migrate-3.0.1.min.js"></script>
+<script src="jsHeaderAndFooter/popper.min.js"></script>
+<script src="jsHeaderAndFooter/bootstrap.min.js"></script>
+<script src="jsHeaderAndFooter/jquery.easing.1.3.js"></script>
+<script src="jsHeaderAndFooter/jquery.waypoints.min.js"></script>
+<script src="jsHeaderAndFooter/jquery.stellar.min.js"></script>
+<script src="jsHeaderAndFooter/owl.carousel.min.js"></script>
+<script src="jsHeaderAndFooter/jquery.magnific-popup.min.js"></script>
+<script src="jsHeaderAndFooter/aos.js"></script>
+<script src="jsHeaderAndFooter/jquery.animateNumber.min.js"></script>
+<script src="jsHeaderAndFooter/bootstrap-datepicker.js"></script>
+<script src="jsHeaderAndFooter/scrollax.min.js"></script>
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="jsHeaderAndFooter/google-map.js"></script>
+<script src="jsHeaderAndFooter/main.js"></script>
+
+
 </body>
 
 </html>
