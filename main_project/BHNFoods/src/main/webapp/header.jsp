@@ -24,7 +24,7 @@
 	</div>
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="index.html">Vegefoods</a>
+			<a class="navbar-brand" href="index.jsp">Vegefoods</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
 				aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Sản Phẩm
@@ -32,7 +32,7 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a href="index.html" class="nav-link">Trang chủ</a></li>
+					<li class="nav-item active"><a href="index.jsp" class="nav-link">Trang chủ</a></li>
 					<li class="nav-item active "><a href="shop.html" class="nav-link">Sản phẩm</a></li>
 					<li class="nav-item cta cta-colored find"><input type="text" name="" id="findicon"><a
 							href="cart.html" class="nav-link"><span class="icon-search"></span></a></li>

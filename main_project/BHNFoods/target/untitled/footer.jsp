@@ -1,4 +1,16 @@
 
+<%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html" charset="UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+</head>
 	<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
 		<div class="container py-4">
 			<div class="row d-flex justify-content-center py-5">
@@ -73,7 +85,7 @@
 								<li style="margin-bottom: 15px"><span class="icon icon-map-marker"></span><span
 										class="text">203 Hòa Bình, Quận Bình Thạnh, Tp.HCM</span></li>
 								<li><a href="#"><span class="icon icon-phone"></span><span
-											class="text">+0779807028</span></a></li>
+											class="text">0779807028</span></a></li>
 								<li><a href="#"><span class="icon icon-envelope"></span><span
 											class="text">Vegefoods@gmail.com</span></a></li>
 							</ul>

@@ -1,6 +1,9 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+
 <!doctype html>
 <html lang="en">
 <head>
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -9,6 +12,7 @@
 </head>
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +33,7 @@
     <link rel="stylesheet" href="css/slicknav.min.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
 
-<%--    --%>
+    <%--    --%>
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
@@ -53,7 +57,7 @@
     <link rel="stylesheet" href="cssHeaderFooter/flaticon.css">
     <link rel="stylesheet" href="cssHeaderFooter/icomoon.css">
     <link rel="stylesheet" href="cssHeaderFooter/style.css">
-<%--    --%>
+    <%--    --%>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -93,7 +97,7 @@
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
-            <li class="active"><a href="./index.html">Home</a></li>
+            <li class="active"><a href="index.jsp">Home</a></li>
             <li><a href="./shop-grid.html">Shop</a></li>
             <li><a href="#">Pages</a>
                 <ul class="header__menu__dropdown">
@@ -165,13 +169,13 @@
 <%--        <div class="row">--%>
 <%--            <div class="col-lg-3">--%>
 <%--                <div class="header__logo">--%>
-<%--                    <a href="./index.html"><img src="img/logo.png" alt=""></a>--%>
+<%--                    <a href="./index.jsp"><img src="img/logo.png" alt=""></a>--%>
 <%--                </div>--%>
 <%--            </div>--%>
 <%--            <div class="col-lg-6">--%>
 <%--                <nav class="header__menu">--%>
 <%--                    <ul>--%>
-<%--                        <li><a href="./index.html">Home</a></li>--%>
+<%--                        <li><a href="./index.jsp">Home</a></li>--%>
 <%--                        <li class="active"><a href="./shop-grid.html">Shop</a></li>--%>
 <%--                        <li><a href="#">Pages</a>--%>
 <%--                            <ul class="header__menu__dropdown">--%>
@@ -201,7 +205,7 @@
 <%--        </div>--%>
 <%--    </div>--%>
 <%--</header>--%>
-<%@ include file="header.jsp"%>
+<%@ include file="header.jsp" %>
 <!-- Header Section End -->
 
 <!-- Hero Section Begin -->
@@ -265,7 +269,7 @@
 <%--                <div class="breadcrumb__text">--%>
 <%--                    <h2>Organi Shop</h2>--%>
 <%--                    <div class="breadcrumb__option">--%>
-<%--                        <a href="./index.html">Home</a>--%>
+<%--                        <a href="./index.jsp">Home</a>--%>
 <%--                        <span>Shop</span>--%>
 <%--                    </div>--%>
 <%--                </div>--%>
@@ -789,7 +793,7 @@
 <%--            <div class="col-lg-3 col-md-6 col-sm-6">--%>
 <%--                <div class="footer__about">--%>
 <%--                    <div class="footer__about__logo">--%>
-<%--                        <a href="./index.html"><img src="img/logo.png" alt=""></a>--%>
+<%--                        <a href="./index.jsp"><img src="img/logo.png" alt=""></a>--%>
 <%--                    </div>--%>
 <%--                    <ul>--%>
 <%--                        <li>Address: 60-49 Road 11378 New York</li>--%>
@@ -848,7 +852,7 @@
 <%--        </div>--%>
 <%--    </div>--%>
 <%--</footer>--%>
-<%@ include file="footer.jsp"%>
+<%@ include file="footer.jsp" %>
 <!-- Footer Section End -->
 
 <!-- Js Plugins -->
@@ -860,7 +864,6 @@
 <script src="js/mixitup.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/main.js"></script>
-
 
 
 <script src="jsHeaderAndFooter/jquery.min.js"></script>
