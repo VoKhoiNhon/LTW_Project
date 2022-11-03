@@ -33,32 +33,6 @@
     <link rel="stylesheet" href="css/slicknav.min.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
 
-    <%--    --%>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
-          rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="cssHeaderFooter/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="cssHeaderFooter/animate.css">
-
-    <link rel="stylesheet" href="cssHeaderFooter/owl.carousel.min.css">
-    <link rel="stylesheet" href="cssHeaderFooter/owl.theme.default.min.css">
-    <link rel="stylesheet" href="cssHeaderFooter/magnific-popup.css">
-
-    <link rel="stylesheet" href="cssHeaderFooter/aos.css">
-
-    <link rel="stylesheet" href="cssHeaderFooter/ionicons.min.css">
-
-    <link rel="stylesheet" href="cssHeaderFooter/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="cssHeaderFooter/jquery.timepicker.css">
-
-
-    <link rel="stylesheet" href="cssHeaderFooter/flaticon.css">
-    <link rel="stylesheet" href="cssHeaderFooter/icomoon.css">
-    <link rel="stylesheet" href="cssHeaderFooter/style.css">
-    <%--    --%>
-
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -866,23 +840,7 @@
 <script src="js/main.js"></script>
 
 
-<script src="jsHeaderAndFooter/jquery.min.js"></script>
-<script src="jsHeaderAndFooter/jquery-migrate-3.0.1.min.js"></script>
-<script src="jsHeaderAndFooter/popper.min.js"></script>
-<script src="jsHeaderAndFooter/bootstrap.min.js"></script>
-<script src="jsHeaderAndFooter/jquery.easing.1.3.js"></script>
-<script src="jsHeaderAndFooter/jquery.waypoints.min.js"></script>
-<script src="jsHeaderAndFooter/jquery.stellar.min.js"></script>
-<script src="jsHeaderAndFooter/owl.carousel.min.js"></script>
-<script src="jsHeaderAndFooter/jquery.magnific-popup.min.js"></script>
-<script src="jsHeaderAndFooter/aos.js"></script>
-<script src="jsHeaderAndFooter/jquery.animateNumber.min.js"></script>
-<script src="jsHeaderAndFooter/bootstrap-datepicker.js"></script>
-<script src="jsHeaderAndFooter/scrollax.min.js"></script>
-<script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="jsHeaderAndFooter/google-map.js"></script>
-<script src="jsHeaderAndFooter/main.js"></script>
+
 
 
 </body>
