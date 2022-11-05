@@ -33,25 +33,6 @@
 	<link rel="stylesheet" href="cssHeaderFooter/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-
-	<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
-		<div class="container py-4">
-			<div class="row d-flex justify-content-center py-5">
-				<div class="col-md-6">
-					<h2 style="font-size: 22px;" class="mb-0">Subcribe to our Newsletter</h2>
-					<span>Get e-mail updates about our latest shops and special offers</span>
-				</div>
-				<div class="col-md-6 d-flex align-items-center">
-					<form action="#" class="subscribe-form">
-						<div class="form-group d-flex">
-							<input type="text" class="form-control" placeholder="Enter email address">
-							<input type="submit" value="Subscribe" class="submit px-3">
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</section>
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
 			<div class="row">
@@ -83,23 +64,7 @@
 						</ul>
 					</div>
 				</div>
-				<!--				<div class="col-md-4">-->
-				<!--					<div class="ftco-footer-widget mb-4">-->
-				<!--						<h2 class="ftco-heading-2">Help</h2>-->
-				<!--						<div class="d-flex">-->
-				<!--							<ul class="list-unstyled mr-l-5 pr-l-3 mr-4">-->
-				<!--								<li><a href="#" class="py-2 d-block">Shipping Information</a></li>-->
-				<!--								<li><a href="#" class="py-2 d-block">Returns &amp; Exchange</a></li>-->
-				<!--								<li><a href="#" class="py-2 d-block">Terms &amp; Conditions</a></li>-->
-				<!--								<li><a href="#" class="py-2 d-block">Privacy Policy</a></li>-->
-				<!--							</ul>-->
-				<!--							<ul class="list-unstyled">-->
-				<!--								<li><a href="#" class="py-2 d-block">FAQs</a></li>-->
-				<!--								<li><a href="#" class="py-2 d-block">Contact</a></li>-->
-				<!--							</ul>-->
-				<!--						</div>-->
-				<!--					</div>-->
-				<!--				</div>-->
+
 				<div class="col-md">
 					<div class="ftco-footer-widget mb-4">
 						<h2 class="ftco-heading-2">Liên Hệ</h2>

@@ -1257,10 +1257,10 @@ ol {
   Shop Grid
 -----------------------*/
 
-/*.product {*/
-/*	padding-top: 50px;*/
-/*	padding-bottom: 50px;*/
-/*}*/
+.product {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
 
 .product__discount {
 	padding-bottom: 50px;
