@@ -30,19 +30,10 @@
 /* Template default CSS
 /*----------------------------------------*/
 
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
->>>>>>> bc1641ddc6109ad8147a35f61c03be15ed4c2574
 
 
 
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> Stashed changes
->>>>>>> bc1641ddc6109ad8147a35f61c03be15ed4c2574
 html,
 body {
 	height: 100%;
@@ -1266,10 +1257,10 @@ ol {
   Shop Grid
 -----------------------*/
 
-.product {
-	padding-top: 80px;
-	padding-bottom: 80px;
-}
+/*.product {*/
+/*	padding-top: 50px;*/
+/*	padding-bottom: 50px;*/
+/*}*/
 
 .product__discount {
 	padding-bottom: 50px;
@@ -3481,4 +3472,5 @@ ol {
 	.blog__details__hero__text h2 {
 		font-size: 24px;
 	}
+
 }
