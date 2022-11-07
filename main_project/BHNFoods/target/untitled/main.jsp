@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="cssHeaderFooter/jquery.timepicker.css">
 
 
-    <link rel="stylesheet" href="cssHeaderFooter/style.css">
+    <link rel="stylesheet" href="cssHeaderFooter/styleHAndF.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
     <title>Trang Chủ</title>
 </head>
@@ -192,13 +192,13 @@
                             <div class="m-auto d-flex">
                                 <a href="#"
                                    class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
+                                    <span><i class="fa fa-heart"></i></span>
                                 </a>
                                 <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                    <span><i class="ion-ios-cart"></i></span>
+                                    <span><i class="fa fa-retweet"></i></span>
                                 </a>
                                 <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                    <span><i class="ion-ios-heart"></i></span>
+                                    <span><i class="fa fa-shopping-cart"></i></span>
                                 </a>
                             </div>
                         </div>
@@ -222,13 +222,13 @@
                             <div class="m-auto d-flex">
                                 <a href="#"
                                    class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
+                                    <span><i class="fa fa-heart"></i></span>
                                 </a>
                                 <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                    <span><i class="ion-ios-cart"></i></span>
+                                    <span><i class="fa fa-retweet"></i></span>
                                 </a>
                                 <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                    <span><i class="ion-ios-heart"></i></span>
+                                    <span><i class="fa fa-shopping-cart"></i></span>
                                 </a>
                             </div>
                         </div>
@@ -252,13 +252,13 @@
                             <div class="m-auto d-flex">
                                 <a href="#"
                                    class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
+                                    <span><i class="fa fa-heart"></i></span>
                                 </a>
                                 <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                    <span><i class="ion-ios-cart"></i></span>
+                                    <span><i class="fa fa-retweet"></i></span>
                                 </a>
                                 <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                    <span><i class="ion-ios-heart"></i></span>
+                                    <span><i class="fa fa-shopping-cart"></i></span>
                                 </a>
                             </div>
                         </div>
@@ -282,13 +282,13 @@
                             <div class="m-auto d-flex">
                                 <a href="#"
                                    class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
+                                    <span><i class="fa fa-heart"></i></span>
                                 </a>
                                 <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                    <span><i class="ion-ios-cart"></i></span>
+                                    <span><i class="fa fa-retweet"></i></span>
                                 </a>
                                 <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                    <span><i class="ion-ios-heart"></i></span>
+                                    <span><i class="fa fa-shopping-cart"></i></span>
                                 </a>
                             </div>
                         </div>
@@ -316,13 +316,13 @@
                             <div class="m-auto d-flex">
                                 <a href="#"
                                    class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
+                                    <span><i class="fa fa-heart"></i></span>
                                 </a>
                                 <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                    <span><i class="ion-ios-cart"></i></span>
+                                    <span><i class="fa fa-retweet"></i></span>
                                 </a>
                                 <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                    <span><i class="ion-ios-heart"></i></span>
+                                    <span><i class="fa fa-shopping-cart"></i></span>
                                 </a>
                             </div>
                         </div>
@@ -346,13 +346,13 @@
                             <div class="m-auto d-flex">
                                 <a href="#"
                                    class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
+                                    <span><i class="fa fa-heart"></i></span>
                                 </a>
                                 <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                    <span><i class="ion-ios-cart"></i></span>
+                                    <span><i class="fa fa-retweet"></i></span>
                                 </a>
                                 <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                    <span><i class="ion-ios-heart"></i></span>
+                                    <span><i class="fa fa-shopping-cart"></i></span>
                                 </a>
                             </div>
                         </div>
@@ -376,13 +376,13 @@
                             <div class="m-auto d-flex">
                                 <a href="#"
                                    class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
+                                    <span><i class="fa fa-heart"></i></span>
                                 </a>
                                 <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                    <span><i class="ion-ios-cart"></i></span>
+                                    <span><i class="fa fa-retweet"></i></span>
                                 </a>
                                 <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                    <span><i class="ion-ios-heart"></i></span>
+                                    <span><i class="fa fa-shopping-cart"></i></span>
                                 </a>
                             </div>
                         </div>
@@ -406,13 +406,13 @@
                             <div class="m-auto d-flex">
                                 <a href="#"
                                    class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
+                                    <span><i class="fa fa-heart"></i></span>
                                 </a>
                                 <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                    <span><i class="ion-ios-cart"></i></span>
+                                    <span><i class="fa fa-retweet"></i></span>
                                 </a>
                                 <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                    <span><i class="ion-ios-heart"></i></span>
+                                    <span><i class="fa fa-shopping-cart"></i></span>
                                 </a>
                             </div>
                         </div>

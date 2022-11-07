@@ -30,10 +30,10 @@
 
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="cssHeaderFooter/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
           integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="cssHeaderFooter/styleHAndF.css">
 </head>
 <div class="py-1 bg-primary">
     <div class="container">
@@ -68,14 +68,14 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="index.jsp" class="nav-link">Trang chủ</a></li>
-                <li class="nav-item active "><a href="shop.html" class="nav-link">Sản phẩm</a></li>
+                <li class="nav-item active"><a href="main.jsp" class="nav-link">Trang chủ</a></li>
+                <li class="nav-item active "><a href="shop-grid.jsp" class="nav-link">Sản phẩm</a></li>
                 <li class="nav-item cta cta-colored find"><input type="text" name="" id="findicon"><a
                         href="cart.html" class="nav-link"><span class="fa-solid fa-magnifying-glass"></span></a></li>
                 <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span
                         class="fa-solid fa-cart-shopping"></span>[0]</a></li>
                 <li class="nav-item cta cta-colored"><a href="#" class="nav-link"><span
-                        class="fa-solid fa-user"></span></a></li>
+                       style="line-height: 1.8" class="fa-solid fa-user"></span></a></li>
 
 
             </ul>

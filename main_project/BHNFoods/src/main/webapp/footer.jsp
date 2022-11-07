@@ -30,15 +30,15 @@
 
 	<link rel="stylesheet" href="cssHeaderFooter/flaticon.css">
 	<link rel="stylesheet" href="cssHeaderFooter/icomoon.css">
-	<link rel="stylesheet" href="cssHeaderFooter/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="cssHeaderFooter/styleHAndF.css">
 </head>
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
 			<div class="row">
 				<div class="mouse">
 					<a href="#" class="mouse-icon">
-						<div class="mouse-wheel"><span class="fa-solid fa-angle-up"></span></div>
+						<div style="padding-top: 6px" class="mouse-wheel"><span class="fa-solid fa-angle-up"></span></div>
 					</a>
 				</div>
 			</div>

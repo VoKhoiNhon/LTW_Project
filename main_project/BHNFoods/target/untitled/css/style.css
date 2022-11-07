@@ -1306,18 +1306,7 @@ ol {
 	top: 15px;
 }
 
-.product__item__pic__hover {
-	position: absolute;
-	left: 0;
-	bottom: -50px;
-	width: 100%;
-	text-align: center;
-	-webkit-transition: all, 0.5s;
-	-moz-transition: all, 0.5s;
-	-ms-transition: all, 0.5s;
-	-o-transition: all, 0.5s;
-	transition: all, 0.5s;
-}
+
 
 .product__item__pic__hover li {
 	list-style: none;
@@ -1549,7 +1538,7 @@ ol {
 .product__item__pic__hover {
 	position: absolute;
 	left: 0;
-	bottom: -50px;
+	bottom: -70px;
 	width: 100%;
 	text-align: center;
 	-webkit-transition: all, 0.5s;
