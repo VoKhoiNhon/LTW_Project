@@ -28,57 +28,17 @@
     <link rel="stylesheet" href="cssHeaderFooter/jquery.timepicker.css">
 
 
-<<<<<<< HEAD
 	<link rel="stylesheet" href="cssHeaderFooter/flaticon.css">
 	<link rel="stylesheet" href="cssHeaderFooter/icomoon.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="cssHeaderFooter/styleHAndF.css">
-</head>
-	<footer class="ftco-footer ftco-section">
-		<div class="container">
-			<div class="row">
-				<div class="mouse">
-					<a href="#" class="mouse-icon">
-						<div style="padding-top: 6px" class="mouse-wheel"><span class="fa-solid fa-angle-up"></span></div>
-					</a>
-				</div>
-			</div>
-			<div class="row mb-5">
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Vegefoods</h2>
-						<p>Công ty Vegefoods chúng tôi chưa có giấy phép kinh doanh. Xin trân trọng phục vụ quý khách!
-						</p>
-						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-							<li class="ftco-animate"><a href="#"><span class="fa-brands fa-twitter"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="fa-brands fa-facebook-f"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="fa-brands fa-instagram"></span></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4 ml-md-5">
-						<h2 class="ftco-heading-2">Tổng Quan</h2>
-						<ul class="list-unstyled">
-							<li><a href="#" class="py-2 d-block">Cửa hàng</a></li>
-							<li><a href="#" class="py-2 d-block"></a>Giới thiệu</li>
-						</ul>
-					</div>
-				</div>
-=======
-    <link rel="stylesheet" href="cssHeaderFooter/flaticon.css">
-    <link rel="stylesheet" href="cssHeaderFooter/icomoon.css">
-    <link rel="stylesheet" href="cssHeaderFooter/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-          integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <footer class="ftco-footer ftco-section">
     <div class="container">
         <div class="row">
             <div class="mouse">
                 <a href="#" class="mouse-icon">
-                    <div class="mouse-wheel"><span class="fa-solid fa-angle-up"></span></div>
+                    <div style="padding-top: 6px" class="mouse-wheel"><span class="fa-solid fa-angle-up"></span></div>
                 </a>
             </div>
         </div>
@@ -87,8 +47,8 @@
                 <div class="ftco-footer-widget mb-4">
                     <h2 class="ftco-heading-2">BHNFoods</h2>
                     <p>Công ty BHNFoods chúng tôi chưa có giấy phép kinh doanh. Xin trân trọng phục vụ quý khách! Nếu
-                        quý khách xảy ra cất cứ vấn đề gì sau khi sử dụng sản phẩm cảu chúng tôi chúng tôi sẽ không
-                        chiệu trách nhiệm =))))
+                        quý khách xảy ra cất cứ vấn đề gì sau khi sử dụng sản phẩm của chúng tôi chúng tôi sẽ không
+                        chịu trách nhiệm =))))
                     </p>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                         <li class="ftco-animate"><a href="#"><span class="fa-brands fa-twitter"></span></a></li>
@@ -106,7 +66,6 @@
                     </ul>
                 </div>
             </div>
->>>>>>> 9be87415d06963ca89ebddabf8c013db55c1cdae
 
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
@@ -118,7 +77,7 @@
                             <li><a href="#"><span class="icon fa-solid fa-phone"></span><span
                                     class="text">+0779807028</span></a></li>
                             <li><a href="#"><span class="icon fa-solid fa-envelope"></span><span
-                                    class="text">Vegefoods@gmail.com</span></a></li>
+                                    class="text">BHNFoods@gmail.com</span></a></li>
                         </ul>
                     </div>
                 </div>
