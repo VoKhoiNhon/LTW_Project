@@ -116,24 +116,24 @@
 							<h3 class="billing-heading mb-4">Tổng giỏ hàng</h3>
 							<p class="d-flex">
 								<span>Tổng tiền hàng</span>
-								<span class="text_center">500.000</span>
+								<span style="text-align: center" class="text_center">500.000</span>
 								<span>vnđ</span>
 							</p>
 							<p class="d-flex">
 								<span>Giảm</span>
-								<span  class="text_center">50.000</span>
+								<span style="text-align: center" class="text_center">50.000</span>
 								<span>vnđ</span>
 							</p>
 							<p class="d-flex">
 								<span>Phí vận chuyển</span>
-								<span  class="text_center">30.000</span>
+								<span style="text-align: center" class="text_center">30.000</span>
 								<span>vnđ</span>
 							</p>
 
 							<hr>
 							<p class="d-flex">
 								<span>Tổng thanh toán</span>
-								<span  class="text_center">580.000</span>
+								<span style="text-align: center" class="text_center">580.000</span>
 								<span>vnđ</span>
 							</p>
 						</div>
