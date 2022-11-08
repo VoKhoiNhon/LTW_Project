@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
-<<<<<<< HEAD
 Built-By: PC
 Build-Jdk: version 11.0.12
-=======
-Built-By: XUAN HOA
-Build-Jdk: Amazon Corretto version 11.0.17
->>>>>>> 167d6904c2d643fbd5acc12395d5d79be2c4b072
 

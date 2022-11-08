@@ -79,17 +79,7 @@
 
 
             </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="main.jsp" class="nav-link">Trang chủ</a></li>
-                <li class="nav-item active "><a href="index.jsp" class="nav-link">Sản phẩm</a></li>
-                <li class="nav-item cta cta-colored find"><input type="text" name="" id="findicon"><a
-                        href="cart.jsp" class="nav-link"><span class="icon-search"></span></a></li>
-                <li class="nav-item cta cta-colored"><a href="cart.jsp" class="nav-link"><span
-                        class="icon-shopping_cart"></span>[0]</a></li>
 
-
-
-            </ul>
         </div>
     </div>
 </nav>

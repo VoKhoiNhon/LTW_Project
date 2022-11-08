@@ -71,12 +71,15 @@
                 <li class="nav-item active"><a href="main.jsp" class="nav-link">Trang chủ</a></li>
                 <li class="nav-item active "><a href="index.jsp" class="nav-link">Sản phẩm</a></li>
                 <li class="nav-item cta cta-colored find"><input type="text" name="" id="findicon"><a
-                        href="cart.jsp" class="nav-link"><span class="icon-search"></span></a></li>
+                        href="cart.jsp" class="nav-link"><span class="fa-solid fa-magnifying-glass"></span></a></li>
                 <li class="nav-item cta cta-colored"><a href="cart.jsp" class="nav-link"><span
-                        class="icon-shopping_cart"></span>[0]</a></li>
+                        class="fa-solid fa-cart-shopping"></span>[0]</a></li>
                 <li class="nav-item cta cta-colored"><a href="#" class="nav-link"><span
-                        style="line-height: 1.8" class="fa-solid fa-user"></span></a></li>
+                       style="line-height: 1.8" class="fa-solid fa-user"></span></a></li>
+
+
             </ul>
+         
         </div>
     </div>
 </nav>
