@@ -30,13 +30,12 @@
 	<link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 	<link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 	<link rel="stylesheet" href="css/style.css" type="text/css">
-	<link rel="stylesheet" href="css/stylevege.css">
 </head>
 
 <body>
 <!-- Page Preloder -->
 
-<%@ include file="header.jsp" %>
+<%@ include file="header.jsp"%>
 
 <section class="ftco-section">
 	<div class="container">

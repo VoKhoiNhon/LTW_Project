@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
-<<<<<<< HEAD
 Built-By: baota
 Build-Jdk: version 11.0.12
-=======
-Built-By: XUAN HOA
-Build-Jdk: Amazon Corretto version 11.0.17
->>>>>>> e42adf55723e15f8de881b66f4d5a314934be245
 
