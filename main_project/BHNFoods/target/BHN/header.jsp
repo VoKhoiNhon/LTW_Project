@@ -73,7 +73,9 @@
                 <li class="nav-item cta cta-colored"><a href="cart.jsp" class="nav-link"><span
                         class="fa-solid fa-cart-shopping"></span>[0]</a></li>
                 <li class="nav-item cta cta-colored"><a href="#" class="nav-link"><span
-                        style="line-height: 1.8" class="fa-solid fa-user"></span></a></li>
+                        style="line-height: 1.8" class="fa-solid fa-user"> </span>Đăng nhập</a></li>
+                <li class="nav-item cta cta-colored"><a href="#" class="nav-link"><span
+                        style="line-height: 1.8" class="fa-solid fa-pen-to-square"> </span>Đăng ký</a></li>
 
 
             </ul>
