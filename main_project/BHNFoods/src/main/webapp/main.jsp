@@ -1,40 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-
-
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta http-equiv="content-type" content="text/html" charset="UTF-8">
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
-          rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="cssHeaderFooter/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="cssHeaderFooter/animate.css">
-
-    <link rel="stylesheet" href="cssHeaderFooter/owl.carousel.min.css">
-    <link rel="stylesheet" href="cssHeaderFooter/owl.theme.default.min.css">
-    <link rel="stylesheet" href="cssHeaderFooter/magnific-popup.css">
-
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-
-    <link rel="stylesheet" href="cssHeaderFooter/aos.css">
-
-    <link rel="stylesheet" href="cssHeaderFooter/ionicons.min.css">
-
-    <link rel="stylesheet" href="cssHeaderFooter/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="cssHeaderFooter/jquery.timepicker.css">
-
-
-    <link rel="stylesheet" href="cssHeaderFooter/styleHAndF.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-    <title>Trang Chủ</title>
-</head>
 
 <body>
 
@@ -430,19 +397,7 @@
 <!-- Footer Section End -->
 
 <!-- Js Plugins -->
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.nice-select.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/jquery.slicknav.js"></script>
-<script src="js/mixitup.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/main.js"></script>
-
-
-
 
 
 </body>
-
 </html>
