@@ -72,7 +72,7 @@
                         href="cart.jsp" class="nav-link"><span class="fa-solid fa-magnifying-glass"></span></a></li>
                 <li class="nav-item cta cta-colored"><a href="cart.jsp" class="nav-link"><span
                         class="fa-solid fa-cart-shopping"></span>[0]</a></li>
-                <li class="nav-item cta cta-colored"><a href="login.jsp" class="nav-link"><span
+                <li class="nav-item cta cta-colored"><a href="admin_template/login.jsp" class="nav-link"><span
                         style="line-height: 1.8" class="fa-solid fa-user"></span></a></li>
             </ul>
 
