@@ -78,7 +78,7 @@
                   <button type="submit" class="btn btn-primary  button_primary_height me-2" >Tạo tài khoản</button>
                 </div>
                 <div class="form-group forgot_pass" style="padding-bottom:30px;">
-                  <a href="index.jsp" style="color:rgb(157, 157, 157) ;">Trang chủ</a>
+                  <a href="../main.jsp" style="color:rgb(157, 157, 157) ;">Trang chủ</a>
                 </div>
               </form>
             </div>

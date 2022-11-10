@@ -83,6 +83,18 @@ p {
 	margin: 0 0 15px 0;
 }
 
+.product__item .product__item__text a {
+	font-size: 16px;
+	color: #000000;
+	display: block;
+}
+
+.product__item .product__item__text span {
+	font-size: 18px;
+	font-weight: bold;
+	color: #000000;
+}
+
 img {
 	max-width: 100%;
 }

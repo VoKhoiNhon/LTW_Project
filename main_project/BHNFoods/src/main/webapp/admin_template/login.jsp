@@ -60,7 +60,7 @@
                 </div>
                 <div class="form-group  button_primary">
                   <button type="submit" class="btn btn-primary  button_primary_height me-2">Đăng nhập</button> </br>
-                  <button type="submit" class="btn btn-primary  button_primary_height me-2">Đăng kí</button>
+                  <button style="padding: 0" type="submit" class="btn btn-primary  button_primary_height me-2"><a style="padding: 14px 24px; width: 100%; height: 100%; color:#ffffff" href="signup.jsp">Đăng kí</a></button>
                 </div>
               </form>
             </div>

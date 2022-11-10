@@ -156,9 +156,10 @@
                                         </ul>
                                     </div>
                                     <div class="product__discount__item__text">
-                                        <span>Gạo</span>
-                                        <h5><a href="singleProduct.jsp">Gạo ST25</a></h5>
-                                        <div class="product__item__price">50.000đ <span>60.000đ</span></div>
+
+                                        <a href="singleProduct.jsp"><span>Gạo</span>
+                                            <h5>Gạo ST25</h5>
+                                            <div class="product__item__price">50.000đ <span>60.000đ</span></div></a>
                                     </div>
                                 </div>
                             </div>
@@ -172,6 +173,7 @@
                             <div class="filter__sort">
                                 <span>Sắp xếp</span>
                                 <select>
+                                    <option value="0">Giảm giá</option>
                                     <option value="0">Giá thấp đến cao</option>
                                     <option value="0">Giá cao đến thấp</option>
                                 </select>
@@ -202,8 +204,7 @@
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="singleProduct.jsp">Khoai lang tím</a></h6>
-                                <h5>20.000đ</h5>
+                                <a href="singleProduct.jsp">Khoai lang tím <br> <span>20.000đ</span></a>
                             </div>
                         </div>
                     </div>
