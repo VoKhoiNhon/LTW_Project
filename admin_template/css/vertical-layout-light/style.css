@@ -13023,7 +13023,6 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   color: #fff;
   background-color: #82ae46;
   border-color: #82ae46;
-  width: 50%;
 }
 
 /* .btn-primary:hover {
@@ -35593,8 +35592,10 @@ div.tagsinput span.tag a {
 .container-scroller .main-panel .forms-sample .button_primary .btn{
   font-weight: bold;
   font-size: 17px;
-
 } 
+.button_primary_height{
+  width: 50%;
+}
 #theme-settings .settings-close {
   top: 12px;
   background: transparent;
