@@ -40,7 +40,6 @@
                     <div class="sidebar__item">
                         <div class="hero__categories">
                             <div class="hero__categories__all">
-                                <i class="fa fa-bars"></i>
                                 <span>Danh sách sản phẩm</span>
                             </div>
                             <ul>
@@ -80,8 +79,8 @@
                                             <img src="body_design/img/latest-product/lp-1.jpg" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
+                                            <h6>Ngô Mỹ</h6>
+                                            <span>25.000đ</span>
                                         </div>
                                     </a>
                                     <a href="#" class="latest-product__item">
@@ -89,8 +88,8 @@
                                             <img src="body_design/img/latest-product/lp-2.jpg" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
+                                            <h6>Ngô Mỹ</h6>
+                                            <span>25.000đ</span>
                                         </div>
                                     </a>
                                     <a href="#" class="latest-product__item">
@@ -98,8 +97,8 @@
                                             <img src="body_design/img/latest-product/lp-3.jpg" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
+                                            <h6>Ngô Mỹ</h6>
+                                            <span>25.000đ</span>
                                         </div>
                                     </a>
                                 </div>
@@ -109,8 +108,8 @@
                                             <img src="body_design/img/latest-product/lp-1.jpg" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
+                                            <h6>Ngô Mỹ</h6>
+                                            <span>25.000đ</span>
                                         </div>
                                     </a>
                                     <a href="#" class="latest-product__item">
@@ -118,8 +117,8 @@
                                             <img src="body_design/img/latest-product/lp-2.jpg" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
+                                            <h6>Ngô Mỹ</h6>
+                                            <span>25.000đ</span>
                                         </div>
                                     </a>
                                     <a href="#" class="latest-product__item">
@@ -127,8 +126,8 @@
                                             <img src="body_design/img/latest-product/lp-3.jpg" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
+                                            <h6>Ngô Mỹ</h6>
+                                            <span>25.000đ</span>
                                         </div>
                                     </a>
                                 </div>
@@ -157,9 +156,9 @@
                                         </ul>
                                     </div>
                                     <div class="product__discount__item__text">
-                                        <span>Dried Fruit</span>
-                                        <h5><a href="shop-details.jsp">Raisin’n’nuts</a></h5>
-                                        <div class="product__item__price">$30.00 <span>$36.00</span></div>
+                                        <span>Gạo</span>
+                                        <h5><a href="singleProduct.jsp">Gạo ST25</a></h5>
+                                        <div class="product__item__price">50.000đ <span>60.000đ</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -171,16 +170,16 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-5">
                             <div class="filter__sort">
-                                <span>Sort By</span>
+                                <span>Sắp xếp</span>
                                 <select>
-                                    <option value="0">Default</option>
-                                    <option value="0">Default</option>
+                                    <option value="0">Giá thấp đến cao</option>
+                                    <option value="0">Giá cao đến thấp</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4">
                             <div class="filter__found">
-                                <h6><span>16</span> Products found</h6>
+                                <h6><span>16</span> Sản phẩm được tìm thấy</h6>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-3">
@@ -203,8 +202,8 @@
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="shop-details.jsp">Crab Pool Security</a></h6>
-                                <h5>$30.00</h5>
+                                <h6><a href="singleProduct.jsp">Khoai lang tím</a></h6>
+                                <h5>20.000đ</h5>
                             </div>
                         </div>
                     </div>

@@ -589,7 +589,7 @@ ol {
 .hero__categories__all {
 	background: #7fad39;
 	position: relative;
-	padding: 10px 25px 10px 40px;
+	padding: 10px 25px 10px 15px;
 	cursor: pointer;
 }
 
@@ -617,7 +617,7 @@ ol {
 
 .hero__categories ul {
 	border: 1px solid #ebebeb;
-	padding-left: 40px;
+	padding-left: 10px;
 	padding-top: 10px;
 	padding-bottom: 12px;
 }
@@ -962,6 +962,7 @@ ol {
 	position: absolute;
 	right: 20px;
 	top: -75px;
+	display: none;
 }
 
 .latest-product__slider.owl-carousel .owl-nav button {
