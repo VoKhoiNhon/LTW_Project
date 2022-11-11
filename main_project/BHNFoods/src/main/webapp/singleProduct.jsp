@@ -54,19 +54,18 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__text">
-                    <h3>Vetgetable’s Package</h3>
+                    <h3>Tên sản phẩm</h3>
                     <div class="product__details__rating">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star-half-o"></i>
-                        <span>(18 reviews)</span>
+                        <span>(18 đánh giá)</span>
                     </div>
-                    <div class="product__details__price">$50.00</div>
-                    <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam
-                        vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet
-                        quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p>
+                    <div class="product__details__price">50.000đ</div>
+                    <p>Đây là phầm mô tả về sản phẩm, mình cần viết những thông tin cơ bản như nó được sản xuất ở đâu,
+                    giống gì, cam kết chất lượng, tốt cho sức khoẻ người dùng này kia nọ...</p>
                     <div class="product__details__quantity">
                         <div class="quantity">
                             <div class="pro-qty">
@@ -74,20 +73,20 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="primary-btn">ADD TO CARD</a>
+                    <a href="#" class="primary-btn">THÊM VÀO GIỎ HÀNG</a>
                     <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                     <ul>
-                        <li><b>Availability</b> <span>In Stock</span></li>
-                        <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
-                        <li><b>Weight</b> <span>0.5 kg</span></li>
-                        <li><b>Share on</b>
-                            <div class="share">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
-                            </div>
-                        </li>
+                        <li><b>Hạn sử dụng</b> <span>Còn 10 tháng</span></li>
+                        <li><b>Giao hàng</b> <span>Trong 3 giờ <samp>Miễn phí trong 1.5km</samp></span></li>
+                        <li><b>Trọng lượng</b> <span>0.5 kg</span></li>
+<%--                        <li><b>Share on</b>--%>
+<%--                            <div class="share">--%>
+<%--                                <a href="#"><i class="fa fa-facebook"></i></a>--%>
+<%--                                <a href="#"><i class="fa fa-twitter"></i></a>--%>
+<%--                                <a href="#"><i class="fa fa-instagram"></i></a>--%>
+<%--                                <a href="#"><i class="fa fa-pinterest"></i></a>--%>
+<%--                            </div>--%>
+<%--                        </li>--%>
                     </ul>
                 </div>
             </div>
@@ -182,7 +181,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title related__product__title">
-                    <h2>Related Product</h2>
+                    <h2>SẢN PHẨM LIÊN QUAN</h2>
                 </div>
             </div>
         </div>
@@ -197,8 +196,8 @@
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
+                        <h6><a href="#">Gạo Ngô Khoai Sắn</a></h6>
+                        <h5>50.0000đ</h5>
                     </div>
                 </div>
             </div>
@@ -212,8 +211,8 @@
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
+                        <h6><a href="#">Gạo Ngô Khoai Sắn</a></h6>
+                        <h5>50.0000đ</h5>
                     </div>
                 </div>
             </div>
@@ -227,8 +226,8 @@
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
+                        <h6><a href="#">Gạo Ngô Khoai Sắn</a></h6>
+                        <h5>50.0000đ</h5>
                     </div>
                 </div>
             </div>
@@ -242,8 +241,8 @@
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
+                        <h6><a href="#">Gạo Ngô Khoai Sắn</a></h6>
+                        <h5>50.0000đ</h5>
                     </div>
                 </div>
             </div>
