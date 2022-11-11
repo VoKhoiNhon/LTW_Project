@@ -14518,6 +14518,6 @@ textarea.form-control {
 
 }
 
-.dr:hover {
+.dr:hover a{
   color: gray;
 }
