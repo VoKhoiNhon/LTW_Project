@@ -14474,3 +14474,50 @@ textarea.form-control {
   -ms-box-shadow: none;
   border-right: 1px solid #e3e3e3;
 }
+.hover_user {
+  position: relative;
+}
+
+.list_menu {
+  background:#DADADA;
+  width: 100%;
+  position: absolute;
+  border: 2px solid black;
+  display: none;
+}
+
+.hover_user:hover .list_menu {
+  display: block;
+}
+
+.hover_user:hover {
+  cursor: pointer;
+
+}
+
+.hover_user:hover a,
+.hover_user:hover span {
+  text-decoration: none;
+  color: black;
+}
+
+.hover_user a,
+.hover_user span {
+  color: black;
+  font-weight: 600;
+}
+
+.hover_user:hover>span {
+  color: gray !important;
+}
+
+.dr {
+  font-size: 17px;
+  padding: 10px 20px;
+  border-bottom: 2px solid black;
+
+}
+
+.dr:hover {
+  color: gray;
+}

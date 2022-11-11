@@ -7,10 +7,10 @@
 
 <%@ include file="header.jsp" %>
 
-<section class="ftco-section img" style="background-image: url(images/bg_3.jpg);">
+<section class="ftco-section img" style="background-image: url(images/background.jpg);">
     <div class="container">
-        <div class="row justify-content-end">
-            <div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate">
+<%--        <div class="row justify-content-end">--%>
+            <div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate "style= "margin:auto">
                 <span class="subheading">Giá Tốt Cho Bạn</span>
                 <h2 class="mb-4">Ưu đãi trong ngày</h2>
                 <p>Luôn mang những sản phẩm chất lượng nhất đến tay khách hàng</p>
@@ -21,7 +21,7 @@
                     <div class="time pl-3" id="hours"></div>
                     <div class="time pl-3" id="minutes"></div>
                     <div class="time pl-3" id="seconds"></div>
-                </div>
+<%--                </div>--%>
             </div>
         </div>
     </div>
