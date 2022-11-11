@@ -130,7 +130,7 @@
 						<h5>Mã giảm giá</h5>
 						<form action="#">
 							<input type="text" placeholder="Nhập mã giảm giá">
-							<button style="font-family: monospace" type="submit" class="site-btn">Áp dụng</button>
+							<button style="font-family: system-ui" type="submit" class="site-btn">Áp dụng</button>
 						</form>
 					</div>
 				</div>
