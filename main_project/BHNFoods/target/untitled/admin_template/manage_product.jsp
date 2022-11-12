@@ -41,7 +41,7 @@
         </a>
       </div>
     </div>
-    <div class="navbar-menu-wrapper d-flex align-items-top">
+    <div class="navbar-menu-wrapper d-flex align-items-top colorheader ">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item dropdown d-none d-lg-block">
           <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#"

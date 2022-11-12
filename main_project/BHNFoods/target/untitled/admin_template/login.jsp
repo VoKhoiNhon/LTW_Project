@@ -30,14 +30,14 @@
 
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      <div class="main-panel" style="    width: 100%;">
+      <div class="main-panel" style="width: 100%;">
         <div class="content-wrapper">
           <div class="row">
 
             <div class="card" style=" margin:auto;">
               <div class="card-body">
                 <p class="card-description">
-                  <a href="index.jsp" style="text-decoration: none ; color: rgb(112, 112, 112);"> <i
+                  <a href="ListProduct" style="text-decoration: none ; color: rgb(112, 112, 112);"> <i
                       class="fa-solid fa-chevron-left"></i>Quay lại</a>
                 </p>
                 <h4 class="card-title logoBHN">BHNFoods</h4>

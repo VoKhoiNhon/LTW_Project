@@ -35665,7 +35665,9 @@ div.tagsinput span.tag a {
   right: auto;
   left: 30px;
 }
-
+.colorheader{
+  background-color: #82ae46 !important;
+}
 @media (max-width: 991px) {
   #settings-trigger {
     display: none;
