@@ -13032,7 +13032,8 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
 } */
 
 .btn-check:focus+.btn-primary,
-.btn-primary:focus, .btn-primary:active {
+.btn-primary:focus,
+.btn-primary:active {
   color: #fff;
   background-color: #82ae46;
   border-color: #82ae46;
@@ -22524,7 +22525,7 @@ h6,
 }
 
 p {
-  font-size: 0.812rem;
+  font-size: 0.912rem;
   margin-bottom: .5rem;
   line-height: 1.3rem;
 }
@@ -23435,7 +23436,7 @@ code {
   border-radius: 6px;
   color: #000000;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 12px;
   margin-bottom: 12px;
   margin-right: 12px;
@@ -28858,10 +28859,10 @@ dl li {
 }
 
 .table.select-table th {
-  color: #A3A3A3;
+  color: #595959;
   font-style: normal;
   font-weight: bold;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 15px;
   text-transform: uppercase;
   padding-right: 5px;
@@ -28874,12 +28875,12 @@ dl li {
 }
 
 .table.select-table td {
-  font-family: Manrope;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
+  /* font-family: Manrope; */
+  /* font-style: normal; */
+  font-weight: bold;
+  font-size: 14px;
   line-height: 16px;
-  color: #8D8D8D;
+  color: #595959;
   padding-top: 14px;
   padding-bottom: 14px;
   padding-left: 0;
@@ -28893,7 +28894,7 @@ dl li {
 .table.select-table td .h6 {
   font-style: normal;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 18px;
   color: #000000;
   margin-bottom: 5px;
@@ -28902,15 +28903,15 @@ dl li {
 .table.select-table td p {
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 16px;
   color: #737F8B;
   margin-bottom: 0;
 }
 
 .table.select-table td img {
-  width: 44px;
-  height: 44px;
+  width: 60px;
+  height: 60px;
   border-radius: 10px;
   margin-right: 15px;
 }
@@ -29150,7 +29151,7 @@ dl li {
 .home-tab .nav-tabs .nav-item .nav-link {
   font-style: normal;
   font-weight: 500;
-  font-size: 13px;
+  font-size: 18px;
   line-height: 18px;
   color: #212121;
   padding: 12px 14px;
@@ -32296,7 +32297,7 @@ div.tagsinput span.tag a {
   flex-direction: row;
   padding-left: 0;
   padding-right: 0;
-  padding-top: 70px;
+  padding-top: 90px;
 }
 
 .page-body-wrapper.full-page-wrapper {
@@ -32446,9 +32447,10 @@ div.tagsinput span.tag a {
 .sidebar .nav .nav-item .nav-link .menu-title {
   color: inherit;
   display: inline-block;
-  font-size: 12px;
-  line-height: 1;
+  font-size: 14px;
+  line-height: 3;
   vertical-align: middle;
+  font-weight: bold;
 }
 
 .sidebar .nav .nav-item .nav-link .badge {
@@ -32750,11 +32752,12 @@ div.tagsinput span.tag a {
 }
 
 .navbar .navbar-brand-wrapper .navbar-brand {
-  color: #27367f;
+  color: rgb(130, 174, 70);;
   font-size: 1.5rem;
   margin-right: 0;
   padding: 0;
   line-height: 1;
+  font-weight: bold;
 }
 
 .navbar .navbar-brand-wrapper .navbar-brand.brand-logo-mini {
@@ -32764,7 +32767,7 @@ div.tagsinput span.tag a {
 .navbar .navbar-brand-wrapper .navbar-brand:active,
 .navbar .navbar-brand-wrapper .navbar-brand:focus,
 .navbar .navbar-brand-wrapper .navbar-brand:hover {
-  color: #1b2658;
+  color: black;
 }
 
 .navbar .navbar-brand-wrapper .navbar-brand img {
@@ -33285,7 +33288,7 @@ div.tagsinput span.tag a {
   border-radius: 6px;
   font-style: normal;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 16px;
   font-family: "Manrope", sans-serif;
   min-width: 170px;
@@ -33342,7 +33345,7 @@ div.tagsinput span.tag a {
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item .navbar-date-picker .tt-hint {
   font-style: normal;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 16px;
   color: #000000;
   border: none;
@@ -34967,11 +34970,11 @@ div.tagsinput span.tag a {
     margin-right: 0;
     margin-left: 0;
     margin-bottom: 0;
-    color: rgba(31, 59, 179, 0.7);
+    color: rgb(130, 174, 70);;
   }
 
   .sidebar-dark.sidebar-icon-only .sidebar .nav .nav-item .nav-link i.menu-icon {
-    color: rgba(31, 59, 179, 0.7);
+    color: rgb(130, 174, 70);;
   }
 
   .sidebar-icon-only .sidebar .nav .nav-item .nav-link i.menu-arrow {
@@ -35322,7 +35325,7 @@ div.tagsinput span.tag a {
 
 .settings-panel .settings-heading {
   padding: 16px 0 13px 35px;
-  font-size: 0.812rem;
+  font-size: 0.912rem;
   font-family: "Manrope", sans-serif;
   font-weight: 500;
   line-height: 1;
@@ -35567,35 +35570,54 @@ div.tagsinput span.tag a {
   font-family: "Poppins", Arial, sans-serif;
   text-align: center;
 }
-.container-scroller .main-panel .card-body .login{
+
+.container-scroller .main-panel .card-body .login {
   margin: 40px 0;
   font-size: 1.5rem;
-   text-align: center;
-   font-weight: bold;
-   color: #000;
-   font-family: "Poppins", Arial, sans-serif;
+  text-align: center;
+  font-weight: bold;
+  color: #000;
+  font-family: "Poppins", Arial, sans-serif;
 }
-.container-scroller .main-panel .forms-sample .form-group .form-control{
-   height: 45px;
-   border: 1px solid #D0D0D0;
-   font-size: 18px;
+
+.container-scroller .main-panel .forms-sample .form-group .form-control {
+  height: 45px;
+  border: 1px solid #D0D0D0;
+  font-size: 18px;
 }
-.container-scroller .main-panel .forms-sample .form-group a{
+
+.container-scroller .main-panel .forms-sample .form-group a {
   text-decoration: none;
   color: #000;
-  float:  right;
-  
+  float: right;
+
 }
-.container-scroller .main-panel .forms-sample .button_primary{
+
+.container-scroller .main-panel .forms-sample .button_primary {
   text-align: center;
 }
-.container-scroller .main-panel .forms-sample .button_primary .btn{
+
+.container-scroller .main-panel .forms-sample .button_primary .btn {
   font-weight: bold;
   font-size: 17px;
-} 
-.button_primary_height{
+}
+
+.button_primary_height {
   width: 50%;
 }
+
+.background {
+  width: 100%;
+  height: 100vh;
+  font-family: system-ui, serif;
+  margin: 0 auto;
+  /* background-image:  linear-gradient(180deg, #9ac393, #fff); */
+  background-image: url(hinh5.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+}
+
 #theme-settings .settings-close {
   top: 12px;
   background: transparent;
