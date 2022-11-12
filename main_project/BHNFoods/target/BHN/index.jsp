@@ -1,3 +1,5 @@
+<%@ page import="vn.edu.hcmuaf.fit.model.Product" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!doctype html>
@@ -51,7 +53,23 @@
                             </ul>
                         </div>
                     </div>
-
+                    <div class="sidebar__item">
+                        <h4>Giá</h4>
+                        <div class="price-range-wrap">
+                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
+                                 data-min="10" data-max="540">
+                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
+                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                            </div>
+                            <div class="range-slider">
+                                <div class="price-input">
+                                    <input type="text" id="minamount">
+                                    <input type="text" id="maxamount">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="sidebar__item">
                         <div class="latest-product__text">
@@ -177,10 +195,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <% for(int i = 0; i < 12; i++) { %>
+                    <%
+                        List<Product> productList = (List<Product>) request.getAttribute("listRequest");
+                        for(Product p: productList) {
+                    %>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="body_design/img/product/product-1.jpg">
+                            <div class="product__item__pic set-bg" data-setbg="<%=p.getSrc()%>">
                                 <ul class="product__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                     <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -188,7 +209,7 @@
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <a href="singleProduct.jsp">Khoai lang tím <br> <span>20.000đ</span></a>
+                                <a href="singleProduct.jsp"><%=p.getName()%><br> <span><%=p.getPrice()%>đ</span></a>
                             </div>
                         </div>
                     </div>
