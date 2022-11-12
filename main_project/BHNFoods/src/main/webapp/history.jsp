@@ -28,7 +28,7 @@
         }
         .shoping-cart .container::before {
             content: "Lịch sử giao dịch";
-            font-size: 30px;
+            font-size: 20px;
             font-weight: bold;
         }
     </style>
