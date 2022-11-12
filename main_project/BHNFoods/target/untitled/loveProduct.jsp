@@ -8,7 +8,7 @@
 	<meta name="keywords" content="Ogani, unica, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>BHDFoods| Giỏ hàng</title>
+	<title>BHDFoods| Sản phẩm yêu thích</title>
 
 	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -23,6 +23,29 @@
 	<link rel="stylesheet" href="body_design/css/slicknav.min.css" type="text/css">
 	<link rel="stylesheet" href="body_design/css/style.css" type="text/css">
 </head>
+<style>
+	.shoping-cart .container .row{
+		border: 2px solid rgb(168, 168, 168);
+		padding-top: 20px;
+		margin: 20px 0;
+	}
+	.shoping-cart .container::before {
+		content: "Sản phẩm yêu thích";
+		font-size: 20px;
+		font-weight: bold;
+	}
+	.shoping-cart .container .row .shoping__cart__table table tbody td img {
+		height: 100px;
+		width: 100px;
+		object-fit: cover;
+	}
+	.shoping-cart .container .row .shoping__cart__table table tbody td button {
+		background:#7fad39;
+		padding:2px 15px;
+		color: white;
+		border: none;
+	}
+</style>
 
 <body>
 
@@ -42,13 +65,14 @@
 							<th>Giá</th>
 							<th>Số lượng</th>
 							<th>Tổng</th>
+							<th>Thêm vào giỏ</th>
 							<th></th>
 						</tr>
 						</thead>
 						<tbody>
-						<tr>
+						<tr>	
 							<td class="shoping__cart__item">
-								<img src="body_design/img/cart/cart-1.jpg" alt="">
+								<img src="ImageproductNew/Khoai/khoai-lang-nhat/khoai-lang-nhat-tui-1kg-4-10-cu-202205201543286468.jpg" alt="">
 								<h5>Khoai lang tím</h5>
 							</td>
 							<td class="shoping__cart__price">
@@ -64,17 +88,21 @@
 							<td class="shoping__cart__total">
 								110.000
 							</td>
-							<td class="shoping__cart__item__close">
+							<td class="shoping__cart__quantity">
+								<button>Thêm</button>
+							</td>
+							<td class="shoping__cart__item__close "style="">
 								<span class="icon_close"></span>
 							</td>
+							
 						</tr>
-						<tr>
+						<tr>	
 							<td class="shoping__cart__item">
-								<img src="body_design/img/cart/cart-2.jpg" alt="">
-								<h5>Lúa mạch</h5>
+								<img src="ImageproductNew/Bot/Ngu-coc-viet-dai/bot-ngu-coc-an-kieng-viet-dai-bich-400g-202210201449349516.jpg" alt="">
+								<h5>Bột ngũ cốc ăn kiêng Việt Đại</h5>
 							</td>
 							<td class="shoping__cart__price">
-								39.000
+								65.000
 							</td>
 							<td class="shoping__cart__quantity">
 								<div class="quantity">
@@ -84,19 +112,23 @@
 								</div>
 							</td>
 							<td class="shoping__cart__total">
-								39.990
+								130.000
 							</td>
-							<td class="shoping__cart__item__close">
+							<td class="shoping__cart__quantity">
+								<button>Thêm</button>
+							</td>
+							<td class="shoping__cart__item__close "style="">
 								<span class="icon_close"></span>
 							</td>
+							
 						</tr>
-						<tr>
+						<tr>	
 							<td class="shoping__cart__item">
-								<img src="body_design/img/cart/cart-3.jpg" alt="">
-								<h5>Đậu Hà Lan</h5>
+								<img src="body_design/img/cart/cart-1.jpg" alt="">
+								<h5>Khoai lang tím</h5>
 							</td>
 							<td class="shoping__cart__price">
-								69.000
+								22.000
 							</td>
 							<td class="shoping__cart__quantity">
 								<div class="quantity">
@@ -106,18 +138,25 @@
 								</div>
 							</td>
 							<td class="shoping__cart__total">
-								69.900
+								22.000
 							</td>
-							<td class="shoping__cart__item__close">
+							<td class="shoping__cart__quantity">
+								<button>Thêm</button>
+							</td>
+							<td class="shoping__cart__item__close "style="">
 								<span class="icon_close"></span>
 							</td>
+							
 						</tr>
+
+						
+						
 						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-lg-12">
 				<div class="shoping__cart__btns">
 					<a href="ListProduct.jsp" class="primary-btn cart-btn">Tiếp tục mua hàng</a>
@@ -145,10 +184,10 @@
 						<li>Giảm <span>50.000</span></li>
 						<li>Tổng thanh toán <span>510.000</span></li>
 					</ul>
-					<a href="checkout.jsp" class="primary-btn">Thanh toán</a>
+					<a href="#" class="primary-btn">Thanh toán</a>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </section>
 

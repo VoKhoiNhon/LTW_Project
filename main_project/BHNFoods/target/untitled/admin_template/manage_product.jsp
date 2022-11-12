@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -200,19 +199,19 @@
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+          <a class="nav-link" data-bs-toggle="collapse" href="index.jsp" aria-expanded="false" aria-controls="ui-basic">
             <i class="menu-icon mdi mdi-home"></i>
             <span class="menu-title">Trang chủ</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+          <a class="nav-link" data-bs-toggle="collapse" href="manage_user.jsp" aria-expanded="false" aria-controls="ui-basic">
             <i class="menu-icon mdi mdi-account-circle"></i>
             <span class="menu-title">Quản lý người dùng</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+          <a class="nav-link" data-bs-toggle="collapse" href="manage_product.jsp" aria-expanded="false" aria-controls="ui-basic">
             <i class="menu-icon mdi mdi-view-module"></i>
             <span class="menu-title">Quản lý sản phẩm</span>
           </a>
@@ -282,7 +281,7 @@
                                         </div>
                                       </th>
                                       <th>Sản phẩm</th>
-                                      <th>Số điện thoại và Email</th>
+                                      <th>Ngày nhập hàng</th>
                                       <th>Số lượng hàng đã bán</th>
                                       <th>Giá</th>
                                     </tr>
@@ -306,8 +305,7 @@
                                         </div>
                                       </td>
                                       <td>
-                                        <h6>079548822</h6>
-                                        <p>nhonw@gmail.commm</p>
+                                        <h6>20/10/2022</h6>
                                       </td>
                                       <td>
                                         <div>
@@ -344,8 +342,7 @@
                                         </div>
                                       </td>
                                       <td>
-                                        <h6>037864222</h6>
-                                        <p>baodang@gmail.com</p>
+                                        <h6>20/10/2022</h6>
                                       </td>
                                       <td>
                                         <div>
@@ -382,8 +379,7 @@
                                         </div>
                                       </td>
                                       <td>
-                                        <h6>026346848</h6>
-                                        <p>phung@email.com</p>
+                                        <h6>20/10/2022</h6>
                                       </td>
                                       <td>
                                         <div>
@@ -420,8 +416,7 @@
                                         </div>
                                       </td>
                                       <td>
-                                        <h6>023476572</h6>
-                                        <p>nhuw@gmail.com</p>
+                                        <h6>20/10/2022</h6>
                                       </td>
                                       <td>
                                         <div>
@@ -458,8 +453,7 @@
                                         </div>
                                       </td>
                                       <td>
-                                        <h6>077984872</h6>
-                                        <p>poong@gmail.com</p>
+                                        <h6>20/10/2022</h6>
                                       </td>
                                       <td>
                                         <div>
@@ -496,8 +490,7 @@
                                         </div>
                                       </td>
                                       <td>
-                                        <h6>0772376872</h6>
-                                        <p>baotaolao@gmail.com</p>
+                                        <h6>20/10/2022</h6>
                                       </td>
                                       <td>
                                         <div>

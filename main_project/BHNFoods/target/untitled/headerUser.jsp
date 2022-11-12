@@ -74,10 +74,11 @@
                 <li class="nav-item cta cta-colored"><a href="cart.jsp" class="nav-link"><span
                             class="fa-solid fa-cart-shopping"></span>[0]</a></li>
                 <li class="nav-item cta cta-colored hover_user">
-                    <span href="#" class="nav-link" style="cursor: pointer; font-weight: bold;">Nguyễn Thị Xuân
+                    <span href="#" class="nav-link" style="cursor: pointer;">Nguyễn Thị Xuân
                         Hoa</span>
                     <div class="list_menu">
                         <div class="dr"><a href="account.jsp">Tài khoản</a></div>
+                        <div class="dr"> <a href="loveProduct.jsp">Sản phẩm yêu thích</a></div>
                         <div class="dr"> <a href="manageOrder.jsp">Quản lý đơn hàng</a> </div>
                         <div class="dr"> <a href="history.jsp">Lịch sử đơn hàng</a></div>
                         <div class="dr"> <a href="index.jsp">Đăng xuất</a></div>

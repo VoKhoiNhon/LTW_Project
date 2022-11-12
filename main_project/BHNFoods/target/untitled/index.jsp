@@ -1,7 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
-
+<head>
+    <title>BHDFoods| Trang chủ</title>
+</head>
 
 <body>
 
@@ -14,7 +16,7 @@
                 <span class="subheading">Giá Tốt Cho Bạn</span>
                 <h2 class="mb-4">Ưu đãi trong ngày</h2>
                 <p>Luôn mang những sản phẩm chất lượng nhất đến tay khách hàng</p>
-                <h3><a href="#">Lương Thực</a></h3>
+                <h3><a href="#">Các loại đậu</a></h3>
                 <span class="price">30.000đ <a href="#">chỉ còn 15.000đ</a></span>
                 <div id="timer" class="d-flex mt-5">
                     <div class="time" id="days"></div>
@@ -41,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+            <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate ">
                 <div class="media block-6 services mb-md-0 mb-4">
                     <div class="icon bg-color-2 d-flex justify-content-center align-items-center mb-2">
                         <span class="flaticon-diet"></span>
@@ -89,7 +91,7 @@
                             <div class="text text-center">
                                 <h2>Lượng thực</h2>
                                 <p>Bảo vệ sức khoẻ của cả gia đình bạn</p>
-                                <p><a href="ListProduct.jsp" class="btn btn-primary">Mua ngay</a></p>
+                                <p><a href="ListProduct" class="btn btn-primary">Mua ngay</a></p>
                             </div>
                         </div>
                     </div>
@@ -97,13 +99,13 @@
                         <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end"
                              style="background-image: url(images/category-1.jpg);">
                             <div class="text px-3 py-1">
-                                <h2 class="mb-0"><a href="#">Gạo</a></h2>
+                                <h2 class="mb-0"><a href="ListProduct">Gạo</a></h2>
                             </div>
                         </div>
                         <div class="category-wrap ftco-animate img d-flex align-items-end"
                              style="background-image: url(images/category-2.jpg);">
                             <div class="text px-3 py-1">
-                                <h2 class="mb-0"><a href="#">Hạt</a></h2>
+                                <h2 class="mb-0"><a href="ListProduct">Hạt</a></h2>
                             </div>
                         </div>
                     </div>
@@ -114,13 +116,13 @@
                 <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end"
                      style="background-image: url(images/category-3.jpg);">
                     <div class="text px-3 py-1">
-                        <h2 class="mb-0"><a href="#">Củ</a></h2>
+                        <h2 class="mb-0"><a href="ListProduct">Củ</a></h2>
                     </div>
                 </div>
                 <div class="category-wrap ftco-animate img d-flex align-items-end"
                      style="background-image: url(images/category-4.jpg);">
                     <div class="text px-3 py-1">
-                        <h2 class="mb-0"><a href="#">Ngũ cốc</a></h2>
+                        <h2 class="mb-0"><a href="ListProduct">Ngũ cốc</a></h2>
                     </div>
                 </div>
             </div>
