@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +28,7 @@
         }
         .shoping-cart .container::before {
             content: "Lịch sử giao dịch";
-            font-size: 30px;
+            font-size: 20px;
             font-weight: bold;
         }
     </style>

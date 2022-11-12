@@ -29,15 +29,20 @@
   <div class="container-scroller background">
 
     <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
+<<<<<<< Updated upstream
+    <div style="padding: 0" class="container-fluid page-body-wrapper">
       <div class="main-panel" style="    width: 100%;">
+=======
+    <div class="container-fluid page-body-wrapper">
+      <div class="main-panel" style="width: 100%;">
+>>>>>>> Stashed changes
         <div class="content-wrapper">
           <div class="row">
 
             <div class="card" style=" margin:auto;">
               <div class="card-body">
                 <p class="card-description">
-                  <a href="ListProduct" style="text-decoration: none ; color: rgb(112, 112, 112);"> <i
+                  <a href="../index.jsp" style="text-decoration: none ; color: rgb(112, 112, 112);"> <i
                       class="fa-solid fa-chevron-left"></i>Quay lại</a>
                 </p>
                 <h4 class="card-title logoBHN">BHNFoods</h4>
@@ -56,11 +61,11 @@
                     <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Nhập mật khẩu">
                   </div>
                   <div class="form-group forgot_pass" style="padding-bottom:30px;">
-                    <a href="forgotpass.html">Quên mật khẩu?</a>
+                    <a href="forgotpass.jsp">Quên mật khẩu?</a>
                   </div>
                   <div class="form-group  button_primary">
                     <button type="submit" class="btn btn-primary  button_primary_height me-2">Đăng nhập</button> </br>
-                    <button type="submit" class="btn btn-primary  button_primary_height me-2">Đăng ký</button>
+                    <button style="padding: 0" type="submit" class="btn btn-primary  button_primary_height me-2"><a href="signup.jsp" style="color: #ffffff; width: 100%; height: 100%; padding: 14px 24px;">Đăng ký</a></button>
                   </div>
                 </form>
               </div>

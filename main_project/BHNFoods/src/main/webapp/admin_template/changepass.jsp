@@ -30,7 +30,7 @@
     <!-- <img src="css/vertical-layout-light/hinh5.jpg" alt="" style="position: relative;"> -->
 
     <!-- partial -->
-    <div class="container-fluid page-body-wrapper" >
+    <div style="padding: 0" class="container-fluid page-body-wrapper" >
       <div class="main-panel" style="    width: 100%;">
         <div class="content-wrapper">
         <div class="row">
@@ -38,7 +38,7 @@
           <div class="card" style=" margin:auto;">
             <div class="card-body">
                 <p class="card-description">
-                    <a href="forgotpass.html" style="text-decoration: none ; color: rgb(123, 123, 123);"> <i class="fa-solid fa-chevron-left"></i>Quay lại</a>
+                    <a href="forgotpass.jsp" style="text-decoration: none ; color: rgb(123, 123, 123);"> <i class="fa-solid fa-chevron-left"></i>Quay lại</a>
                    </p>
               <h4 class="card-title logoBHN">BHNFoods</h4>
               <p class="card-description login">
@@ -64,7 +64,7 @@
                   <button type="submit" class="btn btn-primary  button_primary_height me-2" style="width: 60%;">Cập nhật lại tài khoản</button>
                 </div>
                 <div class="form-group forgot_pass" style="padding-bottom:30px;">
-                  <a href="index.jsp" style="color:rgb(108, 108, 108) ;">Trang chủ</a>
+                  <a href="../index.jsp" style="color:rgb(108, 108, 108) ;">Trang chủ</a>
                 </div>
               </form>
             </div>
