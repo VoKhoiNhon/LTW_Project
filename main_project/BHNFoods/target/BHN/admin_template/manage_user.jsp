@@ -199,19 +199,19 @@
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="index.jsp" aria-expanded="false" aria-controls="ui-basic">
+          <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
             <i class="menu-icon mdi mdi-home"></i>
             <span class="menu-title">Trang chủ</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="manage_user.jsp" aria-expanded="false" aria-controls="ui-basic">
+          <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
             <i class="menu-icon mdi mdi-account-circle"></i>
             <span class="menu-title">Quản lý người dùng</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="manage_product.jsp" aria-expanded="false" aria-controls="ui-basic">
+          <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
             <i class="menu-icon mdi mdi-view-module"></i>
             <span class="menu-title">Quản lý sản phẩm</span>
           </a>
@@ -230,18 +230,7 @@
                     <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab"
                       aria-controls="overview" aria-selected="true">Tổng quan</a>
                   </li>
-                  <!-- <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#audiences" role="tab"
-                      aria-selected="false">Khách hàng</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#demographics" role="tab"
-                      aria-selected="false">Dân số</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="#more" role="tab"
-                      aria-selected="false">Thêm</a>
-                  </li> -->
+                 
                 </ul>
                 <div>
                   <div class="btn-wrapper">
@@ -260,10 +249,10 @@
                           <div class="card card-rounded">
                             <div class="card-body">
                               <div class="d-sm-flex justify-content-between align-items-start">
-                                <!-- <div>
+                                <div>
                                   <h4 class="card-title card-title-dash">Yêu cầu đang xử lý</h4>
                                   <p class="card-subtitle card-subtitle-dash">Bạn có 50+ yêu cầu mới</p>
-                                </div> -->
+                                </div>
                                 <div>
                                   <h4 class="card-title card-title-dash">Sửa <i class="fa-regular fa-pen-to-square"></i></h4>
                                   <!-- <p class="card-subtitle card-subtitle-dash">Bạn có 50+ yêu cầu mới</p> -->
@@ -280,10 +269,10 @@
                                               class="input-helper"></i></label>
                                         </div>
                                       </th>
-                                      <th>Sản phẩm</th>
-                                      <th>Ngày nhập hàng</th>
-                                      <th>Số lượng hàng đã bán</th>
-                                      <th>Giá</th>
+                                      <th>Khách hàng</th>
+                                      <th>Số điện thoại và Email</th>
+                                      <th></th>
+                                      <th>Tên tài khoản</th>
                                     </tr>
                                   </thead>
                                   <tbody>
@@ -297,31 +286,32 @@
                                       </td>
                                       <td>
                                         <div class="d-flex ">
-                                          <img src=" Image product/Đậu/dau-ha-lan-dong-lanh-mama-food-goi-200g-202205171021061114_300x300.png" alt="">
+                                          <img src="images/faces/face1.jpg" alt="">
                                           <div>
-                                            <h6>Đậu Hà Lan</h6>
-                                            <p>HL01</p>
+                                            <h6>Võ Khôi Nhơn</h6>
+                                            <p>Admin</p>
                                           </div>
                                         </div>
                                       </td>
                                       <td>
-                                        <h6>20/10/2022</h6>
+                                        <h6>079548822</h6>
+                                        <p>nhonw@gmail.commm</p>
                                       </td>
                                       <td>
-                                        <div>
-                                          <div
-                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                            
-                                            <p>85/162</p>
-                                          </div>
-                                          <div class="progress progress-md">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 85%"
-                                              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                          </div>
-                                        </div>
+<%--                                        <div>--%>
+<%--                                          <div--%>
+<%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
+<%--                                            <p class="text-success">79%</p>--%>
+<%--                                            <p>85/162</p>--%>
+<%--                                          </div>--%>
+<%--                                          <div class="progress progress-md">--%>
+<%--                                            <div class="progress-bar bg-success" role="progressbar" style="width: 85%"--%>
+<%--                                              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>--%>
+<%--                                          </div>--%>
+<%--                                        </div>--%>
                                       </td>
                                       <td>
-                                        <div class="">50.000</div>
+                                        <div class="">NhonVo</div>
                                       </td>
                                     </tr>
                                     <tr>
@@ -334,31 +324,32 @@
                                       </td>
                                       <td>
                                         <div class="d-flex">
-                                          <img src="Image product/Gạo/Gạo lứt nhiều Hiệu/gao-huyet-rong-lotus-rice-nutrichoice-hop-0-5kg-202103040832315314_300x300.jpg" alt="">
+                                          <img src="images/faces/face2.jpg" alt="">
                                           <div>
-                                            <h6>Gạo Lứt</h6>
-                                            <p>G001</p>
+                                            <h6>Lê Bảo Đặng</h6>
+                                            <p>Người dùng</p>
                                           </div>
                                         </div>
                                       </td>
                                       <td>
-                                        <h6>20/10/2022</h6>
+                                        <h6>037864222</h6>
+                                        <p>baodang@gmail.com</p>
                                       </td>
                                       <td>
-                                        <div>
-                                          <div
-                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                           
-                                            <p>335/1202</p>
-                                          </div>
-                                          <div class="progress progress-md">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"
-                                              aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                          </div>
-                                        </div>
+<%--                                        <div>--%>
+<%--                                          <div--%>
+<%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
+<%--                                            <p class="text-success">65%</p>--%>
+<%--                                            <p>85/162</p>--%>
+<%--                                          </div>--%>
+<%--                                          <div class="progress progress-md">--%>
+<%--                                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"--%>
+<%--                                              aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>--%>
+<%--                                          </div>--%>
+<%--                                        </div>--%>
                                       </td>
                                       <td>
-                                        <div class="">120.000</div>
+                                        <div class="">LebaoDang</div>
                                       </td>
                                     </tr>
                                     <tr>
@@ -371,31 +362,32 @@
                                       </td>
                                       <td>
                                         <div class="d-flex">
-                                          <img src="Image product/Khoai/khoai-lang-nhat-tui-1kg-4-10-cu-202209060830277612.jpg" alt="">
+                                          <img src="images/faces/face3.jpg" alt="">
                                           <div>
-                                            <h6>Khoai Lang Nhật</h6>
-                                            <p>KLN01</p>
+                                            <h6>Dương Thanh Phụng</h6>
+                                            <p>Người dùng</p>
                                           </div>
                                         </div>
                                       </td>
                                       <td>
-                                        <h6>20/10/2022</h6>
+                                        <h6>026346848</h6>
+                                        <p>phung@email.com</p>
                                       </td>
                                       <td>
-                                        <div>
-                                          <div
-                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                      
-                                            <p>100/900</p>
-                                          </div>
-                                          <div class="progress progress-md">
-                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 38%"
-                                              aria-valuenow="38" aria-valuemin="0" aria-valuemax="100"></div>
-                                          </div>
-                                        </div>
+<%--                                        <div>--%>
+<%--                                          <div--%>
+<%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
+<%--                                            <p class="text-success">65%</p>--%>
+<%--                                            <p>85/162</p>--%>
+<%--                                          </div>--%>
+<%--                                          <div class="progress progress-md">--%>
+<%--                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 38%"--%>
+<%--                                              aria-valuenow="38" aria-valuemin="0" aria-valuemax="100"></div>--%>
+<%--                                          </div>--%>
+<%--                                        </div>--%>
                                       </td>
                                       <td>
-                                        <div class="">30.000</div>
+                                        <div class="">ThanhPhung</div>
                                       </td>
                                     </tr>
                                     <tr>
@@ -408,31 +400,32 @@
                                       </td>
                                       <td>
                                         <div class="d-flex">
-                                          <img src="Image product/Gạo/Hạt ngọc trời/gao-hat-ngoc-troi-thien-long-bich-5kg-300x300.jpg" alt="">
+                                          <img src="images/faces/face4.jpg" alt="">
                                           <div>
-                                            <h6>Gạo dẻo thơm</h6>
-                                            <p>GD022</p>
+                                            <h6>Phan Thị Quỳnh Như</h6>
+                                            <p>Người dùng</p>
                                           </div>
                                         </div>
                                       </td>
                                       <td>
-                                        <h6>20/10/2022</h6>
+                                        <h6>023476572</h6>
+                                        <p>nhuw@gmail.com</p>
                                       </td>
                                       <td>
-                                        <div>
-                                          <div
-                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                         
-                                            <p>85/162</p>
-                                          </div>
-                                          <div class="progress progress-md">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 15%"
-                                              aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                          </div>
-                                        </div>
+<%--                                        <div>--%>
+<%--                                          <div--%>
+<%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
+<%--                                            <p class="text-success">65%</p>--%>
+<%--                                            <p>85/162</p>--%>
+<%--                                          </div>--%>
+<%--                                          <div class="progress progress-md">--%>
+<%--                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 15%"--%>
+<%--                                              aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>--%>
+<%--                                          </div>--%>
+<%--                                        </div>--%>
                                       </td>
                                       <td>
-                                        <div class="">89.000</div>
+                                        <div class="">QuynhNhuw</div>
                                       </td>
                                     </tr>
                                     <tr>
@@ -445,31 +438,32 @@
                                       </td>
                                       <td>
                                         <div class="d-flex">
-                                          <img src="Image product/Khoai/bap-my-2-trai-202012282219112903.jpg" alt="">
+                                          <img src="images/faces/face5.jpg" alt="">
                                           <div>
-                                            <h6>Bắp Mỹ</h6>
-                                            <p>B003</p>
+                                            <h6>Nguyễn Thị Xuân Hoa</h6>
+                                            <p>Người dùng</p>
                                           </div>
                                         </div>
                                       </td>
                                       <td>
-                                        <h6>20/10/2022</h6>
+                                        <h6>077984872</h6>
+                                        <p>poong@gmail.com</p>
                                       </td>
                                       <td>
-                                        <div>
-                                          <div
-                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                          
-                                            <p>30/200</p>
-                                          </div>
-                                          <div class="progress progress-md">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"
-                                              aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                          </div>
-                                        </div>
+<%--                                        <div>--%>
+<%--                                          <div--%>
+<%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
+<%--                                            <p class="text-success">65%</p>--%>
+<%--                                            <p>85/162</p>--%>
+<%--                                          </div>--%>
+<%--                                          <div class="progress progress-md">--%>
+<%--                                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"--%>
+<%--                                              aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>--%>
+<%--                                          </div>--%>
+<%--                                        </div>--%>
                                       </td>
                                       <td>
-                                        <div class="">40.000</div>
+                                        <div class="">XuanHoa</div>
                                       </td>
                                     </tr>
                                     <tr>
@@ -482,31 +476,32 @@
                                       </td>
                                       <td>
                                         <div class="d-flex">
-                                          <img src="Image product/Bột/bot-nang-da-dung-meizan-400g-300x300.jpg" alt="">
+                                          <img src="images/faces/face5.jpg" alt="">
                                           <div>
-                                            <h6>Bột Năng</h6>
-                                            <p>BN01</p>
+                                            <h6>Phạm Gia Bảo</h6>
+                                            <p>Admin</p>
                                           </div>
                                         </div>
                                       </td>
                                       <td>
-                                        <h6>20/10/2022</h6>
+                                        <h6>0772376872</h6>
+                                        <p>baotaolao@gmail.com</p>
                                       </td>
                                       <td>
-                                        <div>
-                                          <div
-                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                       
-                                            <p>85/162</p>
-                                          </div>
-                                          <div class="progress progress-md">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"
-                                              aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                          </div>
-                                        </div>
+<%--                                        <div>--%>
+<%--                                          <div--%>
+<%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
+<%--                                            <p class="text-success">65%</p>--%>
+<%--                                            <p>85/162</p>--%>
+<%--                                          </div>--%>
+<%--                                          <div class="progress progress-md">--%>
+<%--                                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"--%>
+<%--                                              aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>--%>
+<%--                                          </div>--%>
+<%--                                        </div>--%>
                                       </td>
                                       <td>
-                                        <div class="">19.000</div>
+                                        <div class="">BaoHayQua12</div>
                                       </td>
                                     </tr>
                                   </tbody>

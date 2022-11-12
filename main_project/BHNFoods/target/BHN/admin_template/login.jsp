@@ -29,13 +29,8 @@
   <div class="container-scroller background">
 
     <!-- partial -->
-<<<<<<< Updated upstream
     <div style="padding: 0" class="container-fluid page-body-wrapper">
       <div class="main-panel" style="    width: 100%;">
-=======
-    <div class="container-fluid page-body-wrapper">
-      <div class="main-panel" style="width: 100%;">
->>>>>>> Stashed changes
         <div class="content-wrapper">
           <div class="row">
 
