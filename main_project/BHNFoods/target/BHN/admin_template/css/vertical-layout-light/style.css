@@ -35567,17 +35567,17 @@ div.tagsinput span.tag a {
   font-weight: bold;
   font-size: 2.5rem;
   text-transform: uppercase;
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: sans-serif;
   text-align: center;
 }
 
 .container-scroller .main-panel .card-body .login {
-  margin: 40px 0;
+  margin: 20px 0;
   font-size: 1.5rem;
   text-align: center;
   font-weight: bold;
   color: #000;
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: sans-serif;
 }
 
 .container-scroller .main-panel .forms-sample .form-group .form-control {
@@ -35616,6 +35616,10 @@ div.tagsinput span.tag a {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: relative;
+}
+
+.main-panel .row .card .card-body .forms-sample .form-group {
+  margin-bottom: 0.5rem;
 }
 
 #theme-settings .settings-close {
@@ -35665,7 +35669,9 @@ div.tagsinput span.tag a {
   right: auto;
   left: 30px;
 }
-
+.colorheader{
+  background-color: #82ae46 !important;
+}
 @media (max-width: 991px) {
   #settings-trigger {
     display: none;

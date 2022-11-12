@@ -281,7 +281,7 @@
                                         </div>
                                       </th>
                                       <th>Sản phẩm</th>
-                                      <th>Số điện thoại và Email</th>
+                                      <th>Ngày nhập hàng</th>
                                       <th>Số lượng hàng đã bán</th>
                                       <th>Giá</th>
                                     </tr>
@@ -305,8 +305,7 @@
                                         </div>
                                       </td>
                                       <td>
-                                        <h6>079548822</h6>
-                                        <p>nhonw@gmail.commm</p>
+                                        <h6>20/10/2022</h6>
                                       </td>
                                       <td>
                                         <div>
@@ -343,8 +342,7 @@
                                         </div>
                                       </td>
                                       <td>
-                                        <h6>037864222</h6>
-                                        <p>baodang@gmail.com</p>
+                                        <h6>20/10/2022</h6>
                                       </td>
                                       <td>
                                         <div>
@@ -381,8 +379,7 @@
                                         </div>
                                       </td>
                                       <td>
-                                        <h6>026346848</h6>
-                                        <p>phung@email.com</p>
+                                        <h6>20/10/2022</h6>
                                       </td>
                                       <td>
                                         <div>
@@ -419,8 +416,7 @@
                                         </div>
                                       </td>
                                       <td>
-                                        <h6>023476572</h6>
-                                        <p>nhuw@gmail.com</p>
+                                        <h6>20/10/2022</h6>
                                       </td>
                                       <td>
                                         <div>
@@ -457,8 +453,7 @@
                                         </div>
                                       </td>
                                       <td>
-                                        <h6>077984872</h6>
-                                        <p>poong@gmail.com</p>
+                                        <h6>20/10/2022</h6>
                                       </td>
                                       <td>
                                         <div>
@@ -495,8 +490,7 @@
                                         </div>
                                       </td>
                                       <td>
-                                        <h6>0772376872</h6>
-                                        <p>baotaolao@gmail.com</p>
+                                        <h6>20/10/2022</h6>
                                       </td>
                                       <td>
                                         <div>
