@@ -56,7 +56,7 @@
                                         <button type="submit" class="btn btn-primary  button_primary_height me-2">Tiếp tục</button>
                                     </div>
                                     <div class="form-group forgot_pass" style="padding-bottom:30px;">
-                                        <a href="index.jsp" style="color:rgb(119, 119, 119) ;">Trang chủ</a>
+                                        <a href="manage_user.jsp" style="color:rgb(119, 119, 119) ;">Trang chủ</a>
                                       </div>
                                 </form>
                             </div>
