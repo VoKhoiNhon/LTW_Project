@@ -11,10 +11,12 @@
       <div class="row mb-5">
         <div class="col-md">
           <div class="ftco-footer-widget mb-4">
-            <h2 class="ftco-heading-2">BHNFoods</h2>
+            <h2 class="ftco-heading-2" style="font-size: 20px;
+    font-weight: bold;
+    color: #7fad39;">BHNFoods</h2>
             <p>Công ty BHNFoods chúng tôi chưa có giấy phép kinh doanh. Xin trân trọng phục vụ quý khách! Nếu
               quý khách xảy ra cất cứ vấn đề gì sau khi sử dụng sản phẩm của chúng tôi chúng tôi sẽ không
-              chịu trách nhiệm =))))
+              chịu trách nhiệm.
             </p>
             <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
               <li class="ftco-animate"><a href="#"><span class="fa-brands fa-twitter"></span></a></li>
@@ -27,8 +29,8 @@
           <div class="ftco-footer-widget mb-4 ml-md-5">
             <h2 class="ftco-heading-2">Tổng Quan</h2>
             <ul class="list-unstyled">
-              <li><a href="#" class="py-2 d-block">Cửa hàng</a></li>
-              <li><a href="#" class="py-2 d-block"></a>Giới thiệu</li>
+              <li><a href="ListProduct" class="py-2 d-block">Cửa hàng</a></li>
+              <li><a href="index.jsp" class="py-2 d-block"></a>Giới thiệu</li>
             </ul>
           </div>
         </div>

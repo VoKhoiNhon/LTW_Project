@@ -77,10 +77,10 @@
                     <span href="#" class="nav-link" style="cursor: pointer; font-weight: bold;">Nguyễn Thị Xuân
                         Hoa</span>
                     <div class="list_menu">
-                        <div class="dr"><a href="#">Tài khoản</a></div>
-                        <div class="dr"> <a href="#">Quản lý đơn hàng</a> </div>
-                        <div class="dr"> <a href="#">Lịch sử đơn hàng</a></div>
-                        <div class="dr"> <a href="#">Đăng xuất</a></div>
+                        <div class="dr"><a href="account.jsp">Tài khoản</a></div>
+                        <div class="dr"> <a href="manageOrder.jsp">Quản lý đơn hàng</a> </div>
+                        <div class="dr"> <a href="history.jsp">Lịch sử đơn hàng</a></div>
+                        <div class="dr"> <a href="index.jsp">Đăng xuất</a></div>
                     </div>
                 </li>
 
