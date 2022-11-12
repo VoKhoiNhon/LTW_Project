@@ -172,6 +172,7 @@
             <%--                </div>--%>
         </div>
     </div>
+    
 </section>
 <!-- Product Details Section End -->
 
