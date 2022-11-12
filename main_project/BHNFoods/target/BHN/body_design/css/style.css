@@ -3482,3 +3482,21 @@ ol {
 .container .row .form-group .form-control {
 	font-size: 20px;
 }
+.container .comment .comment-user {
+	border-bottom: 1px gray solid;
+}
+
+.container .comment .comment-user .comment-name {
+	font-weight: bold;
+}
+
+.container .comment .comment-user .comment-star {
+	color: #EDBB0E;
+}
+.container .comment .comment-user .content-padding{
+	padding: 13px 0;
+}
+.star-color-yellow{
+	color: #EDBB0E !important;
+}
+

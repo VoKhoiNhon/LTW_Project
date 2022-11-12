@@ -38,7 +38,7 @@
                         <div class="card" style=" margin:auto;">
                             <div class="card-body">
                                 <p class="card-description">
-                                    <a href="login.html" style="text-decoration: none ; color: rgb(124, 124, 124);"> <i
+                                    <a href="login.jsp" style="text-decoration: none ; color: rgb(124, 124, 124);"> <i
                                             class="fa-solid fa-chevron-left"></i>Quay lại</a>
                                 </p>
                                 <h4 class="card-title logoBHN">BHNFoods</h4>
@@ -53,10 +53,10 @@
                                     </div>
 
                                     <div class="form-group button_primary">
-                                        <button type="submit" class="btn btn-primary  button_primary_height me-2">Tiếp tục</button>
+                                        <button style="padding: 0" type="submit" class="btn btn-primary  button_primary_height me-2"><a style="color: #ffffff; padding: 14px 24px; width: 100%;" href="changepass.jsp">Tiếp tục</a></button>
                                     </div>
                                     <div class="form-group forgot_pass" style="padding-bottom:30px;">
-                                        <a href="manage_user.jsp" style="color:rgb(119, 119, 119) ;">Trang chủ</a>
+                                        <a href="../index.jsp" style="color:rgb(119, 119, 119) ;">Trang chủ</a>
                                       </div>
                                 </form>
                             </div>

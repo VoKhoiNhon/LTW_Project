@@ -1,7 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
-
+<head>
+    <title>BHDFoods| Chi tiết thanh toán</title>
+</head>
 
 <body>
 
@@ -126,7 +128,7 @@
                                 </div>
                             </div>
 
-                            <p><a href="#" class="btn btn-primary py-3 px-4 " style="border-radius:0px">Thanh toán</a></p>
+                            <p><a href="#" class="btn btn-primary py-3 px-4 " style="border-radius:0px">Đặt hàng</a></p>
                         </div>
                     </div>
                 </div>

@@ -8,7 +8,7 @@
 	<meta name="keywords" content="Ogani, unica, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Ogani | Template</title>
+	<title>BHDFoods| Giỏ hàng</title>
 
 	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -48,7 +48,7 @@
 						<tbody>
 						<tr>
 							<td class="shoping__cart__item">
-								<img src="body_design/img/cart/cart-1.jpg" alt="">
+								<img src="ImageproductNew/Khoai/khoai-lang-tim/khoai-lang-tim-giong-nhat-kg-300x300.jpg" alt=""style="width: 100px;height: auto">
 								<h5>Khoai lang tím</h5>
 							</td>
 							<td class="shoping__cart__price">
@@ -70,8 +70,8 @@
 						</tr>
 						<tr>
 							<td class="shoping__cart__item">
-								<img src="body_design/img/cart/cart-2.jpg" alt="">
-								<h5>Lúa mạch</h5>
+								<img src="ImageproductNew/Gao/Vua-gao/gao-thom-dam-da-vua-gao-5kg-300x300.jpg" alt=""style="width: 100px;height: auto">
+								<h5>Bao Gạo</h5>
 							</td>
 							<td class="shoping__cart__price">
 								39.000
@@ -92,7 +92,7 @@
 						</tr>
 						<tr>
 							<td class="shoping__cart__item">
-								<img src="body_design/img/cart/cart-3.jpg" alt="">
+								<img src="ImageproductNew/Dau/dau-ha-lan-dong-lanh-mama-food-goi-200g-202205171021061114_300x300.png" alt="" style="width: 100px;height: auto">
 								<h5>Đậu Hà Lan</h5>
 							</td>
 							<td class="shoping__cart__price">
@@ -145,7 +145,7 @@
 						<li>Giảm <span>50.000</span></li>
 						<li>Tổng thanh toán <span>510.000</span></li>
 					</ul>
-					<a href="#" class="primary-btn">Thanh toán</a>
+					<a href="checkout.jsp" class="primary-btn">Thanh toán</a>
 				</div>
 			</div>
 		</div>

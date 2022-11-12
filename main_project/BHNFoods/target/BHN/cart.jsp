@@ -145,7 +145,7 @@
 						<li>Giảm <span>50.000</span></li>
 						<li>Tổng thanh toán <span>510.000</span></li>
 					</ul>
-					<a href="#" class="primary-btn">Thanh toán</a>
+					<a href="checkout.jsp" class="primary-btn">Thanh toán</a>
 				</div>
 			</div>
 		</div>
