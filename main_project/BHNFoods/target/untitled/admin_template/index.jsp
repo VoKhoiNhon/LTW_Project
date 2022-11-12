@@ -35,7 +35,7 @@
         </button>
       </div>
       <div>
-        <a class="navbar-brand brand-logo" href="index.jsp">
+        <a class="navbar-brand brand-logo" href="index.html">
           BHNFoods
         </a>
       </div>

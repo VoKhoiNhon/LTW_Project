@@ -1,3 +1,5 @@
+<%@ page import="vn.edu.hcmuaf.fit.model.Product" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!doctype html>
@@ -31,7 +33,7 @@
 
 
 <!-- Product Section Begin -->
-<section class="product spad">
+<section class="product spad" style="padding-top: 20px">
     <div class="container">
 
         <div class="row">
@@ -193,10 +195,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <% for(int i = 0; i < 12; i++) { %>
+                    <%
+                        List<Product> productList = (List<Product>) request.getAttribute("listRequest");
+                        for(Product p: productList) {
+                    %>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="body_design/img/product/product-1.jpg">
+                            <div class="product__item__pic set-bg" data-setbg="<%=p.getSrc()%>">
                                 <ul class="product__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                     <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -204,7 +209,7 @@
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <a href="singleProduct.jsp">Khoai lang tím <br> <span>20.000đ</span></a>
+                                <a href="singleProduct.jsp"><%=p.getName()%><br> <span><%=p.getPrice()%>đ</span></a>
                             </div>
                         </div>
                     </div>

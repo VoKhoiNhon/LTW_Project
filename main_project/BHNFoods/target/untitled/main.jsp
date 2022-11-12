@@ -7,10 +7,10 @@
 
 <%@ include file="header.jsp" %>
 
-<section class="ftco-section img" style="background-image: url(images/background.jpg);">
+<section class="ftco-section img" style="background-image: url(images/anhbackgr1.png); border-bottom:1px solid #82ae46; border-top: 1px solid #82ae46; ">
     <div class="container">
 <%--        <div class="row justify-content-end">--%>
-            <div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate "style= "margin:auto">
+            <div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate "style= "margin-left:auto">
                 <span class="subheading">Giá Tốt Cho Bạn</span>
                 <h2 class="mb-4">Ưu đãi trong ngày</h2>
                 <p>Luôn mang những sản phẩm chất lượng nhất đến tay khách hàng</p>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="media-body">
                         <h3 class="heading">Miễn phí vận chuyển</h3>
-                        <span>Trong 1.5km</span>
+                        <span>Trong 10km</span>
                     </div>
                 </div>
             </div>

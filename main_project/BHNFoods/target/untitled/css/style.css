@@ -257,7 +257,7 @@ select,
 optgroup,
 textarea {
   margin: 0;
-  font-family: inherit;
+  font-family: sans-serif;
   font-size: inherit;
   line-height: inherit;
 }
@@ -11508,7 +11508,7 @@ a.text-dark:focus {
 }
 
 body {
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: sans-serif;
   background: #fff;
   font-size: 15px;
   line-height: 1.8;
@@ -11549,7 +11549,7 @@ h5,
   line-height: 1.5;
   font-weight: 400;
   color: #000000;
-  font-family: "Poppins", Arial, sans-serif;
+  font-family:sans-serif;
 }
 
 .text-primary {
@@ -14473,4 +14473,51 @@ textarea.form-control {
   -moz-box-shadow: none;
   -ms-box-shadow: none;
   border-right: 1px solid #e3e3e3;
+}
+.hover_user {
+  position: relative;
+}
+
+.list_menu {
+  background:#DADADA;
+  width: 100%;
+  position: absolute;
+  border: 2px solid black;
+  display: none;
+}
+
+.hover_user:hover .list_menu {
+  display: block;
+}
+
+.hover_user:hover {
+  cursor: pointer;
+
+}
+
+.hover_user:hover a,
+.hover_user:hover span {
+  text-decoration: none;
+  color: black;
+}
+
+.hover_user a,
+.hover_user span {
+  color: black;
+  font-weight: 600;
+}
+
+.hover_user:hover>span {
+  color: gray !important;
+}
+
+.dr {
+  font-size: 17px;
+  padding: 10px 20px;
+  border-bottom: 2px solid black;
+
+}
+
+.dr:hover a{
+  color: gray;
 }

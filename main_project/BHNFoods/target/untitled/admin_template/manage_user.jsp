@@ -36,7 +36,7 @@
         </button>
       </div>
       <div>
-        <a class="navbar-brand brand-logo" href="index.jsp">
+        <a class="navbar-brand brand-logo" href="index.html">
           BHNFoods
         </a>
       </div>
@@ -62,6 +62,12 @@
               <div class="preview-item-content flex-grow py-2">
                 <p class="preview-subject ellipsis font-weight-medium text-dark">Admin</p>
                 <p class="fw-light small-text mb-0">Trang chi tiết Admin</p>
+              </div>
+            </a>
+            <a class="dropdown-item preview-item">
+              <div class="preview-item-content flex-grow py-2">
+                <p class="preview-subject ellipsis font-weight-medium text-dark">Tất cả </p>
+                <p class="fw-light small-text mb-0">Trang chi tiết cho tất cả</p>
               </div>
             </a>
             
@@ -224,18 +230,7 @@
                     <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab"
                       aria-controls="overview" aria-selected="true">Tổng quan</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#audiences" role="tab"
-                      aria-selected="false">Khách hàng</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#demographics" role="tab"
-                      aria-selected="false">Dân số</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="#more" role="tab"
-                      aria-selected="false">Thêm</a>
-                  </li>
+                 
                 </ul>
                 <div>
                   <div class="btn-wrapper">
