@@ -120,7 +120,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="shoping__cart__btns">
-					<a href="index.jsp" class="primary-btn cart-btn">Tiếp tục mua hàng</a>
+					<a href="ListProduct.jsp" class="primary-btn cart-btn">Tiếp tục mua hàng</a>
 
 				</div>
 			</div>
@@ -130,7 +130,7 @@
 						<h5>Mã giảm giá</h5>
 						<form action="#">
 							<input type="text" placeholder="Nhập mã giảm giá">
-							<button style="font-family: monospace" type="submit" class="site-btn">Áp dụng</button>
+							<button style="font-family: system-ui" type="submit" class="site-btn">Áp dụng</button>
 						</form>
 					</div>
 				</div>

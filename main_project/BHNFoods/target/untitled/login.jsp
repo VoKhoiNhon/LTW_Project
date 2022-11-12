@@ -12,6 +12,6 @@
 </head>
 <body>
   <h1>Đây là trang login</h1>
-  <a href="index.jsp">Quay về trang index</a>
+  <a href="ListProduct.jsp">Quay về trang index</a>
 </body>
 </html>

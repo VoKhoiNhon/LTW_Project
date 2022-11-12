@@ -36,12 +36,12 @@
         </button>
       </div>
       <div>
-        <a class="navbar-brand brand-logo" href="index.jsp">
+        <a class="navbar-brand brand-logo" href="index.html">
           BHNFoods
         </a>
       </div>
     </div>
-    <div class="navbar-menu-wrapper d-flex align-items-top">
+    <div class="navbar-menu-wrapper d-flex align-items-top colorheader ">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item dropdown d-none d-lg-block">
           <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#"
@@ -62,6 +62,12 @@
               <div class="preview-item-content flex-grow py-2">
                 <p class="preview-subject ellipsis font-weight-medium text-dark">Admin</p>
                 <p class="fw-light small-text mb-0">Trang chi tiết Admin</p>
+              </div>
+            </a>
+            <a class="dropdown-item preview-item">
+              <div class="preview-item-content flex-grow py-2">
+                <p class="preview-subject ellipsis font-weight-medium text-dark">Tất cả </p>
+                <p class="fw-light small-text mb-0">Trang chi tiết cho tất cả</p>
               </div>
             </a>
             
@@ -224,18 +230,7 @@
                     <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab"
                       aria-controls="overview" aria-selected="true">Tổng quan</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#audiences" role="tab"
-                      aria-selected="false">Khách hàng</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#demographics" role="tab"
-                      aria-selected="false">Dân số</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="#more" role="tab"
-                      aria-selected="false">Thêm</a>
-                  </li>
+                 
                 </ul>
                 <div>
                   <div class="btn-wrapper">
@@ -276,7 +271,7 @@
                                       </th>
                                       <th>Khách hàng</th>
                                       <th>Số điện thoại và Email</th>
-                                      <th>Chưa biết</th>
+                                      <th></th>
                                       <th>Tên tài khoản</th>
                                     </tr>
                                   </thead>
@@ -303,17 +298,17 @@
                                         <p>nhonw@gmail.commm</p>
                                       </td>
                                       <td>
-                                        <div>
-                                          <div
-                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                            <p class="text-success">79%</p>
-                                            <p>85/162</p>
-                                          </div>
-                                          <div class="progress progress-md">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 85%"
-                                              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                          </div>
-                                        </div>
+<%--                                        <div>--%>
+<%--                                          <div--%>
+<%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
+<%--                                            <p class="text-success">79%</p>--%>
+<%--                                            <p>85/162</p>--%>
+<%--                                          </div>--%>
+<%--                                          <div class="progress progress-md">--%>
+<%--                                            <div class="progress-bar bg-success" role="progressbar" style="width: 85%"--%>
+<%--                                              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>--%>
+<%--                                          </div>--%>
+<%--                                        </div>--%>
                                       </td>
                                       <td>
                                         <div class="">NhonVo</div>
@@ -341,17 +336,17 @@
                                         <p>baodang@gmail.com</p>
                                       </td>
                                       <td>
-                                        <div>
-                                          <div
-                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                            <p class="text-success">65%</p>
-                                            <p>85/162</p>
-                                          </div>
-                                          <div class="progress progress-md">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"
-                                              aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                          </div>
-                                        </div>
+<%--                                        <div>--%>
+<%--                                          <div--%>
+<%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
+<%--                                            <p class="text-success">65%</p>--%>
+<%--                                            <p>85/162</p>--%>
+<%--                                          </div>--%>
+<%--                                          <div class="progress progress-md">--%>
+<%--                                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"--%>
+<%--                                              aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>--%>
+<%--                                          </div>--%>
+<%--                                        </div>--%>
                                       </td>
                                       <td>
                                         <div class="">LebaoDang</div>
@@ -379,17 +374,17 @@
                                         <p>phung@email.com</p>
                                       </td>
                                       <td>
-                                        <div>
-                                          <div
-                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                            <p class="text-success">65%</p>
-                                            <p>85/162</p>
-                                          </div>
-                                          <div class="progress progress-md">
-                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 38%"
-                                              aria-valuenow="38" aria-valuemin="0" aria-valuemax="100"></div>
-                                          </div>
-                                        </div>
+<%--                                        <div>--%>
+<%--                                          <div--%>
+<%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
+<%--                                            <p class="text-success">65%</p>--%>
+<%--                                            <p>85/162</p>--%>
+<%--                                          </div>--%>
+<%--                                          <div class="progress progress-md">--%>
+<%--                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 38%"--%>
+<%--                                              aria-valuenow="38" aria-valuemin="0" aria-valuemax="100"></div>--%>
+<%--                                          </div>--%>
+<%--                                        </div>--%>
                                       </td>
                                       <td>
                                         <div class="">ThanhPhung</div>
@@ -417,17 +412,17 @@
                                         <p>nhuw@gmail.com</p>
                                       </td>
                                       <td>
-                                        <div>
-                                          <div
-                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                            <p class="text-success">65%</p>
-                                            <p>85/162</p>
-                                          </div>
-                                          <div class="progress progress-md">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 15%"
-                                              aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                          </div>
-                                        </div>
+<%--                                        <div>--%>
+<%--                                          <div--%>
+<%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
+<%--                                            <p class="text-success">65%</p>--%>
+<%--                                            <p>85/162</p>--%>
+<%--                                          </div>--%>
+<%--                                          <div class="progress progress-md">--%>
+<%--                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 15%"--%>
+<%--                                              aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>--%>
+<%--                                          </div>--%>
+<%--                                        </div>--%>
                                       </td>
                                       <td>
                                         <div class="">QuynhNhuw</div>
@@ -455,17 +450,17 @@
                                         <p>poong@gmail.com</p>
                                       </td>
                                       <td>
-                                        <div>
-                                          <div
-                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                            <p class="text-success">65%</p>
-                                            <p>85/162</p>
-                                          </div>
-                                          <div class="progress progress-md">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"
-                                              aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                          </div>
-                                        </div>
+<%--                                        <div>--%>
+<%--                                          <div--%>
+<%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
+<%--                                            <p class="text-success">65%</p>--%>
+<%--                                            <p>85/162</p>--%>
+<%--                                          </div>--%>
+<%--                                          <div class="progress progress-md">--%>
+<%--                                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"--%>
+<%--                                              aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>--%>
+<%--                                          </div>--%>
+<%--                                        </div>--%>
                                       </td>
                                       <td>
                                         <div class="">XuanHoa</div>
@@ -493,17 +488,17 @@
                                         <p>baotaolao@gmail.com</p>
                                       </td>
                                       <td>
-                                        <div>
-                                          <div
-                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                            <p class="text-success">65%</p>
-                                            <p>85/162</p>
-                                          </div>
-                                          <div class="progress progress-md">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"
-                                              aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                          </div>
-                                        </div>
+<%--                                        <div>--%>
+<%--                                          <div--%>
+<%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
+<%--                                            <p class="text-success">65%</p>--%>
+<%--                                            <p>85/162</p>--%>
+<%--                                          </div>--%>
+<%--                                          <div class="progress progress-md">--%>
+<%--                                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"--%>
+<%--                                              aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>--%>
+<%--                                          </div>--%>
+<%--                                        </div>--%>
                                       </td>
                                       <td>
                                         <div class="">BaoHayQua12</div>
