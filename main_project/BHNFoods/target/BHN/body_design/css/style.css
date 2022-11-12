@@ -3479,3 +3479,6 @@ ol {
 		font-size: 24px;
 	}
 }
+.container .row .form-group .form-control {
+	font-size: 20px;
+}
