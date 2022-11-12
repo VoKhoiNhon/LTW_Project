@@ -171,6 +171,65 @@
             <%--                    </div>--%>
             <%--                </div>--%>
         </div>
+        <div class="comment">
+            <h3>Đánh giá sản phẩm</h3>
+            <div class="comment-user mt-4">
+                <span class="comment-name mr-3">Xuân Hoa</span>
+                <span class="comment-star">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </span>
+                <div class="content-padding"><span class="comment-content">Gạo ngon tuyệt zời ông mặt trời luôn é</span></div>
+                <span class="comment-date">12/10/2021</span>
+            </div>
+
+            <div class="comment-user mt-4">
+                <span class="comment-name mr-3">Xuân Hoa</span>
+                <span class="comment-star">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </span>
+                <div class="content-padding"><span class="comment-content">Gạo ngon tuyệt zời ông mặt trời luôn é</span></div>
+                <span class="comment-date">12/10/2021</span>
+            </div>
+
+            <div class="comment-user mt-4">
+                <span class="comment-name mr-3">Xuân Hoa</span>
+                <span class="comment-star">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </span>
+                <div class="content-padding"><span class="comment-content">Gạo ngon tuyệt zời ông mặt trời luôn é</span></div>
+                <span class="comment-date">12/10/2021</span>
+            </div>
+
+            <div class="comment-input mt-4">
+                <h3>Phản hồi về sản phẩm</h3>
+                <div class="btn-star pt-2">
+                    <button style="color: #0b0b0b" >1 <i class="fa fa-star star-color-yellow"></i></button>
+                    <button style="color: #0b0b0b">2 <i class="fa fa-star star-color-yellow"></i></button>
+                    <button style="color: #0b0b0b" >3 <i class="fa fa-star star-color-yellow"></i></button>
+                    <button style="color: #0b0b0b" >4 <i class="fa fa-star star-color-yellow"></i></button>
+                    <button style="color: #0b0b0b">5 <i class="fa fa-star star-color-yellow"></i></button>
+                </div>
+                <textarea style="resize: none; width: 100%; margin-top: 10px;" name="" id="" rows="5"  placeholder="Hãy nhập phản hồi về sản phẩm"></textarea>
+                <div class="btn-star pt-2" style="display: flex; justify-content: end">
+                    <button class="" style="color: #ffffff; background: #0b0b0b !important;" >Gửi</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
     </div>
     
 </section>

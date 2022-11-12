@@ -199,19 +199,19 @@
   <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <a class="nav-link" data-bs-toggle="collapse" href="index.jsp" aria-expanded="false" aria-controls="ui-basic">
           <i class="menu-icon mdi mdi-home"></i>
           <span class="menu-title">Trang chủ</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <a class="nav-link" data-bs-toggle="collapse" href="manage_user.jsp" aria-expanded="false" aria-controls="ui-basic">
           <i class="menu-icon mdi mdi-account-circle"></i>
           <span class="menu-title">Quản lý người dùng</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <a class="nav-link" data-bs-toggle="collapse" href="manage_product.jsp" aria-expanded="false" aria-controls="ui-basic">
           <i class="menu-icon mdi mdi-view-module"></i>
           <span class="menu-title">Quản lý sản phẩm</span>
         </a>
