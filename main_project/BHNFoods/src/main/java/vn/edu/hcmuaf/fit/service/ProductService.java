@@ -24,6 +24,8 @@ public class ProductService {
         products.add(new Product("Bột bắp Meizan", 10000,"Imageproduct/Bot/13.jpg"));
         products.add(new Product("Bột bắp Meizan", 10000,"Imageproduct/Bot/14.jpg"));
         products.add(new Product("Bột bắp Meizan", 10000,"Imageproduct/Bot/15.jpg"));
+        products.add(new Product("Bột bắp Meizan", 10000,"Imageproduct/Bot/15.jpg"));
+        products.add(new Product("Bột bắp Meizan", 10000,"Imageproduct/Bot/15.jpg"));
         return products;
     }
 }

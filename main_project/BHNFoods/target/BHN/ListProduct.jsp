@@ -10,7 +10,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>BHDFoods| Sản phẩm</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -186,12 +186,12 @@
                                 <h6><span>16</span> Sản phẩm được tìm thấy</h6>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-3">
-                            <div class="filter__option">
-                                <span class="icon_grid-2x2"></span>
-                                <span class="icon_ul"></span>
-                            </div>
-                        </div>
+<%--                        <div class="col-lg-4 col-md-3">--%>
+<%--                            <div class="filter__option">--%>
+<%--                                <span class="icon_grid-2x2"></span>--%>
+<%--                                <span class="icon_ul"></span>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
                     </div>
                 </div>
                 <div class="row">
