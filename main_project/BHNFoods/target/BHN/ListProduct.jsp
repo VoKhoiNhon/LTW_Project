@@ -78,7 +78,7 @@
                                 <div class="latest-prdouct__slider__item">
                                     <a href="#" class="latest-product__item" >
                                         <div class="latest-product__item__pic">
-                                            <img src="body_design/img/latest-product/lp-1.jpg" alt="">
+                                            <img src="ImageproductNew/Bot/Bot-nang-tan-san/bot-nang-tan-sang-goi-400g-202102060020008816.jpg" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>Ngô Mỹ</h6>
@@ -87,7 +87,7 @@
                                     </a>
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="body_design/img/latest-product/lp-2.jpg" alt="">
+                                            <img src="ImageproductNew/Dau/dau-do-xuan-hong-goi-500g-300x300.jpg" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>Ngô Mỹ</h6>
@@ -96,7 +96,7 @@
                                     </a>
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="body_design/img/latest-product/lp-3.jpg" alt="">
+                                            <img src="ImageproductNew/Khoai/khoai-mo/khoai-mo-tui-1kg-1-2-cu-202209141012253686_300x300.jpg" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>Ngô Mỹ</h6>
@@ -107,7 +107,7 @@
                                 <div class="latest-prdouct__slider__item">
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="body_design/img/latest-product/lp-1.jpg" alt="">
+                                            <img src="ImageproductNew/Nep/nep-cai-hoa-vang-ong-cu-tui-1kg-202103131631574575_300x300.jpg" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>Ngô Mỹ</h6>
@@ -116,7 +116,7 @@
                                     </a>
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="body_design/img/latest-product/lp-2.jpg" alt="">
+                                            <img src="ImageproductNew/Bot/Ngu-coc-yumfood/thuc-pham-bo-sung-ngu-coc-dinh-duong-yumfood-goi-500g-202010122202245743.jpg" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>Ngô Mỹ</h6>
@@ -125,7 +125,7 @@
                                     </a>
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="body_design/img/latest-product/lp-3.jpg" alt="">
+                                            <img src="ImageproductNew/Dau/dau-den-viet-san-150g-202205231452334172_300x300.jpg" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>Ngô Mỹ</h6>
@@ -149,7 +149,7 @@
                             <div class="col-lg-4">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg"
-                                         data-setbg="body_design/img/product/discount/pd-1.jpg">
+                                         data-setbg="ImageproductNew/Gao/Gao-lut/gao-huyet-rong-lotus-rice-nutrichoice-hop-0-5kg-202103040832315314_300x300.jpg">
                                         <div class="product__discount__percent">-20%</div>
                                         <ul class="product__item__pic__hover">
                                             <li><a href="#"><i class="fa fa-heart"></i></a></li>

@@ -80,6 +80,22 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="d-flex flex-grow-1" >
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="phone">Tạo mật khẩu mới</label>
+                                                <input type="password" class="form-control"
+                                                       placeholder="Nhập mật khẩu mới">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="emailaddress">Nhập lại mật khẩu</label>
+                                                <input type="password" class="form-control"
+                                                       placeholder="Nhập lại mật khẩu">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="w-100"></div>
                                     <div class="col-md-12">
                                         <div class="form-group">

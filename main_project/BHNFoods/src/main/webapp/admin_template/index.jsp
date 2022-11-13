@@ -126,54 +126,54 @@
           </a>
         </div>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"
-           aria-expanded="false">
-          <i class="icon-bell"></i>
-          <span class="count"></span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-             aria-labelledby="countDropdown">
-          <a class="dropdown-item py-3">
-            <p class="mb-0 font-weight-medium float-left">Bạn có 7 thông báo chưa đọc </p>
-            <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item preview-item">
-            <div class="preview-thumbnail">
-              <img src="images/faces/face10.jpg" alt="image" class="img-sm profile-pic">
-            </div>
-            <div class="preview-item-content flex-grow py-2">
-              <p class="preview-subject ellipsis font-weight-medium text-dark">Võ Khôi Nhơn </p>
-              <p class="fw-light small-text mb-0"> Cuộc họp bị hủy </p>
-            </div>
-          </a>
-          <a class="dropdown-item preview-item">
-            <div class="preview-thumbnail">
-              <img src="images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
-            </div>
-            <div class="preview-item-content flex-grow py-2">
-              <p class="preview-subject ellipsis font-weight-medium text-dark">Phạm Gia Bảo </p>
-              <p class="fw-light small-text mb-0">  Cuộc họp bị hủy </p>
-            </div>
-          </a>
-          <a class="dropdown-item preview-item">
-            <div class="preview-thumbnail">
-              <img src="images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
-            </div>
-            <div class="preview-item-content flex-grow py-2">
-              <p class="preview-subject ellipsis font-weight-medium text-dark">Nguyễn Thị Xuân Hoa </p>
-              <p class="fw-light small-text mb-0">  Cuộc họp bị hủy </p>
-            </div>
-          </a>
-        </div>
-      </li>
+<%--      <li class="nav-item dropdown">--%>
+<%--        <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"--%>
+<%--           aria-expanded="false">--%>
+<%--          <i class="icon-bell"></i>--%>
+<%--          <span class="count"></span>--%>
+<%--        </a>--%>
+<%--        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"--%>
+<%--             aria-labelledby="countDropdown">--%>
+<%--          <a class="dropdown-item py-3">--%>
+<%--            <p class="mb-0 font-weight-medium float-left">Bạn có 7 thông báo chưa đọc </p>--%>
+<%--            <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>--%>
+<%--          </a>--%>
+<%--          <div class="dropdown-divider"></div>--%>
+<%--          <a class="dropdown-item preview-item">--%>
+<%--            <div class="preview-thumbnail">--%>
+<%--              <img src="images/faces/face10.jpg" alt="image" class="img-sm profile-pic">--%>
+<%--            </div>--%>
+<%--            <div class="preview-item-content flex-grow py-2">--%>
+<%--              <p class="preview-subject ellipsis font-weight-medium text-dark">Võ Khôi Nhơn </p>--%>
+<%--              <p class="fw-light small-text mb-0"> Cuộc họp bị hủy </p>--%>
+<%--            </div>--%>
+<%--          </a>--%>
+<%--          <a class="dropdown-item preview-item">--%>
+<%--            <div class="preview-thumbnail">--%>
+<%--              <img src="images/faces/face12.jpg" alt="image" class="img-sm profile-pic">--%>
+<%--            </div>--%>
+<%--            <div class="preview-item-content flex-grow py-2">--%>
+<%--              <p class="preview-subject ellipsis font-weight-medium text-dark">Phạm Gia Bảo </p>--%>
+<%--              <p class="fw-light small-text mb-0">  Cuộc họp bị hủy </p>--%>
+<%--            </div>--%>
+<%--          </a>--%>
+<%--          <a class="dropdown-item preview-item">--%>
+<%--            <div class="preview-thumbnail">--%>
+<%--              <img src="images/faces/face1.jpg" alt="image" class="img-sm profile-pic">--%>
+<%--            </div>--%>
+<%--            <div class="preview-item-content flex-grow py-2">--%>
+<%--              <p class="preview-subject ellipsis font-weight-medium text-dark">Nguyễn Thị Xuân Hoa </p>--%>
+<%--              <p class="fw-light small-text mb-0">  Cuộc họp bị hủy </p>--%>
+<%--            </div>--%>
+<%--          </a>--%>
+<%--        </div>--%>
+<%--      </li>--%>
       <li class="nav-item dropdown d-none d-lg-block user-dropdown">
         <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-          <img class="img-xs rounded-circle" src="images/faces/face8.jpg" alt="Profile image"> </a>
+          <img class="img-xs rounded-circle" src="../ImageproductNew/background/images.png" alt="Profile image"> </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
           <div class="dropdown-header text-center">
-            <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">
+<%--            <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">--%>
             <p class="mb-1 mt-3 font-weight-semibold">Võ Khôi Nhơn</p>
             <p class="fw-light text-muted mb-0">Nhonw@gmail.com</p>
           </div>
@@ -182,8 +182,8 @@
             Tin nhắn</a>
           <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i>
             Hoạt động</a>
-          <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>
-            Các câu hỏi thường gặp</a>
+<%--          <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>--%>
+<%--            Các câu hỏi thường gặp</a>--%>
           <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Đăng xuất</a>
         </div>
       </li>
