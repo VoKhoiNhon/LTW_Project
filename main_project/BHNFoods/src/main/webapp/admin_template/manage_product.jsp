@@ -87,45 +87,45 @@
             <input type="search" class="form-control" placeholder="Search Here" title="Search here">
           </form>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-            <i class="icon-mail icon-lg"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-            aria-labelledby="notificationDropdown">
-            <a class="dropdown-item py-3 border-bottom">
-              <p class="mb-0 font-weight-medium float-left">Bạn có 3 thông báo mới </p>
-              <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>
-            </a>
-            <a class="dropdown-item preview-item py-3">
-              <div class="preview-thumbnail">
-                <i class="mdi mdi-alert m-auto text-primary"></i>
-              </div>
-              <div class="preview-item-content">
-                <h6 class="preview-subject fw-normal text-dark mb-1">Lỗi ứng dụng</h6>
-                <p class="fw-light small-text mb-0"> Vừa rồi </p>
-              </div>
-            </a>
-            <a class="dropdown-item preview-item py-3">
-              <div class="preview-thumbnail">
-                <i class="mdi mdi-settings m-auto text-primary"></i>
-              </div>
-              <div class="preview-item-content">
-                <h6 class="preview-subject fw-normal text-dark mb-1">Cài đặt</h6>
-                <p class="fw-light small-text mb-0"> Tin nhắn riêng </p>
-              </div>
-            </a>
-            <a class="dropdown-item preview-item py-3">
-              <div class="preview-thumbnail">
-                <i class="mdi mdi-airballoon m-auto text-primary"></i>
-              </div>
-              <div class="preview-item-content">
-                <h6 class="preview-subject fw-normal text-dark mb-1">Đăng kí người dùng mới</h6>
-                <p class="fw-light small-text mb-0">2 ngày trước </p>
-              </div>
-            </a>
-          </div>
-        </li>
+<%--        <li class="nav-item dropdown">--%>
+<%--          <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">--%>
+<%--            <i class="icon-mail icon-lg"></i>--%>
+<%--          </a>--%>
+<%--          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"--%>
+<%--            aria-labelledby="notificationDropdown">--%>
+<%--            <a class="dropdown-item py-3 border-bottom">--%>
+<%--              <p class="mb-0 font-weight-medium float-left">Bạn có 3 thông báo mới </p>--%>
+<%--              <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>--%>
+<%--            </a>--%>
+<%--            <a class="dropdown-item preview-item py-3">--%>
+<%--              <div class="preview-thumbnail">--%>
+<%--                <i class="mdi mdi-alert m-auto text-primary"></i>--%>
+<%--              </div>--%>
+<%--              <div class="preview-item-content">--%>
+<%--                <h6 class="preview-subject fw-normal text-dark mb-1">Lỗi ứng dụng</h6>--%>
+<%--                <p class="fw-light small-text mb-0"> Vừa rồi </p>--%>
+<%--              </div>--%>
+<%--            </a>--%>
+<%--            <a class="dropdown-item preview-item py-3">--%>
+<%--              <div class="preview-thumbnail">--%>
+<%--                <i class="mdi mdi-settings m-auto text-primary"></i>--%>
+<%--              </div>--%>
+<%--              <div class="preview-item-content">--%>
+<%--                <h6 class="preview-subject fw-normal text-dark mb-1">Cài đặt</h6>--%>
+<%--                <p class="fw-light small-text mb-0"> Tin nhắn riêng </p>--%>
+<%--              </div>--%>
+<%--            </a>--%>
+<%--            <a class="dropdown-item preview-item py-3">--%>
+<%--              <div class="preview-thumbnail">--%>
+<%--                <i class="mdi mdi-airballoon m-auto text-primary"></i>--%>
+<%--              </div>--%>
+<%--              <div class="preview-item-content">--%>
+<%--                <h6 class="preview-subject fw-normal text-dark mb-1">Đăng kí người dùng mới</h6>--%>
+<%--                <p class="fw-light small-text mb-0">2 ngày trước </p>--%>
+<%--              </div>--%>
+<%--            </a>--%>
+<%--          </div>--%>
+<%--        </li>--%>
 <%--        <li class="nav-item dropdown">--%>
 <%--          <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"--%>
 <%--            aria-expanded="false">--%>
@@ -180,8 +180,8 @@
             <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Trang cá nhân</a>
             <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>
               Tin nhắn</a>
-            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i>
-              Hoạt động</a>
+<%--            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i>--%>
+<%--              Hoạt động</a>--%>
 <%--            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>--%>
 <%--              Các câu hỏi thường gặp</a>--%>
             <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Đăng xuất</a>
@@ -197,26 +197,24 @@
   <!-- partial -->
   <div class="container-fluid page-body-wrapper">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="index.jsp" aria-expanded="false" aria-controls="ui-basic">
-            <i class="menu-icon mdi mdi-home"></i>
-            <span class="menu-title">Trang chủ</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="manage_user.jsp" aria-expanded="false" aria-controls="ui-basic">
-            <i class="menu-icon mdi mdi-account-circle"></i>
-            <span class="menu-title">Quản lý người dùng</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="manage_product.jsp" aria-expanded="false" aria-controls="ui-basic">
-            <i class="menu-icon mdi mdi-view-module"></i>
-            <span class="menu-title">Quản lý sản phẩm</span>
-          </a>
-        </li>
-      </ul>
+      <div class="nav-item">
+        <a href="index.jsp" class="nav-item-link">
+          <i style="margin-right: 5px;" class="menu-icon mdi mdi-home"></i>
+          <span>Trang chủ</span>
+        </a>
+      </div>
+      <div class="nav-item">
+        <a href="manage_user.jsp" class="nav-item-link">
+          <i style="margin-right: 5px;" class="menu-icon mdi mdi-account-circle"></i>
+          <span>Quản lý người dùng</span>
+        </a>
+      </div>
+      <div class="nav-item">
+        <a href="manage_product.jsp" class="nav-item-link">
+          <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
+          <span>Quản lý sản phẩm</span>
+        </a>
+      </div>
     </nav>
     <!-- partial -->
     <div class="main-panel">
@@ -244,11 +242,11 @@
                   </li> -->
                 </ul>
                 <div>
-                  <div class="btn-wrapper">
-                    <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Chia sẻ</a>
-                    <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> In</a>
-                    <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Xuất</a>
-                  </div>
+<%--                  <div class="btn-wrapper">--%>
+<%--                    <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Chia sẻ</a>--%>
+<%--                    <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> In</a>--%>
+<%--                    <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Xuất</a>--%>
+<%--                  </div>--%>
                 </div>
               </div>
               <div class="tab-content tab-content-basic">

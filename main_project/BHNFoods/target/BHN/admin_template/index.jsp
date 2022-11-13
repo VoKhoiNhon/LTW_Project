@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,45 +88,45 @@
           <input type="search" class="form-control" placeholder="Search Here" title="Search here">
         </form>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-          <i class="icon-mail icon-lg"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-             aria-labelledby="notificationDropdown">
-          <a class="dropdown-item py-3 border-bottom">
-            <p class="mb-0 font-weight-medium float-left">Bạn có 3 thông báo mới </p>
-            <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>
-          </a>
-          <a class="dropdown-item preview-item py-3">
-            <div class="preview-thumbnail">
-              <i class="mdi mdi-alert m-auto text-primary"></i>
-            </div>
-            <div class="preview-item-content">
-              <h6 class="preview-subject fw-normal text-dark mb-1">Lỗi ứng dụng</h6>
-              <p class="fw-light small-text mb-0"> Vừa rồi </p>
-            </div>
-          </a>
-          <a class="dropdown-item preview-item py-3">
-            <div class="preview-thumbnail">
-              <i class="mdi mdi-settings m-auto text-primary"></i>
-            </div>
-            <div class="preview-item-content">
-              <h6 class="preview-subject fw-normal text-dark mb-1">Cài đặt</h6>
-              <p class="fw-light small-text mb-0"> Tin nhắn riêng </p>
-            </div>
-          </a>
-          <a class="dropdown-item preview-item py-3">
-            <div class="preview-thumbnail">
-              <i class="mdi mdi-airballoon m-auto text-primary"></i>
-            </div>
-            <div class="preview-item-content">
-              <h6 class="preview-subject fw-normal text-dark mb-1">Đăng kí người dùng mới</h6>
-              <p class="fw-light small-text mb-0">2 ngày trước </p>
-            </div>
-          </a>
-        </div>
-      </li>
+<%--      <li class="nav-item dropdown">--%>
+<%--        <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">--%>
+<%--          <i class="icon-mail icon-lg"></i>--%>
+<%--        </a>--%>
+<%--        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"--%>
+<%--             aria-labelledby="notificationDropdown">--%>
+<%--          <a class="dropdown-item py-3 border-bottom">--%>
+<%--            <p class="mb-0 font-weight-medium float-left">Bạn có 3 thông báo mới </p>--%>
+<%--            <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>--%>
+<%--          </a>--%>
+<%--          <a class="dropdown-item preview-item py-3">--%>
+<%--            <div class="preview-thumbnail">--%>
+<%--              <i class="mdi mdi-alert m-auto text-primary"></i>--%>
+<%--            </div>--%>
+<%--            <div class="preview-item-content">--%>
+<%--              <h6 class="preview-subject fw-normal text-dark mb-1">Lỗi ứng dụng</h6>--%>
+<%--              <p class="fw-light small-text mb-0"> Vừa rồi </p>--%>
+<%--            </div>--%>
+<%--          </a>--%>
+<%--          <a class="dropdown-item preview-item py-3">--%>
+<%--            <div class="preview-thumbnail">--%>
+<%--              <i class="mdi mdi-settings m-auto text-primary"></i>--%>
+<%--            </div>--%>
+<%--            <div class="preview-item-content">--%>
+<%--              <h6 class="preview-subject fw-normal text-dark mb-1">Cài đặt</h6>--%>
+<%--              <p class="fw-light small-text mb-0"> Tin nhắn riêng </p>--%>
+<%--            </div>--%>
+<%--          </a>--%>
+<%--          <a class="dropdown-item preview-item py-3">--%>
+<%--            <div class="preview-thumbnail">--%>
+<%--              <i class="mdi mdi-airballoon m-auto text-primary"></i>--%>
+<%--            </div>--%>
+<%--            <div class="preview-item-content">--%>
+<%--              <h6 class="preview-subject fw-normal text-dark mb-1">Đăng kí người dùng mới</h6>--%>
+<%--              <p class="fw-light small-text mb-0">2 ngày trước </p>--%>
+<%--            </div>--%>
+<%--          </a>--%>
+<%--        </div>--%>
+<%--      </li>--%>
 <%--      <li class="nav-item dropdown">--%>
 <%--        <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"--%>
 <%--           aria-expanded="false">--%>
@@ -177,11 +178,11 @@
             <p class="mb-1 mt-3 font-weight-semibold">Võ Khôi Nhơn</p>
             <p class="fw-light text-muted mb-0">Nhonw@gmail.com</p>
           </div>
-          <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Trang cá nhân<span class="badge badge-pill badge-danger">1</span></a>
+          <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Trang cá nhân</a>
           <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>
             Tin nhắn</a>
-          <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i>
-            Hoạt động</a>
+<%--          <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i>--%>
+<%--            Hoạt động</a>--%>
 <%--          <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>--%>
 <%--            Các câu hỏi thường gặp</a>--%>
           <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Đăng xuất</a>
@@ -197,26 +198,24 @@
 <!-- partial -->
 <div class="container-fluid page-body-wrapper">
   <nav class="sidebar sidebar-offcanvas" id="sidebar">
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="index.jsp" aria-expanded="false" aria-controls="ui-basic">
-          <i class="menu-icon mdi mdi-home"></i>
-          <span class="menu-title">Trang chủ</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="manage_user.jsp" aria-expanded="false" aria-controls="ui-basic">
-          <i class="menu-icon mdi mdi-account-circle"></i>
-          <span class="menu-title">Quản lý người dùng</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="manage_product.jsp" aria-expanded="false" aria-controls="ui-basic">
-          <i class="menu-icon mdi mdi-view-module"></i>
-          <span class="menu-title">Quản lý sản phẩm</span>
-        </a>
-      </li>
-    </ul>
+    <div class="nav-item">
+      <a href="index.jsp" class="nav-item-link">
+        <i style="margin-right: 5px;" class="menu-icon mdi mdi-home"></i>
+        <span>Trang chủ</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <a href="manage_user.jsp" class="nav-item-link">
+        <i style="margin-right: 5px;" class="menu-icon mdi mdi-account-circle"></i>
+        <span>Quản lý người dùng</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <a href="manage_product.jsp" class="nav-item-link">
+        <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
+        <span>Quản lý sản phẩm</span>
+      </a>
+    </div>
   </nav>
   <!-- partial -->
   <div class="main-panel">
@@ -233,11 +232,11 @@
 
               </ul>
               <div>
-                <div class="btn-wrapper">
-                  <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Chia sẻ</a>
-                  <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> In</a>
-                  <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Xuất</a>
-                </div>
+<%--                <div class="btn-wrapper">--%>
+<%--                  <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Chia sẻ</a>--%>
+<%--                  <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> In</a>--%>
+<%--                  <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Xuất</a>--%>
+<%--                </div>--%>
               </div>
             </div>
             <div class="tab-content tab-content-basic">
@@ -278,278 +277,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-lg-8 d-flex flex-column">
-                    <div class="row flex-grow">
-                      <div class="col-12 grid-margin stretch-card">
-                        <div class="card card-rounded">
-                          <div class="card-body" style="padding-top: 0">
-                            <div class="d-sm-flex justify-content-between align-items-start">
-                              <div>
-                                <h4 class="card-title card-title-dash">Yêu cầu đang xử lý</h4>
-                                <p class="card-subtitle card-subtitle-dash">Bạn có 50+ yêu cầu mới</p>
-                              </div>
-                              <div>
-                                <h4 class="card-title card-title-dash">Sửa <i class="fa-regular fa-pen-to-square"></i></h4>
-                                <!-- <p class="card-subtitle card-subtitle-dash">Bạn có 50+ yêu cầu mới</p> -->
-                              </div>
-                            </div>
-                            <div class="table-responsive  mt-1">
-                              <table class="table select-table">
-                                <thead>
-                                <tr>
-                                  <th>
-                                    <div class="form-check form-check-flat mt-0">
-                                      <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" aria-checked="false"><i
-                                              class="input-helper"></i></label>
-                                    </div>
-                                  </th>
-                                  <th>Khách hàng</th>
-                                  <th>Số điện thoại và Email</th>
-                                  <th></th>
-                                  <th>Tên tài khoản</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                  <td>
-                                    <div class="form-check form-check-flat mt-0">
-                                      <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" aria-checked="false"><i
-                                              class="input-helper"></i></label>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex ">
-                                      <img src="images/faces/face1.jpg" alt="">
-                                      <div>
-                                        <h6>Võ Khôi Nhơn</h6>
-                                        <p>Admin</p>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <h6>079548822</h6>
-                                    <p>nhonw@gmail.commm</p>
-                                  </td>
-                                  <td>
-                                    <%--                                        <div>--%>
-                                    <%--                                          <div--%>
-                                    <%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
-                                    <%--                                            <p class="text-success">79%</p>--%>
-                                    <%--                                            <p>85/162</p>--%>
-                                    <%--                                          </div>--%>
-                                    <%--                                          <div class="progress progress-md">--%>
-                                    <%--                                            <div class="progress-bar bg-success" role="progressbar" style="width: 85%"--%>
-                                    <%--                                              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>--%>
-                                    <%--                                          </div>--%>
-                                    <%--                                        </div>--%>
-                                  </td>
-                                  <td>
-                                    <div class="">NhonVo</div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <div class="form-check form-check-flat mt-0">
-                                      <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" aria-checked="false"><i
-                                              class="input-helper"></i></label>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex">
-                                      <img src="images/faces/face2.jpg" alt="">
-                                      <div>
-                                        <h6>Lê Bảo Đặng</h6>
-                                        <p>Người dùng</p>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <h6>037864222</h6>
-                                    <p>baodang@gmail.com</p>
-                                  </td>
-                                  <td>
-                                    <%--                                        <div>--%>
-                                    <%--                                          <div--%>
-                                    <%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
-                                    <%--                                            <p class="text-success">65%</p>--%>
-                                    <%--                                            <p>85/162</p>--%>
-                                    <%--                                          </div>--%>
-                                    <%--                                          <div class="progress progress-md">--%>
-                                    <%--                                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"--%>
-                                    <%--                                              aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>--%>
-                                    <%--                                          </div>--%>
-                                    <%--                                        </div>--%>
-                                  </td>
-                                  <td>
-                                    <div class="">LebaoDang</div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <div class="form-check form-check-flat mt-0">
-                                      <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" aria-checked="false"><i
-                                              class="input-helper"></i></label>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex">
-                                      <img src="images/faces/face3.jpg" alt="">
-                                      <div>
-                                        <h6>Dương Thanh Phụng</h6>
-                                        <p>Người dùng</p>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <h6>026346848</h6>
-                                    <p>phung@email.com</p>
-                                  </td>
-                                  <td>
-                                    <%--                                        <div>--%>
-                                    <%--                                          <div--%>
-                                    <%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
-                                    <%--                                            <p class="text-success">65%</p>--%>
-                                    <%--                                            <p>85/162</p>--%>
-                                    <%--                                          </div>--%>
-                                    <%--                                          <div class="progress progress-md">--%>
-                                    <%--                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 38%"--%>
-                                    <%--                                              aria-valuenow="38" aria-valuemin="0" aria-valuemax="100"></div>--%>
-                                    <%--                                          </div>--%>
-                                    <%--                                        </div>--%>
-                                  </td>
-                                  <td>
-                                    <div class="">ThanhPhung</div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <div class="form-check form-check-flat mt-0">
-                                      <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" aria-checked="false"><i
-                                              class="input-helper"></i></label>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex">
-                                      <img src="images/faces/face4.jpg" alt="">
-                                      <div>
-                                        <h6>Phan Thị Quỳnh Như</h6>
-                                        <p>Người dùng</p>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <h6>023476572</h6>
-                                    <p>nhuw@gmail.com</p>
-                                  </td>
-                                  <td>
-                                    <%--                                        <div>--%>
-                                    <%--                                          <div--%>
-                                    <%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
-                                    <%--                                            <p class="text-success">65%</p>--%>
-                                    <%--                                            <p>85/162</p>--%>
-                                    <%--                                          </div>--%>
-                                    <%--                                          <div class="progress progress-md">--%>
-                                    <%--                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 15%"--%>
-                                    <%--                                              aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>--%>
-                                    <%--                                          </div>--%>
-                                    <%--                                        </div>--%>
-                                  </td>
-                                  <td>
-                                    <div class="">QuynhNhuw</div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <div class="form-check form-check-flat mt-0">
-                                      <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" aria-checked="false"><i
-                                              class="input-helper"></i></label>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex">
-                                      <img src="images/faces/face5.jpg" alt="">
-                                      <div>
-                                        <h6>Nguyễn Thị Xuân Hoa</h6>
-                                        <p>Người dùng</p>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <h6>077984872</h6>
-                                    <p>poong@gmail.com</p>
-                                  </td>
-                                  <td>
-                                    <%--                                        <div>--%>
-                                    <%--                                          <div--%>
-                                    <%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
-                                    <%--                                            <p class="text-success">65%</p>--%>
-                                    <%--                                            <p>85/162</p>--%>
-                                    <%--                                          </div>--%>
-                                    <%--                                          <div class="progress progress-md">--%>
-                                    <%--                                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"--%>
-                                    <%--                                              aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>--%>
-                                    <%--                                          </div>--%>
-                                    <%--                                        </div>--%>
-                                  </td>
-                                  <td>
-                                    <div class="">XuanHoa</div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <div class="form-check form-check-flat mt-0">
-                                      <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" aria-checked="false"><i
-                                              class="input-helper"></i></label>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex">
-                                      <img src="images/faces/face5.jpg" alt="">
-                                      <div>
-                                        <h6>Phạm Gia Bảo</h6>
-                                        <p>Admin</p>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <h6>0772376872</h6>
-                                    <p>baotaolao@gmail.com</p>
-                                  </td>
-                                  <td>
-                                    <%--                                        <div>--%>
-                                    <%--                                          <div--%>
-                                    <%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
-                                    <%--                                            <p class="text-success">65%</p>--%>
-                                    <%--                                            <p>85/162</p>--%>
-                                    <%--                                          </div>--%>
-                                    <%--                                          <div class="progress progress-md">--%>
-                                    <%--                                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"--%>
-                                    <%--                                              aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>--%>
-                                    <%--                                          </div>--%>
-                                    <%--                                        </div>--%>
-                                  </td>
-                                  <td>
-                                    <div class="">BaoHayQua12</div>
-                                  </td>
-                                </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
               <div class="row flex-grow">
                 <div class="col-md-6 col-lg-6 grid-margin stretch-card">
                   <div class="card card-rounded">
