@@ -87,9 +87,9 @@
                 <div class="row">
                     <div class="col-md-6 order-md-last align-items-stretch d-flex">
                         <div class="category-wrap-2 ftco-animate img align-self-stretch d-flex"
-                             style="background-image: url(images/category.jpg);">
+                             style="background-image: url(ImageproductNew/background/mid2.png);">
                             <div class="text text-center">
-                                <h2>Lượng thực</h2>
+                                <h2>Lương thực</h2>
                                 <p>Bảo vệ sức khoẻ của cả gia đình bạn</p>
                                 <p><a href="ListProduct" class="btn btn-primary">Mua ngay</a></p>
                             </div>
@@ -97,13 +97,13 @@
                     </div>
                     <div class="col-md-6">
                         <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end"
-                             style="background-image: url(images/category-1.jpg);">
+                             style="background-image: url(ImageproductNew/background/gao.jpg);">
                             <div class="text px-3 py-1">
                                 <h2 class="mb-0"><a href="ListProduct">Gạo</a></h2>
                             </div>
                         </div>
                         <div class="category-wrap ftco-animate img d-flex align-items-end"
-                             style="background-image: url(images/category-2.jpg);">
+                             style="background-image: url(ImageproductNew/background/hat.jpg);">
                             <div class="text px-3 py-1">
                                 <h2 class="mb-0"><a href="ListProduct">Hạt</a></h2>
                             </div>
@@ -114,15 +114,15 @@
 
             <div class="col-md-4">
                 <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end"
-                     style="background-image: url(images/category-3.jpg);">
+                     style="background-image: url(ImageproductNew/background/khoaiTay.jpg);">
                     <div class="text px-3 py-1">
                         <h2 class="mb-0"><a href="ListProduct">Củ</a></h2>
                     </div>
                 </div>
                 <div class="category-wrap ftco-animate img d-flex align-items-end"
-                     style="background-image: url(images/category-4.jpg);">
+                     style="background-image: url(ImageproductNew/background/Bot.webp);">
                     <div class="text px-3 py-1">
-                        <h2 class="mb-0"><a href="ListProduct">Ngũ cốc</a></h2>
+                        <h2 class="mb-0"><a href="ListProduct">Bột</a></h2>
                     </div>
                 </div>
             </div>
@@ -144,17 +144,17 @@
         <div class="row">
             <div class="col-md-6 col-lg-3 ftco-animate">
                 <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-1.jpg"
+                    <a href="#" class="img-prod"><img class="img-fluid" src="ImageproductNew/Bot/Bot-bap-meizan/bot-bap-meizan1.jpg"
                                                       alt="Colorlib Template">
                         <span class="status">30%</span>
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="#">Bell Pepper</a></h3>
+                        <h3><a href="#">Bột bắp Meizan</a></h3>
                         <div class="d-flex">
                             <div class="pricing">
-                                <p class="price"><span class="mr-2 price-dc">$120.00</span><span
-                                        class="price-sale">$80.00</span></p>
+                                <p class="price"><span class="mr-2 price-dc">12000đ</span><span
+                                        class="price-sale">8000đ</span></p>
                             </div>
                         </div>
                         <div class="bottom-area d-flex px-3">
@@ -176,15 +176,15 @@
             </div>
             <div class="col-md-6 col-lg-3 ftco-animate">
                 <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-2.jpg"
+                    <a href="#" class="img-prod"><img class="img-fluid" src="ImageproductNew/Dau/bap-hat-dong-lanh-mama-food-goi-250g-202205171021267119_300x300.png"
                                                       alt="Colorlib Template">
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="#">Strawberry</a></h3>
+                        <h3><a href="#">Bắp hạt đông lạnh</a></h3>
                         <div class="d-flex">
                             <div class="pricing">
-                                <p class="price"><span>$120.00</span></p>
+                                <p class="price"><span>20000đ</span></p>
                             </div>
                         </div>
                         <div class="bottom-area d-flex px-3">
@@ -206,15 +206,15 @@
             </div>
             <div class="col-md-6 col-lg-3 ftco-animate">
                 <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-3.jpg"
+                    <a href="#" class="img-prod"><img class="img-fluid" src="ImageproductNew/Khoai/bap-my/bap-my-sieu-ngot-coop-300x300.jpg"
                                                       alt="Colorlib Template">
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="#">Green Beans</a></h3>
+                        <h3><a href="#">Ngô Mỹ</a></h3>
                         <div class="d-flex">
                             <div class="pricing">
-                                <p class="price"><span>$120.00</span></p>
+                                <p class="price"><span>15000đ</span></p>
                             </div>
                         </div>
                         <div class="bottom-area d-flex px-3">
@@ -236,139 +236,15 @@
             </div>
             <div class="col-md-6 col-lg-3 ftco-animate">
                 <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-4.jpg"
+                    <a href="#" class="img-prod"><img class="img-fluid" src="ImageproductNew/Nep/nep-bac-viet-san-tui-1kg-202103040810147166_300x300.jpg"
                                                       alt="Colorlib Template">
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="#">Purple Cabbage</a></h3>
+                        <h3><a href="#">Nếp Bắc</a></h3>
                         <div class="d-flex">
                             <div class="pricing">
-                                <p class="price"><span>$120.00</span></p>
-                            </div>
-                        </div>
-                        <div class="bottom-area d-flex px-3">
-                            <div class="m-auto d-flex">
-                                <a href="#"
-                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="fa fa-heart"></i></span>
-                                </a>
-                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                    <span><i class="fa fa-retweet"></i></span>
-                                </a>
-                                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                    <span><i class="fa fa-shopping-cart"></i></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-6 col-lg-3 ftco-animate">
-                <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-5.jpg"
-                                                      alt="Colorlib Template">
-                        <span class="status">30%</span>
-                        <div class="overlay"></div>
-                    </a>
-                    <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="#">Tomatoe</a></h3>
-                        <div class="d-flex">
-                            <div class="pricing">
-                                <p class="price"><span class="mr-2 price-dc">$120.00</span><span
-                                        class="price-sale">$80.00</span></p>
-                            </div>
-                        </div>
-                        <div class="bottom-area d-flex px-3">
-                            <div class="m-auto d-flex">
-                                <a href="#"
-                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="fa fa-heart"></i></span>
-                                </a>
-                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                    <span><i class="fa fa-retweet"></i></span>
-                                </a>
-                                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                    <span><i class="fa fa-shopping-cart"></i></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 ftco-animate">
-                <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-6.jpg"
-                                                      alt="Colorlib Template">
-                        <div class="overlay"></div>
-                    </a>
-                    <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="#">Brocolli</a></h3>
-                        <div class="d-flex">
-                            <div class="pricing">
-                                <p class="price"><span>$120.00</span></p>
-                            </div>
-                        </div>
-                        <div class="bottom-area d-flex px-3">
-                            <div class="m-auto d-flex">
-                                <a href="#"
-                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="fa fa-heart"></i></span>
-                                </a>
-                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                    <span><i class="fa fa-retweet"></i></span>
-                                </a>
-                                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                    <span><i class="fa fa-shopping-cart"></i></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 ftco-animate">
-                <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-7.jpg"
-                                                      alt="Colorlib Template">
-                        <div class="overlay"></div>
-                    </a>
-                    <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="#">Carrots</a></h3>
-                        <div class="d-flex">
-                            <div class="pricing">
-                                <p class="price"><span>$120.00</span></p>
-                            </div>
-                        </div>
-                        <div class="bottom-area d-flex px-3">
-                            <div class="m-auto d-flex">
-                                <a href="#"
-                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="fa fa-heart"></i></span>
-                                </a>
-                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                    <span><i class="fa fa-retweet"></i></span>
-                                </a>
-                                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                    <span><i class="fa fa-shopping-cart"></i></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 ftco-animate">
-                <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-8.jpg"
-                                                      alt="Colorlib Template">
-                        <div class="overlay"></div>
-                    </a>
-                    <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="#">Fruit Juice</a></h3>
-                        <div class="d-flex">
-                            <div class="pricing">
-                                <p class="price"><span>$120.00</span></p>
+                                <p class="price"><span>30000đ</span></p>
                             </div>
                         </div>
                         <div class="bottom-area d-flex px-3">
