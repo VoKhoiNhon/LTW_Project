@@ -30,11 +30,11 @@
   <!-- partial:partials/_navbar.html -->
   <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-      <div class="me-3">
-        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
-          <span class="icon-menu"></span>
-        </button>
-      </div>
+<%--      <div class="me-3">--%>
+<%--        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">--%>
+<%--          <span class="icon-menu"></span>--%>
+<%--        </button>--%>
+<%--      </div>--%>
       <div>
         <a class="navbar-brand brand-logo" href="index.html">
           BHNFoods
@@ -247,10 +247,10 @@
                                           <div class="card card-rounded">
                                             <div class="card-body" style="padding-top: 0">
                                               <div class="d-sm-flex justify-content-between align-items-start">
-                                                <div>
-                                                  <h4 class="card-title card-title-dash">Yêu cầu đang xử lý</h4>
-                                                  <p class="card-subtitle card-subtitle-dash">Bạn có 50+ yêu cầu mới</p>
-                                                </div>
+<%--                                                <div>--%>
+<%--                                                  <h4 class="card-title card-title-dash">Yêu cầu đang xử lý</h4>--%>
+<%--                                                  <p class="card-subtitle card-subtitle-dash">Bạn có 50+ yêu cầu mới</p>--%>
+<%--                                                </div>--%>
                                                 <div>
                                                   <h4 class="card-title card-title-dash">Sửa <i class="fa-regular fa-pen-to-square"></i></h4>
                                                   <!-- <p class="card-subtitle card-subtitle-dash">Bạn có 50+ yêu cầu mới</p> -->
@@ -270,7 +270,7 @@
                                                     <th>Khách hàng</th>
                                                     <th>Số điện thoại và Email</th>
                                                     <th></th>
-                                                    <th>Tên tài khoản</th>
+                                                    <th>Địa chỉ</th>
                                                   </tr>
                                                   </thead>
                                                   <tbody>
@@ -287,7 +287,7 @@
                                                         <img src="../ImageproductNew/background/images.png" alt="">
                                                         <div>
                                                           <h6>Võ Khôi Nhơn</h6>
-                                                          <p>Admin</p>
+                                                          <p>User</p>
                                                         </div>
                                                       </div>
                                                     </td>
@@ -309,7 +309,7 @@
                                                       <%--                                        </div>--%>
                                                     </td>
                                                     <td>
-                                                      <div class="">NhonVo</div>
+                                                      <div class="">110 Địa Hàn, phường Tăng Nhơn Phú, Tp. Thủ Đức</div>
                                                     </td>
                                                   </tr>
                                                   <tr>
@@ -325,7 +325,7 @@
                                                         <img src="../ImageproductNew/background/images.png" alt="">
                                                         <div>
                                                           <h6>Lê Bảo Đặng</h6>
-                                                          <p>Người dùng</p>
+                                                          <p>User</p>
                                                         </div>
                                                       </div>
                                                     </td>
@@ -347,7 +347,7 @@
                                                       <%--                                        </div>--%>
                                                     </td>
                                                     <td>
-                                                      <div class="">LebaoDang</div>
+                                                      <div class="">110 Địa Hàn, phường Quy Nhơn, Tp. THCM</div>
                                                     </td>
                                                   </tr>
                                                   <tr>
@@ -363,7 +363,7 @@
                                                         <img src="../ImageproductNew/background/images.png" alt="">
                                                         <div>
                                                           <h6>Dương Thanh Phụng</h6>
-                                                          <p>Người dùng</p>
+                                                          <p>User</p>
                                                         </div>
                                                       </div>
                                                     </td>
@@ -385,7 +385,7 @@
                                                       <%--                                        </div>--%>
                                                     </td>
                                                     <td>
-                                                      <div class="">ThanhPhung</div>
+                                                      <div class="">20 Lê Quân, phường Võ Thị Sáu,Quận 2 Tp. HCM</div>
                                                     </td>
                                                   </tr>
                                                   <tr>
@@ -401,7 +401,7 @@
                                                         <img src="../ImageproductNew/background/images.png" alt="">
                                                         <div>
                                                           <h6>Phan Thị Quỳnh Như</h6>
-                                                          <p>Người dùng</p>
+                                                          <p>User</p>
                                                         </div>
                                                       </div>
                                                     </td>
@@ -423,7 +423,7 @@
                                                       <%--                                        </div>--%>
                                                     </td>
                                                     <td>
-                                                      <div class="">QuynhNhuw</div>
+                                                      <div class="">204 Lê Quân, phường Thường Kiệt,Quận 5 Tp. HCM</div>
                                                     </td>
                                                   </tr>
                                                   <tr>
@@ -439,7 +439,7 @@
                                                         <img src="../ImageproductNew/background/images.png" alt="">
                                                         <div>
                                                           <h6>Nguyễn Thị Xuân Hoa</h6>
-                                                          <p>Người dùng</p>
+                                                          <p>User</p>
                                                         </div>
                                                       </div>
                                                     </td>
@@ -461,7 +461,7 @@
                                                       <%--                                        </div>--%>
                                                     </td>
                                                     <td>
-                                                      <div class="">XuanHoa</div>
+                                                      <div class="">54 Lê Quân, phường Trường Thọ,Bình Thạnh, Tp. HCM</div>
                                                     </td>
                                                   </tr>
                                                   <tr>
@@ -477,7 +477,7 @@
                                                         <img src="../ImageproductNew/background/images.png" alt="">
                                                         <div>
                                                           <h6>Phạm Gia Bảo</h6>
-                                                          <p>Admin</p>
+                                                          <p>user</p>
                                                         </div>
                                                       </div>
                                                     </td>
@@ -499,7 +499,7 @@
                                                       <%--                                        </div>--%>
                                                     </td>
                                                     <td>
-                                                      <div class="">BaoHayQua12</div>
+                                                      <div class="">20 Lê Quân, phường Võ Thị Sáu,Quận 2 Tp. HCM</div>
                                                     </td>
                                                   </tr>
                                                   </tbody>
