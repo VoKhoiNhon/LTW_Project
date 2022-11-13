@@ -35678,4 +35678,16 @@ div.tagsinput span.tag a {
   }
 }
 
+ .nav-item .nav-item-link {
+   display: flex !important;
+   align-items: center;
+   text-decoration: none; color:black; display: block; padding: 20px 10px;
+
+ }
+.nav-item:hover .nav-item-link {
+  color: green;
+  background-color: white;
+}
+
+
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */
