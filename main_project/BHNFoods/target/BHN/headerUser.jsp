@@ -31,7 +31,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="cssHeaderFooter/styleHAndF.css">
+    <link rel="stylesheet" href="vendors/feather/feather.css">
+    <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/typicons/typicons.css">
+    <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="js/select.dataTables.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
 </head>
 
 <div class="py-1 bg-primary">
@@ -82,6 +97,25 @@
                         <div class="dr"> <a href="manageOrder.jsp">Quản lý đơn hàng</a> </div>
                         <div class="dr"> <a href="history.jsp">Lịch sử đơn hàng</a></div>
                         <div class="dr"> <a href="index.jsp">Đăng xuất</a></div>
+                    </div>
+                </li>
+                <li class="nav-item  active dropdown d-none d-lg-block user-dropdown">
+                    <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="img-xs rounded-circle" src="../ImageproductNew/background/images.png" alt="Profile image"> </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                        <div class="dropdown-header text-center">
+                            <%--            <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">--%>
+                            <p class="mb-1 mt-3 font-weight-semibold">Võ Khôi Nhơn</p>
+                            <p class="fw-light text-muted mb-0">Nhonw@gmail.com</p>
+                        </div>
+                        <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Trang cá nhân</a>
+                        <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>
+                            Tin nhắn</a>
+                        <%--          <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i>--%>
+                        <%--            Hoạt động</a>--%>
+                        <%--          <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>--%>
+                        <%--            Các câu hỏi thường gặp</a>--%>
+                        <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Đăng xuất</a>
                     </div>
                 </li>
 
