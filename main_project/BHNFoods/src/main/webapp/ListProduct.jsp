@@ -78,19 +78,19 @@
                                 <div class="latest-prdouct__slider__item">
                                     <a href="#" class="latest-product__item" >
                                         <div class="latest-product__item__pic">
-                                            <img src="ImageproductNew/Bot/Bot-nang-tan-san/bot-nang-tan-sang-goi-400g-202102060020008816.jpg" alt="">
+                                            <img src="ImageproductNew/Bot/Bot-nang-tan-san/bot-nang-tan-sang-goi-400g-202102060020004073.jpg" alt="" >
                                         </div>
                                         <div class="latest-product__item__text">
-                                            <h6>Ngô Mỹ</h6>
-                                            <span>25.000đ</span>
+                                            <h6>Bột năng Tấn Sang</h6>
+                                            <span>40.000đ</span>
                                         </div>
                                     </a>
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="ImageproductNew/Dau/dau-do-xuan-hong-goi-500g-300x300.jpg" alt="">
+                                            <img src="ImageproductNew/Dau/dau-do-xuan-hong-goi-500g-300x300.jpg" alt="" >
                                         </div>
                                         <div class="latest-product__item__text">
-                                            <h6>Ngô Mỹ</h6>
+                                            <h6>Đậu đỏ Xuân Hồng 500g</h6>
                                             <span>25.000đ</span>
                                         </div>
                                     </a>
@@ -99,28 +99,28 @@
                                             <img src="ImageproductNew/Khoai/khoai-mo/khoai-mo-tui-1kg-1-2-cu-202209141012253686_300x300.jpg" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
-                                            <h6>Ngô Mỹ</h6>
-                                            <span>25.000đ</span>
+                                            <h6>Khoai mỡ túi 1kg(1-2 củ)</h6>
+                                            <span>35.000đ</span>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="latest-prdouct__slider__item">
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="ImageproductNew/Nep/nep-cai-hoa-vang-ong-cu-tui-1kg-202103131631574575_300x300.jpg" alt="">
+                                            <img src="ImageproductNew/Nep/gao-nep-cai-hoa-vang-coop-select-1kg-300x300.jpg" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
-                                            <h6>Ngô Mỹ</h6>
-                                            <span>25.000đ</span>
+                                            <h6>Gạo nếp Cái Hoa Vàng- CoopSelect 1kg</h6>
+                                            <span>36.000đ</span>
                                         </div>
                                     </a>
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="ImageproductNew/Bot/Ngu-coc-yumfood/thuc-pham-bo-sung-ngu-coc-dinh-duong-yumfood-goi-500g-202010122202245743.jpg" alt="">
+                                            <img src="ImageproductNew/Bot/Ngu-coc-yumfood/thuc-pham-bo-sung-ngu-coc-dinh-duong-yumfood-goi-500g-202010122202206323.jpg" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
-                                            <h6>Ngô Mỹ</h6>
-                                            <span>25.000đ</span>
+                                            <h6> Ngũ cốc dinh dưỡng Yumfood 500g</h6>
+                                            <span>105.000đ</span>
                                         </div>
                                     </a>
                                     <a href="#" class="latest-product__item">
@@ -128,7 +128,7 @@
                                             <img src="ImageproductNew/Dau/dau-den-viet-san-150g-202205231452334172_300x300.jpg" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
-                                            <h6>Ngô Mỹ</h6>
+                                            <h6>Đậu đen Việt San 150g</h6>
                                             <span>25.000đ</span>
                                         </div>
                                     </a>
@@ -160,7 +160,7 @@
                                     <div class="product__discount__item__text">
 
                                         <a href="singleProduct.jsp"><span>Gạo</span>
-                                            <h5>Gạo ST25</h5>
+                                            <h5>Gạo lứt huyến rồng Lotus 5kg</h5>
                                             <div class="product__item__price">50.000đ <span>60.000đ</span></div></a>
                                     </div>
                                 </div>

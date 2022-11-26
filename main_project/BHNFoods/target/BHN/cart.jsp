@@ -49,10 +49,10 @@
 						<tr>
 							<td class="shoping__cart__item">
 								<img src="ImageproductNew/Khoai/khoai-lang-tim/khoai-lang-tim-giong-nhat-kg-300x300.jpg" alt=""style="width: 100px;height: auto">
-								<h5>Khoai lang tím</h5>
+								<h5>Khoai lang tím túi 1kg (5-8 củ) </h5>
 							</td>
 							<td class="shoping__cart__price">
-								55.000
+								45.000
 							</td>
 							<td class="shoping__cart__quantity">
 								<div class="quantity">
@@ -71,10 +71,10 @@
 						<tr>
 							<td class="shoping__cart__item">
 								<img src="ImageproductNew/Gao/Vua-gao/gao-thom-dam-da-vua-gao-5kg-300x300.jpg" alt=""style="width: 100px;height: auto">
-								<h5>Bao Gạo</h5>
+								<h5>Gạo thơm Vua Gạo 5kg</h5>
 							</td>
 							<td class="shoping__cart__price">
-								39.000
+								70.000
 							</td>
 							<td class="shoping__cart__quantity">
 								<div class="quantity">
@@ -84,7 +84,7 @@
 								</div>
 							</td>
 							<td class="shoping__cart__total">
-								39.990
+								70kg
 							</td>
 							<td class="shoping__cart__item__close">
 								<span class="icon_close"></span>
@@ -93,7 +93,7 @@
 						<tr>
 							<td class="shoping__cart__item">
 								<img src="ImageproductNew/Dau/dau-ha-lan-dong-lanh-mama-food-goi-200g-202205171021061114_300x300.png" alt="" style="width: 100px;height: auto">
-								<h5>Đậu Hà Lan</h5>
+								<h5>Đậu Hà Lan MamaFood 200g</h5>
 							</td>
 							<td class="shoping__cart__price">
 								69.000

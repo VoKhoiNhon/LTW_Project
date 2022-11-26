@@ -56,51 +56,51 @@
                             <tbody>
                             <tr>
                                 <td class="shoping__cart__item">
-                                    <img src="body_design/img/cart/cart-1.jpg" alt="">
-                                    <h5>Khoai lang tím</h5>
+                                    <img src="ImageproductNew/Khoai/khoai-lang-tim/khoai-lang-tim-tui-500g-202105051946310826.jpg" alt="" style="width: 100px;height: auto">
+                                    <h5>Khoai lang tím túi 1kg (5-8 củ)</h5>
                                 </td>
                                 <td class="shoping__cart__price">
-                                    55.000
+                                    25.000
                                 </td>
                                 <td class="shoping__cart__quantity">
                                     <span>2</span>
                                 </td>
                                 <td class="shoping__cart__total">
-                                    110.000
+                                    50.000
                                 </td>
-                                
+
                             </tr>
                             <tr>
                                 <td class="shoping__cart__item">
-                                    <img src="body_design/img/cart/cart-2.jpg" alt="">
-                                    <h5>Lúa mạch</h5>
+                                    <img src="ImageproductNew/Gao/coop-select/gao-dai-thom-8-coop-select-5kg-1-300x300.jpg" alt="" style="width: 100px;height: auto">
+                                    <h5>Gạo dài thơm 8- Coop Select 5kg</h5>
                                 </td>
                                 <td class="shoping__cart__price">
-                                    39.000
+                                    65.000S
                                 </td>
                                 <td class="shoping__cart__quantity">
-                                    <span>2</span>
+                                    <span>1</span>
                                 </td>
                                 <td class="shoping__cart__total">
-                                    39.990
+                                    65.000
                                 </td>
-                                
+
                             </tr>
                             <tr>
                                 <td class="shoping__cart__item">
-                                    <img src="body_design/img/cart/cart-3.jpg" alt="">
-                                    <h5>Đậu Hà Lan</h5>
+                                    <img src="ImageproductNew/Dau/dau-ha-lan-sg-food-goi-500g-202208090905319049_300x300.png" alt="" style="width: 100px;height: auto">
+                                    <h5>Đậu Hà Lan Đông Lạnh SG-Food 500g</h5>
                                 </td>
                                 <td class="shoping__cart__price">
-                                    69.000
+                                    43.000
                                 </td>
                                 <td class="shoping__cart__quantity">
                                     <span>2</span>
                                 </td>
                                 <td class="shoping__cart__total">
-                                    69.900
+                                    86.000
                                 </td>
-                                
+
                             </tr>
                             </tbody>
                         </table>
@@ -135,51 +135,51 @@
                             <tbody>
                             <tr>
                                 <td class="shoping__cart__item">
-                                    <img src="body_design/img/cart/cart-1.jpg" alt="">
-                                    <h5>Khoai lang tím</h5>
+                                    <img src="ImageproductNew/Dau/dau-den-viet-san-150g-202205231452334172_300x300.jpg" alt="" style="width: 100px;height: auto">
+                                    <h5>Đậu đen Vệt San 150g</h5>
                                 </td>
                                 <td class="shoping__cart__price">
-                                    55.000
+                                    17.000
                                 </td>
                                 <td class="shoping__cart__quantity">
-                                    <span>2</span>
+                                    <span>1</span>
                                 </td>
                                 <td class="shoping__cart__total">
-                                    110.000
+                                    17.000
                                 </td>
-                                
+
                             </tr>
                             <tr>
                                 <td class="shoping__cart__item">
-                                    <img src="body_design/img/cart/cart-2.jpg" alt="">
-                                    <h5>Lúa mạch</h5>
+                                    <img src="ImageproductNew/Bot/Bot-bap-meizan/bot-bap-meizan1.jpg" alt=""style="width: 100px;height: auto">
+                                    <h5>Bột Bắp Mezian 150g</h5>
                                 </td>
                                 <td class="shoping__cart__price">
-                                    39.000
+                                    20.000
                                 </td>
                                 <td class="shoping__cart__quantity">
                                     <span>2</span>
                                 </td>
                                 <td class="shoping__cart__total">
-                                    39.990
+                                    40.000
                                 </td>
-                                
+
                             </tr>
                             <tr>
                                 <td class="shoping__cart__item">
-                                    <img src="body_design/img/cart/cart-3.jpg" alt="">
-                                    <h5>Đậu Hà Lan</h5>
+                                    <img src="ImageproductNew/Khoai/bap-nep/bap-nep-cap-coop-300x300.jpg" alt="" style="width: 100px;height: auto">
+                                    <h5>2 trái bắp nếp (từ 500g)</h5>
                                 </td>
                                 <td class="shoping__cart__price">
-                                    69.000
+                                    10.000
                                 </td>
                                 <td class="shoping__cart__quantity">
                                     <span>2</span>
                                 </td>
                                 <td class="shoping__cart__total">
-                                    69.900
+                                    20.000
                                 </td>
-                                
+
                             </tr>
                             </tbody>
                         </table>

@@ -38,23 +38,23 @@
                 <div class="product__details__pic">
                     <div class="product__details__pic__item">
                         <img class="product__details__pic__item--large"
-                             src="body_design/img/product/details/product-details-1.jpg" alt="">
+                             src="ImageproductNew/Khoai/bap-nep/bap-nep-cap-coop-300x300.jpg" alt="">
                     </div>
                     <div class="product__details__pic__slider owl-carousel">
-                        <img data-imgbigurl="body_design/img/product/details/product-details-2.jpg"
-                             src="body_design/img/product/details/thumb-1.jpg" alt="">
-                        <img data-imgbigurl="body_design/img/product/details/product-details-3.jpg"
-                             src="body_design/img/product/details/thumb-2.jpg" alt="">
-                        <img data-imgbigurl="body_design/img/product/details/product-details-5.jpg"
-                             src="body_design/img/product/details/thumb-3.jpg" alt="">
-                        <img data-imgbigurl="body_design/img/product/details/product-details-4.jpg"
-                             src="body_design/img/product/details/thumb-4.jpg" alt="">
+                        <img data-imgbigurl="ImageproductNew/Khoai/bap-nep/bap-nep-cap-202207161545587500.jpg"
+                             src="ImageproductNew/Khoai/bap-nep/bap-nep-cap-coop-300x300.jpg" alt="">
+                        <img data-imgbigurl="ImageproductNew/Khoai/bap-nep/bap-nep-cap-202207161543300656.jpg"
+                             src="ImageproductNew/Khoai/bap-nep/bap-nep-cap-202207161545587500.jpg" alt="">
+                        <img data-imgbigurl="ImageproductNew/Khoai/bap-nep/bap-nep-cap-coop-300x300.jpg"
+                             src="ImageproductNew/Khoai/bap-nep/bap-nep-cap-202207161543300656.jpg" alt="">
+                        <img data-imgbigurl="ImageproductNew/Khoai/bap-nep/bap-nep-cap-202207161543292519.jpg"
+                             src="ImageproductNew/Khoai/bap-nep/bap-nep-cap-202207161543292519.jpg" alt="">
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__text">
-                    <h3>Tên sản phẩm</h3>
+                    <h3>2 trái bắp Mỹ</h3>
                     <div class="product__details__rating">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -63,9 +63,8 @@
                         <i class="fa fa-star-half-o"></i>
                         <span>(18 đánh giá)</span>
                     </div>
-                    <div class="product__details__price">50.000đ</div>
-                    <p>Đây là phầm mô tả về sản phẩm, mình cần viết những thông tin cơ bản như nó được sản xuất ở đâu,
-                    giống gì, cam kết chất lượng, tốt cho sức khoẻ người dùng này kia nọ...</p>
+                    <div class="product__details__price">15.000đ</div>
+                    <p>Bắp Mỹ là một loại thực phẩm được trồng rất nhiều ở khắp nơi trên thế giới. Đây là một loại quả vừa ngon, lại có rất nhiều chất khoáng chất và vitamin. Bắp có thể chế biến thành nhiều món ăn ngon như: cơm bắp, chè bắp, sữa bắp,... bất kỳ món gì cũng tạo nên hương vị tuyệt hảo.</p>
                     <div class="product__details__quantity">
                         <div class="quantity">
                             <div class="pro-qty">
@@ -76,10 +75,11 @@
                     <a href="#" class="primary-btn">THÊM VÀO GIỎ HÀNG</a>
                     <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                     <ul>
-                        <li><b>Hạn sử dụng</b> <span>Còn 10 tháng</span></li>
-                        <li><b>Giao hàng</b> <span>Trong 3 giờ <samp>Miễn phí trong 1.5km</samp></span></li>
-                        <li><b>Trọng lượng</b> <span>0.5 kg</span></li>
-<%--                        <li><b>Share on</b>--%>
+                        <li><b>Xuất xứ</b> <span>Việt Nam</span></li>
+                        <li><b>Hạn sử dụng</b> <span>Còn 7 ngày</span></li>
+                        <li><b>Trọng lượng</b> <span>từ 0.5 kg</span></li>
+                        <li><b>Giao hàng</b> <span>Trong 2 giờ <samp>Miễn phí trong 1.5km</samp></span></li>
+                        <%--                        <li><b>Share on</b>--%>
 <%--                            <div class="share">--%>
 <%--                                <a href="#"><i class="fa fa-facebook"></i></a>--%>
 <%--                                <a href="#"><i class="fa fa-twitter"></i></a>--%>
