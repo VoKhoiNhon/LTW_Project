@@ -124,7 +124,7 @@
 						</tr>
 						<tr>	
 							<td class="shoping__cart__item">
-								<img src="body_design/img/cart/cart-1.jpg" alt="">
+								<img src="ImageproductNew/Bot/Ngu-coc-viet-dai/bot-ngu-coc-an-kieng-viet-dai-bich-400g-202210201449349516.jpg" alt="">
 								<h5>Khoai lang tím</h5>
 							</td>
 							<td class="shoping__cart__price">

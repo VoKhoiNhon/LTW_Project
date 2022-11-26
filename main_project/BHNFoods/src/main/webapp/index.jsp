@@ -39,7 +39,7 @@
                     </div>
                     <div class="media-body">
                         <h3 class="heading">Miễn phí vận chuyển</h3>
-                        <span>Trong 10km</span>
+                        <span>Trong 1.5km</span>
                     </div>
                 </div>
             </div>
@@ -150,7 +150,7 @@
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="#">Bột bắp Meizan</a></h3>
+                        <h3><a href="#">Bột bắp Meizan 150g</a></h3>
                         <div class="d-flex">
                             <div class="pricing">
                                 <p class="price"><span class="mr-2 price-dc">12000đ</span><span
@@ -181,7 +181,7 @@
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="#">Bắp hạt đông lạnh</a></h3>
+                        <h3><a href="#">Bắp hạt đông lạnh MamaFood 250g</a></h3>
                         <div class="d-flex">
                             <div class="pricing">
                                 <p class="price"><span>20000đ</span></p>
@@ -211,7 +211,7 @@
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="#">Ngô Mỹ</a></h3>
+                        <h3><a href="#">2 trái bắp Mỹ(từ 600g)</a></h3>
                         <div class="d-flex">
                             <div class="pricing">
                                 <p class="price"><span>15000đ</span></p>
@@ -241,7 +241,7 @@
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="#">Nếp Bắc</a></h3>
+                        <h3><a href="#">Nếp Bắc Viêt San 1kg</a></h3>
                         <div class="d-flex">
                             <div class="pricing">
                                 <p class="price"><span>30000đ</span></p>
