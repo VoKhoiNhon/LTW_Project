@@ -88,33 +88,28 @@
                         class="nav-link"><span class="fa-solid fa-magnifying-glass"></span></a></li>
                 <li class="nav-item cta cta-colored"><a href="cart.jsp" class="nav-link"><span
                             class="fa-solid fa-cart-shopping"></span>[0]</a></li>
-                <li class="nav-item cta cta-colored hover_user">
-                    <span href="#" class="nav-link" style="cursor: pointer;">Nguyễn Thị Xuân
-                        Hoa</span>
-                    <div class="list_menu">
-                        <div class="dr"><a href="account.jsp">Tài khoản</a></div>
-                        <div class="dr"> <a href="loveProduct.jsp">Sản phẩm yêu thích</a></div>
-                        <div class="dr"> <a href="manageOrder.jsp">Quản lý đơn hàng</a> </div>
-                        <div class="dr"> <a href="history.jsp">Lịch sử đơn hàng</a></div>
-                        <div class="dr"> <a href="index.jsp">Đăng xuất</a></div>
-                    </div>
-                </li>
-                <li class="nav-item  active dropdown d-none d-lg-block user-dropdown">
+<%--                <li class="nav-item cta cta-colored hover_user">--%>
+<%--                    <span href="#" class="nav-link" style="cursor: pointer;">Nguyễn Thị Xuân--%>
+<%--                        Hoa</span>--%>
+<%--                    <div class="list_menu">--%>
+<%--                        <div class="dr"><a href="account.jsp">Tài khoản</a></div>--%>
+<%--                        <div class="dr"> <a href="loveProduct.jsp">Sản phẩm yêu thích</a></div>--%>
+<%--                        <div class="dr"> <a href="manageOrder.jsp">Quản lý đơn hàng</a> </div>--%>
+<%--                        <div class="dr"> <a href="history.jsp">Lịch sử đơn hàng</a></div>--%>
+<%--                        <div class="dr"> <a href="index.jsp">Đăng xuất</a></div>--%>
+<%--                    </div>--%>
+<%--                </li>--%>
+                <li class="nav-item cta cta-colored active dropdown d-none d-lg-block user-dropdown">
                     <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img class="img-xs rounded-circle" src="../ImageproductNew/background/images.png" alt="Profile image"> </a>
+                      <span style="line-height: 1.8" class="fa-solid fa-user"></span> </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                         <div class="dropdown-header text-center">
-                            <%--            <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">--%>
                             <p class="mb-1 mt-3 font-weight-semibold">Võ Khôi Nhơn</p>
                             <p class="fw-light text-muted mb-0">Nhonw@gmail.com</p>
                         </div>
                         <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Trang cá nhân</a>
                         <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>
                             Tin nhắn</a>
-                        <%--          <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i>--%>
-                        <%--            Hoạt động</a>--%>
-                        <%--          <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>--%>
-                        <%--            Các câu hỏi thường gặp</a>--%>
                         <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Đăng xuất</a>
                     </div>
                 </li>
