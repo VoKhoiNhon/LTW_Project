@@ -46,6 +46,31 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="towncity">Quận, Thành phố</label>
+
+                                <select type="text" class="form-control">
+                                    <option>Thủ Đức</option>
+                                    <option>Quận 1</option>
+                                    <option>Quận 3</option>
+                                    <option>Quận 4</option>
+                                    <option>Quận 5</option>
+                                    <option>Quận 6</option>
+                                    <option>Quận 7</option>
+                                    <option>Quận 8</option>
+                                    <option>Quận 10</option>
+                                    <option>Quận 11</option>
+                                    <option>Quận 12</option>
+                                    <option>Bình Chánh</option>
+                                    <option>Bình Thạnh</option>
+                                    <option>Bình Tân</option>
+                                    <option>Tân Bình</option>
+                                    <option>Tân Phú</option>
+                                    <option>Hooc Môn</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="w-100"></div>
                         <div class="col-md-12">
                             <div class="form-group">
