@@ -29,7 +29,7 @@
           <div class="ftco-footer-widget mb-4 ml-md-5">
             <h2 class="ftco-heading-2">Tổng Quan</h2>
             <ul class="list-unstyled">
-              <li><a href="ListProduct" class="py-2 d-block">Cửa hàng</a></li>
+              <li><a href="ListProduct.html" class="py-2 d-block">Cửa hàng</a></li>
               <li><a href="index.html" class="py-2 d-block"></a>Giới thiệu</li>
             </ul>
           </div>
