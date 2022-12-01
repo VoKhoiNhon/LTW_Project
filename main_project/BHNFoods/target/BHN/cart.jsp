@@ -1,3 +1,6 @@
+<%@ page import="vn.edu.hcmuaf.fit.beans.Cart" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!doctype html>
@@ -46,72 +49,36 @@
 						</tr>
 						</thead>
 						<tbody>
+						<%
+							DecimalFormat decF = new DecimalFormat("#,###");
+							List<Cart>cList = (List<Cart>) request.getAttribute("listCart");
+							int sum = (int) request.getAttribute("sum");
+							for(Cart p: cList) {
+						%>
 						<tr>
 							<td class="shoping__cart__item">
-								<img src="ImageproductNew/Khoai/khoai-lang-tim/khoai-lang-tim-giong-nhat-kg-300x300.jpg" alt=""style="width: 100px;height: auto">
-								<h5>Khoai lang tím túi 1kg (5-8 củ) </h5>
+								<img src="<%=p.getUrl()%>" alt=""style="width: 100px;height: auto">
+								<h5><%=p.getNamePr()%> đ </h5>
 							</td>
 							<td class="shoping__cart__price">
-								45.000
+								<%=decF.format(p.getPrice()).replace(',','.')%>đ
 							</td>
 							<td class="shoping__cart__quantity">
 								<div class="quantity">
 									<div class="pro-qty">
-										<input type="text" value="1">
+										<input type="text" value="<%=p.getAmount()%>">
 									</div>
 								</div>
 							</td>
 							<td class="shoping__cart__total">
-								110.000
+								<%= decF.format(p.getAmount()*p.getPrice()).replace(',','.')%> đ
 							</td>
 							<td class="shoping__cart__item__close">
 								<span class="icon_close"></span>
 							</td>
 						</tr>
-						<tr>
-							<td class="shoping__cart__item">
-								<img src="ImageproductNew/Gao/Vua-gao/gao-thom-dam-da-vua-gao-5kg-300x300.jpg" alt=""style="width: 100px;height: auto">
-								<h5>Gạo thơm Vua Gạo 5kg</h5>
-							</td>
-							<td class="shoping__cart__price">
-								70.000
-							</td>
-							<td class="shoping__cart__quantity">
-								<div class="quantity">
-									<div class="pro-qty">
-										<input type="text" value="1">
-									</div>
-								</div>
-							</td>
-							<td class="shoping__cart__total">
-								70kg
-							</td>
-							<td class="shoping__cart__item__close">
-								<span class="icon_close"></span>
-							</td>
-						</tr>
-						<tr>
-							<td class="shoping__cart__item">
-								<img src="ImageproductNew/Dau/dau-ha-lan-dong-lanh-mama-food-goi-200g-202205171021061114_300x300.png" alt="" style="width: 100px;height: auto">
-								<h5>Đậu Hà Lan MamaFood 200g</h5>
-							</td>
-							<td class="shoping__cart__price">
-								69.000
-							</td>
-							<td class="shoping__cart__quantity">
-								<div class="quantity">
-									<div class="pro-qty">
-										<input type="text" value="1">
-									</div>
-								</div>
-							</td>
-							<td class="shoping__cart__total">
-								69.900
-							</td>
-							<td class="shoping__cart__item__close">
-								<span class="icon_close"></span>
-							</td>
-						</tr>
+						<%}%>
+
 						</tbody>
 					</table>
 				</div>
@@ -135,12 +102,13 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="col-lg-6">
 				<div class="shoping__checkout">
 					<h5>Tổng giỏ hàng</h5>
 					<ul>
 						<li>Tổng tiền hàng
-							<span>560.000</span>
+							<span><%= decF.format(sum).replace(',','.')%> đ</span>
 						</li>
 						<li>Giảm <span>50.000</span></li>
 						<li>Tổng thanh toán <span>510.000</span></li>

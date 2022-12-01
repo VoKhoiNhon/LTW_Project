@@ -14,7 +14,6 @@ public class User implements Serializable {
     private Date dateSignup;
     private boolean sex;
     private byte decentralization;
-
     public User(){}
 
     public User(String idUser, String address, String passw, String nameUser, String phone, String email, Date birthday, Date dateSignup, boolean sex, byte decentralization) {
@@ -107,6 +106,7 @@ public class User implements Serializable {
     }
 
     public void setDecentralization(byte decentralization) {
+
         this.decentralization = decentralization;
     }
 
