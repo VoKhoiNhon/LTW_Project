@@ -81,7 +81,7 @@
                 <li class="nav-item cta cta-colored"><a href="http://localhost:8080/BHNFoods/Cart?idUser=user1"
                                                         class="nav-link"><span
                         class="fa-solid fa-cart-shopping"></span>[<%=result%>]</a></li>
-                <li class="nav-item cta cta-colored"><a href="admin_template/login.jsp" class="nav-link"><span
+                <li class="nav-item cta cta-colored"><a href="login.jsp" class="nav-link"><span
                         style="line-height: 1.8" class="fa-solid fa-user"></span></a></li>
             </ul>
 
