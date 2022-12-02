@@ -4,21 +4,26 @@ import java.time.LocalDateTime;
 
 public class SoldProduct {
      String idPro;
-
      String namePr;
-
      String url;
     String idUser;
     int priceHere;
     int amount;
     LocalDateTime timeSold;
     String idOrders;
-
-
+    int condition;
     public SoldProduct() {
     }
 
-    public SoldProduct(String idPro, String namePr, String url, String idUser, int priceHere, int amount, LocalDateTime timeSold, String idOrders) {
+    public int getCondition() {
+        return condition;
+    }
+
+    public void setCondition(int condition) {
+        this.condition = condition;
+    }
+
+    public SoldProduct(String idPro, String namePr, String url, String idUser, int priceHere, int amount, LocalDateTime timeSold, String idOrders, int condition) {
         this.idPro = idPro;
         this.namePr = namePr;
         this.url = url;
@@ -27,6 +32,7 @@ public class SoldProduct {
         this.amount = amount;
         this.timeSold = timeSold;
         this.idOrders = idOrders;
+        this.condition = condition;
     }
 
     public String getNamePr() {

@@ -22,13 +22,12 @@ public class ListManagerOrders extends HttpServlet {
         request.getRequestDispatcher("managerOrder.jsp").forward(request,response);
         Orders o =new Orders();
         if(o.getCondition()==0) {
-            System.out.println("Đang chuẩn bị");
+            HttpSession session = request.getSession(true);
+            session.setAttribute("error","Đang chuẩn bị");
+            response.sendRedirect("http://localhost:8080/BHNFoods/lovePro?idUser=");
         }
-        if(o.getCondition()==1) {
-            System.out.println("Đang giao");
-        }
-        if(o.getCondition()==3) {
-            System.out.println("Giao hàng không thành công");
+        else if(o.getCondition()==1) {
+            request.setAttribute("error","Đang giao");
         }
 
     }

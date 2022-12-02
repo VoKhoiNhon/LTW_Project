@@ -109,10 +109,10 @@ public class ProductService {
     // lấy ra số lượng product theo loại để tính toán phân trang
     public int getSize(int kind) {
         return getProductByKind(kind).size();
-   }
+    }
 
 
-   //trang sản phẩm yêu thích
+    //trang sản phẩm yêu thích
     public List<Product> getListLoveProd(String idUser) {
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from `like` l JOIN product p  on l.ID_PR = p.ID_PR join image i on p.ID_PR = i.ID_PR where i.`CONDITION` = 0 and l.ID_USER = '" + idUser +"'")
@@ -122,7 +122,7 @@ public class ProductService {
     //trang lịch sử giao dịch
     public List<SoldProduct> getHistory(String idUser){
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT s.ID_PR, p.NAME_PR, i.URL, s.ID_USER, s.PRICE_HERE, s.AMOUNT, s.`TIME_SOLD`, s.ID_ORDERS FROM sold_pr s join product p on p.ID_PR = s.ID_PR JOIN image i on i.ID_PR = s.ID_PR JOIN orders o on o.ID_ORDERS = s.ID_ORDERS where o.`CONDITION` = 2 and i.`CONDITION` = 0 and s.ID_USER = '" + idUser + "'")
+            return handle.createQuery("SELECT s.ID_PR, p.NAME_PR, i.URL, s.ID_USER, s.PRICE_HERE, s.AMOUNT, s.`TIME_SOLD`, s.ID_ORDERS FROM sold_pr s join product p on p.ID_PR = s.ID_PR JOIN image i on i.ID_PR = s.ID_PR JOIN orders o on o.ID_ORDERS = s.ID_ORDERS where (o.`CONDITION` = 2 or o.`CONDITION` = 3) and i.`CONDITION` = 0 and s.ID_USER = '" + idUser + "'")
                     .mapToBean(SoldProduct.class).collect(Collectors.toList());
         });
     }
@@ -166,10 +166,10 @@ public class ProductService {
 
 
     //lấy ra sản phẩm của cart
-        public List<Cart> getListCart(String idUser) {
-                return JDBIConnector.get().withHandle(handle -> {
-                    return handle.createQuery("select c.ID_PR, p.DISCOUNT,p.PRICE,p.NAME_PR,i.URL,c.AMOUNT from cart c join product p on c.ID_PR=p.ID_PR join image i on i.ID_PR=p.ID_PR where  i.`CONDITION`=0 and c.ID_USER='" + idUser + "'").mapToBean(Cart.class).collect(Collectors.toList());
-                });
+    public List<Cart> getListCart(String idUser) {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select c.ID_PR, p.DISCOUNT,p.PRICE,p.NAME_PR,i.URL,c.AMOUNT from cart c join product p on c.ID_PR=p.ID_PR join image i on i.ID_PR=p.ID_PR where  i.`CONDITION`=0 and c.ID_USER='" + idUser + "'").mapToBean(Cart.class).collect(Collectors.toList());
+        });
     }
 
     // hàm tính tổng ở cart

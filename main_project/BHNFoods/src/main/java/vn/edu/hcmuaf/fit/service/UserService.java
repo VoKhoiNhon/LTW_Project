@@ -28,17 +28,17 @@ public class UserService {
 
     public User checkLogin(String username, String password) {
         List<User> users = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT PASSW, PHONE, EMAIL FROM user WHERE EMAIL = ? and PHONE=?")
+                h.createQuery("SELECT ID_USER,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,Decentralization FROM user WHERE EMAIL = ? or PHONE=?")
                         .bind(0, username).bind(1, username)
-                        .mapToBean(User.class)
-                        .stream()
+                        .mapToBean(User.class).stream()
                         .collect(Collectors.toList())
         );
         if (users.size() != 1) return null;
         User user = users.get(0);
         if (!user.getPassw().equals((password))
-                || !(user.getEmail().equals(username) || (user.getPhone().equals(username)))) return null;
-
+                || !(user.getEmail().equals(username) || (user.getPhone().equals(username)))) {
+            return null;
+        }
         return user;
     }
 
@@ -68,7 +68,24 @@ public class UserService {
         return false;
     }
 
-    public static void main(String[] args) {
-        System.out.println(UserService.getInstance().getListUser().get(2).getNameUser());
-    }
+//    public User getSignUp(String name, String email, String phone, String passw1, String passw2) {
+//        List<User> users = getListUser();
+//        int count = users.size();
+//        return JDBIConnector.get().withHandle(handle -> {
+//            return handle.createQuery("INSERT INTO `user` VALUES( 'user" + (count + 1) + "',NULL,'"
+//                    + passw1 + "','" + name+"','" + phone + "','" + email + "'," + "NULL,NULL, NULL,0);")
+//
+//        });
+//        if (name.equals("") || email.equals("") || phone.equals("") || passw1.equals("") || passw2.equals("")) {
+//            return null;
+//        }
+//        for (User u : users) {
+//            if (u.getEmail().equals(email) || u.getIdUser().equals(phone)) {
+//                return null;
+//            }
+//        }
+//        if (!passw2.equals(passw1)) {
+//            return null;
+//        }
+//    }
 }

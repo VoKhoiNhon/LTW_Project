@@ -1,5 +1,6 @@
 <%@ page import="vn.edu.hcmuaf.fit.beans.Cart" %>
 <%@ page import="java.util.List" %>
+<%@ page import="vn.edu.hcmuaf.fit.beans.User" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <head>
     <title>BHNFoods</title>
@@ -81,8 +82,30 @@
                 <li class="nav-item cta cta-colored"><a href="http://localhost:8080/BHNFoods/Cart?idUser=user1"
                                                         class="nav-link"><span
                         class="fa-solid fa-cart-shopping"></span>[<%=result%>]</a></li>
-                <li class="nav-item cta cta-colored"><a href="login.jsp" class="nav-link"><span
-                        style="line-height: 1.8" class="fa-solid fa-user"></span></a></li>
+                <%
+                    User user= (User) session.getAttribute("auth");
+                    if(user == null){
+                %>
+
+                <li class="nav-item cta cta-colored">
+                    <a href="login.jsp" class="nav-link"><span
+                        style="line-height: 1.8" class="fa-solid fa-user"></span>
+                    </a>
+                </li>
+                <%}
+                 else {
+                %>
+                <li class="nav-item cta cta-colored hover_user">
+                    <span href="#" class="nav-link" style="cursor: pointer;"><%=user.getNameUser()%></span>
+                    <div class="list_menu">
+                        <div class="dr"><a href="account.jsp">Tài khoản</a></div>
+                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/loveProduct?idUser=<%=user.getIdUser()%>">Sản phẩm yêu thích</a></div>
+                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/managerOrder?idUser=<%=user.getIdUser()%>">Quản lý đơn hàng</a> </div>
+                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/history?idUser=<%=user.getIdUser()%>">Lịch sử đơn hàng</a></div>
+                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/index?idUser=">Đăng xuất</a></div>
+                    </div>
+                </li>
+                <%}%>
             </ul>
 
         </div>

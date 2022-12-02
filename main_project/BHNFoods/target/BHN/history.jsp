@@ -43,7 +43,8 @@
 
 </head>
 <body>
-
+<% String condition= (String) request.getAttribute("cond");
+%>
 <%@include file="header.jsp" %>
 
 <section class="shoping-cart spad">
@@ -105,6 +106,12 @@
                         <div>
                             <h5>Thời gian đặt hàng: <span><%=time%></span></h5>
                         </div>
+
+                        <div>
+
+                            <h6 style="color:#CC3636; border: none;"><%=condition%> </h6>
+                        </div>
+                       
                         <div>
                             <h4>Tổng đơn hàng: <span><%= dec.format(mapSum.get(entry.getKey())).replace(',','.')%>đ</span></h4>
                         </div>

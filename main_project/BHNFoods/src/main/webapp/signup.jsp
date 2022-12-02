@@ -63,7 +63,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputName1">Số điện thoại</label>
-                  <input type="number" class="form-control" id="exampleInputName1"
+                  <input type="text" class="form-control" id="exampleInputName1"
                     placeholder="Nhập số điện thoại">
                 </div>
 

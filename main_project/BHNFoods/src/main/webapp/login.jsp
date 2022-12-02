@@ -46,11 +46,12 @@
                 <p class="card-description login">
                   Đăng nhập
                 </p>
-                <form class="forms-sample" action="/Login" method="post">
-                  <% if( error!=null){ %> <div class="form-group">
-                    <label for="exampleInputName1"><%=error%></label>
-                </div> <%}%>
-
+                <form class="forms-sample" action="/BHNFoods/Login" method="post">
+                  <% if( error!=null){ %>
+                    <div class="form-group">
+                    <label for="exampleInputName1" style="color: #CC3636"><%=error%></label>
+                    </div>
+                    <%}%>
                   <div class="form-group">
                     <label for="exampleInputName1">Email hoặc Số điện thoại</label>
                     <input type="text" class="form-control" name="username" id="exampleInputName1"
