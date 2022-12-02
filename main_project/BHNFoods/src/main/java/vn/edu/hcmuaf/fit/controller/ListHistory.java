@@ -16,30 +16,30 @@ import java.util.Map;
 public class ListHistory extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idUser=request.getParameter("idUser");
+        String idUser = request.getParameter("idUser");
         List<SoldProduct> listHistory = ProductService.getInstance().getHistory(idUser);
         Map<String, List<SoldProduct>> mapOrders = ProductService.getInstance().getMapOrders(listHistory);
         List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
         Map<String, Integer> sumOrders = ProductService.getInstance().sumOrder(mapOrders);
         request.setAttribute("sumOrders", sumOrders);
         request.setAttribute("mapOrders", mapOrders);
-        request.setAttribute("listCart",listCart);
+        request.setAttribute("listCart", listCart);
         request.setAttribute("listHistory", listHistory);
-        request.getRequestDispatcher("history.jsp").forward(request,response);
+        request.getRequestDispatcher("history.jsp").forward(request, response);
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idUser=request.getParameter("idUser");
+        String idUser = request.getParameter("idUser");
         List<SoldProduct> history = ProductService.getInstance().getHistory(idUser);
-        SoldProduct soldPr= new SoldProduct();
-        if(soldPr.getCondition()==2){
-            request.setAttribute("cond","Đã giao");
-            request.getRequestDispatcher("history.jsp").forward(request,response);
-        }
-        else {
-            request.setAttribute("cond","Giao không thành công");
-            request.getRequestDispatcher("history.jsp").forward(request,response);
+        SoldProduct soldPr = new SoldProduct();
+        if (soldPr.getCondition() == 2) {
+            request.setAttribute("cond", "Đã giao");
+            request.getRequestDispatcher("history.jsp").forward(request, response);
+        } else {
+            request.setAttribute("cond", "Giao không thành công");
+            request.getRequestDispatcher("history.jsp").forward(request, response);
         }
     }
 }

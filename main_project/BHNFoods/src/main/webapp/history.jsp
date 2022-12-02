@@ -43,7 +43,8 @@
 
 </head>
 <body>
-<% String condition= (String) request.getAttribute("cond");
+<%
+    String condition= (String) request.getAttribute("cond");
 %>
 <%@include file="header.jsp" %>
 
@@ -109,11 +110,11 @@
 
                         <div>
 
-                            <h6 style="color:#CC3636; border: none;"><%=condition%> </h6>
+                            <h5 style="color:#CC3636; border: none;"><%=condition%> </h5>
                         </div>
-                       
+
                         <div>
-                            <h4>Tổng đơn hàng: <span><%= dec.format(mapSum.get(entry.getKey())).replace(',','.')%>đ</span></h4>
+                            <h5>Tổng đơn hàng: <span><%= dec.format(mapSum.get(entry.getKey())).replace(',','.')%>đ</span></h5>
                         </div>
                     </div>
                 </div>

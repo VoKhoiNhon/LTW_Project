@@ -122,10 +122,12 @@ public class ProductService {
     //trang lịch sử giao dịch
     public List<SoldProduct> getHistory(String idUser){
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT s.ID_PR, p.NAME_PR, i.URL, s.ID_USER, s.PRICE_HERE, s.AMOUNT, s.`TIME_SOLD`, s.ID_ORDERS FROM sold_pr s join product p on p.ID_PR = s.ID_PR JOIN image i on i.ID_PR = s.ID_PR JOIN orders o on o.ID_ORDERS = s.ID_ORDERS where (o.`CONDITION` = 2 or o.`CONDITION` = 3) and i.`CONDITION` = 0 and s.ID_USER = '" + idUser + "'")
+            return handle.createQuery("SELECT s.ID_PR, p.NAME_PR, i.URL, s.ID_USER, s.PRICE_HERE, s.AMOUNT, s.`TIME_SOLD`, s.ID_ORDERS, o.`CONDITION` FROM sold_pr s join product p on p.ID_PR = s.ID_PR JOIN image i on i.ID_PR = s.ID_PR JOIN orders o on o.ID_ORDERS = s.ID_ORDERS where (o.`CONDITION` = 2 or o.`CONDITION` = 3) and i.`CONDITION` = 0 and s.ID_USER = '" + idUser + "'")
                     .mapToBean(SoldProduct.class).collect(Collectors.toList());
         });
     }
+
+
     //trang quan ly don hang
     public List<Orders> getManagerOrders(String idUser){
         return  JDBIConnector.get().withHandle(handle -> {
@@ -135,7 +137,7 @@ public class ProductService {
     }
 
     public static void main(String[] args) {
-        System.out.println(getInstance().getHistory("user3").get(0).getNamePr());
+        System.out.println(getInstance().getHistory("user3").get(0).getCondition());
     }
 
     public Map<String, List<SoldProduct>> getMapOrders(List<SoldProduct> soldProductList) {
