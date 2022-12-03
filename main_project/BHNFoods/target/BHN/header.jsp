@@ -84,6 +84,9 @@
                         class="fa-solid fa-cart-shopping"></span>[<%=result%>]</a></li>
                 <%
                     User user= (User) session.getAttribute("auth");
+                    request.setAttribute("user", user);
+                    System.out.println(user == null);
+                    System.out.println(request.getAttribute("idUser") == null);
                     if(user == null){
                 %>
 
@@ -98,11 +101,11 @@
                 <li class="nav-item cta cta-colored hover_user">
                     <span href="#" class="nav-link" style="cursor: pointer;"><%=user.getNameUser()%></span>
                     <div class="list_menu">
-                        <div class="dr"><a href="account.jsp">Tài khoản</a></div>
+                        <div class="dr"><a href="http://localhost:8080/BHNFoods/account?idUser=<%=user.getIdUser()%>">Tài khoản</a></div>
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/loveProduct?idUser=<%=user.getIdUser()%>">Sản phẩm yêu thích</a></div>
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/managerOrder?idUser=<%=user.getIdUser()%>">Quản lý đơn hàng</a> </div>
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/history?idUser=<%=user.getIdUser()%>">Lịch sử đơn hàng</a></div>
-                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/index?idUser=">Đăng xuất</a></div>
+                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/index?idUser=null">Đăng xuất</a></div>
                     </div>
                 </li>
                 <%}%>

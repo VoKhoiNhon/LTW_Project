@@ -13,7 +13,6 @@ import java.util.List;
 public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
@@ -32,7 +31,9 @@ public class Login extends HttpServlet {
         } else if (user != null && user.getDecentralization() != 1) {
             HttpSession session = request.getSession(true);
             session.setAttribute("auth", user);
-            response.sendRedirect("http://localhost:8080/BHNFoods/index?idUser=user1");
+            session.setAttribute("idUser", user.getIdUser());
+            request.setAttribute("idUser", user.getIdUser());
+            response.sendRedirect("http://localhost:8080/BHNFoods/index?idUser=" + user.getIdUser());
         } else {
             request.setAttribute("error", "Sai tài khoản hoặc mật khẩu");
             request.getRequestDispatcher("login.jsp").forward(request, response);

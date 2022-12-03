@@ -2,6 +2,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.beans.Product" %>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.fit.beans.SingleProduct" %>
+<%@ page import="vn.edu.hcmuaf.fit.beans.User" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +30,17 @@
 
     <!-- endinject -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        .card-body a .btn_add_delete {
+            width: 60px;
+            height: 30px;
+            border: none;
+            color: #1f1f1fbf;
+            font-weight: 600 !important;
+            border-radius: 5px;
 
+        }
+    </style>
 </head>
 
 <body>
@@ -175,6 +186,9 @@
             <%--            </a>--%>
             <%--          </div>--%>
             <%--        </li>--%>
+            <%
+                User user = (User) session.getAttribute("auth");
+                if (user != null) {%>
             <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                 <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                     <img class="img-xs rounded-circle" src="ImageproductNew/background/images.png"
@@ -182,8 +196,10 @@
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                     <div class="dropdown-header text-center">
                         <%--              <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">--%>
-                        <p class="mb-1 mt-3 font-weight-semibold">Võ Khôi Nhơn</p>
-                        <p class="fw-light text-muted mb-0">Nhonw@gmail.com</p>
+                        <p class="mb-1 mt-3 font-weight-semibold"><%=user.getNameUser()%>
+                        </p>
+                        <p class="fw-light text-muted mb-0"><%=user.getEmail()%>
+                        </p>
                     </div>
                     <a class="dropdown-item"><i
                             class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Trang cá nhân</a>
@@ -197,6 +213,7 @@
                     <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Đăng xuất</a>
                 </div>
             </li>
+            <%}%>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
                 data-bs-toggle="offcanvas">
@@ -220,7 +237,7 @@
             </a>
         </div>
         <div class="nav-item">
-            <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1"  class="nav-item-link">
+            <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Quản lý sản phẩm</span>
             </a>
@@ -275,9 +292,16 @@
                                                               <p class="card-subtitle card-subtitle-dash">Bạn có 50+ yêu cầu mới</p>
                                                             </div> -->
                                                             <div>
-                                                                <h4 class="card-title card-title-dash">Sửa <i
-                                                                        class="fa-regular fa-pen-to-square"></i></h4>
-                                                                <!-- <p class="card-subtitle card-subtitle-dash">Bạn có 50+ yêu cầu mới</p> -->
+                                                                <a href="#" STYLE="text-decoration: none">
+                                                                    <button class="card-title card-title-dash btn_add_delete">
+                                                                        Thêm
+                                                                    </button>
+                                                                </a>
+                                                                <a href="#" STYLE="text-decoration: none">
+                                                                    <button class="card-title card-title-dash btn_add_delete">
+                                                                        Xóa
+                                                                    </button>
+                                                                </a>
                                                             </div>
                                                         </div>
                                                         <div class="table-responsive  mt-1">
@@ -297,6 +321,7 @@
                                                                     <th>Ngày hết hạn</th>
                                                                     <th>Số lượng hàng đã bán</th>
                                                                     <th>Giá</th>
+                                                                    <th></th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -319,8 +344,10 @@
                                                                         <div class="d-flex ">
                                                                             <img src="<%=p.getUrl()%>" alt="">
                                                                             <div>
-                                                                                <h6><%=p.getNamePr()%></h6>
-                                                                                <p><%=p.getIdPr()%></p>
+                                                                                <h6><%=p.getNamePr()%>
+                                                                                </h6>
+                                                                                <p><%=p.getIdPr()%>
+                                                                                </p>
                                                                             </div>
                                                                         </div>
                                                                     </td>
@@ -345,14 +372,22 @@
                                                                         </div>
                                                                     </td>
                                                                     <td>
-                                                                        <div class=""><%=decF.format(p.getPrice())%> đ </div>
+                                                                        <div class=""><%=decF.format(p.getPrice())%>đ
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div>
+                                                                            <a href="#" style="text-decoration: none">
+                                                                                <h4 class="card-title card-title-dash">
+                                                                                    Sửa <i
+                                                                                        class="fa-regular fa-pen-to-square"></i>
+                                                                                </h4></a>
+                                                                        </div>
                                                                     </td>
                                                                 </tr>
                                                                 <%}%>
                                                                 </tbody>
-
                                                             </table>
-
                                                         </div>
                                                     </div>
                                                 </div>
@@ -361,17 +396,27 @@
                                     </div>
                                 </div>
                                 <div class="product__pagination">
-                                    <%if(Integer.parseInt(request.getAttribute("page").toString()) >= 2) {%>
-                                    <button type="button" class="btn btn-secondary " >
-                                    <a  style="text-decoration: none;color: #b2b2b2;" href="http://localhost:8080/BHNFoods/AdminManagePr?kind=<%=request.getAttribute("kind")%>&page=<%=Integer.parseInt(request.getAttribute("page").toString()) - 1%>"><i class="fa fa-long-arrow-left"></i></a></button>
+                                    <%if (Integer.parseInt(request.getAttribute("page").toString()) >= 2) {%>
+                                    <button type="button" class="btn btn-secondary ">
+                                        <a style="text-decoration: none;color: #b2b2b2;"
+                                           href="http://localhost:8080/BHNFoods/AdminManagePr?kind=<%=request.getAttribute("kind")%>&page=<%=Integer.parseInt(request.getAttribute("page").toString()) - 1%>"><i
+                                                class="fa fa-long-arrow-left"></i></a></button>
                                     <%}%>
-                                    <%int count =(int)request.getAttribute("count");
-                                        for (int i = 0; i < count; i++) {%>
-                                    <button type="button" class="btn btn-secondary "> <a style="text-decoration: none;color: #b2b2b2; "href="http://localhost:8080/BHNFoods/AdminManagePr?kind=<%=request.getAttribute("kind")%>&page=<%= i+ 1%>"><%=i + 1%></a></button>
+                                    <%
+                                        int count = (int) request.getAttribute("count");
+                                        for (int i = 0; i < count; i++) {
+                                    %>
+                                    <button type="button" class="btn btn-secondary "><a
+                                            style="text-decoration: none;color: #b2b2b2; "
+                                            href="http://localhost:8080/BHNFoods/AdminManagePr?kind=<%=request.getAttribute("kind")%>&page=<%= i+ 1%>"><%=i + 1%>
+                                    </a></button>
 
                                     <%}%>
-                                    <%if(Integer.parseInt(request.getAttribute("page").toString()) <= count - 1) {%>
-                                    <button type="button" class="btn btn-secondary ">  <a style="text-decoration: none;color: #b2b2b2;" href="http://localhost:8080/BHNFoods/AdminManagePr?kind=<%=request.getAttribute("kind")%>&page=<%=Integer.parseInt(request.getAttribute("page").toString()) + 1%>"><i class="fa fa-long-arrow-right"></i></a></button>
+                                    <%if (Integer.parseInt(request.getAttribute("page").toString()) <= count - 1) {%>
+                                    <button type="button" class="btn btn-secondary "><a
+                                            style="text-decoration: none;color: #b2b2b2;"
+                                            href="http://localhost:8080/BHNFoods/AdminManagePr?kind=<%=request.getAttribute("kind")%>&page=<%=Integer.parseInt(request.getAttribute("page").toString()) + 1%>"><i
+                                            class="fa fa-long-arrow-right"></i></a></button>
                                     <%}%>
                                 </div>
                             </div>
@@ -384,7 +429,7 @@
     </div>
     <!-- main-panel ends -->
 
-<!-- container-scroller -->
+    <!-- container-scroller -->
 </div>
 <!-- plugins:js -->
 <script src="admin_template/vendors/js/vendor.bundle.base.js"></script>

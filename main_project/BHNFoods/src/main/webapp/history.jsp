@@ -43,9 +43,7 @@
 
 </head>
 <body>
-<%
-    String condition= (String) request.getAttribute("cond");
-%>
+
 <%@include file="header.jsp" %>
 
 <section class="shoping-cart spad">
@@ -57,6 +55,7 @@
                 Map<String, Integer> mapSum = (Map<String, Integer>) request.getAttribute("sumOrders");
                 String time ="";
                 DecimalFormat dec= new DecimalFormat("#,###");
+                int condition = 2;
                 for (Map.Entry<String, List<SoldProduct>> entry : map.entrySet()) {
             %>
         <div class="row">
@@ -76,7 +75,7 @@
                         <tbody>
                         <%for (SoldProduct s: entry.getValue()) {
                             LocalDateTime dateTime = s.getTimeSold();
-
+                            condition = s.getCondition();
                             time = ProductService.getInstance().formatTime(dateTime);
                         %>
                         <tr>
@@ -109,8 +108,11 @@
                         </div>
 
                         <div>
-
-                            <h5 style="color:#CC3636; border: none;"><%=condition%> </h5>
+                            <%if(condition == 2) {%>
+                            <h5 style="color:#CC3636; border: none;">Giao hàng thành công</h5>
+                            <%} else {%>
+                            <h5 style="color:#CC3636; border: none;">Giao hàng không thành công</h5>
+                            <%}%>
                         </div>
 
                         <div>

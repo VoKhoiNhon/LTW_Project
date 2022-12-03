@@ -43,9 +43,7 @@
 
 </head>
 <body>
-<% List<SoldProduct> soldProductList = (List<SoldProduct>) request.getAttribute("listHistory");
-    String condition = (String) request.getAttribute("cond");
-%>
+
 <%@include file="header.jsp" %>
 
 <section class="shoping-cart spad">
@@ -53,12 +51,13 @@
 
 
         <%
-            Map<String, List<SoldProduct>> map = (Map<String, List<SoldProduct>>) request.getAttribute("mapOrders");
-            Map<String, Integer> mapSum = (Map<String, Integer>) request.getAttribute("sumOrders");
-            String time = "";
-            DecimalFormat dec = new DecimalFormat("#,###");
-            for (Map.Entry<String, List<SoldProduct>> entry : map.entrySet()) {
-        %>
+                Map<String,List<SoldProduct>> map = (Map<String, List<SoldProduct>>) request.getAttribute("mapOrders");
+                Map<String, Integer> mapSum = (Map<String, Integer>) request.getAttribute("sumOrders");
+                String time ="";
+                DecimalFormat dec= new DecimalFormat("#,###");
+                int condition = 2;
+                for (Map.Entry<String, List<SoldProduct>> entry : map.entrySet()) {
+            %>
         <div class="row">
             <div class="col-lg-12">
 
@@ -74,11 +73,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <%
-                            for (SoldProduct s : entry.getValue()) {
-                                LocalDateTime dateTime = s.getTimeSold();
-
-                                time = ProductService.getInstance().formatTime(dateTime);
+                        <%for (SoldProduct s: entry.getValue()) {
+                            LocalDateTime dateTime = s.getTimeSold();
+                            condition = s.getCondition();
+                            time = ProductService.getInstance().formatTime(dateTime);
                         %>
                         <tr>
                             <td class="shoping__cart__quantity">
@@ -91,13 +89,13 @@
                                 </h5>
                             </td>
                             <td class="shoping__cart__price">
-                                <%= dec.format(s.getPriceHere()).replace(',', '.')%>đ
+                                <%= dec.format(s.getPriceHere()).replace(',','.')%>đ
                             </td>
                             <td class="shoping__cart__quantity">
                                 <span><%=s.getAmount()%></span>
                             </td>
                             <td class="shoping__cart__total">
-                                <%=dec.format(s.getAmount() * s.getPriceHere()).replace(',', '.')%>
+                                <%=dec.format(s.getAmount()*s.getPriceHere()).replace(',','.')%>
                             </td>
                         </tr>
                         <%}%>
@@ -110,21 +108,15 @@
                         </div>
 
                         <div>
-                            <%
-                                for (SoldProduct soldProduct : soldProductList) {
-                                    if (soldProduct.getCondition() == 2) {%>
-                            <h6 style="color:#CC3636; border: none;">Đã giao
-                            </h6>
+                            <%if(condition == 2) {%>
+                            <h5 style="color:#CC3636; border: none;">Giao hàng thành công</h5>
                             <%} else {%>
-                            <h6 style="color:#CC3636; border: none;">Giao không thành công
-                            </h6>
-                            <%}%>
+                            <h5 style="color:#CC3636; border: none;">Giao hàng không thành công</h5>
                             <%}%>
                         </div>
 
                         <div>
-                            <h4>Tổng đơn hàng:
-                                <span><%= dec.format(mapSum.get(entry.getKey())).replace(',', '.')%>đ</span></h4>
+                            <h5>Tổng đơn hàng: <span><%= dec.format(mapSum.get(entry.getKey())).replace(',','.')%>đ</span></h5>
                         </div>
                     </div>
                 </div>
@@ -132,6 +124,7 @@
             </div>
         </div>
         <%}%>
+
 
 
         <%--            <div class="row">--%>

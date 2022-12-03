@@ -115,30 +115,18 @@ public class ProductService {
     //trang sản phẩm yêu thích
     public List<Product> getListLoveProd(String idUser) {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from `like` l JOIN product p  on l.ID_PR = p.ID_PR join image i on p.ID_PR = i.ID_PR where i.`CONDITION` = 0 and l.ID_USER = '" + idUser + "'")
+            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from `like` l JOIN product p  on l.ID_PR = p.ID_PR join image i on p.ID_PR = i.ID_PR where i.`CONDITION` = 0 and l.ID_USER = '" + idUser +"'")
                     .mapToBean(Product.class).collect(Collectors.toList());
         });
     }
-
     //trang lịch sử giao dịch
-    public List<Orders> getHistory(String idUser) {
-        return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT i.URL, p.NAME_PR, p.PRICE, s.AMOUNT, o.TIME_ORDERS FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on s.ID_PR= p.ID_PR JOIN image i on i.ID_PR=p.ID_PR WHERE o.`CONDITION`=2  and i.`CONDITION`=0 and s.`ID-USER`='" + idUser + "'")
-                    .mapToBean(Orders.class).collect(Collectors.toList());
-        });
-    }
-//danh sach nhap san pham theo ngay
-    public List<SingleProduct> getListPrDateImport(int i) {
-        return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select  p.NAME_PR, c.DATE_IMPORT_PR from ct_pr c join product p on c.ID_PR=p.ID_PR ORDER BY c.DATE_IMPORT_PR DESC LIMIT "+i)
-                    .mapToBean(SingleProduct.class).collect(Collectors.toList());
-        });
     public List<SoldProduct> getHistory(String idUser){
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("SELECT s.ID_PR, p.NAME_PR, i.URL, s.ID_USER, s.PRICE_HERE, s.AMOUNT, s.`TIME_SOLD`, s.ID_ORDERS, o.`CONDITION` FROM sold_pr s join product p on p.ID_PR = s.ID_PR JOIN image i on i.ID_PR = s.ID_PR JOIN orders o on o.ID_ORDERS = s.ID_ORDERS where (o.`CONDITION` = 2 or o.`CONDITION` = 3) and i.`CONDITION` = 0 and s.ID_USER = '" + idUser + "'")
                     .mapToBean(SoldProduct.class).collect(Collectors.toList());
         });
     }
+
 
 
     //trang quan ly don hang
@@ -187,22 +175,12 @@ public class ProductService {
         });
     }
 
-        //lấy ra sản phẩm của cart
-        public List<Cart> getListCart (String idUser){
-            return JDBIConnector.get().withHandle(handle -> {
-                return handle.createQuery("select c.ID_PR, p.DISCOUNT,p.PRICE,p.NAME_PR,i.URL,c.AMOUNT from cart c join product p on c.ID_PR=p.ID_PR join image i on i.ID_PR=p.ID_PR where  i.`CONDITION`=0 and c.ID_USER='" + idUser + "'").mapToBean(Cart.class).collect(Collectors.toList());
-            });
+    // hàm tính tổng ở cart
+    public int sumCart(List<Cart> l) {
+        int result = 0;
+        for (Cart c : l) {
+            result += c.getPrice()*c.getAmount();
         }
-
-        // hàm tính tổng ở cart
-        public int sumCart (List < Cart > l) {
-            int result = 0;
-            for (Cart c : l) {
-                result += c.getPrice() * c.getAmount();
-            }
-            return result;
-        }
-
         return result;
     }
 
@@ -210,6 +188,13 @@ public class ProductService {
         return dateTime.getDayOfMonth() + "-" + dateTime.getMonthValue() + "-" + dateTime.getYear() + " " + dateTime.getHour() + ":" + dateTime.getMinute();
     }
 
+    //danh sach nhap san pham theo ngay
+    public List<SingleProduct> getListPrDateImport(int i) {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select  p.NAME_PR, c.DATE_IMPORT_PR from ct_pr c join product p on c.ID_PR=p.ID_PR ORDER BY c.DATE_IMPORT_PR DESC LIMIT "+i)
+                    .mapToBean(SingleProduct.class).collect(Collectors.toList());
+        });
+    }
 //    public int sumAmount(List<Cart> l) {
 //        int result = 0;
 //        for (Cart c : l) {
@@ -220,5 +205,3 @@ public class ProductService {
 
 
 }
-
-

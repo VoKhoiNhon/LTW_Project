@@ -54,6 +54,7 @@ public class UserService {
         }
     }
 
+
     public List<User> getListUser() {
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("select * from user")

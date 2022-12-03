@@ -31,15 +31,6 @@ public class ListHistory extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idUser = request.getParameter("idUser");
-        List<SoldProduct> history = ProductService.getInstance().getHistory(idUser);
-        SoldProduct soldPr = new SoldProduct();
-        if (soldPr.getCondition() == 2) {
-            request.setAttribute("cond", "Đã giao");
-            request.getRequestDispatcher("history.jsp").forward(request, response);
-        } else {
-            request.setAttribute("cond", "Giao không thành công");
-            request.getRequestDispatcher("history.jsp").forward(request, response);
-        }
+//
     }
 }
