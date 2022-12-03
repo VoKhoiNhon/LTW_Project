@@ -1,14 +1,15 @@
 package vn.edu.hcmuaf.fit.service;
 
+import org.jdbi.v3.core.Handle;
+import org.jdbi.v3.core.statement.Query;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.beans.User;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
+import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class UserService {
@@ -62,31 +63,26 @@ public class UserService {
         });
     }
 
-    public boolean register(String username, String password, String confirm, String email, String phone, String address) {
-//        check register with username and password
-//        if(!password.equals(confirm))return false;
-//        return UserDao.getInstance().register(username, password, email, phone, address);
+    public boolean checkAccountExist(String email, String phone) {
+        List<User> list = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select* from user")
+                    .mapToBean(User.class).collect(Collectors.toList());
+        });
+        for (User u : list) {
+            if (email.equals(u.getEmail()) || phone.equals(u.getPhone())) return true;
+        }
         return false;
+
     }
 
-//    public User getSignUp(String name, String email, String phone, String passw1, String passw2) {
-//        List<User> users = getListUser();
-//        int count = users.size();
-//        return JDBIConnector.get().withHandle(handle -> {
-//            return handle.createQuery("INSERT INTO `user` VALUES( 'user" + (count + 1) + "',NULL,'"
-//                    + passw1 + "','" + name+"','" + phone + "','" + email + "'," + "NULL,NULL, NULL,0);")
-//
-//        });
-//        if (name.equals("") || email.equals("") || phone.equals("") || passw1.equals("") || passw2.equals("")) {
-//            return null;
-//        }
-//        for (User u : users) {
-//            if (u.getEmail().equals(email) || u.getIdUser().equals(phone)) {
-//                return null;
-//            }
-//        }
-//        if (!passw2.equals(passw1)) {
-//            return null;
-//        }
-//    }
+    public void addUser(String name, String email, String phone, String pass)  {
+        List<User> users = getListUser();
+        int count = users.size();
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("INSERT INTO `user` VALUES( 'user" + (count + 1) + "',NULL,'"
+                    + pass + "','" + name+"','" + phone + "','" + email + "'," + "NULL,'2021-12-02', NULL,0)").execute();
+
+        });
+
+    }
 }

@@ -43,7 +43,6 @@
 
 </head>
 <body>
-
 <%@include file="header.jsp" %>
 
 <section class="shoping-cart spad">
@@ -113,6 +112,8 @@
                             <%} else {%>
                             <h5 style="color:#CC3636; border: none;">Giao hàng không thành công</h5>
                             <%}%>
+
+                            <h5 style="color:#CC3636; border: none;"><%=condition%> </h5>
                         </div>
 
                         <div>

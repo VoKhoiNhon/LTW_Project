@@ -61,27 +61,29 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="index.jsp">BHNFoods</a>
+        <a class="navbar-brand" href="http://localhost:8080/BHNFoods/index?idUser=null">BHNFoods</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Sản Phẩm
         </button>
-        <% List<Cart> l = (List<Cart>) request.getAttribute("listCart");
-            int result = 0;
-            for (Cart c : l) {
-                result += c.getAmount();
-            }%>
+
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="http://localhost:8080/BHNFoods/index?idUser=user1" class="nav-link">Trang chủ</a></li>
                 <li class="nav-item active "><a href="http://localhost:8080/BHNFoods/ListProduct?kind=0&page=1&idUser=user1" class="nav-link">Sản
                     phẩm</a></li>
-                <li class="nav-item cta cta-colored find"><input type="text" name="" id="findicon"
-                                                                 placeholder="Tìm kiếm"><a
-                        href="cart.jsp" class="nav-link"><span class="fa-solid fa-magnifying-glass"></span></a></li>
-                <li class="nav-item cta cta-colored"><a href="http://localhost:8080/BHNFoods/Cart?idUser=user1"
+                <li class="nav-item cta cta-colored find">
+                    <form action="/BHNFoods/Search"method="post"><input value="<%=request.getParameter("searchPR")!=null?request.getParameter("searchPR"):""%>" type="text" class="search-input" name="searchPR" id="findicon"
+                                           placeholder="Tìm kiếm"> <button type="submit" class="fa-solid fa-magnifying-glass" style="background: none;border: none;"></button></form></li>
+                <% List<Cart> l = (List<Cart>) request.getAttribute("listCart");
+                    int result = 0;
+                    for (Cart c : l) {
+                        result += c.getAmount();
+                    }%>
+                <li class="nav-item cta cta-colored"><a href="http://localhost:8080/BHNFoods/Cart?idUser=null"
                                                         class="nav-link"><span
                         class="fa-solid fa-cart-shopping"></span>[<%=result%>]</a></li>
+
                 <%
                     User user= (User) session.getAttribute("auth");
                     request.setAttribute("user", user);

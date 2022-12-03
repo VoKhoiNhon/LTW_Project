@@ -13,10 +13,10 @@ import java.util.List;
 
 @WebServlet(name = "AdminMain", value = "/AdminMain")
 public class AdminMain extends HttpServlet {
-    static int i=5;
+    int i ;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        i=5;
         List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i);
         request.setAttribute("listPrDate", list);
         request.getRequestDispatcher("adminMain.jsp").forward(request,response);
@@ -24,11 +24,11 @@ public class AdminMain extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i+5);
 
     }
     public static void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i+5);
-        request.getRequestDispatcher("adminMain.jsp").forward(request,response);
+
+      response.sendRedirect("adminMain.jsp");
     }
 }
