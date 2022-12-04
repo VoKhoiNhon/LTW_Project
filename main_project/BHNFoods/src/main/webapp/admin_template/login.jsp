@@ -44,11 +44,11 @@
                 <p class="card-description login">
                   Đăng nhập
                 </p>
-                <form class="forms-sample">
+                <form class="forms-sample" action="/BNHFoods/doLogin" method="post">
                   <div class="form-group">
                     <label for="exampleInputName1">Email hoặc Số điện thoại</label>
                     <input type="text" class="form-control" id="exampleInputName1"
-                      placeholder="Nhập Email hoặc số điện thoại" required>
+                      placeholder="Nhập Email hoặc số điện thoại" required value="<%=request.getParameter("username")!=null?request.getParameter("username"):""%>">
                   </div>
 
                   <div class="form-group">
