@@ -27,4 +27,44 @@ public class User implements Serializable {
         this.sex = sex;
         this.permission = permission;
     }
+
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getNameUser() {
+        return nameUser;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public Date getDateSignup() {
+        return dateSignup;
+    }
+
+    public int getSex() {
+        return sex;
+    }
+
+    public int getPermission() {
+        return permission;
+    }
 }

@@ -1,5 +1,5 @@
 package vn.edu.hcmuaf.fit.db;
-import vn.edu.hcmuaf.fit.model.User;
+import vn.edu.hcmuaf.fit.beans.User;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.jdbi.v3.core.Jdbi;
 
