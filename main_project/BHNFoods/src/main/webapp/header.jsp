@@ -73,7 +73,7 @@
                 <li class="nav-item active "><a href="http://localhost:8080/BHNFoods/ListProduct?kind=0&page=1&idUser=user1" class="nav-link">Sản
                     phẩm</a></li>
                 <li class="nav-item cta cta-colored find">
-                    <form action="/BHNFoods/Search"method="post"><input value="<%=request.getParameter("searchPR")!=null?request.getParameter("searchPR"):""%>" type="text" class="search-input" name="searchPR" id="findicon"
+                    <form action="/BHNFoods/Search"method="post" style="display: flex"><input value="<%=request.getParameter("searchPR")!=null?request.getParameter("searchPR"):""%>" type="text" class="search-input" name="searchPR" id="findicon"
                                            placeholder="Tìm kiếm"> <button type="submit" class="fa-solid fa-magnifying-glass" style="background: none;border: none;"></button></form></li>
                 <% List<Cart> l = (List<Cart>) request.getAttribute("listCart");
                     int result = 0;
