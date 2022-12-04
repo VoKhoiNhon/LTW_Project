@@ -3,9 +3,6 @@ package vn.edu.hcmuaf.fit.service;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.beans.Product;
 
-import java.text.Collator;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,14 +21,14 @@ public class ProductService {
     }
    public static List<Product> getAll(){
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT*FROM product").mapToBean(Product.class).collect(Collectors.toList());
+            return handle.createQuery("SELECT * FROM product").mapToBean(Product.class).collect(Collectors.toList());
         });
 
    }
     public static void main(String[] args) {
         List<Product> list = (List<Product>) getAll();
         for (Product p: list) {
-            System.out.println(p.getNamePro());
+            System.out.println(p.getNamePr());
         }
     }
 }

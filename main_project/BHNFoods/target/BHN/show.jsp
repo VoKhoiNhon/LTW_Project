@@ -14,8 +14,9 @@
 </head>
 <body>
 <%List<Product> list = (List<Product>) request.getAttribute("listRequest");%>
-<%for(int i = 0; i < 20; i++) { %>
-       <h3><%=list.get(i).getNamePro()%></h3>
+<%for(Product p: list) { %>
+       <h3><%=p.getNamePr()%></h3>
+        <h3 style="color: red"><%=p.getPrice()%></h3>
     <%}%>
 </body>
 </html>

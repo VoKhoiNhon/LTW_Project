@@ -1,21 +1,23 @@
 package vn.edu.hcmuaf.fit.beans;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class Product implements Serializable {
     private String idPro;
     private String idMenu;
     private int discount;
     private  int price;
-    private  String namePro;
+    private  String namePr;
 
-    public Product(String idPro, String idMenu, int discount, int price, String namePro) {
+    public Product() {
+    }
+
+    public Product(String idPro, String idMenu, int discount, int price, String namePr) {
         this.idPro = idPro;
         this.idMenu = idMenu;
         this.discount = discount;
         this.price = price;
-        this.namePro = namePro;
+        this.namePr = namePr;
     }
 
     public String getIdPro() {
@@ -30,13 +32,31 @@ public class Product implements Serializable {
         return discount;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public String getNamePro() {
-        return namePro;
+    public String getNamePr() {
+        return namePr;
     }
 
+    public void setIdPro(String idPro) {
+        this.idPro = idPro;
+    }
 
+    public void setIdMenu(String idMenu) {
+        this.idMenu = idMenu;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setNamePr(String namePr) {
+        this.namePr = namePr;
+    }
 }
