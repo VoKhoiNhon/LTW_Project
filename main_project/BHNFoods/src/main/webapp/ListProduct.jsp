@@ -1,4 +1,4 @@
-<%@ page import="vn.edu.hcmuaf.fit.model.Product" %>
+<%@ page import="vn.edu.hcmuaf.fit.beans.Product" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
@@ -125,7 +125,7 @@
                                     </a>
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="ImageproductNew/Dau/dau-den-viet-san-150g-202205231452334172_300x300.jpg" alt="">
+                                            <img src="ImageproductNew/Dau/dau-den-viet-san/dau-den-viet-san-150g-202205231452334172_300x300.jpg" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>Đậu đen Việt San 150g</h6>
@@ -195,25 +195,25 @@
                     </div>
                 </div>
                 <div class="row">
-<%--                    <%--%>
-<%--                        List<Product> productList = (List<Product>) request.getAttribute("listRequest");--%>
-<%--                        for(Product p: productList) {--%>
-<%--                    %>--%>
-<%--                    <div class="col-lg-4 col-md-6 col-sm-6">--%>
-<%--                        <div class="product__item">--%>
-<%--                            <div class="product__item__pic set-bg" data-setbg="<%=p.getSrc()%>">--%>
-<%--                                <ul class="product__item__pic__hover">--%>
-<%--                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>--%>
-<%--                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>--%>
-<%--                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>--%>
-<%--                                </ul>--%>
-<%--                            </div>--%>
-<%--                            <div class="product__item__text">--%>
-<%--                                <a href="singleProduct.jsp"><%=p.getName()%><br> <span><%=p.getPrice()%>đ</span></a>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <%}%>--%>
+                    <%
+                        List<Product> productList = (List<Product>) request.getAttribute("listRequest");
+                        for(Product p: productList) {
+                    %>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg" data-setbg="<%=p.getUrl()%>">
+                                <ul class="product__item__pic__hover">
+                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <a href="singleProduct.jsp"><%=p.getNamePr()%><br> <span><%=p.getPrice()%>đ</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
                 </div>
                 <div class="product__pagination">
                     <a href="#">1</a>

@@ -9,6 +9,8 @@ public class Product implements Serializable {
     private  int price;
     private  String namePr;
 
+    private String url;
+
     public Product() {
     }
 
@@ -18,6 +20,15 @@ public class Product implements Serializable {
         this.discount = discount;
         this.price = price;
         this.namePr = namePr;
+    }
+
+    public Product(String idPro, String idMenu, int discount, int price, String namePr, String url) {
+        this.idPro = idPro;
+        this.idMenu = idMenu;
+        this.discount = discount;
+        this.price = price;
+        this.namePr = namePr;
+        this.url = url;
     }
 
     public String getIdPro() {
@@ -58,5 +69,13 @@ public class Product implements Serializable {
 
     public void setNamePr(String namePr) {
         this.namePr = namePr;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

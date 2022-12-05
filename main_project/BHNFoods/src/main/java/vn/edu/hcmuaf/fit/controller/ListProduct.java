@@ -16,8 +16,13 @@ public class ListProduct extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> list= (List<Product>) ProductService.getInstance().getAll();
         request.setAttribute("listRequest", list);
-        request.getRequestDispatcher("show.jsp").forward(request,response);
+        request.getRequestDispatcher("ListProduct.jsp").forward(request,response);
     }
 
-
+    public static void main(String[] args) {
+        List<Product> list= (List<Product>) ProductService.getInstance().getAll();
+        for (Product p: list) {
+            System.out.println(p.getUrl());
+        }
+    }
 }

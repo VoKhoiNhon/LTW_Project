@@ -21,7 +21,7 @@ public class ProductService {
     }
    public static List<Product> getAll(){
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT * FROM product").mapToBean(Product.class).collect(Collectors.toList());
+            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from product p join image i on p.ID_PR = i.ID_PR where i.`CONDITION` = 0").mapToBean(Product.class).collect(Collectors.toList());
         });
 
    }
