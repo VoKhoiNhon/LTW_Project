@@ -1,3 +1,5 @@
+<%@ page import="vn.edu.hcmuaf.fit.beans.Cart" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <head>
     <title>BHNFoods</title>
@@ -63,14 +65,21 @@
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Sản Phẩm
         </button>
-
+<%--        <% List<Cart> l = (List<Cart>) request.getAttribute("listCart");--%>
+<%--            int result = 0;--%>
+<%--            for (Cart c : l) {--%>
+<%--                result += c.getAmount();--%>
+<%--            }%>--%>
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="index.jsp" class="nav-link">Trang chủ</a></li>
-                <li class="nav-item active "><a href="http://localhost:8080/ListProduct?kind=0&page=1" class="nav-link">Sản phẩm</a></li>
-                <li class="nav-item cta cta-colored find"><input type="text" name="" id="findicon" placeholder="Tìm kiếm" ><a
+                <li class="nav-item active "><a href="http://localhost:8080/ListProduct?kind=0&page=1" class="nav-link">Sản
+                    phẩm</a></li>
+                <li class="nav-item cta cta-colored find"><input type="text" name="" id="findicon"
+                                                                 placeholder="Tìm kiếm"><a
                         href="cart.jsp" class="nav-link"><span class="fa-solid fa-magnifying-glass"></span></a></li>
-                <li class="nav-item cta cta-colored"><a href="cart.jsp" class="nav-link"><span
+                <li class="nav-item cta cta-colored"><a href="http://localhost:8080/BHNFoods/Cart?idUser=user1"
+                                                        class="nav-link"><span
                         class="fa-solid fa-cart-shopping"></span>[0]</a></li>
                 <li class="nav-item cta cta-colored"><a href="admin_template/login.jsp" class="nav-link"><span
                         style="line-height: 1.8" class="fa-solid fa-user"></span></a></li>
