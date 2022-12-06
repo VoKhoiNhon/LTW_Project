@@ -3,7 +3,7 @@ package vn.edu.hcmuaf.fit.beans;
 import java.io.Serializable;
 
 public class Product implements Serializable {
-    private String idPro;
+    private String idPr;
     private String idMenu;
     private int discount;
     private  int price;
@@ -14,16 +14,16 @@ public class Product implements Serializable {
     public Product() {
     }
 
-    public Product(String idPro, String idMenu, int discount, int price, String namePr) {
-        this.idPro = idPro;
+    public Product(String idPr, String idMenu, int discount, int price, String namePr) {
+        this.idPr = idPr;
         this.idMenu = idMenu;
         this.discount = discount;
         this.price = price;
         this.namePr = namePr;
     }
 
-    public Product(String idPro, String idMenu, int discount, int price, String namePr, String url) {
-        this.idPro = idPro;
+    public Product(String idPr, String idMenu, int discount, int price, String namePr, String url) {
+        this.idPr = idPr;
         this.idMenu = idMenu;
         this.discount = discount;
         this.price = price;
@@ -31,8 +31,8 @@ public class Product implements Serializable {
         this.url = url;
     }
 
-    public String getIdPro() {
-        return idPro;
+    public String getIdPr() {
+        return idPr;
     }
 
     public String getIdMenu() {
@@ -51,8 +51,8 @@ public class Product implements Serializable {
         return namePr;
     }
 
-    public void setIdPro(String idPro) {
-        this.idPro = idPro;
+    public void setIdPr(String idPr) {
+        this.idPr = idPr;
     }
 
     public void setIdMenu(String idMenu) {

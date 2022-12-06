@@ -1,3 +1,9 @@
+<%@ page import="vn.edu.hcmuaf.fit.beans.SingleProduct" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.ProductService" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.DecimalFormat" %>
+<%@ page import="vn.edu.hcmuaf.fit.beans.ImgForSingleProd" %>
+<%@ page import="vn.edu.hcmuaf.fit.beans.Feedback" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!doctype html>
@@ -37,24 +43,24 @@
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__pic">
                     <div class="product__details__pic__item">
-                        <img class="product__details__pic__item--large"
-                             src="ImageproductNew/Khoai/bap-nep/bap-nep-cap-coop-300x300.jpg" alt="">
+                        <img style="width: 504px; height: 405px" class="product__details__pic__item--large"
+                             <%List<SingleProduct> single = (List<SingleProduct>) request.getAttribute("singleProduct");
+                             DecimalFormat dec = new DecimalFormat("#,###");
+                             %>
+                             src="<%=single.get(0).getUrl()%>" alt="">
                     </div>
+                    <%List<ImgForSingleProd> listURL = (List<ImgForSingleProd>) request.getAttribute("listURL");%>
                     <div class="product__details__pic__slider owl-carousel">
-                        <img data-imgbigurl="ImageproductNew/Khoai/bap-nep/bap-nep-cap-202207161545587500.jpg"
-                             src="ImageproductNew/Khoai/bap-nep/bap-nep-cap-coop-300x300.jpg" alt="">
-                        <img data-imgbigurl="ImageproductNew/Khoai/bap-nep/bap-nep-cap-202207161543300656.jpg"
-                             src="ImageproductNew/Khoai/bap-nep/bap-nep-cap-202207161545587500.jpg" alt="">
-                        <img data-imgbigurl="ImageproductNew/Khoai/bap-nep/bap-nep-cap-coop-300x300.jpg"
-                             src="ImageproductNew/Khoai/bap-nep/bap-nep-cap-202207161543300656.jpg" alt="">
-                        <img data-imgbigurl="ImageproductNew/Khoai/bap-nep/bap-nep-cap-202207161543292519.jpg"
-                             src="ImageproductNew/Khoai/bap-nep/bap-nep-cap-202207161543292519.jpg" alt="">
+                        <%for (ImgForSingleProd s: listURL) {%>
+                        <img data-imgbigurl="<%=s.getUrl()%>"
+                             src="<%=s.getUrl()%>" alt="">
+                         <%}%>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__text">
-                    <h3>2 trái bắp Mỹ</h3>
+                    <h3><%=single.get(0).getNamePr()%></h3>
                     <div class="product__details__rating">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -63,8 +69,8 @@
                         <i class="fa fa-star-half-o"></i>
                         <span>(18 đánh giá)</span>
                     </div>
-                    <div class="product__details__price">15.000đ</div>
-                    <p>Bắp Mỹ là một loại thực phẩm được trồng rất nhiều ở khắp nơi trên thế giới. Đây là một loại quả vừa ngon, lại có rất nhiều chất khoáng chất và vitamin. Bắp có thể chế biến thành nhiều món ăn ngon như: cơm bắp, chè bắp, sữa bắp,... bất kỳ món gì cũng tạo nên hương vị tuyệt hảo.</p>
+                    <div class="product__details__price"><%=dec.format(single.get(0).getPrice()).replace(',','.')%>đ</div>
+                    <p><%=single.get(0).getDescribe()%></p>
                     <div class="product__details__quantity">
                         <div class="quantity">
                             <div class="pro-qty">
@@ -75,10 +81,10 @@
                     <a href="#" class="primary-btn">THÊM VÀO GIỎ HÀNG</a>
                     <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                     <ul>
-                        <li><b>Xuất xứ</b> <span>Việt Nam</span></li>
-                        <li><b>Hạn sử dụng</b> <span>Còn 7 ngày</span></li>
-                        <li><b>Trọng lượng</b> <span>từ 0.5 kg</span></li>
-                        <li><b>Giao hàng</b> <span>Trong 2 giờ <samp>Miễn phí trong 1.5km</samp></span></li>
+                        <li><b>Xuất xứ</b> <span><%=single.get(0).getOrigin()%></span></li>
+                        <li><b>Hạn sử dụng</b> <span><%=single.get(0).getHsd()%></span></li>
+                        <li><b>Trọng lượng</b> <span><%=single.get(0).getWeight()%>kg</span></li>
+                        <li><b>Giao hàng</b> <span>Trong 2 giờ <span>Miễn phí trong 1.5km</span></span></li>
                         <%--                        <li><b>Share on</b>--%>
 <%--                            <div class="share">--%>
 <%--                                <a href="#"><i class="fa fa-facebook"></i></a>--%>
@@ -172,48 +178,30 @@
             <%--                </div>--%>
         </div>
         <div class="comment">
-            <h3>Đánh giá sản phẩm</h3>
-            <div class="comment-user mt-4">
-                <span class="comment-name mr-3">Xuân Hoa</span>
+            <%List<Feedback> listFeedback = (List<Feedback>) request.getAttribute("listFeedBack");
+            if(listFeedback.size() > 0) {%>
+                <h3>Đánh giá sản phẩm</h3>
+            <%for (Feedback f: listFeedback) {%>
+                <div class="comment-user mt-4">
+                <span class="comment-name mr-3"><%=f.getNameUser()%></span>
                 <span class="comment-star">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </span>
-                <div class="content-padding"><span class="comment-content">Gạo ngon tuyệt zời ông mặt trời luôn é</span></div>
-                <span class="comment-date">12/10/2021</span>
-            </div>
+                    <%for (int i = 0; i < f.getScoreStar(); i++) {%>
+                            <i class="fa fa-star"></i>
+                        <%}%>
 
-            <div class="comment-user mt-4">
-                <span class="comment-name mr-3">Xuân Hoa</span>
-                <span class="comment-star">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
                 </span>
-                <div class="content-padding"><span class="comment-content">Gạo ngon tuyệt zời ông mặt trời luôn é</span></div>
-                <span class="comment-date">12/10/2021</span>
+                <div class="content-padding"><span class="comment-content"><%=f.getText()%></span></div>
+                <span class="comment-date"><%=f.getDate()%></span>
             </div>
-
-            <div class="comment-user mt-4">
-                <span class="comment-name mr-3">Xuân Hoa</span>
-                <span class="comment-star">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </span>
-                <div class="content-padding"><span class="comment-content">Gạo ngon tuyệt zời ông mặt trời luôn é</span></div>
-                <span class="comment-date">12/10/2021</span>
-            </div>
+                <%}
+            }%>
 
             <div class="comment-input mt-4">
+                <%if(listFeedback.size() > 0) {%>
                 <h3>Phản hồi về sản phẩm</h3>
+                <%}else {%>
+                <h3>Sản phẩm hiện chưa có phản hồi, bạn nãy nêu cảm nhận của mình</h3>
+                <%}%>
                 <div class="btn-star pt-2">
                     <button style="color: #0b0b0b" >1 <i class="fa fa-star star-color-yellow"></i></button>
                     <button style="color: #0b0b0b">2 <i class="fa fa-star star-color-yellow"></i></button>

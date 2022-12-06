@@ -4,8 +4,4 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-    <servlet>
-        <servlet-name>Login</servlet-name>
-        <servlet-class>vn.edu.hcmuaf.fit.controller.Login</servlet-class>
-    </servlet>
 </web-app>
