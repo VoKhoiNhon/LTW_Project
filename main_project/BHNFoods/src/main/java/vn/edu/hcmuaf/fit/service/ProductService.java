@@ -236,13 +236,19 @@ public class ProductService {
         return dateTime.getDayOfMonth() + "-" + dateTime.getMonthValue() + "-" + dateTime.getYear() + " " + dateTime.getHour() + ":" + dateTime.getMinute();
     }
 
-//    public int sumAmount(List<Cart> l) {
-//        int result = 0;
-//        for (Cart c : l) {
-//            result +=c.getAmount();
-//        }
-//        return result;
-//    }
+    public static List<Product> getListPrNameSearch(String search) {
+        List<Product> list = new ArrayList<Product>();
+        List<Product> pr= JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from product p join image i on p.ID_PR = i.ID_PR").mapToBean(Product.class).collect(Collectors.toList());
+        });
+        for(Product p :pr){
+            if(p.getNamePr().toUpperCase().contains(search.toUpperCase())){
+                list.add(p);
+            }
+        }
+        return list;
+    }
+
 
 
 }
