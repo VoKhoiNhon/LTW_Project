@@ -2,6 +2,7 @@ package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.Cart;
 import vn.edu.hcmuaf.fit.beans.Product;
+import vn.edu.hcmuaf.fit.beans.SingleProduct;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
 import javax.servlet.*;
@@ -18,7 +19,7 @@ public class AdminManagePr extends HttpServlet {
         int page =  Integer.parseInt(request.getParameter("page"));
         int tempSize =  ProductService.getInstance().getSize(kind)/15;
         int count = ProductService.getInstance().getSize(kind)%15 > 0 ? tempSize + 1:tempSize;
-        List<Product> list= (List<Product>) ProductService.getInstance().getListProdInPage(kind, page);
+        List<SingleProduct> list= (List<SingleProduct>) ProductService.getInstance().getListSingleProdInPage(kind, page);
         request.setAttribute("manageList", list);
         request.setAttribute("kind", kind);
         request.setAttribute("page", page);

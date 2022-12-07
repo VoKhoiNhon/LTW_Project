@@ -45,42 +45,51 @@
                 <div class="product__details__pic">
                     <div class="product__details__pic__item">
                         <img style="width: 504px; height: 405px" class="product__details__pic__item--large"
-                             <%List<SingleProduct> single = (List<SingleProduct>) request.getAttribute("singleProduct");
+                            <%List<SingleProduct> single = (List<SingleProduct>) request.getAttribute("singleProduct");
                              DecimalFormat dec = new DecimalFormat("#,###");
                              %>
                              src="<%=single.get(0).getUrl()%>" alt="">
                     </div>
-                    <%List<ImgForSingleProd> listURL = (List<ImgForSingleProd>) request.getAttribute("listURL");
-                        List<Feedback> listFeedback = (List<Feedback>) request.getAttribute("listFeedBack");%>
+                    <%
+                        List<ImgForSingleProd> listURL = (List<ImgForSingleProd>) request.getAttribute("listURL");
+                        List<Feedback> listFeedback = (List<Feedback>) request.getAttribute("listFeedBack");
+                    %>
                     <div class="product__details__pic__slider owl-carousel">
-                        <%for (ImgForSingleProd s: listURL) {%>
+                        <%for (ImgForSingleProd s : listURL) {%>
                         <img data-imgbigurl="<%=s.getUrl()%>"
                              src="<%=s.getUrl()%>" alt="">
-                         <%}%>
+                        <%}%>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__text">
-                    <h3><%=single.get(0).getNamePr()%></h3>
+                    <h3><%=single.get(0).getNamePr()%>
+                    </h3>
                     <div class="product__details__rating">
-                        <%if(listFeedback.size() > 0) {
-                            double avgScore = 0;
-                            for (Feedback f: listFeedback) {
-                                avgScore += f.getScoreStar();
+                        <%
+                            if (listFeedback.size() > 0) {
+                                double avgScore = 0;
+                                for (Feedback f : listFeedback) {
+                                    avgScore += f.getScoreStar();
+                                }
+                                avgScore /= listFeedback.size();
+                                for (int i = 0; i < Math.floor(avgScore); i++) {
+                        %>
+                        <i class="fa fa-star"></i>
+                        <%
                             }
-                            avgScore /= listFeedback.size();
-                            for (int i = 0; i < Math.floor(avgScore); i++) {%>
-                                <i class="fa fa-star"></i>
-                            <%}
-                            if(avgScore - (int) avgScore != 0.0) {%>
-                            <i class="fa fa-star-half-o"></i>
-                            <%}%>
+                            if (avgScore - (int) avgScore != 0.0) {
+                        %>
+                        <i class="fa fa-star-half-o"></i>
+                        <%}%>
                         <%}%>
                         <span>(<%=listFeedback.size()%> đánh giá)</span>
                     </div>
-                    <div class="product__details__price"><%=dec.format(single.get(0).getPrice()).replace(',','.')%>đ</div>
-                    <p><%=single.get(0).getDescribe()%></p>
+                    <div class="product__details__price"><%=dec.format(single.get(0).getPrice()).replace(',', '.')%>đ
+                    </div>
+                    <p><%=single.get(0).getDescribe()%>
+                    </p>
                     <div class="product__details__quantity">
                         <div class="quantity">
                             <div class="pro-qty">
@@ -95,140 +104,64 @@
                         <li><b>Hạn sử dụng</b> <span><%=single.get(0).getHsd()%></span></li>
                         <li><b>Trọng lượng</b> <span><%=single.get(0).getWeight()%>kg</span></li>
                         <li><b>Giao hàng</b> <span>Trong 2 giờ <span>Miễn phí trong 1.5km</span></span></li>
-                        <%--                        <li><b>Share on</b>--%>
-<%--                            <div class="share">--%>
-<%--                                <a href="#"><i class="fa fa-facebook"></i></a>--%>
-<%--                                <a href="#"><i class="fa fa-twitter"></i></a>--%>
-<%--                                <a href="#"><i class="fa fa-instagram"></i></a>--%>
-<%--                                <a href="#"><i class="fa fa-pinterest"></i></a>--%>
-<%--                            </div>--%>
-<%--                        </li>--%>
                     </ul>
                 </div>
             </div>
-            <%--                <div class="col-lg-12">--%>
-            <%--                    <div class="product__details__tab">--%>
-            <%--                        <ul class="nav nav-tabs" role="tablist">--%>
-            <%--                            <li class="nav-item">--%>
-            <%--                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"--%>
-            <%--                                    aria-selected="true">Description</a>--%>
-            <%--                            </li>--%>
-            <%--                            <li class="nav-item">--%>
-            <%--                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"--%>
-            <%--                                    aria-selected="false">Information</a>--%>
-            <%--                            </li>--%>
-            <%--                            <li class="nav-item">--%>
-            <%--                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"--%>
-            <%--                                    aria-selected="false">Reviews <span>(1)</span></a>--%>
-            <%--                            </li>--%>
-            <%--                        </ul>--%>
-            <%--                        <div class="tab-content">--%>
-            <%--                            <div class="tab-pane active" id="tabs-1" role="tabpanel">--%>
-            <%--                                <div class="product__details__tab__desc">--%>
-            <%--                                    <h6>Products Infomation</h6>--%>
-            <%--                                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.--%>
-            <%--                                        Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Vivamus--%>
-            <%--                                        suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam sit amet quam--%>
-            <%--                                        vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada.--%>
-            <%--                                        Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur arcu erat,--%>
-            <%--                                        accumsan id imperdiet et, porttitor at sem. Praesent sapien massa, convallis a--%>
-            <%--                                        pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula--%>
-            <%--                                        elementum sed sit amet dui. Vestibulum ante ipsum primis in faucibus orci luctus--%>
-            <%--                                        et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam--%>
-            <%--                                        vel, ullamcorper sit amet ligula. Proin eget tortor risus.</p>--%>
-            <%--                                        <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem--%>
-            <%--                                        ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit aliquet--%>
-            <%--                                        elit, eget tincidunt nibh pulvinar a. Cras ultricies ligula sed magna dictum--%>
-            <%--                                        porta. Cras ultricies ligula sed magna dictum porta. Sed porttitor lectus--%>
-            <%--                                        nibh. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.--%>
-            <%--                                        Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed--%>
-            <%--                                        porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum--%>
-            <%--                                        sed sit amet dui. Proin eget tortor risus.</p>--%>
-            <%--                                </div>--%>
-            <%--                            </div>--%>
-            <%--                            <div class="tab-pane" id="tabs-2" role="tabpanel">--%>
-            <%--                                <div class="product__details__tab__desc">--%>
-            <%--                                    <h6>Products Infomation</h6>--%>
-            <%--                                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.--%>
-            <%--                                        Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.--%>
-            <%--                                        Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam--%>
-            <%--                                        sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo--%>
-            <%--                                        eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat.--%>
-            <%--                                        Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Praesent--%>
-            <%--                                        sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac--%>
-            <%--                                        diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ante--%>
-            <%--                                        ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;--%>
-            <%--                                        Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.--%>
-            <%--                                        Proin eget tortor risus.</p>--%>
-            <%--                                    <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem--%>
-            <%--                                        ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit aliquet--%>
-            <%--                                        elit, eget tincidunt nibh pulvinar a. Cras ultricies ligula sed magna dictum--%>
-            <%--                                        porta. Cras ultricies ligula sed magna dictum porta. Sed porttitor lectus--%>
-            <%--                                        nibh. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.</p>--%>
-            <%--                                </div>--%>
-            <%--                            </div>--%>
-            <%--                            <div class="tab-pane" id="tabs-3" role="tabpanel">--%>
-            <%--                                <div class="product__details__tab__desc">--%>
-            <%--                                    <h6>Products Infomation</h6>--%>
-            <%--                                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.--%>
-            <%--                                        Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.--%>
-            <%--                                        Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam--%>
-            <%--                                        sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo--%>
-            <%--                                        eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat.--%>
-            <%--                                        Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Praesent--%>
-            <%--                                        sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac--%>
-            <%--                                        diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ante--%>
-            <%--                                        ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;--%>
-            <%--                                        Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.--%>
-            <%--                                        Proin eget tortor risus.</p>--%>
-            <%--                                </div>--%>
-            <%--                            </div>--%>
-            <%--                        </div>--%>
-            <%--                    </div>--%>
-            <%--                </div>--%>
         </div>
-        <div class="comment">
-            <%if(listFeedback.size() > 0) {%>
-                <h3>Đánh giá sản phẩm</h3>
-            <%for (Feedback f: listFeedback) {%>
+        <%if (listFeedback.size() > 0) {%>
+        <h3>Đánh giá sản phẩm</h3>
+        <div id="comment">
+            <%
+                int n = listFeedback.size() > 3 ? 3 : listFeedback.size();
+                for (int i = 0; i < n; i++) {%>
+            <div class="comment">
                 <div class="comment-user mt-4">
-                <span class="comment-name mr-3"><%=f.getNameUser()%></span>
-                <span class="comment-star">
-                    <%for (int i = 0; i < f.getScoreStar(); i++) {%>
+                    <span class="comment-name mr-3"><%=listFeedback.get(i).getNameUser()%></span>
+                    <span class="comment-star">
+                    <%for (int j = 0; j < listFeedback.get(i).getScoreStar(); j++) {%>
                             <i class="fa fa-star"></i>
                         <%}%>
-
-                </span>
-                <div class="content-padding"><span class="comment-content"><%=f.getText()%></span></div>
-                <span class="comment-date"><%=f.getDate()%></span>
-            </div>
-                <%}
-            }%>
-
-            <div class="comment-input mt-4">
-                <%if(listFeedback.size() > 0) {%>
-                <h3>Phản hồi về sản phẩm</h3>
-                <%}else {%>
-                <h3>Sản phẩm hiện chưa có phản hồi, bạn nãy nêu cảm nhận của mình</h3>
-                <%}%>
-                <div class="btn-star pt-2">
-                    <button style="color: #0b0b0b" >1 <i class="fa fa-star star-color-yellow"></i></button>
-                    <button style="color: #0b0b0b">2 <i class="fa fa-star star-color-yellow"></i></button>
-                    <button style="color: #0b0b0b" >3 <i class="fa fa-star star-color-yellow"></i></button>
-                    <button style="color: #0b0b0b" >4 <i class="fa fa-star star-color-yellow"></i></button>
-                    <button style="color: #0b0b0b">5 <i class="fa fa-star star-color-yellow"></i></button>
-                </div>
-                <textarea style="resize: none; width: 100%; margin-top: 10px;" name="" id="" rows="5"  placeholder="Hãy nhập phản hồi về sản phẩm"></textarea>
-                <div class="btn-star pt-2" style="display: flex; justify-content: end">
-                    <button class="" style="color: #ffffff; background: #0b0b0b !important;" >Gửi</button>
-
+                    </span>
+                    <div class="content-padding">
+                        <span class="comment-content"><%=listFeedback.get(i).getText()%></span>
+                    </div>
+                    <span class="comment-date"><%=listFeedback.get(i).getDate()%></span>
                 </div>
             </div>
-
+            <%}%>
+        </div>
+        <%
+            }
+        %>
+        <%if(listFeedback.size() > 3) {%>
+        <button onclick="loadMoreCommentLeft()"><i class="fa fa-long-arrow-left"></i></button>
+        <%
+            int count = (int) request.getAttribute("count");
+            for (int j = 1; j <= count; j++) {%>
+        <button id="btn<%=j%>" class="btn-loadMore" onclick="loadMoreComment(<%=j%>)" style="margin: 10px 4px; color: black;"><%=j%></button>
+            <%}%>
+        <button onclick="loadMoreCommentRight()"><i class="fa fa-long-arrow-right"></i></button>
+        <%}%>
+        <div class="comment-input mt-4">
+            <%if (listFeedback.size() > 0) {%>
+            <h3>Phản hồi về sản phẩm</h3>
+            <%} else {%>
+            <h3>Sản phẩm hiện chưa có phản hồi, bạn nãy nêu cảm nhận của mình</h3>
+            <%}%>
+            <div class="btn-star pt-2">
+                <button value="1" onclick="marking(this.id)" id="oneStar" style="color: #0b0b0b">1 <i class="fa fa-star star-color-yellow"></i></button>
+                <button value="2" onclick="marking(this.id)" id="twoStar" style="color: #0b0b0b">2 <i class="fa fa-star star-color-yellow"></i></button>
+                <button value="3" onclick="marking(this.id)" id="threeStar" style="color: #0b0b0b">3 <i class="fa fa-star star-color-yellow"></i></button>
+                <button value="4" onclick="marking(this.id)" id="fourStar" style="color: #0b0b0b">4 <i class="fa fa-star star-color-yellow"></i></button>
+                <button value="5" onclick="marking(this.id)" id="fiveStar" style="color: #0b0b0b">5 <i class="fa fa-star star-color-yellow"></i></button>
+            </div>
+            <textarea id="textComment" style="resize: none; width: 100%; margin-top: 10px;" name="" id="" rows="5"
+                      placeholder="Hãy nhập phản hồi về sản phẩm"></textarea>
+            <div class="btn-star pt-2" style="display: flex; justify-content: end">
+                <button onclick="sendComment()" id="sendComment" class="" style="color: #ffffff; background: #0b0b0b !important;">Gửi</button>
+            </div>
         </div>
     </div>
-    </div>
-
 </section>
 <!-- Product Details Section End -->
 
@@ -243,9 +176,11 @@
             </div>
         </div>
         <div class="row">
-            <%List<Product> relatedProducts = (List<Product>) request.getAttribute("relatedProducts");
-            int n = relatedProducts.size() >= 4 ? 4 : relatedProducts.size();
-            for (int i = 0; i < n; i++) {%>
+            <%
+                List<Product> relatedProducts = (List<Product>) request.getAttribute("relatedProducts");
+                int n = relatedProducts.size() >= 4 ? 4 : relatedProducts.size();
+                for (int i = 0; i < n; i++) {
+            %>
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="product__item">
                     <div class="product__item__pic set-bg" data-setbg="<%=relatedProducts.get(i).getUrl()%>">
@@ -256,7 +191,9 @@
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="http://localhost:8080/BHNFoods/oneProduct?id=<%=relatedProducts.get(i).getIdPr()%>&idUser=user1"><%=relatedProducts.get(i).getNamePr()%></a></h6>
+                        <h6>
+                            <a href="http://localhost:8080/BHNFoods/oneProduct?id=<%=relatedProducts.get(i).getIdPr()%>&idUser=user1"><%=relatedProducts.get(i).getNamePr()%>
+                            </a></h6>
                         <h5><%=dec.format(relatedProducts.get(i).getPrice())%>đ</h5>
                     </div>
                 </div>
@@ -268,7 +205,112 @@
 
 <%@ include file="footer.jsp" %>
 <!-- Footer Section End -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    var current = 1;
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+    var idProd = urlParams.get('id');
+    var idUser = urlParams.get('idUser');
+    var maxCountPage = $('button.btn-loadMore').length;
+    $("#btn" + current).addClass('background-button');
 
+    function loadMoreComment(index) {
+        $("#btn" + current).removeClass('background-button');
+        current = index;
+        $("#btn" + current).addClass('background-button');
+        $.ajax({
+            url: "/BHNFoods/loadMoreComment",
+            type: 'get',
+            data: {
+                id: idProd,
+                step: current
+            },
+            success: function (data) {
+                const content = document.getElementById("comment");
+                content.innerHTML = data;
+            },
+            error: function () {
+            }
+        });
+    }
+
+    function loadMoreCommentLeft() {
+        $("#btn" + current).removeClass('background-button');
+        if (current - 1 >= 1) {
+            current -= 1;
+        }
+        $("#btn" + current).addClass('background-button');
+        $.ajax({
+            url: "/BHNFoods/loadMoreComment",
+            type: 'get',
+            data: {
+                id: idProd,
+                step: current
+            },
+            success: function (data) {
+                const content = document.getElementById("comment");
+                content.innerHTML = data;
+            },
+            error: function () {
+            }
+        });
+    }
+
+    function loadMoreCommentRight() {
+        $("#btn" + current).removeClass('background-button');
+        if (parseInt(current) + 1 <= maxCountPage) {
+            current = parseInt(current) + 1;
+        }
+        $("#btn" + current).addClass('background-button');
+        $.ajax({
+            url: "/BHNFoods/loadMoreComment",
+            type: 'get',
+            data: {
+                id: idProd,
+                step: current
+            },
+            success: function (data) {
+                const content = document.getElementById("comment");
+                content.innerHTML = data;
+            },
+            error: function () {
+            }
+        });
+    }
+    function sendComment() {
+        var idU = idUser;
+        var idP = idProd;
+        if($('button.lightGreenBtn').val() !== undefined && $('textarea#textComment').val() !== "") {
+            $.ajax({
+                url: "/BHNFoods/sendComment",
+                type: 'get',
+                data: {
+                    text: $('textarea#textComment').val(),
+                    idU: idUser,
+                    idP: idProd,
+                    star: $('button.lightGreenBtn').val()
+                },
+                success: function (data) {
+                    if($('div.comment').length >=3) {
+                        $('div.comment:last-child').remove();
+                    }
+                    $('button.lightGreenBtn').removeClass('lightGreenBtn');
+                    $("div#comment").prepend(data);
+                    $("textarea#textComment").val("");
+                },
+                error: function () {
+                }
+            });
+        } else alert("Hãy đánh giá số sao và nhập phản hồi trước khi gửi nhé!");
+    }
+    function marking(id) {
+        $('button.lightGreenBtn').removeClass('lightGreenBtn');
+        $('button#' + id).addClass('lightGreenBtn');
+    }
+</script>
 <!-- Js Plugins -->
 <script src="body_design/js/jquery-3.3.1.min.js"></script>
 <script src="body_design/js/jquery.nice-select.min.js"></script>
@@ -277,9 +319,6 @@
 <script src="body_design/js/mixitup.min.js"></script>
 <script src="body_design/js/owl.carousel.min.js"></script>
 <script src="body_design/js/main.js"></script>
-
-
-
 
 
 </body>

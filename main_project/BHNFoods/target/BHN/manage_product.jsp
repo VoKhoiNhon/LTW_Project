@@ -303,8 +303,8 @@
                                                                 <tbody>
                                                                 <%
                                                                     DecimalFormat decF = new DecimalFormat("#,###");
-                                                                    List<Product> productList = (List<Product>) request.getAttribute("manageList");
-                                                                    for (Product p : productList) {
+                                                                    List<SingleProduct> productList = (List<SingleProduct>) request.getAttribute("manageList");
+                                                                    for (SingleProduct p : productList) {
                                                                 %>
                                                                 <tr>
                                                                     <td>
@@ -328,20 +328,21 @@
                                                                         </div>
                                                                     </td>
                                                                     <td>
-                                                                        <h6>aaaa</h6>
+                                                                        <h6><%=p.getHsd()%></h6>
                                                                     </td>
                                                                     <td>
                                                                         <div>
                                                                             <div
                                                                                     class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
 
-                                                                                <p>85/162</p>
+                                                                                <p><%=p.getSaled()%>/<%=p.getInventory()%></p>
                                                                             </div>
+                                                                            <% int percent= Integer.parseInt(p.getSaled())*100/(p.getInventory());%>
                                                                             <div class="progress progress-md">
                                                                                 <div class="progress-bar bg-success"
                                                                                      role="progressbar"
-                                                                                     style="width: 85%"
-                                                                                     aria-valuenow="25"
+                                                                                     style="width: <%=percent%>%"
+
                                                                                      aria-valuemin="0"
                                                                                      aria-valuemax="100"></div>
                                                                             </div>

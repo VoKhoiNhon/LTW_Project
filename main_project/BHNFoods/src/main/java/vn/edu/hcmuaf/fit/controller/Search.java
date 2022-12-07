@@ -24,8 +24,6 @@ public class Search extends HttpServlet {
         request.setAttribute("listCart",listCart);
         String search = request.getParameter("searchPR");
         List<Product> productList = ProductService.getInstance().getListPrNameSearch(search);
-
-
         request.setAttribute("listSearchPR", productList);
         request.getRequestDispatcher("searchPR.jsp").forward(request,response);
     }

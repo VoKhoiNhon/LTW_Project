@@ -1,5 +1,6 @@
 <%@ page import="vn.edu.hcmuaf.fit.beans.Orders" %>
 <%@ page import="java.text.DecimalFormat" %>
+<%@ page import="java.util.Map" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,14 +43,22 @@
 
     <section class="shoping-cart spad">
         <div class="container">
+            <%
+                Map<String, List<Orders>> mapOrder = (Map<String, List<Orders>>) request.getAttribute("mapOrder");
+                Map<String, Integer> sumOrder = (Map<String, Integer>) request.getAttribute("sumOrder");
+                for (Map.Entry<String, List<Orders>> entry : mapOrder.entrySet()) {
+                    int condition = 0;
+                    String cursor = "pointer";
+                    double opacity = 1.0;
 
+            %>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
                         <table>
                             <thead>
                             <tr>
-                                <th class="shoping__product">Sản Phẩm</th>
+                                <th class="">Sản Phẩm</th>
                                 <th></th>
                                 <th>Giá</th>
                                 <th>Số lượng</th>
@@ -57,27 +66,28 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <% List<Orders> listManagerOr=(List<Orders>) request.getAttribute("ListManagerOrders");
+                            <%
                                 DecimalFormat dec = new DecimalFormat("#,###");
-                                for (Orders p : listManagerOr) {%>
+                                for (Orders o : mapOrder.get(entry.getKey())) {
+                                    condition = o.getCondition();
+                            %>
                             <tr>
-                                <td class="">
-                                    <img src="ImageproductNew/Khoai/khoai-lang-tim/khoai-lang-tim-tui-500g-202105051946310826.jpg" alt="" style="width: 100px;height: auto">
+                                <td class="shoping__cart__quantity">
+                                    <img src="<%=o.getUrl()%>" alt="" style="width: 100px;height: auto">
 
                                 </td>
                                 <td class="shoping__cart__item">
-                                    <h5>Khoai lang tím túi 1kg (5-8 củ)</h5>
+                                    <h5><%=o.getNamePr()%></h5>
                                 </td>
                                 <td class="shoping__cart__price">
-                                    25.000
+                                    <%=dec.format(o.getPriceHere()).replace(',','.')%>đ
                                 </td>
                                 <td class="shoping__cart__quantity">
-                                    <span>2</span>
+                                    <span><%=o.getAmount()%></span>
                                 </td>
                                 <td class="shoping__cart__total">
-                                    50.000
+                                    <%=dec.format(o.getPriceHere()*o.getAmount()).replace(',','.')%>đ
                                 </td>
-
                             </tr>
                             <%}%>
 <%--                            <tr>--%>
@@ -116,20 +126,26 @@
                         </table>
                         <div class="d-flex justify-content-between pt-5 align-items-center">
                             <div>
+                                <%if(condition == 0) {%>
                                 <h5>Tình trạng đơn hàng: <span style="color: red;">Đang chuẩn bị</span></h5>
-                              
+                                <%} else {
+                                %>
+                                <h5>Tình trạng đơn hàng: <span style="color: red;">Đang giao hàng</span></h5>
+                                <%}%>
                             </div>
+                            <%if(condition == 0) {%>
                             <div>
-                                <button style="background:#7fad39; padding:10px 25px; color: white; border: none;">Hủy đơn</button>
+                                <button class="uCanClick" style="background:#7fad39; padding:10px 25px; color: white; border: none;">Hủy đơn</button>
                             </div>
+                            <%}%>
                             <div>
-                                <h4>Tổng đơn hàng: <span >500.000đ</span></h4>
+                                <h4>Tổng đơn hàng: <span ><%=dec.format(sumOrder.get(entry.getKey())).replace(',','.')%>đ</span></h4>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+                <%}%>
 <%--            <div class="row">--%>
 <%--                <div class="col-lg-12">--%>
 <%--                    <div class="shoping__cart__table">--%>
@@ -208,7 +224,7 @@
 <%--                    </div>--%>
 <%--                </div>--%>
 <%--            </div>--%>
-            
+
         </div>
     </section>
 

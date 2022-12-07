@@ -28,35 +28,35 @@
 <body>
 
         <%@ include file="header.jsp" %>
-
-<section class="ftco-section" style=" background: #ededed70">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xl-7 ftco-animate" style="background: white">
-                <form action="#" class="billing-form">
-                    <h4 class="mb-4 billing-heading">Tài khoản</h4>
-                    <div class="row align-items-end" style="font-size: 18px;">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="firstname">Họ và Tên</label>
-                                <input type="text" class="form-control" placeholder="Nhập họ tên đầy đủ">
-                            </div>
-                        </div>
-                        <div class="col-md-6 d-flex">
-                            <label for="">Giới tính</label>
-                            <div class="form-group" style="margin-left: 40px;">
-                                <input type="radio" class="form-" placeholder="">
-                                <label for="">Nữ</label>
-                            </div>
-                            <div class="form-group" style="margin-left: 40px;">
-                                <input type="radio" class="form-" placeholder="">
-                                <label for="">Nam</label>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="country">Ngày sinh</label>
-                                <div class="select-wrap">
+        
+            <section class="ftco-section" style=" background: #ededed70" >
+                <div class="container">
+                    <div class="row justify-content-center" >
+                        <div class="col-xl-7 ftco-animate" style="background: white">
+                            <form action="#" class="billing-form">
+                                <h3 class="mb-4 billing-heading">Tài khoản</h3>
+                                <div class="row align-items-end" style="font-size: 20px;">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="firstname">Họ và Tên</label>
+                                            <input type="text" class="form-control" placeholder="Nhập họ tên đầy đủ">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 d-flex" >
+                                        <label for="">Giới tính</label>
+                                        <div class="form-group" style="margin-left: 40px;">
+                                            <input type="radio" class="form-" placeholder="">
+                                            <label for="">Nữ</label>
+                                        </div>
+                                        <div class="form-group"style="margin-left: 40px;">
+                                            <input type="radio" class="form-" placeholder="">
+                                            <label for="">Nam</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="country">Ngày sinh</label>
+                                            <div class="select-wrap">
 
                                     <input type="date" name="" id="" class="form-control"
                                            placeholder="Ngày/Tháng/Năm">
