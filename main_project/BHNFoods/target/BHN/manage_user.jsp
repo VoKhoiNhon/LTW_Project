@@ -37,6 +37,67 @@
         border-radius: 5px;
 
     }
+
+    .row .form-group .form-control {
+        font-size: 16px;
+    }
+
+    .align-items-end .row_input .col_addprod {
+        flex: auto;
+        margin-top: 8px;
+        position: relative;
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+
+    .input_addpr {
+        height: calc(1.5em + .75rem);
+    }
+
+    .col-xl-7 .row .col-md-12 .edit_img {
+        width: 100%;
+        height: 100px;
+        border: gray;
+        border-style: dashed;
+        margin: 0 20px;
+        padding: 0;
+
+    }
+
+    .col-xl-7 .row .col-md-12 .edit_img .btnX_img {
+        padding: 0 4px;
+
+    }
+
+    .padd_right {
+        padding-right: 50px;
+    }
+
+    .edit_formUser {
+        height: 500%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.73);
+        position: absolute;
+        z-index: 1500;
+        top: 0;
+        display: none;
+    }
+
+    .edit_formUser .cen-div {
+        margin: auto;
+        background: #f1f1f1;
+        width: 50%;
+        margin-top:5%;
+        border-radius: 5px;
+    }
+
+    .edit_formUser .btn_huy_update button {
+        background: none;
+        border: none;
+    }
+
 </style>
 
 <body>
@@ -272,18 +333,18 @@
                                                 <div class="card card-rounded">
                                                     <div class="card-body" style="padding-top: 0">
                                                         <div class="d-sm-flex justify-content-between align-items-start">
-                                                                <div>
-                                                                    <a href="#" STYLE="text-decoration: none">
-                                                                        <button class="card-title card-title-dash btn_add_delete">
-                                                                            Thêm
-                                                                        </button>
-                                                                    </a>
-                                                                    <a href="#" STYLE="text-decoration: none">
-                                                                        <button class="card-title card-title-dash btn_add_delete">
-                                                                            Xóa
-                                                                        </button>
-                                                                    </a>
-                                                                </div>
+                                                            <div>
+                                                                <%--                                                                    <a href="#" STYLE="text-decoration: none">--%>
+                                                                <%--                                                                        <button class="card-title card-title-dash btn_add_delete">--%>
+                                                                <%--                                                                            Thêm--%>
+                                                                <%--                                                                        </button>--%>
+                                                                <%--                                                                    </a>--%>
+                                                                <a href="#" STYLE="text-decoration: none">
+                                                                    <button class="card-title card-title-dash btn_add_delete">
+                                                                        Xóa
+                                                                    </button>
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                         <div class="table-responsive  mt-1">
                                                             <table class="table select-table">
@@ -300,7 +361,7 @@
                                                                     </th>
                                                                     <th>Khách hàng</th>
                                                                     <th>Số điện thoại và Email</th>
-<%--                                                                    <th></th>--%>
+                                                                    <%--                                                                    <th></th>--%>
                                                                     <th>Địa chỉ</th>
                                                                     <th></th>
                                                                 </tr>
@@ -338,17 +399,6 @@
                                                                         </p>
                                                                     </td>
                                                                     <td>
-                                                                        <%--                                        <div>--%>
-                                                                        <%--                                          <div--%>
-                                                                        <%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
-                                                                        <%--                                            <p class="text-success">79%</p>--%>
-                                                                        <%--                                            <p>85/162</p>--%>
-                                                                        <%--                                          </div>--%>
-                                                                        <%--                                          <div class="progress progress-md">--%>
-                                                                        <%--                                            <div class="progress-bar bg-success" role="progressbar" style="width: 85%"--%>
-                                                                        <%--                                              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>--%>
-                                                                        <%--                                          </div>--%>
-                                                                        <%--                                        </div>--%>
                                                                     </td>
                                                                     <td>
                                                                         <div class=""><%=u.getAddress()%>
@@ -356,11 +406,12 @@
                                                                     </td>
                                                                     <td>
                                                                         <div>
-                                                                            <a href="#" style="text-decoration: none">
+                                                                            <button onclick="mo()" href="#"
+                                                                                    style="text-decoration: none">
                                                                                 <h4 class="card-title card-title-dash">
-                                                                                    Sửa <i
+                                                                                    Xem <i
                                                                                         class="fa-regular fa-pen-to-square"></i>
-                                                                                </h4></a>
+                                                                                </h4></button>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -388,6 +439,131 @@
 </div>
 <!-- page-body-wrapper ends -->
 </div>
+
+<%--    <section class="ftco-section" style=" background: #ededed00">--%>
+<%--        <div class="container" style="background-color:  #ededed00">--%>
+<%--            <div class="row justify-content-center">--%>
+<div class="edit_formUser">
+    <div class="container" style="background:none;">
+        <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
+            <form action="#" class="billing-form" style="margin-top: 5%;">
+                <h3 class="mb-4 billing-heading">Chi tiết</h3>
+                <div class="row align-items-end" style="font-size: 16px;">
+                    <div class="d-flex flex-grow-1 row_input ">
+                        <div class="col-md-6 col_addprod">
+                            <div class="form-group">
+                                <label>Tên Khách Hàng</label>
+                                <p type="text" class="form-control input_addpr" placeholder="">Nguyễn Văn An Khang</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col_addprod">
+                            <div class="form-group">
+                                <label>Password</label>
+                                <p type="text" class="form-control input_addpr" placeholder="">khangn23</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-grow-1 row_input ">
+                        <div class="col-md-6 col_addprod">
+                            <div class="form-group">
+                                <label>ID User</label>
+                                <input type="text" class="form-control input_addpr" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col_addprod">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <p type="text" class="form-control input_addpr" placeholder="">kahngan@hakjfskl.com</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col_addprod">
+                            <div class="form-group">
+                                <label>Số điện thoại</label>
+                                <p  class="form-control input_addpr" placeholder="">0273872340</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 ">
+                        <div class="form-group">
+                            <label>Địa chỉ</label>
+                            <p  class="form-control input_addpr" placeholder="">239 Lê Lợi, bình thạnh, tp.Hồ
+                                Chí Minh</p>
+                        </div>
+                    </div>
+<%--                    <div class="d-flex flex-grow-1 row_input ">--%>
+<%--                        <div class="col-md-6 col_addprod">--%>
+<%--                            <div class="form-group">--%>
+<%--                                <label>Đơn hàng</label>--%>
+<%--                                <input type="text" class="form-control input_addpr" placeholder="">--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="col-md-6 col_addprod">--%>
+<%--                            <div class="form-group">--%>
+<%--                                <label>Thương hiệu</label>--%>
+<%--                                <input type="text" class="form-control input_addpr" placeholder="">--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="col-md-6 col_addprod">--%>
+<%--                            <div class="form-group">--%>
+<%--                                <label>Trọng lượng</label>--%>
+<%--                                <input type="text" class="form-control input_addpr" placeholder="">--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+                    <div class="col-md d-flex col_addprod">
+                        <div class="form-group  padd_right" style="">
+                            <label class="">Trạng thái:</label>
+                        </div>
+                        <div class="form-group  padd_right" style="">
+                            <input type="checkbox" class="form-" placeholder="">
+                            <label class="">User</label>
+                        </div>
+                        <div class="form-group padd_right " style="">
+                            <input type="checkbox" class="form-" placeholder="">
+                            <label class="">Admin</label>
+                        </div>
+                        <div class="form-group padd_right " style="">
+                            <input type="checkbox" class="form-" placeholder="">
+                            <label class="">Ẩn</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 d-flex btn_huy_update" style="justify-content: end;">
+                        <button onclick="huy()"><a href="#" class="btn btn-primary py-3 px-4"
+                                                   style="border-radius:5px; background: #7fad39; border: none;padding: 10px 40px !important;">Hủy</a>
+                        </button>
+                        <button><a href="#" class="btn btn-primary py-3 px-4"
+                                   style="border-radius:5px; background: #7fad39; border: none; padding: 10px 30px !important; margin-left: 20px">Cập
+                            nhật</a>
+                        </button>
+                    </div>
+                </div>
+            </form><!-- END -->
+        </div>
+    </div>
+
+</div>
+<%--        </div>--%>
+<%--    </section>--%>
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+
+<script>
+    function mo() {
+        $(".edit_formUser").css("display", "block");
+    }
+
+    function huy() {
+        $(".edit_formUser").css("display", "none");
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+        crossorigin="anonymous"></script>
 <!-- container-scroller -->
 
 <!-- plugins:js -->
@@ -411,6 +587,7 @@
 <script src="admin_template/js/dashboard.js"></script>
 <script src="admin_template/js/Chart.roundedBarCharts.js"></script>
 <!-- End custom js for this page-->
+
 </body>
 
 </html>

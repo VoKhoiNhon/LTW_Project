@@ -112,7 +112,6 @@ public class User implements Serializable {
     public String checkDecentralization( ){
         if(this.decentralization==0) return "User";
         return "Admin";
-
     }
 
 }
