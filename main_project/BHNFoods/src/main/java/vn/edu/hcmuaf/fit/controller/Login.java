@@ -12,31 +12,27 @@ import java.io.IOException;
 public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("admin_template/login.jsp").forward(request,response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("user");
+        String username = request.getParameter("username");
         String password = request.getParameter("password");
         User user = UserService.getInstance().checkLogin(username, password);
         if (user == null) {
             request.setAttribute("error", "Sai tài khoản hoặc mật khẩu");
             request.getRequestDispatcher("admin_template/login.jsp").forward(request, response);
-        }
-        else if (user.getDecentralization() == 1) {
+        } else if (user.getDecentralization() == 1) {
             HttpSession session = request.getSession(true);
             session.setAttribute("auth", user);
-            request.getRequestDispatcher("admin_template/index.jsp").forward(request,response);
+            request.getRequestDispatcher("admin_template/index.jsp").forward(request, response);
 
-
-        }
-        else {
+        } else {
             HttpSession session = request.getSession(true);
             session.setAttribute("auth", user);
             response.sendRedirect("ListProduct.jsp");
         }
 
     }
-    }
+}
 

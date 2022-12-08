@@ -1,3 +1,6 @@
+<%@ page import="vn.edu.hcmuaf.fit.beans.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!doctype html>
@@ -62,19 +65,23 @@
 						<thead>
 						<tr>
 							<th class="shoping__product">Sản Phẩm</th>
+							<th></th>
 							<th>Giá</th>
 							<th>Thêm vào giỏ</th>
 							<th></th>
 						</tr>
 						</thead>
 						<tbody>
-						<tr>	
-							<td class="shoping__cart__item">
-								<img src="ImageproductNew/Khoai/khoai-lang-nhat/khoai-lang-nhat-tui-1kg-4-10-cu-202205201543286468.jpg" alt="">
-								<h5>Khoai lang tím</h5>
+						<%List<Product> listLoveProd = (List<Product>) request.getAttribute("listLoveProd");
+							DecimalFormat dec = new DecimalFormat("#,###");
+						for (Product p : listLoveProd) {%>
+						<tr>
+							<td class="shoping__cart__quantity">
+								<img src="<%=p.getUrl()%>" alt="">
 							</td>
+							<td class="shoping__cart__item"><h5><%=p.getNamePr()%></h5></td>
 							<td class="shoping__cart__price">
-								55.000
+								<%=dec.format(p.getPrice()).replace(',', '.')%>đ
 							</td>
 
 							<td class="shoping__cart__quantity">
@@ -83,41 +90,9 @@
 							<td class="shoping__cart__item__close "style="">
 								<span class="icon_close"></span>
 							</td>
-							
-						</tr>
-						<tr>	
-							<td class="shoping__cart__item">
-								<img src="ImageproductNew/Bot/Ngu-coc-viet-dai/bot-ngu-coc-an-kieng-viet-dai-bich-400g-202210201449349516.jpg" alt="">
-								<h5>Bột ngũ cốc ăn kiêng Việt Đại</h5>
-							</td>
-							<td class="shoping__cart__price">
-								65.000
-							</td>
-							<td class="shoping__cart__quantity">
-								<button>Thêm</button>
-							</td>
-							<td class="shoping__cart__item__close "style="">
-								<span class="icon_close"></span>
-							</td>
-							
-						</tr>
-						<tr>	
-							<td class="shoping__cart__item">
-								<img src="ImageproductNew/Bot/Ngu-coc-viet-dai/bot-ngu-coc-an-kieng-viet-dai-bich-400g-202210201449349516.jpg" alt="">
-								<h5>Khoai lang tím</h5>
-							</td>
-							<td class="shoping__cart__price">
-								22.000
-							</td>
 
-							<td class="shoping__cart__quantity">
-								<button>Thêm</button>
-							</td>
-							<td class="shoping__cart__item__close "style="">
-								<span class="icon_close"></span>
-							</td>
-							
 						</tr>
+						<%}%>
 						</tbody>
 					</table>
 				</div>

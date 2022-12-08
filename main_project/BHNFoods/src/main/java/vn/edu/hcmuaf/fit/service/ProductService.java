@@ -2,11 +2,8 @@ package vn.edu.hcmuaf.fit.service;
 
 import vn.edu.hcmuaf.fit.beans.*;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
-<<<<<<< HEAD
 import vn.edu.hcmuaf.fit.beans.Product;
 import vn.edu.hcmuaf.fit.beans.User;
-=======
->>>>>>> 729c9be95ad90f92c2bc19682d6e46c0d4c0992c
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,19 +31,7 @@ public class ProductService {
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("SELECT p.NAME_PR,p.PRICE, c.ID_PR, c.NSX, c.HSD, c.BRAND, c.`DESCRIBE`, c.WEIGHT, c.ORIGIN, c.DATE_IMPORT_PR, c.INVENTORY, c.CONDITION_PR, i.URL, p.ID_MENU  from ct_pr c join image i on i.ID_PR = c.ID_PR JOIN product p on p.ID_PR = c.ID_PR where i.`CONDITION` = 0 and c.ID_PR = '" + idPro + "'").mapToBean(SingleProduct.class).collect(Collectors.toList());
         });
-<<<<<<< HEAD
 
-   }
-
-    public static void main(String[] args) {
-//        List<User> list = (List<User>) User();
-//        for (User p: list) {
-//            System.out.println(p.getNameUser());
-//        }
-        System.out.println(ProductService.getAll());
-
-=======
->>>>>>> 729c9be95ad90f92c2bc19682d6e46c0d4c0992c
     }
     // lấy tất cả hình liên quan đến product theo id
     public List<ImgForSingleProd> getListImgForSingleProduct(String idPro) {
@@ -107,4 +92,23 @@ public class ProductService {
    public int getSize(int kind) {
         return getProductByKind(kind).size();
    }
+
+
+   //trang sản phẩm yêu thích
+    public List<Product> getListLoveProd(String idUser) {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from `like` l JOIN product p  on l.ID_PR = p.ID_PR join image i on p.ID_PR = i.ID_PR where i.`CONDITION` = 0 and l.ID_USER = '" + idUser +"'")
+                    .mapToBean(Product.class).collect(Collectors.toList());
+        });
+    }
+    //trang lịch sử giao dịch
+    public List<Orders> getHistory(String idUser){
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT i.URL, p.NAME_PR, p.PRICE, s.AMOUNT, o.TIME_ORDERS FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on s.ID_PR= p.ID_PR JOIN image i on i.ID_PR=p.ID_PR WHERE o.`CONDITION`=2  and i.`CONDITION`=0 and s.`ID-USER`='"+idUser+"'")
+                    .mapToBean(Orders.class).collect(Collectors.toList());
+        });
+    }
+
+
+
 }

@@ -26,6 +26,8 @@
 </head>
 
 <body>
+<% String error= (String) request.getAttribute("error");
+ %>
   <div class="container-scroller background">
 
     <!-- partial -->
@@ -44,16 +46,20 @@
                 <p class="card-description login">
                   Đăng nhập
                 </p>
-                <form class="forms-sample" action="/doLogin" method="post">
+                <form class="forms-sample" action="/Login" method="post">
+                  <% if( error!=null){ %> <div class="form-group">
+                    <label for="exampleInputName1"><%=error%></label>
+                </div> <%}%>
+
                   <div class="form-group">
                     <label for="exampleInputName1">Email hoặc Số điện thoại</label>
-                    <input type="text" class="form-control" id="exampleInputName1"
+                    <input type="text" class="form-control" name="username" id="exampleInputName1"
                       placeholder="Nhập Email hoặc số điện thoại" required value="<%=request.getParameter("username")!=null?request.getParameter("username"):""%>">
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputPassword4">Mật khẩu</label>
-                    <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Nhập mật khẩu">
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword4" placeholder="Nhập mật khẩu">
                   </div>
                   <div class="form-group forgot_pass" style="padding-bottom:30px;">
                     <a href="forgotpass.jsp">Quên mật khẩu?</a>

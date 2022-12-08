@@ -93,7 +93,7 @@
                         Hoa</span>
                     <div class="list_menu">
                         <div class="dr"><a href="account.jsp">Tài khoản</a></div>
-                        <div class="dr"> <a href="loveProduct.jsp">Sản phẩm yêu thích</a></div>
+                        <div class="dr"> <a href="http://localhost:8080/loveProduct?idUser=user1">Sản phẩm yêu thích</a></div>
                         <div class="dr"> <a href="manageOrder.jsp">Quản lý đơn hàng</a> </div>
                         <div class="dr"> <a href="history.jsp">Lịch sử đơn hàng</a></div>
                         <div class="dr"> <a href="index.jsp">Đăng xuất</a></div>
