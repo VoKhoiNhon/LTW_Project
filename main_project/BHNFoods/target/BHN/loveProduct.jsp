@@ -63,8 +63,6 @@
 						<tr>
 							<th class="shoping__product">Sản Phẩm</th>
 							<th>Giá</th>
-							<th>Số lượng</th>
-							<th>Tổng</th>
 							<th>Thêm vào giỏ</th>
 							<th></th>
 						</tr>
@@ -78,16 +76,7 @@
 							<td class="shoping__cart__price">
 								55.000
 							</td>
-							<td class="shoping__cart__quantity">
-								<div class="quantity">
-									<div class="pro-qty">
-										<input type="text" value="1">
-									</div>
-								</div>
-							</td>
-							<td class="shoping__cart__total">
-								110.000
-							</td>
+
 							<td class="shoping__cart__quantity">
 								<button>Thêm</button>
 							</td>
@@ -105,16 +94,6 @@
 								65.000
 							</td>
 							<td class="shoping__cart__quantity">
-								<div class="quantity">
-									<div class="pro-qty">
-										<input type="text" value="1">
-									</div>
-								</div>
-							</td>
-							<td class="shoping__cart__total">
-								130.000
-							</td>
-							<td class="shoping__cart__quantity">
 								<button>Thêm</button>
 							</td>
 							<td class="shoping__cart__item__close "style="">
@@ -130,16 +109,7 @@
 							<td class="shoping__cart__price">
 								22.000
 							</td>
-							<td class="shoping__cart__quantity">
-								<div class="quantity">
-									<div class="pro-qty">
-										<input type="text" value="1">
-									</div>
-								</div>
-							</td>
-							<td class="shoping__cart__total">
-								22.000
-							</td>
+
 							<td class="shoping__cart__quantity">
 								<button>Thêm</button>
 							</td>
@@ -148,9 +118,6 @@
 							</td>
 							
 						</tr>
-
-						
-						
 						</tbody>
 					</table>
 				</div>

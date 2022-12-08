@@ -5,19 +5,31 @@ import java.sql.Date;
 
 public class User implements Serializable {
     private String idUser;
+<<<<<<< HEAD
+    private String address;
+    private String passw;
+    private String nameUser;
+    private String phone;
+=======
     private  String address;
     private  String passw;
     private String nameUser;
     private  String phone;
+>>>>>>> 729c9be95ad90f92c2bc19682d6e46c0d4c0992c
     private String email;
     private Date birthday;
     private Date dateSignup;
     private boolean sex;
     private byte decentralization;
+<<<<<<< HEAD
+    public User(){}
+
+=======
 
     public User() {
     }
 
+>>>>>>> 729c9be95ad90f92c2bc19682d6e46c0d4c0992c
     public User(String idUser, String address, String passw, String nameUser, String phone, String email, Date birthday, Date dateSignup, boolean sex, byte decentralization) {
         this.idUser = idUser;
         this.address = address;
@@ -101,6 +113,17 @@ public class User implements Serializable {
 
     public void setSex(boolean sex) {
         this.sex = sex;
+<<<<<<< HEAD
+=======
+    }
+
+    public byte getDecentralization() {
+        return decentralization;
+    }
+
+    public void setDecentralization(byte decentralization) {
+        this.decentralization = decentralization;
+>>>>>>> 729c9be95ad90f92c2bc19682d6e46c0d4c0992c
     }
 
     public byte getDecentralization() {
