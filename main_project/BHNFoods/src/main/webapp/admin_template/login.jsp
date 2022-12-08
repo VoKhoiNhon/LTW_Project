@@ -44,7 +44,7 @@
                 <p class="card-description login">
                   Đăng nhập
                 </p>
-                <form class="forms-sample" action="/BNHFoods/doLogin" method="post">
+                <form class="forms-sample" action="/doLogin" method="post">
                   <div class="form-group">
                     <label for="exampleInputName1">Email hoặc Số điện thoại</label>
                     <input type="text" class="form-control" id="exampleInputName1"

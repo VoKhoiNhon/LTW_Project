@@ -1,7 +1,7 @@
 package vn.edu.hcmuaf.fit.service;
 
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
-import vn.edu.hcmuaf.fit.model.User;
+import vn.edu.hcmuaf.fit.beans.User;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -33,16 +33,16 @@ public class UserService {
 
     public User checkLogin(String username, String password) {
         List<User> users = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT * FROM user WHERE username = ?")
-                        .bind(0, username)
+                h.createQuery("SELECT EMAIL, PHONE FROM user WHERE EMAIL = ? and PHONE=?")
+                        .bind(0, username).bind(1,username)
                         .mapToBean(User.class)
                         .stream()
                         .collect(Collectors.toList())
         );
         if (users.size() != 1) return null;
         User user = users.get(0);
-        if (!user.getPassword().equals(hashPassword(password))
-                ||!user.getUsername().equals(username)) return null;
+        if (!user.getPassw().equals(hashPassword(password))
+                ||!(user.getEmail().equals(username)|| (user.getPhone().equals(username)))) return null;
         return user;
     }
     public String hashPassword(String password) {
@@ -56,11 +56,21 @@ public class UserService {
             return null;
         }
     }
+    public List<User> getListUser(){
+       return   JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select * from user")
+                    .mapToBean(User.class).collect(Collectors.toList());
+        });
+    }
 
     public boolean register(String username, String password, String confirm, String email, String phone, String address) {
 //        check register with username and password
 //        if(!password.equals(confirm))return false;
 //        return UserDao.getInstance().register(username, password, email, phone, address);
         return false;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(UserService.getInstance().getListUser().get(1).getNameUser());
     }
 }

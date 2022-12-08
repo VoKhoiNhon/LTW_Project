@@ -2,6 +2,7 @@ package vn.edu.hcmuaf.fit.service;
 
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.beans.Product;
+import vn.edu.hcmuaf.fit.beans.User;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,10 +26,13 @@ public class ProductService {
         });
 
    }
+
     public static void main(String[] args) {
-        List<Product> list = (List<Product>) getAll();
-        for (Product p: list) {
-            System.out.println(p.getNamePr());
-        }
+//        List<User> list = (List<User>) User();
+//        for (User p: list) {
+//            System.out.println(p.getNameUser());
+//        }
+        System.out.println(ProductService.getAll());
+
     }
 }
