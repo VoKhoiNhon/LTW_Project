@@ -67,7 +67,7 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="index.jsp" class="nav-link">Trang chủ</a></li>
-                <li class="nav-item active "><a href="ListProduct" class="nav-link">Sản phẩm</a></li>
+                <li class="nav-item active "><a href="http://localhost:8080/ListProduct?kind=0&page=1" class="nav-link">Sản phẩm</a></li>
                 <li class="nav-item cta cta-colored find"><input type="text" name="" id="findicon" placeholder="Tìm kiếm" ><a
                         href="cart.jsp" class="nav-link"><span class="fa-solid fa-magnifying-glass"></span></a></li>
                 <li class="nav-item cta cta-colored"><a href="cart.jsp" class="nav-link"><span

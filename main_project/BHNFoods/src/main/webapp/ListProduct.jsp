@@ -1,5 +1,6 @@
 <%@ page import="vn.edu.hcmuaf.fit.beans.Product" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!doctype html>
@@ -45,11 +46,11 @@
                                 <span>Danh sách sản phẩm</span>
                             </div>
                             <ul>
-                                <li><a href="#">Gạo</a></li>
-                                <li><a href="#">Nếp</a></li>
-                                <li><a href="#">Các loại hạt</a></li>
-                                <li><a href="#">Các loại bột</a></li>
-                                <li><a href="#">Các loại củ, trái</a></li>
+                                <li><a href="http://localhost:8080/ListProduct?kind=1&page=1">Gạo</a></li>
+                                <li><a href="http://localhost:8080/ListProduct?kind=1&page=2">Nếp</a></li>
+                                <li><a href="http://localhost:8080/ListProduct?kind=1&page=3">Các loại hạt</a></li>
+                                <li><a href="http://localhost:8080/ListProduct?kind=1&page=4">Các loại bột</a></li>
+                                <li><a href="http://localhost:8080/ListProduct?kind=1&page=5">Các loại củ, trái</a></li>
                             </ul>
                         </div>
                     </div>
@@ -196,6 +197,7 @@
                 </div>
                 <div class="row">
                     <%
+                        DecimalFormat decF = new DecimalFormat("#,###");
                         List<Product> productList = (List<Product>) request.getAttribute("listRequest");
                         for(Product p: productList) {
                     %>
@@ -209,17 +211,19 @@
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <a href="singleProduct.jsp"><%=p.getNamePr()%><br> <span><%=p.getPrice()%>đ</span></a>
+                                <a href="http://localhost:8080/oneProduct?id=<%=p.getIdPr()%>"><%=p.getNamePr()%><br> <span><%=decF.format(p.getPrice()).replace(',','.')%>đ</span></a>
                             </div>
                         </div>
                     </div>
                     <%}%>
                 </div>
                 <div class="product__pagination">
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                    <a href="http://localhost:8080/ListProduct?kind=<%=request.getAttribute("kind")%>&page=<%=Integer.parseInt(request.getAttribute("page").toString()) - 1%>"><i class="fa fa-long-arrow-left"></i></a>
+                    <%int count =(int)request.getAttribute("count");
+                        for (int i = 0; i < count; i++) {%>
+                    <a href="http://localhost:8080/ListProduct?kind=<%=request.getAttribute("kind")%>&page=<%= i+ 1%>"><%=i + 1%></a>
+                    <%}%>
+                    <a href="http://localhost:8080/ListProduct?kind=<%=request.getAttribute("kind")%>&page=<%=Integer.parseInt(request.getAttribute("page").toString()) + 1%>"><i class="fa fa-long-arrow-right"></i></a>
                 </div>
             </div>
         </div>
