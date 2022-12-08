@@ -21,10 +21,12 @@ public class SingleProduct implements Serializable {
     byte conditionPr;
     String url;
 
+    String idMenu;
+
     public SingleProduct() {
     }
 
-    public SingleProduct(String namePr, int price, String idPr, Date nsx, Date hsd, String brand, String describe, double weight, String origin, Date dateImportPr, int inventory, byte conditionPr, String url) {
+    public SingleProduct(String namePr, int price, String idPr, Date nsx, Date hsd, String brand, String describe, double weight, String origin, Date dateImportPr, int inventory, byte conditionPr, String url, String idMenu) {
         this.namePr = namePr;
         this.price = price;
         this.idPr = idPr;
@@ -38,6 +40,7 @@ public class SingleProduct implements Serializable {
         this.inventory = inventory;
         this.conditionPr = conditionPr;
         this.url = url;
+        this.idMenu = idMenu;
     }
 
     public String getNamePr() {
@@ -142,6 +145,14 @@ public class SingleProduct implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getIdMenu() {
+        return idMenu;
+    }
+
+    public void setIdMenu(String idMenu) {
+        this.idMenu = idMenu;
     }
 }
 

@@ -4,6 +4,7 @@
 <%@ page import="java.text.DecimalFormat" %>
 <%@ page import="vn.edu.hcmuaf.fit.beans.ImgForSingleProd" %>
 <%@ page import="vn.edu.hcmuaf.fit.beans.Feedback" %>
+<%@ page import="vn.edu.hcmuaf.fit.beans.Product" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!doctype html>
@@ -49,7 +50,8 @@
                              %>
                              src="<%=single.get(0).getUrl()%>" alt="">
                     </div>
-                    <%List<ImgForSingleProd> listURL = (List<ImgForSingleProd>) request.getAttribute("listURL");%>
+                    <%List<ImgForSingleProd> listURL = (List<ImgForSingleProd>) request.getAttribute("listURL");
+                        List<Feedback> listFeedback = (List<Feedback>) request.getAttribute("listFeedBack");%>
                     <div class="product__details__pic__slider owl-carousel">
                         <%for (ImgForSingleProd s: listURL) {%>
                         <img data-imgbigurl="<%=s.getUrl()%>"
@@ -62,12 +64,20 @@
                 <div class="product__details__text">
                     <h3><%=single.get(0).getNamePr()%></h3>
                     <div class="product__details__rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                        <span>(18 đánh giá)</span>
+                        <%if(listFeedback.size() > 0) {
+                            double avgScore = 0;
+                            for (Feedback f: listFeedback) {
+                                avgScore += f.getScoreStar();
+                            }
+                            avgScore /= listFeedback.size();
+                            for (int i = 0; i < Math.floor(avgScore); i++) {%>
+                                <i class="fa fa-star"></i>
+                            <%}
+                            if(avgScore - (int) avgScore != 0.0) {%>
+                            <i class="fa fa-star-half-o"></i>
+                            <%}%>
+                        <%}%>
+                        <span>(<%=listFeedback.size()%> đánh giá)</span>
                     </div>
                     <div class="product__details__price"><%=dec.format(single.get(0).getPrice()).replace(',','.')%>đ</div>
                     <p><%=single.get(0).getDescribe()%></p>
@@ -178,8 +188,7 @@
             <%--                </div>--%>
         </div>
         <div class="comment">
-            <%List<Feedback> listFeedback = (List<Feedback>) request.getAttribute("listFeedBack");
-            if(listFeedback.size() > 0) {%>
+            <%if(listFeedback.size() > 0) {%>
                 <h3>Đánh giá sản phẩm</h3>
             <%for (Feedback f: listFeedback) {%>
                 <div class="comment-user mt-4">
@@ -234,9 +243,12 @@
             </div>
         </div>
         <div class="row">
+            <%List<Product> relatedProducts = (List<Product>) request.getAttribute("relatedProducts");
+            int n = relatedProducts.size() >= 4 ? 4 : relatedProducts.size();
+            for (int i = 0; i < n; i++) {%>
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="body_design/img/product/product-1.jpg">
+                    <div class="product__item__pic set-bg" data-setbg="<%=relatedProducts.get(i).getUrl()%>">
                         <ul class="product__item__pic__hover">
                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
                             <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -244,56 +256,12 @@
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#">Gạo Ngô Khoai Sắn</a></h6>
-                        <h5>50.0000đ</h5>
+                        <h6><a href="http://localhost:8080/oneProduct?id=<%=relatedProducts.get(i).getIdPr()%>"><%=relatedProducts.get(i).getNamePr()%></a></h6>
+                        <h5><%=dec.format(relatedProducts.get(i).getPrice())%>đ</h5>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="body_design/img/product/product-2.jpg">
-                        <ul class="product__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a href="#">Gạo Ngô Khoai Sắn</a></h6>
-                        <h5>50.0000đ</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="body_design/img/product/product-3.jpg">
-                        <ul class="product__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a href="#">Gạo Ngô Khoai Sắn</a></h6>
-                        <h5>50.0000đ</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="body_design/img/product/product-7.jpg">
-                        <ul class="product__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a href="#">Gạo Ngô Khoai Sắn</a></h6>
-                        <h5>50.0000đ</h5>
-                    </div>
-                </div>
-            </div>
+            <%}%>
         </div>
     </div>
 </section>

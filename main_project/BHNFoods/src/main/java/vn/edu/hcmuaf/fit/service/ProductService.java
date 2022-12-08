@@ -1,6 +1,5 @@
 package vn.edu.hcmuaf.fit.service;
 
-import com.mysql.cj.protocol.x.XProtocolRow;
 import vn.edu.hcmuaf.fit.beans.*;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 
@@ -25,27 +24,27 @@ public class ProductService {
         }
         return  instance;
     }
-
+    // Lấy ra sản phẩm theo id
     public List<SingleProduct> getSingleProduct(String idPro) {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT p.NAME_PR,p.PRICE, c.ID_PR, c.NSX, c.HSD, c.BRAND, c.`DESCRIBE`, c.WEIGHT, c.ORIGIN, c.DATE_IMPORT_PR, c.INVENTORY, c.CONDITION_PR, i.URL from ct_pr c join image i on i.ID_PR = c.ID_PR JOIN product p on p.ID_PR = c.ID_PR where i.`CONDITION` = 0 and c.ID_PR = '" + idPro + "'").mapToBean(SingleProduct.class).collect(Collectors.toList());
+            return handle.createQuery("SELECT p.NAME_PR,p.PRICE, c.ID_PR, c.NSX, c.HSD, c.BRAND, c.`DESCRIBE`, c.WEIGHT, c.ORIGIN, c.DATE_IMPORT_PR, c.INVENTORY, c.CONDITION_PR, i.URL, p.ID_MENU  from ct_pr c join image i on i.ID_PR = c.ID_PR JOIN product p on p.ID_PR = c.ID_PR where i.`CONDITION` = 0 and c.ID_PR = '" + idPro + "'").mapToBean(SingleProduct.class).collect(Collectors.toList());
         });
     }
-
+    // lấy tất cả hình liên quan đến product theo id
     public List<ImgForSingleProd> getListImgForSingleProduct(String idPro) {
          return JDBIConnector.get().withHandle(handle -> {
              return handle.createQuery("SELECT URL FROM image where image.ID_PR = '" + idPro + "'").mapToBean(ImgForSingleProd.class).collect(Collectors.toList());
          });
     }
-
+    // Lấy ra phản hồi về sản phẩm theo id
     public List<Feedback> getFeedBack(String idPro) {
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("SELECT f.ID_USER, u.NAME_USER, f.SCORESTAR, f.TEXT, f.DATE FROM feed_back f join user u on u.`ID_USER` = f.ID_USER and f.ID_PR = '" + idPro + "'").mapToBean(Feedback.class).collect(Collectors.toList());
         });
     }
 
-
-   public static List<Product> getAll(int kind){
+    // lấy ra danh sách sản phẩm theo loại, nếu không có loại thì lấy tất cả
+   public static List<Product> getProductByKind(int kind){
         switch (kind) {
             case 1: return JDBIConnector.get().withHandle(handle -> {
                 return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from product p join image i on p.ID_PR = i.ID_PR where i.`CONDITION` = 0 and p.ID_MENU = 'm1'").mapToBean(Product.class).collect(Collectors.toList());
@@ -67,8 +66,10 @@ public class ProductService {
            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from product p join image i on p.ID_PR = i.ID_PR where i.`CONDITION` = 0").mapToBean(Product.class).collect(Collectors.toList());
        });
    }
+
+   // lấy ra danh sách product theo loại và phân trang
    public List<Product> getListProdInPage(int kind, int page) {
-        List<Product> listProd = getAll(kind);
+        List<Product> listProd = getProductByKind(kind);
         List<Product> listResult = new ArrayList<Product>();
         int start = (page - 1) * 15 < 0 ? 0 : (page - 1) * 15;
         int end = page <= listProd.size() / 15 ? page * 15 : listProd.size() - ((page - 1) * 15) + start;
@@ -77,7 +78,15 @@ public class ProductService {
        }
         return  listResult;
    }
+   // lấy ra các sản phẩm liên quan cho 1 product
+   public List<Product> getRelatedProducts(String idMenu) {
+       return JDBIConnector.get().withHandle(handle -> {
+           return handle.createQuery("SELECT p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from product p join image i on p.ID_PR = i.ID_PR where p.ID_MENU = '" + idMenu + "' and i.`CONDITION` = 0").mapToBean(Product.class).collect(Collectors.toList());
+       });
+   }
+
+   // lấy ra số lượng product theo loại để tính toán phân trang
    public int getSize(int kind) {
-        return getAll(kind).size();
+        return getProductByKind(kind).size();
    }
 }
