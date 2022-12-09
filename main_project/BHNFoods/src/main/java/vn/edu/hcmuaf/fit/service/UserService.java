@@ -14,12 +14,7 @@ import java.util.stream.Collectors;
 public class UserService {
     private static UserService instance;
 
-    private static Map<String,String> users= new HashMap<>();
-    static {
-        users.put("admin","admin");
-        users.put("user","user");
-        users.put("ti","123");
-    }
+    //    private static Map<String,String> users= new HashMap<>();
 
     private UserService() {
     }
@@ -33,18 +28,20 @@ public class UserService {
 
     public User checkLogin(String username, String password) {
         List<User> users = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT EMAIL, PHONE FROM user WHERE EMAIL = ? and PHONE=?")
-                        .bind(0, username).bind(1,username)
+                h.createQuery("SELECT PASSW, PHONE, EMAIL FROM user WHERE EMAIL = ? and PHONE=?")
+                        .bind(0, username).bind(1, username)
                         .mapToBean(User.class)
                         .stream()
                         .collect(Collectors.toList())
         );
         if (users.size() != 1) return null;
         User user = users.get(0);
-        if (!user.getPassw().equals(hashPassword(password))
-                ||!(user.getEmail().equals(username)|| (user.getPhone().equals(username)))) return null;
+        if (!user.getPassw().equals((password))
+                || !(user.getEmail().equals(username) || (user.getPhone().equals(username)))) return null;
+
         return user;
     }
+
     public String hashPassword(String password) {
         try {
             MessageDigest sha256 = null;
@@ -56,8 +53,9 @@ public class UserService {
             return null;
         }
     }
-    public List<User> getListUser(){
-       return   JDBIConnector.get().withHandle(handle -> {
+
+    public List<User> getListUser() {
+        return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("select * from user")
                     .mapToBean(User.class).collect(Collectors.toList());
         });
@@ -71,6 +69,6 @@ public class UserService {
     }
 
     public static void main(String[] args) {
-        System.out.println(UserService.getInstance().getListUser().get(1).getNameUser());
+        System.out.println(UserService.getInstance().getListUser().get(2).getNameUser());
     }
 }

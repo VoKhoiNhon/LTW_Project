@@ -98,10 +98,33 @@ public class ProductService {
         });
     }
 
+    public List<Product> getListDiscountProd() {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from product p join image i on p.ID_PR = i.ID_PR where p.DISCOUNT > 0 and i.`CONDITION` = 0").mapToBean(Product.class).collect(Collectors.toList());
+        });
+    }
+
     // lấy ra số lượng product theo loại để tính toán phân trang
     public int getSize(int kind) {
         return getProductByKind(kind).size();
+   }
+
+
+   //trang sản phẩm yêu thích
+    public List<Product> getListLoveProd(String idUser) {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from `like` l JOIN product p  on l.ID_PR = p.ID_PR join image i on p.ID_PR = i.ID_PR where i.`CONDITION` = 0 and l.ID_USER = '" + idUser +"'")
+                    .mapToBean(Product.class).collect(Collectors.toList());
+        });
     }
+    //trang lịch sử giao dịch
+    public List<Orders> getHistory(String idUser){
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT i.URL, p.NAME_PR, p.PRICE, s.AMOUNT, o.TIME_ORDERS FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on s.ID_PR= p.ID_PR JOIN image i on i.ID_PR=p.ID_PR WHERE o.`CONDITION`=2  and i.`CONDITION`=0 and s.`ID-USER`='"+idUser+"'")
+                    .mapToBean(Orders.class).collect(Collectors.toList());
+        });
+    }
+
 
     //lấy ra sản phẩm của cart
         public List<Cart> getListCart(String idUser) {

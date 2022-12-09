@@ -106,6 +106,9 @@ public class User implements Serializable {
     }
 
     public void setDecentralization(byte decentralization) {
+
         this.decentralization = decentralization;
     }
+
+
 }

@@ -1,3 +1,6 @@
+<%@ page import="vn.edu.hcmuaf.fit.beans.Orders" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,9 +57,13 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <%
+                                List<Orders> listHistory= (List<Orders>) request.getAttribute("listHistory");
+                                DecimalFormat dec = new DecimalFormat("#,###");
+                                for (Orders o : listHistory) {%>
                             <tr>
                                 <td class="shoping__cart__item">
-                                    <img src="ImageproductNew/Khoai/khoai-lang-tim/khoai-lang-tim-tui-500g-202105051946310826.jpg" alt="" style="width: 100px;height: auto">
+                                    <img src="<%=%>" alt="" style="width: 100px;height: auto">
                                     <h5>Khoai lang tím túi 1kg (5-8 củ)</h5>
                                 </td>
                                 <td class="shoping__cart__price">
@@ -106,7 +113,7 @@
                         </table>
                         <div class="d-flex justify-content-between pt-5 align-items-center">
                             <div>
-                                <h5>Thời gian đặt hàng: <span>12/11/2022</span></h5>
+                                <h5>Thời gian đặt hàng: <span><%=o.getTimeOrders()%></span></h5>
                             </div>
                             <div>
                                 <h4>Tổng đơn hàng: <span>200.000đ</span></h4>
@@ -116,80 +123,80 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="shoping__cart__table">
-                        <table>
-                            <thead>
-                            <tr>
-                                <th class="shoping__product">Sản Phẩm</th>
-                                <th>Giá</th>
-                                <th>Số lượng</th>
-                                <th>Tổng</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td class="shoping__cart__item">
-                                    <img src="ImageproductNew/Dau/dau-den-viet-san-150g-202205231452334172_300x300.jpg" alt="" style="width: 100px;height: auto">
-                                    <h5>Đậu đen Vệt San 150g</h5>
-                                </td>
-                                <td class="shoping__cart__price">
-                                    17.000
-                                </td>
-                                <td class="shoping__cart__quantity">
-                                    <span>1</span>
-                                </td>
-                                <td class="shoping__cart__total">
-                                    17.000
-                                </td>
-                                
-                            </tr>
-                            <tr>
-                                <td class="shoping__cart__item">
-                                    <img src="ImageproductNew/Bot/Bot-bap-meizan/bot-bap-meizan1.jpg" alt=""style="width: 100px;height: auto">
-                                    <h5>Bột Bắp Mezian 150g</h5>
-                                </td>
-                                <td class="shoping__cart__price">
-                                    20.000
-                                </td>
-                                <td class="shoping__cart__quantity">
-                                    <span>2</span>
-                                </td>
-                                <td class="shoping__cart__total">
-                                  40.000
-                                </td>
-                                
-                            </tr>
-                            <tr>
-                                <td class="shoping__cart__item">
-                                    <img src="ImageproductNew/Khoai/bap-nep/bap-nep-cap-coop-300x300.jpg" alt="" style="width: 100px;height: auto">
-                                    <h5>2 trái bắp nếp (từ 500g)</h5>
-                                </td>
-                                <td class="shoping__cart__price">
-                                  10.000
-                                </td>
-                                <td class="shoping__cart__quantity">
-                                    <span>2</span>
-                                </td>
-                                <td class="shoping__cart__total">
-                                   20.000
-                                </td>
-                                
-                            </tr>
-                            </tbody>
-                        </table>
-                        <div class="d-flex justify-content-between pt-5 align-items-center">
-                            <div>
-                                <h5>Thời gian đặt hàng: <span>12/11/2022</span></h5>
-                            </div>
-                            <div>
-                                <h4>Tổng đơn hàng: <span>50000đ</span></h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<%--            <div class="row">--%>
+<%--                <div class="col-lg-12">--%>
+<%--                    <div class="shoping__cart__table">--%>
+<%--                        <table>--%>
+<%--                            <thead>--%>
+<%--                            <tr>--%>
+<%--                                <th class="shoping__product">Sản Phẩm</th>--%>
+<%--                                <th>Giá</th>--%>
+<%--                                <th>Số lượng</th>--%>
+<%--                                <th>Tổng</th>--%>
+<%--                            </tr>--%>
+<%--                            </thead>--%>
+<%--                            <tbody>--%>
+<%--                            <tr>--%>
+<%--                                <td class="shoping__cart__item">--%>
+<%--                                    <img src="ImageproductNew/Dau/dau-den-viet-san-150g-202205231452334172_300x300.jpg" alt="" style="width: 100px;height: auto">--%>
+<%--                                    <h5>Đậu đen Vệt San 150g</h5>--%>
+<%--                                </td>--%>
+<%--                                <td class="shoping__cart__price">--%>
+<%--                                    17.000--%>
+<%--                                </td>--%>
+<%--                                <td class="shoping__cart__quantity">--%>
+<%--                                    <span>1</span>--%>
+<%--                                </td>--%>
+<%--                                <td class="shoping__cart__total">--%>
+<%--                                    17.000--%>
+<%--                                </td>--%>
+<%--                                --%>
+<%--                            </tr>--%>
+<%--                            <tr>--%>
+<%--                                <td class="shoping__cart__item">--%>
+<%--                                    <img src="ImageproductNew/Bot/Bot-bap-meizan/bot-bap-meizan1.jpg" alt=""style="width: 100px;height: auto">--%>
+<%--                                    <h5>Bột Bắp Mezian 150g</h5>--%>
+<%--                                </td>--%>
+<%--                                <td class="shoping__cart__price">--%>
+<%--                                    20.000--%>
+<%--                                </td>--%>
+<%--                                <td class="shoping__cart__quantity">--%>
+<%--                                    <span>2</span>--%>
+<%--                                </td>--%>
+<%--                                <td class="shoping__cart__total">--%>
+<%--                                  40.000--%>
+<%--                                </td>--%>
+<%--                                --%>
+<%--                            </tr>--%>
+<%--                            <tr>--%>
+<%--                                <td class="shoping__cart__item">--%>
+<%--                                    <img src="ImageproductNew/Khoai/bap-nep/bap-nep-cap-coop-300x300.jpg" alt="" style="width: 100px;height: auto">--%>
+<%--                                    <h5>2 trái bắp nếp (từ 500g)</h5>--%>
+<%--                                </td>--%>
+<%--                                <td class="shoping__cart__price">--%>
+<%--                                  10.000--%>
+<%--                                </td>--%>
+<%--                                <td class="shoping__cart__quantity">--%>
+<%--                                    <span>2</span>--%>
+<%--                                </td>--%>
+<%--                                <td class="shoping__cart__total">--%>
+<%--                                   20.000--%>
+<%--                                </td>--%>
+<%--                                --%>
+<%--                            </tr>--%>
+<%--                            </tbody>--%>
+<%--                        </table>--%>
+<%--                        <div class="d-flex justify-content-between pt-5 align-items-center">--%>
+<%--                            <div>--%>
+<%--                                <h5>Thời gian đặt hàng: <span>12/11/2022</span></h5>--%>
+<%--                            </div>--%>
+<%--                            <div>--%>
+<%--                                <h4>Tổng đơn hàng: <span>50000đ</span></h4>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
             
         </div>
     </section>

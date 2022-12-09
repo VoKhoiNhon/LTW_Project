@@ -256,7 +256,7 @@
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="http://localhost:8080/oneProduct?id=<%=relatedProducts.get(i).getIdPr()%>"><%=relatedProducts.get(i).getNamePr()%></a></h6>
+                        <h6><a href="http://localhost:8080/BHNFoods/oneProduct?id=<%=relatedProducts.get(i).getIdPr()%>&idUser=user1"><%=relatedProducts.get(i).getNamePr()%></a></h6>
                         <h5><%=dec.format(relatedProducts.get(i).getPrice())%>đ</h5>
                     </div>
                 </div>
