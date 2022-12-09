@@ -3,50 +3,56 @@ package vn.edu.hcmuaf.fit.beans;
 import java.time.LocalDateTime;
 
 public class Orders {
-    private String idOrders;
-    private String phone;
-    private String address;
+    private String url;
+    private String namePr;
+    private int priceHere;
+    private int amount;
     private LocalDateTime timeOrders;
-    private LocalDateTime timePickup;
-    private  String note;
     private byte condition;
 
+    public Orders() {
 
-    public Orders(String idOrders, String phone, String address, LocalDateTime timeOrders, LocalDateTime timePickup, String note, byte condition) {
-        this.idOrders = idOrders;
-        this.phone = phone;
-        this.address = address;
+    }
+
+    public Orders(String url, String namePr, int priceHere, int amount, LocalDateTime timeOrders, byte condition) {
+        this.url = url;
+        this.namePr = namePr;
+        this.priceHere = priceHere;
+        this.amount = amount;
         this.timeOrders = timeOrders;
-        this.timePickup = timePickup;
-        this.note = note;
         this.condition = condition;
     }
-    public  Orders(){
 
+    public String getUrl() {
+        return url;
     }
 
-    public String getIdOrders() {
-        return idOrders;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public void setIdOrders(String idOrders) {
-        this.idOrders = idOrders;
+    public String getNamePr() {
+        return namePr;
     }
 
-    public String getPhone() {
-        return phone;
+    public void setNamePr(String namePr) {
+        this.namePr = namePr;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public int getPriceHere() {
+        return priceHere;
     }
 
-    public String getAddress() {
-        return address;
+    public void setPriceHere(int priceHere) {
+        this.priceHere = priceHere;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public LocalDateTime getTimeOrders() {
@@ -57,22 +63,6 @@ public class Orders {
         this.timeOrders = timeOrders;
     }
 
-    public LocalDateTime getTimePickup() {
-        return timePickup;
-    }
-
-    public void setTimePickup(LocalDateTime timePickup) {
-        this.timePickup = timePickup;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
-
     public byte getCondition() {
         return condition;
     }
@@ -81,3 +71,4 @@ public class Orders {
         this.condition = condition;
     }
 }
+
