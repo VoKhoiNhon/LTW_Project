@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.controller;
 
+import vn.edu.hcmuaf.fit.beans.Cart;
 import vn.edu.hcmuaf.fit.beans.Product;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
@@ -16,9 +17,14 @@ public class ListProduct extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int kind = Integer.parseInt(request.getParameter("kind"));
         int page =  Integer.parseInt(request.getParameter("page"));
+        String idUser = request.getParameter("idUser");
         int tempSize =  ProductService.getInstance().getSize(kind)/15;
         int count = ProductService.getInstance().getSize(kind)%15 > 0 ? tempSize + 1:tempSize;
         List<Product> list= (List<Product>) ProductService.getInstance().getListProdInPage(kind, page);
+        List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
+        List<Product> listDiscount = ProductService.getInstance().getListDiscountProd();
+        request.setAttribute("listDiscount", listDiscount);
+        request.setAttribute("listCart", listCart);
         request.setAttribute("listRequest", list);
         request.setAttribute("kind", kind);
         request.setAttribute("page", page);

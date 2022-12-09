@@ -1,9 +1,6 @@
 package vn.edu.hcmuaf.fit.controller;
 
-import vn.edu.hcmuaf.fit.beans.Feedback;
-import vn.edu.hcmuaf.fit.beans.ImgForSingleProd;
-import vn.edu.hcmuaf.fit.beans.Product;
-import vn.edu.hcmuaf.fit.beans.SingleProduct;
+import vn.edu.hcmuaf.fit.beans.*;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
 
@@ -21,11 +18,14 @@ public class OneProduct extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idProd = request.getParameter("id");
         request.setAttribute("id", idProd);
+        String idUser = request.getParameter("idUser");
         List<SingleProduct> singleProd = ProductService.getInstance().getSingleProduct(idProd);
         List<ImgForSingleProd> listURL = ProductService.getInstance().getListImgForSingleProduct(idProd);
         List<Feedback> listFeedBack = ProductService.getInstance().getFeedBack(idProd);
         List<Product> listRelatedProduct = ProductService.getInstance().getRelatedProducts(singleProd.get(0).getIdMenu());
+        List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
         Collections.shuffle(listRelatedProduct);
+        request.setAttribute("listCart", listCart);
         request.setAttribute("listFeedBack", listFeedBack);
         request.setAttribute("listURL", listURL);
         request.setAttribute("singleProduct", singleProd);
