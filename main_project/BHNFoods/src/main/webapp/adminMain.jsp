@@ -205,7 +205,7 @@
       </a>
     </div>
     <div class="nav-item">
-      <a href="manage_user.jsp" class="nav-item-link">
+      <a href="http://localhost:8080/BHNFoods/AdminManageUser" class="nav-item-link">
         <i style="margin-right: 5px;" class="menu-icon mdi mdi-account-circle"></i>
         <span>Quản lý người dùng</span>
       </a>

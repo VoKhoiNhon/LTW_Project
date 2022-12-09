@@ -1,3 +1,5 @@
+<%@ page import="vn.edu.hcmuaf.fit.beans.User" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +72,7 @@
                 <p class="fw-light small-text mb-0">Trang chi tiết cho tất cả</p>
               </div>
             </a>
-            
+
           </div>
         </li>
         <li class="nav-item d-none d-lg-block">
@@ -204,13 +206,13 @@
         </a>
       </div>
       <div class="nav-item">
-        <a href="manage_user.jsp" class="nav-item-link">
+        <a href="http://localhost:8080/BHNFoods/AdminManageUser" class="nav-item-link">
           <i style="margin-right: 5px;" class="menu-icon mdi mdi-account-circle"></i>
           <span>Quản lý người dùng</span>
         </a>
       </div>
       <div class="nav-item">
-        <a href="manage_product.jsp" class="nav-item-link">
+        <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
           <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
           <span>Quản lý sản phẩm</span>
         </a>
@@ -274,6 +276,9 @@
                                                   </tr>
                                                   </thead>
                                                   <tbody>
+                                                  <% List<User> list = (List<User>) request.getAttribute("listUser");
+                                                  for(User u : list){
+                                                  %>
                                                   <tr>
                                                     <td>
                                                       <div class="form-check form-check-flat mt-0">
@@ -286,14 +291,14 @@
                                                       <div class="d-flex ">
                                                         <img src="ImageproductNew/background/images.png" alt="">
                                                         <div>
-                                                          <h6>Võ Khôi Nhơn</h6>
-                                                          <p>User</p>
+                                                          <h6><%=u.getNameUser()%></h6>
+                                                          <p><%=u.checkDecentralization()%></p>
                                                         </div>
                                                       </div>
                                                     </td>
                                                     <td>
-                                                      <h6>079548822</h6>
-                                                      <p>nhonw@gmail.commm</p>
+                                                      <h6><%=u.getPhone()%></h6>
+                                                      <p><%=u.getEmail()%></p>
                                                     </td>
                                                     <td>
                                                       <%--                                        <div>--%>
@@ -309,199 +314,11 @@
                                                       <%--                                        </div>--%>
                                                     </td>
                                                     <td>
-                                                      <div class="">110 Địa Hàn, phường Tăng Nhơn Phú, Tp. Thủ Đức</div>
+                                                      <div class=""><%=u.getAddress()%></div>
                                                     </td>
                                                   </tr>
-                                                  <tr>
-                                                    <td>
-                                                      <div class="form-check form-check-flat mt-0">
-                                                        <label class="form-check-label">
-                                                          <input type="checkbox" class="form-check-input" aria-checked="false"><i
-                                                                class="input-helper"></i></label>
-                                                      </div>
-                                                    </td>
-                                                    <td>
-                                                      <div class="d-flex">
-                                                        <img src="ImageproductNew/background/images.png" alt="">
-                                                        <div>
-                                                          <h6>Lê Bảo Đặng</h6>
-                                                          <p>User</p>
-                                                        </div>
-                                                      </div>
-                                                    </td>
-                                                    <td>
-                                                      <h6>037864222</h6>
-                                                      <p>baodang@gmail.com</p>
-                                                    </td>
-                                                    <td>
-                                                      <%--                                        <div>--%>
-                                                      <%--                                          <div--%>
-                                                      <%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
-                                                      <%--                                            <p class="text-success">65%</p>--%>
-                                                      <%--                                            <p>85/162</p>--%>
-                                                      <%--                                          </div>--%>
-                                                      <%--                                          <div class="progress progress-md">--%>
-                                                      <%--                                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"--%>
-                                                      <%--                                              aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>--%>
-                                                      <%--                                          </div>--%>
-                                                      <%--                                        </div>--%>
-                                                    </td>
-                                                    <td>
-                                                      <div class="">110 Địa Hàn, phường Quy Nhơn, Tp. THCM</div>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>
-                                                      <div class="form-check form-check-flat mt-0">
-                                                        <label class="form-check-label">
-                                                          <input type="checkbox" class="form-check-input" aria-checked="false"><i
-                                                                class="input-helper"></i></label>
-                                                      </div>
-                                                    </td>
-                                                    <td>
-                                                      <div class="d-flex">
-                                                        <img src="ImageproductNew/background/images.png" alt="">
-                                                        <div>
-                                                          <h6>Dương Thanh Phụng</h6>
-                                                          <p>User</p>
-                                                        </div>
-                                                      </div>
-                                                    </td>
-                                                    <td>
-                                                      <h6>026346848</h6>
-                                                      <p>phung@email.com</p>
-                                                    </td>
-                                                    <td>
-                                                      <%--                                        <div>--%>
-                                                      <%--                                          <div--%>
-                                                      <%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
-                                                      <%--                                            <p class="text-success">65%</p>--%>
-                                                      <%--                                            <p>85/162</p>--%>
-                                                      <%--                                          </div>--%>
-                                                      <%--                                          <div class="progress progress-md">--%>
-                                                      <%--                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 38%"--%>
-                                                      <%--                                              aria-valuenow="38" aria-valuemin="0" aria-valuemax="100"></div>--%>
-                                                      <%--                                          </div>--%>
-                                                      <%--                                        </div>--%>
-                                                    </td>
-                                                    <td>
-                                                      <div class="">20 Lê Quân, phường Võ Thị Sáu,Quận 2 Tp. HCM</div>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>
-                                                      <div class="form-check form-check-flat mt-0">
-                                                        <label class="form-check-label">
-                                                          <input type="checkbox" class="form-check-input" aria-checked="false"><i
-                                                                class="input-helper"></i></label>
-                                                      </div>
-                                                    </td>
-                                                    <td>
-                                                      <div class="d-flex">
-                                                        <img src="ImageproductNew/background/images.png" alt="">
-                                                        <div>
-                                                          <h6>Phan Thị Quỳnh Như</h6>
-                                                          <p>User</p>
-                                                        </div>
-                                                      </div>
-                                                    </td>
-                                                    <td>
-                                                      <h6>023476572</h6>
-                                                      <p>nhuw@gmail.com</p>
-                                                    </td>
-                                                    <td>
-                                                      <%--                                        <div>--%>
-                                                      <%--                                          <div--%>
-                                                      <%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
-                                                      <%--                                            <p class="text-success">65%</p>--%>
-                                                      <%--                                            <p>85/162</p>--%>
-                                                      <%--                                          </div>--%>
-                                                      <%--                                          <div class="progress progress-md">--%>
-                                                      <%--                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 15%"--%>
-                                                      <%--                                              aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>--%>
-                                                      <%--                                          </div>--%>
-                                                      <%--                                        </div>--%>
-                                                    </td>
-                                                    <td>
-                                                      <div class="">204 Lê Quân, phường Thường Kiệt,Quận 5 Tp. HCM</div>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>
-                                                      <div class="form-check form-check-flat mt-0">
-                                                        <label class="form-check-label">
-                                                          <input type="checkbox" class="form-check-input" aria-checked="false"><i
-                                                                class="input-helper"></i></label>
-                                                      </div>
-                                                    </td>
-                                                    <td>
-                                                      <div class="d-flex">
-                                                        <img src="ImageproductNew/background/images.png" alt="">
-                                                        <div>
-                                                          <h6>Nguyễn Thị Xuân Hoa</h6>
-                                                          <p>User</p>
-                                                        </div>
-                                                      </div>
-                                                    </td>
-                                                    <td>
-                                                      <h6>077984872</h6>
-                                                      <p>poong@gmail.com</p>
-                                                    </td>
-                                                    <td>
-                                                      <%--                                        <div>--%>
-                                                      <%--                                          <div--%>
-                                                      <%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
-                                                      <%--                                            <p class="text-success">65%</p>--%>
-                                                      <%--                                            <p>85/162</p>--%>
-                                                      <%--                                          </div>--%>
-                                                      <%--                                          <div class="progress progress-md">--%>
-                                                      <%--                                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"--%>
-                                                      <%--                                              aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>--%>
-                                                      <%--                                          </div>--%>
-                                                      <%--                                        </div>--%>
-                                                    </td>
-                                                    <td>
-                                                      <div class="">54 Lê Quân, phường Trường Thọ,Bình Thạnh, Tp. HCM</div>
-                                                    </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>
-                                                      <div class="form-check form-check-flat mt-0">
-                                                        <label class="form-check-label">
-                                                          <input type="checkbox" class="form-check-input" aria-checked="false"><i
-                                                                class="input-helper"></i></label>
-                                                      </div>
-                                                    </td>
-                                                    <td>
-                                                      <div class="d-flex">
-                                                        <img src="ImageproductNew/background/images.png" alt="">
-                                                        <div>
-                                                          <h6>Phạm Gia Bảo</h6>
-                                                          <p>user</p>
-                                                        </div>
-                                                      </div>
-                                                    </td>
-                                                    <td>
-                                                      <h6>0772376872</h6>
-                                                      <p>baotaolao@gmail.com</p>
-                                                    </td>
-                                                    <td>
-                                                      <%--                                        <div>--%>
-                                                      <%--                                          <div--%>
-                                                      <%--                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
-                                                      <%--                                            <p class="text-success">65%</p>--%>
-                                                      <%--                                            <p>85/162</p>--%>
-                                                      <%--                                          </div>--%>
-                                                      <%--                                          <div class="progress progress-md">--%>
-                                                      <%--                                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"--%>
-                                                      <%--                                              aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>--%>
-                                                      <%--                                          </div>--%>
-                                                      <%--                                        </div>--%>
-                                                    </td>
-                                                    <td>
-                                                      <div class="">20 Lê Quân, phường Võ Thị Sáu,Quận 2 Tp. HCM</div>
-                                                    </td>
-                                                  </tr>
+                                                  <%}%>
+
                                                   </tbody>
                                                 </table>
                                               </div>
