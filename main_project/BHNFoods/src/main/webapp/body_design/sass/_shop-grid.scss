@@ -37,7 +37,7 @@
     }
 }
 
-.product__discount__item__pic {
+.product__discount__item__pic, {
     height: 270px;
     position: relative;
     overflow: hidden;
@@ -56,6 +56,8 @@
         top: 15px;
     }
 }
+
+
 
 .product__item__pic__hover {
     position: absolute;

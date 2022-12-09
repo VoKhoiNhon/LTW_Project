@@ -46,11 +46,11 @@
                                 <span>Danh sách sản phẩm</span>
                             </div>
                             <ul>
-                                <li><a href="http://localhost:8080/ListProduct?kind=1&page=1">Gạo</a></li>
-                                <li><a href="http://localhost:8080/ListProduct?kind=1&page=2">Nếp</a></li>
-                                <li><a href="http://localhost:8080/ListProduct?kind=1&page=3">Các loại hạt</a></li>
-                                <li><a href="http://localhost:8080/ListProduct?kind=1&page=4">Các loại bột</a></li>
-                                <li><a href="http://localhost:8080/ListProduct?kind=1&page=5">Các loại củ, trái</a></li>
+                                <li><a href="http://localhost:8080/BHNFoods/ListProduct?kind=1&page=1&idUser=user1">Gạo</a></li>
+                                <li><a href="http://localhost:8080/BHNFoods/ListProduct?kind=2&page=1&idUser=user1">Nếp</a></li>
+                                <li><a href="http://localhost:8080/BHNFoods/ListProduct?kind=3&page=1&idUser=user1">Các loại hạt</a></li>
+                                <li><a href="http://localhost:8080/BHNFoods/ListProduct?kind=4&page=1&idUser=user1">Các loại bột</a></li>
+                                <li><a href="http://localhost:8080/BHNFoods/ListProduct?kind=5&page=1&idUser=user1">Các loại củ, trái</a></li>
                             </ul>
                         </div>
                     </div>
@@ -146,12 +146,15 @@
                     </div>
                     <div class="row">
                         <div class="product__discount__slider owl-carousel">
-                            <%for(int i = 0; i < 5; i++) {%>
+                            <%
+                                List<Product> listDiscount = (List<Product>) request.getAttribute("listDiscount");
+                                for(Product p: listDiscount) {
+                            %>
                             <div class="col-lg-4">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg"
-                                         data-setbg="ImageproductNew/Gao/Gao-lut/gao-huyet-rong-lotus-rice-nutrichoice-hop-0-5kg-202103040832315314_300x300.jpg">
-                                        <div class="product__discount__percent">-20%</div>
+                                         data-setbg="<%=p.getUrl()%>">
+                                        <div class="product__discount__percent">-<%=p.getDiscount()%>%</div>
                                         <ul class="product__item__pic__hover">
                                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                             <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -160,9 +163,9 @@
                                     </div>
                                     <div class="product__discount__item__text">
 
-                                        <a href="singleProduct.jsp"><span>Gạo</span>
-                                            <h5>Gạo lứt huyến rồng Lotus 5kg</h5>
-                                            <div class="product__item__price">50.000đ <span>60.000đ</span></div></a>
+                                        <a href="http://localhost:8080/BHNFoods/oneProduct?id=<%=p.getIdPr()%>&idUser=user1"><span>Gạo</span>
+                                            <h5><%=p.getNamePr()%></h5>
+                                            <div class="product__item__price"><%=p.getPrice() - (p.getPrice()*p.getDiscount())/100%>đ <span><%=p.getPrice()%>đ</span></div></a>
                                     </div>
                                 </div>
                             </div>
@@ -176,9 +179,9 @@
                             <div class="filter__sort">
                                 <span>Sắp xếp</span>
                                 <select>
-                                    <option value="0">Giảm giá</option>
-                                    <option value="0">Giá thấp đến cao</option>
-                                    <option value="0">Giá cao đến thấp</option>
+                                    <option value="0"><a>Giảm Giá</a></option>
+                                    <option value="1">Giá thấp đến cao</option>
+                                    <option value="2">Giá cao đến thấp</option>
                                 </select>
                             </div>
                         </div>
@@ -187,6 +190,7 @@
                                 <h6><span>16</span> Sản phẩm được tìm thấy</h6>
                             </div>
                         </div>
+
 <%--                        <div class="col-lg-4 col-md-3">--%>
 <%--                            <div class="filter__option">--%>
 <%--                                <span class="icon_grid-2x2"></span>--%>
@@ -204,6 +208,9 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="<%=p.getUrl()%>">
+                                <%if(p.getDiscount() > 0) {%>
+                                <div class="discount__percent" style="">-<%=p.getDiscount()%>%</div>
+                                <%}%>
                                 <ul class="product__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                     <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -211,19 +218,23 @@
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <a href="http://localhost:8080/oneProduct?id=<%=p.getIdPr()%>"><%=p.getNamePr()%><br> <span><%=decF.format(p.getPrice()).replace(',','.')%>đ</span></a>
+                                <a href="http://localhost:8080/BHNFoods/oneProduct?id=<%=p.getIdPr()%>&idUser=user1"><%=p.getNamePr()%><br> <span><%=decF.format(p.getPrice()).replace(',','.')%>đ</span></a>
                             </div>
                         </div>
                     </div>
                     <%}%>
                 </div>
                 <div class="product__pagination">
-                    <a href="http://localhost:8080/ListProduct?kind=<%=request.getAttribute("kind")%>&page=<%=Integer.parseInt(request.getAttribute("page").toString()) - 1%>"><i class="fa fa-long-arrow-left"></i></a>
+                    <%if(Integer.parseInt(request.getAttribute("page").toString()) >= 2) {%>
+                    <a href="http://localhost:8080/BHNFoods/ListProduct?kind=<%=request.getAttribute("kind")%>&page=<%=Integer.parseInt(request.getAttribute("page").toString()) - 1%>&idUser=user1"><i class="fa fa-long-arrow-left"></i></a>
+                    <%}%>
                     <%int count =(int)request.getAttribute("count");
                         for (int i = 0; i < count; i++) {%>
-                    <a href="http://localhost:8080/ListProduct?kind=<%=request.getAttribute("kind")%>&page=<%= i+ 1%>"><%=i + 1%></a>
+                    <a href="http://localhost:8080/BHNFoods/ListProduct?kind=<%=request.getAttribute("kind")%>&page=<%= i+ 1%>&idUser=user1"><%=i + 1%></a>
                     <%}%>
-                    <a href="http://localhost:8080/ListProduct?kind=<%=request.getAttribute("kind")%>&page=<%=Integer.parseInt(request.getAttribute("page").toString()) + 1%>"><i class="fa fa-long-arrow-right"></i></a>
+                    <%if(Integer.parseInt(request.getAttribute("page").toString()) <= count - 1) {%>
+                    <a href="http://localhost:8080/BHNFoods/ListProduct?kind=<%=request.getAttribute("kind")%>&page=<%=Integer.parseInt(request.getAttribute("page").toString()) + 1%>&idUser=user1"><i class="fa fa-long-arrow-right"></i></a>
+                    <%}%>
                 </div>
             </div>
         </div>

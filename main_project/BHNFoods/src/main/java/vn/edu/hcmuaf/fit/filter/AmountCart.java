@@ -18,9 +18,9 @@ public class AmountCart implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
-        String idUser = request.getParameter("idUser");
-        List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
-        request.setAttribute("aCart",listCart);
-        chain.doFilter(request, response);
+//        String idUser = request.getParameter("idUser");
+//        List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
+//        request.setAttribute("aCart",listCart);
+//        chain.doFilter(request, response);
     }
 }

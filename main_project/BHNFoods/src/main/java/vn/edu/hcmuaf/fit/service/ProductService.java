@@ -98,6 +98,12 @@ public class ProductService {
         });
     }
 
+    public List<Product> getListDiscountProd() {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from product p join image i on p.ID_PR = i.ID_PR where p.DISCOUNT > 0 and i.`CONDITION` = 0").mapToBean(Product.class).collect(Collectors.toList());
+        });
+    }
+
     // lấy ra số lượng product theo loại để tính toán phân trang
     public int getSize(int kind) {
         return getProductByKind(kind).size();

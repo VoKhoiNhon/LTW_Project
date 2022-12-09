@@ -10,7 +10,7 @@ public class Orders {
     private LocalDateTime timePickup;
     private  String note;
     private byte condition;
-    private Product
+
 
     public Orders(String idOrders, String phone, String address, LocalDateTime timeOrders, LocalDateTime timePickup, String note, byte condition) {
         this.idOrders = idOrders;
