@@ -208,7 +208,7 @@
 <div class="container-fluid page-body-wrapper">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="nav-item">
-            <a href="adminMain.jsp" class="nav-item-link">
+            <a href="http://localhost:8080/BHNFoods/AdminMain" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-home"></i>
                 <span>Trang chủ</span>
             </a>
@@ -220,7 +220,7 @@
             </a>
         </div>
         <div class="nav-item">
-            <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
+            <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1"  class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Quản lý sản phẩm</span>
             </a>
