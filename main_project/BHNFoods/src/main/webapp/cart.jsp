@@ -108,7 +108,7 @@
 					<h5>Tổng giỏ hàng</h5>
 					<ul>
 						<li>Tổng tiền hàng
-							<span><%= decF.format(sum).replace(',','.')%> đ</span>
+							<span><%= decF.format(sum).replace(',','.')%>đ</span>
 						</li>
 						<li>Giảm <span>50.000</span></li>
 						<li>Tổng thanh toán <span>510.000</span></li>

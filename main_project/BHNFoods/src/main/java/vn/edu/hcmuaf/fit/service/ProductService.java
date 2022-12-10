@@ -3,10 +3,12 @@ package vn.edu.hcmuaf.fit.service;
 import vn.edu.hcmuaf.fit.beans.*;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.beans.Product;
-import vn.edu.hcmuaf.fit.beans.User;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ProductService {
@@ -107,22 +109,72 @@ public class ProductService {
     // lấy ra số lượng product theo loại để tính toán phân trang
     public int getSize(int kind) {
         return getProductByKind(kind).size();
-   }
+    }
 
 
-   //trang sản phẩm yêu thích
+    //trang sản phẩm yêu thích
     public List<Product> getListLoveProd(String idUser) {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from `like` l JOIN product p  on l.ID_PR = p.ID_PR join image i on p.ID_PR = i.ID_PR where i.`CONDITION` = 0 and l.ID_USER = '" + idUser +"'")
+            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from `like` l JOIN product p  on l.ID_PR = p.ID_PR join image i on p.ID_PR = i.ID_PR where i.`CONDITION` = 0 and l.ID_USER = '" + idUser + "'")
                     .mapToBean(Product.class).collect(Collectors.toList());
         });
     }
+
     //trang lịch sử giao dịch
-    public List<Orders> getHistory(String idUser){
+    public List<Orders> getHistory(String idUser) {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT i.URL, p.NAME_PR, p.PRICE, s.AMOUNT, o.TIME_ORDERS FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on s.ID_PR= p.ID_PR JOIN image i on i.ID_PR=p.ID_PR WHERE o.`CONDITION`=2  and i.`CONDITION`=0 and s.`ID-USER`='"+idUser+"'")
+            return handle.createQuery("SELECT i.URL, p.NAME_PR, p.PRICE, s.AMOUNT, o.TIME_ORDERS FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on s.ID_PR= p.ID_PR JOIN image i on i.ID_PR=p.ID_PR WHERE o.`CONDITION`=2  and i.`CONDITION`=0 and s.`ID-USER`='" + idUser + "'")
                     .mapToBean(Orders.class).collect(Collectors.toList());
         });
+    }
+//danh sach nhap san pham theo ngay
+    public List<SingleProduct> getListPrDateImport(int i) {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select  p.NAME_PR, c.DATE_IMPORT_PR from ct_pr c join product p on c.ID_PR=p.ID_PR ORDER BY c.DATE_IMPORT_PR DESC LIMIT "+i)
+                    .mapToBean(SingleProduct.class).collect(Collectors.toList());
+        });
+    public List<SoldProduct> getHistory(String idUser){
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT s.ID_PR, p.NAME_PR, i.URL, s.ID_USER, s.PRICE_HERE, s.AMOUNT, s.`TIME_SOLD`, s.ID_ORDERS FROM sold_pr s join product p on p.ID_PR = s.ID_PR JOIN image i on i.ID_PR = s.ID_PR JOIN orders o on o.ID_ORDERS = s.ID_ORDERS where o.`CONDITION` = 2 and i.`CONDITION` = 0 and s.ID_USER = '" + idUser + "'")
+                    .mapToBean(SoldProduct.class).collect(Collectors.toList());
+        });
+    }
+    //trang quan ly don hang
+    public List<Orders> getManagerOrders(String idUser){
+        return  JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT i.URL, p.NAME_PR, s.PRICE_HERE, s.AMOUNT, o.TIME_ORDERS, o.`CONDITION` FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on s.ID_PR= p.ID_PR JOIN image i on i.ID_PR=p.ID_PR WHERE (o.`CONDITION`=0 or o.`CONDITION`=1 or  o.`CONDITION`=3) and i.`CONDITION`=0 and s.`ID-USER`='"+idUser+"'")
+                    .mapToBean(Orders.class).collect(Collectors.toList());
+        });
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getInstance().getHistory("user3").get(0).getNamePr());
+    }
+
+    public Map<String, List<SoldProduct>> getMapOrders(List<SoldProduct> soldProductList) {
+        Map<String, List<SoldProduct>> mapResult = new HashMap<String, List<SoldProduct>>();
+
+        for (SoldProduct s: soldProductList) {
+            if(mapResult.containsKey(s.getIdOrders())) {
+                mapResult.get(s.getIdOrders()).add(s);
+            } else {
+                List<SoldProduct> listSold = new ArrayList<SoldProduct>();
+                listSold.add(s);
+                mapResult.put(s.getIdOrders(), listSold);
+            }
+        }
+        return mapResult;
+    }
+    public Map<String, Integer> sumOrder(Map<String, List<SoldProduct>> map) {
+        Map<String, Integer> mapResult = new HashMap<String, Integer>();
+        int sum = 0;
+        for (Map.Entry<String, List<SoldProduct>> entry : map.entrySet()) {
+            for (SoldProduct s: entry.getValue()) {
+                sum += s.getAmount()*s.getPriceHere();
+            }
+            mapResult.put(entry.getKey(), sum);
+        }
+        return mapResult;
     }
 
 
@@ -133,14 +185,29 @@ public class ProductService {
                 });
     }
 
-    // hàm tính tổng ở cart
-    public int sumCart(List<Cart> l) {
-        int result = 0;
-        for (Cart c : l) {
-            result += c.getPrice()*c.getAmount();
+        //lấy ra sản phẩm của cart
+        public List<Cart> getListCart (String idUser){
+            return JDBIConnector.get().withHandle(handle -> {
+                return handle.createQuery("select c.ID_PR, p.DISCOUNT,p.PRICE,p.NAME_PR,i.URL,c.AMOUNT from cart c join product p on c.ID_PR=p.ID_PR join image i on i.ID_PR=p.ID_PR where  i.`CONDITION`=0 and c.ID_USER='" + idUser + "'").mapToBean(Cart.class).collect(Collectors.toList());
+            });
         }
+
+        // hàm tính tổng ở cart
+        public int sumCart (List < Cart > l) {
+            int result = 0;
+            for (Cart c : l) {
+                result += c.getPrice() * c.getAmount();
+            }
+            return result;
+        }
+
         return result;
     }
+
+    public String formatTime(LocalDateTime dateTime) {
+        return dateTime.getDayOfMonth() + "-" + dateTime.getMonthValue() + "-" + dateTime.getYear() + " " + dateTime.getHour() + ":" + dateTime.getMinute();
+    }
+
 //    public int sumAmount(List<Cart> l) {
 //        int result = 0;
 //        for (Cart c : l) {
@@ -151,3 +218,5 @@ public class ProductService {
 
 
 }
+
+
