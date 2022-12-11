@@ -38,7 +38,9 @@ public class SignUp extends HttpServlet {
             request.getRequestDispatcher("signup.jsp").forward(request, response);
         }else{
             int newUID=  UserService.getInstance().getListUser().size()+1;
-            UserService.getInstance().addUser(name, email,phone,pass);
+
+           UserService.getInstance().addUser(name, email,phone,pass);
+
             response.sendRedirect("http://localhost:8080/BHNFoods/index?idUser="+newUID);
         }
 

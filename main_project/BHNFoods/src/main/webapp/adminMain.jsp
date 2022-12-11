@@ -319,7 +319,7 @@
                                                     </div>
                                                 </div>
                                                 <%}%>
-                                                <input type="button" value="Update" onclick="<%%>"></input>
+                                                <input type="button" value="Update" formmethod="post" ></input>
                                                 <div class="list align-items-center pt-3">
                                                     <div class="wrapper w-100">
                                                         <p class="mb-0">

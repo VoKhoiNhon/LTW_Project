@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.service;
 
+import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.statement.Query;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.beans.User;
@@ -7,6 +8,7 @@ import vn.edu.hcmuaf.fit.beans.User;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -72,12 +74,12 @@ public class UserService {
 
     }
 
-    public Query addUser(String name, String email, String phone, String pass) {
+    public void addUser(String name, String email, String phone, String pass)  {
         List<User> users = getListUser();
         int count = users.size();
-        return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("INSERT INTO `user` VALUES( 'user" + (count + 1) + "',NULL,'"
-                    + pass + "','" + name+"','" + phone + "','" + email + "'," + "NULL,NULL, NULL,0)");
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("INSERT INTO `user` VALUES( 'user" + (count + 1) + "',NULL,'"
+                    + pass + "','" + name+"','" + phone + "','" + email + "'," + "NULL,'2021-12-02', NULL,0)").execute();
 
         });
 
