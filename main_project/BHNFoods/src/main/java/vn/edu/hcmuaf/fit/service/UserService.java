@@ -10,6 +10,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class UserService {
@@ -75,14 +76,35 @@ public class UserService {
 
     }
 
-    public void addUser(String name, String email, String phone, String pass)  {
+    public void addUser(String name, String email, String phone, String pass) {
         List<User> users = getListUser();
         int count = users.size();
         JDBIConnector.get().withHandle(handle -> {
             return handle.createUpdate("INSERT INTO `user` VALUES( 'user" + (count + 1) + "',NULL,'"
-                    + pass + "','" + name+"','" + phone + "','" + email + "'," + "NULL,'2021-12-02', NULL,0)").execute();
+                    + pass + "','" + name + "','" + phone + "','" + email + "'," + "NULL,'2021-12-02', NULL,0)").execute();
 
         });
 
+    }
+    public void changePass( String email, String phone, String pass) {
+        List<User> users = getListUser();
+        int count = users.size();
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("UPDATE user SET PASSW='" + pass+ "'WHERE EMAIL='"
+                    + email+ "'or PHONE='" + phone + "'").execute();
+
+        });
+    }
+    public String codeChange()  {
+        String code = "";
+        Random rd = new Random();
+        for(int i=0; i<6; i++) {
+            code+=  rd.nextInt(10);
+        }
+        return code;
+    }
+
+    public static void main(String[] args) {
+        UserService.getInstance().changePass("1111111111","1111111111","aaa");
     }
 }

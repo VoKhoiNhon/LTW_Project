@@ -63,7 +63,7 @@
                     <input type="password" name="password" class="form-control" id="exampleInputPassword4" placeholder="Nhập mật khẩu">
                   </div>
                   <div class="form-group forgot_pass" style="padding-bottom:30px;">
-                    <a href="forgotpass.jsp">Quên mật khẩu?</a>
+                    <a href="changepass.jsp">Quên mật khẩu?</a>
                   </div>
                   <div class="form-group  button_primary">
                     <button type="submit" class="btn btn-primary  button_primary_height me-2">Đăng nhập</button> </br>

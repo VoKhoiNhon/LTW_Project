@@ -1,3 +1,4 @@
+<%@ page import="vn.edu.hcmuaf.fit.service.UserService" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +29,13 @@
 <body>
   <div class="container-scroller background">
     <!-- <img src="css/vertical-layout-light/hinh5.jpg" alt="" style="position: relative;"> -->
+    <%
+      String errorDup= (String) request.getAttribute("errorDup");
+      String errorName=(String)  request.getAttribute("errorName");
+      String errorCode = (String) request.getAttribute("errorName");
+      String mess = (String) request.getAttribute("mess");
 
+    %>
     <!-- partial -->
     <div style="padding: 0" class="container-fluid page-body-wrapper" >
       <div class="main-panel" style="    width: 100%;">
@@ -44,23 +51,34 @@
               <p class="card-description login">
                Thay đổi mật khẩu
               </p>
-              <form class="forms-sample">
+              <form class="forms-sample" action="/BHNFoods/ForgotPass" method="post">
+                <div class="form-group">
+                  <label for="exampleInputName1">Email hoặc Số điện thoại</label>
+                  <% if( errorName!=null){ %>
+                  <label for="exampleInputName1" style="color: #CC3636"><%=errorName%></label>     <%}%>
+                  <input type="text" name="checkUserName" class="form-control" id="exampleInputName1"
+                         placeholder="Nhập Email hoặc số điện thoại" value="<%=request.getParameter("checkUserName")!=null?request.getParameter("checkUserName"):""%>">
+                </div>
                 <div class="form-group">
                   <label for="exampleInputName1">Mã xác nhận</label>
-                  <input type="text" class="form-control" id="exampleInputName1"
+                  <% if( errorCode!=null){ %>
+                  <label for="exampleInputName1" style="color: #CC3636"><%=errorCode%></label>     <%}%>
+                  <input type="text" class="form-control" id="exampleInputName1" name="code"
                     placeholder="Nhập mã xác nhận">
                 </div>
 
                 <div class="form-group">
                     <label for="exampleInputPassword4">Tạo mật khẩu</label>
-                    <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Nhập mật khẩu mới">
+                    <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Nhập mật khẩu mới" name="pass">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword4">Nhập lại mật khẩu</label>
-                    <input type="password" class="form-control" id="exampleInputPassword5" placeholder="Nhập lại mật khẩu">
+                    <label for="exampleInputPassword4">Nhập lại mật khẩu</label> <% if( errorDup!=null){ %>
+                    <label for="exampleInputName1" style="color: #CC3636"><%=errorDup%></label>
+                    <%}%>
+                    <input type="password" class="form-control" id="exampleInputPassword5" placeholder="Nhập lại mật khẩu" name="repass">
                   </div>
                 <div class="form-group button_primary">
-                  <button type="submit" class="btn btn-primary button_primary_height me-2" style="width: 60%;">Gửi lại mã xác nhận</button> </br>
+                  <button type="" onclick="mess(<%=mess%>)" class="btn btn-primary button_primary_height me-2" style="width: 60%;">Gửi mã xác nhận</button> </br>
                   <button type="submit" class="btn btn-primary  button_primary_height me-2" style="width: 60%;">Cập nhật lại tài khoản</button>
                 </div>
                 <div class="form-group forgot_pass" style="padding-bottom:30px;">
@@ -77,7 +95,13 @@
     </div>
 
   </div>
+<script>
+  function mess(mess){
+   <%System.out.println(mess);%>
+  alert(mess);
+  }
 
+</script>
   <script src="admin_template/vendors/js/vendor.bundle.base.js"></script>
 
   <script src="admin_template/vendors/typeahead.js/typeahead.bundle.min.js"></script>
