@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.Cart;
+import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
 import javax.servlet.*;
@@ -14,6 +15,10 @@ public class Index extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idUser = request.getParameter("idUser");
+        User user = (User) request.getAttribute("user");
+        if(idUser == null) {
+            user = null;
+        }
         List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
         request.setAttribute("listCart", listCart);
         request.getRequestDispatcher("index.jsp").forward(request,response);

@@ -15,20 +15,21 @@ import java.util.Map;
 public class ListHistory extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idUser=request.getParameter("idUser");
+        String idUser = request.getParameter("idUser");
         List<SoldProduct> listHistory = ProductService.getInstance().getHistory(idUser);
         Map<String, List<SoldProduct>> mapOrders = ProductService.getInstance().getMapHistoryOrders(listHistory);
         List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
         Map<String, Integer> sumOrders = ProductService.getInstance().sumHistoryOrder(mapOrders);
         request.setAttribute("sumOrders", sumOrders);
         request.setAttribute("mapOrders", mapOrders);
-        request.setAttribute("listCart",listCart);
+        request.setAttribute("listCart", listCart);
         request.setAttribute("listHistory", listHistory);
-        request.getRequestDispatcher("history.jsp").forward(request,response);
+        request.getRequestDispatcher("history.jsp").forward(request, response);
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+//
     }
 }

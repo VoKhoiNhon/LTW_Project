@@ -46,11 +46,12 @@
                 <p class="card-description login">
                   Đăng nhập
                 </p>
-                <form class="forms-sample" action="/Login" method="post">
-                  <% if( error!=null){ %> <div class="form-group">
-                    <label for="exampleInputName1"><%=error%></label>
-                </div> <%}%>
-
+                <form class="forms-sample" action="/BHNFoods/Login" method="post">
+                  <% if( error!=null){ %>
+                    <div class="form-group">
+                    <label for="exampleInputName1" style="color: #CC3636"><%=error%></label>
+                    </div>
+                    <%}%>
                   <div class="form-group">
                     <label for="exampleInputName1">Email hoặc Số điện thoại</label>
                     <input type="text" class="form-control" name="username" id="exampleInputName1"
@@ -62,7 +63,7 @@
                     <input type="password" name="password" class="form-control" id="exampleInputPassword4" placeholder="Nhập mật khẩu">
                   </div>
                   <div class="form-group forgot_pass" style="padding-bottom:30px;">
-                    <a href="forgotpass.jsp">Quên mật khẩu?</a>
+                    <a href="changepass.jsp">Quên mật khẩu?</a>
                   </div>
                   <div class="form-group  button_primary">
                     <button type="submit" class="btn btn-primary  button_primary_height me-2">Đăng nhập</button> </br>

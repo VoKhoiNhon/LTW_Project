@@ -1,14 +1,16 @@
 package vn.edu.hcmuaf.fit.service;
 
+import org.jdbi.v3.core.Handle;
+import org.jdbi.v3.core.statement.Query;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.beans.User;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
+import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class UserService {
@@ -28,17 +30,17 @@ public class UserService {
 
     public User checkLogin(String username, String password) {
         List<User> users = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT PASSW, PHONE, EMAIL FROM user WHERE EMAIL = ? and PHONE=?")
+                h.createQuery("SELECT ID_USER,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,Decentralization FROM user WHERE EMAIL = ? or PHONE=?")
                         .bind(0, username).bind(1, username)
-                        .mapToBean(User.class)
-                        .stream()
+                        .mapToBean(User.class).stream()
                         .collect(Collectors.toList())
         );
         if (users.size() != 1) return null;
         User user = users.get(0);
         if (!user.getPassw().equals((password))
-                || !(user.getEmail().equals(username) || (user.getPhone().equals(username)))) return null;
-
+                || !(user.getEmail().equals(username) || (user.getPhone().equals(username)))) {
+            return null;
+        }
         return user;
     }
 
@@ -54,6 +56,7 @@ public class UserService {
         }
     }
 
+
     public List<User> getListUser() {
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("select * from user")
@@ -61,14 +64,47 @@ public class UserService {
         });
     }
 
-    public boolean register(String username, String password, String confirm, String email, String phone, String address) {
-//        check register with username and password
-//        if(!password.equals(confirm))return false;
-//        return UserDao.getInstance().register(username, password, email, phone, address);
+    public boolean checkAccountExist(String email, String phone) {
+        List<User> list = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select* from user")
+                    .mapToBean(User.class).collect(Collectors.toList());
+        });
+        for (User u : list) {
+            if (email.equals(u.getEmail()) || phone.equals(u.getPhone())) return true;
+        }
         return false;
+
+    }
+
+    public void addUser(String name, String email, String phone, String pass) {
+        List<User> users = getListUser();
+        int count = users.size();
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("INSERT INTO `user` VALUES( 'user" + (count + 1) + "',NULL,'"
+                    + pass + "','" + name + "','" + phone + "','" + email + "'," + "NULL,'2021-12-02', NULL,0)").execute();
+
+        });
+
+    }
+    public void changePass( String email, String phone, String pass) {
+        List<User> users = getListUser();
+        int count = users.size();
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("UPDATE user SET PASSW='" + pass+ "'WHERE EMAIL='"
+                    + email+ "'or PHONE='" + phone + "'").execute();
+
+        });
+    }
+    public String codeChange()  {
+        String code = "";
+        Random rd = new Random();
+        for(int i=0; i<6; i++) {
+            code+=  rd.nextInt(10);
+        }
+        return code;
     }
 
     public static void main(String[] args) {
-        System.out.println(UserService.getInstance().getListUser().get(2).getNameUser());
+        UserService.getInstance().changePass("1111111111","1111111111","aaa");
     }
 }

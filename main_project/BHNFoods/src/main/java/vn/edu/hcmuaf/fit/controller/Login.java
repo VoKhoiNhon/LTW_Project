@@ -7,32 +7,37 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "Login", value = "/Login")
 public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        User user = UserService.getInstance().checkLogin(username, password);
-        if (user == null) {
-            request.setAttribute("error", "Sai tài khoản hoặc mật khẩu");
-            request.getRequestDispatcher("admin_template/login.jsp").forward(request, response);
-        } else if (user.getDecentralization() == 1) {
-            HttpSession session = request.getSession(true);
-            session.setAttribute("auth", user);
-            request.getRequestDispatcher("admin_template/index.jsp").forward(request, response);
 
-        } else {
+        User user = UserService.getInstance().checkLogin(username, password);
+
+        if (user != null && user.getDecentralization() == 1) {
             HttpSession session = request.getSession(true);
             session.setAttribute("auth", user);
-            response.sendRedirect("ListProduct.jsp");
+            response.sendRedirect("adminMain.jsp");
+
+        } else if (user != null && user.getDecentralization() != 1) {
+            HttpSession session = request.getSession(true);
+            session.setAttribute("auth", user);
+            session.setAttribute("idUser", user.getIdUser());
+            request.setAttribute("idUser", user.getIdUser());
+            response.sendRedirect("http://localhost:8080/BHNFoods/index?idUser=" + user.getIdUser());
+        } else {
+            request.setAttribute("error", "Sai tài khoản hoặc mật khẩu");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
 
     }
 }
-

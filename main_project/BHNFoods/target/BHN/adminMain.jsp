@@ -2,6 +2,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.beans.SingleProduct" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.ProductService" %>
 <%@ page import="vn.edu.hcmuaf.fit.controller.AdminMain" %>
+<%@ page import="vn.edu.hcmuaf.fit.beans.User" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -174,6 +175,10 @@
             <%--          </a>--%>
             <%--        </div>--%>
             <%--      </li>--%>
+            <%
+                User user= (User) session.getAttribute("auth");
+                if(user != null){%>
+
             <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                 <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                     <img class="img-xs rounded-circle" src="ImageproductNew/background/images.png" alt="Profile image">
@@ -181,21 +186,18 @@
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                     <div class="dropdown-header text-center">
                         <%--            <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">--%>
-                        <p class="mb-1 mt-3 font-weight-semibold">Võ Khôi Nhơn</p>
-                        <p class="fw-light text-muted mb-0">Nhonw@gmail.com</p>
+                        <p class="mb-1 mt-3 font-weight-semibold"><%=user.getNameUser()%></p>
+                        <p class="fw-light text-muted mb-0"><%=user.getEmail()%></p>
                     </div>
                     <a class="dropdown-item"><i
                             class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Trang cá nhân</a>
                     <a class="dropdown-item"><i
                             class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>
                         Tin nhắn</a>
-                    <%--          <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i>--%>
-                    <%--            Hoạt động</a>--%>
-                    <%--          <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>--%>
-                    <%--            Các câu hỏi thường gặp</a>--%>
                     <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Đăng xuất</a>
                 </div>
             </li>
+            <%}%>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
                 data-bs-toggle="offcanvas">
@@ -319,7 +321,23 @@
                                                     </div>
                                                 </div>
                                                 <%}%>
-                                                <input type="button" value="Update" onclick="<%%>"></input>
+                                                <input type="button" value="Update" onclick="          <%      for (SingleProduct s :list) {
+
+                                                %>
+                                                <div class="list align-items-center border-bottom py-2">
+                                                <div class="wrapper w-100">
+                                                    <p class="mb-2 font-weight-medium">
+                                                        <%=s.getNamePr()%>
+                                                    </p>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="d-flex align-items-center">
+                                                            <i class="mdi mdi-calendar text-muted me-1"></i>
+                                                            <p class="mb-0 text-small text-muted"><%=s.getDateImportPr()%></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <%}%>"></input>
                                                 <div class="list align-items-center pt-3">
                                                     <div class="wrapper w-100">
                                                         <p class="mb-0">
