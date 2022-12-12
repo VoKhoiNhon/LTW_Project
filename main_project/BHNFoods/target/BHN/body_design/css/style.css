@@ -146,6 +146,10 @@ ol {
 	margin: 0 auto;
 }
 
+.background-button{
+	background-color: #82ae46 !important;
+}
+
 .set-bg {
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -1570,6 +1574,7 @@ ol {
 	left: 15px;
 	top: 15px;
 }
+
 
 .product__item__pic__hover {
 	position: absolute;
@@ -3516,5 +3521,9 @@ ol {
 }
 .star-color-yellow{
 	color: #EDBB0E !important;
+}
+
+.lightGreenBtn{
+	background-color: #6df66d !important;
 }
 

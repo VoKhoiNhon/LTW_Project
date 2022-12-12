@@ -147,6 +147,7 @@
                     <div class="row">
                         <div class="product__discount__slider owl-carousel">
                             <%
+                                DecimalFormat decF = new DecimalFormat("#,###");
                                 List<Product> listDiscount = (List<Product>) request.getAttribute("listDiscount");
                                 for(Product p: listDiscount) {
                             %>
@@ -165,7 +166,7 @@
 
                                         <a href="http://localhost:8080/BHNFoods/oneProduct?id=<%=p.getIdPr()%>&idUser=user1"><span>Gạo</span>
                                             <h5><%=p.getNamePr()%></h5>
-                                            <div class="product__item__price"><%=p.getPrice() - (p.getPrice()*p.getDiscount())/100%>đ <span><%=p.getPrice()%>đ</span></div></a>
+                                            <div class="product__item__price"><%=decF.format(p.getPrice() - (p.getPrice()*p.getDiscount())/100).replace(',','.')%>đ <span><%=decF.format(p.getPrice()).replace(',','.')%>đ</span></div></a>
                                     </div>
                                 </div>
                             </div>
@@ -191,24 +192,21 @@
                             </div>
                         </div>
 
-<%--                        <div class="col-lg-4 col-md-3">--%>
-<%--                            <div class="filter__option">--%>
-<%--                                <span class="icon_grid-2x2"></span>--%>
-<%--                                <span class="icon_ul"></span>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
+
                     </div>
                 </div>
-                <div class="row">
+                <div id="content" class="row">
                     <%
-                        DecimalFormat decF = new DecimalFormat("#,###");
+
                         List<Product> productList = (List<Product>) request.getAttribute("listRequest");
                         for(Product p: productList) {
+                            int price = p.getPrice();
                     %>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="<%=p.getUrl()%>">
-                                <%if(p.getDiscount() > 0) {%>
+                                <%if(p.getDiscount() > 0) {
+                                    price = p.getPrice() - p.getPrice()*(p.getDiscount())/100;%>
                                 <div class="discount__percent" style="">-<%=p.getDiscount()%>%</div>
                                 <%}%>
                                 <ul class="product__item__pic__hover">
@@ -218,23 +216,23 @@
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <a href="http://localhost:8080/BHNFoods/oneProduct?id=<%=p.getIdPr()%>&idUser=user1"><%=p.getNamePr()%><br> <span><%=decF.format(p.getPrice()).replace(',','.')%>đ</span></a>
+                                <a href="http://localhost:8080/BHNFoods/oneProduct?id=<%=p.getIdPr()%>&idUser=user1"><%=p.getNamePr()%><br> <span><%=decF.format(price).replace(',','.')%>đ</span></a>
                             </div>
                         </div>
                     </div>
                     <%}%>
                 </div>
                 <div class="product__pagination">
-                    <%if(Integer.parseInt(request.getAttribute("page").toString()) >= 2) {%>
-                    <a href="http://localhost:8080/BHNFoods/ListProduct?kind=<%=request.getAttribute("kind")%>&page=<%=Integer.parseInt(request.getAttribute("page").toString()) - 1%>&idUser=user1"><i class="fa fa-long-arrow-left"></i></a>
-                    <%}%>
+
+                    <button onclick="loadMoreProductLeft()"><i class="fa fa-long-arrow-left"></i></button>
+
                     <%int count =(int)request.getAttribute("count");
                         for (int i = 0; i < count; i++) {%>
-                    <a href="http://localhost:8080/BHNFoods/ListProduct?kind=<%=request.getAttribute("kind")%>&page=<%= i+ 1%>&idUser=user1"><%=i + 1%></a>
+                    <button  id="btn<%=i+1%>" class="btn-loadMore" onclick="loadMoreProduct(this.value)" value="<%=i+ 1%>"><%=i+ 1%></button>
                     <%}%>
-                    <%if(Integer.parseInt(request.getAttribute("page").toString()) <= count - 1) {%>
-                    <a href="http://localhost:8080/BHNFoods/ListProduct?kind=<%=request.getAttribute("kind")%>&page=<%=Integer.parseInt(request.getAttribute("page").toString()) + 1%>&idUser=user1"><i class="fa fa-long-arrow-right"></i></a>
-                    <%}%>
+
+                    <button onclick="loadMoreProductRight()"><i class="fa fa-long-arrow-right"></i></button>
+
                 </div>
             </div>
         </div>
@@ -243,7 +241,88 @@
 
 <%@ include file="footer.jsp" %>
 <!-- Footer Section End -->
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    var current = 1;
+    var maxCountPage = $('button.btn-loadMore').length;
+    $("#btn" + current).addClass('background-button');
+    function loadMoreProduct(index) {
+        $("#btn" + current).removeClass('background-button');
+        current = index;
+        $("#btn" + current).addClass('background-button');
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const kind = urlParams.get('kind');
+        const page = urlParams.get('page');
+            $.ajax({
+            url: "/BHNFoods/loadMoreProduct",
+            type: 'get',
+            data: {
+                kind : kind,
+                page : page,
+                step : current
+            },
+            success: function(data) {
+                const content = document.getElementById("content");
+                content.innerHTML = data;
+            },
+            error: function () {
+            }
+        });
+    }
+    function loadMoreProductLeft() {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const kind = urlParams.get('kind');
+        const page = urlParams.get('page');
+        $("#btn" + current).removeClass('background-button');
+        if (current - 1 >= 1) {
+            current -= 1;
+        }
+        $("#btn" + current).addClass('background-button');
+        $.ajax({
+            url: "/BHNFoods/loadMoreProduct",
+            type: 'get',
+            data: {
+                kind : kind,
+                page : page,
+                step : current
+            },
+            success: function(data) {
+                const content = document.getElementById("content");
+                content.innerHTML = data;
+            },
+            error: function () {
+            }
+        });
+    }
+    function loadMoreProductRight() {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const kind = urlParams.get('kind');
+        const page = urlParams.get('page');
+        $("#btn" + current).removeClass('background-button');
+        if (parseInt(current) + 1 <= maxCountPage) {
+            current = parseInt(current) + 1;
+        }
+        $("#btn" + current).addClass('background-button');
+        $.ajax({
+            url: "/BHNFoods/loadMoreProduct",
+            type: 'get',
+            data: {
+                kind : kind,
+                page : page,
+                step : current
+            },
+            success: function(data) {
+                const content = document.getElementById("content");
+                content.innerHTML = data;
+            },
+            error: function () {
+            }
+        });
+    }
+</script>
 <!-- Js Plugins -->
 <script src="body_design/js/jquery-3.3.1.min.js"></script>
 <script src="body_design/js/jquery.nice-select.min.js"></script>

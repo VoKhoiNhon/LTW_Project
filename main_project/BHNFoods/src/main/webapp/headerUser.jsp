@@ -94,7 +94,7 @@
                     <div class="list_menu">
                         <div class="dr"><a href="account.jsp">Tài khoản</a></div>
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/loveProduct?idUser=user1">Sản phẩm yêu thích</a></div>
-                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/managerOrder?idUser=user1">Quản lý đơn hàng</a> </div>
+                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/manageOrder?idUser=user1">Quản lý đơn hàng</a> </div>
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/history?idUser=user1">Lịch sử đơn hàng</a></div>
                         <div class="dr"> <a href="index.jsp">Đăng xuất</a></div>
                     </div>

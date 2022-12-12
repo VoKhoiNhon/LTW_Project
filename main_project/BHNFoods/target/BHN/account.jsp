@@ -27,7 +27,7 @@
 
     <body>
 
-        <%@ include file="header.jsp" %>
+<%--        <%@ include file="header.jsp" %>--%>
         
             <section class="ftco-section" style=" background: #ededed70" >
                 <div class="container">

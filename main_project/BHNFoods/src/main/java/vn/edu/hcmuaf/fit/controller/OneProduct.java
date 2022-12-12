@@ -22,9 +22,11 @@ public class OneProduct extends HttpServlet {
         List<SingleProduct> singleProd = ProductService.getInstance().getSingleProduct(idProd);
         List<ImgForSingleProd> listURL = ProductService.getInstance().getListImgForSingleProduct(idProd);
         List<Feedback> listFeedBack = ProductService.getInstance().getFeedBack(idProd);
+        int count = listFeedBack.size()%3 == 0 ? listFeedBack.size()/3 : listFeedBack.size()/3 + 1;
         List<Product> listRelatedProduct = ProductService.getInstance().getRelatedProducts(singleProd.get(0).getIdMenu());
         List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
         Collections.shuffle(listRelatedProduct);
+        request.setAttribute("count", count);
         request.setAttribute("listCart", listCart);
         request.setAttribute("listFeedBack", listFeedBack);
         request.setAttribute("listURL", listURL);
