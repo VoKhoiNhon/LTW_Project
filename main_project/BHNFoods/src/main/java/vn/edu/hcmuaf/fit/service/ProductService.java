@@ -153,8 +153,28 @@ public class ProductService {
         });
     }
 
-    public static void main(String[] args) {
-        System.out.println(getInstance().getHistory("user3").get(0).getNamePr());
+    //trang quan ly don hang
+    public List<Orders> getManageOrders(String idUser) {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT i.URL, p.NAME_PR, s.PRICE_HERE, s.AMOUNT, o.TIME_ORDERS, o.`CONDITION`, o.ID_ORDERS FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on s.ID_PR= p.ID_PR JOIN image i on i.ID_PR=p.ID_PR WHERE (o.`CONDITION`=0 or o.`CONDITION`=1) and i.`CONDITION`=0 and s.`ID_USER`= '" + idUser + "'")
+                    .mapToBean(Orders.class).collect(Collectors.toList());
+        });
+    }
+
+    public Map<String, List<Orders>> getMapOrder(List<Orders> ordersList) {
+        Map<String, List<Orders>> mapResult = new HashMap<String, List<Orders>>();
+
+        for (Orders o : ordersList) {
+            if (mapResult.containsKey(o.getIdOrders())) {
+                mapResult.get(o.getIdOrders()).add(o);
+            } else {
+                List<Orders> listOrder = new ArrayList<Orders>();
+                listOrder.add(o);
+                mapResult.put(o.getIdOrders(), listOrder);
+            }
+        }
+
+        return mapResult;
     }
 
     public Map<String, List<SoldProduct>> getMapHistoryOrders(List<SoldProduct> soldProductList) {
@@ -171,12 +191,24 @@ public class ProductService {
         }
         return mapResult;
     }
-    public Map<String, Integer> sumOrder(Map<String, List<SoldProduct>> map) {
+    public Map<String, Integer> sumHistoryOrder(Map<String, List<SoldProduct>> map) {
         Map<String, Integer> mapResult = new HashMap<String, Integer>();
         int sum = 0;
         for (Map.Entry<String, List<SoldProduct>> entry : map.entrySet()) {
             for (SoldProduct s : entry.getValue()) {
                 sum += s.getAmount() * s.getPriceHere();
+            }
+            mapResult.put(entry.getKey(), sum);
+        }
+        return mapResult;
+    }
+
+    public Map<String, Integer> sumOrder(Map<String, List<Orders>> map) {
+        Map<String, Integer> mapResult = new HashMap<String, Integer>();
+        for (Map.Entry<String, List<Orders>> entry : map.entrySet()) {
+            int sum = 0;
+            for (Orders o : entry.getValue()) {
+                sum += o.getAmount() * o.getPriceHere();
             }
             mapResult.put(entry.getKey(), sum);
         }
@@ -198,9 +230,6 @@ public class ProductService {
             }
             return result;
         }
-
-        return result;
-    }
 
 
     public String formatTime(LocalDateTime dateTime) {

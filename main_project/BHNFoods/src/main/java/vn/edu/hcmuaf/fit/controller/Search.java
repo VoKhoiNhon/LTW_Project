@@ -23,10 +23,8 @@ public class Search extends HttpServlet {
         List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
         request.setAttribute("listCart",listCart);
         String search = request.getParameter("searchPR");
-        List<Product> productList = ProductService.getInstance().getListPrNameSearch(search);
-
-
-        request.setAttribute("listSearchPR", productList);
+//        List<Product> productList = ProductService.getInstance().getListPrNameSearch(search);
+//        request.setAttribute("listSearchPR", productList);
         request.getRequestDispatcher("searchPR.jsp").forward(request,response);
     }
 

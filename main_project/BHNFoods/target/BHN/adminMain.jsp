@@ -321,23 +321,7 @@
                                                     </div>
                                                 </div>
                                                 <%}%>
-                                                <input type="button" value="Update" onclick="          <%      for (SingleProduct s :list) {
-
-                                                %>
-                                                <div class="list align-items-center border-bottom py-2">
-                                                <div class="wrapper w-100">
-                                                    <p class="mb-2 font-weight-medium">
-                                                        <%=s.getNamePr()%>
-                                                    </p>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div class="d-flex align-items-center">
-                                                            <i class="mdi mdi-calendar text-muted me-1"></i>
-                                                            <p class="mb-0 text-small text-muted"><%=s.getDateImportPr()%></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <%}%>"></input>
+                                                <input type="button" value="Update" formmethod="post" ></input>
                                                 <div class="list align-items-center pt-3">
                                                     <div class="wrapper w-100">
                                                         <p class="mb-0">
