@@ -3,9 +3,6 @@
 <%@ page import="vn.edu.hcmuaf.fit.service.ProductService" %>
 <%@ page import="vn.edu.hcmuaf.fit.controller.AdminMain" %>
 <%@ page import="vn.edu.hcmuaf.fit.beans.User" %>
-<%@ page import="java.util.Map" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.HashMap" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -36,40 +33,6 @@
 </head>
 
 <body>
-
-<script type="text/javascript">
-    window.onload = function() {
-
-        var dataPoints = [];
-
-        var chart = new CanvasJS.Chart("chartContainer", {
-            title:{
-                text: "Top 7 Wordpress Plugins 2017"
-            },
-            subtitles:[{
-                text: "Alexa Top 1M Sites"
-            }],
-            data: [{
-                type: "column",
-                indexLabel: "{y}",
-                indexLabelPlacement: "inside",
-                dataPoints: dataPoints
-            }]
-        });
-
-        $.get("https://canvasjs.com/data/gallery/jsp/top-7-wordpress-plugins.xml", function (data) {
-            $(data).find("point").each(function () {
-                var $dataPoint = jQuery(this);
-                var label = $dataPoint.find("label").text();
-                var y = $dataPoint.find("y").text();
-                dataPoints.push({ label: label, y: parseFloat(y) });
-            });
-            chart.render();
-        });
-
-    }
-</script>
-
 <!-- partial:partials/_navbar.html -->
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
@@ -131,90 +94,90 @@
                     <input type="search" class="form-control" placeholder="Search Here" title="Search here">
                 </form>
             </li>
-            <%--      <li class="nav-item dropdown">--%>
-            <%--        <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">--%>
-            <%--          <i class="icon-mail icon-lg"></i>--%>
-            <%--        </a>--%>
-            <%--        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"--%>
-            <%--             aria-labelledby="notificationDropdown">--%>
-            <%--          <a class="dropdown-item py-3 border-bottom">--%>
-            <%--            <p class="mb-0 font-weight-medium float-left">Bạn có 3 thông báo mới </p>--%>
-            <%--            <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>--%>
-            <%--          </a>--%>
-            <%--          <a class="dropdown-item preview-item py-3">--%>
-            <%--            <div class="preview-thumbnail">--%>
-            <%--              <i class="mdi mdi-alert m-auto text-primary"></i>--%>
-            <%--            </div>--%>
-            <%--            <div class="preview-item-content">--%>
-            <%--              <h6 class="preview-subject fw-normal text-dark mb-1">Lỗi ứng dụng</h6>--%>
-            <%--              <p class="fw-light small-text mb-0"> Vừa rồi </p>--%>
-            <%--            </div>--%>
-            <%--          </a>--%>
-            <%--          <a class="dropdown-item preview-item py-3">--%>
-            <%--            <div class="preview-thumbnail">--%>
-            <%--              <i class="mdi mdi-settings m-auto text-primary"></i>--%>
-            <%--            </div>--%>
-            <%--            <div class="preview-item-content">--%>
-            <%--              <h6 class="preview-subject fw-normal text-dark mb-1">Cài đặt</h6>--%>
-            <%--              <p class="fw-light small-text mb-0"> Tin nhắn riêng </p>--%>
-            <%--            </div>--%>
-            <%--          </a>--%>
-            <%--          <a class="dropdown-item preview-item py-3">--%>
-            <%--            <div class="preview-thumbnail">--%>
-            <%--              <i class="mdi mdi-airballoon m-auto text-primary"></i>--%>
-            <%--            </div>--%>
-            <%--            <div class="preview-item-content">--%>
-            <%--              <h6 class="preview-subject fw-normal text-dark mb-1">Đăng kí người dùng mới</h6>--%>
-            <%--              <p class="fw-light small-text mb-0">2 ngày trước </p>--%>
-            <%--            </div>--%>
-            <%--          </a>--%>
-            <%--        </div>--%>
-            <%--      </li>--%>
-            <%--      <li class="nav-item dropdown">--%>
-            <%--        <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"--%>
-            <%--           aria-expanded="false">--%>
-            <%--          <i class="icon-bell"></i>--%>
-            <%--          <span class="count"></span>--%>
-            <%--        </a>--%>
-            <%--        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"--%>
-            <%--             aria-labelledby="countDropdown">--%>
-            <%--          <a class="dropdown-item py-3">--%>
-            <%--            <p class="mb-0 font-weight-medium float-left">Bạn có 7 thông báo chưa đọc </p>--%>
-            <%--            <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>--%>
-            <%--          </a>--%>
-            <%--          <div class="dropdown-divider"></div>--%>
-            <%--          <a class="dropdown-item preview-item">--%>
-            <%--            <div class="preview-thumbnail">--%>
-            <%--              <img src="images/faces/face10.jpg" alt="image" class="img-sm profile-pic">--%>
-            <%--            </div>--%>
-            <%--            <div class="preview-item-content flex-grow py-2">--%>
-            <%--              <p class="preview-subject ellipsis font-weight-medium text-dark">Võ Khôi Nhơn </p>--%>
-            <%--              <p class="fw-light small-text mb-0"> Cuộc họp bị hủy </p>--%>
-            <%--            </div>--%>
-            <%--          </a>--%>
-            <%--          <a class="dropdown-item preview-item">--%>
-            <%--            <div class="preview-thumbnail">--%>
-            <%--              <img src="images/faces/face12.jpg" alt="image" class="img-sm profile-pic">--%>
-            <%--            </div>--%>
-            <%--            <div class="preview-item-content flex-grow py-2">--%>
-            <%--              <p class="preview-subject ellipsis font-weight-medium text-dark">Phạm Gia Bảo </p>--%>
-            <%--              <p class="fw-light small-text mb-0">  Cuộc họp bị hủy </p>--%>
-            <%--            </div>--%>
-            <%--          </a>--%>
-            <%--          <a class="dropdown-item preview-item">--%>
-            <%--            <div class="preview-thumbnail">--%>
-            <%--              <img src="images/faces/face1.jpg" alt="image" class="img-sm profile-pic">--%>
-            <%--            </div>--%>
-            <%--            <div class="preview-item-content flex-grow py-2">--%>
-            <%--              <p class="preview-subject ellipsis font-weight-medium text-dark">Nguyễn Thị Xuân Hoa </p>--%>
-            <%--              <p class="fw-light small-text mb-0">  Cuộc họp bị hủy </p>--%>
-            <%--            </div>--%>
-            <%--          </a>--%>
-            <%--        </div>--%>
-            <%--      </li>--%>
+            <li class="nav-item dropdown">
+                <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
+                    <i class="icon-mail icon-lg"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
+                     aria-labelledby="notificationDropdown">
+                    <a class="dropdown-item py-3 border-bottom">
+                        <p class="mb-0 font-weight-medium float-left">Bạn có 3 thông báo mới </p>
+                        <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>
+                    </a>
+                    <a class="dropdown-item preview-item py-3">
+                        <div class="preview-thumbnail">
+                            <i class="mdi mdi-alert m-auto text-primary"></i>
+                        </div>
+                        <div class="preview-item-content">
+                            <h6 class="preview-subject fw-normal text-dark mb-1">Lỗi ứng dụng</h6>
+                            <p class="fw-light small-text mb-0"> Vừa rồi </p>
+                        </div>
+                    </a>
+                    <a class="dropdown-item preview-item py-3">
+                        <div class="preview-thumbnail">
+                            <i class="mdi mdi-settings m-auto text-primary"></i>
+                        </div>
+                        <div class="preview-item-content">
+                            <h6 class="preview-subject fw-normal text-dark mb-1">Cài đặt</h6>
+                            <p class="fw-light small-text mb-0"> Tin nhắn riêng </p>
+                        </div>
+                    </a>
+                    <a class="dropdown-item preview-item py-3">
+                        <div class="preview-thumbnail">
+                            <i class="mdi mdi-airballoon m-auto text-primary"></i>
+                        </div>
+                        <div class="preview-item-content">
+                            <h6 class="preview-subject fw-normal text-dark mb-1">Đăng kí người dùng mới</h6>
+                            <p class="fw-light small-text mb-0">2 ngày trước </p>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    <i class="icon-bell"></i>
+                    <span class="count"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
+                     aria-labelledby="countDropdown">
+                    <a class="dropdown-item py-3">
+                        <p class="mb-0 font-weight-medium float-left">Bạn có 7 thông báo chưa đọc </p>
+                        <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <img src="images/faces/face10.jpg" alt="image" class="img-sm profile-pic">
+                        </div>
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Võ Khôi Nhơn </p>
+                            <p class="fw-light small-text mb-0"> Cuộc họp bị hủy </p>
+                        </div>
+                    </a>
+                    <a class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <img src="images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
+                        </div>
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Phạm Gia Bảo </p>
+                            <p class="fw-light small-text mb-0"> Cuộc họp bị hủy </p>
+                        </div>
+                    </a>
+                    <a class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <img src="images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
+                        </div>
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Nguyễn Thị Xuân Hoa </p>
+                            <p class="fw-light small-text mb-0"> Cuộc họp bị hủy </p>
+                        </div>
+                    </a>
+                </div>
+            </li>
             <%
-                User user= (User) session.getAttribute("auth");
-                if(user != null){%>
+                User user = (User) session.getAttribute("auth");
+                if (user != null) {%>
 
             <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                 <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -223,8 +186,10 @@
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                     <div class="dropdown-header text-center">
                         <%--            <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">--%>
-                        <p class="mb-1 mt-3 font-weight-semibold"><%=user.getNameUser()%></p>
-                        <p class="fw-light text-muted mb-0"><%=user.getEmail()%></p>
+                        <p class="mb-1 mt-3 font-weight-semibold"><%=user.getNameUser()%>
+                        </p>
+                        <p class="fw-light text-muted mb-0"><%=user.getEmail()%>
+                        </p>
                     </div>
                     <a class="dropdown-item"><i
                             class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Trang cá nhân</a>
@@ -331,103 +296,157 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-                                <div class="row flex-grow">
-                                    <div class="col-md-6 col-lg-6 grid-margin stretch-card">
-                                        <div class="card card-rounded">
-                                            <div class="card-body card-rounded">
-                                                <h4 class="card-title  card-title-dash">Ngày nhập lô hàng</h4>
-
-                                                <%  int i = 10;
-
-                                                    List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i);
-                                                    for (SingleProduct s :list) {
-
-                                                %>
-                                                <div class="list align-items-center border-bottom py-2">
-                                                    <div class="wrapper w-100">
-                                                        <p class="mb-2 font-weight-medium">
-                                                            <%=s.getNamePr()%>
-                                                        </p>
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <div class="d-flex align-items-center">
-                                                                <i class="mdi mdi-calendar text-muted me-1"></i>
-                                                                <p class="mb-0 text-small text-muted"><%=s.getDateImportPr()%></p>
+                                <div class="row ">
+                                    <div class="col-lg-8 d-flex flex-column">
+                                        <div class="row flex-grow">
+                                            <div class="col-12 grid-margin stretch-card">
+                                                <div class="card card-rounded">
+                                                    <div class="card-body">
+                                                        <div class="d-sm-flex justify-content-between align-items-start">
+                                                            <div>
+                                                                <h4 class="card-title card-title-dash">Market Overview</h4>
+                                                                <p class="card-subtitle card-subtitle-dash">Lorem ipsum dolor sit amet consectetur
+                                                                    adipisicing elit</p>
+                                                            </div>
+                                                            <div>
+                                                                <div class="dropdown">
+                                                                    <button class="btn btn-secondary dropdown-toggle toggle-dark btn-lg mb-0 me-0"
+                                                                            type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
+                                                                            aria-haspopup="true" aria-expanded="false"> This month </button>
+                                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                                                        <h6 class="dropdown-header">Settings</h6>
+                                                                        <a class="dropdown-item" href="#">Action</a>
+                                                                        <a class="dropdown-item" href="#">Another action</a>
+                                                                        <a class="dropdown-item" href="#">Something else here</a>
+                                                                        <div class="dropdown-divider"></div>
+                                                                        <a class="dropdown-item" href="#">Separated link</a>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <%}%>
-                                                <input type="button" value="Update" formmethod="post" ></input>
-                                                <div class="list align-items-center pt-3">
-                                                    <div class="wrapper w-100">
-                                                        <p class="mb-0">
-                                                            <a href="#" class="fw-bold text-primary">Xem thêm <i
-                                                                    class="mdi mdi-arrow-right ms-2"></i> </a>
-                                                        </p>
-
+                                                        <div class="d-sm-flex align-items-center mt-1 justify-content-between">
+                                                            <div class="d-sm-flex align-items-center mt-4 justify-content-between">
+                                                                <h2 class="me-2 fw-bold">$36,2531.00</h2>
+                                                                <h4 class="me-2">USD</h4>
+                                                                <h4 class="text-success">(+1.37%)</h4>
+                                                            </div>
+                                                            <div class="me-3">
+                                                                <div id="marketing-overview-legend"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="chartjs-bar-wrapper mt-3">
+                                                            <canvas id="marketingOverview"></canvas>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-lg-6 grid-margin stretch-card">
-                                        <div class="card card-rounded">
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-center justify-content-between mb-3">
-                                                    <h4 class="card-title card-title-dash">Sản phẩm bán chạy</h4>
-                                                    <%--                        <p class="mb-0">fliter</p>--%>
+                                    <div class="row flex-grow">
+                                        <div class="col-md-6 col-lg-6 grid-margin stretch-card">
+                                            <div class="card card-rounded">
+                                                <div class="card-body card-rounded">
+                                                    <h4 class="card-title  card-title-dash">Ngày nhập lô hàng</h4>
+
+                                                    <% int i = 10;
+
+                                                        List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i);
+                                                        for (SingleProduct s : list) {
+
+                                                    %>
+                                                    <div class="list align-items-center border-bottom py-2">
+                                                        <div class="wrapper w-100">
+                                                            <p class="mb-2 font-weight-medium">
+                                                                <%=s.getNamePr()%>
+                                                            </p>
+                                                            <div class="d-flex justify-content-between align-items-center">
+                                                                <div class="d-flex align-items-center">
+                                                                    <i class="mdi mdi-calendar text-muted me-1"></i>
+                                                                    <p class="mb-0 text-small text-muted"><%=s.getDateImportPr()%>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <%}%>
+                                                    <input type="button" value="Update" formmethod="post"></input>
+                                                    <div class="list align-items-center pt-3">
+                                                        <div class="wrapper w-100">
+                                                            <p class="mb-0">
+                                                                <a href="#" class="fw-bold text-primary">Xem thêm <i
+                                                                        class="mdi mdi-arrow-right ms-2"></i> </a>
+                                                            </p>
+
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <ul class="bullet-line-list">
-                                                    <li>
-                                                        <div class="d-flex justify-content-between">
-                                                            <div><span class="text-light-green">gạo</span> 20000</div>
-                                                            <p>VND</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 grid-margin stretch-card">
+                                            <div class="card card-rounded">
+                                                <div class="card-body">
+                                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                                        <h4 class="card-title card-title-dash">Sản phẩm bán chạy</h4>
+                                                        <%--                        <p class="mb-0">fliter</p>--%>
+                                                    </div>
+                                                    <ul class="bullet-line-list">
+                                                        <li>
+                                                            <div class="d-flex justify-content-between">
+                                                                <div><span class="text-light-green">gạo</span> 20000
+                                                                </div>
+                                                                <p>VND</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="d-flex justify-content-between">
+                                                                <div><span class="text-light-green">gạo</span> 20000
+                                                                </div>
+                                                                <p>VND</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="d-flex justify-content-between">
+                                                                <div><span class="text-light-green">gạo</span> 20000
+                                                                </div>
+                                                                <p>VND</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="d-flex justify-content-between">
+                                                                <div><span class="text-light-green">gạo</span> 20000
+                                                                </div>
+                                                                <p>VND</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="d-flex justify-content-between">
+                                                                <div><span class="text-light-green">gạo</span> 20000
+                                                                </div>
+                                                                <p>VND</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="d-flex justify-content-between">
+                                                                <div><span class="text-light-green">gạo</span> 20000
+                                                                </div>
+                                                                <p>VND</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="d-flex justify-content-between">
+                                                                <div><span class="text-light-green">gạo</span> 20000
+                                                                </div>
+                                                                <p>VND</p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="list align-items-center pt-3">
+                                                        <div class="wrapper w-100">
+                                                            <p class="mb-0">
+                                                                <a href="#" class="fw-bold text-primary">Xem thêm <i
+                                                                        class="mdi mdi-arrow-right ms-2"></i></a>
+                                                            </p>
                                                         </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="d-flex justify-content-between">
-                                                            <div><span class="text-light-green">gạo</span> 20000</div>
-                                                            <p>VND</p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="d-flex justify-content-between">
-                                                            <div><span class="text-light-green">gạo</span> 20000</div>
-                                                            <p>VND</p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="d-flex justify-content-between">
-                                                            <div><span class="text-light-green">gạo</span> 20000</div>
-                                                            <p>VND</p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="d-flex justify-content-between">
-                                                            <div><span class="text-light-green">gạo</span> 20000</div>
-                                                            <p>VND</p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="d-flex justify-content-between">
-                                                            <div><span class="text-light-green">gạo</span> 20000</div>
-                                                            <p>VND</p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="d-flex justify-content-between">
-                                                            <div><span class="text-light-green">gạo</span> 20000</div>
-                                                            <p>VND</p>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                <div class="list align-items-center pt-3">
-                                                    <div class="wrapper w-100">
-                                                        <p class="mb-0">
-                                                            <a href="#" class="fw-bold text-primary">Xem thêm <i
-                                                                    class="mdi mdi-arrow-right ms-2"></i></a>
-                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -438,12 +457,12 @@
                         </div>
                     </div>
                 </div>
+                <!-- content-wrapper ends -->
             </div>
-            <!-- content-wrapper ends -->
+            <!-- main-panel ends -->
         </div>
-        <!-- main-panel ends -->
+        <!-- page-body-wrapper ends -->
     </div>
-    <!-- page-body-wrapper ends -->
 </div>
 <!-- container-scroller -->
 <!-- plugins:js -->
@@ -467,8 +486,6 @@
 <script src="admin_template/js/dashboard.js"></script>
 <script src="admin_template/js/Chart.roundedBarCharts.js"></script>
 <!-- End custom js for this page-->
-<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 
 </html>
