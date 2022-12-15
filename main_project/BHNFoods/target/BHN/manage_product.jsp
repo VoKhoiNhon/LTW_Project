@@ -142,22 +142,37 @@
                       <p class="mb-0 font-weight-medium float-left">Lọc</p>
                     </a> -->
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis font-weight-medium text-dark">Người dùng </p>
-                            <p class="fw-light small-text mb-0">Trang chi tiết người dùng</p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis font-weight-medium text-dark">Admin</p>
-                            <p class="fw-light small-text mb-0">Trang chi tiết Admin</p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item">
+                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1 "class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Tất cả </p>
-                            <p class="fw-light small-text mb-0">Trang chi tiết cho tất cả</p>
+                        </div>
+                    </a>
+                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=1&page=1" class="dropdown-item preview-item">
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Gạo</p>
+                        </div>
+                    </a>
+                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=2&page=1 "class="dropdown-item preview-item">
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Nếp </p>
+
+                        </div>
+                    </a>
+                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=3&page=1" class="dropdown-item preview-item">
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại hạt </p>
+
+                        </div>
+                    </a>
+                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=4&page=1" class="dropdown-item preview-item">
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại bột </p>
+
+                        </div>
+                    </a>
+                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=5&page=1 "class="dropdown-item preview-item">
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại củ, trái </p>
                         </div>
                     </a>
 
@@ -172,9 +187,9 @@
                 </div>
             </li>
             <li class="nav-item">
-                <form class="search-form" action="#">
+                <form class="search-form" action="/BHNFoods/SearchAdmin" method="post">
                     <i class="icon-search"></i>
-                    <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+                    <input type="search" class="form-control" placeholder="Search Here" name="searchAD" title="Search here">
                 </form>
             </li>
 

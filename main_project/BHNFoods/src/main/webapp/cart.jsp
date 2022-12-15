@@ -110,7 +110,7 @@
 						<li>Tổng tiền hàng
 							<span><%= decF.format(sum).replace(',','.')%>đ</span>
 						</li>
-						<li>Giảm <span>50.000</span></li>
+						<li>Giảm <span></span></li>
 						<li>Tổng thanh toán <span>510.000</span></li>
 					</ul>
 					<a href="checkout.jsp" class="primary-btn">Thanh toán</a>
