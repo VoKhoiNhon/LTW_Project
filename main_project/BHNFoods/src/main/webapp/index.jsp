@@ -10,6 +10,7 @@
 
 <c:set var="auth" value="${sessionScope.auth}"/>
 <c:if test="${auth==null}"/>
+
 <%@ include file="header.jsp" %>
 
 <section class="ftco-section img" style="background-image: url(images/anhbackgr1.png); border-bottom:1px solid #82ae46; border-top: 1px solid #82ae46; ">

@@ -148,9 +148,9 @@ public class ProductService {
     }
 
     //trang quan ly don hang
-    public List<Orders> getManagerOrders(String idUser) {
-        return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT i.URL, p.NAME_PR, s.PRICE_HERE, s.AMOUNT, o.TIME_ORDERS, o.`CONDITION` FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on s.ID_PR= p.ID_PR JOIN image i on i.ID_PR=p.ID_PR WHERE (o.`CONDITION`=0 or o.`CONDITION`=1 or  o.`CONDITION`=3) and i.`CONDITION`=0 and s.`ID-USER`='" + idUser + "'")
+    public List<Orders> getManagerOrders(String idUser){
+        return  JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT i.URL, p.NAME_PR, s.PRICE_HERE, s.AMOUNT, o.TIME_ORDERS, o.`CONDITION` FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on s.ID_PR= p.ID_PR JOIN image i on i.ID_PR=p.ID_PR WHERE (o.`CONDITION`=0 or o.`CONDITION`=1) and i.`CONDITION`=0 and s.`ID_USER`='"+idUser+"'")
                     .mapToBean(Orders.class).collect(Collectors.toList());
         });
     }

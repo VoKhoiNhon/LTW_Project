@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -21,10 +22,8 @@ public class ListProduct extends HttpServlet {
         int tempSize =  ProductService.getInstance().getSize(kind)/15;
         int count = ProductService.getInstance().getSize(kind)%15 > 0 ? tempSize + 1:tempSize;
         List<Product> list= (List<Product>) ProductService.getInstance().getListProdInPage(kind, page);
-        List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
         List<Product> listDiscount = ProductService.getInstance().getListDiscountProd();
         request.setAttribute("listDiscount", listDiscount);
-        request.setAttribute("listCart", listCart);
         request.setAttribute("listRequest", list);
         request.setAttribute("kind", kind);
         request.setAttribute("page", page);

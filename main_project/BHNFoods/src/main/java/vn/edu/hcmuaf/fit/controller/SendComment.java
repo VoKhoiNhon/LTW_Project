@@ -17,21 +17,13 @@ public class SendComment extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String text = request.getParameter("text");
-        System.out.println(text);
         String idUser = request.getParameter("idU");
-        System.out.println(idUser);
         String idProd = request.getParameter("idP");
-        System.out.println(idProd);
-//        User user = session.getAttribute("auth");
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
         LocalDateTime dateTime = LocalDateTime.now();
         String time = dateTime.getYear() + "-" + dateTime.getMonthValue() + "-" + dateTime.getDayOfMonth();
-        System.out.println(time);
-        String userName = "Nguyễn Văn Anh";
-//        if(user != null) {
-//            userName = user.getNameUser();
-//        }
         int star = Integer.parseInt(request.getParameter("star"));
-        System.out.println(star);
         PrintWriter out = response.getWriter();
         String score = "";
         for (int i = 0; i < star; i++) {
@@ -39,7 +31,7 @@ public class SendComment extends HttpServlet {
         }
         out.println("<div class=\"comment\">\n" +
                 "                <div class=\"comment-user mt-4\">\n" +
-                "                    <span class=\"comment-name mr-3\">"+userName+"</span>\n" +
+                "                    <span class=\"comment-name mr-3\">"+user.getNameUser()+"</span>\n" +
                 "                    <span class=\"comment-star\">\n"
                                         + score +
                 "                    </span>\n" +
