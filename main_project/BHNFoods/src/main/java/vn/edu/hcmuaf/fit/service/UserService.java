@@ -9,6 +9,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -78,10 +79,11 @@ public class UserService {
 
     public void addUser(String name, String email, String phone, String pass) {
         List<User> users = getListUser();
+        String importDate=LocalDateTime.now().getYear()+"-"+LocalDateTime.now().getMonthValue()+"-"+LocalDateTime.now().getDayOfMonth();
         int count = users.size();
         JDBIConnector.get().withHandle(handle -> {
             return handle.createUpdate("INSERT INTO `user` VALUES( 'user" + (count + 1) + "',NULL,'"
-                    + pass + "','" + name + "','" + phone + "','" + email + "'," + "NULL,'2021-12-02', NULL,0)").execute();
+                    + pass + "','" + name + "','" + phone + "','" + email + "'," + "NULL,'"+importDate+"', NULL,0)").execute();
 
         });
 
@@ -102,6 +104,13 @@ public class UserService {
             code+=  rd.nextInt(10);
         }
         return code;
+    }
+    public int getNewbie(){
+        List<User> l =JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select * from user where Month(DATE_SIGNUP)='"+LocalDateTime.now().getMonthValue()+"'")
+                    .mapToBean(User.class).collect(Collectors.toList());
+        });
+        return l.size();
     }
 
     public static void main(String[] args) {

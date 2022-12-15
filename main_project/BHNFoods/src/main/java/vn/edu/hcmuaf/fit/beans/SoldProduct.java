@@ -12,6 +12,7 @@ public class SoldProduct {
     LocalDateTime timeSold;
     String idOrders;
     int condition;
+
     public SoldProduct() {
     }
 
