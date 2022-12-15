@@ -283,7 +283,7 @@
                                                                             <div
                                                                                     class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
 
-                                                                                <p>85/162</p>
+                                                                                <p>1/300</p>
                                                                             </div>
                                                                             <div class="progress progress-md">
                                                                                 <div class="progress-bar bg-success"

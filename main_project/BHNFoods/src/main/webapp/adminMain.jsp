@@ -3,6 +3,9 @@
 <%@ page import="vn.edu.hcmuaf.fit.service.ProductService" %>
 <%@ page import="vn.edu.hcmuaf.fit.controller.AdminMain" %>
 <%@ page import="vn.edu.hcmuaf.fit.beans.User" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.HashMap" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -33,6 +36,40 @@
 </head>
 
 <body>
+
+<script type="text/javascript">
+    window.onload = function() {
+
+        var dataPoints = [];
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            title:{
+                text: "Top 7 Wordpress Plugins 2017"
+            },
+            subtitles:[{
+                text: "Alexa Top 1M Sites"
+            }],
+            data: [{
+                type: "column",
+                indexLabel: "{y}",
+                indexLabelPlacement: "inside",
+                dataPoints: dataPoints
+            }]
+        });
+
+        $.get("https://canvasjs.com/data/gallery/jsp/top-7-wordpress-plugins.xml", function (data) {
+            $(data).find("point").each(function () {
+                var $dataPoint = jQuery(this);
+                var label = $dataPoint.find("label").text();
+                var y = $dataPoint.find("y").text();
+                dataPoints.push({ label: label, y: parseFloat(y) });
+            });
+            chart.render();
+        });
+
+    }
+</script>
+
 <!-- partial:partials/_navbar.html -->
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
@@ -294,7 +331,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                                 <div class="row flex-grow">
                                     <div class="col-md-6 col-lg-6 grid-margin stretch-card">
                                         <div class="card card-rounded">
@@ -430,6 +467,8 @@
 <script src="admin_template/js/dashboard.js"></script>
 <script src="admin_template/js/Chart.roundedBarCharts.js"></script>
 <!-- End custom js for this page-->
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 
 </html>
