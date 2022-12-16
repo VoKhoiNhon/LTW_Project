@@ -440,26 +440,25 @@
 <!-- page-body-wrapper ends -->
 </div>
 
-<%--    <section class="ftco-section" style=" background: #ededed00">--%>
-<%--        <div class="container" style="background-color:  #ededed00">--%>
-<%--            <div class="row justify-content-center">--%>
 <div class="edit_formUser">
+
     <div class="container" style="background:none;">
         <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
-            <form action="#" class="billing-form" style="margin-top: 5%;">
+
+            <form action="" class="billing-form" style="margin-top: 5%;">
                 <h3 class="mb-4 billing-heading">Chi tiết</h3>
                 <div class="row align-items-end" style="font-size: 16px;">
                     <div class="d-flex flex-grow-1 row_input ">
                         <div class="col-md-6 col_addprod">
                             <div class="form-group">
                                 <label>Tên Khách Hàng</label>
-                                <p type="text" class="form-control input_addpr" placeholder="">Nguyễn Văn An Khang</p>
+                                <p type="text" class="form-control input_addpr" placeholder=""></p>
                             </div>
                         </div>
                         <div class="col-md-6 col_addprod">
                             <div class="form-group">
                                 <label>Password</label>
-                                <p type="text" class="form-control input_addpr" placeholder="">khangn23</p>
+                                <p type="text" class="form-control input_addpr" placeholder=""></p>
                             </div>
 
                         </div>
@@ -468,20 +467,14 @@
                     <div class="d-flex flex-grow-1 row_input ">
                         <div class="col-md-6 col_addprod">
                             <div class="form-group">
-                                <label>ID User</label>
-                                <input type="text" class="form-control input_addpr" placeholder="">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col_addprod">
-                            <div class="form-group">
                                 <label>Email</label>
-                                <p type="text" class="form-control input_addpr" placeholder="">kahngan@hakjfskl.com</p>
+                                <p type="text" class="form-control input_addpr" placeholder=""> </p>
                             </div>
                         </div>
                         <div class="col-md-6 col_addprod">
                             <div class="form-group">
                                 <label>Số điện thoại</label>
-                                <p  class="form-control input_addpr" placeholder="">0273872340</p>
+                                <p  class="form-control input_addpr" placeholder=""></p>
                             </div>
                         </div>
 
@@ -489,30 +482,10 @@
                     <div class="col-md-12 ">
                         <div class="form-group">
                             <label>Địa chỉ</label>
-                            <p  class="form-control input_addpr" placeholder="">239 Lê Lợi, bình thạnh, tp.Hồ
-                                Chí Minh</p>
+                            <p  class="form-control input_addpr" placeholder=""></p>
                         </div>
                     </div>
-<%--                    <div class="d-flex flex-grow-1 row_input ">--%>
-<%--                        <div class="col-md-6 col_addprod">--%>
-<%--                            <div class="form-group">--%>
-<%--                                <label>Đơn hàng</label>--%>
-<%--                                <input type="text" class="form-control input_addpr" placeholder="">--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="col-md-6 col_addprod">--%>
-<%--                            <div class="form-group">--%>
-<%--                                <label>Thương hiệu</label>--%>
-<%--                                <input type="text" class="form-control input_addpr" placeholder="">--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="col-md-6 col_addprod">--%>
-<%--                            <div class="form-group">--%>
-<%--                                <label>Trọng lượng</label>--%>
-<%--                                <input type="text" class="form-control input_addpr" placeholder="">--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
+
                     <div class="col-md d-flex col_addprod">
                         <div class="form-group  padd_right" style="">
                             <label class="">Trạng thái:</label>
@@ -540,8 +513,10 @@
                             nhật</a>
                         </button>
                     </div>
+<%--                    <%}%>--%>
                 </div>
-            </form><!-- END -->
+            </form>
+
         </div>
     </div>
 

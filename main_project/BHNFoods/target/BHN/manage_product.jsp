@@ -3,6 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.fit.beans.SingleProduct" %>
 <%@ page import="vn.edu.hcmuaf.fit.beans.User" %>
+<%@ page import="org.w3c.dom.ls.LSOutput" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,6 +78,7 @@
         .padd_right {
             padding-right: 50px;
         }
+
         .edit_formUser {
             height: 500%;
             width: 100%;
@@ -85,7 +87,8 @@
             z-index: 1500;
             top: 0;
         }
-        .edit_formAdd, .edit_formEdit{
+
+        .edit_formAdd, .edit_formEdit {
             display: none;
         }
 
@@ -93,25 +96,44 @@
             margin: auto;
             background: #f1f1f1;
             width: 50%;
-            margin-top:2%;
+            margin-top: 2%;
             border-radius: 5px;
         }
-        .edit_formUser .cen-div  form .form-group {
+
+        .edit_formUser .cen-div form .form-group {
             margin-bottom: 1.1rem;
         }
-        .edit_formUser .cen-div  form .form-group label{
-           font-size: 15px;
+
+        .edit_formUser .cen-div form .form-group label {
+            font-size: 15px;
             display: inline;
         }
 
-        .btn_huy_update button {
-            background: none;
-            border: none;
+        .btn_huy_update {
+            margin-bottom: 20px;
+            justify-content: end;
         }
-        .edit_formUser textarea{
+
+        .btn_huy_update input {
+            border-radius: 5px;
+            background: #7fad39;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+        }
+        .btn_huy_update input:last-child {
+           margin-left: 20px;
+        }
+
+        .edit_formUser textarea {
             min-height: 6rem;
         }
 
+        .btn_edit button {
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
     </style>
 </head>
 
@@ -269,7 +291,8 @@
                                                             </div> -->
                                                             <div>
                                                                 <a href="#" STYLE="text-decoration: none">
-                                                                    <button  onclick="add()" class="card-title card-title-dash btn_add_delete">
+                                                                    <button onclick="add()"
+                                                                            class="card-title card-title-dash btn_add_delete">
                                                                         Thêm
                                                                     </button>
                                                                 </a>
@@ -328,16 +351,19 @@
                                                                         </div>
                                                                     </td>
                                                                     <td>
-                                                                        <h6><%=p.getHsd()%></h6>
+                                                                        <h6><%=p.getHsd()%>
+                                                                        </h6>
                                                                     </td>
                                                                     <td>
                                                                         <div>
                                                                             <div
                                                                                     class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
 
-                                                                                <p><%=p.getSaled()%>/<%=p.getInventory()%></p>
+                                                                                <p><%=p.getSaled()%>
+                                                                                    /<%=p.getInventory()%>
+                                                                                </p>
                                                                             </div>
-                                                                            <% int percent= Integer.parseInt(p.getSaled())*100/(p.getInventory());%>
+                                                                            <% int percent = Integer.parseInt(p.getSaled()) * 100 / (p.getInventory());%>
                                                                             <div class="progress progress-md">
                                                                                 <div class="progress-bar bg-success"
                                                                                      role="progressbar"
@@ -353,8 +379,9 @@
                                                                         </div>
                                                                     </td>
                                                                     <td>
-                                                                        <div class="btn_huy_update">
-                                                                            <button onclick="clickEdit()" href="#" style="text-decoration: none">
+                                                                        <div class="btn_edit">
+                                                                            <button onclick="clickEdit()" href="#"
+                                                                                    style="text-decoration: none">
                                                                                 <h4 class="card-title card-title-dash">
                                                                                     Sửa <i
                                                                                         class="fa-regular fa-pen-to-square"></i>
@@ -411,17 +438,17 @@
 <div class="edit_formUser edit_formAdd">
     <div class="container" style="background:none;">
         <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
-            <form action="#" class="billing-form" style="margin-top: 5%;">
+            <form class="billing-form" style="margin-top: 5%;" action="/BHNFoods/AddProduct" method="post">
                 <h4 class="mb-4 billing-heading">Thêm sản phẩm</h4>
                 <div class="row align-items-end" style="font-size: 16px;">
                     <div class="col-md-12 ">
                         <div class="form-group">
                             <label for="">Tên sản phẩm</label>
-                            <input type="text" class="form-control input_addpr" placeholder="">
+                            <input name="name" type="text" class="form-control input_addpr" placeholder="" required
+                                   value="">
                         </div>
                     </div>
-
-                    <div class="d-flex flex-grow-1  row_input  ">
+                    <div class=" d-flex flex-grow-1 row_input">
                         <div class="col-md-6 col_addprod">
                             <div class="form-group">
                                 <label for="">Hình ảnh</label>
@@ -430,21 +457,16 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="col-md-6 col_addprod">
-                            <div class="form-group">
-                                <label for="">Mã sản phẩm</label>
-                                <input class="form-control input_addpr" placeholder="ID_Product">
-                            </div>
-                        </div>
+
                         <div class="col-md-6 col_addprod">
                             <div class="form-group">
                                 <label for="">Danh mục</label>
-                                <select type="text" class="form-control input_addpr">
-                                    <option>Gạo</option>
-                                    <option>Nếp</option>
-                                    <option>Các loại hạt</option>
-                                    <option>Các loại bột</option>
-                                    <option>Các loại củ, trái</option>
+                                <select type="text" class="form-control input_addpr" name="menu"> required
+                                    <option value="m1">Gạo</option>
+                                    <option value="m2">Nếp</option>
+                                    <option value="m3">Các loại hạt</option>
+                                    <option value="m4">Các loại bột</option>
+                                    <option value="m5">Các loại củ, trái</option>
                                 </select>
                             </div>
                         </div>
@@ -453,92 +475,105 @@
                         <div class="col-md-6 col_addprod">
                             <div class="form-group">
                                 <label for="">Giá</label>
-                                <input type="text" class="form-control input_addpr" placeholder="">
+                                <input name="price" type="text" class="form-control input_addpr" placeholder=""
+                                       value="">
                             </div>
                         </div>
-                        <div class="col-md-6 col_addprod">
+                        <div class=" col-md-6 col_addprod">
                             <div class="form-group">
                                 <label for="">Khuyến mãi(%)</label>
-                                <input type="text" class="form-control input_addpr" placeholder="">
+                                <input type="text" class="form-control input_addpr" name="discount" placeholder=""
+
+                                       value="">
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex flex-grow-1 row_input ">
+                    <div class=" d-flex flex-grow-1 row_input">
                         <div class="col-md-6 col_addprod">
                             <div class="form-group">
                                 <label for="">Xuất xứ</label>
-                                <input type="text" class="form-control input_addpr" placeholder="">
+                                <input name="origin" type="text" class="form-control input_addpr" placeholder=""
+
+                                       value="">
                             </div>
                         </div>
-                        <div class="col-md-6 col_addprod">
+                        <div class=" col-md-6 col_addprod">
                             <div class="form-group">
                                 <label for="">Thương hiệu</label>
-                                <input type="text" class="form-control input_addpr" placeholder="">
+                                <input name="brand" type="text" class="form-control input_addpr" placeholder=""
+
+                                       value="">
                             </div>
                         </div>
-                        <div class="col-md-6 col_addprod">
+                        <div class=" col-md-6 col_addprod">
                             <div class="form-group">
                                 <label for="">Trọng lượng</label>
-                                <input type="text" class="form-control input_addpr" placeholder="">
+                                <input name="weight" type="text" class="form-control input_addpr"
+                                       placeholder=""
+                                       value="">
                             </div>
                         </div>
                     </div>
 
 
-                    <div class="d-flex flex-grow-1  row_input">
+                    <div class=" d-flex flex-grow-1 row_input">
                         <div class="col-md-6 col_addprod">
                             <div class="form-group">
                                 <label for="">Ngày sản xuất</label>
                                 <div class="select-wrap">
-                                    <input type="date" name="" id="" class="form-control input_addpr"
-                                           placeholder="Ngày/Tháng/Năm">
+                                    <input type="date" name="nsx" id="dateImput"
+                                           class="form-control input_addpr"
+                                           placeholder="Ngày/Tháng/Năm"
+                                           value="">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col_addprod">
+                        <div class=" col-md-6 col_addprod">
                             <div class="form-group">
                                 <label for="">Ngày hết hạn</label>
                                 <div class="select-wrap">
-                                    <input type="date" name="" id="" class="form-control input_addpr"
-                                           placeholder="Ngày/Tháng/Năm">
+                                    <input type="date" name="hsd" id="dateOutOf"
+                                           class="form-control input_addpr"
+                                           placeholder="Ngày/Tháng/Năm"
+                                           value="">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col_addprod">
+                        <div class=" col-md-6 col_addprod">
                             <div class="form-group">
                                 <label for="">Số lượng nhập</label>
-                                <input type="number" class="form-control input_addpr" placeholder="">
+                                <input type="number" name="inventory"
+                                       class="form-control input_addpr"
+                                       placeholder=""
+                                       value="">
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-12">
+                    <div class=" col-md-12">
                         <div class="form-group">
                             <label for="">Mô tả</label>
-                            <textarea type="text" class="form-control"
-                                      placeholder="Mô tả sản phẩm"> </textarea>
+                            <textarea name="mota" type="text"
+                                      class="form-control"
+                                      placeholder="Mô tả sản phẩm"
+
+                                      value=""> </textarea>
                         </div>
                     </div>
 
                     <div class="col-md-12 d-flex btn_huy_update" style="justify-content: end;">
-                        <button onclick="huy()"><a href="#" class="btn btn-primary py-3 px-4"
-                              style="border-radius:5px; background: #7fad39; border: none;padding: 10px 40px !important;">Hủy</a>
-                        </button>
-                        <button><a href="#" class="btn btn-primary py-3 px-4"
-                              style="border-radius:5px; background: #7fad39; border: none; padding: 10px !important; margin-left: 20px">Thêm
-                            sản phẩm</a>
-                        </button>
+                        <input  type="button"  onclick="huy()" value="Hủy">
+                        <input type="submit" value=" Thêm sản phẩm">
                     </div>
-
-
                 </div>
             </form>
         </div>
     </div>
 </div>
+<%--Form Sửa--%>
 <div class="edit_formUser edit_formEdit">
     <div class="container" style="background:none;">
-        <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
+        <div class="col-xl-7 ftco-animate cen-div  row ftco-se     ction justify-content-center">
             <form action="#" class="billing-form" style="margin-top: 5%;">
                 <h4 class="mb-4 billing-heading">Sửa sản phẩm</h4>
                 <div class="row align-items-end" style="font-size: 16px;">
@@ -576,21 +611,21 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="col-md-6 col_addprod">
-                            <div class="form-group">
-                                <label for="">Mã sản phẩm</label>
-                                <input class="form-control input_addpr" placeholder="ID_Product">
-                            </div>
-                        </div>
+                        <%--                        <div class="col-md-6 col_addprod">--%>
+                        <%--                            <div class="form-group">--%>
+                        <%--                                <label for="">Mã sản phẩm</label>--%>
+                        <%--                                <input class="form-control input_addpr" placeholder="ID_Product">--%>
+                        <%--                            </div>--%>
+                        <%--                        </div>--%>
                         <div class="col-md-6 col_addprod">
                             <div class="form-group">
                                 <label for="">Danh mục</label>
                                 <select type="text" class="form-control input_addpr">
-                                    <option>Gạo</option>
-                                    <option>Nếp</option>
-                                    <option>Các loại hạt</option>
-                                    <option>Các loại bột</option>
-                                    <option>Các loại củ, trái</option>
+                                    <option value="m1">Gạo</option>
+                                    <option value="m2">Nếp</option>
+                                    <option value="m3">Các loại hạt</option>
+                                    <option value="m4">Các loại bột</option>
+                                    <option value="m5">Các loại củ, trái</option>
                                 </select>
                             </div>
                         </div>
@@ -684,13 +719,8 @@
                     </div>
 
                     <div class="col-md-12 d-flex  btn_huy_update" style="justify-content: end;">
-                        <button onclick="huy()"><a href="#" class="btn btn-primary py-3 px-4"
-                              style="border-radius:5px; background: #7fad39; border: none;padding: 10px 40px !important;">Hủy</a>
-                        </button>
-                        <button><a href="#" class="btn btn-primary py-3 px-4"
-                              style="border-radius:5px; background: #7fad39; border: none; padding: 10px 30px !important; margin-left: 20px">Cập
-                            nhật</a>
-                        </button>
+                        <input onclick="huy()" type="button" value="Hủy">
+                        <input type="submit" value=" Thêm sản phẩm">
                     </div>
                 </div>
             </form><!-- END -->
@@ -707,7 +737,7 @@
     }
 
     function huy() {
-        $(".edit_formAdd,.edit_formEdit").css("display", "none");
+        $(".edit_formAdd, .edit_formEdit").css("display", "none");
     }
 </script>
 

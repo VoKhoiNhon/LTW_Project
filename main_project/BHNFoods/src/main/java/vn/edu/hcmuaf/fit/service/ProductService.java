@@ -1,9 +1,12 @@
 package vn.edu.hcmuaf.fit.service;
 
+import org.w3c.dom.ls.LSOutput;
 import vn.edu.hcmuaf.fit.beans.*;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.beans.Product;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -138,7 +141,7 @@ public class ProductService {
                     .mapToBean(SingleProduct.class).collect(Collectors.toList());
         });
     }
-
+  // trang lịch sử đơn hàng
     public List<SoldProduct> getHistory(String idUser) {
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("SELECT s.ID_PR, p.NAME_PR, i.URL, s.ID_USER, s.PRICE_HERE, s.AMOUNT, s.`TIME_SOLD`, s.ID_ORDERS, o.`CONDITION` FROM sold_pr s join product p on p.ID_PR = s.ID_PR JOIN image i on i.ID_PR = s.ID_PR JOIN orders o on o.ID_ORDERS = s.ID_ORDERS where (o.`CONDITION` = 2 or o.`CONDITION` = 3) and i.`CONDITION` = 0 and s.ID_USER = '" + idUser + "'")
@@ -287,6 +290,45 @@ public class ProductService {
         }
         return listResult;
     }
+
+    //
+    public static List<Product> getListProduct() {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select * from product")
+                    .mapToBean(Product.class).collect(Collectors.toList());
+        });
+    }
+    public List<SingleProduct> getListSingleProd(){
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select * from ct_pr")
+                    .mapToBean(SingleProduct.class).collect(Collectors.toList());
+        });
+    }
+    public static void addProd(int index, String menu, int discount, int price, String name){
+//        List<Product> products= getListProduct();
+//        int count= products.size();
+         JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("INSERT INTO `product` VALUES ('prod"+index+"','"+menu+"',"+discount+","+ price+ ", '"+name+"')").execute();
+        });
+    }
+
+    public static void main(String[] args) {
+        addCT_Prod(102,"2024-05-25", "2024-05-25", "VN","dkajshkjdhsak",201.2,"Dalat",124);
+    }
+    public static void addCT_Prod( int index,String nsx,String hsd, String brand, String mota, double weight, String origin, int inventory ){
+        List<Product> products= getListProduct();
+        int count= products.size();
+
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("INSERT INTO `ct_pr` VALUES ('prod"+index+"','"+ nsx+"','"+ hsd+"','"+brand+"','"+mota+"'," +weight+",'"+  origin +"','"+ LocalDate.now()+"'," +inventory +", 0)").execute();
+        });
+//        if(nsx.equals(""))
+//            System.out.println( "NULL");
+    }
+    public  boolean checkAddPro(){
+        return true;
+    }
+
 
 
 

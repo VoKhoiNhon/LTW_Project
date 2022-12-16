@@ -26,7 +26,7 @@ public class SignUp extends HttpServlet {
 
         boolean exist = UserService.getInstance().checkAccountExist(email, phone);
         if (name == null  ) {
-            request.setAttribute("errorName", "* Xin hãy nhập tên của bạn");
+            request.setAttribute("errorName", "*Xin hãy nhập tên của bạn");
             request.getRequestDispatcher("signup.jsp").forward(request, response);
         }
         if (exist) {
@@ -43,7 +43,6 @@ public class SignUp extends HttpServlet {
 
             response.sendRedirect("http://localhost:8080/BHNFoods/index?idUser="+newUID);
         }
-
 
 
     }
