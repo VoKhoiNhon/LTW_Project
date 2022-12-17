@@ -16,8 +16,6 @@ public class ListLoveProd extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idUser = request.getParameter("idUser");
         List<Product> listLoveProd = ProductService.getInstance().getListLoveProd(idUser);
-        List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
-        request.setAttribute("listCart",listCart);
         request.setAttribute("listLoveProd", listLoveProd);
         request.getRequestDispatcher("loveProduct.jsp").forward(request,response);
     }

@@ -1,6 +1,8 @@
 <%@ page import="vn.edu.hcmuaf.fit.beans.Product" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.DecimalFormat" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.CartService" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.LoveProdService" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!doctype html>
@@ -46,11 +48,11 @@
                                 <span>Danh sách sản phẩm</span>
                             </div>
                             <ul>
-                                <li><a href="http://localhost:8080/BHNFoods/ListProduct?kind=1&page=1&idUser=user1">Gạo</a></li>
-                                <li><a href="http://localhost:8080/BHNFoods/ListProduct?kind=2&page=1&idUser=user1">Nếp</a></li>
-                                <li><a href="http://localhost:8080/BHNFoods/ListProduct?kind=3&page=1&idUser=user1">Các loại hạt</a></li>
-                                <li><a href="http://localhost:8080/BHNFoods/ListProduct?kind=4&page=1&idUser=user1">Các loại bột</a></li>
-                                <li><a href="http://localhost:8080/BHNFoods/ListProduct?kind=5&page=1&idUser=user1">Các loại củ, trái</a></li>
+                                <li><a href="http://localhost:8080/BHNFoods/ListProduct?kind=1&page=1&idUser=<%=request.getParameter("idUser")%>">Gạo</a></li>
+                                <li><a href="http://localhost:8080/BHNFoods/ListProduct?kind=2&page=1&idUser=<%=request.getParameter("idUser")%>">Nếp</a></li>
+                                <li><a href="http://localhost:8080/BHNFoods/ListProduct?kind=3&page=1&idUser=<%=request.getParameter("idUser")%>">Các loại hạt</a></li>
+                                <li><a href="http://localhost:8080/BHNFoods/ListProduct?kind=4&page=1&idUser=<%=request.getParameter("idUser")%>">Các loại bột</a></li>
+                                <li><a href="http://localhost:8080/BHNFoods/ListProduct?kind=5&page=1&idUser=<%=request.getParameter("idUser")%>">Các loại củ, trái</a></li>
                             </ul>
                         </div>
                     </div>
@@ -157,14 +159,21 @@
                                          data-setbg="<%=p.getUrl()%>">
                                         <div class="product__discount__percent">-<%=p.getDiscount()%>%</div>
                                         <ul class="product__item__pic__hover">
-                                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <%if(LoveProdService.getInstance().checkLiked(idU, p.getIdPr())) {%>
+                                            <li><button id="heart<%=p.getIdPr()%>" class="background-button" style="color: white" onclick="loveInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-heart"></i></button></li>
+                                            <%} else {%>
+                                            <li><button id="heart<%=p.getIdPr()%>" onclick="loveInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-heart"></i></button></li>
+                                            <%}%>
+                                            <%if(CartService.getInstance().checkExist(idU, p.getIdPr())) {%>
+                                            <li><button id="cart<%=p.getIdPr()%>" class="background-button" style="color: white" onclick="addToCartInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-shopping-cart"></i></button></li>
+                                            <%} else {%>
+                                            <li><button id="cart<%=p.getIdPr()%>" onclick="addToCartInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-shopping-cart"></i></button></li>
+                                            <%}%>
                                         </ul>
                                     </div>
                                     <div class="product__discount__item__text">
 
-                                        <a href="http://localhost:8080/BHNFoods/oneProduct?id=<%=p.getIdPr()%>&idUser=user1"><span>Gạo</span>
+                                        <a href="http://localhost:8080/BHNFoods/oneProduct?id=<%=p.getIdPr()%>&idUser=<%=request.getParameter("idUser")%>"><span>Gạo</span>
                                             <h5><%=p.getNamePr()%></h5>
                                             <div class="product__item__price"><%=decF.format(p.getPrice() - (p.getPrice()*p.getDiscount())/100).replace(',','.')%>đ <span><%=decF.format(p.getPrice()).replace(',','.')%>đ</span></div></a>
                                     </div>
@@ -173,6 +182,32 @@
                             <%}%>
                         </div>
                     </div>
+                </div>
+                <div filterBrand>
+                    <button style="background: white;
+    border-radius: 10px;
+    min-width: 150px;
+    line-height: 2.5; margin-top: 5px">SGFoods</button>
+                    <button style="background: white;
+    border-radius: 10px;
+    min-width: 150px;
+    line-height: 2.5; margin-top: 5px">Trần Gia</button>
+                    <button style="background: white;
+    border-radius: 10px;
+    min-width: 150px;
+    line-height: 2.5; margin-top: 5px">Xuân Hồng</button>
+                    <button style="background: white;
+    border-radius: 10px;
+    min-width: 150px;
+    line-height: 2.5; margin-top: 5px">Việt San</button>
+                    <button style="background: white;
+    border-radius: 10px;
+    min-width: 150px;
+    line-height: 2.5; margin-top: 5px">Tấn Sang</button>
+                    <button style="background: white;
+    border-radius: 10px;
+    min-width: 150px;
+    line-height: 2.5; margin-top: 5px">Meizan</button>
                 </div>
                 <div class="filter__item">
                     <div class="row">
@@ -210,13 +245,20 @@
                                 <div class="discount__percent" style="">-<%=p.getDiscount()%>%</div>
                                 <%}%>
                                 <ul class="product__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <%if(LoveProdService.getInstance().checkLiked(idU, p.getIdPr())) {%>
+                                    <li><button id="heart<%=p.getIdPr()%>" class="background-button" style="color: white" onclick="loveInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-heart"></i></button></li>
+                                    <%} else {%>
+                                    <li><button id="heart<%=p.getIdPr()%>" onclick="loveInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-heart"></i></button></li>
+                                    <%}%>
+                                    <%if(CartService.getInstance().checkExist(idU, p.getIdPr())) {%>
+                                    <li><button id="cart<%=p.getIdPr()%>" class="background-button" style="color: white" onclick="addToCartInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-shopping-cart"></i></button></li>
+                                    <%} else {%>
+                                    <li><button id="cart<%=p.getIdPr()%>" onclick="addToCartInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-shopping-cart"></i></button></li>
+                                    <%}%>
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <a href="http://localhost:8080/BHNFoods/oneProduct?id=<%=p.getIdPr()%>&idUser=user1"><%=p.getNamePr()%><br> <span><%=decF.format(price).replace(',','.')%>đ</span></a>
+                                <a href="http://localhost:8080/BHNFoods/oneProduct?id=<%=p.getIdPr()%>&idUser=<%=request.getParameter("idUser")%>"><%=p.getNamePr()%><br> <span><%=decF.format(price).replace(',','.')%>đ</span></a>
                             </div>
                         </div>
                     </div>
@@ -316,6 +358,46 @@
             },
             success: function(data) {
                 const content = document.getElementById("content");
+                content.innerHTML = data;
+            },
+            error: function () {
+            }
+        });
+    }
+    function loveInListProd(id, idTag) {
+            let condition = 0; //0 la detele khoi database, 1 la insert vao database
+            if(document.getElementById(idTag).classList.contains('background-button')) {
+                $('button#' + idTag).removeClass('background-button');
+                $('button#' + idTag).css('color', 'black')
+                condition = 0;
+            } else {
+                $('button#' + idTag).addClass('background-button');
+                $('button#' + idTag).css('color', 'white')
+                condition = 1;
+            }
+            $.ajax({
+                url: "/BHNFoods/addToLoveProd",
+                type: 'get',
+                data: {
+                    id: id,
+                    condition : condition
+                },
+                error: function () {
+                }
+            });
+    }
+    function addToCartInListProd(id, idTag) {
+        $('button#' + idTag).addClass('background-button');
+        $('button#' + idTag).css('color', 'white');
+        $.ajax({
+            url: "/BHNFoods/addToCart",
+            type: 'get',
+            data: {
+                id: id,
+                amount: 1
+            },
+            success: function (data) {
+                const content = document.getElementById('totalCart');
                 content.innerHTML = data;
             },
             error: function () {

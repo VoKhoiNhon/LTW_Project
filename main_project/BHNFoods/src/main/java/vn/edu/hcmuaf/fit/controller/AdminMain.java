@@ -13,22 +13,48 @@ import java.util.List;
 
 @WebServlet(name = "AdminMain", value = "/AdminMain")
 public class AdminMain extends HttpServlet {
-    int i ;
+    int i;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        i=5;
+        i = 5;
         List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i);
         request.setAttribute("listPrDate", list);
-        request.getRequestDispatcher("adminMain.jsp").forward(request,response);
+        int newbie = UserService.getInstance().getNewbie();
+        String data = "" + ProductService.getInstance().getTurnover(1, 2022);
+        String data1 = "" + ProductService.getInstance().getTurnover(1, 2021);
+        int tur = ProductService.getInstance().getTurnover(1, 2022);
+        int tur1 = ProductService.getInstance().getTurnover(1, 2021);
+        int saledPR = ProductService.getInstance().getSalerPR();
+        int stopSaledPR = ProductService.getInstance().getStopPr();
+        for (int i = 2; i <= 12; i++) {
+            tur += ProductService.getInstance().getTurnover(i, 2022);
+            tur1 += ProductService.getInstance().getTurnover(i, 2021);
+            data += ("," + ProductService.getInstance().getTurnover(i, 2022));
+            data1 += ("," + ProductService.getInstance().getTurnover(i, 2021));
+        }
+        int nowTur = ProductService.getInstance().getTurnover(ProductService.getInstance().getNowMonth(), ProductService.getInstance().getNowYer());
+//        double percentY= ((tur/tur1)-1)*100;
+//        request.setAttribute("pec", percentY);
+        request.setAttribute("stopSaled", stopSaledPR);
+        request.setAttribute("saledPr", saledPR);
+        request.setAttribute("newbie", newbie);
+        request.setAttribute("nowTur", nowTur);
+        request.setAttribute("tur", tur);
+        request.setAttribute("data", data);
+        request.setAttribute("data1", data1);
+        request.getRequestDispatcher("adminMain.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i+5);
+        List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i + 5);
+
 
     }
+
     public static void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-      response.sendRedirect("adminMain.jsp");
+        response.sendRedirect("adminMain.jsp");
     }
 }

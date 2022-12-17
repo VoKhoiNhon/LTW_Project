@@ -5,6 +5,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.beans.ImgForSingleProd" %>
 <%@ page import="vn.edu.hcmuaf.fit.beans.Feedback" %>
 <%@ page import="vn.edu.hcmuaf.fit.beans.Product" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.LoveProdService" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!doctype html>
@@ -93,12 +94,17 @@
                     <div class="product__details__quantity">
                         <div class="quantity">
                             <div class="pro-qty">
-                                <input type="text" value="1">
+                                <input id="amountProd" type="text" value="1">
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="primary-btn">THÊM VÀO GIỎ HÀNG</a>
-                    <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                    <button onclick="addToCart()" style="padding: 15px 28px 12px; height: auto !important; background-color: #82ae46; color: white" class="primary-btn">THÊM VÀO GIỎ HÀNG</button>
+                    <%if(LoveProdService.getInstance().checkLiked(idU, request.getParameter("id"))) {%>
+                    <button id="heart" onclick="love()" class="heart-icon background-button" style="padding: 12px 17px 12px; height: auto !important;color: white" ><span class="icon_heart_alt"></span></button>
+                    <%} else {%>
+                    <button id="heart" onclick="love()" class="heart-icon" style="padding: 12px 17px 12px; height: auto !important;color: #82ae46" ><span class="icon_heart_alt"></span></button>
+                    <%}%>
+<%--                    <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>--%>
                     <ul>
                         <li><b>Xuất xứ</b> <span><%=single.get(0).getOrigin()%></span></li>
                         <li><b>Hạn sử dụng</b> <span><%=single.get(0).getHsd()%></span></li>
@@ -110,10 +116,13 @@
         </div>
         <%if (listFeedback.size() > 0) {%>
         <h3>Đánh giá sản phẩm</h3>
+        <%
+            }
+        %>
         <div id="comment">
             <%
-                int n = listFeedback.size() > 3 ? 3 : listFeedback.size();
-                for (int i = 0; i < n; i++) {%>
+                int size = listFeedback.size() > 3 ? 3 : listFeedback.size();
+                for (int i = 0; i < size; i++) {%>
             <div class="comment">
                 <div class="comment-user mt-4">
                     <span class="comment-name mr-3"><%=listFeedback.get(i).getNameUser()%></span>
@@ -130,9 +139,7 @@
             </div>
             <%}%>
         </div>
-        <%
-            }
-        %>
+
         <%if(listFeedback.size() > 3) {%>
         <button onclick="loadMoreCommentLeft()"><i class="fa fa-long-arrow-left"></i></button>
         <%
@@ -144,11 +151,11 @@
         <%}%>
         <div class="comment-input mt-4">
             <%if (listFeedback.size() > 0) {%>
-            <h3>Phản hồi về sản phẩm</h3>
+            <h3 class="aboveTextComment">Phản hồi về sản phẩm</h3>
             <%} else {%>
-            <h3>Sản phẩm hiện chưa có phản hồi, bạn nãy nêu cảm nhận của mình</h3>
+            <h3 class="aboveTextComment">Sản phẩm hiện chưa có phản hồi, bạn nãy nêu cảm nhận của mình</h3>
             <%}%>
-            <div class="btn-star pt-2">
+            <div  id="abc" class="btn-star pt-2">
                 <button value="1" onclick="marking(this.id)" id="oneStar" style="color: #0b0b0b">1 <i class="fa fa-star star-color-yellow"></i></button>
                 <button value="2" onclick="marking(this.id)" id="twoStar" style="color: #0b0b0b">2 <i class="fa fa-star star-color-yellow"></i></button>
                 <button value="3" onclick="marking(this.id)" id="threeStar" style="color: #0b0b0b">3 <i class="fa fa-star star-color-yellow"></i></button>
@@ -192,7 +199,7 @@
                     </div>
                     <div class="product__item__text">
                         <h6>
-                            <a href="http://localhost:8080/BHNFoods/oneProduct?id=<%=relatedProducts.get(i).getIdPr()%>&idUser=user1"><%=relatedProducts.get(i).getNamePr()%>
+                            <a href="http://localhost:8080/BHNFoods/oneProduct?id=<%=relatedProducts.get(i).getIdPr()%>&idUser=<%=request.getAttribute("idUser")%>"><%=relatedProducts.get(i).getNamePr()%>
                             </a></h6>
                         <h5><%=dec.format(relatedProducts.get(i).getPrice())%>đ</h5>
                     </div>
@@ -283,32 +290,76 @@
     function sendComment() {
         var idU = idUser;
         var idP = idProd;
-        if($('button.lightGreenBtn').val() !== undefined && $('textarea#textComment').val() !== "") {
-            $.ajax({
-                url: "/BHNFoods/sendComment",
-                type: 'get',
-                data: {
-                    text: $('textarea#textComment').val(),
-                    idU: idUser,
-                    idP: idProd,
-                    star: $('button.lightGreenBtn').val()
-                },
-                success: function (data) {
-                    if($('div.comment').length >=3) {
-                        $('div.comment:last-child').remove();
+        if(idU != "null")  {
+            if($('button.lightGreenBtn').val() !== undefined && $('textarea#textComment').val() !== "") {
+                $.ajax({
+                    url: "/BHNFoods/sendComment",
+                    type: 'get',
+                    data: {
+                        text: $('textarea#textComment').val(),
+                        idU: idUser,
+                        idP: idProd,
+                        star: $('button.lightGreenBtn').val()
+                    },
+                    success: function (data) {
+                        if($('div.comment').length >=3) {
+                            $('div.comment:last-child').remove();
+                        }
+                        $('button.lightGreenBtn').removeClass('lightGreenBtn');
+                        $("div#comment").prepend(data);
+                        $("textarea#textComment").val("");
+                        $('h3.aboveTextComment').remove();
+                        $('div.comment-input').prepend("<h3 class=\"aboveTextComment\">Phản hồi về sản phẩm</h3>");
+
+                    },
+                    error: function () {
                     }
-                    $('button.lightGreenBtn').removeClass('lightGreenBtn');
-                    $("div#comment").prepend(data);
-                    $("textarea#textComment").val("");
-                },
-                error: function () {
-                }
-            });
-        } else alert("Hãy đánh giá số sao và nhập phản hồi trước khi gửi nhé!");
+                });
+            } else alert("Hãy đánh giá số sao và nhập phản hồi trước khi gửi nhé!");
+        } else alert("Hãy đăng nhập trước khi bình luận nhé");
     }
     function marking(id) {
         $('button.lightGreenBtn').removeClass('lightGreenBtn');
         $('button#' + id).addClass('lightGreenBtn');
+    }
+    function addToCart() {
+        $.ajax({
+            url: "/BHNFoods/addToCart",
+            type: 'get',
+            data: {
+                id: idProd,
+                amount: $('input#amountProd').val()
+            },
+            success: function (data) {
+                const content = document.getElementById('totalCart');
+                content.innerHTML = data;
+            },
+            error: function () {
+            }
+        });
+    }
+    function love() {
+        let condition = 0; //0 la detele khoi database, 1 la insert vao database
+        if(document.getElementById('heart').classList.contains('background-button')) {
+            $('#heart').removeClass('background-button');
+            $('#heart').css('color', '#82ae46')
+            condition = 0;
+        } else {
+            $('#heart').addClass('background-button');
+            $('#heart').css('color', 'white')
+            condition = 1;
+        }
+        $.ajax({
+            url: "/BHNFoods/addToLoveProd",
+            type: 'get',
+            data: {
+                id: idProd,
+                condition : condition
+            },
+            error: function () {
+            }
+        });
+
     }
 </script>
 <!-- Js Plugins -->

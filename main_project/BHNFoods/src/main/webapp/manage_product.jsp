@@ -121,8 +121,9 @@
             padding: 8px 20px;
             color: white;
         }
+
         .btn_huy_update input:last-child {
-           margin-left: 20px;
+            margin-left: 20px;
         }
 
         .edit_formUser textarea {
@@ -164,22 +165,43 @@
                       <p class="mb-0 font-weight-medium float-left">Lọc</p>
                     </a> -->
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis font-weight-medium text-dark">Người dùng </p>
-                            <p class="fw-light small-text mb-0">Trang chi tiết người dùng</p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis font-weight-medium text-dark">Admin</p>
-                            <p class="fw-light small-text mb-0">Trang chi tiết Admin</p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item">
+                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1 "
+                       class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Tất cả </p>
-                            <p class="fw-light small-text mb-0">Trang chi tiết cho tất cả</p>
+                        </div>
+                    </a>
+                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=1&page=1"
+                       class="dropdown-item preview-item">
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Gạo</p>
+                        </div>
+                    </a>
+                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=2&page=1 "
+                       class="dropdown-item preview-item">
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Nếp </p>
+
+                        </div>
+                    </a>
+                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=3&page=1"
+                       class="dropdown-item preview-item">
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại hạt </p>
+
+                        </div>
+                    </a>
+                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=4&page=1"
+                       class="dropdown-item preview-item">
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại bột </p>
+
+                        </div>
+                    </a>
+                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=5&page=1 "
+                       class="dropdown-item preview-item">
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại củ, trái </p>
                         </div>
                     </a>
 
@@ -194,9 +216,10 @@
                 </div>
             </li>
             <li class="nav-item">
-                <form class="search-form" action="#">
+                <form class="search-form" action="/BHNFoods/SearchAdmin" method="post">
                     <i class="icon-search"></i>
-                    <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+                    <input type="search" class="form-control" placeholder="Search Here" name="searchAD"
+                           title="Search here">
                 </form>
             </li>
 
@@ -309,10 +332,11 @@
                                                                 <tr>
                                                                     <th>
                                                                         <div class="form-check form-check-flat mt-0">
-                                                                            <label class="form-check-label">
-                                                                                <input type="checkbox"
-                                                                                       class="form-check-input"
-                                                                                       aria-checked="false"><i
+                                                                            <label class="form-check-label" id="selectAll">
+                                                                                <input
+                                                                                        type="checkbox"
+                                                                                        class="form-check-input"
+                                                                                        aria-checked="false"><i
                                                                                     class="input-helper"></i></label>
                                                                         </div>
                                                                     </th>
@@ -334,7 +358,7 @@
                                                                         <div class="form-check form-check-flat mt-0">
                                                                             <label class="form-check-label">
                                                                                 <input type="checkbox"
-                                                                                       class="form-check-input"
+                                                                                       class="form-check-input checkbox1"
                                                                                        aria-checked="false"><i
                                                                                     class="input-helper"></i></label>
                                                                         </div>
@@ -562,7 +586,7 @@
                     </div>
 
                     <div class="col-md-12 d-flex btn_huy_update" style="justify-content: end;">
-                        <input  type="button"  onclick="huy()" value="Hủy">
+                        <input type="button" onclick="huy()" value="Hủy">
                         <input type="submit" value=" Thêm sản phẩm">
                     </div>
                 </div>
@@ -687,7 +711,7 @@
                         </div>
                         <div class="col-md-6 col_addprod">
                             <div class="form-group">
-                                <label >Số lượng nhập</label>
+                                <label>Số lượng nhập</label>
                                 <input type="number" class="form-control input_addpr" placeholder="">
                             </div>
                         </div>
@@ -739,11 +763,27 @@
     function huy() {
         $(".edit_formAdd, .edit_formEdit").css("display", "none");
     }
+
+
+    $('#selectAll').click(function (event) {  //on click\
+      
+        if (this.checked) { // check select status
+            $(':checkbox').each(function () { //loop through each checkbox
+                this.checked = true;  //select all checkboxes with class "checkbox1"
+            });
+
+        } else {
+            $(':checkbox').each(function () { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"
+            });
+        }
+    })
+
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
         crossorigin="anonymous"></script>
-<!-- plugins:js -->
+<script src="js/jquery.dataTables.min.js"></script>
 <script src="admin_template/vendors/js/vendor.bundle.base.js"></script>
 <!-- endinject -->
 <!-- Plugin js for this page -->

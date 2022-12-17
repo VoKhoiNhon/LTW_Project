@@ -35,6 +35,11 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="cssHeaderFooter/styleHAndF.css">
 </head>
+<%User user= (User) session.getAttribute("auth");
+    int sumCart = (int) session.getAttribute("sumCart");
+    request.setAttribute("user", user);
+    String idU = user != null? user.getIdUser() : "null";
+%>
 
 <div class="py-1 bg-primary">
     <div class="container">
@@ -61,7 +66,7 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="http://localhost:8080/BHNFoods/index?idUser=null">BHNFoods</a>
+        <a class="navbar-brand" href="http://localhost:8080/BHNFoods/index?idUser=<%=idU%>">BHNFoods</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Sản Phẩm
@@ -69,26 +74,18 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="http://localhost:8080/BHNFoods/index?idUser=user1" class="nav-link">Trang chủ</a></li>
-                <li class="nav-item active "><a href="http://localhost:8080/BHNFoods/ListProduct?kind=0&page=1&idUser=user1" class="nav-link">Sản
+                <li class="nav-item active"><a href="http://localhost:8080/BHNFoods/index?idUser=<%=idU%>" class="nav-link">Trang chủ</a></li>
+                <li class="nav-item active "><a href="http://localhost:8080/BHNFoods/ListProduct?kind=0&page=1&idUser=<%=idU%>" class="nav-link">Sản
                     phẩm</a></li>
                 <li class="nav-item cta cta-colored find">
                     <form action="/BHNFoods/Search"method="post" style="display: flex"><input value="<%=request.getParameter("searchPR")!=null?request.getParameter("searchPR"):""%>" type="text" class="search-input" name="searchPR" id="findicon"
                                            placeholder="Tìm kiếm"> <button type="submit" class="fa-solid fa-magnifying-glass" style="background: none;border: none;"></button></form></li>
-                <% List<Cart> l = (List<Cart>) request.getAttribute("listCart");
-                    int result = 0;
-                    for (Cart c : l) {
-                        result += c.getAmount();
-                    }%>
-                <li class="nav-item cta cta-colored"><a href="http://localhost:8080/BHNFoods/Cart?idUser=null"
-                                                        class="nav-link"><span
-                        class="fa-solid fa-cart-shopping"></span>[<%=result%>]</a></li>
+                <li id="totalCart" class="nav-item cta cta-colored amountInCart">
+                    <a href="http://localhost:8080/BHNFoods/Cart?idUser=<%=idU%>" class="nav-link">
+                        <span class="fa-solid fa-cart-shopping"></span>[<%=sumCart%>]</a>
+                </li>
 
                 <%
-                    User user= (User) session.getAttribute("auth");
-                    request.setAttribute("user", user);
-                    System.out.println(user == null);
-                    System.out.println(request.getAttribute("idUser") == null);
                     if(user == null){
                 %>
 

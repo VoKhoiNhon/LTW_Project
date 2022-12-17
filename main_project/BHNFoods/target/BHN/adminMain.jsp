@@ -175,7 +175,12 @@
                     </a>
                 </div>
             </li>
-            <%
+            <%String data =(String) request.getAttribute("data");
+                int stopPr = (int) request.getAttribute("stopSaled");
+            int newbie = (int) request.getAttribute("newbie");
+                int saledPr = (int) request.getAttribute("saledPr");
+                String data1 =(String) request.getAttribute("data1");
+                int nowTur= (int) request.getAttribute("nowTur");
                 User user = (User) session.getAttribute("auth");
                 if (user != null) {%>
 
@@ -259,40 +264,25 @@
                                     <div class="col-sm-12">
                                         <div class="statistics-details d-flex align-items-center justify-content-between">
                                             <div>
-                                                <p class="statistics-title">Doanh thu/tháng</p>
-                                                <h3 class="rate-percentage">20.000.000 VNĐ</h3>
-                                                <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>-0.5%</span>
-                                                </p>
+                                                <p class="statistics-title">Doanh thu tháng hiện tại</p>
+                                                <h3 class="rate-percentage"><%=nowTur%> VNĐ</h3>
+
                                             </div>
                                             <div>
                                                 <p class="statistics-title">Số mặt hàng đã bán</p>
-                                                <h3 class="rate-percentage">230 </h3>
-                                                <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+0.1%</span>
-                                                </p>
+                                                <h3 class="rate-percentage"><%=saledPr%> </h3>
+
                                             </div>
                                             <div>
                                                 <p class="statistics-title">Mặt hàng ngừng kinh doanh</p>
-                                                <h3 class="rate-percentage">68</h3>
-                                                <p class="text-danger d-flex"><i
-                                                        class="mdi mdi-menu-down"></i><span></span></p>
-                                            </div>
-                                            <div class="d-none d-md-block">
-                                                <p class="statistics-title">Tổng lượt xem website</p>
-                                                <h3 class="rate-percentage">1781212</h3>
-                                                <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span>
-                                                </p>
+                                                <h3 class="rate-percentage"><%=stopPr%></h3>
+
                                             </div>
                                             <div class="d-none d-md-block">
                                                 <p class="statistics-title">Khách hàng mới</p>
-                                                <h3 class="rate-percentage">60</h3>
-                                                <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>0.3%</span>
-                                                </p>
+                                                <h3 class="rate-percentage"><%=newbie%></h3>
                                             </div>
-                                            <div class="d-none d-md-block">
-                                                <!-- <p class="statistics-title">Avg. Time on Site</p>
-                                                <h3 class="rate-percentage">2m:35s</h3>
-                                                <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p> -->
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -304,31 +294,18 @@
                                                     <div class="card-body">
                                                         <div class="d-sm-flex justify-content-between align-items-start">
                                                             <div>
-                                                                <h4 class="card-title card-title-dash">Market Overview</h4>
-                                                                <p class="card-subtitle card-subtitle-dash">Lorem ipsum dolor sit amet consectetur
-                                                                    adipisicing elit</p>
+                                                                <h4 class="card-title card-title-dash">Biểu đồ doanh thu theo năm</h4>
+
                                                             </div>
-                                                            <div>
-                                                                <div class="dropdown">
-                                                                    <button class="btn btn-secondary dropdown-toggle toggle-dark btn-lg mb-0 me-0"
-                                                                            type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
-                                                                            aria-haspopup="true" aria-expanded="false"> This month </button>
-                                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                                                        <h6 class="dropdown-header">Settings</h6>
-                                                                        <a class="dropdown-item" href="#">Action</a>
-                                                                        <a class="dropdown-item" href="#">Another action</a>
-                                                                        <a class="dropdown-item" href="#">Something else here</a>
-                                                                        <div class="dropdown-divider"></div>
-                                                                        <a class="dropdown-item" href="#">Separated link</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+
+                                                        </div><%int tur = (int) request.getAttribute("tur");
+//                                                    double pec = (double) request.getAttribute("pec");
+                                                    %>
                                                         <div class="d-sm-flex align-items-center mt-1 justify-content-between">
                                                             <div class="d-sm-flex align-items-center mt-4 justify-content-between">
-                                                                <h2 class="me-2 fw-bold">$36,2531.00</h2>
-                                                                <h4 class="me-2">USD</h4>
-                                                                <h4 class="text-success">(+1.37%)</h4>
+                                                                <h2 class="me-2 fw-bold"><%=tur%></h2>
+                                                                <h4 class="me-2">VNĐ</h4>
+<%--                                                                <h4 class="text-success">(+<%=pec%>%)</h4>--%>
                                                             </div>
                                                             <div class="me-3">
                                                                 <div id="marketing-overview-legend"></div>
@@ -336,6 +313,7 @@
                                                         </div>
                                                         <div class="chartjs-bar-wrapper mt-3">
                                                             <canvas id="marketingOverview"></canvas>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -464,6 +442,7 @@
         <!-- page-body-wrapper ends -->
     </div>
 </div>
+
 <!-- container-scroller -->
 <!-- plugins:js -->
 <script src="admin_template/vendors/js/vendor.bundle.base.js"></script>
@@ -483,7 +462,99 @@
 <!-- endinject -->
 <!-- Custom js for this page-->
 <script src="admin_template/js/jquery.cookie.js" type="text/javascript"></script>
-<script src="admin_template/js/dashboard.js"></script>
+<%--<script src="admin_template/js/dashboard.js"></script>--%>
+<script> if ($("#marketingOverview").length) {
+    var marketingOverviewChart = document.getElementById("marketingOverview").getContext('2d');
+    var marketingOverviewData = {
+        labels: ["JAN","FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
+        datasets: [{
+            label: 'năm 2022',
+            data: [<%=data%>],
+            backgroundColor: "#52CDFF",
+            borderColor: [
+                '#52CDFF',
+            ],
+            borderWidth: 0,
+            fill: true, // 3: no fill
+
+        },{
+            label: 'năm 2021',
+            data: [<%=data1%>],
+            backgroundColor: "#1F3BB3",
+            borderColor: [
+                '#1F3BB3',
+            ],
+            borderWidth: 0,
+            fill: true, // 3: no fill
+        }]
+    };
+
+    var marketingOverviewOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            yAxes: [{
+                gridLines: {
+                    display: true,
+                    drawBorder: false,
+                    color:"#F0F0F0",
+                    zeroLineColor: '#F0F0F0',
+                },
+                ticks: {
+                    beginAtZero: true,
+                    autoSkip: true,
+                    maxTicksLimit: 5,
+                    fontSize: 10,
+                    color:"#6B778C"
+                }
+            }],
+            xAxes: [{
+                stacked: true,
+                barPercentage: 0.35,
+                gridLines: {
+                    display: false,
+                    drawBorder: false,
+                },
+                ticks: {
+                    beginAtZero: false,
+                    autoSkip: true,
+                    maxTicksLimit: 12,
+                    fontSize: 10,
+                    color:"#6B778C"
+                }
+            }],
+        },
+        legend:false,
+        legendCallback: function (chart) {
+            var text = [];
+            text.push('<div class="chartjs-legend"><ul>');
+            for (var i = 0; i < chart.data.datasets.length; i++) {
+                console.log(chart.data.datasets[i]); // see what's inside the obj.
+                text.push('<li class="text-muted text-small">');
+                text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
+                text.push(chart.data.datasets[i].label);
+                text.push('</li>');
+            }
+            text.push('</ul></div>');
+            return text.join("");
+        },
+
+        elements: {
+            line: {
+                tension: 0.4,
+            }
+        },
+        tooltips: {
+            backgroundColor: 'rgba(31, 59, 179, 1)',
+        }
+    }
+    var marketingOverview = new Chart(marketingOverviewChart, {
+        type: 'bar',
+        data: marketingOverviewData,
+        options: marketingOverviewOptions
+    });
+    document.getElementById('marketing-overview-legend').innerHTML = marketingOverview.generateLegend();
+}</script>
 <script src="admin_template/js/Chart.roundedBarCharts.js"></script>
 <!-- End custom js for this page-->
 </body>
