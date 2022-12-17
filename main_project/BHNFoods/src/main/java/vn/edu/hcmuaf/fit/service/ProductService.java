@@ -2,6 +2,7 @@ package vn.edu.hcmuaf.fit.service;
 
 import org.w3c.dom.ls.LSOutput;
 import vn.edu.hcmuaf.fit.beans.*;
+import vn.edu.hcmuaf.fit.controller.ListProduct;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.beans.Product;
 
@@ -55,8 +56,8 @@ public class ProductService {
     public List<Feedback> getFeedBackInPage(String idProd, int page) {
         List<Feedback> feedbackList = new ArrayList<Feedback>();
         List<Feedback> allFeedbacks = getFeedBack(idProd);
-        int n = allFeedbacks.size() - (page - 1)*3 >= 3 ? 3: allFeedbacks.size()%3;
-        for (int i = (page - 1)*3; i < (page - 1)*3 + n; i++) {
+        int n = allFeedbacks.size() - (page - 1) * 3 >= 3 ? 3 : allFeedbacks.size() % 3;
+        for (int i = (page - 1) * 3; i < (page - 1) * 3 + n; i++) {
             feedbackList.add(allFeedbacks.get(i));
         }
         return feedbackList;
@@ -125,7 +126,7 @@ public class ProductService {
     //trang sản phẩm yêu thích
     public List<Product> getListLoveProd(String idUser) {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from `like` l JOIN product p  on l.ID_PR = p.ID_PR join image i on p.ID_PR = i.ID_PR where i.`CONDITION` = 0 and l.ID_USER = '" + idUser +"'")
+            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from `like` l JOIN product p  on l.ID_PR = p.ID_PR join image i on p.ID_PR = i.ID_PR where i.`CONDITION` = 0 and l.ID_USER = '" + idUser + "'")
                     .mapToBean(Product.class).collect(Collectors.toList());
         });
     }
@@ -148,10 +149,11 @@ public class ProductService {
                     .mapToBean(SoldProduct.class).collect(Collectors.toList());
         });
     }
+
     //trang quan ly don hang
     public List<Orders> getManagerOrders(String idUser){
         return  JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT i.URL, p.NAME_PR, s.PRICE_HERE, s.AMOUNT, o.TIME_ORDERS, o.`CONDITION` FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on s.ID_PR= p.ID_PR JOIN image i on i.ID_PR=p.ID_PR WHERE (o.`CONDITION`=0 or o.`CONDITION`=1 or  o.`CONDITION`=3) and i.`CONDITION`=0 and s.`ID-USER`='"+idUser+"'")
+            return handle.createQuery("SELECT i.URL, p.NAME_PR, s.PRICE_HERE, s.AMOUNT, o.TIME_ORDERS, o.`CONDITION` FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on s.ID_PR= p.ID_PR JOIN image i on i.ID_PR=p.ID_PR WHERE (o.`CONDITION`=0 or o.`CONDITION`=1) and i.`CONDITION`=0 and s.`ID_USER`='"+idUser+"'")
                     .mapToBean(Orders.class).collect(Collectors.toList());
         });
     }
@@ -194,6 +196,7 @@ public class ProductService {
         }
         return mapResult;
     }
+
     public Map<String, Integer> sumHistoryOrder(Map<String, List<SoldProduct>> map) {
         Map<String, Integer> mapResult = new HashMap<String, Integer>();
         int sum = 0;
@@ -225,14 +228,14 @@ public class ProductService {
         });
     }
 
-        // hàm tính tổng ở cart
-        public int sumCart (List < Cart > l) {
-            int result = 0;
-            for (Cart c : l) {
-                result += c.getPrice() * c.getAmount();
-            }
-            return result;
+    // hàm tính tổng ở cart
+    public int sumCart(List<Cart> l) {
+        int result = 0;
+        for (Cart c : l) {
+            result += c.getPrice() * c.getAmount();
         }
+        return result;
+    }
 
 
     public String formatTime(LocalDateTime dateTime) {
@@ -241,42 +244,91 @@ public class ProductService {
 
     public static List<Product> getListPrNameSearch(String search) {
         List<Product> list = new ArrayList<Product>();
-        List<Product> pr= JDBIConnector.get().withHandle(handle -> {
+        List<Product> pr = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from product p join image i on p.ID_PR = i.ID_PR").mapToBean(Product.class).collect(Collectors.toList());
         });
-        for(Product p :pr){
-            if(p.getNamePr().toUpperCase().contains(search.toUpperCase())){
+        for (Product p : pr) {
+            if (p.getNamePr().toUpperCase().contains(search.toUpperCase())) {
                 list.add(p);
             }
         }
         return list;
     }
+
     public static List<SingleProduct> getListSingleProductByKind(int kind) {
         switch (kind) {
             case 1:
-                return JDBIConnector.get().withHandle(handle -> {
+                List<SingleProduct> l1 = JDBIConnector.get().withHandle(handle -> {
                     return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY , c.HSD,sum(s.AMOUNT)as saled from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR JOIN sold_pr s on s.ID_PR= p.ID_PR where i.`CONDITION` = 0 and p.ID_MENU = 'm1'GROUP BY p.ID_PR").mapToBean(SingleProduct.class).collect(Collectors.toList());
                 });
+                List<SingleProduct> l2 = JDBIConnector.get().withHandle(handle -> {
+                    return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY , c.HSD,c.CONDITION_PR as saled  from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR  where i.`CONDITION` = 0 and p.ID_MENU = 'm1'and p.ID_PR not in (select s.ID_PR from sold_pr s )  GROUP BY p.ID_PR").mapToBean(SingleProduct.class).collect(Collectors.toList());
+                });
+                for (SingleProduct s2 : l2) {
+                    s2.setSaled("0");
+                    l1.add(s2);
+                }
+                return l1;
             case 2:
-                return JDBIConnector.get().withHandle(handle -> {
-                    return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY , c.HSD ,sum(s.AMOUNT)as saled from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR JOIN sold_pr s on s.ID_PR= p.ID_PR where i.`CONDITION` = 0 and p.ID_MENU = 'm2'GROUP BY p.ID_PR").mapToBean(SingleProduct.class).collect(Collectors.toList());
+                List<SingleProduct> l3 = JDBIConnector.get().withHandle(handle -> {
+                    return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY , c.HSD,sum(s.AMOUNT)as saled from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR JOIN sold_pr s on s.ID_PR= p.ID_PR where i.`CONDITION` = 0 and p.ID_MENU = 'm2'GROUP BY p.ID_PR").mapToBean(SingleProduct.class).collect(Collectors.toList());
                 });
+                List<SingleProduct> l4 = JDBIConnector.get().withHandle(handle -> {
+                    return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY , c.HSD,c.CONDITION_PR as saled  from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR  where i.`CONDITION` = 0 and p.ID_MENU = 'm2'and p.ID_PR not in (select s.ID_PR from sold_pr s )GROUP BY p.ID_PR").mapToBean(SingleProduct.class).collect(Collectors.toList());
+                });
+                for (SingleProduct s2 : l4) {
+                    s2.setSaled("0");
+                    l3.add(s2);
+                }
+                return l3;
             case 3:
-                return JDBIConnector.get().withHandle(handle -> {
-                    return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY  , c.HSD,sum(s.AMOUNT)as saled from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR JOIN sold_pr s on s.ID_PR= p.ID_PR where i.`CONDITION` = 0 and p.ID_MENU = 'm3' GROUP BY p.ID_PR").mapToBean(SingleProduct.class).collect(Collectors.toList());
+                List<SingleProduct> l5 = JDBIConnector.get().withHandle(handle -> {
+                    return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY , c.HSD,sum(s.AMOUNT)as saled from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR JOIN sold_pr s on s.ID_PR= p.ID_PR where i.`CONDITION` = 0 and p.ID_MENU = 'm3'GROUP BY p.ID_PR").mapToBean(SingleProduct.class).collect(Collectors.toList());
                 });
+                List<SingleProduct> l6 = JDBIConnector.get().withHandle(handle -> {
+                    return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY , c.HSD,c.CONDITION_PR as saled  from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR  where i.`CONDITION` = 0 and p.ID_MENU = 'm3'and p.ID_PR not in (select s.ID_PR from sold_pr s )GROUP BY p.ID_PR").mapToBean(SingleProduct.class).collect(Collectors.toList());
+                });
+                for (SingleProduct s2 : l6) {
+                    s2.setSaled("0");
+                    l5.add(s2);
+                }
+                return l5;
             case 4:
-                return JDBIConnector.get().withHandle(handle -> {
-                    return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY  , c.HSD,sum(s.AMOUNT)as saled from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR JOIN sold_pr s on s.ID_PR= p.ID_PR where i.`CONDITION` = 0 and p.ID_MENU = 'm4' GROUP BY p.ID_PR").mapToBean(SingleProduct.class).collect(Collectors.toList());
+                List<SingleProduct> l7 = JDBIConnector.get().withHandle(handle -> {
+                    return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY , c.HSD,sum(s.AMOUNT)as saled from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR JOIN sold_pr s on s.ID_PR= p.ID_PR where i.`CONDITION` = 0 and p.ID_MENU = 'm4'GROUP BY p.ID_PR").mapToBean(SingleProduct.class).collect(Collectors.toList());
                 });
+                List<SingleProduct> l8 = JDBIConnector.get().withHandle(handle -> {
+                    return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY , c.HSD,c.CONDITION_PR as saled  from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR  where i.`CONDITION` = 0 and p.ID_MENU = 'm4' and p.ID_PR not in (select s.ID_PR from sold_pr s )GROUP BY p.ID_PR").mapToBean(SingleProduct.class).collect(Collectors.toList());
+                });
+                for (SingleProduct s2 : l8) {
+                    s2.setSaled("0");
+                    l7.add(s2);
+                }
+                return l7;
             case 5:
-                return JDBIConnector.get().withHandle(handle -> {
-                    return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY  , c.HSD,sum(s.AMOUNT)as saled from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR JOIN sold_pr s on s.ID_PR= p.ID_PR where i.`CONDITION` = 0 and p.ID_MENU = 'm5' GROUP BY p.ID_PR").mapToBean(SingleProduct.class).collect(Collectors.toList());
+                List<SingleProduct> l9 = JDBIConnector.get().withHandle(handle -> {
+                    return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY , c.HSD,sum(s.AMOUNT)as saled from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR JOIN sold_pr s on s.ID_PR= p.ID_PR where i.`CONDITION` = 0 and p.ID_MENU = 'm5'GROUP BY p.ID_PR").mapToBean(SingleProduct.class).collect(Collectors.toList());
                 });
+                List<SingleProduct> l10 = JDBIConnector.get().withHandle(handle -> {
+                    return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY , c.HSD,c.CONDITION_PR as saled   from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR  where i.`CONDITION` = 0 and p.ID_MENU = 'm5'and p.ID_PR  not in (select s.ID_PR from sold_pr s )GROUP BY p.ID_PR").mapToBean(SingleProduct.class).collect(Collectors.toList());
+                });
+                for (SingleProduct s2 : l10) {
+                    s2.setSaled("0");
+                    l9.add(s2);
+                }
+                return l9;
         }
-        return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY  , c.HSD,sum(s.AMOUNT)as saled from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR JOIN sold_pr s on s.ID_PR= p.ID_PR where i.`CONDITION` = 0 GROUP BY p.ID_PR").mapToBean(SingleProduct.class).collect(Collectors.toList());
+        List<SingleProduct> l1 = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY , c.HSD,sum(s.AMOUNT)as saled from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR JOIN sold_pr s on s.ID_PR= p.ID_PR where i.`CONDITION` = 0  GROUP BY p.ID_PR").mapToBean(SingleProduct.class).collect(Collectors.toList());
         });
+        List<SingleProduct> l2 = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY , c.HSD ,c.CONDITION_PR as saled  from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR  where i.`CONDITION` = 0 and p.ID_PR not in (select s.ID_PR from sold_pr s )  GROUP BY p.ID_PR").mapToBean(SingleProduct.class).collect(Collectors.toList());
+        });
+        for (SingleProduct s2 : l2) {
+                    s2.setSaled("0");
+                    l1.add(s2);
+        }
+        return l1;
     }
 
     // lấy ra danh sách product theo loại và phân trang
@@ -289,7 +341,9 @@ public class ProductService {
             listResult.add(listProd.get(i));
         }
         return listResult;
+
     }
+
 
     //
     public static List<Product> getListProduct() {
@@ -331,7 +385,56 @@ public class ProductService {
 
 
 
+    public  int getTurnover(int month, int year) {
+        List<Turnover> l= JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select sum(s.PRICE_HERE) as turnover   from orders o join sold_pr s on o.ID_ORDERS=s.ID_ORDERS where year(o.TIME_PICKUP)='"+year+"' and  month(o.TIME_PICKUP)= '"+month+"'").mapToBean(Turnover.class).collect(Collectors.toList());
+        });
+        return l.get(0).getTurnover();
+    }
+public int getNowMonth(){
+       return  LocalDateTime.now().getMonthValue();
+}
+public int getNowYer(){
+    return  LocalDateTime.now().getYear();
+
 
 }
+    public  int getSalerPR() {
+        List<Turnover> l= JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select sum(s.AMOUNT) as turnover   from orders o join sold_pr s on o.ID_ORDERS=s.ID_ORDERS where year(o.TIME_PICKUP)='"+LocalDateTime.now().getYear()+"' and  month(o.TIME_PICKUP)= '"+LocalDateTime.now().getMonthValue()+"'").mapToBean(Turnover.class).collect(Collectors.toList());
+        });
+        return l.get(0).getTurnover();
+    }
+    public  int getStopPr() {
+        List<Turnover> l= JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select sum(c.CONDITION_PR) as turnover   from ct_pr c where c.CONDITION_PR=1 ").mapToBean(Turnover.class).collect(Collectors.toList());
+        });
+        return l.get(0).getTurnover();
+    }
+
+    public int sumAmount(List<Cart> l) {
+        int result = 0;
+        for (Cart c : l) {
+            result += c.getAmount();
+        }
+        return result;
+
+    }
+    public static List<SingleProduct> getListPrNameSearchADmin(String search) {
+        List<SingleProduct> list = new ArrayList<>();
+        List<SingleProduct> pr = getListSingleProductByKind(0);
+        for (SingleProduct p : pr) {
+            if (p.getNamePr().toUpperCase().contains(search.toUpperCase())) {
+                list.add(p);
+            }
+        }
+        return list;
+    }
+
+//    public static void main(String[] args) {
+//        System.out.println(ProductService.getInstance().getTurnover(5,2022));
+//    }
+}
+
 
 
