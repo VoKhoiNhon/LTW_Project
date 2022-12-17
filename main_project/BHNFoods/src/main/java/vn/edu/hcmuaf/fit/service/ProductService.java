@@ -101,6 +101,16 @@ public class ProductService {
         return listResult;
     }
 
+    public List<Product> getListProdInPage(List<Product> list, int page) {
+        List<Product> listResult = new ArrayList<Product>();
+        int start = (page - 1) * 15 < 0 ? 0 : (page - 1) * 15;
+        int end = page <= list.size() / 15 ? page * 15 : list.size() - ((page - 1) * 15) + start;
+        for (int i = start; i < end; i++) {
+            listResult.add(list.get(i));
+        }
+        return listResult;
+    }
+
     // lấy ra các sản phẩm liên quan cho 1 product
     public List<Product> getRelatedProducts(String idMenu) {
         return JDBIConnector.get().withHandle(handle -> {
@@ -391,6 +401,21 @@ public int getNowYer(){
         });
         return l.get(0).getTurnover();
     }
+
+    public int sumAmount(List<Cart> l) {
+        int result = 0;
+        for (Cart c : l) {
+            result +=c.getAmount();
+        }
+        return result;
+    }
+
+    public List<BrandOfProd> getListBrand() {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT DISTINCT BRAND FROM ct_pr").mapToBean(BrandOfProd.class).collect(Collectors.toList());
+        });
+    }
+
 //    public static void main(String[] args) {
 //        System.out.println(ProductService.getInstance().getTurnover(5,2022));
 //    }

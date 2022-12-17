@@ -11,7 +11,6 @@
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
 
@@ -36,7 +35,7 @@
     <link rel="stylesheet" href="cssHeaderFooter/styleHAndF.css">
 </head>
 <%User user= (User) session.getAttribute("auth");
-    int sumCart = (int) session.getAttribute("sumCart");
+    int sumCart = user == null ? 0 : (int) session.getAttribute("sumCart");
     request.setAttribute("user", user);
     String idU = user != null? user.getIdUser() : "null";
 %>
@@ -88,7 +87,6 @@
                 <%
                     if(user == null){
                 %>
-
                 <li class="nav-item cta cta-colored">
                     <a href="login.jsp" class="nav-link"><span
                         style="line-height: 1.8" class="fa-solid fa-user"></span>
@@ -104,7 +102,7 @@
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/loveProduct?idUser=<%=user.getIdUser()%>">Sản phẩm yêu thích</a></div>
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/manageOrder?idUser=<%=user.getIdUser()%>">Quản lý đơn hàng</a> </div>
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/history?idUser=<%=user.getIdUser()%>">Lịch sử đơn hàng</a></div>
-                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/index?idUser=null">Đăng xuất</a></div>
+                        <div class="dr"> <a onclick="logOut()" href="http://localhost:8080/BHNFoods/history?idUser=null">Đăng xuất</a></div>
                     </div>
                 </li>
                 <%}%>
@@ -113,6 +111,21 @@
         </div>
     </div>
 </nav>
+<script>
+    function logOut() {
+        $.ajax({
+            url: "/BHNFoods/logOut",
+            type: 'post',
+
+            success: function (data) {
+                const content = document.getElementById('totalCart');
+                content.innerHTML = data;
+            },
+            error: function () {
+            }
+        });
+    }
+</script>
 <!-- END nav -->
 
 

@@ -26,7 +26,7 @@ public class Login extends HttpServlet {
         if (user != null && user.getDecentralization() == 1) {
             HttpSession session = request.getSession(true);
             session.setAttribute("auth", user);
-            response.sendRedirect("adminMain.jsp");
+            response.sendRedirect("/AdminMain");
 
         } else if (user != null && user.getDecentralization() != 1) {
             HttpSession session = request.getSession(true);
