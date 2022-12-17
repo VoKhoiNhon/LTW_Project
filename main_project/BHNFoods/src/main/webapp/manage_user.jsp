@@ -157,9 +157,9 @@
                 </div>
             </li>
             <li class="nav-item">
-                <form class="search-form" action="#">
+                <form class="search-form"  action="/BHNFoods/SearchUser" method="post">
                     <i class="icon-search"></i>
-                    <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+                    <input type="search" class="form-control" name="searchUser" placeholder="Search Here" title="Search here">
                 </form>
             </li>
             <%--        <li class="nav-item dropdown">--%>

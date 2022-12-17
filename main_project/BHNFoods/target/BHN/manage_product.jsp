@@ -333,14 +333,15 @@
                                                                     </td>
                                                                     <td>
                                                                         <div class="d-flex ">
-                                                                            <img src="<%=p.getUrl()%>" alt="">
-                                                                            <div>
+                                                                            <img src="<%=p.getUrl()%>" alt="" >
                                                                                 <h6><%=p.getNamePr()%>
                                                                                 </h6>
                                                                                 <p><%=p.getIdPr()%>
                                                                                 </p>
                                                                             </div>
+
                                                                         </div>
+
                                                                     </td>
                                                                     <td>
                                                                         <h6><%=p.getHsd()%></h6>
@@ -505,7 +506,7 @@
                             <div class="form-group">
                                 <label for="">Ngày sản xuất</label>
                                 <div class="select-wrap">
-                                    <input type="date" name="" id="" class="form-control input_addpr"
+                                    <input type="date" name=""  class="form-control input_addpr"
                                            placeholder="Ngày/Tháng/Năm">
                                 </div>
                             </div>
@@ -514,7 +515,7 @@
                             <div class="form-group">
                                 <label for="">Ngày hết hạn</label>
                                 <div class="select-wrap">
-                                    <input type="date" name="" id="" class="form-control input_addpr"
+                                    <input type="date" name=""  class="form-control input_addpr"
                                            placeholder="Ngày/Tháng/Năm">
                                 </div>
                             </div>
@@ -660,7 +661,7 @@
                             <div class="form-group">
                                 <label for="">Ngày hết hạn</label>
                                 <div class="select-wrap">
-                                    <input type="date" name="" id="" class="form-control input_addpr"
+                                    <input type="date" name=""  class="form-control input_addpr"
                                            placeholder="Ngày/Tháng/Năm">
                                 </div>
                             </div>
