@@ -402,15 +402,14 @@
                                                                     </td>
                                                                     <td>
                                                                         <div class="d-flex ">
-                                                                            <img src="<%=p.getUrl()%>" alt="" >
+                                                                            <img src="<%=p.getUrl()%>" alt="">
+                                                                            <div>
                                                                                 <h6><%=p.getNamePr()%>
                                                                                 </h6>
                                                                                 <p><%=p.getIdPr()%>
                                                                                 </p>
                                                                             </div>
-
                                                                         </div>
-
                                                                     </td>
                                                                     <td>
                                                                         <h6><%=p.getHsd()%>

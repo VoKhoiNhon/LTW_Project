@@ -402,15 +402,14 @@
                                                                     </td>
                                                                     <td>
                                                                         <div class="d-flex ">
-                                                                            <img src="<%=p.getUrl()%>" alt="" >
+                                                                            <img src="<%=p.getUrl()%>" alt="">
+                                                                            <div>
                                                                                 <h6><%=p.getNamePr()%>
                                                                                 </h6>
                                                                                 <p><%=p.getIdPr()%>
                                                                                 </p>
                                                                             </div>
-
                                                                         </div>
-
                                                                     </td>
                                                                     <td>
                                                                         <h6><%=p.getHsd()%>
@@ -641,7 +640,7 @@
     // hiện hoặc ẩn form thêm, sửa
     function clickEdit(id,  menu,  discount,  price,  name, nsx, hsd,  brand,  mota,  weight,  origin,  inventory,  condition) {
         $.ajax({
-            url: "/BHNFoods/UpdateProduct",
+            url: "/BHNFoods/appearFormEdit",
             type: 'get',
             data: {
                 id: id,

@@ -3,6 +3,8 @@
 <%@ page import="vn.edu.hcmuaf.fit.service.ProductService" %>
 <%@ page import="vn.edu.hcmuaf.fit.controller.AdminMain" %>
 <%@ page import="vn.edu.hcmuaf.fit.beans.User" %>
+<%@ page import="vn.edu.hcmuaf.fit.beans.Contact" %>
+<%@ page import="java.time.LocalDateTime" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -94,45 +96,6 @@
                     <input type="search" class="form-control" placeholder="Search Here" title="Search here">
                 </form>
             </li>
-            <%--            <li class="nav-item dropdown">--%>
-            <%--                <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">--%>
-            <%--                    <i class="icon-mail icon-lg"></i>--%>
-            <%--                </a>--%>
-            <%--                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"--%>
-            <%--                     aria-labelledby="notificationDropdown">--%>
-            <%--                    <a class="dropdown-item py-3 border-bottom">--%>
-            <%--                        <p class="mb-0 font-weight-medium float-left">Bạn có 3 thông báo mới </p>--%>
-            <%--                        <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>--%>
-            <%--                    </a>--%>
-            <%--                    <a class="dropdown-item preview-item py-3">--%>
-            <%--                        <div class="preview-thumbnail">--%>
-            <%--                            <i class="mdi mdi-alert m-auto text-primary"></i>--%>
-            <%--                        </div>--%>
-            <%--                        <div class="preview-item-content">--%>
-            <%--                            <h6 class="preview-subject fw-normal text-dark mb-1">Lỗi ứng dụng</h6>--%>
-            <%--                            <p class="fw-light small-text mb-0"> Vừa rồi </p>--%>
-            <%--                        </div>--%>
-            <%--                    </a>--%>
-            <%--                    <a class="dropdown-item preview-item py-3">--%>
-            <%--                        <div class="preview-thumbnail">--%>
-            <%--                            <i class="mdi mdi-settings m-auto text-primary"></i>--%>
-            <%--                        </div>--%>
-            <%--                        <div class="preview-item-content">--%>
-            <%--                            <h6 class="preview-subject fw-normal text-dark mb-1">Cài đặt</h6>--%>
-            <%--                            <p class="fw-light small-text mb-0"> Tin nhắn riêng </p>--%>
-            <%--                        </div>--%>
-            <%--                    </a>--%>
-            <%--                    <a class="dropdown-item preview-item py-3">--%>
-            <%--                        <div class="preview-thumbnail">--%>
-            <%--                            <i class="mdi mdi-airballoon m-auto text-primary"></i>--%>
-            <%--                        </div>--%>
-            <%--                        <div class="preview-item-content">--%>
-            <%--                            <h6 class="preview-subject fw-normal text-dark mb-1">Đăng kí người dùng mới</h6>--%>
-            <%--                            <p class="fw-light small-text mb-0">2 ngày trước </p>--%>
-            <%--                        </div>--%>
-            <%--                    </a>--%>
-            <%--                </div>--%>
-            <%--            </li>--%>
             <li class="nav-item dropdown">
                 <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"
                    aria-expanded="false">
@@ -141,45 +104,28 @@
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
                      aria-labelledby="countDropdown">
                     <a class="dropdown-item py-3">
-                        <p class="mb-0 font-weight-medium float-left">Bạn có 7 thông báo </p>
+                        <p class="mb-0 font-weight-medium float-left"> Thông báo </p>
                         <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item">
+                    <% List<Contact> listCont= (List<Contact>) request.getAttribute("listContact");
+                        for (Contact c:listCont) {
+                    %>
+                    <a class="dropdown-item preview-item" onclick="viewContent()">
                         <div class="preview-thumbnail">
                             <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"
                                  alt="image" class="img-sm profile-pic"
                                  style=" width: 70px;height: 50px;border-radius: 100%;">
                         </div>
                         <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis font-weight-medium text-dark">Võ Khôi Nhơn </p>
-                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>
+                            <p class="preview-subject ellipsis font-weight-medium text-dark"><%=c.getNameUser()%> </p>
+                            <p class="fw-light small-text mb-0"> <%=c.getDateTime()%> </p>
                         </div>
                     </a>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"
-                                 style=" width: 70px;height: 50px;border-radius: 100%;"
-                                 alt="image" class="img-sm profile-pic">
-                        </div>
-                        <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis font-weight-medium text-dark">Phạm Gia Bảo </p>
-                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"
-                                 style=" width: 70px;height: 50px;border-radius: 100%;"
-                                 alt="image" class="img-sm profile-pic">
-                        </div>
-                        <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis font-weight-medium text-dark">Nguyễn Thị Xuân Hoa </p>
-                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>
-                        </div>
-                    </a>
+                    <%}%>
                 </div>
-            </li>
+            </li>x
+
             <%
                 String data = (String) request.getAttribute("data");
                 int stopPr = (int) request.getAttribute("stopSaled");

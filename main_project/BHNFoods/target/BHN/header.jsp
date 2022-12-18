@@ -180,7 +180,7 @@
 <div class="edit_formUser">
     <div class="container" style="background:none;">
         <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
-            <form action="" class="billing-form" style="margin-top: 2%;">
+            <form action="/BHNFoods/ContactServlet" method="post" class="billing-form" style="margin-top: 2%;">
                 <h3 class="mb-4 billing-heading">LIÊN HỆ</h3>
                 <div class="row align-items-end" style="font-size: 16px;">
                     <div class="col-md-12 col_addprod">
@@ -192,6 +192,10 @@
                         </div>
                     </div>
                     <div class=" col-md-12">
+                        <div class="form-group" style="display: none">
+                            <label>ID</label>
+                            <input type="text"  value="<%=user.getIdUser()%>" name="iduser" class="form-control input_addpr" placeholder="">
+                        </div>
                         <div class="form-group">
                             <label>Liên hệ</label>
                             <textarea name="content" type="text"
