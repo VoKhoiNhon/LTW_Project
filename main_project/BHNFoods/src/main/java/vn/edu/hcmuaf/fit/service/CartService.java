@@ -39,4 +39,16 @@ public class CartService {
             return handle.createUpdate("UPDATE cart set AMOUNT = AMOUNT + "+amount+" WHERE ID_PR = '"+idProd+"' and ID_USER = '"+idUser+"'").execute();
         });
     }
+
+    public void deleteFromCart(String idProd, String idUser) {
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("DELETE FROM cart WHERE ID_PR = '"+idProd+"' and ID_USER = '"+idUser+"'").execute();
+        });
+    }
+
+    public void updateAmountToCart(String id, String idUser, int amount) {
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("UPDATE cart SET AMOUNT = "+amount+" WHERE ID_USER = '"+ idUser +"' and ID_PR = '"+id+"'").execute();
+        });
+    }
 }

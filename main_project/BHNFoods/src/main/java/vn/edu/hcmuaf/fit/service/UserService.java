@@ -10,6 +10,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -79,41 +80,55 @@ public class UserService {
 
     public void addUser(String name, String email, String phone, String pass) {
         List<User> users = getListUser();
-        String importDate=LocalDateTime.now().getYear()+"-"+LocalDateTime.now().getMonthValue()+"-"+LocalDateTime.now().getDayOfMonth();
+        String importDate = LocalDateTime.now().getYear() + "-" + LocalDateTime.now().getMonthValue() + "-" + LocalDateTime.now().getDayOfMonth();
         int count = users.size();
         JDBIConnector.get().withHandle(handle -> {
             return handle.createUpdate("INSERT INTO `user` VALUES( 'user" + (count + 1) + "',NULL,'"
-                    + pass + "','" + name + "','" + phone + "','" + email + "'," + "NULL,'"+importDate+"', NULL,0)").execute();
+                    + pass + "','" + name + "','" + phone + "','" + email + "'," + "NULL,'" + importDate + "', NULL,0)").execute();
 
         });
 
     }
-    public void changePass( String email, String phone, String pass) {
+
+    public void changePass(String email, String phone, String pass) {
         List<User> users = getListUser();
         int count = users.size();
         JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("UPDATE user SET PASSW='" + pass+ "'WHERE EMAIL='"
-                    + email+ "'or PHONE='" + phone + "'").execute();
+            return handle.createUpdate("UPDATE user SET PASSW='" + pass + "'WHERE EMAIL='"
+                    + email + "'or PHONE='" + phone + "'").execute();
 
         });
     }
-    public String codeChange()  {
+
+    public String codeChange() {
         String code = "";
         Random rd = new Random();
-        for(int i=0; i<6; i++) {
-            code+=  rd.nextInt(10);
+        for (int i = 0; i < 6; i++) {
+            code += rd.nextInt(10);
         }
         return code;
     }
-    public int getNewbie(){
-        List<User> l =JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select * from user where Month(DATE_SIGNUP)='"+LocalDateTime.now().getMonthValue()+"'")
+
+    public int getNewbie() {
+        List<User> l = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select * from user where Month(DATE_SIGNUP)='" + LocalDateTime.now().getMonthValue() + "'")
                     .mapToBean(User.class).collect(Collectors.toList());
         });
         return l.size();
     }
 
+    public List<User> searchUser(String text) {
+        List<User> list = new ArrayList<>();
+        for (User u : getListUser()) {
+            if (u.getIdUser().toUpperCase().contains(text.toUpperCase()) || u.getNameUser().toUpperCase().contains(text.toUpperCase())|| u.getPhone().toUpperCase().contains(text.toUpperCase())|| u.getEmail().toUpperCase().contains(text.toUpperCase())) {
+                list.add(u);
+            }
+        }
+        return list;
+
+    }
+
     public static void main(String[] args) {
-        UserService.getInstance().changePass("1111111111","1111111111","aaa");
+        UserService.getInstance().changePass("1111111111", "1111111111", "aaa");
     }
 }

@@ -20,11 +20,34 @@ public class LoadMoreProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int kind = Integer.parseInt(request.getParameter("kind"));
-        int page = Integer.parseInt(request.getParameter("page"));
         int step = Integer.parseInt(request.getParameter("step"));
+        int sort;
+        List<Product> listAll = ProductService.getProductByKind(kind);
+
         int tempSize = ProductService.getInstance().getSize(kind) / 15;
         int count = ProductService.getInstance().getSize(kind) % 15 > 0 ? tempSize + 1 : tempSize;
-        List<Product> list = (List<Product>) ProductService.getInstance().getListProdInPage(kind, step);
+        try {
+            sort = Integer.parseInt(request.getParameter("sort"));
+        } catch (Exception e) {
+            sort = 0;
+        }
+        switch (sort) {
+            case 1: {
+                listAll.sort((x1, x2) -> x2.getDiscount() - x1.getDiscount());
+                break;
+            }
+
+            case 2: {
+                listAll.sort((x1, x2) -> x1.getPrice() - x2.getPrice());
+                break;
+            }
+
+            case 3: {
+                listAll.sort((x1, x2) -> x2.getPrice() - x1.getPrice());
+                break;
+            }
+        }
+        List<Product> list = ProductService.getInstance().getListProdInPage(listAll, step);
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         User user;

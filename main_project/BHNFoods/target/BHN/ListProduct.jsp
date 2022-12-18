@@ -3,6 +3,8 @@
 <%@ page import="java.text.DecimalFormat" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.CartService" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.LoveProdService" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.ProductService" %>
+<%@ page import="vn.edu.hcmuaf.fit.beans.BrandOfProd" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!doctype html>
@@ -183,51 +185,24 @@
                         </div>
                     </div>
                 </div>
-                <div filterBrand>
-                    <button style="background: white;
-    border-radius: 10px;
-    min-width: 150px;
-    line-height: 2.5; margin-top: 5px">SGFoods</button>
-                    <button style="background: white;
-    border-radius: 10px;
-    min-width: 150px;
-    line-height: 2.5; margin-top: 5px">Trần Gia</button>
-                    <button style="background: white;
-    border-radius: 10px;
-    min-width: 150px;
-    line-height: 2.5; margin-top: 5px">Xuân Hồng</button>
-                    <button style="background: white;
-    border-radius: 10px;
-    min-width: 150px;
-    line-height: 2.5; margin-top: 5px">Việt San</button>
-                    <button style="background: white;
-    border-radius: 10px;
-    min-width: 150px;
-    line-height: 2.5; margin-top: 5px">Tấn Sang</button>
-                    <button style="background: white;
-    border-radius: 10px;
-    min-width: 150px;
-    line-height: 2.5; margin-top: 5px">Meizan</button>
-                </div>
                 <div class="filter__item">
                     <div class="row">
                         <div class="col-lg-4 col-md-5">
                             <div class="filter__sort">
                                 <span>Sắp xếp</span>
-                                <select>
-                                    <option value="0"><a>Giảm Giá</a></option>
-                                    <option value="1">Giá thấp đến cao</option>
-                                    <option value="2">Giá cao đến thấp</option>
+                                <select name="sort" class="sort-table" id="sort-tableID">
+                                    <option class="sort-item" value="0">Tất cả</option>
+                                    <option class="sort-item" value="1"><a>Giảm Giá</a></option>
+                                    <option class="sort-item" value="2">Giá thấp đến cao</option>
+                                    <option class="sort-item" value="3">Giá cao đến thấp</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="filter__found">
-                                <h6><span>16</span> Sản phẩm được tìm thấy</h6>
-                            </div>
-                        </div>
-
-
+<%--                        <div class="col-lg-4 col-md-4">--%>
+<%--                            <div class="filter__found">--%>
+<%--                                <h6><span>16</span> Sản phẩm được tìm thấy</h6>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
                     </div>
                 </div>
                 <div id="content" class="row">
@@ -288,21 +263,23 @@
     var current = 1;
     var maxCountPage = $('button.btn-loadMore').length;
     $("#btn" + current).addClass('background-button');
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+    var kind = urlParams.get('kind');
+    var page = urlParams.get('page');
     function loadMoreProduct(index) {
         $("#btn" + current).removeClass('background-button');
         current = index;
         $("#btn" + current).addClass('background-button');
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const kind = urlParams.get('kind');
-        const page = urlParams.get('page');
+
             $.ajax({
             url: "/BHNFoods/loadMoreProduct",
             type: 'get',
             data: {
                 kind : kind,
                 page : page,
-                step : current
+                step : current,
+                sort: $('#sort-tableID').val().trim()
             },
             success: function(data) {
                 const content = document.getElementById("content");
@@ -313,10 +290,6 @@
         });
     }
     function loadMoreProductLeft() {
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const kind = urlParams.get('kind');
-        const page = urlParams.get('page');
         $("#btn" + current).removeClass('background-button');
         if (current - 1 >= 1) {
             current -= 1;
@@ -328,7 +301,8 @@
             data: {
                 kind : kind,
                 page : page,
-                step : current
+                step : current,
+                sort: $('#sort-tableID').val().trim()
             },
             success: function(data) {
                 const content = document.getElementById("content");
@@ -339,10 +313,6 @@
         });
     }
     function loadMoreProductRight() {
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const kind = urlParams.get('kind');
-        const page = urlParams.get('page');
         $("#btn" + current).removeClass('background-button');
         if (parseInt(current) + 1 <= maxCountPage) {
             current = parseInt(current) + 1;
@@ -354,7 +324,8 @@
             data: {
                 kind : kind,
                 page : page,
-                step : current
+                step : current,
+                sort: $('#sort-tableID').val().trim()
             },
             success: function(data) {
                 const content = document.getElementById("content");
@@ -404,10 +375,28 @@
             }
         });
     }
+
+    $('#sort-tableID').change(function () {
+        $.ajax({
+            url: "/BHNFoods/loadMoreProduct",
+            type: "get",
+            data: {
+                kind: kind,
+                step : current,
+                sort: $(this).val().trim()
+            },
+            success: function (data) {
+                const content = document.getElementById("content");
+                content.innerHTML = data;
+            },
+            error: function (xhr) {
+            }
+        })
+    })
 </script>
 <!-- Js Plugins -->
 <script src="body_design/js/jquery-3.3.1.min.js"></script>
-<script src="body_design/js/jquery.nice-select.min.js"></script>
+<%--<script src="body_design/js/jquery.nice-select.min.js"></script>--%>
 <script src="body_design/js/jquery-ui.min.js"></script>
 <script src="body_design/js/jquery.slicknav.js"></script>
 <script src="body_design/js/mixitup.min.js"></script>
