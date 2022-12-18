@@ -46,10 +46,11 @@
                 <div class="col-lg-4 col-md-5">
                     <div class="filter__sort">
                         <span>Sắp xếp</span>
-                        <select>
-                            <option value="0"><a>Giảm Giá</a></option>
-                            <option value="1">Giá thấp đến cao</option>
-                            <option value="2">Giá cao đến thấp</option>
+                        <select name="sortSearch" class="sort-table" id="sort-tableID">
+                            <option class="sort-item" value="0">Tất cả</option>
+                            <option class="sort-item" value="1"><a>Giảm Giá</a></option>
+                            <option class="sort-item" value="2">Giá thấp đến cao</option>
+                            <option class="sort-item" value="3">Giá cao đến thấp</option>
                         </select>
                     </div>
                 </div>
@@ -167,11 +168,9 @@
 
     $('#sort-tableID').change(function () {
         $.ajax({
-            url: "/BHNFoods/loadMoreProduct",
+            url: "/BHNFoods/SortSearchPR",
             type: "get",
             data: {
-                kind: kind,
-                step : current,
                 sort: $(this).val().trim()
             },
             success: function (data) {
