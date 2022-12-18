@@ -102,7 +102,7 @@
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/loveProduct?idUser=<%=user.getIdUser()%>">Sản phẩm yêu thích</a></div>
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/manageOrder?idUser=<%=user.getIdUser()%>">Quản lý đơn hàng</a> </div>
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/history?idUser=<%=user.getIdUser()%>">Lịch sử đơn hàng</a></div>
-                        <div class="dr"> <a onclick="logOut()" href="http://localhost:8080/BHNFoods/history?idUser=null">Đăng xuất</a></div>
+                        <div class="dr"> <a onclick="logOut()" href="http://localhost:8080/BHNFoods/index?idUser=null">Đăng xuất</a></div>
                     </div>
                 </li>
                 <%}%>
