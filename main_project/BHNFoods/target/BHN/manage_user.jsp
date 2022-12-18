@@ -97,6 +97,11 @@
         background: none;
         border: none;
     }
+    .btn_edit button {
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
 
 </style>
 
@@ -162,87 +167,53 @@
                     <input type="search" class="form-control" placeholder="Search Here" title="Search here">
                 </form>
             </li>
-            <%--        <li class="nav-item dropdown">--%>
-            <%--          <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">--%>
-            <%--            <i class="icon-mail icon-lg"></i>--%>
-            <%--          </a>--%>
-            <%--          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"--%>
-            <%--            aria-labelledby="notificationDropdown">--%>
-            <%--            <a class="dropdown-item py-3 border-bottom">--%>
-            <%--              <p class="mb-0 font-weight-medium float-left">Bạn có 3 thông báo mới </p>--%>
-            <%--              <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>--%>
-            <%--            </a>--%>
-            <%--            <a class="dropdown-item preview-item py-3">--%>
-            <%--              <div class="preview-thumbnail">--%>
-            <%--                <i class="mdi mdi-alert m-auto text-primary"></i>--%>
-            <%--              </div>--%>
-            <%--              <div class="preview-item-content">--%>
-            <%--                <h6 class="preview-subject fw-normal text-dark mb-1">Lỗi ứng dụng</h6>--%>
-            <%--                <p class="fw-light small-text mb-0"> Vừa rồi </p>--%>
-            <%--              </div>--%>
-            <%--            </a>--%>
-            <%--            <a class="dropdown-item preview-item py-3">--%>
-            <%--              <div class="preview-thumbnail">--%>
-            <%--                <i class="mdi mdi-settings m-auto text-primary"></i>--%>
-            <%--              </div>--%>
-            <%--              <div class="preview-item-content">--%>
-            <%--                <h6 class="preview-subject fw-normal text-dark mb-1">Cài đặt</h6>--%>
-            <%--                <p class="fw-light small-text mb-0"> Tin nhắn riêng </p>--%>
-            <%--              </div>--%>
-            <%--            </a>--%>
-            <%--            <a class="dropdown-item preview-item py-3">--%>
-            <%--              <div class="preview-thumbnail">--%>
-            <%--                <i class="mdi mdi-airballoon m-auto text-primary"></i>--%>
-            <%--              </div>--%>
-            <%--              <div class="preview-item-content">--%>
-            <%--                <h6 class="preview-subject fw-normal text-dark mb-1">Đăng kí người dùng mới</h6>--%>
-            <%--                <p class="fw-light small-text mb-0">2 ngày trước </p>--%>
-            <%--              </div>--%>
-            <%--            </a>--%>
-            <%--          </div>--%>
-            <%--        </li>--%>
-            <%--        <li class="nav-item dropdown">--%>
-            <%--          <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"--%>
-            <%--            aria-expanded="false">--%>
-            <%--            <i class="icon-bell"></i>--%>
-            <%--            <span class="count"></span>--%>
-            <%--          </a>--%>
-            <%--          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"--%>
-            <%--            aria-labelledby="countDropdown">--%>
-            <%--            <a class="dropdown-item py-3">--%>
-            <%--              <p class="mb-0 font-weight-medium float-left">Bạn có 7 thông báo chưa đọc </p>--%>
-            <%--              <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>--%>
-            <%--            </a>--%>
-            <%--            <div class="dropdown-divider"></div>--%>
-            <%--            <a class="dropdown-item preview-item">--%>
-            <%--              <div class="preview-thumbnail">--%>
-            <%--                <img src="images/faces/face10.jpg" alt="image" class="img-sm profile-pic">--%>
-            <%--              </div>--%>
-            <%--              <div class="preview-item-content flex-grow py-2">--%>
-            <%--                <p class="preview-subject ellipsis font-weight-medium text-dark">Võ Khôi Nhơn </p>--%>
-            <%--                <p class="fw-light small-text mb-0"> Cuộc họp bị hủy </p>--%>
-            <%--              </div>--%>
-            <%--            </a>--%>
-            <%--            <a class="dropdown-item preview-item">--%>
-            <%--              <div class="preview-thumbnail">--%>
-            <%--                <img src="images/faces/face12.jpg" alt="image" class="img-sm profile-pic">--%>
-            <%--              </div>--%>
-            <%--              <div class="preview-item-content flex-grow py-2">--%>
-            <%--                <p class="preview-subject ellipsis font-weight-medium text-dark">Phạm Gia Bảo </p>--%>
-            <%--                <p class="fw-light small-text mb-0">  Cuộc họp bị hủy </p>--%>
-            <%--              </div>--%>
-            <%--            </a>--%>
-            <%--            <a class="dropdown-item preview-item">--%>
-            <%--              <div class="preview-thumbnail">--%>
-            <%--                <img src="images/faces/face1.jpg" alt="image" class="img-sm profile-pic">--%>
-            <%--              </div>--%>
-            <%--              <div class="preview-item-content flex-grow py-2">--%>
-            <%--                <p class="preview-subject ellipsis font-weight-medium text-dark">Nguyễn Thị Xuân Hoa </p>--%>
-            <%--                <p class="fw-light small-text mb-0">  Cuộc họp bị hủy </p>--%>
-            <%--              </div>--%>
-            <%--            </a>--%>
-            <%--          </div>--%>
-            <%--        </li>--%>
+            <li class="nav-item dropdown">
+                <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    <i class="icon-mail icon-lg"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
+                     aria-labelledby="countDropdown">
+                    <a class="dropdown-item py-3">
+                        <p class="mb-0 font-weight-medium float-left">Bạn có 7 thông báo </p>
+                        <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"
+                                 alt="image" class="img-sm profile-pic"
+                                 style=" width: 70px;height: 50px;border-radius: 100%;">
+                        </div>
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Võ Khôi Nhơn </p>
+                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>
+                        </div>
+                    </a>
+                    <a class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"
+                                 style=" width: 70px;height: 50px;border-radius: 100%;"
+                                 alt="image" class="img-sm profile-pic">
+                        </div>
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Phạm Gia Bảo </p>
+                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>
+                        </div>
+                    </a>
+                    <a class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"
+                                 style=" width: 70px;height: 50px;border-radius: 100%;"
+                                 alt="image" class="img-sm profile-pic">
+                        </div>
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Nguyễn Thị Xuân Hoa </p>
+                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>
+                        </div>
+                    </a>
+                </div>
+            </li>
             <%
                 User user = (User) session.getAttribute("auth");
                 if (user != null) {%>
@@ -258,16 +229,6 @@
                         <p class="fw-light text-muted mb-0"><%=user.getEmail()%>
                         </p>
                     </div>
-                    <a class="dropdown-item"><i
-                            class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Trang cá nhân</a>
-                    <a class="dropdown-item"><i
-                            class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>
-                        Tin nhắn</a>
-                    <%--            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i>--%>
-                    <%--              Hoạt động</a>--%>
-                    <%--            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>--%>
-                    <%--              Các câu hỏi thường gặp</a>--%>
-                    <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Đăng xuất</a>
                 </div>
             </li>
             <%}%>
@@ -297,6 +258,12 @@
             <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Quản lý sản phẩm</span>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="http://localhost:8080/BHNFoods/Login" class="nav-item-link">
+                <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Đăng xuất</span>
             </a>
         </div>
     </nav>
@@ -353,7 +320,7 @@
                                                                     <th>
                                                                         <div class="form-check form-check-flat mt-0">
                                                                             <label class="form-check-label">
-                                                                                <input type="checkbox"
+                                                                                <input type="checkbox" onclick="checkAll(this)"
                                                                                        class="form-check-input"
                                                                                        aria-checked="false"><i
                                                                                     class="input-helper"></i></label>
@@ -405,7 +372,7 @@
                                                                         </div>
                                                                     </td>
                                                                     <td>
-                                                                        <div>
+                                                                        <div class="btn_edit">
                                                                             <button onclick="mo()" href="#"
                                                                                     style="text-decoration: none">
                                                                                 <h4 class="card-title card-title-dash">
@@ -441,10 +408,8 @@
 </div>
 
 <div class="edit_formUser">
-
     <div class="container" style="background:none;">
         <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
-
             <form action="" class="billing-form" style="margin-top: 5%;">
                 <h3 class="mb-4 billing-heading">Chi tiết</h3>
                 <div class="row align-items-end" style="font-size: 16px;">
@@ -491,15 +456,15 @@
                             <label class="">Trạng thái:</label>
                         </div>
                         <div class="form-group  padd_right" style="">
-                            <input type="checkbox" class="form-" placeholder="">
+                            <input type="radio" value="0" class="form-" placeholder="">
                             <label class="">User</label>
                         </div>
                         <div class="form-group padd_right " style="">
-                            <input type="checkbox" class="form-" placeholder="">
+                            <input type="radio" class="form-" value="1" placeholder="">
                             <label class="">Admin</label>
                         </div>
                         <div class="form-group padd_right " style="">
-                            <input type="checkbox" class="form-" placeholder="">
+                            <input type="radio" class="form-" placeholder="">
                             <label class="">Ẩn</label>
                         </div>
                     </div>
@@ -513,7 +478,6 @@
                             nhật</a>
                         </button>
                     </div>
-<%--                    <%}%>--%>
                 </div>
             </form>
 
@@ -534,6 +498,18 @@
 
     function huy() {
         $(".edit_formUser").css("display", "none");
+    }
+    function checkAll(elementInput) {
+        if(elementInput.checked) { // check select status
+            $(':checkbox').each(function() { //loop through each checkbox
+                this.checked = true;  //select all checkboxes with class "checkbox1"
+            });
+
+        }else{
+            $(':checkbox').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"
+            });
+        }
     }
 </script>
 

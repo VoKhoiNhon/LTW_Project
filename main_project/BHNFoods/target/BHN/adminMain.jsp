@@ -94,95 +94,102 @@
                     <input type="search" class="form-control" placeholder="Search Here" title="Search here">
                 </form>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-                    <i class="icon-mail icon-lg"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-                     aria-labelledby="notificationDropdown">
-                    <a class="dropdown-item py-3 border-bottom">
-                        <p class="mb-0 font-weight-medium float-left">Bạn có 3 thông báo mới </p>
-                        <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>
-                    </a>
-                    <a class="dropdown-item preview-item py-3">
-                        <div class="preview-thumbnail">
-                            <i class="mdi mdi-alert m-auto text-primary"></i>
-                        </div>
-                        <div class="preview-item-content">
-                            <h6 class="preview-subject fw-normal text-dark mb-1">Lỗi ứng dụng</h6>
-                            <p class="fw-light small-text mb-0"> Vừa rồi </p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item py-3">
-                        <div class="preview-thumbnail">
-                            <i class="mdi mdi-settings m-auto text-primary"></i>
-                        </div>
-                        <div class="preview-item-content">
-                            <h6 class="preview-subject fw-normal text-dark mb-1">Cài đặt</h6>
-                            <p class="fw-light small-text mb-0"> Tin nhắn riêng </p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item py-3">
-                        <div class="preview-thumbnail">
-                            <i class="mdi mdi-airballoon m-auto text-primary"></i>
-                        </div>
-                        <div class="preview-item-content">
-                            <h6 class="preview-subject fw-normal text-dark mb-1">Đăng kí người dùng mới</h6>
-                            <p class="fw-light small-text mb-0">2 ngày trước </p>
-                        </div>
-                    </a>
-                </div>
-            </li>
+            <%--            <li class="nav-item dropdown">--%>
+            <%--                <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">--%>
+            <%--                    <i class="icon-mail icon-lg"></i>--%>
+            <%--                </a>--%>
+            <%--                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"--%>
+            <%--                     aria-labelledby="notificationDropdown">--%>
+            <%--                    <a class="dropdown-item py-3 border-bottom">--%>
+            <%--                        <p class="mb-0 font-weight-medium float-left">Bạn có 3 thông báo mới </p>--%>
+            <%--                        <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>--%>
+            <%--                    </a>--%>
+            <%--                    <a class="dropdown-item preview-item py-3">--%>
+            <%--                        <div class="preview-thumbnail">--%>
+            <%--                            <i class="mdi mdi-alert m-auto text-primary"></i>--%>
+            <%--                        </div>--%>
+            <%--                        <div class="preview-item-content">--%>
+            <%--                            <h6 class="preview-subject fw-normal text-dark mb-1">Lỗi ứng dụng</h6>--%>
+            <%--                            <p class="fw-light small-text mb-0"> Vừa rồi </p>--%>
+            <%--                        </div>--%>
+            <%--                    </a>--%>
+            <%--                    <a class="dropdown-item preview-item py-3">--%>
+            <%--                        <div class="preview-thumbnail">--%>
+            <%--                            <i class="mdi mdi-settings m-auto text-primary"></i>--%>
+            <%--                        </div>--%>
+            <%--                        <div class="preview-item-content">--%>
+            <%--                            <h6 class="preview-subject fw-normal text-dark mb-1">Cài đặt</h6>--%>
+            <%--                            <p class="fw-light small-text mb-0"> Tin nhắn riêng </p>--%>
+            <%--                        </div>--%>
+            <%--                    </a>--%>
+            <%--                    <a class="dropdown-item preview-item py-3">--%>
+            <%--                        <div class="preview-thumbnail">--%>
+            <%--                            <i class="mdi mdi-airballoon m-auto text-primary"></i>--%>
+            <%--                        </div>--%>
+            <%--                        <div class="preview-item-content">--%>
+            <%--                            <h6 class="preview-subject fw-normal text-dark mb-1">Đăng kí người dùng mới</h6>--%>
+            <%--                            <p class="fw-light small-text mb-0">2 ngày trước </p>--%>
+            <%--                        </div>--%>
+            <%--                    </a>--%>
+            <%--                </div>--%>
+            <%--            </li>--%>
             <li class="nav-item dropdown">
                 <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"
                    aria-expanded="false">
-                    <i class="icon-bell"></i>
-                    <span class="count"></span>
+                    <i class="icon-mail icon-lg"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
                      aria-labelledby="countDropdown">
                     <a class="dropdown-item py-3">
-                        <p class="mb-0 font-weight-medium float-left">Bạn có 7 thông báo chưa đọc </p>
+                        <p class="mb-0 font-weight-medium float-left">Bạn có 7 thông báo </p>
                         <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>
                     </a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
-                            <img src="images/faces/face10.jpg" alt="image" class="img-sm profile-pic">
+                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"
+                                 alt="image" class="img-sm profile-pic"
+                                 style=" width: 70px;height: 50px;border-radius: 100%;">
                         </div>
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Võ Khôi Nhơn </p>
-                            <p class="fw-light small-text mb-0"> Cuộc họp bị hủy </p>
+                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>
                         </div>
                     </a>
                     <a class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
-                            <img src="images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
+                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"
+                                 style=" width: 70px;height: 50px;border-radius: 100%;"
+                                 alt="image" class="img-sm profile-pic">
                         </div>
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Phạm Gia Bảo </p>
-                            <p class="fw-light small-text mb-0"> Cuộc họp bị hủy </p>
+                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>
                         </div>
                     </a>
                     <a class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
-                            <img src="images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
+                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"
+                                 style=" width: 70px;height: 50px;border-radius: 100%;"
+                                 alt="image" class="img-sm profile-pic">
                         </div>
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Nguyễn Thị Xuân Hoa </p>
-                            <p class="fw-light small-text mb-0"> Cuộc họp bị hủy </p>
+                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>
                         </div>
                     </a>
                 </div>
             </li>
-            <%String data =(String) request.getAttribute("data");
+            <%
+                String data = (String) request.getAttribute("data");
                 int stopPr = (int) request.getAttribute("stopSaled");
-            int newbie = (int) request.getAttribute("newbie");
+                int newbie = (int) request.getAttribute("newbie");
                 int saledPr = (int) request.getAttribute("saledPr");
-                String data1 =(String) request.getAttribute("data1");
-                int nowTur= (int) request.getAttribute("nowTur");
+                String data1 = (String) request.getAttribute("data1");
+                int nowTur = (int) request.getAttribute("nowTur");
                 User user = (User) session.getAttribute("auth");
-                if (user != null) {%>
+                if (user != null) {
+            %>
 
             <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                 <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -196,12 +203,12 @@
                         <p class="fw-light text-muted mb-0"><%=user.getEmail()%>
                         </p>
                     </div>
-                    <a class="dropdown-item"><i
-                            class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Trang cá nhân</a>
-                    <a class="dropdown-item"><i
-                            class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>
-                        Tin nhắn</a>
-                    <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Đăng xuất</a>
+                    <%--                    <a class="dropdown-item"><i--%>
+                    <%--                            class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Trang cá nhân</a>--%>
+                    <%--                    <a class="dropdown-item"><i--%>
+                    <%--                            class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>--%>
+                    <%--                        Tin nhắn</a>--%>
+                    <%--                    <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Đăng xuất</a>--%>
                 </div>
             </li>
             <%}%>
@@ -231,6 +238,12 @@
             <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Quản lý sản phẩm</span>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="http://localhost:8080/BHNFoods/Login" class="nav-item-link">
+                <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Đăng xuất</span>
             </a>
         </div>
     </nav>
@@ -270,17 +283,20 @@
                                             </div>
                                             <div>
                                                 <p class="statistics-title">Số mặt hàng đã bán</p>
-                                                <h3 class="rate-percentage"><%=saledPr%> </h3>
+                                                <h3 class="rate-percentage"><%=saledPr%>
+                                                </h3>
 
                                             </div>
                                             <div>
                                                 <p class="statistics-title">Mặt hàng ngừng kinh doanh</p>
-                                                <h3 class="rate-percentage"><%=stopPr%></h3>
+                                                <h3 class="rate-percentage"><%=stopPr%>
+                                                </h3>
 
                                             </div>
                                             <div class="d-none d-md-block">
                                                 <p class="statistics-title">Khách hàng mới</p>
-                                                <h3 class="rate-percentage"><%=newbie%></h3>
+                                                <h3 class="rate-percentage"><%=newbie%>
+                                                </h3>
                                             </div>
 
                                         </div>
@@ -294,18 +310,22 @@
                                                     <div class="card-body">
                                                         <div class="d-sm-flex justify-content-between align-items-start">
                                                             <div>
-                                                                <h4 class="card-title card-title-dash">Biểu đồ doanh thu theo năm</h4>
+                                                                <h4 class="card-title card-title-dash">Biểu đồ doanh thu
+                                                                    theo năm</h4>
 
                                                             </div>
 
-                                                        </div><%int tur = (int) request.getAttribute("tur");
+                                                        </div>
+                                                        <%
+                                                            int tur = (int) request.getAttribute("tur");
 //                                                    double pec = (double) request.getAttribute("pec");
-                                                    %>
+                                                        %>
                                                         <div class="d-sm-flex align-items-center mt-1 justify-content-between">
                                                             <div class="d-sm-flex align-items-center mt-4 justify-content-between">
-                                                                <h2 class="me-2 fw-bold"><%=tur%></h2>
+                                                                <h2 class="me-2 fw-bold"><%=tur%>
+                                                                </h2>
                                                                 <h4 class="me-2">VNĐ</h4>
-<%--                                                                <h4 class="text-success">(+<%=pec%>%)</h4>--%>
+                                                                <%--                                                                <h4 class="text-success">(+<%=pec%>%)</h4>--%>
                                                             </div>
                                                             <div class="me-3">
                                                                 <div id="marketing-overview-legend"></div>
@@ -466,7 +486,7 @@
 <script> if ($("#marketingOverview").length) {
     var marketingOverviewChart = document.getElementById("marketingOverview").getContext('2d');
     var marketingOverviewData = {
-        labels: ["JAN","FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
+        labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
         datasets: [{
             label: 'năm 2022',
             data: [<%=data%>],
@@ -477,7 +497,7 @@
             borderWidth: 0,
             fill: true, // 3: no fill
 
-        },{
+        }, {
             label: 'năm 2021',
             data: [<%=data1%>],
             backgroundColor: "#1F3BB3",
@@ -497,7 +517,7 @@
                 gridLines: {
                     display: true,
                     drawBorder: false,
-                    color:"#F0F0F0",
+                    color: "#F0F0F0",
                     zeroLineColor: '#F0F0F0',
                 },
                 ticks: {
@@ -505,7 +525,7 @@
                     autoSkip: true,
                     maxTicksLimit: 5,
                     fontSize: 10,
-                    color:"#6B778C"
+                    color: "#6B778C"
                 }
             }],
             xAxes: [{
@@ -520,11 +540,11 @@
                     autoSkip: true,
                     maxTicksLimit: 12,
                     fontSize: 10,
-                    color:"#6B778C"
+                    color: "#6B778C"
                 }
             }],
         },
-        legend:false,
+        legend: false,
         legendCallback: function (chart) {
             var text = [];
             text.push('<div class="chartjs-legend"><ul>');

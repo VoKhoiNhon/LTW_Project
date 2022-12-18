@@ -90,6 +90,10 @@
                                 <label for="">Sửa sản phẩm</label>
                                 <input type="text" class="form-control input_addpr" placeholder="">
                             </div>
+                            <div class="form-group">
+                                <label for="">ID</label>
+                                <input type="text" disabled value="" class="form-control input_addpr" placeholder="">
+                            </div>
                         </div>
                         <div class="d-flex flex-grow-1  row_input  ">
                             <div class="col-md-6 col_addprod">

@@ -2,6 +2,54 @@
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.fit.beans.User" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<style>
+    .row .form-group .form-control {
+        font-size: 16px;
+    }
+    .align-items-end .row_input .col_addprod {
+        flex: auto;
+        margin-top: 8px;
+        position: relative;
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .edit_formUser {
+        height: 500%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.73);
+        position: absolute;
+        z-index: 1500;
+        top: 0;
+        display: none;
+    }
+    .edit_formUser .ftco-section {
+        padding: 3rem;
+    }
+
+    .edit_formUser .cen-div {
+        margin: auto;
+        background: #f1f1f1;
+        width: 50%;
+        margin-top:5%;
+        border-radius: 5px;
+    }
+
+    .btn_huy_update input {
+        border-radius: 5px;
+        background: #7fad39;
+        border: none;
+        padding: 4px 20px;
+        color: white;
+    }
+
+    .btn_huy_update input:last-child {
+        margin-left: 20px;
+    }
+    .edit_formUser textarea {
+        min-height: 8rem;
+    }
+</style>
 <head>
     <title>BHNFoods</title>
     <meta charset="utf-8">
@@ -104,6 +152,7 @@
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/loveProduct?idUser=<%=user.getIdUser()%>">Sản phẩm yêu thích</a></div>
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/manageOrder?idUser=<%=user.getIdUser()%>">Quản lý đơn hàng</a> </div>
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/history?idUser=<%=user.getIdUser()%>">Lịch sử đơn hàng</a></div>
+                        <div class="dr"> <a onclick="contact()" href="#">Liên hệ</a></div>
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/index?idUser=null">Đăng xuất</a></div>
                     </div>
                 </li>
@@ -115,4 +164,49 @@
 </nav>
 <!-- END nav -->
 
+<div class="edit_formUser">
+    <div class="container" style="background:none;">
+        <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
+            <form action="" class="billing-form" style="margin-top: 2%;">
+                <h3 class="mb-4 billing-heading">LIÊN HỆ</h3>
+                <div class="row align-items-end" style="font-size: 16px;">
+                    <div class="col-md-12 col_addprod">
+                        <div class="form-group">
+                            <h5>Thông tin cửa hàng</h5>
+                            <p>Địa chỉ: 203 Hòa Bình, Quận Bình Thạnh, thành phố Hồ Chí Minh.</p>
+                            <p>Số điện thoại: 0779807028</p>
+                            <p>Email: BHNFoods@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class=" col-md-12">
+                        <div class="form-group">
+                            <label>Liên hệ</label>
+                            <textarea name="content" type="text"
+                                      class="form-control"
+                                      placeholder="Nội dung (xin quý khách mô tả chi tiết)"
+                                      value=""> </textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12 d-flex  btn_huy_update" style="justify-content: end;">
+                        <input onclick="huy()" type="button" value="Hủy">
+                        <input type="submit" value="Gửi">
+                    </div>
+                </div>
+            </form>
 
+        </div>
+    </div>
+
+</div>
+<script>
+    function contact() {
+        $(".edit_formUser").css("display", "block");
+    }
+
+    function huy() {
+        $(".edit_formUser").css("display", "none");
+    }
+
+</script>
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+        crossorigin="anonymous"></script>
