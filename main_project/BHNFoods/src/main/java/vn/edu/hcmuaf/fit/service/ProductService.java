@@ -258,7 +258,7 @@ public class ProductService {
             return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from product p join image i on p.ID_PR = i.ID_PR").mapToBean(Product.class).collect(Collectors.toList());
         });
         for (Product p : pr) {
-            if (p.getNamePr().toUpperCase().contains(search.toUpperCase())) {
+            if (p.getNamePr().toUpperCase().contains(search.toUpperCase())||p.getIdPr().toUpperCase().contains(search.toUpperCase())||p.getIdMenu().toUpperCase().contains(search.toUpperCase())) {
                 list.add(p);
             }
         }
@@ -434,7 +434,7 @@ public int getNowYer(){
         List<SingleProduct> list = new ArrayList<>();
         List<SingleProduct> pr = getListSingleProductByKind(0);
         for (SingleProduct p : pr) {
-            if (p.getNamePr().toUpperCase().contains(search.toUpperCase())) {
+            if (p.getNamePr().toUpperCase().contains(search.toUpperCase())||p.getIdPr().toUpperCase().contains(search.toUpperCase())||p.getBrand().toUpperCase().contains(search.toUpperCase())||p.getIdMenu().toUpperCase().contains(search.toUpperCase())||p.getOrigin().toUpperCase().contains(search.toUpperCase())) {
                 list.add(p);
             }
         }

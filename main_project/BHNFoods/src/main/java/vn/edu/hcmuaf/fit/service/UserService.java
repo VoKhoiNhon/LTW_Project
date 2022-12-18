@@ -120,7 +120,7 @@ public class UserService {
     public List<User> searchUser(String text) {
         List<User> list = new ArrayList<>();
         for (User u : getListUser()) {
-            if (u.getIdUser().toUpperCase().contains(text.toUpperCase()) || u.getNameUser().toUpperCase().contains(text.toUpperCase())|| u.getPhone().toUpperCase().contains(text.toUpperCase())) {
+            if (u.getIdUser().toUpperCase().contains(text.toUpperCase()) || u.getNameUser().toUpperCase().contains(text.toUpperCase())|| u.getPhone().toUpperCase().contains(text.toUpperCase())|| u.getEmail().toUpperCase().contains(text.toUpperCase())) {
                 list.add(u);
             }
         }

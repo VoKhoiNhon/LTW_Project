@@ -767,7 +767,7 @@
 
 
     $('#selectAll').click(function (event) {  //on click\
-        alert("gsajdgsahdgs")
+      
         if (this.checked) { // check select status
             $(':checkbox').each(function () { //loop through each checkbox
                 this.checked = true;  //select all checkboxes with class "checkbox1"
