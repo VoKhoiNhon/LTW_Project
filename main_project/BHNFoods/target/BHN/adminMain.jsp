@@ -108,24 +108,25 @@
                         <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <% List<Contact> listCont= (List<Contact>) request.getAttribute("listContact");
-                        for (Contact c:listCont) {
+                    <% List<Contact> listCont = (List<Contact>) request.getAttribute("listContact");
+                        for (Contact c : listCont) {
                     %>
-                    <a class="dropdown-item preview-item" onclick="viewContent()">
+                    <a class="dropdown-item preview-item" onclick="viewContent('<%=c.getIduser()%>','<%=c.getNameUser()%>','<%=c.getPhone()%>','<%=c.getEmail()%>','<%=c.getContent()%>')">
                         <div class="preview-thumbnail">
                             <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"
                                  alt="image" class="img-sm profile-pic"
                                  style=" width: 70px;height: 50px;border-radius: 100%;">
                         </div>
                         <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis font-weight-medium text-dark"><%=c.getNameUser()%> </p>
-                            <p class="fw-light small-text mb-0"> <%=c.getDateTime()%> </p>
+                            <p class="preview-subject ellipsis font-weight-medium text-dark"><%=c.getNameUser()%>
+                            </p>
+                            <p class="fw-light small-text mb-0"><%=c.getDateTime()%>
+                            </p>
                         </div>
                     </a>
                     <%}%>
                 </div>
-            </li>x
-
+            </li>
             <%
                 String data = (String) request.getAttribute("data");
                 int stopPr = (int) request.getAttribute("stopSaled");
@@ -520,6 +521,27 @@
         options: marketingOverviewOptions
     });
     document.getElementById('marketing-overview-legend').innerHTML = marketingOverview.generateLegend();
+
+    function clickEdit(iduser, nameUser, email, phone, content) {
+        $.ajax({
+            url: "/BHNFoods/ViewContact",
+            type: 'get',
+            data: {
+                iduser: iduser,
+                nameUser: nameUser,
+                email: email,
+                phone: phone,
+                content: content,
+            },
+            success: function (data) {
+                const content = document.getElementById('formEdit');
+                content.innerHTML = data;
+            },
+            error: function () {
+            }
+        });
+        $(".edit_formEdit").css("display", "block");
+    }
 }</script>
 <script src="admin_template/js/Chart.roundedBarCharts.js"></script>
 <!-- End custom js for this page-->

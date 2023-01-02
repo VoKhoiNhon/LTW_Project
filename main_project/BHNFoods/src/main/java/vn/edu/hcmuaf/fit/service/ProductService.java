@@ -473,6 +473,19 @@ public int getNowYer(){
         });
     }
 
+    public void addImg( int idPr,String idImg,String url, int condition ){
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("INSERT INTO image VALUES ('prod"+idPr+"','"+idImg+"','"+url+"',b'"+condition+"')").execute();
+        });
+    }
+
+
+
+    public static void main(String[] args) {
+
+        ProductService.getInstance().addImg(105,"eee","aaaaaaaafffffff",0);
+    }
+
 }
 
 
