@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="BHN:war">
+    <output-path>$PROJECT_DIR$/BHNFoods/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>BHN</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="BHN.war">
+      <element id="artifact" artifact-name="BHN:war exploded" />
+    </root>
+  </artifact>
+</component>

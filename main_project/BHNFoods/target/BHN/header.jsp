@@ -1,6 +1,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.beans.Cart" %>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.fit.beans.User" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.ProductService" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <style>
     .row .form-group .form-control {
@@ -83,9 +84,9 @@
     <link rel="stylesheet" href="cssHeaderFooter/styleHAndF.css">
 </head>
 <%User user= (User) session.getAttribute("auth");
-    int sumCart = user == null ? 0 : (int) session.getAttribute("sumCart");
     request.setAttribute("user", user);
     String idU = user != null? user.getIdUser() : "null";
+    int sumCart = user == null ? 0 : (int) ProductService.getInstance().sumAmount(ProductService.getInstance().getListCart(idU));
 %>
 
 <div class="py-1 bg-primary">
@@ -122,8 +123,9 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="http://localhost:8080/BHNFoods/index?idUser=<%=idU%>" class="nav-link">Trang chủ</a></li>
-                <li class="nav-item active "><a href="http://localhost:8080/BHNFoods/ListProduct?kind=0&page=1&idUser=<%=idU%>" class="nav-link">Sản
+                <li class="nav-item active"><a href="http://localhost:8080/BHNFoods/ListProduct?kind=0&page=1&idUser=<%=idU%>" class="nav-link">Sản
                     phẩm</a></li>
+                <li class="nav-item active"><a href="http://localhost:8080/BHNFoods/discount.jsp" class="nav-link">Mã giảm giá</a></li>
                 <li class="nav-item cta cta-colored find">
                     <form action="/BHNFoods/Search"method="post" style="display: flex"><input value="<%=request.getParameter("searchPR")!=null?request.getParameter("searchPR"):""%>" type="text" class="search-input" name="searchPR" id="findicon"
                                            placeholder="Tìm kiếm"> <button type="submit" class="fa-solid fa-magnifying-glass" style="background: none;border: none;"></button></form></li>
@@ -151,7 +153,7 @@
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/manageOrder?idUser=<%=user.getIdUser()%>">Quản lý đơn hàng</a> </div>
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/history?idUser=<%=user.getIdUser()%>">Lịch sử đơn hàng</a></div>
                         <div class="dr"> <a onclick="contact()" href="#">Liên hệ</a></div>
-                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/index?idUser=null">Đăng xuất</a></div>
+                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/logOut">Đăng xuất</a></div>
                     </div>
                 </li>
                 <%}%>

@@ -35,7 +35,7 @@ public class ProductService {
     // Lấy ra sản phẩm theo id
     public List<SingleProduct> getSingleProduct(String idPro) {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT p.NAME_PR,p.PRICE, c.ID_PR, c.NSX, c.HSD, c.BRAND, c.`DESCRIBE`, c.WEIGHT, c.ORIGIN, c.DATE_IMPORT_PR, c.INVENTORY, c.CONDITION_PR, i.URL, p.ID_MENU  from ct_pr c join image i on i.ID_PR = c.ID_PR JOIN product p on p.ID_PR = c.ID_PR where i.`CONDITION` = 0 and c.ID_PR = '" + idPro + "'").mapToBean(SingleProduct.class).collect(Collectors.toList());
+            return handle.createQuery("SELECT p.NAME_PR,p.PRICE, c.ID_PR, c.NSX, c.HSD, c.BRAND, c.`DESCRIBE`, c.WEIGHT, c.ORIGIN, c.DATE_IMPORT_PR, c.INVENTORY, c.CONDITION_PR, i.URL, p.ID_MENU,p.DISCOUNT  from ct_pr c join image i on i.ID_PR = c.ID_PR JOIN product p on p.ID_PR = c.ID_PR where i.`CONDITION` = 0 and c.ID_PR = '" + idPro + "'").mapToBean(SingleProduct.class).collect(Collectors.toList());
         });
 
     }
@@ -463,6 +463,19 @@ public int getNowYer(){
     public  void  contact(String iduser, String content, String date){
         JDBIConnector.get().withHandle(handle -> {
             return handle.createUpdate("INSERT INTO contact VALUES('"+iduser+"','"+content+"','"+LocalDateTime.now()+"') ").execute();
+        });
+    }
+
+
+    public void updateInventoryCT_PR(String idProd, int sl) {
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("UPDATE ct_pr set INVENTORY = (INVENTORY + "+sl+") where ID_PR = '"+idProd+"'").execute();
+        });
+    }
+
+    public List<Integer> getInventoryCT_PR(String idProd) {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select inventory from ct_pr c where c.ID_PR = '"+idProd+"'").mapToBean(Integer.class).collect(Collectors.toList());
         });
     }
 

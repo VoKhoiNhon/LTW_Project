@@ -641,7 +641,7 @@
     // hiện hoặc ẩn form thêm, sửa
     function clickEdit(id,  menu,  discount,  price,  name, nsx, hsd,  brand,  mota,  weight,  origin,  inventory,  condition) {
         $.ajax({
-            url: "/BHNFoods/UpdateProduct",
+            url: "/BHNFoods/appearFormEdit",
             type: 'get',
             data: {
                 id: id,

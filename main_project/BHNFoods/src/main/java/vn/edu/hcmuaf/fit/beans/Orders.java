@@ -9,7 +9,6 @@ public class Orders {
     private int amount;
     private LocalDateTime timeOrders;
     private byte condition;
-
     private String idOrders;
 
     public Orders() {

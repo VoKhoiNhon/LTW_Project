@@ -48,6 +48,7 @@
                         <img style="width: 504px; height: 405px" class="product__details__pic__item--large"
                             <%List<SingleProduct> single = (List<SingleProduct>) request.getAttribute("singleProduct");
                              DecimalFormat dec = new DecimalFormat("#,###");
+                             int price= single.get(0).getPrice() - single.get(0).getPrice()*single.get(0).getDiscount()/100;
                              %>
                              src="<%=single.get(0).getUrl()%>" alt="">
                     </div>
@@ -87,7 +88,7 @@
                         <%}%>
                         <span>(<%=listFeedback.size()%> đánh giá)</span>
                     </div>
-                    <div class="product__details__price"><%=dec.format(single.get(0).getPrice()).replace(',', '.')%>đ
+                    <div class="product__details__price"><%=dec.format(price).replace(',', '.')%>đ
                     </div>
                     <p><%=single.get(0).getDescribe()%>
                     </p>
@@ -109,7 +110,7 @@
                         <li><b>Xuất xứ</b> <span><%=single.get(0).getOrigin()%></span></li>
                         <li><b>Hạn sử dụng</b> <span><%=single.get(0).getHsd()%></span></li>
                         <li><b>Trọng lượng</b> <span><%=single.get(0).getWeight()%>kg</span></li>
-                        <li><b>Giao hàng</b> <span>Trong 2 giờ <span>Miễn phí trong 1.5km</span></span></li>
+                        <li><b>Giao hàng</b> <span>Trong 2 giờ <span>Miễn phí trong thành phố Thủ Đức</span></span></li>
                     </ul>
                 </div>
             </div>
