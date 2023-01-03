@@ -45,7 +45,7 @@
           <div class="card" style=" margin:auto;">
             <div class="card-body">
                 <p class="card-description">
-                    <a href="forgotpass.jsp" style="text-decoration: none ; color: rgb(123, 123, 123);"> <i class="fa-solid fa-chevron-left"></i>Quay lại</a>
+                    <a href="login.jsp" style="text-decoration: none ; color: rgb(123, 123, 123);"> <i class="fa-solid fa-chevron-left"></i>Quay lại</a>
                    </p>
               <h4 class="card-title logoBHN">BHNFoods</h4>
               <p class="card-description login">

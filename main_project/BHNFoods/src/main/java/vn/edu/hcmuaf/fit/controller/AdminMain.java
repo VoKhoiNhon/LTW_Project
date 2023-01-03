@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.controller;
 
+import vn.edu.hcmuaf.fit.beans.Contact;
 import vn.edu.hcmuaf.fit.beans.SingleProduct;
 import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.ProductService;
@@ -27,6 +28,9 @@ public class AdminMain extends HttpServlet {
         int tur1 = ProductService.getInstance().getTurnover(1, 2021);
         int saledPR = ProductService.getInstance().getSalerPR();
         int stopSaledPR = ProductService.getInstance().getStopPr();
+        List<Contact> listContact = ProductService.getInstance().viewNameContact();
+        request.setAttribute("listContact", listContact);
+
         for (int i = 2; i <= 12; i++) {
             tur += ProductService.getInstance().getTurnover(i, 2022);
             tur1 += ProductService.getInstance().getTurnover(i, 2021);

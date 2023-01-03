@@ -48,8 +48,6 @@
 
 <section class="shoping-cart spad">
     <div class="container">
-
-
         <%
                 Map<String,List<SoldProduct>> map = (Map<String, List<SoldProduct>>) request.getAttribute("mapOrders");
                 Map<String, Integer> mapSum = (Map<String, Integer>) request.getAttribute("sumOrders");

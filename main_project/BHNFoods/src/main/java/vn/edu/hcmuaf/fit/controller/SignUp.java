@@ -14,6 +14,7 @@ public class SignUp extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.getRequestDispatcher("signup.jsp").forward(request, response);
+
     }
 
     @Override

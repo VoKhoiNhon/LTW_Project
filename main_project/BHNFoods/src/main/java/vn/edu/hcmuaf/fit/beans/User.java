@@ -93,7 +93,7 @@ public class User implements Serializable {
         this.dateSignup = dateSignup;
     }
 
-    public boolean isSex() {
+    public boolean getSex() {
         return sex;
     }
 
@@ -109,6 +109,7 @@ public class User implements Serializable {
 
         this.decentralization = decentralization;
     }
+
     public String checkDecentralization( ){
         if(this.decentralization==0) return "User";
         return "Admin";

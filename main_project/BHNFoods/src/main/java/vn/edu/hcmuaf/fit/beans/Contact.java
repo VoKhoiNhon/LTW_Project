@@ -11,7 +11,6 @@ public class Contact {
     LocalDateTime dateTime;
 
     public Contact(){
-
     }
 
     public Contact(String iduser, String nameUser, String email, String phone, String content, LocalDateTime dateTime) {

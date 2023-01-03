@@ -33,7 +33,7 @@ public class UserService {
 
     public User checkLogin(String username, String password) {
         List<User> users = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT ID_USER,ADDRESS,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,Decentralization FROM user WHERE EMAIL = ? or PHONE=?")
+                h.createQuery("SELECT ID_USER,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,Decentralization FROM user WHERE EMAIL = ? or PHONE=?")
                         .bind(0, username).bind(1, username)
                         .mapToBean(User.class).stream()
                         .collect(Collectors.toList())
@@ -131,6 +131,18 @@ public class UserService {
     public  void  contact(String iduser, String content){
         JDBIConnector.get().withHandle(handle -> {
            return handle.createUpdate("INSERT INTO contact VALUES('"+iduser+"','"+content+"','"+LocalDateTime.now()+"');").execute();
+        });
+    }
+    public  List<User> listCTAccount(String iduser){
+        return  JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT u.ID_USER, u.NAME_USER, u.SEX,u.BIRTHDAY, u.PHONE, u.EMAIL, u.ADDRESS, u.PASSW FROM `user` u WHERE u.ID_USER='"+iduser+"'")
+                    .mapToBean(User.class).collect(Collectors.toList());
+        });
+    }
+    //update thong tin từ người dùng trang account.jsp
+    public  static  void updateCtAccount(String iduser, String name, int sex,  String birthday, String email, String phone, String passw, String address, String repassw ){
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("UPDATE `user` u set u.NAME_USER='"+name+"', u.SEX= "+sex+",u.BIRTHDAY='"+birthday+"', u.EMAIL='"+email+"', u.PHONE= '"+phone+"', u.PASSW='"+passw+"', u.ADDRESS='"+address+"' WHERE ID_USER='"+iduser+"'").execute();
         });
     }
 

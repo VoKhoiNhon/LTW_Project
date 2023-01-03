@@ -171,7 +171,6 @@
             url: "/BHNFoods/SortSearchPR",
             type: "get",
             data: {
-                key : $('#findicon').val(),
                 sort: $(this).val().trim()
             },
             success: function (data) {
@@ -185,7 +184,7 @@
 </script>
 <!-- Js Plugins -->
 <script src="body_design/js/jquery-3.3.1.min.js"></script>
-<%--<script src="body_design/js/jquery.nice-select.min.js"></script>--%>
+<script src="body_design/js/jquery.nice-select.min.js"></script>
 <script src="body_design/js/jquery-ui.min.js"></script>
 <script src="body_design/js/jquery.slicknav.js"></script>
 <script src="body_design/js/mixitup.min.js"></script>

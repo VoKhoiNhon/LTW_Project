@@ -72,10 +72,10 @@
 						</tr>
 						</thead>
 						<tbody>
-						<%List<Product> listLoveProd = (List<Product>) request.getAttribute("listLoveProd");
+						<% List<Product> listLoveProd = (List<Product>) request.getAttribute("listLoveProd");
 							DecimalFormat dec = new DecimalFormat("#,###");
 						for (Product p : listLoveProd) {%>
-						<tr id="<%=p.getIdPr()%>">
+						<tr>
 							<td class="shoping__cart__quantity">
 								<img src="<%=p.getUrl()%>" alt="">
 							</td>
@@ -85,10 +85,10 @@
 							</td>
 
 							<td class="shoping__cart__quantity">
-								<button id="addToCart" onclick="addToCart('<%=p.getIdPr()%>')" >Thêm</button>
+								<button>Thêm</button>
 							</td>
 							<td class="shoping__cart__item__close "style="">
-								<span onclick="remove('<%=p.getIdPr()%>')" class="icon_close"></span>
+								<span class="icon_close"></span>
 							</td>
 
 						</tr>
@@ -98,47 +98,43 @@
 				</div>
 			</div>
 		</div>
+		<!-- <div class="row">
+			<div class="col-lg-12">
+				<div class="shoping__cart__btns">
+					<a href="ListProduct.jsp" class="primary-btn cart-btn">Tiếp tục mua hàng</a>
+
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="shoping__continue">
+					<div class="shoping__discount">
+						<h5>Mã giảm giá</h5>
+						<form action="#">
+							<input type="text" placeholder="Nhập mã giảm giá">
+							<button style="font-family: system-ui" type="submit" class="site-btn">Áp dụng</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="shoping__checkout">
+					<h5>Tổng giỏ hàng</h5>
+					<ul>
+						<li>Tổng tiền hàng
+							<span>560.000</span>
+						</li>
+						<li>Giảm <span>50.000</span></li>
+						<li>Tổng thanh toán <span>510.000</span></li>
+					</ul>
+					<a href="#" class="primary-btn">Thanh toán</a>
+				</div>
+			</div>
+		</div> -->
 	</div>
 </section>
 
 <%@ include file="footer.jsp" %>
 <!-- Footer Section End -->
-
-<script>
-	function addToCart(idProd) {
-		$.ajax({
-			url: "/BHNFoods/addToCart",
-			type: 'get',
-			data: {
-				id: idProd,
-				amount: 1
-			},
-			success: function (data) {
-				const content = document.getElementById('totalCart');
-				content.innerHTML = data;
-			},
-			error: function () {
-			}
-		});
-		$('#'+idProd).remove()
-	}
-
-	function remove(idProd) {
-		$.ajax({
-			url: "/BHNFoods/removeFromLove",
-			type: 'get',
-			data: {
-				id: idProd,
-			},
-			success: function (data) {
-			},
-			error: function () {
-			}
-		});
-		$('#'+idProd).remove()
-	}
-</script>
-
 
 <!-- Js Plugins -->
 <script src="body_design/js/jquery-3.3.1.min.js"></script>

@@ -24,96 +24,129 @@
     <link rel="stylesheet" href="body_design/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="body_design/css/style.css" type="text/css">
 </head>
+<style>
+    .padding_account {
+        padding: 3rem 0;
+        background: #bdbdbd70;
+    }
+
+    .edit_FormAccout {
+        margin: 40px 10px;
+    }
+
+    .form-control {
+        height: 40px !important;
+    }
+</style>
 
 <body>
+<%@include file="header.jsp" %>
+<% String error = (String) request.getAttribute("error");%>
 
-        <%@ include file="header.jsp" %>
-        
-            <section class="ftco-section" style=" background: #ededed70" >
-                <div class="container">
-                    <div class="row justify-content-center" >
-                        <div class="col-xl-7 ftco-animate" style="background: white">
-                            <form action="#" class="billing-form">
-                                <h3 class="mb-4 billing-heading">Tài khoản</h3>
-                                <div class="row align-items-end" style="font-size: 20px;">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="firstname">Họ và Tên</label>
-                                            <input type="text" class="form-control" placeholder="Nhập họ tên đầy đủ">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 d-flex" >
-                                        <label for="">Giới tính</label>
-                                        <div class="form-group" style="margin-left: 40px;">
-                                            <input type="radio" class="form-" placeholder="">
-                                            <label for="">Nữ</label>
-                                        </div>
-                                        <div class="form-group"style="margin-left: 40px;">
-                                            <input type="radio" class="form-" placeholder="">
-                                            <label for="">Nam</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="country">Ngày sinh</label>
-                                            <div class="select-wrap">
+<section class="ftco-section padding_account">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 ftco-animate" style="background: white">
+                <form action="/BHNFoods/UpdateCtAccount" method="post" class="billing-form edit_FormAccout">
+                    <h3 class="mb-4 billing-heading">Tài khoản</h3>
+                    <% List<User> list = (List<User>) request.getAttribute("listCtAccount");
+                        for (User u : list) {
+                            System.out.println( list);
+                    %>
+                    <div class="row align-items-end" style="font-size: 20px;">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Họ và Tên</label>
+                                <input type="text" name="name" class="form-control" placeholder="Nhập họ tên đầy đủ"
+                                       value="<%=u.getNameUser()%>">
+                            </div>
 
-                                    <input type="date" name="" id="" class="form-control"
-                                           placeholder="Ngày/Tháng/Năm">
-
+                            <div class="form-group" style="display: none">
+                                <label>iduser</label>
+                                <input type="text" name="iduser" class="form-control" placeholder="Nhập họ tên đầy đủ"
+                                       value="<%=u.getIdUser()%>">
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-flex">
+                            <label for="">Giới tính</label>
+                            <%if(!user.getSex()) {%>
+                            <div class="form-group" style="margin-left: 40px;">
+                                <input type="radio" name="sex" checked value="1">
+                                <label for="">Nữ</label>
+                            </div>
+                            <div class="form-group" style="margin-left: 40px;">
+                                <input type="radio" name="sex" value="0">
+                                <label for="">Nam</label>
+                            </div>
+                            <%} else {%>
+                            <div class="form-group" style="margin-left: 40px;">
+                                <input type="radio" name="sex" value="1" >
+                                <label for="">Nữ</label>
+                            </div>
+                            <div class="form-group" style="margin-left: 40px;">
+                                <input type="radio" name="sex" checked value="0" >
+                                <label for="">Nam</label>
+                            </div>
+                            <%}%>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Ngày sinh</label>
+                                <div class="select-wrap">
+                                    <input type="date" name="birthday" id="" class="form-control" value="<%=u.getBirthday()%>" placeholder="">
                                 </div>
                             </div>
                         </div>
                         <div class="d-flex flex-grow-1">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="phone">Số điện thoại</label>
-                                    <input type="text" class="form-control"
-                                           placeholder="Nhập số điện thoại">
+                                    <label>Số điện thoại</label>
+                                    <input type="text" name="phone" class="form-control"  value="<%=u.getPhone()%>" placeholder="">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="emailaddress">Email</label>
-                                    <input type="text" class="form-control"
-                                           placeholder="Nhập địa chỉ Email">
+                                    <label>Email</label>
+                                    <input type="text" class="form-control" name="email"  value="<%=u.getEmail()%>" placeholder="">
                                 </div>
                             </div>
                         </div>
                         <div class="d-flex flex-grow-1">
+
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="phone">Tạo mật khẩu mới</label>
-                                    <input type="password" class="form-control"
-                                           placeholder="Nhập mật khẩu mới">
+                                    <label>Tạo mật khẩu mới</label>
+                                    <input type="password" class="form-control" name="passw"
+                                           placeholder="Nhập mật khẩu mới" value="<%=u.getPassw()%>">
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="emailaddress">Nhập lại mật khẩu</label>
-                                    <input type="password" class="form-control"
-                                           placeholder="Nhập lại mật khẩu">
+                                   <%if(error !=null){%>
+                                    <label style="color:#e03e2d;"><%=error%></label>
+                                    <%}%>
+                                    <label>Nhập lại mật khẩu</label>
+                                    <input type="password" name="repassw" class="form-control" placeholder="Nhập lại mật khẩu">
+                                    
                                 </div>
                             </div>
                         </div>
                         <div class="w-100"></div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="country">Địa chỉ</label>
+                                <label>Địa chỉ</label>
                                 <div class="select-wrap">
-
-                                    <input name="" id="" class="form-control"
-                                           placeholder="">
-
+                                    <input name="address" class="form-control" placeholder="" value="<%=u.getAddress()%>">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-12 d-flex" style="justify-content: end;">
-                            <p><a href="#" class="btn btn-primary py-3 px-4"
-                                  style="border-radius:5px; background: #7fad39; border: none; font-size: 18px;">Cập
-                                nhật</a></p>
+                            <input type="submit" class="btn btn-primary" value="Cập nhật"
+                                   style="border-radius:5px; background: #7fad39; border: none;">
                         </div>
                     </div>
+                    <%}%>
                 </form><!-- END -->
             </div>
         </div>

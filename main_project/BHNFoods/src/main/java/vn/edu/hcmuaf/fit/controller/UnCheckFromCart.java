@@ -18,13 +18,13 @@ public class UnCheckFromCart extends HttpServlet {
         int sum = Integer.parseInt(request.getParameter("sum"));
         int discount = Integer.parseInt(request.getParameter("discount"));
         int total = Integer.parseInt(request.getParameter("total"));
-        String listId  = request.getParameter("listId");
         String sumF = dec.format(sum).replace(',','.');
         String discountF  = dec.format(discount).replace(',','.');
         String totalF = dec.format(total).replace(',','.');
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
         String idUser = "";
+
         if(user != null) {
             idUser = user.getIdUser();
         }
@@ -33,18 +33,12 @@ public class UnCheckFromCart extends HttpServlet {
         out.println("<h5>Tổng giỏ hàng</h5>\n" +
                 "\t\t\t\t\t<ul>\n" +
                 "\t\t\t\t\t\t<li id=\"sum\" value=\""+sum+"\">Tổng tiền hàng\n" +
-                "<input name=\"sumCheckout\" value=\""+sum+"\" style=\"display: none\">" +
                 "\t\t\t\t\t\t\t<span>"+sumF+"đ</span>\n" +
                 "\t\t\t\t\t\t</li>\n" +
-                "\t\t\t\t\t\t<li id=\"discount\" value=\""+discount+"\">Giảm" +
-                "<input name=\"discountCheckout\" value=\""+discount+"\" style=\"display: none\" >"+
-                " <span >"+discountF+"đ</span></li>\n" +
-                "\t\t\t\t\t\t<li id=\"total\" value=\""+(sum-discount)+"\">Tổng thanh toán (chưa gồm phí vận chuyển)" +
-                "<input name=\"totalCheckout\" value=\""+(sum-discount)+"\" style=\"display: none\" >" +
-                " <span>"+dec.format(sum-discount).replace(',','.')+"đ</span></li>\n" +
+                "\t\t\t\t\t\t<li id=\"discount\" value=\""+discount+"\">Giảm <span >"+discountF+"đ</span></li>\n" +
+                "\t\t\t\t\t\t<li id=\"total\" value=\""+(sum-discount)+"\">Tổng thanh toán (chưa gồm phí vận chuyển) <span>"+dec.format(sum-discount).replace(',','.')+"đ</span></li>\n" +
                 "\t\t\t\t\t</ul>\n" +
-                "<input id=\"idProdChecked\" type=\"text\" name=\"allIdProdChecked\" value=\""+listId+"\" style=\"display: none\">" +
-                "\t\t\t\t\t<button type=\"submit\" class=\"primary-btn\">Thanh toán</button>");
+                "\t\t\t\t\t<a href=\"checkout.jsp\" class=\"primary-btn\">Thanh toán</a>");
     }
 
     @Override
