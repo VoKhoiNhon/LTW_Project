@@ -28,6 +28,7 @@ public class AdminMain extends HttpServlet {
         int tur1 = ProductService.getInstance().getTurnover(1, 2021);
         int saledPR = ProductService.getInstance().getSalerPR();
         int stopSaledPR = ProductService.getInstance().getStopPr();
+        List<SingleProduct> pr = ProductService.getInstance().getListProductHostSale();
         List<Contact> listContact = ProductService.getInstance().viewNameContact();
         request.setAttribute("listContact", listContact);
 
@@ -47,6 +48,7 @@ public class AdminMain extends HttpServlet {
         request.setAttribute("tur", tur);
         request.setAttribute("data", data);
         request.setAttribute("data1", data1);
+        request.setAttribute("hotSale", pr);
         request.getRequestDispatcher("adminMain.jsp").forward(request, response);
     }
 

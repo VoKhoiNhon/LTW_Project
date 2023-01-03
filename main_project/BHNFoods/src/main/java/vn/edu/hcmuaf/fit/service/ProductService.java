@@ -364,6 +364,12 @@ public class ProductService {
                     .mapToBean(Product.class).collect(Collectors.toList());
         });
     }
+    public List<SingleProduct> getListProductHostSale() {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY, c.NSX,c.BRAND,c.ORIGIN, c.WEIGHT, c.`DESCRIBE` , c.HSD,sum(s.AMOUNT)as saled from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR JOIN sold_pr s on s.ID_PR= p.ID_PR where i.`CONDITION` = 0  GROUP BY p.ID_PR order by saled desc  ")
+                    .mapToBean(SingleProduct.class).collect(Collectors.toList());
+        });
+    }
 
     // thêm sp của bản product
     public static void addProd(int index, String menu, int discount, int price, String name){
@@ -525,6 +531,7 @@ public int getNowYer(){
         });
 
     }
+
 }
 
 
