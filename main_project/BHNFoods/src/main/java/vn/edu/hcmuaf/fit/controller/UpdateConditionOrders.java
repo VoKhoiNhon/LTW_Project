@@ -16,9 +16,9 @@ public class UpdateConditionOrders extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      int condition = Integer.parseInt(request.getParameter("condition"));
-      String idOrders= request.getParameter("idOrders");
-      ProductService.getInstance().UpdateConditionOrders(condition, idOrders);
-      response.sendRedirect("http://localhost:8080/BHNFoods/ListOrdersAdmin");
+        int condition = Integer.parseInt(request.getParameter("condition"));
+        String idOrders= request.getParameter("idOrders");
+        ProductService.getInstance().UpdateConditionOrders(condition, idOrders);
+        response.sendRedirect("http://localhost:8080/BHNFoods/ListOrdersAdmin");
     }
 }

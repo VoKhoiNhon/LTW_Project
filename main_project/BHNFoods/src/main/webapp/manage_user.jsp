@@ -124,11 +124,6 @@
 <!-- partial:partials/_navbar.html -->
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-        <%--      <div class="me-3">--%>
-        <%--        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">--%>
-        <%--          <span class="icon-menu"></span>--%>
-        <%--        </button>--%>
-        <%--      </div>--%>
         <div>
             <a class="navbar-brand brand-logo" href="index.html">
                 BHNFoods
@@ -183,71 +178,6 @@
                            title="Search here">
                 </form>
             </li>
-<%--            <li class="nav-item dropdown">--%>
-<%--                <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"--%>
-<%--                   aria-expanded="false">--%>
-<%--                    <i class="icon-mail icon-lg"></i>--%>
-<%--                </a>--%>
-<%--                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"--%>
-<%--                     aria-labelledby="countDropdown">--%>
-<%--                    <a class="dropdown-item py-3">--%>
-<%--                        <p class="mb-0 font-weight-medium float-left">Bạn có 7 thông báo </p>--%>
-<%--                        <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>--%>
-<%--                    </a>--%>
-<%--                    <div class="dropdown-divider"></div>--%>
-<%--                    <a class="dropdown-item preview-item">--%>
-<%--                        <div class="preview-thumbnail">--%>
-<%--                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"--%>
-<%--                                 alt="image" class="img-sm profile-pic"--%>
-<%--                                 style=" width: 70px;height: 50px;border-radius: 100%;">--%>
-<%--                        </div>--%>
-<%--                        <div class="preview-item-content flex-grow py-2">--%>
-<%--                            <p class="preview-subject ellipsis font-weight-medium text-dark">Võ Khôi Nhơn </p>--%>
-<%--                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>--%>
-<%--                        </div>--%>
-<%--                    </a>--%>
-<%--                    <a class="dropdown-item preview-item">--%>
-<%--                        <div class="preview-thumbnail">--%>
-<%--                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"--%>
-<%--                                 style=" width: 70px;height: 50px;border-radius: 100%;"--%>
-<%--                                 alt="image" class="img-sm profile-pic">--%>
-<%--                        </div>--%>
-<%--                        <div class="preview-item-content flex-grow py-2">--%>
-<%--                            <p class="preview-subject ellipsis font-weight-medium text-dark">Phạm Gia Bảo </p>--%>
-<%--                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>--%>
-<%--                        </div>--%>
-<%--                    </a>--%>
-<%--                    <a class="dropdown-item preview-item">--%>
-<%--                        <div class="preview-thumbnail">--%>
-<%--                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"--%>
-<%--                                 style=" width: 70px;height: 50px;border-radius: 100%;"--%>
-<%--                                 alt="image" class="img-sm profile-pic">--%>
-<%--                        </div>--%>
-<%--                        <div class="preview-item-content flex-grow py-2">--%>
-<%--                            <p class="preview-subject ellipsis font-weight-medium text-dark">Nguyễn Thị Xuân Hoa </p>--%>
-<%--                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>--%>
-<%--                        </div>--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-<%--            </li>--%>
-<%--            <%--%>
-<%--                User user = (User) session.getAttribute("auth");--%>
-<%--                if (user != null) {%>--%>
-<%--            <li class="nav-item dropdown d-none d-lg-block user-dropdown">--%>
-<%--                <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">--%>
-<%--                    <img class="img-xs rounded-circle" src="ImageproductNew/background/images.png" alt="Profile image">--%>
-<%--                </a>--%>
-<%--                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">--%>
-<%--                    <div class="dropdown-header text-center">--%>
-<%--                        &lt;%&ndash;              <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">&ndash;%&gt;--%>
-<%--                        <p class="mb-1 mt-3 font-weight-semibold"><%=user.getNameUser()%>--%>
-<%--                        </p>--%>
-<%--                        <p class="fw-light text-muted mb-0"><%=user.getEmail()%>--%>
-<%--                        </p>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </li>--%>
-<%--            <%}%>--%>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
                 data-bs-toggle="offcanvas">
@@ -305,11 +235,6 @@
 
                             </ul>
                             <div>
-                                <%--                  <div class="btn-wrapper">--%>
-                                <%--                    <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Chia sẻ</a>--%>
-                                <%--                    <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> In</a>--%>
-                                <%--                    <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Xuất</a>--%>
-                                <%--                  </div>--%>
                             </div>
                         </div>
                         <div class="tab-content tab-content-basic">
@@ -329,16 +254,6 @@
                                                             <table class="table select-table">
                                                                 <thead>
                                                                 <tr>
-<%--                                                                    <th>--%>
-<%--                                                                        <div class="form-check form-check-flat mt-0">--%>
-<%--                                                                            <label class="form-check-label">--%>
-<%--                                                                                <input type="checkbox"--%>
-<%--                                                                                       onclick="checkAll(this)"--%>
-<%--                                                                                       class="form-check-input"--%>
-<%--                                                                                       aria-checked="false"><i--%>
-<%--                                                                                    class="input-helper"></i></label>--%>
-<%--                                                                        </div>--%>
-<%--                                                                    </th>--%>
                                                                     <th>Khách hàng</th>
                                                                     <th>Số điện thoại và Email</th>
                                                                     <%--                                                                    <th></th>--%>
@@ -351,15 +266,6 @@
                                                                     for (User u : list) {
                                                                 %>
                                                                 <tr>
-<%--                                                                    <td>--%>
-<%--                                                                        <div class="form-check form-check-flat mt-0">--%>
-<%--                                                                            <label class="form-check-label">--%>
-<%--                                                                                <input type="checkbox"--%>
-<%--                                                                                       class="form-check-input"--%>
-<%--                                                                                       aria-checked="false"><i--%>
-<%--                                                                                    class="input-helper"></i></label>--%>
-<%--                                                                        </div>--%>
-<%--                                                                    </td>--%>
                                                                     <td>
                                                                         <div class="d-flex ">
                                                                             <img src="ImageproductNew/background/images.png"

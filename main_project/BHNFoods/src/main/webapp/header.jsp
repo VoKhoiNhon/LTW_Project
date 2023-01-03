@@ -1,6 +1,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.beans.Cart" %>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.fit.beans.User" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.ProductService" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <style>
     .row .form-group .form-control {
@@ -83,9 +84,9 @@
     <link rel="stylesheet" href="cssHeaderFooter/styleHAndF.css">
 </head>
 <%User user= (User) session.getAttribute("auth");
-    int sumCart = user == null ? 0 : (int) session.getAttribute("sumCart");
     request.setAttribute("user", user);
     String idU = user != null? user.getIdUser() : "null";
+    int sumCart = user == null ? 0 : (int) ProductService.getInstance().sumAmount(ProductService.getInstance().getListCart(idU));
 %>
 
 <div class="py-1 bg-primary">
@@ -122,11 +123,12 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="http://localhost:8080/BHNFoods/index?idUser=<%=idU%>" class="nav-link">Trang chủ</a></li>
-                <li class="nav-item active "><a href="http://localhost:8080/BHNFoods/ListProduct?kind=0&page=1&idUser=<%=idU%>" class="nav-link">Sản
+                <li class="nav-item active"><a href="http://localhost:8080/BHNFoods/ListProduct?kind=0&page=1&idUser=<%=idU%>" class="nav-link">Sản
                     phẩm</a></li>
+                <li class="nav-item active"><a href="http://localhost:8080/BHNFoods/discount.jsp" class="nav-link">Mã giảm giá</a></li>
                 <li class="nav-item cta cta-colored find">
                     <form action="/BHNFoods/Search"method="post" style="display: flex"><input value="<%=request.getParameter("searchPR")!=null?request.getParameter("searchPR"):""%>" type="text" class="search-input" name="searchPR" id="findicon"
-                                           placeholder="Tìm kiếm"> <button type="submit" class="fa-solid fa-magnifying-glass" style="background: none;border: none;"></button></form></li>
+                                                                                              placeholder="Tìm kiếm"> <button type="submit" class="fa-solid fa-magnifying-glass" style="background: none;border: none;"></button></form></li>
                 <li id="totalCart" class="nav-item cta cta-colored amountInCart">
                     <a href="http://localhost:8080/BHNFoods/Cart?idUser=<%=idU%>" class="nav-link">
                         <span class="fa-solid fa-cart-shopping"></span>[<%=sumCart%>]</a>
@@ -137,25 +139,26 @@
                 %>
                 <li class="nav-item cta cta-colored">
                     <a href="login.jsp" class="nav-link"><span
-                        style="line-height: 1.8" class="fa-solid fa-user"></span>
+                            style="line-height: 1.8" class="fa-solid fa-user"></span>
                     </a>
                 </li>
                 <%}
-                 else {
+                else {
                 %>
                 <li class="nav-item cta cta-colored hover_user">
                     <span href="#" class="nav-link" style="cursor: pointer;"><%=user.getNameUser()%></span>
                     <div class="list_menu">
-                        <div class="dr"><a href="http://localhost:8080/BHNFoods/ListAccount?idUser=<%=user.getIdUser()%>">Tài khoản</a></div>
+                        <div class="dr"><a href="http://localhost:8080/BHNFoods/account?idUser=<%=user.getIdUser()%>">Tài khoản</a></div>
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/loveProduct?idUser=<%=user.getIdUser()%>">Sản phẩm yêu thích</a></div>
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/manageOrder?idUser=<%=user.getIdUser()%>">Quản lý đơn hàng</a> </div>
                         <div class="dr"> <a href="http://localhost:8080/BHNFoods/history?idUser=<%=user.getIdUser()%>">Lịch sử đơn hàng</a></div>
-                        <div class="dr"> <a  onclick="contact()" href="#">Liên hệ</a></div>
-                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/index?idUser=null">Đăng xuất</a></div>
+                        <div class="dr"> <a onclick="contact()" href="#">Liên hệ</a></div>
+                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/logOut">Đăng xuất</a></div>
                     </div>
                 </li>
                 <%}%>
             </ul>
+
         </div>
     </div>
 </nav>
@@ -179,7 +182,7 @@
 <div class="edit_formUser">
     <div class="container" style="background:none;">
         <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
-            <form action="/BHNFoods/ContactInUser" method="post" class="billing-form" style="margin-top: 2%;">
+            <form action="" class="billing-form" style="margin-top: 2%;">
                 <h3 class="mb-4 billing-heading">LIÊN HỆ</h3>
                 <div class="row align-items-end" style="font-size: 16px;">
                     <div class="col-md-12 col_addprod">
@@ -191,10 +194,6 @@
                         </div>
                     </div>
                     <div class=" col-md-12">
-                        <div class="form-group" style="display: none">
-                            <label>ID</label>
-                            <input type="text"  value="<%=user.getIdUser()%>" name="iduser" class="form-control input_addpr" placeholder="">
-                        </div>
                         <div class="form-group">
                             <label>Liên hệ</label>
                             <textarea name="content" type="text"
@@ -212,6 +211,7 @@
 
         </div>
     </div>
+
 </div>
 <script>
     function contact() {

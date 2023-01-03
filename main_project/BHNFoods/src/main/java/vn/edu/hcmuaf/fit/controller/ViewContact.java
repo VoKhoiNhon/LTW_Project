@@ -55,8 +55,5 @@ public class ViewContact extends HttpServlet {
                 "    </div>");
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
-
-
 }

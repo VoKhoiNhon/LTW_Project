@@ -109,10 +109,10 @@ public class User implements Serializable {
 
         this.decentralization = decentralization;
     }
-
     public String checkDecentralization( ){
         if(this.decentralization==0) return "User";
         return "Admin";
     }
+
 
 }

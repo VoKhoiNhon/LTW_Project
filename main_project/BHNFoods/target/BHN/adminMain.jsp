@@ -11,38 +11,67 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>BHNFoods Admin </title>
-    <!-- plugins:css -->
     <link rel="stylesheet" href="admin_template/vendors/feather/feather.css">
     <link rel="stylesheet" href="admin_template/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="admin_template/vendors/ti-icons/css/themify-icons.css">
     <link rel="stylesheet" href="admin_template/vendors/typicons/typicons.css">
     <link rel="stylesheet" href="admin_template/vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="admin_template/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
     <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="admin_template/js/select.dataTables.min.css">
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
     <link rel="stylesheet" href="admin_template/css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
 </head>
+<style>
+    #viewcontent .edit_formUser {
+        height: 500%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.73);
+        position: absolute;
+        z-index: 1500;
+        top: 0;
+
+    }
+
+    .edit_formUser .cen-div {
+        margin: auto;
+        background: #f1f1f1;
+        width: 50%;
+        margin-top: 2%;
+        border-radius: 5px;
+    }
+
+    .edit_formUser .padding10px {
+        padding: 10px 0;
+    }
+
+    .edit_formUser .cen-div form .form-group {
+        margin-bottom: 1.1rem;
+    }
+
+    .btn_huy_update {
+        margin-bottom: 20px;
+        justify-content: end;
+    }
+
+    .btn_huy_update input {
+        border-radius: 5px;
+        background: #7fad39;
+        border: none;
+        padding: 8px 20px;
+        color: white;
+    }
+</style>
 
 <body>
 <!-- partial:partials/_navbar.html -->
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-        <%--    <div class="me-3">--%>
-        <%--      <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">--%>
-        <%--        <span class="icon-menu"></span>--%>
-        <%--      </button>--%>
-        <%--    </div>--%>
         <div>
             <a class="navbar-brand brand-logo" href="index.html">
                 BHNFoods
@@ -57,26 +86,31 @@
                    data-bs-toggle="dropdown" aria-expanded="false"> Lọc theo </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
                      aria-labelledby="messageDropdown">
-                    <!-- <a class="dropdown-item py-3">
-                      <p class="mb-0 font-weight-medium float-left">Lọc</p>
-                    </a> -->
+
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item">
+                    <a class="dropdown-item preview-item" href="http://localhost:8080/BHNFoods/AdminManageUser">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Người dùng </p>
                             <p class="fw-light small-text mb-0">Trang chi tiết người dùng</p>
                         </div>
                     </a>
-                    <a class="dropdown-item preview-item">
+                    <a class="dropdown-item preview-item" href="http://localhost:8080/BHNFoods/AdminMain">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Admin</p>
                             <p class="fw-light small-text mb-0">Trang chi tiết Admin</p>
                         </div>
                     </a>
-                    <a class="dropdown-item preview-item">
+                    <a class="dropdown-item preview-item"
+                       href="http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1">
                         <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis font-weight-medium text-dark">Tất cả </p>
-                            <p class="fw-light small-text mb-0">Trang chi tiết cho tất cả</p>
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Sản Phẩm </p>
+                            <p class="fw-light small-text mb-0">Trang chi tiết quản lý sản phẩm</p>
+                        </div>
+                    </a>
+                    <a class="dropdown-item preview-item" href="#">
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Đơn hàng </p>
+                            <p class="fw-light small-text mb-0">Trang quản lý đơn hàng</p>
                         </div>
                     </a>
 
@@ -97,7 +131,7 @@
                 </form>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"
+                <a class="nav-link count-indicator" id="countDropdown" href="" data-bs-toggle="dropdown"
                    aria-expanded="false">
                     <i class="icon-mail icon-lg"></i>
                 </a>
@@ -108,19 +142,23 @@
                         <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <% List<Contact> listCont = (List<Contact>) request.getAttribute("listContact");
-                        for (Contact c : listCont) {
-                    %>
-                    <a class="dropdown-item preview-item" onclick="viewContent('<%=c.getIduser()%>','<%=c.getNameUser()%>','<%=c.getPhone()%>','<%=c.getEmail()%>','<%=c.getContent()%>')">
+                    <% List<Contact> listContact = (List<Contact>) request.getAttribute("listContact");
+                        System.out.println(listContact);
+                        for (Contact c : listContact) {%>
+                    <a class="dropdown-item preview-item"
+                       onclick="viewContent('<%=c.getIduser()%>','<%=c.getNameUser()%>','<%=c.getPhone()%>','<%=c.getEmail()%>','<%=c.getContent()%>')">
                         <div class="preview-thumbnail">
                             <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"
                                  alt="image" class="img-sm profile-pic"
                                  style=" width: 70px;height: 50px;border-radius: 100%;">
                         </div>
-                        <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis font-weight-medium text-dark"><%=c.getNameUser()%>
+                        <div class="preview-item-content flex-grow pyy-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark"
+                               onclick="viewContent('<%=c.getIduser()%>','<%=c.getNameUser()%>','<%=c.getPhone()%>','<%=c.getEmail()%>','<%=c.getContent()%>')">
+                                <%=c.getNameUser()%>
                             </p>
-                            <p class="fw-light small-text mb-0"><%=c.getDateTime()%>
+                            <p class="fw-light small-text mb-0">
+                                <%=c.getDateTime()%>
                             </p>
                         </div>
                     </a>
@@ -138,26 +176,20 @@
                 if (user != null) {
             %>
 
-            <li class="nav-item dropdown d-none d-lg-block user-dropdown">
-                <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img class="img-xs rounded-circle" src="ImageproductNew/background/images.png" alt="Profile image">
-                </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                    <div class="dropdown-header text-center">
-                        <%--            <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">--%>
-                        <p class="mb-1 mt-3 font-weight-semibold"><%=user.getNameUser()%>
-                        </p>
-                        <p class="fw-light text-muted mb-0"><%=user.getEmail()%>
-                        </p>
-                    </div>
-                    <%--                    <a class="dropdown-item"><i--%>
-                    <%--                            class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Trang cá nhân</a>--%>
-                    <%--                    <a class="dropdown-item"><i--%>
-                    <%--                            class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>--%>
-                    <%--                        Tin nhắn</a>--%>
-                    <%--                    <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Đăng xuất</a>--%>
-                </div>
-            </li>
+            <%--            <li class="nav-item dropdown d-none d-lg-block user-dropdown">--%>
+            <%--                <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">--%>
+            <%--                    <img class="img-xs rounded-circle" src="ImageproductNew/background/images.png" alt="Profile image">--%>
+            <%--                </a>--%>
+            <%--                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">--%>
+            <%--                    <div class="dropdown-header text-center">--%>
+            <%--                        &lt;%&ndash;            <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">&ndash;%&gt;--%>
+            <%--                        <p class="mb-1 mt-3 font-weight-semibold"><%=user.getNameUser()%>--%>
+            <%--                        </p>--%>
+            <%--                        <p class="fw-light text-muted mb-0"><%=user.getEmail()%>--%>
+            <%--                        </p>--%>
+            <%--                    </div>--%>
+            <%--                </div>--%>
+            <%--            </li>--%>
             <%}%>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
@@ -185,6 +217,12 @@
             <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Quản lý sản phẩm</span>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="http://localhost:8080/BHNFoods/ListOrdersAdmin" class="nav-item-link">
+                <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+                <span>Quản lý đơn hàng</span>
             </a>
         </div>
         <div class="nav-item">
@@ -402,127 +440,153 @@
                         </div>
                     </div>
                 </div>
-                <!-- content-wrapper ends -->
             </div>
-            <!-- main-panel ends -->
         </div>
-        <!-- page-body-wrapper ends -->
     </div>
 </div>
+<%--<div class="edit_formUser">--%>
+<%--    <div class="container" style="background:none;">--%>
+<%--        <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">--%>
+<%--            <form action="/BHNFoods/ContactInAdmin" method="post" class="billing-form" style="margin-top: 2%;">--%>
+<%--                <h3 class="mb-4 billing-heading\" style="color: #7fad39;">PHẢN HỒI KHÁCH HÀNG</h3>--%>
+<%--                <div class="row align-items-end\" style="font-size: 16px;">--%>
+<%--                    <div class="col-md-12 col_addprod">--%>
+<%--                        <div class="form-group">--%>
+<%--                            <h4>Thông tin tin khách hàng</h4>--%>
+<%--                            <p>Tên khách hàng:</p>--%>
+<%--                            <p>Số điện thoại: </p>--%>
+<%--                            <p>Email: </p>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="col-md-12">--%>
+<%--                        <div class="form-group" style="display:none">--%>
+<%--                            <label>ID<label>--%>
+<%--                                <input type="text" value="iduser" name="iduser" class="form-control input_addpr"--%>
+<%--                                       placeholder="">--%>
+<%--                        </div>--%>
+<%--                        <div class="form-group\">--%>
+<%--                            <label>Nội dung </label>--%>
+<%--                            <div name="content" class="form-control contentContact" value="">--%>
+<%--                                <p>"+content+"</p>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="col-md-12 d-flex  btn_huy_update" style="justify-content: end;"--%>
+<%--                    <input onclick="huy()" type="button" value="Đóng">--%>
+<%--                </div>--%>
+<%--            </form>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
+<div id="viewcontent">
+</div>
 
-<!-- container-scroller -->
-<!-- plugins:js -->
 <script src="admin_template/vendors/js/vendor.bundle.base.js"></script>
-<!-- endinject -->
-<!-- Plugin js for this page -->
 <script src="admin_template/vendors/chart.js/Chart.min.js"></script>
 <script src="admin_template/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 <script src="admin_template/vendors/progressbar.js/progressbar.min.js"></script>
 
-<!-- End plugin js for this page -->
-<!-- inject:js -->
 <script src="admin_template/js/off-canvas.js"></script>
 <script src="admin_template/js/hoverable-collapse.js"></script>
 <script src="admin_template/js/template.js"></script>
 <script src="admin_template/js/settings.js"></script>
 <script src="admin_template/js/todolist.js"></script>
-<!-- endinject -->
-<!-- Custom js for this page-->
 <script src="admin_template/js/jquery.cookie.js" type="text/javascript"></script>
-<%--<script src="admin_template/js/dashboard.js"></script>--%>
-<script> if ($("#marketingOverview").length) {
-    var marketingOverviewChart = document.getElementById("marketingOverview").getContext('2d');
-    var marketingOverviewData = {
-        labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
-        datasets: [{
-            label: 'năm 2022',
-            data: [<%=data%>],
-            backgroundColor: "#52CDFF",
-            borderColor: [
-                '#52CDFF',
-            ],
-            borderWidth: 0,
-            fill: true, // 3: no fill
+<script>
+    if ($("#marketingOverview").length) {
+        var marketingOverviewChart = document.getElementById("marketingOverview").getContext('2d');
+        var marketingOverviewData = {
+            labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
+            datasets: [{
+                label: 'năm 2022',
+                data: [<%=data%>],
+                backgroundColor: "#52CDFF",
+                borderColor: [
+                    '#52CDFF',
+                ],
+                borderWidth: 0,
+                fill: true, // 3: no fill
 
-        }, {
-            label: 'năm 2021',
-            data: [<%=data1%>],
-            backgroundColor: "#1F3BB3",
-            borderColor: [
-                '#1F3BB3',
-            ],
-            borderWidth: 0,
-            fill: true, // 3: no fill
-        }]
-    };
+            }, {
+                label: 'năm 2021',
+                data: [<%=data1%>],
+                backgroundColor: "#1F3BB3",
+                borderColor: [
+                    '#1F3BB3',
+                ],
+                borderWidth: 0,
+                fill: true, // 3: no fill
+            }]
+        };
 
-    var marketingOverviewOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-            yAxes: [{
-                gridLines: {
-                    display: true,
-                    drawBorder: false,
-                    color: "#F0F0F0",
-                    zeroLineColor: '#F0F0F0',
-                },
-                ticks: {
-                    beginAtZero: true,
-                    autoSkip: true,
-                    maxTicksLimit: 5,
-                    fontSize: 10,
-                    color: "#6B778C"
+        var marketingOverviewOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        display: true,
+                        drawBorder: false,
+                        color: "#F0F0F0",
+                        zeroLineColor: '#F0F0F0',
+                    },
+                    ticks: {
+                        beginAtZero: true,
+                        autoSkip: true,
+                        maxTicksLimit: 5,
+                        fontSize: 10,
+                        color: "#6B778C"
+                    }
+                }],
+                xAxes: [{
+                    stacked: true,
+                    barPercentage: 0.35,
+                    gridLines: {
+                        display: false,
+                        drawBorder: false,
+                    },
+                    ticks: {
+                        beginAtZero: false,
+                        autoSkip: true,
+                        maxTicksLimit: 12,
+                        fontSize: 10,
+                        color: "#6B778C"
+                    }
+                }],
+            },
+            legend: false,
+            legendCallback: function (chart) {
+                var text = [];
+                text.push('<div class="chartjs-legend"><ul>');
+                for (var i = 0; i < chart.data.datasets.length; i++) {
+                    console.log(chart.data.datasets[i]); // see what's inside the obj.
+                    text.push('<li class="text-muted text-small">');
+                    text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
+                    text.push(chart.data.datasets[i].label);
+                    text.push('</li>');
                 }
-            }],
-            xAxes: [{
-                stacked: true,
-                barPercentage: 0.35,
-                gridLines: {
-                    display: false,
-                    drawBorder: false,
-                },
-                ticks: {
-                    beginAtZero: false,
-                    autoSkip: true,
-                    maxTicksLimit: 12,
-                    fontSize: 10,
-                    color: "#6B778C"
-                }
-            }],
-        },
-        legend: false,
-        legendCallback: function (chart) {
-            var text = [];
-            text.push('<div class="chartjs-legend"><ul>');
-            for (var i = 0; i < chart.data.datasets.length; i++) {
-                console.log(chart.data.datasets[i]); // see what's inside the obj.
-                text.push('<li class="text-muted text-small">');
-                text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
-                text.push(chart.data.datasets[i].label);
-                text.push('</li>');
-            }
-            text.push('</ul></div>');
-            return text.join("");
-        },
+                text.push('</ul></div>');
+                return text.join("");
+            },
 
-        elements: {
-            line: {
-                tension: 0.4,
+            elements: {
+                line: {
+                    tension: 0.4,
+                }
+            },
+            tooltips: {
+                backgroundColor: 'rgba(31, 59, 179, 1)',
             }
-        },
-        tooltips: {
-            backgroundColor: 'rgba(31, 59, 179, 1)',
         }
+        var marketingOverview = new Chart(marketingOverviewChart, {
+            type: 'bar',
+            data: marketingOverviewData,
+            options: marketingOverviewOptions
+        });
+        document.getElementById('marketing-overview-legend').innerHTML = marketingOverview.generateLegend();
     }
-    var marketingOverview = new Chart(marketingOverviewChart, {
-        type: 'bar',
-        data: marketingOverviewData,
-        options: marketingOverviewOptions
-    });
-    document.getElementById('marketing-overview-legend').innerHTML = marketingOverview.generateLegend();
 
-    function clickEdit(iduser, nameUser, email, phone, content) {
+    function viewContent(iduser, nameUser, phone, email, content) {
         $.ajax({
             url: "/BHNFoods/ViewContact",
             type: 'get',
@@ -534,15 +598,19 @@
                 content: content,
             },
             success: function (data) {
-                const content = document.getElementById('formEdit');
+                const content = document.getElementById('viewcontent');
                 content.innerHTML = data;
             },
             error: function () {
             }
         });
-        $(".edit_formEdit").css("display", "block");
+        $("#viewcontent .edit_formUser").css("display", "block");
     }
-}</script>
+
+    function huy() {
+        $("#viewcontent .edit_formUser").css("display", "none");
+    }
+</script>
 <script src="admin_template/js/Chart.roundedBarCharts.js"></script>
 <!-- End custom js for this page-->
 </body>

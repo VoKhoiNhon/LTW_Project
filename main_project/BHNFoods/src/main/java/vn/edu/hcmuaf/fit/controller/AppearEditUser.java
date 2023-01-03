@@ -99,8 +99,6 @@ public class AppearEditUser extends HttpServlet {
                 "    </div>");
     }
 
-
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

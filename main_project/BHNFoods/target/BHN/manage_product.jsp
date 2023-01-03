@@ -247,7 +247,6 @@
 </head>
 
 <body>
-<!-- partial:partials/_navbar.html -->
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
         <%--      <div class="me-3">--%>
@@ -328,71 +327,71 @@
                            title="Search here">
                 </form>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"
-                   aria-expanded="false">
-                    <i class="icon-mail icon-lg"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-                     aria-labelledby="countDropdown">
-                    <a class="dropdown-item py-3">
-                        <p class="mb-0 font-weight-medium float-left">Bạn có 7 thông báo </p>
-                        <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"
-                                 alt="image" class="img-sm profile-pic"
-                                 style=" width: 70px;height: 50px;border-radius: 100%;">
-                        </div>
-                        <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis font-weight-medium text-dark">Võ Khôi Nhơn </p>
-                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"
-                                 style=" width: 70px;height: 50px;border-radius: 100%;"
-                                 alt="image" class="img-sm profile-pic">
-                        </div>
-                        <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis font-weight-medium text-dark">Phạm Gia Bảo </p>
-                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"
-                                 style=" width: 70px;height: 50px;border-radius: 100%;"
-                                 alt="image" class="img-sm profile-pic">
-                        </div>
-                        <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis font-weight-medium text-dark">Nguyễn Thị Xuân Hoa </p>
-                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>
-                        </div>
-                    </a>
-                </div>
-            </li>
+            <%--            <li class="nav-item dropdown">--%>
+            <%--                <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"--%>
+            <%--                   aria-expanded="false">--%>
+            <%--                    <i class="icon-mail icon-lg"></i>--%>
+            <%--                </a>--%>
+            <%--                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"--%>
+            <%--                     aria-labelledby="countDropdown">--%>
+            <%--                    <a class="dropdown-item py-3">--%>
+            <%--                        <p class="mb-0 font-weight-medium float-left">Bạn có 7 thông báo </p>--%>
+            <%--                        <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>--%>
+            <%--                    </a>--%>
+            <%--                    <div class="dropdown-divider"></div>--%>
+            <%--                    <a class="dropdown-item preview-item">--%>
+            <%--                        <div class="preview-thumbnail">--%>
+            <%--                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"--%>
+            <%--                                 alt="image" class="img-sm profile-pic"--%>
+            <%--                                 style=" width: 70px;height: 50px;border-radius: 100%;">--%>
+            <%--                        </div>--%>
+            <%--                        <div class="preview-item-content flex-grow py-2">--%>
+            <%--                            <p class="preview-subject ellipsis font-weight-medium text-dark">Võ Khôi Nhơn </p>--%>
+            <%--                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>--%>
+            <%--                        </div>--%>
+            <%--                    </a>--%>
+            <%--                    <a class="dropdown-item preview-item">--%>
+            <%--                        <div class="preview-thumbnail">--%>
+            <%--                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"--%>
+            <%--                                 style=" width: 70px;height: 50px;border-radius: 100%;"--%>
+            <%--                                 alt="image" class="img-sm profile-pic">--%>
+            <%--                        </div>--%>
+            <%--                        <div class="preview-item-content flex-grow py-2">--%>
+            <%--                            <p class="preview-subject ellipsis font-weight-medium text-dark">Phạm Gia Bảo </p>--%>
+            <%--                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>--%>
+            <%--                        </div>--%>
+            <%--                    </a>--%>
+            <%--                    <a class="dropdown-item preview-item">--%>
+            <%--                        <div class="preview-thumbnail">--%>
+            <%--                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"--%>
+            <%--                                 style=" width: 70px;height: 50px;border-radius: 100%;"--%>
+            <%--                                 alt="image" class="img-sm profile-pic">--%>
+            <%--                        </div>--%>
+            <%--                        <div class="preview-item-content flex-grow py-2">--%>
+            <%--                            <p class="preview-subject ellipsis font-weight-medium text-dark">Nguyễn Thị Xuân Hoa </p>--%>
+            <%--                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>--%>
+            <%--                        </div>--%>
+            <%--                    </a>--%>
+            <%--                </div>--%>
+            <%--            </li>--%>
 
             <%
                 User user = (User) session.getAttribute("auth");
                 if (user != null) {%>
-            <li class="nav-item dropdown d-none d-lg-block user-dropdown">
-                <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img class="img-xs rounded-circle" src="ImageproductNew/background/images.png"
-                         alt="Profile image"> </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                    <div class="dropdown-header text-center">
-                        <%--              <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">--%>
-                        <p class="mb-1 mt-3 font-weight-semibold"><%=user.getNameUser()%>
-                        </p>
-                        <p class="fw-light text-muted mb-0"><%=user.getEmail()%>
-                        </p>
-                    </div>
-                </div>
-            </li>
+            <%--            <li class="nav-item dropdown d-none d-lg-block user-dropdown">--%>
+            <%--                <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">--%>
+            <%--                    <img class="img-xs rounded-circle" src="ImageproductNew/background/images.png"--%>
+            <%--                         alt="Profile image"> </a>--%>
+            <%--                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">--%>
+            <%--                    <div class="dropdown-header text-center">--%>
+            <%--                        &lt;%&ndash;              <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">&ndash;%&gt;--%>
+            <%--                        <p class="mb-1 mt-3 font-weight-semibold"><%=user.getNameUser()%>--%>
+            <%--                        </p>--%>
+            <%--                        <p class="fw-light text-muted mb-0"><%=user.getEmail()%>--%>
+            <%--                        </p>--%>
+            <%--                    </div>--%>
+            <%--                </div>--%>
+            <%--            </li>--%>
             <%}%>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
@@ -420,6 +419,12 @@
             <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Quản lý sản phẩm</span>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="http://localhost:8080/BHNFoods/ListOrdersAdmin" class="nav-item-link">
+                <i style="margin-right: 5px;"  class="fa-solid fa-arrow-down-wide-short"></i>
+                <span>Quản lý đơn hàng</span>
             </a>
         </div>
         <div class="nav-item">
@@ -457,10 +462,6 @@
                                                 <div class="card card-rounded">
                                                     <div class="card-body">
                                                         <div class="d-sm-flex justify-content-between align-items-start">
-                                                            <!-- <div>
-                                                              <h4 class="card-title card-title-dash">Yêu cầu đang xử lý</h4>
-                                                              <p class="card-subtitle card-subtitle-dash">Bạn có 50+ yêu cầu mới</p>
-                                                            </div> -->
                                                             <div>
                                                                 <a href="#" STYLE="text-decoration: none">
                                                                     <button onclick="add()"
@@ -468,25 +469,25 @@
                                                                         Thêm
                                                                     </button>
                                                                 </a>
-                                                                <a href="#" STYLE="text-decoration: none">
-                                                                    <button class="card-title card-title-dash btn_add_delete">
-                                                                        Xóa
-                                                                    </button>
-                                                                </a>
+                                                                <%--                                                                <a href="" id="checkClick" STYLE="text-decoration: none">--%>
+                                                                <%--                                                                    <button  class="card-title card-title-dash btn_add_delete">--%>
+                                                                <%--                                                                        Xóa--%>
+                                                                <%--                                                                    </button>--%>
+                                                                <%--                                                                </a>--%>
                                                             </div>
                                                         </div>
                                                         <div class="table-responsive  mt-1">
                                                             <table class="table select-table">
                                                                 <thead>
                                                                 <tr>
-                                                                    <th>
-                                                                        <div class="form-check form-check-flat mt-0">
-                                                                            <label class="form-check-label">
-                                                                                <input onclick="checkAll(this)"
-                                                                                       type="checkbox">
-                                                                                <i class="input-helper"></i></label>
-                                                                        </div>
-                                                                    </th>
+                                                                    <%--                                                                    <th>--%>
+                                                                    <%--                                                                        <div class="form-check form-check-flat mt-0">--%>
+                                                                    <%--                                                                            <label class="form-check-label">--%>
+                                                                    <%--                                                                                <input onclick="checkAll(this)"--%>
+                                                                    <%--                                                                                       type="checkbox">--%>
+                                                                    <%--                                                                                <i class="input-helper"></i></label>--%>
+                                                                    <%--                                                                        </div>--%>
+                                                                    <%--                                                                    </th>--%>
                                                                     <th>Sản phẩm</th>
                                                                     <th>Ngày hết hạn</th>
                                                                     <th>Số lượng hàng đã bán</th>
@@ -501,13 +502,7 @@
                                                                     for (SingleProduct p : productList) {
                                                                 %>
                                                                 <tr>
-                                                                    <td>
-                                                                        <div class="form-check form-check-flat mt-0">
-                                                                            <label class="form-check-label">
-                                                                                <input type="checkbox">
-                                                                                <i class="input-helper"></i></label>
-                                                                        </div>
-                                                                    </td>
+
                                                                     <td>
                                                                         <div class="d-flex ">
                                                                             <img src="<%=p.getUrl()%>" alt="">
@@ -599,9 +594,6 @@
         </div>
         <!-- content-wrapper ends -->
     </div>
-    <!-- main-panel ends -->
-
-    <!-- container-scroller -->
 </div>
 <div class="edit_formUser edit_formAdd">
     <div class="container" style="background:none;">

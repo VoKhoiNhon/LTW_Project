@@ -20,10 +20,11 @@ public class SortSearchPR extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String search = request.getParameter("sort");
-        List<Product> list = ProductService.getListPrNameSearch(search);
+        String key = request.getParameter("key");
+        List<Product> list = ProductService.getListPrNameSearch(key);
         int sortSearch;
         try {
-            sortSearch = Integer.parseInt(request.getParameter("sortSearch"));
+            sortSearch = Integer.parseInt(request.getParameter("sort"));
         } catch (Exception e) {
             sortSearch = 0;
         }

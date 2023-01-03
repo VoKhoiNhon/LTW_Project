@@ -27,29 +27,29 @@
 </head>
 
 <body>
-  <div class="container-scroller background">
-    <!-- <img src="css/vertical-layout-light/hinh5.jpg" alt="" style="position: relative;"> -->
-    <%
-      String errorDup= (String) request.getAttribute("errorDup");
-      String errorName=(String)  request.getAttribute("errorName");
-      String errorCode = (String) request.getAttribute("errorName");
-      String mess = (String) request.getAttribute("mess");
+<div class="container-scroller background">
+  <!-- <img src="css/vertical-layout-light/hinh5.jpg" alt="" style="position: relative;"> -->
+  <%
+    String errorDup= (String) request.getAttribute("errorDup");
+    String errorName=(String)  request.getAttribute("errorName");
+    String errorCode = (String) request.getAttribute("errorName");
+    String mess = (String) request.getAttribute("mess");
 
-    %>
-    <!-- partial -->
-    <div style="padding: 0" class="container-fluid page-body-wrapper" >
-      <div class="main-panel" style="    width: 100%;">
-        <div class="content-wrapper">
+  %>
+  <!-- partial -->
+  <div style="padding: 0" class="container-fluid page-body-wrapper" >
+    <div class="main-panel" style="    width: 100%;">
+      <div class="content-wrapper">
         <div class="row">
 
           <div class="card" style=" margin:auto;">
             <div class="card-body">
-                <p class="card-description">
-                    <a href="login.jsp" style="text-decoration: none ; color: rgb(123, 123, 123);"> <i class="fa-solid fa-chevron-left"></i>Quay lại</a>
-                   </p>
+              <p class="card-description">
+                <a href="login.jsp" style="text-decoration: none ; color: rgb(123, 123, 123);"> <i class="fa-solid fa-chevron-left"></i>Quay lại</a>
+              </p>
               <h4 class="card-title logoBHN">BHNFoods</h4>
               <p class="card-description login">
-               Thay đổi mật khẩu
+                Thay đổi mật khẩu
               </p>
               <form class="forms-sample" action="/BHNFoods/ForgotPass" method="post">
                 <div class="form-group">
@@ -64,19 +64,19 @@
                   <% if( errorCode!=null){ %>
                   <label for="exampleInputName1" style="color: #CC3636"><%=errorCode%></label>     <%}%>
                   <input type="text" class="form-control" id="exampleInputName1" name="code"
-                    placeholder="Nhập mã xác nhận">
+                         placeholder="Nhập mã xác nhận">
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleInputPassword4">Tạo mật khẩu</label>
-                    <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Nhập mật khẩu mới" name="pass">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword4">Nhập lại mật khẩu</label> <% if( errorDup!=null){ %>
-                    <label for="exampleInputName1" style="color: #CC3636"><%=errorDup%></label>
-                    <%}%>
-                    <input type="password" class="form-control" id="exampleInputPassword5" placeholder="Nhập lại mật khẩu" name="repass">
-                  </div>
+                  <label for="exampleInputPassword4">Tạo mật khẩu</label>
+                  <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Nhập mật khẩu mới" name="pass">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword4">Nhập lại mật khẩu</label> <% if( errorDup!=null){ %>
+                  <label for="exampleInputName1" style="color: #CC3636"><%=errorDup%></label>
+                  <%}%>
+                  <input type="password" class="form-control" id="exampleInputPassword5" placeholder="Nhập lại mật khẩu" name="repass">
+                </div>
                 <div class="form-group button_primary">
                   <button type="" onclick="mess(<%=mess%>)" class="btn btn-primary button_primary_height me-2" style="width: 60%;">Gửi mã xác nhận</button> </br>
                   <button type="submit" class="btn btn-primary  button_primary_height me-2" style="width: 60%;">Cập nhật lại tài khoản</button>
@@ -88,35 +88,35 @@
             </div>
           </div>
         </div>
-        </div>
-
       </div>
 
     </div>
 
   </div>
+
+</div>
 <script>
   function mess(mess){
-   <%System.out.println(mess);%>
-  alert(mess);
+    <%System.out.println(mess);%>
+    alert(mess);
   }
 
 </script>
-  <script src="admin_template/vendors/js/vendor.bundle.base.js"></script>
+<script src="admin_template/vendors/js/vendor.bundle.base.js"></script>
 
-  <script src="admin_template/vendors/typeahead.js/typeahead.bundle.min.js"></script>
-  <script src="admin_template/vendors/select2/select2.min.js"></script>
-  <script src="admin_template/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<script src="admin_template/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+<script src="admin_template/vendors/select2/select2.min.js"></script>
+<script src="admin_template/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
-  <script src="admin_template/js/off-canvas.js"></script>
-  <script src="admin_template/js/hoverable-collapse.js"></script>
-  <script src="admin_template/js/template.js"></script>
-  <script src="admin_template/js/settings.js"></script>
-  <script src="admin_template/js/todolist.js"></script>
+<script src="admin_template/js/off-canvas.js"></script>
+<script src="admin_template/js/hoverable-collapse.js"></script>
+<script src="admin_template/js/template.js"></script>
+<script src="admin_template/js/settings.js"></script>
+<script src="admin_template/js/todolist.js"></script>
 
-  <script src="admin_template/js/file-upload.js"></script>
-  <script src="admin_template/js/typeahead.js"></script>
-  <script src="admin_template/js/select2.js"></script>
+<script src="admin_template/js/file-upload.js"></script>
+<script src="admin_template/js/typeahead.js"></script>
+<script src="admin_template/js/select2.js"></script>
 
 </body>
 

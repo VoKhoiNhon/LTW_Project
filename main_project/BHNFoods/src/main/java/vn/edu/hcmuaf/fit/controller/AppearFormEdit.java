@@ -23,10 +23,10 @@ public class AppearFormEdit extends HttpServlet {
         String origin=request.getParameter("origin");
         int inventory= Integer.parseInt(request.getParameter("inventory"));
         int condition= Integer.parseInt(request.getParameter("condition"));
-//        String[] arrayNsx = nsx.split("-");
-//        String nsxF = arrayNsx[2]+"/"+arrayNsx[1]+"/"+arrayNsx[0];
-//        String[] arrayHsd = hsd.split("-");
-//        String hsdF = arrayHsd[2]+"/"+arrayHsd[1]+"/"+arrayHsd[0];
+        String[] arrayNsx = nsx.split("-");
+        String nsxF = arrayNsx[2]+"/"+arrayNsx[1]+"/"+arrayNsx[0];
+        String[] arrayHsd = hsd.split("-");
+        String hsdF = arrayHsd[2]+"/"+arrayHsd[1]+"/"+arrayHsd[0];
         PrintWriter out= response.getWriter();
         out.println("<div class=\"edit_formUser edit_formEdit\">\n" +
                 "    <div class=\"container\" style=\"background:none;\">\n" +

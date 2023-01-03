@@ -123,12 +123,12 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                   <%if(error !=null){%>
+                                    <%if(error !=null){%>
                                     <label style="color:#e03e2d;"><%=error%></label>
                                     <%}%>
                                     <label>Nhập lại mật khẩu</label>
                                     <input type="password" name="repassw" class="form-control" placeholder="Nhập lại mật khẩu">
-                                    
+
                                 </div>
                             </div>
                         </div>
