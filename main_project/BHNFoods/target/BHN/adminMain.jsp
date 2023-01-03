@@ -172,6 +172,7 @@
                 int saledPr = (int) request.getAttribute("saledPr");
                 String data1 = (String) request.getAttribute("data1");
                 int nowTur = (int) request.getAttribute("nowTur");
+                List<SingleProduct> hotSale = (List<SingleProduct>) request.getAttribute("hotSale");
                 User user = (User) session.getAttribute("auth");
                 if (user != null) {
             %>
@@ -352,16 +353,7 @@
                                                         </div>
                                                     </div>
                                                     <%}%>
-                                                    <input type="button" value="Update" formmethod="post"></input>
-                                                    <div class="list align-items-center pt-3">
-                                                        <div class="wrapper w-100">
-                                                            <p class="mb-0">
-                                                                <a href="#" class="fw-bold text-primary">Xem thêm <i
-                                                                        class="mdi mdi-arrow-right ms-2"></i> </a>
-                                                            </p>
 
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -373,63 +365,19 @@
                                                         <%--                        <p class="mb-0">fliter</p>--%>
                                                     </div>
                                                     <ul class="bullet-line-list">
+                                                        <%for (int j = 0; j < 15; j++) {%>
                                                         <li>
                                                             <div class="d-flex justify-content-between">
-                                                                <div><span class="text-light-green">gạo</span> 20000
+                                                                <div><span
+                                                                        class="text-light-green"><%=hotSale.get(j).getNamePr()%> </span>
                                                                 </div>
-                                                                <p>VND</p>
+                                                                <p><%=hotSale.get(j).getPrice()%>                             VND</p>
                                                             </div>
                                                         </li>
-                                                        <li>
-                                                            <div class="d-flex justify-content-between">
-                                                                <div><span class="text-light-green">gạo</span> 20000
-                                                                </div>
-                                                                <p>VND</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="d-flex justify-content-between">
-                                                                <div><span class="text-light-green">gạo</span> 20000
-                                                                </div>
-                                                                <p>VND</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="d-flex justify-content-between">
-                                                                <div><span class="text-light-green">gạo</span> 20000
-                                                                </div>
-                                                                <p>VND</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="d-flex justify-content-between">
-                                                                <div><span class="text-light-green">gạo</span> 20000
-                                                                </div>
-                                                                <p>VND</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="d-flex justify-content-between">
-                                                                <div><span class="text-light-green">gạo</span> 20000
-                                                                </div>
-                                                                <p>VND</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="d-flex justify-content-between">
-                                                                <div><span class="text-light-green">gạo</span> 20000
-                                                                </div>
-                                                                <p>VND</p>
-                                                            </div>
-                                                        </li>
+                                                        <%}%>
                                                     </ul>
                                                     <div class="list align-items-center pt-3">
-                                                        <div class="wrapper w-100">
-                                                            <p class="mb-0">
-                                                                <a href="#" class="fw-bold text-primary">Xem thêm <i
-                                                                        class="mdi mdi-arrow-right ms-2"></i></a>
-                                                            </p>
-                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
