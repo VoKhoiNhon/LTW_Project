@@ -465,6 +465,26 @@ public int getNowYer(){
             return handle.createUpdate("INSERT INTO contact VALUES('"+iduser+"','"+content+"','"+LocalDateTime.now()+"') ").execute();
         });
     }
+    //xem liên hệ của user ở trang admin
+    public List<Contact> viewContact(String iduser){
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT u.ID_USER,u.NAME_USER, u.EMAIL, u.PHONE, c.CONTENT, c.`DATETIME` FROM `user` u join contact c ON u.ID_USER= c.ID_USER WHERE u.ID_USER='"+iduser+"';")
+                    .mapToBean(Contact.class).collect(Collectors.toList());
+        });
+    }
+
+    public void addImg( int idPr,String idImg,String url, int condition ){
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("INSERT INTO image VALUES ('prod"+idPr+"','"+idImg+"','"+url+"',b'"+condition+"')").execute();
+        });
+    }
+
+
+
+    public static void main(String[] args) {
+
+        ProductService.getInstance().addImg(105,"eee","aaaaaaaafffffff",0);
+    }
 
 
     public void updateInventoryCT_PR(String idProd, int sl) {

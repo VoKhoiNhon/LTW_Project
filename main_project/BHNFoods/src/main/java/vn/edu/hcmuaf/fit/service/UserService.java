@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
 public class UserService {
@@ -126,6 +127,11 @@ public class UserService {
         }
         return list;
 
+    }
+    public  void  contact(String iduser, String content){
+        JDBIConnector.get().withHandle(handle -> {
+           return handle.createUpdate("INSERT INTO contact VALUES('"+iduser+"','"+content+"','"+LocalDateTime.now()+"');").execute();
+        });
     }
 
     public static void main(String[] args) {
