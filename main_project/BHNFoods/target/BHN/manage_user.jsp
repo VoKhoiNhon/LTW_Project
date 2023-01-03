@@ -138,26 +138,31 @@
                    data-bs-toggle="dropdown" aria-expanded="false"> Lọc theo </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
                      aria-labelledby="messageDropdown">
-                    <!-- <a class="dropdown-item py-3">
-                      <p class="mb-0 font-weight-medium float-left">Lọc</p>
-                    </a> -->
+
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item">
+                    <a class="dropdown-item preview-item" href="http://localhost:8080/BHNFoods/AdminManageUser">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Người dùng </p>
                             <p class="fw-light small-text mb-0">Trang chi tiết người dùng</p>
                         </div>
                     </a>
-                    <a class="dropdown-item preview-item">
+                    <a class="dropdown-item preview-item" href="http://localhost:8080/BHNFoods/AdminMain">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Admin</p>
                             <p class="fw-light small-text mb-0">Trang chi tiết Admin</p>
                         </div>
                     </a>
-                    <a class="dropdown-item preview-item">
+                    <a class="dropdown-item preview-item"
+                       href="http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1">
                         <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis font-weight-medium text-dark">Tất cả </p>
-                            <p class="fw-light small-text mb-0">Trang chi tiết cho tất cả</p>
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Sản Phẩm </p>
+                            <p class="fw-light small-text mb-0">Trang chi tiết quản lý sản phẩm</p>
+                        </div>
+                    </a>
+                    <a class="dropdown-item preview-item" href="#">
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">Đơn hàng </p>
+                            <p class="fw-light small-text mb-0">Trang quản lý đơn hàng</p>
                         </div>
                     </a>
 
