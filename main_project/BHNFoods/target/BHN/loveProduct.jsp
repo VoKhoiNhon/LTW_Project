@@ -122,6 +122,21 @@
 		});
 		$('#'+idProd).remove()
 	}
+
+	function remove(idProd) {
+		$.ajax({
+			url: "/BHNFoods/removeFromLove",
+			type: 'get',
+			data: {
+				id: idProd,
+			},
+			success: function (data) {
+			},
+			error: function () {
+			}
+		});
+		$('#'+idProd).remove()
+	}
 </script>
 
 

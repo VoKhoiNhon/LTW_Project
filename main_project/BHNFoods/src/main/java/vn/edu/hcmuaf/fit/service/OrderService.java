@@ -108,4 +108,10 @@ public class OrderService {
         }
         return namNhuan;
     }
+
+    public void changeConditionOrder(String idOrder, int condition) {
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("UPDATE orders SET `CONDITION` = "+condition+" WHERE ID_ORDERS = '"+idOrder+"'" ).execute();
+        });
+    }
 }

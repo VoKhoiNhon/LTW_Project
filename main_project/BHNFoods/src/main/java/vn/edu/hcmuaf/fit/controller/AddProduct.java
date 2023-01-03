@@ -26,12 +26,12 @@ import static java.lang.System.out;
         maxRequestSize = 1024 * 1024 * 100   // 100 MB
 )
 public class AddProduct extends HttpServlet {
-    static URL location = AddProduct.class.getProtectionDomain()
-            .getCodeSource().getLocation();
-
-    private static final String UPLOAD_DIRECTORY = location.getFile() +"\\src\\main\\webapp\\ImageproductNew\\add";
-    private static final long serialVersionUID = 1;
-
+//    static URL location = AddProduct.class.getProtectionDomain()
+//            .getCodeSource().getLocation();
+//
+//    private static final String UPLOAD_DIRECTORY = location.getFile() +"\\src\\main\\webapp\\ImageproductNew\\add";
+//    private static final long serialVersionUID = 1;
+//
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        System.out.println("sdfnjsdk");
@@ -40,16 +40,16 @@ public class AddProduct extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        if (ServletFileUpload.isMultipartContent(request)) {
-            try {
-                int count = 0, i=3;
-                String path;
-                List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
-                for (FileItem item : multiparts) {
-                    if (!item.isFormField()) {
-                        String nameImg = new File(item.getName()).getName();
-                        out.println(UPLOAD_DIRECTORY+ File.separator + nameImg);
-                        item.write(new File( UPLOAD_DIRECTORY+ File.separator + nameImg));
+//        if (ServletFileUpload.isMultipartContent(request)) {
+//            try {
+//                int count = 0, i=3;
+//                String path;
+//                List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
+//                for (FileItem item : multiparts) {
+//                    if (!item.isFormField()) {
+//                        String nameImg = new File(item.getName()).getName();
+//                        out.println(UPLOAD_DIRECTORY+ File.separator + nameImg);
+//                        item.write(new File( UPLOAD_DIRECTORY+ File.separator + nameImg));
 
 //                        String menu = request.getParameter("menu");
 //                        int discount = Integer.parseInt(request.getParameter("discount"));
@@ -70,20 +70,17 @@ public class AddProduct extends HttpServlet {
 //                        ProductService.getInstance().addImg(index + 1, menu +i++ , path, count);
 //                        out.println("aaaa");
 //                        count = 1;
-                    }
-                }
-                request.setAttribute("message", "File uploaded successfully.");
-            } catch (Exception ex) {
-                request.setAttribute("message", "File upload failed due to : " + ex);
-            }
-        } else {
-            request.setAttribute("message", "Sorry this servlet only handles file upload request.");
-        }
-
-        response.sendRedirect("http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1");
+//                    }
+//                }
+//                request.setAttribute("message", "File uploaded successfully.");
+//            } catch (Exception ex) {
+//                request.setAttribute("message", "File upload failed due to : " + ex);
+//            }
+//        } else {
+//            request.setAttribute("message", "Sorry this servlet only handles file upload request.");
+//        }
+//
+//        response.sendRedirect("http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1");
     }
 
-    public static void main(String[] args) {
-        out.println(UPLOAD_DIRECTORY);
-    }
 }

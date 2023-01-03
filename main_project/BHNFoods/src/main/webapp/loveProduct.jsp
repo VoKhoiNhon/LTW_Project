@@ -125,15 +125,12 @@
 
 	function remove(idProd) {
 		$.ajax({
-			url: "/BHNFoods/addToCart",
+			url: "/BHNFoods/removeFromLove",
 			type: 'get',
 			data: {
 				id: idProd,
-				amount: 1
 			},
 			success: function (data) {
-				const content = document.getElementById('totalCart');
-				content.innerHTML = data;
 			},
 			error: function () {
 			}

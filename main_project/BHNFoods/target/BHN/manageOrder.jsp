@@ -52,7 +52,7 @@
                     double opacity = 1.0;
 
             %>
-            <div class="row">
+            <div class="row" id="<%=entry.getKey()%>">
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
                         <table>
@@ -68,8 +68,10 @@
                             <tbody>
                             <%
                                 DecimalFormat dec = new DecimalFormat("#,###");
+
                                 for (Orders o : mapOrder.get(entry.getKey())) {
                                     condition = o.getCondition();
+
                             %>
                             <tr>
                                 <td class="shoping__cart__quantity">
@@ -104,7 +106,7 @@
                             </div>
                             <%if(condition == 0) {%>
                             <div>
-                                <button class="uCanClick" style="background:#7fad39; padding:10px 25px; color: white; border: none;">Hủy đơn</button>
+                                <button class="uCanClick" onclick="huyDon('<%=entry.getKey()%>')" style="background:#7fad39; padding:10px 25px; color: white; border: none;">Hủy đơn</button>
                             </div>
                             <%}%>
                             <div>
@@ -119,6 +121,24 @@
     </section>
 
 <%@include file="footer.jsp"%>
+
+<script>
+    function huyDon(idOder) {
+        $.ajax({
+            url: "/BHNFoods/removeFromManageOrder",
+            type: 'get',
+            data: {
+                id: idOder,
+            },
+            success: function (data) {
+            },
+            error: function () {
+            }
+        });
+        $('#'+idOder).remove();
+    }
+</script>
+
     <script src="body_design/js/jquery-3.3.1.min.js"></script>
 <script src="body_design/js/jquery.nice-select.min.js"></script>
 <script src="body_design/js/jquery-ui.min.js"></script>
