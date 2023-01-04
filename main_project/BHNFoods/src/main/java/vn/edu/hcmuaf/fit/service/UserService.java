@@ -33,7 +33,7 @@ public class UserService {
 
     public User checkLogin(String username, String password) {
         List<User> users = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT ID_USER,ADDRESS,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,Decentralization FROM user WHERE EMAIL = ? or PHONE=?")
+                h.createQuery("SELECT ID_USER,ADDRESS,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,SEX,Decentralization FROM user WHERE EMAIL = ? or PHONE=?")
                         .bind(0, username).bind(1, username)
                         .mapToBean(User.class).stream()
                         .collect(Collectors.toList())
@@ -62,14 +62,14 @@ public class UserService {
 
     public List<User> getListUser() {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select * from user")
+            return handle.createQuery("SELECT ID_USER,ADDRESS,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,SEX,Decentralization FROM user")
                     .mapToBean(User.class).collect(Collectors.toList());
         });
     }
 
     public boolean checkAccountExist(String email, String phone) {
         List<User> list = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select* from user")
+            return handle.createQuery("SELECT ID_USER,ADDRESS,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,SEX,Decentralization FROM user")
                     .mapToBean(User.class).collect(Collectors.toList());
         });
         for (User u : list) {
@@ -112,7 +112,7 @@ public class UserService {
 
     public int getNewbie() {
         List<User> l = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select * from user where Month(DATE_SIGNUP)='" + LocalDateTime.now().getMonthValue() + "'")
+            return handle.createQuery("SELECT ID_USER,ADDRESS,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,SEX,Decentralization FROM user where Month(DATE_SIGNUP)='" + LocalDateTime.now().getMonthValue() + "'")
                     .mapToBean(User.class).collect(Collectors.toList());
         });
         return l.size();
