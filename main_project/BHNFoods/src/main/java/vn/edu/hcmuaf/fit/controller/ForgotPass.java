@@ -2,6 +2,7 @@ package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.UserService;
+import vn.edu.hcmuaf.fit.util.Encryption;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -35,6 +36,7 @@ public class ForgotPass extends HttpServlet {
             request.setAttribute("errorDup", "* Mật khẩu không trùng khớp");
             request.getRequestDispatcher("changepass.jsp").forward(request, response);
         } else if (pass.equals(repass)) {
+            pass = Encryption.toSHA1(pass);
             UserService.getInstance().changePass(account, account, pass);
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }

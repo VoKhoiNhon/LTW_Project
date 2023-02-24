@@ -1,63 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c3031079-eac3-483c-8b9a-4349dade49e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/beans/IdOrder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/controller/ChangeDistrict.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/controller/CheckingOut.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/controller/Pay.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/service/OrderService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/service/SoldProdService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/LTW_Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LTW_Project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/beans/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/beans/Orders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/controller/ChangeAmountFormCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/controller/ChangeAmountFormCart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/controller/LogOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/controller/LogOut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/controller/RemoveFromCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/controller/RemoveFromCart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/controller/SortSearchPR.java" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/controller/SortSearchPR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/controller/UnCheckFromCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/controller/UnCheckFromCart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/service/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/service/CartService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/java/vn/edu/hcmuaf/fit/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/src/main/webapp/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/webapp/cart.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/src/main/webapp/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/webapp/checkout.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/src/main/webapp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/webapp/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/src/main/webapp/searchPR.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/webapp/searchPR.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/src/main/webapp/singleProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/src/main/webapp/singleProduct.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN.war" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/beans/Orders.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/beans/Orders.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/controller/AppearFormEdit.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/controller/AppearFormEdit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/controller/ChangeAmountFormCart.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/controller/ChangeAmountFormCart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/controller/LogOut.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/controller/LogOut.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/controller/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/controller/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/controller/RemoveFromCart.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/controller/RemoveFromCart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/controller/SortSearchPR.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/controller/SortSearchPR.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/controller/UnCheckFromCart.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/controller/UnCheckFromCart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/controller/UpdateProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/controller/UpdateProduct.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/service/CartService.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/service/CartService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/service/ProductService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/WEB-INF/classes/vn/edu/hcmuaf/fit/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/cart.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/checkout.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/manage_product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/manage_product.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/searchPR.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/searchPR.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/singleProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/BHN/singleProduct.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/beans/Orders.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/beans/Orders.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/controller/AppearFormEdit.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/controller/AppearFormEdit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/controller/ChangeAmountFormCart.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/controller/ChangeAmountFormCart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/controller/LogOut.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/controller/LogOut.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/controller/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/controller/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/controller/RemoveFromCart.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/controller/RemoveFromCart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/controller/SortSearchPR.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/controller/SortSearchPR.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/controller/UnCheckFromCart.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/controller/UnCheckFromCart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/controller/UpdateProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/controller/UpdateProduct.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/service/CartService.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/service/CartService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/service/ProductService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/main_project/BHNFoods/target/classes/vn/edu/hcmuaf/fit/service/UserService.class" afterDir="false" />
-    </list>
+    <list default="true" id="c3031079-eac3-483c-8b9a-4349dade49e1" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,11 +23,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/LTW/main_project",
+    "last_opened_file_path": "D:/ProjectLTW/LTW_Project/main_project",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "vcs.Git"
+    "settings.editor.selected.configurable": "vcs.Git",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
@@ -181,6 +126,7 @@
       <workItem from="1672681181246" duration="253000" />
       <workItem from="1672681449999" duration="143000" />
       <workItem from="1672681612614" duration="11000" />
+      <workItem from="1676477975609" duration="174000" />
     </task>
     <servers />
   </component>

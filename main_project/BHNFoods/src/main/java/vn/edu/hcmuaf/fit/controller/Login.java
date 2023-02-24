@@ -2,6 +2,7 @@ package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.UserService;
+import vn.edu.hcmuaf.fit.util.Encryption;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -20,6 +21,7 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        password  = Encryption.toSHA1(password);
 
         User user = UserService.getInstance().checkLogin(username, password);
 

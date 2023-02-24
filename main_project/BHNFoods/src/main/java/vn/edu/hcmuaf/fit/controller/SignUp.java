@@ -2,6 +2,7 @@ package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.UserService;
+import vn.edu.hcmuaf.fit.util.Encryption;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -38,7 +39,7 @@ public class SignUp extends HttpServlet {
             request.getRequestDispatcher("signup.jsp").forward(request, response);
         }else{
             int newUID=  UserService.getInstance().getListUser().size()+1;
-
+            pass = Encryption.toSHA1(pass);
            UserService.getInstance().addUser(name, email,phone,pass);
 
             response.sendRedirect("http://localhost:8080/BHNFoods/index?idUser="+newUID);
