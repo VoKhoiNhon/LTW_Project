@@ -62,6 +62,7 @@
                                     <label for="exampleInputPassword4">Mật khẩu</label>
                                     <input type="password" name="password" class="form-control" id="exampleInputPassword4" placeholder="Nhập mật khẩu">
                                 </div>
+                                <a href="https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&scope=email%20profile&state=security_token">Đăng nhập với Google</a>
                                 <div class="form-group forgot_pass" style="padding-bottom:30px;">
                                     <a href="changepass.jsp">Quên mật khẩu?</a>
                                 </div>
@@ -80,6 +81,25 @@
 
 </div>
 
+<script>
+    const userAgent = navigator.userAgent;
+    let browserName;
+    if (userAgent.indexOf("Firefox") > -1) {
+        browserName = "Mozilla Firefox";
+    } else if (userAgent.indexOf("Edg") > -1 || userAgent.indexOf("Edge") > -1) {
+        browserName = "Microsoft Edge";
+    } else if (userAgent.indexOf("OPR") > -1 || userAgent.indexOf("Opera") > -1) {
+        browserName = "Opera";
+    } else if (userAgent.indexOf("Chrome") > -1 && userAgent.indexOf("Edg") === -1) {
+        browserName = "Google Chrome";
+    } else if (userAgent.indexOf("Safari") > -1 && userAgent.indexOf("Chrome") === -1) {
+        browserName = "Apple Safari";
+    } else {
+        browserName = "unknown";
+    }
+
+    console.log(`Browser name: ${browserName}`);
+</script>
 <script src="admin_template/vendors/js/vendor.bundle.base.js"></script>
 
 <script src="admin_template/vendors/typeahead.js/typeahead.bundle.min.js"></script>
