@@ -10,6 +10,10 @@ import java.util.stream.Collectors;
 
 public class JDBIConnector {
     private static Jdbi jdbi;
+    public static Jdbi me() {
+        if (jdbi == null) makeConnect();
+        return jdbi;
+    }
 
     private static void makeConnect() {
         MysqlDataSource dataSource = new MysqlDataSource();

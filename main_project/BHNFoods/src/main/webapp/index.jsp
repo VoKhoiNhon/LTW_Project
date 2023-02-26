@@ -298,7 +298,6 @@
     } else {
         browserName = "unknown";
     }
-
     console.log(`Browser name: ${browserName}`);
 </script>
 </html>
