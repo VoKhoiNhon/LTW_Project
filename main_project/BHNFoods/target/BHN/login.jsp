@@ -84,7 +84,6 @@
 <<<<<<< Updated upstream
 <script>
     const userAgent = navigator.userAgent;
-
     let browserName;
     if (userAgent.indexOf("Firefox") > -1) {
         browserName = "Mozilla Firefox";
