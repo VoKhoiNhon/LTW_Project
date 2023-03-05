@@ -99,6 +99,7 @@
     }
 
     console.log(`Browser name: ${browserName}`);
+
 </script>
 <script src="admin_template/vendors/js/vendor.bundle.base.js"></script>
 

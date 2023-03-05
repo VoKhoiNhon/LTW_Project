@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.*;
+import vn.edu.hcmuaf.fit.db.DB;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
 
@@ -14,6 +15,7 @@ import java.util.List;
 
 @WebServlet(name = "SingleProduct", value = "/oneProduct")
 public class OneProduct extends HttpServlet {
+    String src= "Single Product";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idProd = request.getParameter("id");
@@ -31,6 +33,9 @@ public class OneProduct extends HttpServlet {
         request.setAttribute("listURL", listURL);
         request.setAttribute("singleProduct", singleProd);
         request.setAttribute("relatedProducts", listRelatedProduct);
+        if (idUser == null) {
+            DB.me().insert(new Log(Log.INFO, null, this.src, "View : " +idProd, 0));
+        } else DB.me().insert(new Log(Log.INFO, idUser, this.src,  "View: "+idProd, 0));
         request.getRequestDispatcher("singleProduct.jsp").forward(request,response);
     }
 
