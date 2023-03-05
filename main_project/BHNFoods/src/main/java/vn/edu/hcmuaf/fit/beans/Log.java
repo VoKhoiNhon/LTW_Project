@@ -15,8 +15,10 @@ public class Log extends AbBean implements Serializable {
     String content;
     Date createAt;
     int status;
+    String browerName;
+    String locationIpClient;
 
-    static Map<Integer, String> levelMapping = new HashMap<Integer,String>();
+    static Map<Integer, String> levelMapping = new HashMap<Integer, String>();
 
     static {
         levelMapping.put(0, "INFO");
@@ -34,22 +36,26 @@ public class Log extends AbBean implements Serializable {
     public Log() {
     }
 
-    public Log(int level, String user, String src, String content, Date createAt, int status) {
+    public Log(int level, String user, String src, String content, Date createAt, int status, String browerName, String locationIpClient) {
         this.level = level;
         this.user = user;
         this.src = src;
         this.content = content;
         this.createAt = createAt;
         this.status = status;
+        this.browerName = browerName;
+        this.locationIpClient = locationIpClient;
     }
 
 
-    public Log(int level, String user, String src, String content, int status) {
+    public Log(int level, String user, String src, String content, int status, String browerName, String locationIpClient) {
         this.level = level;
         this.user = user;
         this.src = src;
         this.content = content;
         this.status = status;
+        this.browerName = browerName;
+        this.locationIpClient = locationIpClient;
     }
 
     public int getId() {
@@ -112,6 +118,22 @@ public class Log extends AbBean implements Serializable {
         this.status = status;
     }
 
+    public String getbrowerName() {
+        return browerName;
+    }
+
+    public void setbrowerName(String browerName) {
+        this.browerName = browerName;
+    }
+
+    public String getLocationIpClient() {
+        return locationIpClient;
+    }
+
+    public void setLocationIpClient(String locationIpClient) {
+        this.locationIpClient = locationIpClient;
+    }
+
     public static void setLevelMapping(Map<Integer, String> levelMapping) {
         Log.levelMapping = levelMapping;
     }
@@ -123,8 +145,8 @@ public class Log extends AbBean implements Serializable {
 
     public boolean insert(Jdbi db) {
         Integer i = db.withHandle(handle ->
-                handle.execute("INSERT INTO Log(`level`,`user`, src, content, createAt, `status`)VALUES (?,?,?,?,NOW(),?)",
-                this.level, this.user, this.src,this.content,this.status)
+                handle.execute("INSERT INTO Log(`level`,`user`, src, content, createAt, `status`, `browserName`, `locationIpClient`)VALUES (?,?,?,?,NOW(),?,?,?)",
+                        this.level, this.user, this.src, this.content, this.status, this.browerName, this.locationIpClient)
         );
         return i == 1;
     }

@@ -5,6 +5,7 @@ import vn.edu.hcmuaf.fit.beans.Log;
 import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.db.DB;
 import vn.edu.hcmuaf.fit.service.*;
+import vn.edu.hcmuaf.fit.util.Brower;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -58,8 +59,8 @@ public class Pay extends HttpServlet {
         }
 
         if (idUser == null) {
-            DB.me().insert(new Log(Log.INFO, null, this.src, "Pay sucsess: " +allId+", total: "+request.getParameter("totalCheckout"), 0));
-        } else DB.me().insert(new Log(Log.INFO, idUser, this.src, "Pay sucsess: "+allId+", total:"+request.getParameter("totalCheckout"), 0));
+            DB.me().insert(new Log(Log.INFO, null, this.src, "Pay sucsess: " +allId+", total: "+request.getParameter("totalCheckout"), 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
+        } else DB.me().insert(new Log(Log.INFO, idUser, this.src, "Pay sucsess: "+allId+", total:"+request.getParameter("totalCheckout"), 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
 
 
     }

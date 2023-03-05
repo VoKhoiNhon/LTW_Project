@@ -5,6 +5,7 @@ import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.db.DB;
 import vn.edu.hcmuaf.fit.service.CartService;
 import vn.edu.hcmuaf.fit.service.LoveProdService;
+import vn.edu.hcmuaf.fit.util.Brower;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -24,13 +25,13 @@ public class AddToLoveProd extends HttpServlet {
         if(condition == 0) {
             LoveProdService.getInstance().deleteFromLike(idUser,idProd);
             if (idUser == null) {
-                DB.me().insert(new Log(Log.INFO, null, this.src, "remove lovePr : " +idProd, 0));
-            } else DB.me().insert(new Log(Log.INFO, idUser, this.src,  "remove lovePr: "+idProd, 0));
+                DB.me().insert(new Log(Log.INFO, null, this.src, "remove lovePr : " +idProd, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
+            } else DB.me().insert(new Log(Log.INFO, idUser, this.src,  "remove lovePr: "+idProd, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
         }else {
             LoveProdService.getInstance().insertToLike(idUser,idProd);
             if (idUser == null) {
-                DB.me().insert(new Log(Log.INFO, null, this.src, "add lovePr : " +idProd, 0));
-            } else DB.me().insert(new Log(Log.INFO, idUser, this.src,  "add lovePr: "+idProd, 0));
+                DB.me().insert(new Log(Log.INFO, null, this.src, "add lovePr : " +idProd, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
+            } else DB.me().insert(new Log(Log.INFO, idUser, this.src,  "add lovePr: "+idProd, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
         }
 
     }
