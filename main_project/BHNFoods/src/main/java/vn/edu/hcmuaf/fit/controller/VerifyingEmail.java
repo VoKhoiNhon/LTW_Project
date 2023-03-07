@@ -4,6 +4,7 @@ import vn.edu.hcmuaf.fit.beans.Log;
 import vn.edu.hcmuaf.fit.db.DB;
 import vn.edu.hcmuaf.fit.service.UserService;
 import vn.edu.hcmuaf.fit.service.VerifyingService;
+import vn.edu.hcmuaf.fit.util.Brower;
 import vn.edu.hcmuaf.fit.util.Encryption;
 
 import javax.servlet.*;
@@ -32,7 +33,7 @@ public class VerifyingEmail extends HttpServlet {
             String idUser = (String) session.getAttribute("idUser");
             String oldPassword = UserService.getInstance().getEncryptPassUser(idUser);
             String newPass = Encryption.toSHA1(request.getParameter("pass"));
-            DB.me().insert(new Log(Log.INFO, idUser, this.src, "CHANGE PASS, OLDPASS:" + oldPassword, 0));
+            DB.me().insert(new Log(Log.INFO, idUser, this.src, "CHANGE PASS, OLDPASS:" + oldPassword, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
             UserService.getInstance().updatePass(idUser, newPass);
             response.sendRedirect("login.jsp");
         }
