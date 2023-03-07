@@ -1,7 +1,10 @@
 package vn.edu.hcmuaf.fit.controller;
 
+import vn.edu.hcmuaf.fit.beans.Log;
 import vn.edu.hcmuaf.fit.beans.User;
+import vn.edu.hcmuaf.fit.db.DB;
 import vn.edu.hcmuaf.fit.service.UserService;
+import vn.edu.hcmuaf.fit.util.Brower;
 import vn.edu.hcmuaf.fit.util.Encryption;
 
 import javax.servlet.*;
@@ -11,6 +14,7 @@ import java.io.IOException;
 
 @WebServlet(name = "SignUp", value = "/SignUp")
 public class SignUp extends HttpServlet {
+    String src = "signup";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -40,8 +44,8 @@ public class SignUp extends HttpServlet {
         }else{
             int newUID=  UserService.getInstance().getListUser().size()+1;
             pass = Encryption.toSHA1(pass);
-           UserService.getInstance().addUser(name, email,phone,pass);
-
+             UserService.getInstance().addUser(name, email,phone,pass);
+            DB.me().insert(new Log(Log.INFO,"user"+UserService.getInstance().getListUser().size(), this.src, "Signup SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
             response.sendRedirect("http://localhost:8080/BHNFoods/index?idUser="+newUID);
         }
 

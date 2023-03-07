@@ -19,7 +19,7 @@ public class DB {
     }
 
     public static void main(String[] args) {
-        Log log = new Log(Log.INFO, null, "Login FALSE", "user ABC", 0);
-        DB.me().insert(log);
+//        Log log = new Log(Log.INFO, null, "Login FALSE", "user ABC", 0);
+//        DB.me().insert(log);
     }
 }
