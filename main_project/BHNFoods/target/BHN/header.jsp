@@ -127,7 +127,7 @@
                     phẩm</a></li>
                 <li class="nav-item active"><a href="http://localhost:8080/BHNFoods/discount.jsp" class="nav-link">Mã giảm giá</a></li>
                 <li class="nav-item cta cta-colored find">
-                    <form action="/BHNFoods/Search"method="post" style="display: flex"><input value="<%=request.getParameter("searchPR")!=null?request.getParameter("searchPR"):""%>" type="text" class="search-input" name="searchPR" id="findicon"
+                    <form action="/BHNFoods/Search"method="post" style="display: flex"><input oninput="searchByName(this)" value="<%=request.getParameter("searchPR")!=null?request.getParameter("searchPR"):""%>" type="text" class="search-input" name="searchPR" id="findicon"
                                                                                               placeholder="Tìm kiếm"> <button type="submit" class="fa-solid fa-magnifying-glass" style="background: none;border: none;"></button></form></li>
                 <li id="totalCart" class="nav-item cta cta-colored amountInCart">
                     <a href="http://localhost:8080/BHNFoods/Cart?idUser=<%=idU%>" class="nav-link">
