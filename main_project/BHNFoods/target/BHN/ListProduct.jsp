@@ -393,6 +393,24 @@
             }
         })
     })
+
+    function searchByName(param) {
+        var txtSearch = param.value;
+        $.ajax({
+            url: "/BHNFoods/searchByAjax",
+            type: "get",
+            data: {
+                txt: txtSearch
+            },
+            success: function (data) {
+                const content = document.getElementById("content");
+                content.innerHTML = data;
+            },
+            error: function (xhr) {
+            }
+        })
+    }
+
 </script>
 <!-- Js Plugins -->
 <script src="body_design/js/jquery-3.3.1.min.js"></script>

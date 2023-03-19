@@ -64,8 +64,6 @@ public class VerifyingService {
                         .bind("key",key)
                         .execute()
         );
-        System.out.println(key);
-        System.out.println(event);
     }
 
     public static void onEvent_scheduler(){
