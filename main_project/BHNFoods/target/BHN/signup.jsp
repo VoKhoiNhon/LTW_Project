@@ -78,7 +78,7 @@
 
                 <div class="form-group">
                   <label for="exampleInputPassword4">Tạo mật khẩu</label>
-                  <input type="password" name="pass" class="form-control" id="exampleInputPassword4" placeholder="Nhập mật khẩu mới">
+                  <input type="password" name="pass" class="form-control" id="pass" placeholder="Nhập mật khẩu mới">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword4">Nhập lại mật khẩu</label>
@@ -88,7 +88,7 @@
                   <input type="password"name="repass" class="form-control" id="exampleInputPassword4" placeholder="Nhập lại mật khẩu">
                 </div>
                 <div class="form-group button_primary">
-                  <button type="submit" style="margin-bottom: 0" class="btn btn-primary  button_primary_height me-2" >Tạo tài khoản</button>
+                  <button type="submit" onclick="validateInput(event)" style="margin-bottom: 0" class="btn btn-primary  button_primary_height me-2" >Tạo tài khoản</button>
                 </div>
                 <div class="form-group forgot_pass" style="padding-bottom:30px;">
                   <a href="index.jsp" style="color:rgb(119, 119, 119) ;">Trang chủ</a>
@@ -102,6 +102,16 @@
   </div>
 
 </div>
+
+<script>
+  function validateInput(event) {
+    const input = document.getElementById('pass').value;
+    if (input.length < 8) {
+      alert('Vui lòng nhập mật khẩu đủ 8 kí tự');
+      event.preventDefault(); // Ngăn không cho form submit
+    }
+  }
+</script>
 
 <script src="admin_template/vendors/js/vendor.bundle.base.js"></script>
 
