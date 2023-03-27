@@ -63,23 +63,6 @@
       <artifactId>geoip2</artifactId>
       <version>2.16.0</version>
     </dependency>
-    <!-- Apache POI -->
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi</artifactId>
-      <version>4.1.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi-ooxml</artifactId>
-      <version>4.1.1</version>
-    </dependency>
-    <!-- iText -->
-    <dependency>
-      <groupId>com.itextpdf</groupId>
-      <artifactId>itextpdf</artifactId>
-      <version>5.5.13</version>
-    </dependency>
   </dependencies>
 
   <build>

@@ -5,10 +5,11 @@ import org.apache.commons.codec.binary.Base64;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.security.MessageDigest;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 
 public class Brower {
@@ -47,12 +48,12 @@ public class Brower {
                     isDnsServer = true;
                     continue;
                 }
-                if (line.trim().startsWith("Primary")||line.trim().startsWith("NetBIOS")) {
+                if (line.trim().startsWith("Primary")) {
                     isDnsServer = false;
                 }
                 if (isDnsServer && !line.trim().isEmpty()) {
                     ip.add(line.trim());
-                    System.out.println(line.trim());
+//                    System.out.println(line.trim());
                 }
             }
         } catch (IOException e) {
@@ -78,10 +79,5 @@ public class Brower {
         System.out.println("IP Address: " + location);
         return "IP Address: " + location;
     }
-
-    public static void main(String[] args) {
-        getIpWlanConect();
-    }
-
 
 }

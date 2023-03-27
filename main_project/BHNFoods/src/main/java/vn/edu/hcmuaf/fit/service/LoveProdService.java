@@ -36,5 +36,4 @@ public class LoveProdService {
         });
         return listLiked.size() > 0;
     }
-
 }
