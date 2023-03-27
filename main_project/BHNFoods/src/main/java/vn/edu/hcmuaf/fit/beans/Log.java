@@ -4,6 +4,7 @@ import org.jdbi.v3.core.Jdbi;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +14,7 @@ public class Log extends AbBean implements Serializable {
     String user;
     String src;
     String content;
-    Date createAt;
+    LocalDateTime createAt;
     int status;
     String browerName;
     String locationIpClient;
@@ -36,7 +37,7 @@ public class Log extends AbBean implements Serializable {
     public Log() {
     }
 
-    public Log(int level, String user, String src, String content, Date createAt, int status, String browerName, String locationIpClient) {
+    public Log(int level, String user, String src, String content, LocalDateTime createAt, int status, String browerName, String locationIpClient) {
         this.level = level;
         this.user = user;
         this.src = src;
@@ -78,7 +79,7 @@ public class Log extends AbBean implements Serializable {
         return content;
     }
 
-    public Date getCreateAt() {
+    public LocalDateTime getCreateAt() {
         return createAt;
     }
 
@@ -110,7 +111,7 @@ public class Log extends AbBean implements Serializable {
         this.content = content;
     }
 
-    public void setCreateAt(Date createAt) {
+    public void setCreateAt(LocalDateTime createAt) {
         this.createAt = createAt;
     }
 
