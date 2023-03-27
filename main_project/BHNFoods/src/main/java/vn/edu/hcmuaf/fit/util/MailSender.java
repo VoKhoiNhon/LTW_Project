@@ -53,7 +53,19 @@ public class MailSender {
     }
 
     public static void main(String[] args) {
-        send("Hé lô Xuân Bông", "<div style=\"padding: 20px; color: red; background: green; display: inline-block;\">Hello</div>", "20130038@st.hcmuaf.edu.vn");
+        String mailMessage = "<!DOCTYPE html>\n" +
+                "<html lang=\"en\">\n" +
+                "<head>\n" +
+                "  <meta charset=\"UTF-8\">\n" +
+                "  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
+                "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                "  <title>Document</title>\n" +
+                "</head>\n" +
+                "<body>\n" +
+                "  <a style=\"text-decoration: none; padding: 10px 20px; color: black; background:rgb(192, 192, 241);\" href='http://localhost:8080/BHNFoods/verifyingEmail?key="+"BaaHlRG7e44Xkv3gLmPc33Rq3Tg=iwqcwdlrux"+"'>Xác thực ngay</a>\n" +
+                "</body>\n" +
+                "</html>";
+        MailSender.send("Xác thực thông tin", mailMessage, "baotaolao981999@gmail.com");
     }
 }
 
