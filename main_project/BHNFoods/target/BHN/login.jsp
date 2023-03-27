@@ -81,25 +81,6 @@
 
 </div>
 
-<<<<<<< Updated upstream
-<script>
-    const userAgent = navigator.userAgent;
-    let browserName;
-    if (userAgent.indexOf("Firefox") > -1) {
-        browserName = "Mozilla Firefox";
-    } else if (userAgent.indexOf("Edg") > -1 || userAgent.indexOf("Edge") > -1) {
-        browserName = "Microsoft Edge";
-    } else if (userAgent.indexOf("OPR") > -1 || userAgent.indexOf("Opera") > -1) {
-        browserName = "Opera";
-    } else if (userAgent.indexOf("Chrome") > -1 && userAgent.indexOf("Edg") === -1) {
-        browserName = "Google Chrome";
-    } else if (userAgent.indexOf("Safari") > -1 && userAgent.indexOf("Chrome") === -1) {
-        browserName = "Apple Safari";
-    } else {
-        browserName = "unknown";
-    }
-=======
->>>>>>> Stashed changes
 
 
 <%--    console.log(`Browser name: ${browserName}`);--%>

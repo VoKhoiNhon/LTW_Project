@@ -389,9 +389,6 @@ public class ProductService {
         });
     }
 
-//    public static void main(String[] args) {
-//        addCT_Prod(102,"2024-05-25", "2024-05-25", "VN","dkajshkjdhsak",201.2,"Dalat",124);
-//    }
     // thêm sp của bản ct_pr
     public static void addCT_Prod( int index,String nsx,String hsd, String brand, String mota, double weight, String origin, int inventory ){
         JDBIConnector.get().withHandle(handle -> {
@@ -424,6 +421,7 @@ public int getNowYer(){
         });
         return l.get(0).getTurnover();
     }
+
     public  int getStopPr() {
         List<Turnover> l= JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("select sum(c.CONDITION_PR) as turnover   from ct_pr c where c.CONDITION_PR=1 ").mapToBean(Turnover.class).collect(Collectors.toList());
@@ -497,10 +495,7 @@ public int getNowYer(){
 
 
 
-    public static void main(String[] args) {
 
-        ProductService.getInstance().addImg(105,"eee","aaaaaaaafffffff",0);
-    }
 
 
     public void updateInventoryCT_PR(String idProd, int sl) {
@@ -541,7 +536,10 @@ public int getNowYer(){
         });
 
     }
+    public static void main(String[] args) {
 
+        System.out.println( ProductService.getInstance().getListDiscountProd());
+    }
 }
 
 
