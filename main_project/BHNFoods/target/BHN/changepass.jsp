@@ -34,6 +34,7 @@
     String errorName=(String)  request.getAttribute("errorName");
     String errorCode = (String) request.getAttribute("errorName");
     String mess = (String) request.getAttribute("mess");
+    String mailSent = (String) request.getAttribute("mailSent");
 
   %>
   <!-- partial -->
@@ -51,35 +52,35 @@
               <p class="card-description login">
                 Thay đổi mật khẩu
               </p>
-              <form class="forms-sample" action="/BHNFoods/ForgotPass" method="post">
+              <form id="changePassForm" class="forms-sample" action="/BHNFoods/ForgotPass" method="post">
                 <div class="form-group">
-                  <label for="exampleInputName1">Email hoặc Số điện thoại</label>
+                  <label for="userName">Email hoặc Số điện thoại</label>
                   <% if( errorName!=null){ %>
-                  <label for="exampleInputName1" style="color: #CC3636"><%=errorName%></label>     <%}%>
-                  <input type="text" name="checkUserName" class="form-control" id="exampleInputName1"
+                  <label for="userName" style="color: #CC3636"><%=errorName%></label>     <%}%>
+                  <input type="text" name="checkUserName" class="form-control" id="userName"
                          placeholder="Nhập Email hoặc số điện thoại" value="<%=request.getParameter("checkUserName")!=null?request.getParameter("checkUserName"):""%>">
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputName1">Mã xác nhận</label>
-                  <% if( errorCode!=null){ %>
-                  <label for="exampleInputName1" style="color: #CC3636"><%=errorCode%></label>     <%}%>
-                  <input type="text" class="form-control" id="exampleInputName1" name="code"
-                         placeholder="Nhập mã xác nhận">
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword4">Tạo mật khẩu</label>
-                  <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Nhập mật khẩu mới" name="pass">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword4">Nhập lại mật khẩu</label> <% if( errorDup!=null){ %>
-                  <label for="exampleInputName1" style="color: #CC3636"><%=errorDup%></label>
-                  <%}%>
-                  <input type="password" class="form-control" id="exampleInputPassword5" placeholder="Nhập lại mật khẩu" name="repass">
-                </div>
+<%--                <div class="form-group">--%>
+<%--                  <label for="exampleInputName1">Mã xác nhận</label>--%>
+<%--                  <% if( errorCode!=null){ %>--%>
+<%--                  <label for="exampleInputName1" style="color: #CC3636"><%=errorCode%></label>     <%}%>--%>
+<%--                  <input type="text" class="form-control" id="exampleInputName1" name="code"--%>
+<%--                         placeholder="Nhập mã xác nhận">--%>
+<%--                </div>--%>
+<%----%>
+<%--                <div class="form-group">--%>
+<%--                  <label for="exampleInputPassword4">Tạo mật khẩu</label>--%>
+<%--                  <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Nhập mật khẩu mới" name="pass">--%>
+<%--                </div>--%>
+<%--                <div class="form-group">--%>
+<%--                  <label for="exampleInputPassword4">Nhập lại mật khẩu</label> <% if( errorDup!=null){ %>--%>
+<%--                  <label for="exampleInputName1" style="color: #CC3636"><%=errorDup%></label>--%>
+<%--                  <%}%>--%>
+<%--                  <input type="password" class="form-control" id="exampleInputPassword5" placeholder="Nhập lại mật khẩu" name="repass">--%>
+<%--                </div>--%>
                 <div class="form-group button_primary">
-                  <button type="" onclick="mess(<%=mess%>)" class="btn btn-primary button_primary_height me-2" style="width: 60%;">Gửi mã xác nhận</button> </br>
-                  <button type="submit" class="btn btn-primary  button_primary_height me-2" style="width: 60%;">Cập nhật lại tài khoản</button>
+                  <button type="submit" class="btn btn-primary button_primary_height me-2" style="width: 60%;">Gửi xác nhận đến email</button>
+<%--                  <button type="submit" class="btn btn-primary  button_primary_height me-2" style="width: 60%;">Cập nhật lại tài khoản</button>--%>
                 </div>
                 <div class="form-group forgot_pass" style="padding-bottom:30px;">
                   <a href="index.jsp" style="color:rgb(108, 108, 108) ;">Trang chủ</a>
@@ -96,10 +97,17 @@
 
 </div>
 <script>
-  function mess(mess){
-    <%System.out.println(mess);%>
-    alert(mess);
-  }
+
+  <%if(mailSent != null) {%>
+  alert('<%=mailSent%>')
+  <%}%>
+  document.getElementById('changePassForm').addEventListener('submit', function(event) {
+    var userName = document.getElementById('userName')
+    if (userName.value.length == 0) {
+      event.preventDefault();
+      alert('Vui lòng nhập đầy đủ thông tin.');
+    }
+  });
 
 </script>
 <script src="admin_template/vendors/js/vendor.bundle.base.js"></script>

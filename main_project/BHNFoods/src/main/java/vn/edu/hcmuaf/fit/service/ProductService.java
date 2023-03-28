@@ -266,6 +266,16 @@ public class ProductService {
         return list;
     }
 
+    public static List<Product> getListProductByName(String name) {
+        String sql = "SELECT p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from product p join image i on p.ID_PR = i.ID_PR WHERE p.NAME_PR like CONCAT('%', :name, '%')";
+        return JDBIConnector.get().withHandle(handle ->
+                        handle.createQuery(sql)
+                        .bind("name", name)
+                                .mapToBean(Product.class).list()
+
+        );
+    }
+
     public static List<SingleProduct> getListSingleProductByKind(int kind) {
 
         switch (kind) {

@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.util;
 
 import java.security.MessageDigest;
+import java.util.SplittableRandom;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -18,6 +19,14 @@ public class Encryption {
             e.printStackTrace();
         }
         return result;
+    }
+    public static String randomSalt() {
+        SplittableRandom splittableRandom = new SplittableRandom();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 10; i++) {
+            sb.append((char)splittableRandom.nextInt(97,123));
+        }
+        return sb.toString();
     }
 
     public static void main(String[] args) {

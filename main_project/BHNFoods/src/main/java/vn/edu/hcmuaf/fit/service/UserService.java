@@ -150,4 +150,36 @@ public class UserService {
             return handle.createUpdate("UPDATE `user` u set u.NAME_USER='"+name+"', u.SEX= "+sex+",u.BIRTHDAY='"+birthday+"', u.EMAIL='"+email+"', u.PHONE= '"+phone+"', u.PASSW='"+passw+"', u.ADDRESS='"+address+"' WHERE ID_USER='"+iduser+"'").execute();
         });
     }
+
+    public String getEncryptPassUser(String idUser) {
+        String sql = "SELECT PASSW FROM `user` WHERE ID_USER = :idUser";
+        return JDBIConnector.get().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("idUser", idUser)
+                        .mapTo(String.class)
+                        .findOne()
+                        .orElse(null)
+        );
+    }
+
+    public void updatePass(String idUser, String newPass) {
+        String sql = "UPDATE `user` SET PASSW = :newPass WHERE ID_USER = :idUser";
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("newPass", newPass)
+                        .bind("idUser", idUser)
+                        .execute()
+        );
+    }
+    public User getUserByPhoneOrEmail(String str) {
+        String sql = "SELECT ID_USER,ADDRESS,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,SEX,Decentralization FROM user where PHONE = :str OR EMAIL = :str";
+        return JDBIConnector.get().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("str", str)
+                        .mapToBean(User.class)
+                        .findOne()
+                        .orElse(null)
+
+        );
+    }
 }
