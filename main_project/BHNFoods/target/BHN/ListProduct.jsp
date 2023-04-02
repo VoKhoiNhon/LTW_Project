@@ -393,7 +393,6 @@
             }
         })
     })
-
     function searchByName(param) {
         var txtSearch = param.value;
         $.ajax({
