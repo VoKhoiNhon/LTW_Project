@@ -11,6 +11,7 @@ import java.net.URLConnection;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
+import java.net.*;
 
 public class Brower {
     public static String getBrowerName(String userAgent) {
@@ -34,31 +35,17 @@ public class Brower {
     }
 
     public static String getIpWlanConect() {
-        List<String> ip = new ArrayList<>();
+        String ip = null;
         try {
-            ProcessBuilder processBuilder = new ProcessBuilder("ipconfig", "/all");
-            Process process = processBuilder.start();
-            BufferedReader inputStream = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            URL url = new URL("https://checkip.amazonaws.com/");
+            BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+            ip = br.readLine();
+//            System.out.println("Public IP Address: " + ip);
 
-            String line;
-            boolean isDnsServer = false;
-
-            while ((line = inputStream.readLine()) != null) {
-                if (line.trim().startsWith("DNS Servers")) {
-                    isDnsServer = true;
-                    continue;
-                }
-                if (line.trim().startsWith("Primary")) {
-                    isDnsServer = false;
-                }
-                if (isDnsServer && !line.trim().isEmpty()) {
-                    ip.add(line.trim());
-//                    System.out.println(line.trim());
-                }
-            }
-        } catch (IOException e) {
+        } catch (Exception e) {
+//            System.err.println("Error: " + e.getMessage());
         }
-        return ip.get(ip.size() - 1);
+        return ip;
     }
 
     public static String getLocationIp(String ipAddress) throws IOException {
@@ -66,7 +53,7 @@ public class Brower {
             // Nếu địa chỉ IP là IPv6 của localhost, sử dụng IPv4 thay thế
             ipAddress = Brower.getIpWlanConect();
         }
-        String url = "https://api.ipgeolocation.io/ipgeo?apiKey=cc95064209594bce8860960b663edd44&ip=203.113.131.2";
+        String url = "https://api.ipgeolocation.io/ipgeo?apiKey=cc95064209594bce8860960b663edd44&ip=" + ipAddress;
         URLConnection connection = new URL(url).openConnection();
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         String inputLine;
@@ -76,7 +63,7 @@ public class Brower {
         }
         in.close();
         String location = responses.toString();
-        System.out.println("IP Address: " + location);
+//        System.out.println("IP Address: " + location);
         return "IP Address: " + location;
     }
 

@@ -26,7 +26,7 @@
 </head>
 
 <body>
-<% String error= (String) request.getAttribute("error");
+<% String error = (String) request.getAttribute("error");
 %>
 <div class="container-scroller background">
 
@@ -47,28 +47,43 @@
                                 Đăng nhập
                             </p>
                             <form class="forms-sample" action="/BHNFoods/Login" method="post">
-                                <% if( error!=null){ %>
+                                <% if (error != null) { %>
                                 <div class="form-group">
-                                    <label for="exampleInputName1" style="color: #CC3636"><%=error%></label>
+                                    <label for="exampleInputName1" style="color: #CC3636"><%=error%>
+                                    </label>
                                 </div>
                                 <%}%>
                                 <div class="form-group">
                                     <label for="exampleInputName1">Email hoặc Số điện thoại</label>
                                     <input type="text" class="form-control" name="username" id="exampleInputName1"
-                                           placeholder="Nhập Email hoặc số điện thoại" required value="<%=request.getParameter("username")!=null?request.getParameter("username"):""%>">
+                                           placeholder="Nhập Email hoặc số điện thoại" required
+                                           value="<%=request.getParameter("username")!=null?request.getParameter("username"):""%>">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputPassword4">Mật khẩu</label>
-                                    <input type="password" name="password" class="form-control" id="exampleInputPassword4" placeholder="Nhập mật khẩu">
+                                    <input type="password" name="password" class="form-control"
+                                           id="exampleInputPassword4" placeholder="Nhập mật khẩu">
                                 </div>
-                                <a href="https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&scope=email%20profile&state=security_token">Đăng nhập với Google</a>
+                                <div class="">
+                                    <a href="https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&scope=email%20profile&state=security_token">Đăng
+                                        nhập với Google</a>
+                                    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                                    </fb:login-button>
+                                    <a>Đăng nhập với Facebook </a>
+                                </div>
                                 <div class="form-group forgot_pass" style="padding-bottom:30px;">
                                     <a href="changepass.jsp">Quên mật khẩu?</a>
                                 </div>
                                 <div class="form-group  button_primary">
-                                    <button type="submit" class="btn btn-primary  button_primary_height me-2">Đăng nhập</button> </br>
-                                    <button style="padding: 0" type="submit" class="btn btn-primary  button_primary_height me-2"><a href="signup.jsp" style="color: #ffffff; width: 100%; height: 100%; padding: 14px 24px;">Đăng ký</a></button>
+                                    <button type="submit" class="btn btn-primary  button_primary_height me-2">Đăng
+                                        nhập
+                                    </button>
+                                    </br>
+                                    <button style="padding: 0" type="submit"
+                                            class="btn btn-primary  button_primary_height me-2"><a href="signup.jsp"
+                                                                                                   style="color: #ffffff; width: 100%; height: 100%; padding: 14px 24px;">Đăng
+                                        ký</a></button>
                                 </div>
                             </form>
                         </div>
@@ -82,10 +97,54 @@
 </div>
 
 
-
 <%--    console.log(`Browser name: ${browserName}`);--%>
 
+
+<script>
+    function statusChangeCallback(response){
+        console.log('statusChangeCallback');
+        console.log(response);
+
+        if(response.status==='connected'){
+            testAPI();
+        }else {
+            document.getElementById('status').innerHTML='please log'+ 'into this app';
+        }
+
+    }
+    function checkLoginState() {
+        FB.getLoginStatus(function (response) {
+            statusChangeCallback(response);
+        });
+    }
+    FB.api('/me', {fields:'name,email'}, function (response){
+        console.log(response);
+
+    })
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '223969136958408',
+            cookie: true,
+            xfbml: true,
+            version: 'v2.9'
+        });
+
+        FB.AppEvents.logPageView();
+
+    };
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 </script>
+
+
 <script src="admin_template/vendors/js/vendor.bundle.base.js"></script>
 
 <script src="admin_template/vendors/typeahead.js/typeahead.bundle.min.js"></script>

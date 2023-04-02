@@ -4,6 +4,7 @@ import org.jdbi.v3.core.Jdbi;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,9 +14,9 @@ public class Log extends AbBean implements Serializable {
     String user;
     String src;
     String content;
-    Date createAt;
+    LocalDateTime createAt;
     int status;
-    String browerName;
+    String browserName;
     String locationIpClient;
 
     static Map<Integer, String> levelMapping = new HashMap<Integer, String>();
@@ -36,25 +37,25 @@ public class Log extends AbBean implements Serializable {
     public Log() {
     }
 
-    public Log(int level, String user, String src, String content, Date createAt, int status, String browerName, String locationIpClient) {
+    public Log(int level, String user, String src, String content, LocalDateTime createAt, int status, String browserName, String locationIpClient) {
         this.level = level;
         this.user = user;
         this.src = src;
         this.content = content;
         this.createAt = createAt;
         this.status = status;
-        this.browerName = browerName;
+        this.browserName = browserName;
         this.locationIpClient = locationIpClient;
     }
 
 
-    public Log(int level, String user, String src, String content, int status, String browerName, String locationIpClient) {
+    public Log(int level, String user, String src, String content, int status, String browserName, String locationIpClient) {
         this.level = level;
         this.user = user;
         this.src = src;
         this.content = content;
         this.status = status;
-        this.browerName = browerName;
+        this.browserName = browserName;
         this.locationIpClient = locationIpClient;
     }
 
@@ -78,7 +79,7 @@ public class Log extends AbBean implements Serializable {
         return content;
     }
 
-    public Date getCreateAt() {
+    public LocalDateTime getCreateAt() {
         return createAt;
     }
 
@@ -110,7 +111,7 @@ public class Log extends AbBean implements Serializable {
         this.content = content;
     }
 
-    public void setCreateAt(Date createAt) {
+    public void setCreateAt(LocalDateTime createAt) {
         this.createAt = createAt;
     }
 
@@ -118,12 +119,13 @@ public class Log extends AbBean implements Serializable {
         this.status = status;
     }
 
-    public String getbrowerName() {
-        return browerName;
+    public String getbrowserName() {
+        return browserName;
     }
 
-    public void setbrowerName(String browerName) {
-        this.browerName = browerName;
+
+    public void setbrowserName(String browserName) {
+        this.browserName = browserName;
     }
 
     public String getLocationIpClient() {
@@ -146,7 +148,7 @@ public class Log extends AbBean implements Serializable {
     public boolean insert(Jdbi db) {
         Integer i = db.withHandle(handle ->
                 handle.execute("INSERT INTO Log(`level`,`user`, src, content, createAt, `status`, `browserName`, `locationIpClient`)VALUES (?,?,?,?,NOW(),?,?,?)",
-                        this.level, this.user, this.src, this.content, this.status, this.browerName, this.locationIpClient)
+                        this.level, this.user, this.src, this.content, this.status, this.browserName, this.locationIpClient)
         );
         return i == 1;
     }
