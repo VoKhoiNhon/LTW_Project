@@ -37,13 +37,13 @@ public class Brower {
     public static String getIpWlanConect() {
         String ip = null;
         try {
-            URL url = new URL("http://checkip.amazonaws.com/");
+            URL url = new URL("https://checkip.amazonaws.com/");
             BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
             ip = br.readLine();
-            System.out.println("Public IP Address: " + ip);
+//            System.out.println("Public IP Address: " + ip);
 
         } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
+//            System.err.println("Error: " + e.getMessage());
         }
         return ip;
     }
@@ -63,7 +63,7 @@ public class Brower {
         }
         in.close();
         String location = responses.toString();
-        System.out.println("IP Address: " + location);
+//        System.out.println("IP Address: " + location);
         return "IP Address: " + location;
     }
 
