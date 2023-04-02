@@ -64,7 +64,7 @@ public class ExportLog {
                 cell = row.createCell(5);
                 cell.setCellValue(l.getStatus());
                 cell = row.createCell(6);
-                cell.setCellValue(l.getbrowerName());
+                cell.setCellValue(l.getbrowserName());
                 cell = row.createCell(7);
                 cell.setCellValue(l.getLocationIpClient());
 
@@ -107,7 +107,7 @@ public class ExportLog {
                 table.addCell(l.getSrc());
                 table.addCell(l.getContent());
                 table.addCell(Integer.toString(l.getStatus()));
-                table.addCell(l.getbrowerName());
+                table.addCell(l.getbrowserName());
 //                table.addCell(l.getLocationIpClient());
             }
             document.add(table);
@@ -118,9 +118,9 @@ public class ExportLog {
         }
     }
 
-//    public static void main(String[] args) {
-////        getFileExcel();
-//        getFilePDF();
-//        System.out.println(123);
-//    }
+    public static void main(String[] args) {
+//        getFileExcel();
+        getFilePDF();
+        System.out.println(123);
+    }
 }
