@@ -22,10 +22,13 @@ public class AdminMain extends HttpServlet {
         List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i);
         request.setAttribute("listPrDate", list);
         int newbie = UserService.getInstance().getNewbie();
+        String data0 = "" + ProductService.getInstance().getTurnover(1, 2021);
         String data = "" + ProductService.getInstance().getTurnover(1, 2022);
-        String data1 = "" + ProductService.getInstance().getTurnover(1, 2021);
+        String data1 = "" + ProductService.getInstance().getTurnover(1, 2023);
+        int tur0 = ProductService.getInstance().getTurnover(1, 2021);
         int tur = ProductService.getInstance().getTurnover(1, 2022);
-        int tur1 = ProductService.getInstance().getTurnover(1, 2021);
+        int tur1 = ProductService.getInstance().getTurnover(1, 2023);
+        int alltur = ProductService.getInstance().getAllTurnover();
         int saledPR = ProductService.getInstance().getSalerPR();
         int stopSaledPR = ProductService.getInstance().getStopPr();
         List<SingleProduct> pr = ProductService.getInstance().getListProductHostSale();
@@ -33,10 +36,12 @@ public class AdminMain extends HttpServlet {
         request.setAttribute("listContact", listContact);
 
         for (int i = 2; i <= 12; i++) {
+            tur0 += ProductService.getInstance().getTurnover(i, 2021);
             tur += ProductService.getInstance().getTurnover(i, 2022);
-            tur1 += ProductService.getInstance().getTurnover(i, 2021);
+            tur1 += ProductService.getInstance().getTurnover(i, 2023);
+            data0 += ("," + ProductService.getInstance().getTurnover(i, 2021));
             data += ("," + ProductService.getInstance().getTurnover(i, 2022));
-            data1 += ("," + ProductService.getInstance().getTurnover(i, 2021));
+            data1 += ("," + ProductService.getInstance().getTurnover(i, 2023));
         }
         int nowTur = ProductService.getInstance().getTurnover(ProductService.getInstance().getNowMonth(), ProductService.getInstance().getNowYer());
 //        double percentY= ((tur/tur1)-1)*100;
@@ -46,6 +51,9 @@ public class AdminMain extends HttpServlet {
         request.setAttribute("newbie", newbie);
         request.setAttribute("nowTur", nowTur);
         request.setAttribute("tur", tur);
+        request.setAttribute("tur1", tur1);
+        request.setAttribute("alltur", alltur);
+        request.setAttribute("data0", data0);
         request.setAttribute("data", data);
         request.setAttribute("data1", data1);
         request.setAttribute("hotSale", pr);
