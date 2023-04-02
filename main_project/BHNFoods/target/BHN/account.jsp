@@ -117,7 +117,7 @@
                                 <div class="form-group">
                                     <label>Tạo mật khẩu mới</label>
                                     <input type="password" class="form-control" name="passw"
-                                           placeholder="Nhập mật khẩu mới" value="<%=u.getPassw()%>">
+                                           placeholder="Nhập mật khẩu mới" value="">
                                 </div>
                             </div>
 
@@ -142,7 +142,7 @@
                             </div>
                         </div>
                         <div class="col-md-12 d-flex" style="justify-content: end;">
-                            <input type="submit" class="btn btn-primary" value="Cập nhật"
+                            <input type="submit"  onclick="validateInput(event)" class="btn btn-primary" value="Cập nhật"
                                    style="border-radius:5px; background: #7fad39; border: none;">
                         </div>
                     </div>
@@ -159,6 +159,15 @@
 <!-- Js Plugins -->
 
 <%@include file="footer.jsp" %>
+<script>
+    function validateInput(event) {
+        const input = document.getElementById('pass').value;
+        if (input.length < 8) {
+            alert('Vui lòng nhập mật khẩu đủ 8 kí tự');
+            event.preventDefault(); // Ngăn không cho form submit
+        }
+    }
+</script>
 </body>
 
 </html>
