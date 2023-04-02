@@ -15,7 +15,7 @@ public class ListCtAccount extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-        System.out.println(user.getSex());
+//        System.out.println(user.getSex());
         List<User> listCtAccount = UserService.getInstance().listCTAccount(user.getIdUser());
         request.setAttribute("listCtAccount", listCtAccount);
         request.getRequestDispatcher("account.jsp").forward(request, response);

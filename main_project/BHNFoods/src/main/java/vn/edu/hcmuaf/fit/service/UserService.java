@@ -147,7 +147,7 @@ public class UserService {
 
     public  static  void updateCtAccount(String iduser, String name, int sex,  String birthday, String email, String phone, String passw, String address, String repassw ){
         JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("UPDATE `user` u set u.NAME_USER='"+name+"', u.SEX= "+sex+",u.BIRTHDAY='"+birthday+"', u.EMAIL='"+email+"', u.PHONE= '"+phone+"', u.PASSW='"+passw+"', u.ADDRESS='"+address+"' WHERE ID_USER='"+iduser+"'").execute();
+            return handle.createUpdate("UPDATE  `user` u set u.NAME_USER='"+name+"',u.SEX="+sex+", u.BIRTHDAY='"+birthday+"', u.PHONE='"+phone+"',u.EMAIL='"+email+"', u.PASSW='"+passw+"', u.ADDRESS='"+address+"' WHERE u.ID_USER='"+iduser+"';").execute();
         });
     }
 
