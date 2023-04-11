@@ -19,7 +19,7 @@ public class ContactInUser extends HttpServlet {
         String iduser = request.getParameter("iduser");
         String content = request.getParameter("content");
         UserService.getInstance().contact(iduser, content);
-        response.sendRedirect("http://localhost:8080/BHNFoods/index?idUser=" + iduser);
+        response.sendRedirect("http://localhost:8080/BHNFoods/index");
     }
 
 

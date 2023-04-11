@@ -42,7 +42,7 @@
 <%@include file="header.jsp"%>
 
 <%
-  List<Discount> listDiscounts = DiscountService.getInstance().getAllDiscount();
+  List<Discount> listDiscounts = (List<Discount>) request.getAttribute("listDiscount");
   DecimalFormat dec = new DecimalFormat("#,###");
 %>
 

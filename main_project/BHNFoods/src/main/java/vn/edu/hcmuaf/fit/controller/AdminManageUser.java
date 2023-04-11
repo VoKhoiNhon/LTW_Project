@@ -13,9 +13,14 @@ import java.util.List;
 public class AdminManageUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<User> list = UserService.getInstance().getListUser();
-        request.setAttribute("listUser", list);
-        request.getRequestDispatcher("manage_user.jsp").forward(request,response);
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
+        if(user.getDecentralization() != -1) response.sendRedirect("index.jsp");
+        else {
+            List<User> list = UserService.getInstance().getListUser();
+            request.setAttribute("listUser", list);
+            request.getRequestDispatcher("manage_user.jsp").forward(request,response);
+        }
     }
 
     @Override

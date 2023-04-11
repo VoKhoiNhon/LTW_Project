@@ -20,7 +20,6 @@ public class ContactInAdmin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idUser= request.getParameter("idUser");
-        System.out.println(idUser);
         ProductService.getInstance().viewContact(idUser);
         request.getRequestDispatcher("adminMain.jsp").forward(request, response);
         response.sendRedirect("mainAdmin.jsp");

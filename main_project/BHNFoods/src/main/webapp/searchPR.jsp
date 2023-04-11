@@ -107,7 +107,7 @@
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <a href="http://localhost:8080/BHNFoods/oneProduct?id=<%=p.getIdPr()%>&idUser=<%=request.getParameter("idUser")%>"><%=p.getNamePr()%>
+                        <a href="/BHNFoods/oneProduct?id=<%=p.getIdPr()%>"><%=p.getNamePr()%>
                             <br> <span><%=decF.format(price).replace(',', '.')%>đ</span></a>
                     </div>
                 </div>
