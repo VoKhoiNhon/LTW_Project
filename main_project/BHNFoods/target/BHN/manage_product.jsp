@@ -272,38 +272,38 @@
                       <p class="mb-0 font-weight-medium float-left">Lọc</p>
                     </a> -->
                     <div class="dropdown-divider"></div>
-                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1 "
+                    <a href="/BHNFoods/AdminManagePr?kind=0&page=1 "
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Tất cả </p>
                         </div>
                     </a>
-                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=1&page=1"
+                    <a href="/BHNFoods/AdminManagePr?kind=1&page=1"
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Gạo</p>
                         </div>
                     </a>
-                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=2&page=1 "
+                    <a href="/BHNFoods/AdminManagePr?kind=2&page=1 "
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Nếp </p>
                         </div>
                     </a>
-                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=3&page=1"
+                    <a href="/BHNFoods/AdminManagePr?kind=3&page=1"
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại hạt </p>
                         </div>
                     </a>
-                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=4&page=1"
+                    <a href="/BHNFoods/AdminManagePr?kind=4&page=1"
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại bột </p>
 
                         </div>
                     </a>
-                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=5&page=1 "
+                    <a href="/BHNFoods/AdminManagePr?kind=5&page=1 "
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại củ, trái </p>
@@ -404,31 +404,31 @@
 <div class="container-fluid page-body-wrapper">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="nav-item">
-            <a href="http://localhost:8080/BHNFoods/AdminMain" class="nav-item-link">
+            <a href="/BHNFoods/AdminMain" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-home"></i>
                 <span>Trang chủ</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="http://localhost:8080/BHNFoods/AdminManageUser" class="nav-item-link">
+            <a href="/BHNFoods/AdminManageUser" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-account-circle"></i>
                 <span>Quản lý người dùng</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
+            <a href="/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Quản lý sản phẩm</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="http://localhost:8080/BHNFoods/ListOrdersAdmin" class="nav-item-link">
+            <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
                 <i style="margin-right: 5px;"  class="fa-solid fa-arrow-down-wide-short"></i>
                 <span>Quản lý đơn hàng</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="http://localhost:8080/BHNFoods/Login" class="nav-item-link">
+            <a href="/BHNFoods/Login" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span>Đăng xuất</span>
             </a>
@@ -566,7 +566,7 @@
                                     <%if (Integer.parseInt(request.getAttribute("page").toString()) >= 2) {%>
                                     <button type="button" class="btn btn-secondary ">
                                         <a style="text-decoration: none;color: #b2b2b2;"
-                                           href="http://localhost:8080/BHNFoods/AdminManagePr?kind=<%=request.getAttribute("kind")%>&page=<%=Integer.parseInt(request.getAttribute("page").toString()) - 1%>"><i
+                                           href="/BHNFoods/AdminManagePr?kind=<%=request.getAttribute("kind")%>&page=<%=Integer.parseInt(request.getAttribute("page").toString()) - 1%>"><i
                                                 class="fa fa-long-arrow-left"></i></a></button>
                                     <%}%>
                                     <%
@@ -575,14 +575,14 @@
                                     %>
                                     <button type="button" class="btn btn-secondary "><a
                                             style="text-decoration: none;color: #b2b2b2; "
-                                            href="http://localhost:8080/BHNFoods/AdminManagePr?kind=<%=request.getAttribute("kind")%>&page=<%= i+ 1%>"><%=i + 1%>
+                                            href="/BHNFoods/AdminManagePr?kind=<%=request.getAttribute("kind")%>&page=<%= i+ 1%>"><%=i + 1%>
                                     </a></button>
 
                                     <%}%>
                                     <%if (Integer.parseInt(request.getAttribute("page").toString()) <= count - 1) {%>
                                     <button type="button" class="btn btn-secondary "><a
                                             style="text-decoration: none;color: #b2b2b2;"
-                                            href="http://localhost:8080/BHNFoods/AdminManagePr?kind=<%=request.getAttribute("kind")%>&page=<%=Integer.parseInt(request.getAttribute("page").toString()) + 1%>"><i
+                                            href="/BHNFoods/AdminManagePr?kind=<%=request.getAttribute("kind")%>&page=<%=Integer.parseInt(request.getAttribute("page").toString()) + 1%>"><i
                                             class="fa fa-long-arrow-right"></i></a></button>
                                     <%}%>
                                 </div>

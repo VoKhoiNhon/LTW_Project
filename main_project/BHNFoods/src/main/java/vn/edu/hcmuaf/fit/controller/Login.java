@@ -53,7 +53,7 @@ public class Login extends HttpServlet {
             request.setAttribute("idUser", user.getIdUser());
 
             DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
-            response.sendRedirect("http://localhost:8080/BHNFoods/index?idUser=" + user.getIdUser());
+            response.sendRedirect("http://localhost:8080/BHNFoods/index");
         } else {
             request.setAttribute("error", "Sai tài khoản hoặc mật khẩu");
             DB.me().insert(new Log(Log.WARNING, null, this.src, "LOGIN FALSE: " + username, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));

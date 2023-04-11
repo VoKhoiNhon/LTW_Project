@@ -14,13 +14,9 @@ import java.util.List;
 public class LoadMoreComment extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println(request.getParameter("step"));
         int page = Integer.parseInt(request.getParameter("step"));
         String id = (String) request.getParameter("id");
-        System.out.println(page);
-        System.out.println(id);
         List<Feedback> feedbackList = ProductService.getInstance().getFeedBackInPage(id, page);
-        System.out.println(feedbackList.size());
         PrintWriter out = response.getWriter();
         for (Feedback f: feedbackList ) {
             String score ="";

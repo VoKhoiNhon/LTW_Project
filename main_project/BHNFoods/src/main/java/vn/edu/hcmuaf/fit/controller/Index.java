@@ -23,7 +23,6 @@ public class Index extends HttpServlet {
         List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
         int sum = ProductService.getInstance().sumAmount(listCart);
         session.setAttribute("sumCart",sum);
-        System.out.println(sum);
         request.setAttribute("listCart", listCart);
         request.getRequestDispatcher("index.jsp").forward(request,response);
     }

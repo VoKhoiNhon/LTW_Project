@@ -200,7 +200,7 @@
                     </div>
                     <div class="product__item__text">
                         <h6>
-                            <a href="http://localhost:8080/BHNFoods/oneProduct?id=<%=relatedProducts.get(i).getIdPr()%>&idUser=<%=request.getAttribute("idUser")%>"><%=relatedProducts.get(i).getNamePr()%>
+                            <a href="/BHNFoods/oneProduct?id=<%=relatedProducts.get(i).getIdPr()%>"><%=relatedProducts.get(i).getNamePr()%>
                             </a></h6>
                         <h5><%=dec.format(relatedProducts.get(i).getPrice())%>đ</h5>
                     </div>
@@ -224,6 +224,25 @@
     var idUser = urlParams.get('idUser');
     var maxCountPage = $('button.btn-loadMore').length;
     $("#btn" + current).addClass('background-button');
+
+    var proQty = $('.pro-qty');
+    proQty.prepend('<span onclick="" class="dec qtybtn">-</span>');
+    proQty.append('<span class="inc qtybtn">+</span>');
+    proQty.on('click', '.qtybtn', function () {
+        var $button = $(this);
+        var oldValue = $button.parent().find('input').val();
+        if ($button.hasClass('inc')) {
+            var newVal = parseFloat(oldValue) + 1;
+        } else {
+            // Don't allow decrementing below one
+            if (oldValue > 1) {
+                var newVal = parseFloat(oldValue) - 1;
+            } else {
+                newVal = 1;
+            }
+        }
+        $button.parent().find('input').val(newVal);
+    });
 
     function loadMoreComment(index) {
         $("#btn" + current).removeClass('background-button');

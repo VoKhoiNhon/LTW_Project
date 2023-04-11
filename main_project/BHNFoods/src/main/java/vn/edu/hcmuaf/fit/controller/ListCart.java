@@ -14,10 +14,13 @@ import java.util.List;
 public class ListCart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idUser = request.getParameter("idUser");
+        HttpSession session = request.getSession();
+        String idUser = (String) session.getAttribute("idUser");
         List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
+        System.out.println(listCart);
         request.setAttribute("listCart",listCart);
         int sum= ProductService.getInstance().sumCart(listCart);
+        System.out.println(sum);
         request.setAttribute("sum",sum);
         request.getRequestDispatcher("cart.jsp").forward(request,response);
 

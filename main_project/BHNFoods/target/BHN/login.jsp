@@ -96,10 +96,6 @@
 
 </div>
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
 <%--    console.log(`Browser name: ${browserName}`);--%>
 

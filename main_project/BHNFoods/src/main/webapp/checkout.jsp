@@ -206,7 +206,7 @@
 
 
     function Redirect() {
-        window.location.assign('http://localhost:8080/BHNFoods/ListProduct?kind=0&page=1&idUser=user1');
+        window.location.assign('/BHNFoods/ListProduct?kind=0&page=1');
     }
 
     $('#city').change(function changeDistrict() {
