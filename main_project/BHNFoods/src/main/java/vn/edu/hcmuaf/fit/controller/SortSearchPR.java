@@ -73,7 +73,9 @@ public class SortSearchPR extends HttpServlet {
                     "                                </ul>\n" +
                     "                            </div>\n" +
                     "                            <div class=\"product__item__text\">\n" +
-                    "                                <a href=\"http://localhost:8080/BHNFoods/oneProduct?id=" + p.getIdPr() + "\">" + p.getNamePr() + "<br> <span>" + price + "đ</span></a>\n" +
+
+                    "                                <a href=\"/BHNFoods/oneProduct?id=" + p.getIdPr() + "&idUser=user1\">" + p.getNamePr() + "<br> <span>" + price + "đ</span></a>\n" +
+
                     "                            </div>\n" +
                     "                        </div>\n" +
                     "                    </div>");

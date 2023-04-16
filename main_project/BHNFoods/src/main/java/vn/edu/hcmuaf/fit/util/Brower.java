@@ -67,4 +67,9 @@ public class Brower {
         return "IP Address: " + location;
     }
 
+    public static void main(String[] args) throws IOException {
+//        System.out.println(getLocationIp(getIpWlanConect()));
+
+
+    }
 }

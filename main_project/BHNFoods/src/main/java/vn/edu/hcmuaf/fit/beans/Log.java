@@ -26,6 +26,8 @@ public class Log extends AbBean implements Serializable {
         levelMapping.put(1, "AlERT");
         levelMapping.put(2, "WARNING");
         levelMapping.put(3, "DANGER");
+        levelMapping.put(4, "CATASTROPHIC");
+        levelMapping.put(5, "LOCK");
     }
 
     public static int INFO = 0;
