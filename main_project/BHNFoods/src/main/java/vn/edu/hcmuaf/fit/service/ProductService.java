@@ -405,8 +405,16 @@ public class ProductService {
         });
     }
     public List<SingleProduct> getListProductHostSale() {
+        String sql = "SELECT p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, MAX(i.URL) as URL, c.INVENTORY, c.NSX, c.BRAND, c.ORIGIN, c.WEIGHT, c.`DESCRIBE`, c.HSD, SUM(s.AMOUNT) as saled \n" +
+                "FROM product p \n" +
+                "JOIN image i ON p.ID_PR = i.ID_PR \n" +
+                "JOIN ct_pr c ON c.ID_PR = p.ID_PR \n" +
+                "JOIN sold_pr s ON s.ID_PR = p.ID_PR \n" +
+                "WHERE i.`CONDITION` = 0 \n" +
+                "GROUP BY p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, c.INVENTORY, c.NSX, c.BRAND, c.ORIGIN, c.WEIGHT, c.`DESCRIBE`, c.HSD \n" +
+                "ORDER BY saled DESC;";
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY, c.NSX,c.BRAND,c.ORIGIN, c.WEIGHT, c.`DESCRIBE` , c.HSD,sum(s.AMOUNT)as saled from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR JOIN sold_pr s on s.ID_PR= p.ID_PR where i.`CONDITION` = 0  GROUP BY p.ID_PR order by saled desc  ")
+            return handle.createQuery(sql)
                     .mapToBean(SingleProduct.class).collect(Collectors.toList());
         });
     }

@@ -30,6 +30,6 @@ public class Encryption {
     }
 
     public static void main(String[] args) {
-        System.out.println(toSHA1("123456789"));
+        System.out.println(toSHA1("bao123"));
     }
 }
