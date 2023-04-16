@@ -51,8 +51,8 @@ public class Login extends HttpServlet {
                 if(lv==5){
                     UserService.getInstance().lockUser(existName.getIdUser());
                 }
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
-            request.getRequestDispatcher("login.jsp").forward(request, response);
         }else if (user != null && user.getDecentralization() == 2) {
             HttpSession session = request.getSession(true);
             session.setAttribute("auth", user);

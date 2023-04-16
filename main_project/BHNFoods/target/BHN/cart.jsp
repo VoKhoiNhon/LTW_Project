@@ -221,7 +221,7 @@
 
     }
 
-    async function changeAmount(button, orginPrice, idProd, elementHeader) {
+    function changeAmount(button, orginPrice, idProd, elementHeader) {
         let newVal;
         let sum = $('#sum').val();
         let discount = $('#discount').val();
