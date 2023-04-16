@@ -102,7 +102,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
+<<<<<<< Updated upstream
                     <a href="/BHNFoods/ListProduct?kind=0&page=1" class="primary-btn cart-btn">Tiếp tục mua hàng</a>
+=======
+                    <a href="/BHNFoods/ListProduct?kind=0&page=1&idUser=<%=idU%>" class="primary-btn cart-btn">Tiếp tục mua hàng</a>
+>>>>>>> Stashed changes
 
                 </div>
             </div>
@@ -269,7 +273,11 @@
             }
         }
         elementI.val(newVal);
+<<<<<<< Updated upstream
         elementHeader.innerHTML = "<a href=\"/BHNFoods/Cart\" class=\"nav-link\">\n" +
+=======
+        elementHeader.innerHTML = "<a href=\"/BHNFoods/Cart?idUser=user1\" class=\"nav-link\">\n" +
+>>>>>>> Stashed changes
             "                        <span class=\"fa-solid fa-cart-shopping\"></span>[" + sumCart + "]</a>";
         const totalF = format1(parseInt(orginPrice) * parseInt(newVal), ' đ')
         $('#total' + idProd).text(totalF);
@@ -328,7 +336,11 @@
                 const content = document.getElementById('checkOut')
                 content.innerHTML = data;
                 sumCart = sumCart - amount;
+<<<<<<< Updated upstream
                 elementHeader.innerHTML = "<a href=\"/BHNFoods/Cart?\" class=\"nav-link\">\n" +
+=======
+                elementHeader.innerHTML = "<a href=\"/BHNFoods/Cart?idUser=user1\" class=\"nav-link\">\n" +
+>>>>>>> Stashed changes
                     "                        <span class=\"fa-solid fa-cart-shopping\"></span>[" + sumCart + "]</a>";
             },
             error: function () {

@@ -46,7 +46,9 @@ public class SignUp extends HttpServlet {
             pass = Encryption.toSHA1(pass);
              UserService.getInstance().addUser(name, email,phone,pass);
             DB.me().insert(new Log(Log.INFO,"user"+UserService.getInstance().getListUser().size(), this.src, "Signup SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
-            response.sendRedirect("http://localhost:8080/BHNFoods/index");
+
+            response.sendRedirect("/BHNFoods/index?idUser="+newUID);
+
         }
 
 

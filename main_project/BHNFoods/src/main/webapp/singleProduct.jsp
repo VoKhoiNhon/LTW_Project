@@ -200,7 +200,11 @@
                     </div>
                     <div class="product__item__text">
                         <h6>
+<<<<<<< Updated upstream
                             <a href="/BHNFoods/oneProduct?id=<%=relatedProducts.get(i).getIdPr()%>"><%=relatedProducts.get(i).getNamePr()%>
+=======
+                            <a href="/BHNFoods/oneProduct?id=<%=relatedProducts.get(i).getIdPr()%>&idUser=<%=request.getAttribute("idUser")%>"><%=relatedProducts.get(i).getNamePr()%>
+>>>>>>> Stashed changes
                             </a></h6>
                         <h5><%=dec.format(relatedProducts.get(i).getPrice())%>đ</h5>
                     </div>

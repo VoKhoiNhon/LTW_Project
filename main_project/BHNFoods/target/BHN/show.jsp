@@ -13,10 +13,18 @@
     <title>Title</title>
 </head>
 <body>
-<%List<Product> list = (List<Product>) request.getAttribute("listRequest");%>
-<%for(Product p: list) { %>
-       <h3><%=p.getNamePr()%></h3>
-        <h3 style="color: red"><%=p.getPrice()%></h3>
-    <%}%>
+<button onclick="downloadFile()">ExportPDF</button>
+<button onclick="downloadFileEX()">ExportEx</button>
+<script>
+    function downloadFileEX() {
+
+        window.location.href = "/BHNFoods/Test2";
+    }
+</script>
+<script>
+    function downloadFile() {
+        window.location.href = "/BHNFoods/Test";
+    }
+</script>
 </body>
 </html>

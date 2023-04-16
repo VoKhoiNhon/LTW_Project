@@ -46,6 +46,17 @@ public class UserService {
         }
         return user;
     }
+    public User checkUser(String username) {
+        List<User> users = JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT ID_USER,ADDRESS,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,SEX,Decentralization FROM user WHERE EMAIL = ? or PHONE=?")
+                        .bind(0, username).bind(1, username)
+                        .mapToBean(User.class).stream()
+                        .collect(Collectors.toList())
+        );
+        if (users.size() != 1) return null;
+        User user = users.get(0);
+        return user;
+    }
 
     public String hashPassword(String password) {
         try {
@@ -180,6 +191,23 @@ public class UserService {
                         .findOne()
                         .orElse(null)
 
+        );
+    }
+
+    public void lockUser(String idUser) {
+        String sql = "UPDATE `user` SET Decentralization =-1 WHERE ID_USER = :idUser";
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("idUser", idUser)
+                        .execute()
+        );
+    }
+    public void unLockUser(String idUser) {
+        String sql = "UPDATE `user` SET Decentralization =0 WHERE ID_USER = :idUser";
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("idUser", idUser)
+                        .execute()
         );
     }
 }
