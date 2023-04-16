@@ -40,10 +40,7 @@ public class Brower {
             URL url = new URL("https://checkip.amazonaws.com/");
             BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
             ip = br.readLine();
-//            System.out.println("Public IP Address: " + ip);
-
         } catch (Exception e) {
-//            System.err.println("Error: " + e.getMessage());
         }
         return ip;
     }
