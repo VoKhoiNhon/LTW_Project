@@ -41,39 +41,38 @@ public class Login extends HttpServlet {
 
         User user = UserService.getInstance().checkLogin(username, password);
         User existName = UserService.getInstance().checkUser(username);
-       int lv= LogSercive.getInstance().getLevelForDayLogin(existName.getNameUser());
-        if(existName!=null) {
-            if(!existName.getPassw().equals(password)) {
+        int lv = LogSercive.getInstance().getLevelForDayLogin(existName.getNameUser());
+        if (existName != null) {
+            if (!existName.getPassw().equals(password)) {
                 request.setAttribute("error", "Sai mật khẩu");
                 if (lv < 5) {
-                    DB.me().insert(new Log(lv+1, existName.getIdUser(), this.src, "LOGIN FALSE: " + username, 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
+                    DB.me().insert(new Log(lv + 1, existName.getIdUser(), this.src, "LOGIN FALSE: " + username, 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
                 }
-                if(lv==5){
+                if (lv == 5) {
                     UserService.getInstance().lockUser(existName.getIdUser());
                 }
             }
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else if (user != null && user.getDecentralization() == 2) {
-            HttpSession session = request.getSession(true);
-            session.setAttribute("auth", user);
+            if (user != null && user.getDecentralization() == 2) {
+                HttpSession session = request.getSession(true);
+                session.setAttribute("auth", user);
 
-            DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
+                DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
 
-            response.sendRedirect("AdminMain");
+                response.sendRedirect("AdminMain");
 
-        } else if (user != null && user.getDecentralization() == 0) {
-            HttpSession session = request.getSession(true);
-            session.setAttribute("auth", user);
-            session.setAttribute("idUser", user.getIdUser());
-            request.setAttribute("idUser", user.getIdUser());
+            } else if (user != null && user.getDecentralization() == 0) {
+                HttpSession session = request.getSession(true);
+                session.setAttribute("auth", user);
+                session.setAttribute("idUser", user.getIdUser());
+                request.setAttribute("idUser", user.getIdUser());
 
-            DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
-     response.sendRedirect("/BHNFoods/index?idUser=" + user.getIdUser());
-
-        } else  {
+                DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
+                response.sendRedirect("/BHNFoods/index?idUser=" + user.getIdUser());
+            }
+        } else {
             request.setAttribute("error", "Sai tài khoản hoặc mật khẩu");
 
-            DB.me().insert(new Log(Log.WARNING, null, this.src, "LOGIN FALSE: " + username, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
+            DB.me().insert(new Log(Log.WARNING, null, this.src, "LOGIN FALSE: " + username, 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
 
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }

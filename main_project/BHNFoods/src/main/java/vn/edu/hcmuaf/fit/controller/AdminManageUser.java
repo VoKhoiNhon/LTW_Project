@@ -15,7 +15,7 @@ public class AdminManageUser extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-        if(user.getDecentralization() != -1) response.sendRedirect("index.jsp");
+        if(user.getDecentralization() != 2) response.sendRedirect("index.jsp");
         else {
             List<User> list = UserService.getInstance().getListUser();
             request.setAttribute("listUser", list);
