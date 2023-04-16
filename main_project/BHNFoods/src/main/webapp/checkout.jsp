@@ -206,7 +206,11 @@
 
 
     function Redirect() {
+<<<<<<< Updated upstream
         window.location.assign('/BHNFoods/ListProduct?kind=0&page=1');
+=======
+        window.location.assign('/BHNFoods/ListProduct?kind=0&page=1&idUser=user1');
+>>>>>>> Stashed changes
     }
 
     $('#city').change(function changeDistrict() {

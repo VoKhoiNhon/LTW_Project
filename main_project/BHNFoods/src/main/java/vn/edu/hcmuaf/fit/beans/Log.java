@@ -26,6 +26,8 @@ public class Log extends AbBean implements Serializable {
         levelMapping.put(1, "AlERT");
         levelMapping.put(2, "WARNING");
         levelMapping.put(3, "DANGER");
+        levelMapping.put(4, "CATASTROPHIC");
+        levelMapping.put(5, "LOCK");
     }
 
     public static int INFO = 0;
@@ -147,7 +149,7 @@ public class Log extends AbBean implements Serializable {
 
     public boolean insert(Jdbi db) {
         Integer i = db.withHandle(handle ->
-                handle.execute("INSERT INTO Log(`level`,`user`, src, content, createAt, `status`, `browserName`, `locationIpClient`)VALUES (?,?,?,?,NOW(),?,?,?)",
+                handle.execute("INSERT INTO log(`level`,`user`, src, content, createAt, `status`, `browserName`, `locationIpClient`)VALUES (?,?,?,?,NOW(),?,?,?)",
                         this.level, this.user, this.src, this.content, this.status, this.browserName, this.locationIpClient)
         );
         return i == 1;

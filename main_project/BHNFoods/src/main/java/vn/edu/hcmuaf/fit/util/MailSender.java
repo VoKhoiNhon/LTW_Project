@@ -62,7 +62,7 @@ public class MailSender {
                 "  <title>Document</title>\n" +
                 "</head>\n" +
                 "<body>\n" +
-                "  <a style=\"text-decoration: none; padding: 10px 20px; color: black; background:rgb(192, 192, 241);\" href='http://localhost:8080/BHNFoods/verifyingEmail?key="+"BaaHlRG7e44Xkv3gLmPc33Rq3Tg=iwqcwdlrux"+"'>Xác thực ngay</a>\n" +
+                "  <a style=\"text-decoration: none; padding: 10px 20px; color: black; background:rgb(192, 192, 241);\" href='/BHNFoods/verifyingEmail?key="+"BaaHlRG7e44Xkv3gLmPc33Rq3Tg=iwqcwdlrux"+"'>Xác thực ngay</a>\n" +
                 "</body>\n" +
                 "</html>";
         MailSender.send("Xác thực thông tin", mailMessage, "baotaolao981999@gmail.com");

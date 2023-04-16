@@ -15,12 +15,13 @@ import vn.edu.hcmuaf.fit.service.LogSercive;
 
 import java.io.FileOutputStream;
 
+import java.io.OutputStream;
 import java.util.List;
 
 public class ExportLog {
     static List<Log> list = LogSercive.getInstance().getAllLog();
 
-    public static void getFileExcel() {
+    public static void getFileExcel(OutputStream outputStream) {
         try {
             // Tạo workbook mới
             XSSFWorkbook workbook = new XSSFWorkbook();
@@ -71,20 +72,21 @@ public class ExportLog {
 
             }
             // Lưu workbook vào file Excel
-            FileOutputStream outputStream = new FileOutputStream("D:\\test\\data.xlsx");
+//            FileOutputStream outputStream = new FileOutputStream("D:\\test\\data.xlsx");
             workbook.write(outputStream);
             workbook.close();
+
             System.out.println("Data exported successfully to Excel!");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void getFilePDF() {
+    public static void getFilePDF(OutputStream outputStream) {
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
         try {
             // Tạo writer để ghi dữ liệu vào file PDF
-            PdfWriter.getInstance(document, new FileOutputStream("D:\\test\\data.pdf"));
+            PdfWriter.getInstance(document, outputStream);
             document.open();
             // Tạo bảng để chứa dữ liệu
             PdfPTable table = new PdfPTable(7);
@@ -120,7 +122,7 @@ public class ExportLog {
 
     public static void main(String[] args) {
 //        getFileExcel();
-        getFilePDF();
+//        getFilePDF();
         System.out.println(123);
     }
 }

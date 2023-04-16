@@ -11,7 +11,9 @@ public class LogOut extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.invalidate();
-        response.sendRedirect("http://localhost:8080/BHNFoods/index?");
+
+        response.sendRedirect("/BHNFoods/index?idUser=null");
+
     }
 
     @Override
