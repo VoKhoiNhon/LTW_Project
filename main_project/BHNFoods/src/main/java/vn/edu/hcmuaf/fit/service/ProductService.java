@@ -34,16 +34,17 @@ public class ProductService {
 
     // Lấy ra sản phẩm theo id
     public List<SingleProduct> getSingleProduct(String idPro) {
-        String sql = "SELECT p.NAME_PR, p.PRICE, c.ID_PR, c.NSX, c.HSD, c.BRAND, c.`DESCRIBE`, c.WEIGHT, c.ORIGIN, c.DATE_IMPORT_PR, c.INVENTORY, c.CONDITION_PR, i.URL, p.ID_MENU, p.DISCOUNT " +
+        String sql = "SELECT p.NAME_PR, p.PRICE, c.ID_PR, c.NSX, c.HSD, c.BRAND, c.`DESCRIBE`, c.WEIGHT, c.ORIGIN, w.DATE_IMPORT_SHIPMENT as DATE_IMPORT_PR, c.INVENTORY, c.CONDITION_PR, i.URL, p.ID_MENU, p.DISCOUNT " +
                 "FROM ct_pr c " +
                 "JOIN image i ON i.ID_PR = c.ID_PR " +
                 "JOIN product p ON p.ID_PR = c.ID_PR " +
+                "JOIN warehouse w ON c.ID_SHIPMENT = w.ID_SHIPMENT " +
                 "WHERE i.`CONDITION` = 0 AND c.ID_PR = :idPro";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(sql)
                     .bind("idPro", idPro)
                     .mapToBean(SingleProduct.class)
-                    .collect(Collectors.toList());
+                    .list();
         });
     }
 
@@ -179,7 +180,7 @@ public class ProductService {
     //danh sach nhap san pham theo ngay
     public List<SingleProduct> getListPrDateImport(int i) {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select  p.NAME_PR, c.DATE_IMPORT_PR from ct_pr c join product p on c.ID_PR=p.ID_PR ORDER BY c.DATE_IMPORT_PR DESC LIMIT " + i)
+            return handle.createQuery("select  p.NAME_PR, w.DATE_IMPORT_SHIPMENT as DATE_IMPORT_PR from ct_pr c join product p on c.ID_PR=p.ID_PR join warehouse w on w.ID_SHIPMENT = c.ID_SHIPMENT ORDER BY w.DATE_IMPORT_SHIPMENT DESC LIMIT " + i)
                     .mapToBean(SingleProduct.class).collect(Collectors.toList());
         });
     }
@@ -426,10 +427,6 @@ public class ProductService {
             return handle.createUpdate("INSERT INTO `product` VALUES ('prod"+index+"','"+menu+"',"+discount+","+ price+ ", '"+name+"')").execute();
         });
     }
-
-//    public static void main(String[] args) {
-//        addCT_Prod(102,"2024-05-25", "2024-05-25", "VN","dkajshkjdhsak",201.2,"Dalat",124);
-//    }
     // thêm sp của bản ct_pr
     public static void addCT_Prod( int index,String nsx,String hsd, String brand, String mota, double weight, String origin, int inventory ){
         JDBIConnector.get().withHandle(handle -> {
@@ -586,13 +583,25 @@ public int getNowYer(){
         });
     }
 
-    public static void  updateUser( String idUser, int decentralization){
+    public void  updateUser( String idUser, int decentralization){
         JDBIConnector.get().withHandle(handle -> {
             return   handle.createUpdate("UPDATE `user` u set u.Decentralization= "+decentralization+"  WHERE u.ID_USER='"+idUser+"'").execute();
         });
 
     }
+    public List<String> getAllIdProduct() {
+        String query = "SELECT ID_PR FROM ct_pr WHERE CONDITION_PR = 0";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .mapTo(String.class)
+                    .list();
+        });
+    }
 
+    public static void main(String[] args) {
+        System.out.println(ProductService.getInstance().getSingleProduct("prod1"));
+        System.out.println(ProductService.getInstance().getListPrDateImport(2));
+    }
 }
 
 
