@@ -1,9 +1,6 @@
 package vn.edu.hcmuaf.fit.service;
 
-import vn.edu.hcmuaf.fit.beans.Log;
-import vn.edu.hcmuaf.fit.beans.Product;
-import vn.edu.hcmuaf.fit.beans.SoldProduct;
-import vn.edu.hcmuaf.fit.beans.User;
+import vn.edu.hcmuaf.fit.beans.*;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 
 import java.util.*;
@@ -122,10 +119,31 @@ public class StatisticsService {
         }
         return map;
     }
+    // Lấy ra số lượng hàng còn lại trong kho của từng sản phẩm vd: {prod89=133, prod82=121, prod81=98, prod84=154,....}
+    public Map<String, Integer> getQuantityInventory() {
+        Map<String, Integer> map = new HashMap<>();
+        int inventory = 0;
+        List<String> listId = ProductService.getInstance().getAllIdProduct();
+        for (String s: listId) {
+            inventory = ProductService.getInstance().getInventoryCT_PR(s);
+            map.put(s, inventory);
+        }
+        return map;
+    }
+    // Lấy ra số lượng sản phẩm đã bán theo tháng trong năm vd: [{month: 1, year: 2023, idProduct: prod14, total: 1}, {month: 1, year: 2023, idProduct: prod15, total: 1}, {month: 1, year: 2023, idProduct: prod2, total: 15}, {month: 1, year: 2023, idProduct: prod5, total: 6},...]
+    public List<SoldProductInMonthOfYear> getSoldProductInMonthOfYear() {
+        String sql = "SELECT MONTH(TIME_SOLD) as month, YEAR(TIME_SOLD) as year, ID_PR, sum(AMOUNT) as total from sold_pr  GROUP BY MONTH(TIME_SOLD), ID_PR,  YEAR(TIME_SOLD)";
+        return JDBIConnector.get().withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapToBean(SoldProductInMonthOfYear.class)
+                        .list()
+        );
+    }
+
 
 
     public static void main(String[] args) {
-        Map<String, Integer> map = getInstance().getTotalMoneyUserBought();
+        List<SoldProductInMonthOfYear> map = getInstance().getSoldProductInMonthOfYear();
         System.out.println(map);
     }
 }
