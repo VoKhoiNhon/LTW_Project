@@ -468,21 +468,12 @@
                                                 <div class="card card-rounded">
                                                     <div class="card-body">
                                                         <div class="d-sm-flex justify-content-between align-items-start">
-                                                            <div>
-                                                                <a href="#" STYLE="text-decoration: none">
-                                                                    <button onclick="add()"
-                                                                            class="card-title card-title-dash btn_add_delete">
-                                                                        Thêm
-                                                                    </button>
-                                                                </a>
 
-                                                            </div>
                                                         </div>
                                                         <div class="table-responsive  mt-1">
                                                             <table class="table select-table">
                                                                 <thead>
                                                                 <tr>
-
                                                                     <th>User</th>
                                                                     <th>Level</th>
                                                                     <th>Thông tin</th>

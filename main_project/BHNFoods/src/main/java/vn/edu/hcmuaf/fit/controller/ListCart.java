@@ -2,6 +2,7 @@ package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.Cart;
 import vn.edu.hcmuaf.fit.beans.Product;
+import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
 import javax.servlet.*;
@@ -15,7 +16,8 @@ public class ListCart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String idUser = (String) session.getAttribute("idUser");
+        User user = (User) session.getAttribute("auth");
+        String idUser = user.getIdUser();
         List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
         System.out.println(listCart);
         request.setAttribute("listCart",listCart);

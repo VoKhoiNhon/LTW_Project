@@ -5,6 +5,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.beans.User" %>
 <%@ page import="vn.edu.hcmuaf.fit.beans.Contact" %>
 <%@ page import="java.time.LocalDateTime" %>
+<%@ page import="vn.edu.hcmuaf.fit.beans.Powers" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -204,24 +205,21 @@
 <!-- partial -->
 <div class="container-fluid page-body-wrapper">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <div class="nav-item">
-            <a href="/BHNFoods/AdminMain" class="nav-item-link">
-                <i style="margin-right: 5px;" class="menu-icon mdi mdi-home"></i>
-                <span>Trang chủ</span>
-            </a>
-        </div>
+        <%if(user.getDecentralization() == Powers.ADMIN) {%>
         <div class="nav-item">
             <a href="/BHNFoods/AdminManageUser" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-account-circle"></i>
                 <span>Quản lý người dùng</span>
             </a>
         </div>
+
         <div class="nav-item">
             <a href="/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Quản lý sản phẩm</span>
             </a>
         </div>
+        <%}%>
         <div class="nav-item">
             <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>

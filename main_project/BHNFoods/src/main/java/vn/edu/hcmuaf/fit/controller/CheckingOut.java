@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.Cart;
+import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.CartService;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
@@ -21,7 +22,8 @@ public class CheckingOut extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String idUser = (String) session.getAttribute("idUser");
+        User user = (User) session.getAttribute("auth");
+            String idUser = user.getIdUser();
         int sum = Integer.parseInt(request.getParameter("sumCheckout"));
         int discount = Integer.parseInt(request.getParameter("discountCheckout"));
         int total = Integer.parseInt(request.getParameter("totalCheckout"));

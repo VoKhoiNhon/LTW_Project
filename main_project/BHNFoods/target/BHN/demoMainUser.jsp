@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>BHDFoods| Trang chủ</title>
+  <title>BHNFoods | Trang chủ</title>
   <link rel="stylesheet" href="admin_template/vendors/feather/feather.css">
   <link rel="stylesheet" href="admin_template/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="admin_template/vendors/ti-icons/css/themify-icons.css">

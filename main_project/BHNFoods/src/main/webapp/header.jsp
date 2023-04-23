@@ -125,7 +125,7 @@
                 <li class="nav-item active"><a href="/BHNFoods/index" class="nav-link">Trang chủ</a></li>
                 <li class="nav-item active"><a href="/BHNFoods/ListProduct?kind=0&page=1" class="nav-link">Sản
                     phẩm</a></li>
-                <li class="nav-item active"><a href="/BHNFoods/discount.jsp" class="nav-link">Mã giảm giá</a></li>
+                <li class="nav-item active"><a href="/BHNFoods/discount" class="nav-link">Mã giảm giá</a></li>
                 <li class="nav-item cta cta-colored find">
                     <form action="/BHNFoods/Search"method="post" style="display: flex"><input oninput="searchByName(this)" value="<%=request.getParameter("searchPR")!=null?request.getParameter("searchPR"):""%>" type="text" class="search-input" name="searchPR" id="findicon"
                                                                                               placeholder="Tìm kiếm"> <button type="submit" class="fa-solid fa-magnifying-glass" style="background: none;border: none;"></button></form></li>

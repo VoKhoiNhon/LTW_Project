@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.Log;
+import vn.edu.hcmuaf.fit.beans.Powers;
 import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.db.DB;
 import vn.edu.hcmuaf.fit.service.LogSercive;
@@ -52,7 +53,7 @@ public class Login extends HttpServlet {
                     UserService.getInstance().lockUser(existName.getIdUser());
                 }
             }
-            if (user != null && user.getDecentralization() == 2) {
+            if (user != null && (user.getDecentralization() == Powers.ADMIN || user.getDecentralization() == Powers.EMPLOYEE)) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("auth", user);
 
@@ -60,14 +61,14 @@ public class Login extends HttpServlet {
 
                 response.sendRedirect("AdminMain");
 
-            } else if (user != null && user.getDecentralization() == 0) {
+            } else if (user != null && user.getDecentralization() == Powers.USER) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("auth", user);
                 session.setAttribute("idUser", user.getIdUser());
                 request.setAttribute("idUser", user.getIdUser());
 
                 DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
-                response.sendRedirect("/BHNFoods/index?idUser=" + user.getIdUser());
+                response.sendRedirect("/BHNFoods/index");
             }
         } else {
             request.setAttribute("error", "Sai tài khoản hoặc mật khẩu");

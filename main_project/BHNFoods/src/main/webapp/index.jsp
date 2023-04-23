@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>BHDFoods| Trang chủ</title>
+    <title>BHNFoods | Trang chủ</title>
 </head>
 
 <body>

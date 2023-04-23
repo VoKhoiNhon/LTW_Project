@@ -12,7 +12,7 @@ public class LogOut extends HttpServlet {
         HttpSession session = request.getSession();
         session.invalidate();
 
-        response.sendRedirect("/BHNFoods/index?idUser=null");
+        response.sendRedirect("/BHNFoods/index");
 
     }
 

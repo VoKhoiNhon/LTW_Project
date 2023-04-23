@@ -53,3 +53,4 @@ public class SoldProductInMonthOfYear {
         return "{month: " + month + ", year: " + year + ", idProduct: " +  ID_PR + ", total: " + total + "}";
     }
 }
+
