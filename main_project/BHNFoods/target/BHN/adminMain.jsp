@@ -93,20 +93,20 @@
                      aria-labelledby="messageDropdown">
 
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item" href="http://localhost:8080/BHNFoods/AdminManageUser">
+                    <a class="dropdown-item preview-item" href="/BHNFoods/AdminManageUser">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Người dùng </p>
                             <p class="fw-light small-text mb-0">Trang chi tiết người dùng</p>
                         </div>
                     </a>
-                    <a class="dropdown-item preview-item" href="http://localhost:8080/BHNFoods/AdminMain">
+                    <a class="dropdown-item preview-item" href="/BHNFoods/AdminMain">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Admin</p>
                             <p class="fw-light small-text mb-0">Trang chi tiết Admin</p>
                         </div>
                     </a>
                     <a class="dropdown-item preview-item"
-                       href="http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1">
+                       href="/BHNFoods/AdminManagePr?kind=0&page=1">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Sản Phẩm </p>
                             <p class="fw-light small-text mb-0">Trang chi tiết quản lý sản phẩm</p>
@@ -197,11 +197,13 @@
             </li>
             <%
                 String data = (String) request.getAttribute("data");
+                String data0 = (String) request.getAttribute("data0");
                 int stopPr = (int) request.getAttribute("stopSaled");
                 int newbie = (int) request.getAttribute("newbie");
                 int saledPr = (int) request.getAttribute("saledPr");
                 String data1 = (String) request.getAttribute("data1");
                 int nowTur = (int) request.getAttribute("nowTur");
+                int allTur = (int) request.getAttribute("alltur");
                 List<SingleProduct> hotSale = (List<SingleProduct>) request.getAttribute("hotSale");
                 User user = (User) session.getAttribute("auth");
                 if (user != null) {
@@ -233,31 +235,31 @@
 <div class="container-fluid page-body-wrapper">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="nav-item">
-            <a href="http://localhost:8080/BHNFoods/AdminMain" class="nav-item-link">
+            <a href="/BHNFoods/AdminMain" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-home"></i>
                 <span>Trang chủ</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="http://localhost:8080/BHNFoods/AdminManageUser" class="nav-item-link">
+            <a href="/BHNFoods/AdminManageUser" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-account-circle"></i>
                 <span>Quản lý người dùng</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
+            <a href="/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Quản lý sản phẩm</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="#" class="nav-item-link">
-                <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
-                <span>Log</span>
+            <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
+                <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+                <span>Quản lý đơn hàng</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="http://localhost:8080/BHNFoods/Login" class="nav-item-link">
+            <a href="/BHNFoods/Login" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span>Đăng xuất</span>
             </a>
@@ -292,6 +294,11 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="statistics-details  align-items-center justify-content-between grid_statistical">
+                                            <div>
+                                                <p class="statistics-title">Tổng doanh thu </p>
+                                                <h3 class="rate-percentage"><%=allTur%> VNĐ</h3>
+
+                                            </div>
                                             <div>
                                                 <p class="statistics-title">Doanh thu tháng hiện tại</p>
                                                 <h3 class="rate-percentage"><%=nowTur%> VNĐ</h3>
@@ -360,11 +367,13 @@
                                                         </div>
                                                         <%
                                                             int tur = (int) request.getAttribute("tur");
-
+                                                            int tur1 = (int) request.getAttribute("tur1");
+//                                                    double pec = (double) request.getAttribute("pec");
                                                         %>
                                                         <div class="d-sm-flex align-items-center mt-1 justify-content-between">
                                                             <div class="d-sm-flex align-items-center mt-4 justify-content-between">
-                                                                <h2 class="me-2 fw-bold"><%=tur%>
+                                                                <h2 class="me-2 fw-bold">Tổng doanh thu năm
+                                                                    2023 là:     <%=tur1%>
                                                                 </h2>
                                                                 <h4 class="me-2">VNĐ</h4>
                                                                 <%--                                                                <h4 class="text-success">(+<%=pec%>%)</h4>--%>
@@ -469,6 +478,15 @@
         var marketingOverviewData = {
             labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
             datasets: [{
+                label: 'năm 2021',
+                data: [<%=data0%>],
+                backgroundColor: "#1F3B93",
+                borderColor: [
+                    '#1F3B93',
+                ],
+                borderWidth: 0,
+                fill: true, // 3: no fill
+            }, {
                 label: 'năm 2022',
                 data: [<%=data%>],
                 backgroundColor: "#52CDFF",
@@ -479,7 +497,7 @@
                 fill: true, // 3: no fill
 
             }, {
-                label: 'năm 2021',
+                label: 'năm 2023',
                 data: [<%=data1%>],
                 backgroundColor: "#1F3BB3",
                 borderColor: [

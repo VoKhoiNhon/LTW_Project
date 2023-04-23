@@ -114,7 +114,7 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="http://localhost:8080/BHNFoods/index?idUser=<%=idU%>">BHNFoods</a>
+        <a class="navbar-brand" href="/BHNFoods/index">BHNFoods</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Sản Phẩm
@@ -122,15 +122,15 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="http://localhost:8080/BHNFoods/index?idUser=<%=idU%>" class="nav-link">Trang chủ</a></li>
-                <li class="nav-item active"><a href="http://localhost:8080/BHNFoods/ListProduct?kind=0&page=1&idUser=<%=idU%>" class="nav-link">Sản
+                <li class="nav-item active"><a href="/BHNFoods/index" class="nav-link">Trang chủ</a></li>
+                <li class="nav-item active"><a href="/BHNFoods/ListProduct?kind=0&page=1" class="nav-link">Sản
                     phẩm</a></li>
-                <li class="nav-item active"><a href="http://localhost:8080/BHNFoods/discount.jsp" class="nav-link">Mã giảm giá</a></li>
+                <li class="nav-item active"><a href="/BHNFoods/discount.jsp" class="nav-link">Mã giảm giá</a></li>
                 <li class="nav-item cta cta-colored find">
                     <form action="/BHNFoods/Search"method="post" style="display: flex"><input oninput="searchByName(this)" value="<%=request.getParameter("searchPR")!=null?request.getParameter("searchPR"):""%>" type="text" class="search-input" name="searchPR" id="findicon"
                                                                                               placeholder="Tìm kiếm"> <button type="submit" class="fa-solid fa-magnifying-glass" style="background: none;border: none;"></button></form></li>
                 <li id="totalCart" class="nav-item cta cta-colored amountInCart">
-                    <a href="http://localhost:8080/BHNFoods/Cart?idUser=<%=idU%>" class="nav-link">
+                    <a href="/BHNFoods/Cart" class="nav-link">
                         <span class="fa-solid fa-cart-shopping"></span>[<%=sumCart%>]</a>
                 </li>
 
@@ -148,13 +148,12 @@
                 <li class="nav-item cta cta-colored hover_user">
                     <span href="#" class="nav-link" style="cursor: pointer;"><%=user.getNameUser()%></span>
                     <div class="list_menu">
-                        <div class="dr"><a href="http://localhost:8080/BHNFoods/account?idUser=<%=user.getIdUser()%>">Tài khoản</a></div>
-                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/loveProduct?idUser=<%=user.getIdUser()%>">Sản phẩm yêu thích</a></div>
-                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/manageOrder?idUser=<%=user.getIdUser()%>">Quản lý đơn hàng</a> </div>
-                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/history?idUser=<%=user.getIdUser()%>">Lịch sử đơn hàng</a></div>
-<%--                        <div class="dr"> <a onclick="contact()" href="#">Liên hệ</a></div>--%>
-                        <div class="dr"> <a  href="http://localhost:8080/BHNFoods/ContactInUser?idUser=<%=user.getIdUser()%>">Liên hệ- Hướng dẫn</a></div>
-                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/logOut">Đăng xuất</a></div>
+                        <div class="dr"><a href="/BHNFoods/account">Tài khoản</a></div>
+                        <div class="dr"> <a href="/BHNFoods/loveProduct">Sản phẩm yêu thích</a></div>
+                        <div class="dr"> <a href="/BHNFoods/manageOrder">Quản lý đơn hàng</a> </div>
+                        <div class="dr"> <a href="/BHNFoods/history?">Lịch sử đơn hàng</a></div>
+                        <div class="dr"> <a onclick="contact()" href="#">Liên hệ</a></div>
+                        <div class="dr"> <a href="/BHNFoods/logOut">Đăng xuất</a></div>
                     </div>
                 </li>
                 <%}%>

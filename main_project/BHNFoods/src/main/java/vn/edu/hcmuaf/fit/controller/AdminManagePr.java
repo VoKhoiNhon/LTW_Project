@@ -3,6 +3,7 @@ package vn.edu.hcmuaf.fit.controller;
 import vn.edu.hcmuaf.fit.beans.Cart;
 import vn.edu.hcmuaf.fit.beans.Product;
 import vn.edu.hcmuaf.fit.beans.SingleProduct;
+import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
 import javax.servlet.*;
@@ -15,16 +16,21 @@ import java.util.List;
 public class AdminManagePr extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int kind = Integer.parseInt(request.getParameter("kind"));
-        int page =  Integer.parseInt(request.getParameter("page"));
-        int tempSize =  ProductService.getInstance().getSize(kind)/15;
-        int count = ProductService.getInstance().getSize(kind)%15 > 0 ? tempSize + 1:tempSize;
-        List<SingleProduct> list= (List<SingleProduct>) ProductService.getInstance().getListSingleProdInPage(kind, page);
-        request.setAttribute("manageList", list);
-        request.setAttribute("kind", kind);
-        request.setAttribute("page", page);
-        request.setAttribute("count", count);
-        request.getRequestDispatcher("manage_product.jsp").forward(request,response);
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
+        if(user.getDecentralization() != 2) response.sendRedirect("index.jsp");
+        else {
+            int kind = Integer.parseInt(request.getParameter("kind"));
+            int page =  Integer.parseInt(request.getParameter("page"));
+            int tempSize =  ProductService.getInstance().getSize(kind)/15;
+            int count = ProductService.getInstance().getSize(kind)%15 > 0 ? tempSize + 1:tempSize;
+            List<SingleProduct> list= (List<SingleProduct>) ProductService.getInstance().getListSingleProdInPage(kind, page);
+            request.setAttribute("manageList", list);
+            request.setAttribute("kind", kind);
+            request.setAttribute("page", page);
+            request.setAttribute("count", count);
+            request.getRequestDispatcher("manage_product.jsp").forward(request,response);
+        }
     }
 
     @Override

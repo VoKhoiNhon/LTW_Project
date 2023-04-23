@@ -36,17 +36,13 @@ public class Pay extends HttpServlet {
         String allId = request.getParameter("listId");
         String maGiamGia = request.getParameter("maGiamGia");
         String idOrder = OrderService.getInstance().generateIdOrder();
-        System.out.println(idOrder);
         String timeNow = OrderService.getInstance().formatDateTimeNow();
-        System.out.println(timeNow);
         String timePickup = OrderService.getInstance().formatDateTime(day) + " " + time;
-        System.out.println(timePickup);
         String  [] listId = allId.trim().replace("box", "").split(" ");
         List<Cart> listCart = new ArrayList<>();
         for (String id : listId) {
             List<Cart> temp = CartService.getInstance().getProdFormCart(idUser, id);
             listCart.addAll(temp);
-            System.out.println(id);
         }
         OrderService.getInstance().addToOrder(idOrder, name, phone, address, timeNow, timePickup, note, 0);
         if (!maGiamGia.equals("")) DiscountService.getInstance().changeAmountDiscount(maGiamGia, -1);

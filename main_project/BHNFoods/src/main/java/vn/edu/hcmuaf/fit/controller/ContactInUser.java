@@ -33,7 +33,7 @@ public class ContactInUser extends HttpServlet {
         String content = request.getParameter("content");
         String email = request.getParameter("email");
         UserService.getInstance().addcontact(idcontact,iduser, content,nameuser, phone, email);
-        response.sendRedirect("http://localhost:8080/BHNFoods/ContactInUser?idUser=" + iduser);
+        response.sendRedirect("/BHNFoods/ContactInUser?idUser=" + iduser);
     }
 
 

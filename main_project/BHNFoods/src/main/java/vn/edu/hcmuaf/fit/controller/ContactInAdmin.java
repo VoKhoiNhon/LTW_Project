@@ -25,7 +25,7 @@ public class ContactInAdmin extends HttpServlet {
         ProductService.getInstance().viewContact(idcontact);
         ProductService.getInstance().seenContact(idcontact, condition);
 //        response.sendRedirect("mainAdmin.jsp");
-        response.sendRedirect("http://localhost:8080/BHNFoods/AdminMain");
+        response.sendRedirect("/BHNFoods/AdminMain");
 
     }
 }

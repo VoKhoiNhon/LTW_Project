@@ -34,7 +34,7 @@ public class AddProduct extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        System.out.println("sdfnjsdk");
+
     }
 
     @Override
@@ -81,7 +81,7 @@ public class AddProduct extends HttpServlet {
             request.setAttribute("message", "Sorry this servlet only handles file upload request.");
         }
 
-        response.sendRedirect("http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1");
+        response.sendRedirect("/BHNFoods/AdminManagePr?kind=0&page=1");
     }
 
     public static void main(String[] args) {

@@ -17,9 +17,7 @@ public class ApplyDiscount extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String code = request.getParameter("code");
-        System.out.println(code);
         int sum = Integer.parseInt(request.getParameter("sum"));
-        System.out.println(sum);
         int discount = Integer.parseInt(request.getParameter("discount"));
         DecimalFormat dec = new DecimalFormat("#,###");
         PrintWriter out = response.getWriter();

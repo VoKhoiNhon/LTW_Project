@@ -16,7 +16,7 @@ public class UpdateUser extends HttpServlet {
         String idUser= request.getParameter("idUser");
         int decentralization= Integer.parseInt(request.getParameter("decentralization"));
         UserService.getInstance().updateUser( idUser, decentralization);
-        response.sendRedirect("http://localhost:8080/BHNFoods/AdminManageUser");
+        response.sendRedirect("/BHNFoods/AdminManageUser");
     }
 
     @Override

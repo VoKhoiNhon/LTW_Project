@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.Orders;
+import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
 import javax.servlet.*;
@@ -14,13 +15,17 @@ import java.util.Map;
 public class ListOrdersAdmin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idUser= request.getParameter("idUser");
-        List<Orders> listManageOrders = ProductService.getInstance().listOrdersAdmin();
-        Map<String, List<Orders>> mapOrder = ProductService.getInstance().getMapOrder(listManageOrders);
-        Map<String, Integer> sumOrder = ProductService.getInstance().sumOrder(mapOrder);
-        request.setAttribute("mapAdminOrder", mapOrder);
-        request.setAttribute("sumAdminOrder", sumOrder);
-        request.getRequestDispatcher("manage_AdminOrders.jsp").forward(request,response);
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
+        if(user.getDecentralization() != 2) response.sendRedirect("index.jsp");
+        else {
+            List<Orders> listManageOrders = ProductService.getInstance().listOrdersAdmin();
+            Map<String, List<Orders>> mapOrder = ProductService.getInstance().getMapOrder(listManageOrders);
+            Map<String, Integer> sumOrder = ProductService.getInstance().sumOrder(mapOrder);
+            request.setAttribute("mapAdminOrder", mapOrder);
+            request.setAttribute("sumAdminOrder", sumOrder);
+            request.getRequestDispatcher("manage_AdminOrders.jsp").forward(request,response);
+        }
     }
 
     @Override

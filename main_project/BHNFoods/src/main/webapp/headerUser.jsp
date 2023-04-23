@@ -93,9 +93,15 @@
                         Hoa</span>
                     <div class="list_menu">
                         <div class="dr"><a href="account.jsp">Tài khoản</a></div>
-                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/loveProduct?idUser=user1">Sản phẩm yêu thích</a></div>
-                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/manageOrder?idUser=user1">Quản lý đơn hàng</a> </div>
-                        <div class="dr"> <a href="http://localhost:8080/BHNFoods/history?idUser=user1">Lịch sử đơn hàng</a></div>
+<<<<<<< Updated upstream
+                        <div class="dr"> <a href="/BHNFoods/loveProduct?">Sản phẩm yêu thích</a></div>
+                        <div class="dr"> <a href="/BHNFoods/manageOrder?">Quản lý đơn hàng</a> </div>
+                        <div class="dr"> <a href="/BHNFoods/history?">Lịch sử đơn hàng</a></div>
+=======
+                        <div class="dr"> <a href="/BHNFoods/loveProduct?idUser=user1">Sản phẩm yêu thích</a></div>
+                        <div class="dr"> <a href="/BHNFoods/manageOrder?idUser=user1">Quản lý đơn hàng</a> </div>
+                        <div class="dr"> <a href="/BHNFoods/history?idUser=user1">Lịch sử đơn hàng</a></div>
+>>>>>>> Stashed changes
                         <div class="dr"> <a href="index.jsp">Đăng xuất</a></div>
                     </div>
                 </li>

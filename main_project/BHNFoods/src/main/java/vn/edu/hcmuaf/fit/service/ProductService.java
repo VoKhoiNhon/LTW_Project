@@ -34,27 +34,49 @@ public class ProductService {
 
     // Lấy ra sản phẩm theo id
     public List<SingleProduct> getSingleProduct(String idPro) {
+        String sql = "SELECT p.NAME_PR, p.PRICE, c.ID_PR, c.NSX, c.HSD, c.BRAND, c.`DESCRIBE`, c.WEIGHT, c.ORIGIN, c.DATE_IMPORT_PR, c.INVENTORY, c.CONDITION_PR, i.URL, p.ID_MENU, p.DISCOUNT " +
+                "FROM ct_pr c " +
+                "JOIN image i ON i.ID_PR = c.ID_PR " +
+                "JOIN product p ON p.ID_PR = c.ID_PR " +
+                "WHERE i.`CONDITION` = 0 AND c.ID_PR = :idPro";
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT p.NAME_PR,p.PRICE, c.ID_PR, c.NSX, c.HSD, c.BRAND, c.`DESCRIBE`, c.WEIGHT, c.ORIGIN, c.DATE_IMPORT_PR, c.INVENTORY, c.CONDITION_PR, i.URL, p.ID_MENU,p.DISCOUNT  from ct_pr c join image i on i.ID_PR = c.ID_PR JOIN product p on p.ID_PR = c.ID_PR where i.`CONDITION` = 0 and c.ID_PR = '" + idPro + "'").mapToBean(SingleProduct.class).collect(Collectors.toList());
+            return handle.createQuery(sql)
+                    .bind("idPro", idPro)
+                    .mapToBean(SingleProduct.class)
+                    .collect(Collectors.toList());
         });
-
     }
 
     // lấy tất cả hình liên quan đến product theo id
     public List<ImgForSingleProd> getListImgForSingleProduct(String idPro) {
+        String sql = "SELECT URL FROM image WHERE image.ID_PR = :idPro";
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT URL FROM image where image.ID_PR = '" + idPro + "'").mapToBean(ImgForSingleProd.class).collect(Collectors.toList());
+            return handle.createQuery(sql)
+                    .bind("idPro", idPro)
+                    .mapToBean(ImgForSingleProd.class)
+                    .collect(Collectors.toList());
         });
     }
 
     // Lấy ra phản hồi về sản phẩm theo id
     public List<Feedback> getFeedBack(String idPro) {
+        String sql = "SELECT f.ID_USER, u.NAME_USER, f.SCORESTAR, f.TEXT, f.DATE " +
+                "FROM feed_back f " +
+                "JOIN user u ON u.`ID_USER` = f.ID_USER " +
+                "WHERE f.ID_PR = :idPro";
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT f.ID_USER, u.NAME_USER, f.SCORESTAR, f.TEXT, f.DATE FROM feed_back f join user u on u.`ID_USER` = f.ID_USER and f.ID_PR = '" + idPro + "'").mapToBean(Feedback.class).collect(Collectors.toList());
+            return handle.createQuery(sql)
+                    .bind("idPro", idPro)
+                    .mapToBean(Feedback.class)
+                    .collect(Collectors.toList());
         });
     }
 
+
     public List<Feedback> getFeedBackInPage(String idProd, int page) {
+        if (page < 1) {
+            page = 1;
+        }
         List<Feedback> feedbackList = new ArrayList<Feedback>();
         List<Feedback> allFeedbacks = getFeedBack(idProd);
         int n = allFeedbacks.size() - (page - 1) * 3 >= 3 ? 3 : allFeedbacks.size() % 3;
@@ -63,6 +85,7 @@ public class ProductService {
         }
         return feedbackList;
     }
+
 
     // lấy ra danh sách sản phẩm theo loại, nếu không có loại thì lấy tất cả
     public static List<Product> getProductByKind(int kind) {
@@ -96,9 +119,14 @@ public class ProductService {
     // lấy ra danh sách product theo loại và phân trang
     public List<Product> getListProdInPage(int kind, int page) {
         List<Product> listProd = getProductByKind(kind);
+        if (listProd == null || listProd.isEmpty()) {
+            // xử lý trường hợp `kind` không hợp lệ
+            return new ArrayList<Product>();
+        }
         List<Product> listResult = new ArrayList<Product>();
-        int start = (page - 1) * 15 < 0 ? 0 : (page - 1) * 15;
-        int end = page <= listProd.size() / 15 ? page * 15 : listProd.size() - ((page - 1) * 15) + start;
+        int maxPages = (listProd.size() - 1) / 15 + 1; // tính số lượng trang tối đa có thể có
+        int start = (page - 1) * 15;
+        int end = Math.min(page * 15, listProd.size());
         for (int i = start; i < end; i++) {
             listResult.add(listProd.get(i));
         }
@@ -107,13 +135,15 @@ public class ProductService {
 
     public List<Product> getListProdInPage(List<Product> list, int page) {
         List<Product> listResult = new ArrayList<Product>();
-        int start = (page - 1) * 15 < 0 ? 0 : (page - 1) * 15;
-        int end = page <= list.size() / 15 ? page * 15 : list.size() - ((page - 1) * 15) + start;
+        int maxPages = (list.size() - 1) / 15 + 1;
+        int start = (page - 1) * 15;
+        int end = Math.min(page * 15, list.size());
         for (int i = start; i < end; i++) {
             listResult.add(list.get(i));
         }
         return listResult;
     }
+
 
     // lấy ra các sản phẩm liên quan cho 1 product
     public List<Product> getRelatedProducts(String idMenu) {
@@ -380,8 +410,16 @@ public class ProductService {
     }
 
     public List<SingleProduct> getListProductHostSale() {
+        String sql = "SELECT p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, MAX(i.URL) as URL, c.INVENTORY, c.NSX, c.BRAND, c.ORIGIN, c.WEIGHT, c.`DESCRIBE`, c.HSD, SUM(s.AMOUNT) as saled \n" +
+                "FROM product p \n" +
+                "JOIN image i ON p.ID_PR = i.ID_PR \n" +
+                "JOIN ct_pr c ON c.ID_PR = p.ID_PR \n" +
+                "JOIN sold_pr s ON s.ID_PR = p.ID_PR \n" +
+                "WHERE i.`CONDITION` = 0 \n" +
+                "GROUP BY p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, c.INVENTORY, c.NSX, c.BRAND, c.ORIGIN, c.WEIGHT, c.`DESCRIBE`, c.HSD \n" +
+                "ORDER BY saled DESC;";
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY, c.NSX,c.BRAND,c.ORIGIN, c.WEIGHT, c.`DESCRIBE` , c.HSD,sum(s.AMOUNT)as saled from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR JOIN sold_pr s on s.ID_PR= p.ID_PR where i.`CONDITION` = 0  GROUP BY p.ID_PR order by saled desc  ")
+            return handle.createQuery(sql)
                     .mapToBean(SingleProduct.class).collect(Collectors.toList());
         });
     }
@@ -412,13 +450,17 @@ public class ProductService {
         });
         return l.get(0).getTurnover();
     }
-
-    public int getNowMonth() {
-        return LocalDateTime.now().getMonthValue();
+    public  int getAllTurnover() {
+        List<Turnover> l= JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select sum(s.PRICE_HERE) as turnover   from orders o join sold_pr s on o.ID_ORDERS=s.ID_ORDERS ").mapToBean(Turnover.class).collect(Collectors.toList());
+        });
+        return l.get(0).getTurnover();
     }
-
-    public int getNowYer() {
-        return LocalDateTime.now().getYear();
+public int getNowMonth(){
+       return  LocalDateTime.now().getMonthValue();
+}
+public int getNowYer(){
+    return  LocalDateTime.now().getYear();
 
 
     }
@@ -511,29 +553,37 @@ public class ProductService {
         return result;
     }
 
+    
     public void addImg(int idPr, String idImg, String url, int condition) {
+        String sql = "INSERT INTO image VALUES ('prod" + idPr + "', :idImg, :url, :condition)";
         JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("INSERT INTO image VALUES ('prod" + idPr + "','" + idImg + "','" + url + "',b'" + condition + "')").execute();
+            return handle.createUpdate(sql)
+                    .bind("idImg", idImg)
+                    .bind("url", url)
+                    .bind("condition", condition)
+                    .execute();
         });
-    }
-
-
-    public static void main(String[] args) {
-
-//        ProductService.getInstance().addImg(105, "eee", "aaaaaaaafffffff", 0);
-        System.out.println(ProductService.getInstance().sumContact());
     }
 
 
     public void updateInventoryCT_PR(String idProd, int sl) {
+        String sql = "UPDATE ct_pr set INVENTORY = (INVENTORY + :sl) where ID_PR = :idProd";
         JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("UPDATE ct_pr set INVENTORY = (INVENTORY + " + sl + ") where ID_PR = '" + idProd + "'").execute();
+            return handle.createUpdate(sql)
+                    .bind("sl", sl)
+                    .bind("idProd", idProd)
+                    .execute();
         });
     }
 
-    public List<Integer> getInventoryCT_PR(String idProd) {
+    public Integer getInventoryCT_PR(String idProd) {
+        String query = "SELECT inventory FROM ct_pr WHERE ID_PR = :idProd";
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select inventory from ct_pr c where c.ID_PR = '" + idProd + "'").mapToBean(Integer.class).collect(Collectors.toList());
+            return handle.createQuery(query)
+                    .bind("idProd", idProd)
+                    .mapTo(Integer.class)
+                    .findOne()
+                    .orElse(0);
         });
     }
 

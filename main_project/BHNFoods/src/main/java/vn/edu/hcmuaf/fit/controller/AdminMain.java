@@ -41,24 +41,30 @@ public class AdminMain extends HttpServlet {
         request.setAttribute("listContact", listContact);
         request.setAttribute("sumcontact",sumcontact);
 
-        for (int i = 2; i <= 12; i++) {
-            tur += ProductService.getInstance().getTurnover(i, 2022);
-            tur1 += ProductService.getInstance().getTurnover(i, 2021);
-            data += ("," + ProductService.getInstance().getTurnover(i, 2022));
-            data1 += ("," + ProductService.getInstance().getTurnover(i, 2021));
-        }
-        int nowTur = ProductService.getInstance().getTurnover(ProductService.getInstance().getNowMonth(), ProductService.getInstance().getNowYer());
+            for (int i = 2; i <= 12; i++) {
+                tur0 += ProductService.getInstance().getTurnover(i, 2021);
+                tur += ProductService.getInstance().getTurnover(i, 2022);
+                tur1 += ProductService.getInstance().getTurnover(i, 2023);
+                data0 += ("," + ProductService.getInstance().getTurnover(i, 2021));
+                data += ("," + ProductService.getInstance().getTurnover(i, 2022));
+                data1 += ("," + ProductService.getInstance().getTurnover(i, 2023));
+            }
+            int nowTur = ProductService.getInstance().getTurnover(ProductService.getInstance().getNowMonth(), ProductService.getInstance().getNowYer());
 //        double percentY= ((tur/tur1)-1)*100;
 //        request.setAttribute("pec", percentY);
-        request.setAttribute("stopSaled", stopSaledPR);
-        request.setAttribute("saledPr", saledPR);
-        request.setAttribute("newbie", newbie);
-        request.setAttribute("nowTur", nowTur);
-        request.setAttribute("tur", tur);
-        request.setAttribute("data", data);
-        request.setAttribute("data1", data1);
-        request.setAttribute("hotSale", pr);
-        request.getRequestDispatcher("adminMain.jsp").forward(request, response);
+            request.setAttribute("stopSaled", stopSaledPR);
+            request.setAttribute("saledPr", saledPR);
+            request.setAttribute("newbie", newbie);
+            request.setAttribute("nowTur", nowTur);
+            request.setAttribute("tur", tur);
+            request.setAttribute("tur1", tur1);
+            request.setAttribute("alltur", alltur);
+            request.setAttribute("data0", data0);
+            request.setAttribute("data", data);
+            request.setAttribute("data1", data1);
+            request.setAttribute("hotSale", pr);
+            request.getRequestDispatcher("adminMain.jsp").forward(request, response);
+        }
     }
 
     @Override
