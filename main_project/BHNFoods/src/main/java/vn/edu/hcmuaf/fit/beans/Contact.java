@@ -3,24 +3,27 @@ package vn.edu.hcmuaf.fit.beans;
 import java.time.LocalDateTime;
 
 public class Contact {
+    String idcontact;
     String iduser;
     String nameUser;
     String email;
     String phone;
     String content;
     LocalDateTime dateTime;
+    byte condition;
 
     public Contact(){
-
     }
 
-    public Contact(String iduser, String nameUser, String email, String phone, String content, LocalDateTime dateTime) {
+    public Contact(String idcontact,String iduser, String nameUser, String email, String phone, String content, LocalDateTime dateTime, byte condition) {
+        this.idcontact = idcontact;
         this.iduser = iduser;
         this.nameUser = nameUser;
         this.email = email;
         this.phone = phone;
         this.content = content;
         this.dateTime = dateTime;
+        this.condition = condition;
     }
 
     public String getIduser() {
@@ -37,6 +40,14 @@ public class Contact {
 
     public void setNameUser(String nameUser) {
         this.nameUser = nameUser;
+    }
+
+    public String getIdcontact() {
+        return idcontact;
+    }
+
+    public void setIdcontact(String idcontact) {
+        this.idcontact = idcontact;
     }
 
     public String getEmail() {
@@ -69,6 +80,14 @@ public class Contact {
 
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
+    }
+
+    public byte getCondition() {
+        return condition;
+    }
+
+    public void setCondition(byte condition) {
+        this.condition = condition;
     }
 
     @Override

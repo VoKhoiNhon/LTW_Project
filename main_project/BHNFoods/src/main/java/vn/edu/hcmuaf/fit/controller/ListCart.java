@@ -25,7 +25,6 @@ public class ListCart extends HttpServlet {
         System.out.println(sum);
         request.setAttribute("sum",sum);
         request.getRequestDispatcher("cart.jsp").forward(request,response);
-
     }
 
     @Override

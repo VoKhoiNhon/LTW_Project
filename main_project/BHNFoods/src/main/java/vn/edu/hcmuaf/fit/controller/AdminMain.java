@@ -3,7 +3,6 @@ package vn.edu.hcmuaf.fit.controller;
 import vn.edu.hcmuaf.fit.beans.Contact;
 import vn.edu.hcmuaf.fit.beans.Powers;
 import vn.edu.hcmuaf.fit.beans.SingleProduct;
-import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.ProductService;
 import vn.edu.hcmuaf.fit.service.UserService;
 
@@ -11,6 +10,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @WebServlet(name = "AdminMain", value = "/AdminMain")
@@ -37,8 +38,15 @@ public class AdminMain extends HttpServlet {
             int saledPR = ProductService.getInstance().getSalerPR();
             int stopSaledPR = ProductService.getInstance().getStopPr();
             List<SingleProduct> pr = ProductService.getInstance().getListProductHostSale();
-            List<Contact> listContact = ProductService.getInstance().viewNameContact();
-            request.setAttribute("listContact", listContact);
+            List<Contact> listContact = UserService.getInstance().getListContact();
+        Collections.sort(listContact, new Comparator<Contact>() {
+            @Override
+            public int compare(Contact o1, Contact o2) {
+                return o2.getCondition() - o1.getCondition();
+            }
+        });
+        request.setAttribute("listContact", listContact);
+        request.setAttribute("sumcontact",sumcontact);
 
             for (int i = 2; i <= 12; i++) {
                 tur0 += ProductService.getInstance().getTurnover(i, 2021);

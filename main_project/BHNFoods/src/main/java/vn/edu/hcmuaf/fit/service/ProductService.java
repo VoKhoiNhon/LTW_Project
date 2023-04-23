@@ -184,7 +184,8 @@ public class ProductService {
                     .mapToBean(SingleProduct.class).collect(Collectors.toList());
         });
     }
-  // trang lịch sử đơn hàng
+
+    // trang lịch sử đơn hàng
     public List<SoldProduct> getHistory(String idUser) {
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("SELECT s.ID_PR, p.NAME_PR, i.URL, s.ID_USER, s.PRICE_HERE, s.AMOUNT, s.`TIME_SOLD`, s.ID_ORDERS, o.`CONDITION` FROM sold_pr s join product p on p.ID_PR = s.ID_PR JOIN image i on i.ID_PR = s.ID_PR JOIN orders o on o.ID_ORDERS = s.ID_ORDERS where (o.`CONDITION` = 2 or o.`CONDITION` = 3) and i.`CONDITION` = 0 and s.ID_USER = '" + idUser + "'")
@@ -193,9 +194,9 @@ public class ProductService {
     }
 
     //trang quan ly don hang
-    public List<Orders> getManagerOrders(String idUser){
-        return  JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT i.URL, p.NAME_PR, s.PRICE_HERE, s.AMOUNT, o.TIME_ORDERS, o.`CONDITION` FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on s.ID_PR= p.ID_PR JOIN image i on i.ID_PR=p.ID_PR WHERE (o.`CONDITION`=0 or o.`CONDITION`=1) and i.`CONDITION`=0 and s.`ID_USER`='"+idUser+"'")
+    public List<Orders> getManagerOrders(String idUser) {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT i.URL, p.NAME_PR, s.PRICE_HERE, s.AMOUNT, o.TIME_ORDERS, o.`CONDITION` FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on s.ID_PR= p.ID_PR JOIN image i on i.ID_PR=p.ID_PR WHERE (o.`CONDITION`=0 or o.`CONDITION`=1) and i.`CONDITION`=0 and s.`ID_USER`='" + idUser + "'")
                     .mapToBean(Orders.class).collect(Collectors.toList());
         });
     }
@@ -207,7 +208,8 @@ public class ProductService {
                     .mapToBean(Orders.class).collect(Collectors.toList());
         });
     }
-// map quản lý đơn hàng
+
+    // map quản lý đơn hàng
     public Map<String, List<Orders>> getMapOrder(List<Orders> ordersList) {
         Map<String, List<Orders>> mapResult = new HashMap<String, List<Orders>>();
 
@@ -223,7 +225,8 @@ public class ProductService {
 
         return mapResult;
     }
-// mao lịch suwr giao dịch
+
+    // mao lịch suwr giao dịch
     public Map<String, List<SoldProduct>> getMapHistoryOrders(List<SoldProduct> soldProductList) {
         Map<String, List<SoldProduct>> mapResult = new HashMap<String, List<SoldProduct>>();
 
@@ -238,7 +241,8 @@ public class ProductService {
         }
         return mapResult;
     }
-// tính tiền hàng trong Lịch sử giao dịch
+
+    // tính tiền hàng trong Lịch sử giao dịch
     public Map<String, Integer> sumHistoryOrder(Map<String, List<SoldProduct>> map) {
         Map<String, Integer> mapResult = new HashMap<String, Integer>();
         int sum = 0;
@@ -279,7 +283,7 @@ public class ProductService {
         return result;
     }
 
-// format thời gian ngày tháng năm giờ phút
+    // format thời gian ngày tháng năm giờ phút
     public String formatTime(LocalDateTime dateTime) {
         return dateTime.getDayOfMonth() + "-" + dateTime.getMonthValue() + "-" + dateTime.getYear() + " " + dateTime.getHour() + ":" + dateTime.getMinute();
     }
@@ -290,7 +294,7 @@ public class ProductService {
             return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from product p join image i on p.ID_PR = i.ID_PR").mapToBean(Product.class).collect(Collectors.toList());
         });
         for (Product p : pr) {
-            if (p.getNamePr().toUpperCase().contains(search.toUpperCase())||p.getIdPr().toUpperCase().contains(search.toUpperCase())||p.getIdMenu().toUpperCase().contains(search.toUpperCase())) {
+            if (p.getNamePr().toUpperCase().contains(search.toUpperCase()) || p.getIdPr().toUpperCase().contains(search.toUpperCase()) || p.getIdMenu().toUpperCase().contains(search.toUpperCase())) {
                 list.add(p);
             }
         }
@@ -300,9 +304,9 @@ public class ProductService {
     public static List<Product> getListProductByName(String name) {
         String sql = "SELECT p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from product p join image i on p.ID_PR = i.ID_PR WHERE p.NAME_PR like CONCAT('%', :name, '%')";
         return JDBIConnector.get().withHandle(handle ->
-                        handle.createQuery(sql)
+                handle.createQuery(sql)
                         .bind("name", name)
-                                .mapToBean(Product.class).list()
+                        .mapToBean(Product.class).list()
 
         );
     }
@@ -378,8 +382,8 @@ public class ProductService {
             return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL,c.INVENTORY ,c.NSX,c.BRAND,c.ORIGIN, c.WEIGHT, c.`DESCRIBE` , c.HSD ,c.CONDITION_PR as saled  from product p join image i on p.ID_PR = i.ID_PR JOIN ct_pr c ON c.ID_PR=p.ID_PR  where i.`CONDITION` = 0 and p.ID_PR not in (select s.ID_PR from sold_pr s )  GROUP BY p.ID_PR").mapToBean(SingleProduct.class).collect(Collectors.toList());
         });
         for (SingleProduct s2 : l2) {
-                    s2.setSaled("0");
-                    l1.add(s2);
+            s2.setSaled("0");
+            l1.add(s2);
         }
         return l1;
     }
@@ -405,6 +409,7 @@ public class ProductService {
                     .mapToBean(Product.class).collect(Collectors.toList());
         });
     }
+
     public List<SingleProduct> getListProductHostSale() {
         String sql = "SELECT p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, MAX(i.URL) as URL, c.INVENTORY, c.NSX, c.BRAND, c.ORIGIN, c.WEIGHT, c.`DESCRIBE`, c.HSD, SUM(s.AMOUNT) as saled \n" +
                 "FROM product p \n" +
@@ -421,7 +426,7 @@ public class ProductService {
     }
 
     // thêm sp của bản product
-    public static void addProd(int index, String menu, int discount, int price, String name){
+    public static void addProd(int index, String menu, int discount, int price, String name) {
 
          JDBIConnector.get().withHandle(handle -> {
             return handle.createUpdate("INSERT INTO `product` VALUES ('prod"+index+"','"+menu+"',"+discount+","+ price+ ", '"+name+"')").execute();
@@ -430,18 +435,25 @@ public class ProductService {
     // thêm sp của bản ct_pr
     public static void addCT_Prod( int index,String nsx,String hsd, String brand, String mota, double weight, String origin, int inventory ){
         JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("INSERT INTO `ct_pr` VALUES ('prod"+index+"','"+ nsx+"','"+ hsd+"','"+brand+"','"+mota+"'," +weight+",'"+  origin +"','"+ LocalDate.now()+"'," +inventory +", 0)").execute();
+            return handle.createUpdate("INSERT INTO `product` VALUES ('prod" + index + "','" + menu + "'," + discount + "," + price + ", '" + name + "')").execute();
         });
     }
-    public  boolean checkAddPro(){
+
+    // thêm sp của bản ct_pr
+    public static void addCT_Prod(int index, String nsx, String hsd, String brand, String mota, double weight, String origin, int inventory) {
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("INSERT INTO `ct_pr` VALUES ('prod" + index + "','" + nsx + "','" + hsd + "','" + brand + "','" + mota + "'," + weight + ",'" + origin + "','" + LocalDate.now() + "'," + inventory + ", 0)").execute();
+        });
+    }
+
+    public boolean checkAddPro() {
         return true;
     }
 
 
-
-    public  int getTurnover(int month, int year) {
-        List<Turnover> l= JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select sum(s.PRICE_HERE) as turnover   from orders o join sold_pr s on o.ID_ORDERS=s.ID_ORDERS where year(o.TIME_PICKUP)='"+year+"' and  month(o.TIME_PICKUP)= '"+month+"'").mapToBean(Turnover.class).collect(Collectors.toList());
+    public int getTurnover(int month, int year) {
+        List<Turnover> l = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select sum(s.PRICE_HERE) as turnover   from orders o join sold_pr s on o.ID_ORDERS=s.ID_ORDERS where year(o.TIME_PICKUP)='" + year + "' and  month(o.TIME_PICKUP)= '" + month + "'").mapToBean(Turnover.class).collect(Collectors.toList());
         });
         return l.get(0).getTurnover();
     }
@@ -458,15 +470,17 @@ public int getNowYer(){
     return  LocalDateTime.now().getYear();
 
 
-}
-    public  int getSalerPR() {
-        List<Turnover> l= JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select sum(s.AMOUNT) as turnover   from orders o join sold_pr s on o.ID_ORDERS=s.ID_ORDERS where year(o.TIME_PICKUP)='"+LocalDateTime.now().getYear()+"' and  month(o.TIME_PICKUP)= '"+LocalDateTime.now().getMonthValue()+"'").mapToBean(Turnover.class).collect(Collectors.toList());
+    }
+
+    public int getSalerPR() {
+        List<Turnover> l = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select sum(s.AMOUNT) as turnover   from orders o join sold_pr s on o.ID_ORDERS=s.ID_ORDERS where year(o.TIME_PICKUP)='" + LocalDateTime.now().getYear() + "' and  month(o.TIME_PICKUP)= '" + LocalDateTime.now().getMonthValue() + "'").mapToBean(Turnover.class).collect(Collectors.toList());
         });
         return l.get(0).getTurnover();
     }
-    public  int getStopPr() {
-        List<Turnover> l= JDBIConnector.get().withHandle(handle -> {
+
+    public int getStopPr() {
+        List<Turnover> l = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("select sum(c.CONDITION_PR) as turnover   from ct_pr c where c.CONDITION_PR=1 ").mapToBean(Turnover.class).collect(Collectors.toList());
         });
         return l.get(0).getTurnover();
@@ -480,56 +494,73 @@ public int getNowYer(){
         return result;
 
     }
+
     public static List<SingleProduct> getListPrNameSearchADmin(String search) {
         List<SingleProduct> list = new ArrayList<>();
         List<SingleProduct> pr = getListSingleProductByKind(0);
         for (SingleProduct p : pr) {
-            if (p.getNamePr().toUpperCase().contains(search.toUpperCase())||p.getIdPr().toUpperCase().contains(search.toUpperCase())||p.getBrand().toUpperCase().contains(search.toUpperCase())||p.getIdMenu().toUpperCase().contains(search.toUpperCase())||p.getOrigin().toUpperCase().contains(search.toUpperCase())) {
+            if (p.getNamePr().toUpperCase().contains(search.toUpperCase()) || p.getIdPr().toUpperCase().contains(search.toUpperCase()) || p.getBrand().toUpperCase().contains(search.toUpperCase()) || p.getIdMenu().toUpperCase().contains(search.toUpperCase()) || p.getOrigin().toUpperCase().contains(search.toUpperCase())) {
                 list.add(p);
             }
         }
         return list;
     }
+
     //xóa sản phẩm product
     public static void deletePr(String id) {
         JDBIConnector.get().withHandle(handle -> {
-          return  handle.createUpdate("DELETE FROM product WHERE ID_PR='"+id+"'").execute();
+            return handle.createUpdate("DELETE FROM product WHERE ID_PR='" + id + "'").execute();
         });
     }
+
     //xóa sản phẩm ct_pr
     public static void deleteCt_pr(String id) {
         JDBIConnector.get().withHandle(handle -> {
-            return  handle.createUpdate("DELETE FROM ct_pr WHERE ID_PR='"+id+"'").execute();
+            return handle.createUpdate("DELETE FROM ct_pr WHERE ID_PR='" + id + "'").execute();
         });
     }
+
     // update sp bảng product
-    public  static  void updateProduct(String idpr, String menu, int discount, int price, String name){
+    public static void updateProduct(String idpr, String menu, int discount, int price, String name) {
         JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("UPDATE  product set  ID_MENU= '"+menu+"', DISCOUNT="+discount+", PRICE="+price+", NAME_PR='"+name+"' WHERE ID_PR='"+idpr+"'").execute();
+            return handle.createUpdate("UPDATE  product set  ID_MENU= '" + menu + "', DISCOUNT=" + discount + ", PRICE=" + price + ", NAME_PR='" + name + "' WHERE ID_PR='" + idpr + "'").execute();
         });
     }
+
     // update sp bảng ct_sp
-    public static void updateCt_pr(String idpr,String nsx,String hsd, String brand, String mota, double weight, String origin, int inventory, int condition){
+    public static void updateCt_pr(String idpr, String nsx, String hsd, String brand, String mota, double weight, String origin, int inventory, int condition) {
         JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("UPDATE  ct_pr set NSX='"+nsx+"',HSD='"+hsd+"',BRAND ='"+brand+"',`DESCRIBE`='"+mota+"',WEIGHT="+weight+",ORIGIN='"+origin+"',INVENTORY=" +inventory+ ",CONDITION_PR=" +condition+ " WHERE ID_PR='" +idpr+ "';").execute();
+            return handle.createUpdate("UPDATE  ct_pr set NSX='" + nsx + "',HSD='" + hsd + "',BRAND ='" + brand + "',`DESCRIBE`='" + mota + "',WEIGHT=" + weight + ",ORIGIN='" + origin + "',INVENTORY=" + inventory + ",CONDITION_PR=" + condition + " WHERE ID_PR='" + idpr + "';").execute();
         });
     }
 
 
-// contact aaaaa làm thử thôi
-    public  void  contact(String iduser, String content, String date){
-        JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("INSERT INTO contact VALUES('"+iduser+"','"+content+"','"+LocalDateTime.now()+"') ").execute();
-        });
-    }
     //xem liên hệ của user ở trang admin
-    public List<Contact> viewContact(String iduser){
+    public List<Contact> viewContact(String idcontact) {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT u.ID_USER,u.NAME_USER, u.EMAIL, u.PHONE, c.CONTENT, c.`DATETIME` FROM `user` u join contact c ON u.ID_USER= c.ID_USER WHERE u.ID_USER='"+iduser+"';")
+            return handle.createQuery("SELECT c.ID_CONTACT, c.ID_USER,c.NAMEUSER, c.EMAIL, c.PHONE, c.CONTENT, c.`DATETIME`, c.CONDITION FROM  contact c  WHERE c.ID_CONTACT='" + idcontact + "';")
                     .mapToBean(Contact.class).collect(Collectors.toList());
         });
     }
 
+    // đánh dấu đã xem hay chưa
+    public static void seenContact(String idcontact, int condition) {
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("UPDATE contact set contact.CONDITION=" + condition + " WHERE contact.ID_CONTACT='" + idcontact + "';").execute();
+        });
+    }
+
+    //số phản hồi chưa xem
+    public int sumContact() {
+     int result = 0;
+     List<Contact> contactList = UserService.getInstance().getListContact();
+        for (Contact c: contactList) {
+            if(c.getCondition() == 1) result +=1;
+        }
+        return result;
+    }
+
+    
     public void addImg(int idPr, String idImg, String url, int condition) {
         String sql = "INSERT INTO image VALUES ('prod" + idPr + "', :idImg, :url, :condition)";
         JDBIConnector.get().withHandle(handle -> {
@@ -563,23 +594,23 @@ public int getNowYer(){
         });
     }
 
-    public List<Contact> viewNameContact(){
+    public List<Contact> viewNameContact() {
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("SELECT u.ID_USER,u.NAME_USER, u.EMAIL, u.PHONE, c.CONTENT, c.`DATETIME` FROM `user` u join contact c ON u.ID_USER= c.ID_USER")
                     .mapToBean(Contact.class).collect(Collectors.toList());
         });
     }
 
-    public static List<Orders> listOrdersAdmin (){
+    public static List<Orders> listOrdersAdmin() {
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("SELECT s.ID_USER, s.ID_ORDERS, i.URL, p.NAME_PR, s.PRICE_HERE, s.AMOUNT, o.`NAME`, o.PHONE, o.ADDRESS, o.NOTE, o.TIME_ORDERS, o.`CONDITION` FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on p.ID_PR= s.ID_PR join image i ON i.ID_PR= p.ID_PR")
                     .mapToBean(Orders.class).collect(Collectors.toList());
         });
     }
 
-    public void UpdateConditionOrders(int condition, String idOrders){
+    public void UpdateConditionOrders(int condition, String idOrders) {
         JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("UPDATE orders o set o.`CONDITION`="+condition+" WHERE o.ID_ORDERS='"+idOrders+"'").execute();
+            return handle.createUpdate("UPDATE orders o set o.`CONDITION`=" + condition + " WHERE o.ID_ORDERS='" + idOrders + "'").execute();
         });
     }
 

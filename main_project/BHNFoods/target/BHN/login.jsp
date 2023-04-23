@@ -27,7 +27,9 @@
 
 <body>
 <% String error = (String) request.getAttribute("error");
+    String block = (String) request.getAttribute("block");
 %>
+
 <div class="container-scroller background">
 
     <!-- partial -->
@@ -53,6 +55,9 @@
                                     </label>
                                 </div>
                                 <%}%>
+                                <% if (block != null) {%>
+
+                                <%}%>
                                 <div class="form-group">
                                     <label for="exampleInputName1">Email hoặc Số điện thoại</label>
                                     <input type="text" class="form-control" name="username" id="exampleInputName1"
@@ -66,11 +71,12 @@
                                            id="exampleInputPassword4" placeholder="Nhập mật khẩu">
                                 </div>
                                 <div class="">
-                                    <a href="https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&scope=email%20profile&state=security_token">Đăng
+                                    <a type="button"
+                                       href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/BHNFoods/LoginGG&response_type=code
+		                                 &client_id=209315281506-9itod9oiojmbqe56ri7567e6nqi2e181.apps.googleusercontent.com&approval_prompt=force">Đăng
                                         nhập với Google</a>
-                                    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-                                    </fb:login-button>
-                                    <a>Đăng nhập với Facebook </a>
+                                    <div class="fb-login-button" data-width="" data-size="small" data-button-type="login_with" data-layout="" data-auto-logout-link="" data-use-continue-as=""></div>                                      <%--   <a class="fb-login-button" href="https://www.facebook.com/dialog/oauth?client_id=223969136958408&redirect_uri=http://localhost:8080/BHNFoods/LoginFacebook">Đăng nhập với Facebook </a>--%>
+
                                 </div>
                                 <div class="form-group forgot_pass" style="padding-bottom:30px;">
                                     <a href="changepass.jsp">Quên mật khẩu?</a>
@@ -95,43 +101,46 @@
     </div>
 
 </div>
-
-
-<%--    console.log(`Browser name: ${browserName}`);--%>
-
-
 <script>
-    function statusChangeCallback(response){
+
+
+    function statusChangeCallback(response) {
         console.log('statusChangeCallback');
         console.log(response);
-
-        if(response.status==='connected'){
+        if (response.status == 'connected') {
             testAPI();
-        }else {
-            document.getElementById('status').innerHTML='please log'+ 'into this app';
+        } else {
+            document.getElementById('status').innerHTML = 'please log' + 'into this app';
         }
-
     }
+
     function checkLoginState() {
         FB.getLoginStatus(function (response) {
             statusChangeCallback(response);
         });
-    }
-    FB.api('/me', {fields:'name,email'}, function (response){
-        console.log(response);
 
-    })
+
+        FB.api('/me', {fields: 'birthday,name,email'}, function (response) {
+            console.log(response);
+            window.location.href = 'LoginFB?action=Face&name=' + response.name + '&email=' + response.email + '&id=' + response.id;
+        });
+    }
+
+
     window.fbAsyncInit = function () {
         FB.init({
-            appId: '223969136958408',
+            appId: '761456919098163',
             cookie: true,
             xfbml: true,
-            version: 'v2.9'
+            version: 'v16.0'
         });
-
         FB.AppEvents.logPageView();
-
+        FB.getLoginStatus(function (response) {
+            statusChangeCallback(response);
+        });
     };
+
+
     (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) {
@@ -142,9 +151,18 @@
         js.src = "https://connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+
+
+    function testAPI() {
+        console.log('welcome!');
+        FB.api('/me', function (response) {
+            console.log('Successfull login for:' + response.name);
+            document.getElementById('status').innerHTML = 'thanks for login in,' + response.name;
+        })
+    }
+
 </script>
-
-
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 <script src="admin_template/vendors/js/vendor.bundle.base.js"></script>
 
 <script src="admin_template/vendors/typeahead.js/typeahead.bundle.min.js"></script>

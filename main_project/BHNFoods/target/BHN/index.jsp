@@ -12,22 +12,20 @@
 <c:if test="${auth==null}"/>
 
 <%@ include file="header.jsp" %>
-
-<section class="ftco-section img" style="background-image: url(images/anhbackgr1.png); border-bottom:1px solid #82ae46; border-top: 1px solid #82ae46; ">
+<section class="ftco-section img"
+         style="background-image: url(images/anhbackgr1.png); border-bottom:1px solid #82ae46; border-top: 1px solid #82ae46; ">
     <div class="container">
-<%--        <div class="row justify-content-end">--%>
-            <div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate "style= "margin-left:auto">
-                <span class="subheading">Giá Tốt Cho Bạn</span>
-                <h2 class="mb-4">Ưu đãi trong ngày</h2>
-                <p>Luôn mang những sản phẩm chất lượng nhất đến tay khách hàng</p>
-                <h3><a href="#">Các loại đậu</a></h3>
-                <span class="price">30.000đ <a href="#">chỉ còn 15.000đ</a></span>
-                <div id="timer" class="d-flex mt-5">
-                    <div class="time" id="days"></div>
-                    <div class="time pl-3" id="hours"></div>
-                    <div class="time pl-3" id="minutes"></div>
-                    <div class="time pl-3" id="seconds"></div>
-<%--                </div>--%>
+        <div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate " style="margin-left:auto">
+            <span class="subheading">Giá Tốt Cho Bạn</span>
+            <h2 class="mb-4">Ưu đãi trong ngày</h2>
+            <p>Luôn mang những sản phẩm chất lượng nhất đến tay khách hàng</p>
+            <h3><a href="#">Các loại đậu</a></h3>
+            <span class="price">30.000đ <a href="#">chỉ còn 15.000đ</a></span>
+            <div id="timer" class="d-flex mt-5">
+                <div class="time" id="days"></div>
+                <div class="time pl-3" id="hours"></div>
+                <div class="time pl-3" id="minutes"></div>
+                <div class="time pl-3" id="seconds"></div>
             </div>
         </div>
     </div>
@@ -148,7 +146,8 @@
         <div class="row">
             <div class="col-md-6 col-lg-3 ftco-animate">
                 <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="ImageproductNew/Bot/Bot-bap-meizan/bot-bap-meizan1.jpg"
+                    <a href="#" class="img-prod"><img class="img-fluid"
+                                                      src="ImageproductNew/Bot/Bot-bap-meizan/bot-bap-meizan1.jpg"
                                                       alt="Colorlib Template">
                         <span class="status">30%</span>
                         <div class="overlay"></div>
@@ -180,7 +179,8 @@
             </div>
             <div class="col-md-6 col-lg-3 ftco-animate">
                 <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="ImageproductNew/Dau/bap-hat-dong-lanh-mama-food-goi-250g-202205171021267119_300x300.png"
+                    <a href="#" class="img-prod"><img class="img-fluid"
+                                                      src="ImageproductNew/Dau/bap-hat-dong-lanh-mama-food-goi-250g-202205171021267119_300x300.png"
                                                       alt="Colorlib Template">
                         <div class="overlay"></div>
                     </a>
@@ -210,7 +210,8 @@
             </div>
             <div class="col-md-6 col-lg-3 ftco-animate">
                 <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="ImageproductNew/Khoai/bap-my/bap-my-sieu-ngot-coop-300x300.jpg"
+                    <a href="#" class="img-prod"><img class="img-fluid"
+                                                      src="ImageproductNew/Khoai/bap-my/bap-my-sieu-ngot-coop-300x300.jpg"
                                                       alt="Colorlib Template">
                         <div class="overlay"></div>
                     </a>
@@ -240,7 +241,8 @@
             </div>
             <div class="col-md-6 col-lg-3 ftco-animate">
                 <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="ImageproductNew/Nep/nep-bac-viet-san-tui-1kg-202103040810147166_300x300.jpg"
+                    <a href="#" class="img-prod"><img class="img-fluid"
+                                                      src="ImageproductNew/Nep/nep-bac-viet-san-tui-1kg-202103040810147166_300x300.jpg"
                                                       alt="Colorlib Template">
                         <div class="overlay"></div>
                     </a>
@@ -271,7 +273,6 @@
         </div>
     </div>
 </section>
-
 
 
 <%--</footer>--%>

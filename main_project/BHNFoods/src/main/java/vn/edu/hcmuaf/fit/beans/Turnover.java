@@ -7,6 +7,7 @@ public class Turnover {
     }
 
     public Turnover(int turnover) {
+
         this.turnover = turnover;
     }
 
