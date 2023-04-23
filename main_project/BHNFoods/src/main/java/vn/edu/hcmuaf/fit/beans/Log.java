@@ -39,11 +39,6 @@ public class Log extends AbBean implements Serializable {
     public Log() {
     }
 
-    public Log(String user, String content) {
-        this.user = user;
-        this.content = content;
-    }
-
     public Log(int level, String user, String src, String content, LocalDateTime createAt, int status, String browserName, String locationIpClient) {
         this.level = level;
         this.user = user;

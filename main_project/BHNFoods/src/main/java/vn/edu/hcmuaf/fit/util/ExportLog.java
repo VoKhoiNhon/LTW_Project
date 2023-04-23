@@ -16,13 +16,19 @@ import vn.edu.hcmuaf.fit.service.LogSercive;
 import java.io.FileOutputStream;
 
 import java.io.OutputStream;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ExportLog {
-    static List<Log> list = LogSercive.getInstance().getAllLog();
+     static List<Log> list =  LogSercive.getInstance().getAllLog();
+
+
 
     public static void getFileExcel(OutputStream outputStream) {
         try {
+            Collections.reverse(list);
             // Tạo workbook mới
             XSSFWorkbook workbook = new XSSFWorkbook();
 
@@ -84,15 +90,16 @@ public class ExportLog {
 
     public static void getFilePDF(OutputStream outputStream) {
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
+        Collections.reverse(list);
         try {
             // Tạo writer để ghi dữ liệu vào file PDF
             PdfWriter.getInstance(document, outputStream);
             document.open();
             // Tạo bảng để chứa dữ liệu
-            PdfPTable table = new PdfPTable(7);
+            PdfPTable table = new PdfPTable(8);
             PdfPCell cell;
             cell = new PdfPCell(new Paragraph("Log"));
-            cell.setColspan(7);
+            cell.setColspan(8);
             table.addCell(cell);
             table.addCell("ID");
             table.addCell("level");
@@ -101,7 +108,8 @@ public class ExportLog {
             table.addCell("Content");
             table.addCell("Status");
             table.addCell("browserName");
-//            table.addCell("ip");
+            table.addCell("ip");
+
             for (Log l : list) {
                 table.addCell(Integer.toString(l.getId()));
                 table.addCell(l.getLevelWithName());
@@ -110,7 +118,8 @@ public class ExportLog {
                 table.addCell(l.getContent());
                 table.addCell(Integer.toString(l.getStatus()));
                 table.addCell(l.getbrowserName());
-//                table.addCell(l.getLocationIpClient());
+                table.addCell(l.getLocationIpClient().substring(l.getLocationIpClient().indexOf("{")+1,l.getLocationIpClient().indexOf(",")));
+
             }
             document.add(table);
             document.close();
@@ -120,9 +129,5 @@ public class ExportLog {
         }
     }
 
-    public static void main(String[] args) {
-//        getFileExcel();
-//        getFilePDF();
-        System.out.println(123);
-    }
+
 }
