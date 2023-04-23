@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.controller;
 
+import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.LoveProdService;
 
 import javax.servlet.*;
@@ -13,7 +14,8 @@ public class RemoveFromLove extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idProd = request.getParameter("id");
         HttpSession session = request.getSession();
-        String idUser = (String) session.getAttribute("idUser");
+        User user = (User) session.getAttribute("auth");
+            String idUser = user.getIdUser();
         LoveProdService.getInstance().deleteFromLike(idUser, idProd);
     }
 

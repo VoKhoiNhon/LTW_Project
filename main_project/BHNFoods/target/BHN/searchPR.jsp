@@ -13,7 +13,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>BHDFoods| Sản phẩm</title>
+    <title>BHNFoods | Sản phẩm</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -107,11 +107,7 @@
                         </ul>
                     </div>
                     <div class="product__item__text">
-<<<<<<< Updated upstream
                         <a href="/BHNFoods/oneProduct?id=<%=p.getIdPr()%>"><%=p.getNamePr()%>
-=======
-                        <a href="/BHNFoods/oneProduct?id=<%=p.getIdPr()%>&idUser=<%=request.getParameter("idUser")%>"><%=p.getNamePr()%>
->>>>>>> Stashed changes
                             <br> <span><%=decF.format(price).replace(',', '.')%>đ</span></a>
                     </div>
                 </div>

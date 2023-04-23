@@ -41,7 +41,7 @@ public class UpdateCtAccount extends HttpServlet {
         if (!passw.equals(repassw)) {
             request.setAttribute("error", "* Mật khẩu không trùng khớp");
 
-            request.getRequestDispatcher("/BHNFoods/account?idUser=" + iduser).forward(request, response);
+            request.getRequestDispatcher("/BHNFoods/account").forward(request, response);
 
 
         } else {
@@ -49,7 +49,7 @@ public class UpdateCtAccount extends HttpServlet {
             UserService.getInstance().updateCtAccount(iduser, name, sex, birthday, email, phone, passw, address, repassw);
             DB.me().insert(new Log(Log.INFO, "user" + UserService.getInstance().getListUser().size(), this.src, "Signup SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
 
-            response.sendRedirect("/BHNFoods/index?idUser=" + iduser);
+            response.sendRedirect("/BHNFoods/index");
 
         }
 

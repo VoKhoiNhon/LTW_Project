@@ -23,7 +23,8 @@ public class Pay extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
-        String idUser = (String) session.getAttribute("idUser");
+        User user = (User) session.getAttribute("auth");
+            String idUser = user.getIdUser();
         String name = request.getParameter("fullName");
         String phone = request.getParameter("phoneNumber");
         String email = request.getParameter("email");
