@@ -27,6 +27,9 @@ public class AdminMain extends HttpServlet {
         String data1 = "" + ProductService.getInstance().getTurnover(1, 2021);
         int tur = ProductService.getInstance().getTurnover(1, 2022  );
         int tur1 = ProductService.getInstance().getTurnover(1, 2021);
+        int alltur = ProductService.getInstance().getAllTurnover();
+        String data0 = "" + ProductService.getInstance().getTurnover(1, 2021);
+        int tur0 = ProductService.getInstance().getTurnover(1, 2021);
         int saledPR = ProductService.getInstance().getSalerPR();
         int stopSaledPR = ProductService.getInstance().getStopPr();
         int sumcontact= ProductService.getInstance().sumContact();
@@ -65,7 +68,7 @@ public class AdminMain extends HttpServlet {
             request.setAttribute("hotSale", pr);
             request.getRequestDispatcher("adminMain.jsp").forward(request, response);
         }
-    }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
