@@ -16,7 +16,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>BHDFoods</title>
+    <title>BHNFoods</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -36,6 +36,7 @@
 
 
 <%@ include file="header.jsp" %>
+
 
 
 <!-- Product Section Begin -->
@@ -200,11 +201,7 @@
                     </div>
                     <div class="product__item__text">
                         <h6>
-<<<<<<< Updated upstream
                             <a href="/BHNFoods/oneProduct?id=<%=relatedProducts.get(i).getIdPr()%>"><%=relatedProducts.get(i).getNamePr()%>
-=======
-                            <a href="/BHNFoods/oneProduct?id=<%=relatedProducts.get(i).getIdPr()%>&idUser=<%=request.getAttribute("idUser")%>"><%=relatedProducts.get(i).getNamePr()%>
->>>>>>> Stashed changes
                             </a></h6>
                         <h5><%=dec.format(relatedProducts.get(i).getPrice())%>đ</h5>
                     </div>
@@ -225,7 +222,7 @@
     var queryString = window.location.search;
     var urlParams = new URLSearchParams(queryString);
     var idProd = urlParams.get('id');
-    var idUser = urlParams.get('idUser');
+    var idUser = <%=idU%>;
     var maxCountPage = $('button.btn-loadMore').length;
     $("#btn" + current).addClass('background-button');
 
@@ -312,9 +309,10 @@
         });
     }
     function sendComment() {
-        var idU = idUser;
         var idP = idProd;
-        if(idU != "null")  {
+        console.log(idUser != null)
+        console.log(idUser)
+        if(idUser != null)  {
             if($('button.lightGreenBtn').val() !== undefined && $('textarea#textComment').val() !== "") {
                 $.ajax({
                     url: "/BHNFoods/sendComment",

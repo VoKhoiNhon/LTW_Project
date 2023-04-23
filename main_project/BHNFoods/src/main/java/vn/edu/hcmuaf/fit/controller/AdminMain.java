@@ -1,7 +1,9 @@
 package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.Contact;
+import vn.edu.hcmuaf.fit.beans.Powers;
 import vn.edu.hcmuaf.fit.beans.SingleProduct;
+import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.ProductService;
 import vn.edu.hcmuaf.fit.service.UserService;
 
@@ -19,22 +21,26 @@ public class AdminMain extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        i = 5;
-        List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i);
-        request.setAttribute("listPrDate", list);
-        int newbie = UserService.getInstance().getNewbie();
-        String data = "" + ProductService.getInstance().getTurnover(1, 2022);
-        String data1 = "" + ProductService.getInstance().getTurnover(1, 2021);
-        int tur = ProductService.getInstance().getTurnover(1, 2022  );
-        int tur1 = ProductService.getInstance().getTurnover(1, 2021);
-        int alltur = ProductService.getInstance().getAllTurnover();
-        String data0 = "" + ProductService.getInstance().getTurnover(1, 2021);
-        int tur0 = ProductService.getInstance().getTurnover(1, 2021);
-        int saledPR = ProductService.getInstance().getSalerPR();
-        int stopSaledPR = ProductService.getInstance().getStopPr();
-        int sumcontact= ProductService.getInstance().sumContact();
-        List<SingleProduct> pr = ProductService.getInstance().getListProductHostSale();
-        List<Contact> listContact = UserService.getInstance().getListContact();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
+        if(user.getDecentralization() != Powers.ADMIN && user.getDecentralization() != Powers.EMPLOYEE) response.sendRedirect("index.jsp");
+        else {
+            i = 5;
+            List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i);
+            request.setAttribute("listPrDate", list);
+            int newbie = UserService.getInstance().getNewbie();
+            String data0 = "" + ProductService.getInstance().getTurnover(1, 2021);
+            String data = "" + ProductService.getInstance().getTurnover(1, 2022);
+            String data1 = "" + ProductService.getInstance().getTurnover(1, 2023);
+            int sumcontact= ProductService.getInstance().sumContact();
+            int tur0 = ProductService.getInstance().getTurnover(1, 2021);
+            int tur = ProductService.getInstance().getTurnover(1, 2022);
+            int tur1 = ProductService.getInstance().getTurnover(1, 2023);
+            int alltur = ProductService.getInstance().getAllTurnover();
+            int saledPR = ProductService.getInstance().getSalerPR();
+            int stopSaledPR = ProductService.getInstance().getStopPr();
+            List<SingleProduct> pr = ProductService.getInstance().getListProductHostSale();
+            List<Contact> listContact = UserService.getInstance().getListContact();
         Collections.sort(listContact, new Comparator<Contact>() {
             @Override
             public int compare(Contact o1, Contact o2) {

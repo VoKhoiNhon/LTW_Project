@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.controller;
 
+import vn.edu.hcmuaf.fit.beans.Powers;
 import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.UserService;
 
@@ -15,7 +16,7 @@ public class AdminManageUser extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-        if(user.getDecentralization() != 2) response.sendRedirect("index.jsp");
+        if(user.getDecentralization() != Powers.ADMIN) response.sendRedirect("index.jsp");
         else {
             List<User> list = UserService.getInstance().getListUser();
             request.setAttribute("listUser", list);

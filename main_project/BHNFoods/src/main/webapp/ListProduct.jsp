@@ -15,7 +15,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>BHDFoods| Sản phẩm</title>
+    <title>BHNFoods | Sản phẩm</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -50,19 +50,11 @@
                                 <span>Danh sách sản phẩm</span>
                             </div>
                             <ul>
-<<<<<<< Updated upstream
                                 <li><a href="/BHNFoods/ListProduct?kind=1&page=1">Gạo</a></li>
                                 <li><a href="/BHNFoods/ListProduct?kind=2&page=1">Nếp</a></li>
                                 <li><a href="/BHNFoods/ListProduct?kind=3&page=1">Các loại hạt</a></li>
                                 <li><a href="/BHNFoods/ListProduct?kind=4&page=1">Các loại bột</a></li>
                                 <li><a href="/BHNFoods/ListProduct?kind=5&page=1">Các loại củ, trái</a></li>
-=======
-                                <li><a href="/BHNFoods/ListProduct?kind=1&page=1&idUser=<%=request.getParameter("idUser")%>">Gạo</a></li>
-                                <li><a href="/BHNFoods/ListProduct?kind=2&page=1&idUser=<%=request.getParameter("idUser")%>">Nếp</a></li>
-                                <li><a href="/BHNFoods/ListProduct?kind=3&page=1&idUser=<%=request.getParameter("idUser")%>">Các loại hạt</a></li>
-                                <li><a href="/BHNFoods/ListProduct?kind=4&page=1&idUser=<%=request.getParameter("idUser")%>">Các loại bột</a></li>
-                                <li><a href="/BHNFoods/ListProduct?kind=5&page=1&idUser=<%=request.getParameter("idUser")%>">Các loại củ, trái</a></li>
->>>>>>> Stashed changes
                             </ul>
                         </div>
                     </div>
@@ -183,11 +175,7 @@
                                     </div>
                                     <div class="product__discount__item__text">
 
-<<<<<<< Updated upstream
                                         <a href="/BHNFoods/oneProduct?id=<%=p.getIdPr()%>"><span>Gạo</span>
-=======
-                                        <a href="/BHNFoods/oneProduct?id=<%=p.getIdPr()%>&idUser=<%=request.getParameter("idUser")%>"><span>Gạo</span>
->>>>>>> Stashed changes
                                             <h5><%=p.getNamePr()%></h5>
                                             <div class="product__item__price"><%=decF.format(p.getPrice() - (p.getPrice()*p.getDiscount())/100).replace(',','.')%>đ <span><%=decF.format(p.getPrice()).replace(',','.')%>đ</span></div></a>
                                     </div>
@@ -245,11 +233,7 @@
                                 </ul>
                             </div>
                             <div class="product__item__text">
-<<<<<<< Updated upstream
                                 <a href="/BHNFoods/oneProduct?id=<%=p.getIdPr()%>"><%=p.getNamePr()%><br> <span><%=decF.format(price).replace(',','.')%>đ</span></a>
-=======
-                                <a href="/BHNFoods/oneProduct?id=<%=p.getIdPr()%>&idUser=<%=request.getParameter("idUser")%>"><%=p.getNamePr()%><br> <span><%=decF.format(price).replace(',','.')%>đ</span></a>
->>>>>>> Stashed changes
                             </div>
                         </div>
                     </div>

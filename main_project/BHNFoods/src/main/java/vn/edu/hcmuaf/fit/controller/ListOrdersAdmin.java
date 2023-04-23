@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.Orders;
+import vn.edu.hcmuaf.fit.beans.Powers;
 import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
@@ -17,7 +18,7 @@ public class ListOrdersAdmin extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-        if(user.getDecentralization() != 2) response.sendRedirect("index.jsp");
+        if(user.getDecentralization() != Powers.ADMIN && user.getDecentralization() != Powers.EMPLOYEE) response.sendRedirect("index.jsp");
         else {
             List<Orders> listManageOrders = ProductService.getInstance().listOrdersAdmin();
             Map<String, List<Orders>> mapOrder = ProductService.getInstance().getMapOrder(listManageOrders);

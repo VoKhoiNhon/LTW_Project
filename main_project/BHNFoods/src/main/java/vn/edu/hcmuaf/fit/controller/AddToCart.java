@@ -31,7 +31,7 @@ public class AddToCart extends HttpServlet {
         int sumCart = ProductService.getInstance().sumAmount(listCart);
         int newSumCart = sumCart + amount;
 
-        out.println("<a href=\"/BHNFoods/Cart?idUser="+idUser+"\" class=\"nav-link\">\n" +
+        out.println("<a href=\"/BHNFoods/Cart\" class=\"nav-link\">\n" +
 
                 "<span class=\"fa-solid fa-cart-shopping\"></span>["+newSumCart+"]</a>");
         session.removeAttribute("sumCart");

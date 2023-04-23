@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.Log;
+import vn.edu.hcmuaf.fit.beans.Powers;
 import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.db.DB;
 import vn.edu.hcmuaf.fit.service.LogSercive;
@@ -52,27 +53,28 @@ public class Login extends HttpServlet {
                     UserService.getInstance().lockUser(existName.getIdUser());
                 }
             }
-        }
+            if (user != null && (user.getDecentralization() == Powers.ADMIN || user.getDecentralization() == Powers.EMPLOYEE)) {
+                HttpSession session = request.getSession(true);
+                session.setAttribute("auth", user);
 
-        if (user != null && user.getDecentralization() == 1) {
-            HttpSession session = request.getSession(true);
-            session.setAttribute("auth", user);
-            DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
-            response.sendRedirect("AdminMain");
+                DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
 
-        }
+                response.sendRedirect("AdminMain");
 
+            } else if (user != null && user.getDecentralization() == Powers.USER) {
+                HttpSession session = request.getSession(true);
+                session.setAttribute("auth", user);
+                session.setAttribute("idUser", user.getIdUser());
+                request.setAttribute("idUser", user.getIdUser());
 
-        if (user != null && user.getDecentralization() != 1) {
-            HttpSession session = request.getSession(true);
-            session.setAttribute("auth", user);
-            session.setAttribute("idUser", user.getIdUser());
-            request.setAttribute("idUser", user.getIdUser());
-            DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
-            response.sendRedirect("/BHNFoods/index");
+                DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
+                response.sendRedirect("/BHNFoods/index");
+            }
         } else {
             request.setAttribute("error", "Sai tài khoản hoặc mật khẩu");
+
             DB.me().insert(new Log(Log.WARNING, null, this.src, "LOGIN FALSE: " + username, 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
+
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
 
