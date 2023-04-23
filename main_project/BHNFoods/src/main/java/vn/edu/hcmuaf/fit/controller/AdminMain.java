@@ -2,7 +2,6 @@ package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.Contact;
 import vn.edu.hcmuaf.fit.beans.SingleProduct;
-import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.ProductService;
 import vn.edu.hcmuaf.fit.service.UserService;
 
@@ -10,6 +9,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @WebServlet(name = "AdminMain", value = "/AdminMain")
@@ -24,13 +25,21 @@ public class AdminMain extends HttpServlet {
         int newbie = UserService.getInstance().getNewbie();
         String data = "" + ProductService.getInstance().getTurnover(1, 2022);
         String data1 = "" + ProductService.getInstance().getTurnover(1, 2021);
-        int tur = ProductService.getInstance().getTurnover(1, 2022);
+        int tur = ProductService.getInstance().getTurnover(1, 2022  );
         int tur1 = ProductService.getInstance().getTurnover(1, 2021);
         int saledPR = ProductService.getInstance().getSalerPR();
         int stopSaledPR = ProductService.getInstance().getStopPr();
+        int sumcontact= ProductService.getInstance().sumContact();
         List<SingleProduct> pr = ProductService.getInstance().getListProductHostSale();
-        List<Contact> listContact = ProductService.getInstance().viewNameContact();
+        List<Contact> listContact = UserService.getInstance().getListContact();
+        Collections.sort(listContact, new Comparator<Contact>() {
+            @Override
+            public int compare(Contact o1, Contact o2) {
+                return o2.getCondition() - o1.getCondition();
+            }
+        });
         request.setAttribute("listContact", listContact);
+        request.setAttribute("sumcontact",sumcontact);
 
         for (int i = 2; i <= 12; i++) {
             tur += ProductService.getInstance().getTurnover(i, 2022);

@@ -20,7 +20,6 @@ public class ListCart extends HttpServlet {
         int sum= ProductService.getInstance().sumCart(listCart);
         request.setAttribute("sum",sum);
         request.getRequestDispatcher("cart.jsp").forward(request,response);
-
     }
 
     @Override

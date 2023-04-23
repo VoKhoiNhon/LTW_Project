@@ -1,6 +1,8 @@
 package vn.edu.hcmuaf.fit.controller;
 
+import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.ProductService;
+import vn.edu.hcmuaf.fit.service.UserService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -13,7 +15,7 @@ public class UpdateUser extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idUser= request.getParameter("idUser");
         int decentralization= Integer.parseInt(request.getParameter("decentralization"));
-        ProductService.getInstance().updateUser( idUser, decentralization);
+        UserService.getInstance().updateUser( idUser, decentralization);
         response.sendRedirect("http://localhost:8080/BHNFoods/AdminManageUser");
     }
 

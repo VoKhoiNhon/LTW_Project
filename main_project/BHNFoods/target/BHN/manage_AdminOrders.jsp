@@ -255,7 +255,7 @@
             <%--                    </a>--%>
             <%--                </div>--%>
             <%--            </li>--%>
-            <%--            <%--%>
+            <%--            &lt;%&ndash;%>
             <%--                User user = (User) session.getAttribute("auth");--%>
             <%--                if (user != null) {%>--%>
             <%--            <li class="nav-item dropdown d-none d-lg-block user-dropdown">--%>
@@ -283,16 +283,11 @@
 <!-- partial -->
 <div class="container-fluid page-body-wrapper">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
+
         <div class="nav-item">
-            <a href="http://localhost:8080/BHNFoods/AdminMain" class="nav-item-link">
-                <i style="margin-right: 5px;" class="menu-icon mdi mdi-home"></i>
-                <span>Trang chủ</span>
-            </a>
-        </div>
-        <div class="nav-item">
-            <a href="http://localhost:8080/BHNFoods/AdminManageUser" class="nav-item-link">
-                <i style= "margin-right:5px;"  class="menu-icon mdi mdi-account-circle"> </i>
-                <span>Quản lý người dùng</span>
+            <a href="http://localhost:8080/BHNFoods/ListOrdersAdmin" class="nav-item-link">
+                <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+                <span>Quản lý đơn hàng</span>
             </a>
         </div>
         <div class="nav-item">
@@ -302,11 +297,12 @@
             </a>
         </div>
         <div class="nav-item">
-            <a href="http://localhost:8080/BHNFoods/ListOrdersAdmin" class="nav-item-link">
+            <a href="" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
-                <span>Quản lý đơn hàng</span>
+                <span>Nhập kho</span>
             </a>
         </div>
+
         <div class="nav-item">
             <a href="http://localhost:8080/BHNFoods/Login" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>

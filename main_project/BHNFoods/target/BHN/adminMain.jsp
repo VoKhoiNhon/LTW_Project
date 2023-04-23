@@ -66,6 +66,11 @@
         padding: 8px 20px;
         color: white;
     }
+
+    .row .col-sm-12 .grid_statistical {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
 </style>
 
 <body>
@@ -73,7 +78,7 @@
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
         <div>
-            <a class="navbar-brand brand-logo" href="index.html">
+            <a class="navbar-brand brand-logo" href="adminMain.jsp">
                 BHNFoods
             </a>
         </div>
@@ -130,10 +135,12 @@
                     <input type="search" class="form-control" placeholder="Search Here" title="Search here">
                 </form>
             </li>
+         <% int sumcontact=  (int) request.getAttribute("sumcontact");%>
             <li class="nav-item dropdown">
                 <a class="nav-link count-indicator" id="countDropdown" href="" data-bs-toggle="dropdown"
                    aria-expanded="false">
-                    <i class="icon-mail icon-lg"></i>
+                    <i class="icon-mail icon-lg">[<%=sumcontact%>]</i>
+
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
                      aria-labelledby="countDropdown">
@@ -145,16 +152,19 @@
                     <% List<Contact> listContact = (List<Contact>) request.getAttribute("listContact");
                         System.out.println(listContact);
                         for (Contact c : listContact) {%>
-                    <a class="dropdown-item preview-item"
-                       onclick="viewContent('<%=c.getIduser()%>','<%=c.getNameUser()%>','<%=c.getPhone()%>','<%=c.getEmail()%>','<%=c.getContent()%>')">
+                    <%
+                        if(c.getCondition()== 1) {
+                    %>
+
+                    <a class="dropdown-item preview-item" style="background: #c5e2f8; border-bottom:1px solid #808080"
+                       onclick="viewContent('<%=c.getIdcontact()%>','<%=c.getIduser()%>','<%=c.getNameUser()%>','<%=c.getPhone()%>','<%=c.getEmail()%>','<%=c.getContent()%>', '<%=c.getCondition()%>')">
                         <div class="preview-thumbnail">
                             <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"
                                  alt="image" class="img-sm profile-pic"
                                  style=" width: 70px;height: 50px;border-radius: 100%;">
                         </div>
                         <div class="preview-item-content flex-grow pyy-2">
-                            <p class="preview-subject ellipsis font-weight-medium text-dark"
-                               onclick="viewContent('<%=c.getIduser()%>','<%=c.getNameUser()%>','<%=c.getPhone()%>','<%=c.getEmail()%>','<%=c.getContent()%>')">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">
                                 <%=c.getNameUser()%>
                             </p>
                             <p class="fw-light small-text mb-0">
@@ -162,6 +172,26 @@
                             </p>
                         </div>
                     </a>
+                    <%
+                    } else {
+                    %>
+                    <a class="dropdown-item preview-item"
+                       onclick="viewContent('<%=c.getIdcontact()%>','<%=c.getIduser()%>','<%=c.getNameUser()%>','<%=c.getPhone()%>','<%=c.getEmail()%>','<%=c.getContent()%>')">
+                        <div class="preview-thumbnail">
+                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"
+                                 alt="image" class="img-sm profile-pic"
+                                 style=" width: 70px;height: 50px;border-radius: 100%;">
+                        </div>
+                        <div class="preview-item-content flex-grow pyy-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">
+                                <%=c.getNameUser()%>
+                            </p>
+                            <p class="fw-light small-text mb-0">
+                                <%=c.getDateTime()%>
+                            </p>
+                        </div>
+                    </a>
+                    <%}%>
                     <%}%>
                 </div>
             </li>
@@ -221,9 +251,9 @@
             </a>
         </div>
         <div class="nav-item">
-            <a href="http://localhost:8080/BHNFoods/ListOrdersAdmin" class="nav-item-link">
-                <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
-                <span>Quản lý đơn hàng</span>
+            <a href="#" class="nav-item-link">
+                <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
+                <span>Log</span>
             </a>
         </div>
         <div class="nav-item">
@@ -261,11 +291,10 @@
                                  aria-labelledby="overview">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <div class="statistics-details d-flex align-items-center justify-content-between">
+                                        <div class="statistics-details  align-items-center justify-content-between grid_statistical">
                                             <div>
                                                 <p class="statistics-title">Doanh thu tháng hiện tại</p>
                                                 <h3 class="rate-percentage"><%=nowTur%> VNĐ</h3>
-
                                             </div>
                                             <div>
                                                 <p class="statistics-title">Số mặt hàng đã bán</p>
@@ -277,10 +306,37 @@
                                                 <p class="statistics-title">Mặt hàng ngừng kinh doanh</p>
                                                 <h3 class="rate-percentage"><%=stopPr%>
                                                 </h3>
-
                                             </div>
                                             <div class="d-none d-md-block">
                                                 <p class="statistics-title">Khách hàng mới</p>
+                                                <h3 class="rate-percentage"><%=newbie%>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="statistics-details  align-items-center justify-content-between grid_statistical">
+                                            <div>
+                                                <p class="statistics-title">Hàng tồn kho</p>
+                                                <h3 class="rate-percentage"><%=nowTur%> VNĐ</h3>
+
+                                            </div>
+                                            <div>
+                                                <p class="statistics-title">Sản phẩm bán chạy nhất</p>
+                                                <h3 class="rate-percentage"><%=saledPr%>
+                                                </h3>
+
+                                            </div>
+                                            <div>
+                                                <p class="statistics-title">Sản phẩm cần nhập kho</p>
+                                                <h3 class="rate-percentage"><%=stopPr%>
+                                                </h3>
+
+                                            </div>
+                                            <div class="d-none d-md-block">
+                                                <p class="statistics-title">Sản phẩm bị hoàn trả</p>
                                                 <h3 class="rate-percentage"><%=newbie%>
                                                 </h3>
                                             </div>
@@ -304,7 +360,7 @@
                                                         </div>
                                                         <%
                                                             int tur = (int) request.getAttribute("tur");
-//                                                    double pec = (double) request.getAttribute("pec");
+
                                                         %>
                                                         <div class="d-sm-flex align-items-center mt-1 justify-content-between">
                                                             <div class="d-sm-flex align-items-center mt-4 justify-content-between">
@@ -371,7 +427,8 @@
                                                                 <div><span
                                                                         class="text-light-green"><%=hotSale.get(j).getNamePr()%> </span>
                                                                 </div>
-                                                                <p><%=hotSale.get(j).getPrice()%>                             VND</p>
+                                                                <p><%=hotSale.get(j).getPrice()%>
+                                                                    VND</p>
                                                             </div>
                                                         </li>
                                                         <%}%>
@@ -392,40 +449,6 @@
         </div>
     </div>
 </div>
-<%--<div class="edit_formUser">--%>
-<%--    <div class="container" style="background:none;">--%>
-<%--        <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">--%>
-<%--            <form action="/BHNFoods/ContactInAdmin" method="post" class="billing-form" style="margin-top: 2%;">--%>
-<%--                <h3 class="mb-4 billing-heading\" style="color: #7fad39;">PHẢN HỒI KHÁCH HÀNG</h3>--%>
-<%--                <div class="row align-items-end\" style="font-size: 16px;">--%>
-<%--                    <div class="col-md-12 col_addprod">--%>
-<%--                        <div class="form-group">--%>
-<%--                            <h4>Thông tin tin khách hàng</h4>--%>
-<%--                            <p>Tên khách hàng:</p>--%>
-<%--                            <p>Số điện thoại: </p>--%>
-<%--                            <p>Email: </p>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-md-12">--%>
-<%--                        <div class="form-group" style="display:none">--%>
-<%--                            <label>ID<label>--%>
-<%--                                <input type="text" value="iduser" name="iduser" class="form-control input_addpr"--%>
-<%--                                       placeholder="">--%>
-<%--                        </div>--%>
-<%--                        <div class="form-group\">--%>
-<%--                            <label>Nội dung </label>--%>
-<%--                            <div name="content" class="form-control contentContact" value="">--%>
-<%--                                <p>"+content+"</p>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-md-12 d-flex  btn_huy_update" style="justify-content: end;"--%>
-<%--                    <input onclick="huy()" type="button" value="Đóng">--%>
-<%--                </div>--%>
-<%--            </form>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
 <div id="viewcontent">
 </div>
 
@@ -534,16 +557,18 @@
         document.getElementById('marketing-overview-legend').innerHTML = marketingOverview.generateLegend();
     }
 
-    function viewContent(iduser, nameUser, phone, email, content) {
+    function viewContent(idcontact,iduser, nameUser, phone, email, content, condition) {
         $.ajax({
             url: "/BHNFoods/ViewContact",
             type: 'get',
             data: {
+                idcontact:idcontact,
                 iduser: iduser,
                 nameUser: nameUser,
                 email: email,
                 phone: phone,
                 content: content,
+                condition: condition,
             },
             success: function (data) {
                 const content = document.getElementById('viewcontent');

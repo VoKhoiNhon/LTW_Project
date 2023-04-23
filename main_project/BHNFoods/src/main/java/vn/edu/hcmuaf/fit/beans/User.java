@@ -14,7 +14,7 @@ public class User implements Serializable {
     private Date dateSignup;
     private boolean sex;
     private byte decentralization;
-    public User(){}
+
 
     public User(String idUser, String address, String passw, String nameUser, String phone, String email, Date birthday, Date dateSignup, boolean sex, byte decentralization) {
         this.idUser = idUser;
@@ -28,6 +28,7 @@ public class User implements Serializable {
         this.sex = sex;
         this.decentralization = decentralization;
     }
+    public User(){}
 
     public String getIdUser() {
         return idUser;
@@ -113,6 +114,16 @@ public class User implements Serializable {
         if(this.decentralization==0) return "User";
         return "Admin";
     }
+
+    public String toString() {
+//        return "User " + "id=" + idUser + ", email=" + email +  ", name=" + nameUser;
+        return "User{" +
+                "iduser='" + idUser + '\'' +
+                ", nameUser='" + nameUser + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
 
 
 }

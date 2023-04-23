@@ -2,6 +2,7 @@ package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.Contact;
 import vn.edu.hcmuaf.fit.service.ProductService;
+import vn.edu.hcmuaf.fit.service.UserService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -19,10 +20,12 @@ public class ContactInAdmin extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idUser= request.getParameter("idUser");
-        System.out.println(idUser);
-        ProductService.getInstance().viewContact(idUser);
-        request.getRequestDispatcher("adminMain.jsp").forward(request, response);
-        response.sendRedirect("mainAdmin.jsp");
+        String idcontact = request.getParameter("idcontact");
+        int condition= Integer.parseInt(request.getParameter("condition"));
+        ProductService.getInstance().viewContact(idcontact);
+        ProductService.getInstance().seenContact(idcontact, condition);
+//        response.sendRedirect("mainAdmin.jsp");
+        response.sendRedirect("http://localhost:8080/BHNFoods/AdminMain");
+
     }
 }

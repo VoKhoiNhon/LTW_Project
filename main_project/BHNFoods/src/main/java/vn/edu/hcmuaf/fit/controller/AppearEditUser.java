@@ -76,11 +76,15 @@ public class AppearEditUser extends HttpServlet {
                 "                                <label class=\"\">User</label>\n" +
                 "                            </div>\n" +
                 "                            <div class=\"form-group padd_right \" style=\"\">\n" +
-                "                                <input type=\"radio\" name=\"decentralization\" class=\"form-\" value=\"1\" placeholder=\"\">\n" +
+                "                                <input type=\"radio\" name=\"decentralization\" class=\"form-\" value=\"2\" placeholder=\"\">\n" +
                 "                                <label class=\"\">Admin</label>\n" +
                 "                            </div>\n" +
                 "                            <div class=\"form-group padd_right \" style=\"\">\n" +
-                "                                <input type=\"radio\" name=\"decentralization\" class=\"form-\" value=\"2\"  placeholder=\"\">\n" +
+                "                                <input type=\"radio\" name=\"decentralization\" class=\"form-\" value=\"1\" placeholder=\"\">\n" +
+                "                                <label class=\"\">Employee</label>\n" +
+                "                            </div>\n" +
+                "                            <div class=\"form-group padd_right \" style=\"\">\n" +
+                "                                <input type=\"radio\" name=\"decentralization\" class=\"form-\" value=\"-1\"  placeholder=\"\">\n" +
                 "                                <label class=\"\">Ẩn</label>\n" +
                 "                            </div>\n" +
                 "                        </div>\n" +

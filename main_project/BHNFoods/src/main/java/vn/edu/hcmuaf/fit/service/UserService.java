@@ -1,19 +1,16 @@
 package vn.edu.hcmuaf.fit.service;
 
-import org.jdbi.v3.core.Handle;
-import org.jdbi.v3.core.statement.Query;
+import vn.edu.hcmuaf.fit.beans.Contact;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.beans.User;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
 public class UserService {
@@ -58,12 +55,24 @@ public class UserService {
             return null;
         }
     }
+    public static void  updateUser( String idUser, int decentralization){
+        JDBIConnector.get().withHandle(handle -> {
+            return   handle.createUpdate("UPDATE `user` u set u.Decentralization= "+decentralization+"  WHERE u.ID_USER='"+idUser+"'").execute();
+        });
+
+    }
 
 
     public List<User> getListUser() {
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("SELECT ID_USER,ADDRESS,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,SEX,Decentralization FROM user")
                     .mapToBean(User.class).collect(Collectors.toList());
+        });
+    }
+    public List<Contact> getListContact() {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT c.ID_USER, c.CONTENT, c.DATETIME, c.CONDITION, c.ID_CONTACT, c.EMAIL, c.NAMEUSER, c.PHONE FROM contact c")
+                    .mapToBean(Contact.class).collect(Collectors.toList());
         });
     }
 
@@ -87,6 +96,32 @@ public class UserService {
             return handle.createUpdate("INSERT INTO `user` VALUES( 'user" + (count + 1) + "',NULL,'"
                     + pass + "','" + name + "','" + phone + "','" + email + "'," + "NULL,'" + importDate + "', NULL,0)").execute();
 
+        });
+
+    }
+    public void addUserGG(String name, String email, String phone, String id) {
+        List<User> users = getListUser();
+        String importDate = LocalDateTime.now().getYear() + "-" + LocalDateTime.now().getMonthValue() + "-" + LocalDateTime.now().getDayOfMonth();
+        int count = users.size();
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("INSERT INTO `user` VALUES( 'user" + (count + 1) + "',NULL,NULL,'"
+                    +  name + "','" + phone + "','" + email + "'," + "NULL,'" + importDate + "', NULL,0)").execute();
+        });
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("INSERT INTO social VALUES(0, 'user"+(count+1)+"');").execute();
+        });
+
+    }
+    public void addUserFB(String name, String email, String phone, String id) {
+        List<User> users = getListUser();
+        String importDate = LocalDateTime.now().getYear() + "-" + LocalDateTime.now().getMonthValue() + "-" + LocalDateTime.now().getDayOfMonth();
+        int count = users.size();
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("INSERT INTO `user` VALUES( 'user" + (count + 1) + "',NULL,NULL,'"
+                    +  name + "','" + phone + "','" + email + "'," + "NULL,'" + importDate + "', NULL,0)").execute();
+        });
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("INSERT INTO social VALUES(1, 'user"+(count+1)+"');").execute();
         });
 
     }
@@ -128,15 +163,14 @@ public class UserService {
         return list;
 
     }
-    public  void  contact(String iduser, String content){
+    public  void  addcontact(String idcontact, String iduser, String content,String nameuser, String phone, String email ){
+        List<Contact> contact = getListContact();
+        int count = contact.size();
         JDBIConnector.get().withHandle(handle -> {
-           return handle.createUpdate("INSERT INTO contact VALUES('"+iduser+"','"+content+"','"+LocalDateTime.now()+"');").execute();
+           return handle.createUpdate("INSERT INTO `contact` VALUES ( 'cont" + (count + 1) + "','"+iduser+"', '"+content+"', '"+LocalDateTime.now()+"', '"+nameuser+"', '"+email+"','"+phone+"'"+",1 );").execute();
         });
     }
 
-    public static void main(String[] args) {
-        UserService.getInstance().changePass("1111111111", "1111111111", "aaa");
-    }
 
     public  List<User> listCTAccount(String iduser){
         return  JDBIConnector.get().withHandle(handle -> {
@@ -180,6 +214,37 @@ public class UserService {
                         .findOne()
                         .orElse(null)
 
+
         );
+    }
+
+    public User getUserById(String str) {
+        String sql = "SELECT ID_USER,ADDRESS,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,SEX,Decentralization FROM user where ID_USER=:str";
+        return JDBIConnector.get().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("str", str)
+                        .mapToBean(User.class)
+                        .findOne()
+                        .orElse(null)
+
+
+        );
+    }
+    public User getLastUser(){
+        User user;
+        List<User>  list= getListUser();
+        int max =0;
+        for (User u: list){
+            max = Math.max(max, Integer.parseInt(u.getIdUser().replaceAll("user","")));
+        }
+
+        return UserService.getInstance().getUserById("user"+max);
+
+    }
+
+
+    public static void main(String[] args) {
+        User user=UserService.getInstance().getLastUser();
+        System.out.println(user.getIdUser());
     }
 }
