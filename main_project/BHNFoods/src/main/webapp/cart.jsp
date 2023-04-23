@@ -102,11 +102,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
-<<<<<<< Updated upstream
                     <a href="/BHNFoods/ListProduct?kind=0&page=1" class="primary-btn cart-btn">Tiếp tục mua hàng</a>
-=======
-                    <a href="/BHNFoods/ListProduct?kind=0&page=1&idUser=<%=idU%>" class="primary-btn cart-btn">Tiếp tục mua hàng</a>
->>>>>>> Stashed changes
 
                 </div>
             </div>
@@ -162,7 +158,7 @@
     }
     $('#idProdChecked').val(toStringIdChecked);
 
-    let sumCart = <%=session.getAttribute("sumCart")%>;
+    let sumCart = <%=sumCart%>;
 
     function format1(n, currency) {
         return n.toFixed(0).replace(/./g, function (c, i, a) {
@@ -233,7 +229,6 @@
         var proQty = $('.pro-qty');
         var elementI = $('#amount' + idProd);
         var oldValue = elementI.val();
-
         let allCheckbox = $('.checkBoxCart')
         var toStringIdChecked = "";
         for (let i = 0; i < allCheckbox.length; i++) {
@@ -242,63 +237,61 @@
             }
         }
         $('#idProdChecked').val(toStringIdChecked);
-
-        if (button.classList.contains('inc')) {
-            $.ajax({
-                url: "/BHNFoods/checkInventory",
-                type: 'get',
-                data: {
-                    id: idProd,
-                },
-                success: function (data) {
-                    if(parseInt(data) > parseFloat(oldValue)) {
-                        newVal = parseFloat(oldValue) + 1;
-                        sumCart += 1;
-                        if(document.getElementById('box'+ idProd).checked) sum = parseInt(sum) + parseInt(orginPrice);
-                    } else {
-                        alert('Kho không đủ số lượng.')
-                    }
-                },
-                error: function () {
-                }
-            });
-        } else {
-            // Don't allow decrementing below one
-            if (oldValue > 1) {
-                newVal = parseFloat(oldValue) - 1;
-                sumCart -= 1;
-                if(document.getElementById('box'+ idProd).checked) sum = parseInt(sum) - parseInt(orginPrice);
-            } else {
-                newVal = 1;
-            }
-        }
-        elementI.val(newVal);
-<<<<<<< Updated upstream
-        elementHeader.innerHTML = "<a href=\"/BHNFoods/Cart\" class=\"nav-link\">\n" +
-=======
-        elementHeader.innerHTML = "<a href=\"/BHNFoods/Cart?idUser=user1\" class=\"nav-link\">\n" +
->>>>>>> Stashed changes
-            "                        <span class=\"fa-solid fa-cart-shopping\"></span>[" + sumCart + "]</a>";
-        const totalF = format1(parseInt(orginPrice) * parseInt(newVal), ' đ')
-        $('#total' + idProd).text(totalF);
         $.ajax({
-            url: "/BHNFoods/changeAmountFormCart",
+            url: "/BHNFoods/checkInventory",
             type: 'get',
             data: {
                 id: idProd,
-                sum: sum,
-                discount: discount,
-                total: total,
-                amount: newVal,
-                listId :toStringIdChecked
             },
             success: function (data) {
-                const content = document.getElementById('checkOut')
-                content.innerHTML = data;
+                if (button.classList.contains('inc')) {
+
+                    if(parseInt(data) > parseInt(oldValue)) {
+                        newVal = parseFloat(oldValue) + 1;
+                        sumCart += 1;
+                    } else {
+                        newVal = oldValue;
+                    }
+                    if(document.getElementById('box'+ idProd).checked) sum = parseInt(sum) + parseInt(orginPrice);
+                } else {
+                    // Don't allow decrementing below one
+                    if (oldValue > 1) {
+                        newVal = parseFloat(oldValue) - 1;
+                        sumCart -= 1;
+                        if(document.getElementById('box'+ idProd).checked) sum = parseInt(sum) - parseInt(orginPrice);
+                    } else {
+                        newVal = 1;
+                    }
+                }
+                elementI.val(newVal);
+                elementHeader.innerHTML = "<a href=\"/BHNFoods/Cart\" class=\"nav-link\">\n" +
+                    "                        <span class=\"fa-solid fa-cart-shopping\"></span>[" + sumCart + "]</a>";
+                const totalF = format1(parseInt(orginPrice) * parseInt(newVal), ' đ')
+                $('#total' + idProd).text(totalF);
+                $.ajax({
+                    url: "/BHNFoods/changeAmountFormCart",
+                    type: 'get',
+                    data: {
+                        id: idProd,
+                        sum: sum,
+                        discount: discount,
+                        total: total,
+                        amount: newVal,
+                        listId :toStringIdChecked
+                    },
+                    success: function (data) {
+                        const content = document.getElementById('checkOut')
+                        content.innerHTML = data;
+                    },
+                    error: function () {
+                    }
+                });
             },
             error: function () {
             }
         });
+
+
     }
 
 
@@ -336,11 +329,7 @@
                 const content = document.getElementById('checkOut')
                 content.innerHTML = data;
                 sumCart = sumCart - amount;
-<<<<<<< Updated upstream
                 elementHeader.innerHTML = "<a href=\"/BHNFoods/Cart?\" class=\"nav-link\">\n" +
-=======
-                elementHeader.innerHTML = "<a href=\"/BHNFoods/Cart?idUser=user1\" class=\"nav-link\">\n" +
->>>>>>> Stashed changes
                     "                        <span class=\"fa-solid fa-cart-shopping\"></span>[" + sumCart + "]</a>";
             },
             error: function () {
