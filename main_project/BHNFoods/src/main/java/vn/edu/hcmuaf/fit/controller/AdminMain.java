@@ -32,6 +32,7 @@ public class AdminMain extends HttpServlet {
             String data0 = "" + ProductService.getInstance().getTurnover(1, 2021);
             String data = "" + ProductService.getInstance().getTurnover(1, 2022);
             String data1 = "" + ProductService.getInstance().getTurnover(1, 2023);
+            int sumcontact= ProductService.getInstance().sumContact();
             int tur0 = ProductService.getInstance().getTurnover(1, 2021);
             int tur = ProductService.getInstance().getTurnover(1, 2022);
             int tur1 = ProductService.getInstance().getTurnover(1, 2023);
