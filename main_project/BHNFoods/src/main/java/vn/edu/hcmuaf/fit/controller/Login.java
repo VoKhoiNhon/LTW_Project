@@ -57,18 +57,9 @@ public class Login extends HttpServlet {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("auth", user);
 
-        if (user != null && user.getDecentralization() == 1) {
-            HttpSession session = request.getSession(true);
-            session.setAttribute("auth", user);
-            DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
-            response.sendRedirect("AdminMain");
+                DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
 
-        }
-        if (user != null && user.getDecentralization() == 2) {
-            HttpSession session = request.getSession(true);
-            session.setAttribute("auth", user);
-            DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
-            response.sendRedirect("ListOrdersAdmin");
+                response.sendRedirect("AdminMain");
 
             } else if (user != null && user.getDecentralization() == Powers.USER) {
                 HttpSession session = request.getSession(true);
@@ -81,7 +72,9 @@ public class Login extends HttpServlet {
             }
         } else {
             request.setAttribute("error", "Sai tài khoản hoặc mật khẩu");
-            DB.me().insert(new Log(Log.WARNING, null, this.src, "LOGIN FALSE: " + username, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
+
+            DB.me().insert(new Log(Log.WARNING, null, this.src, "LOGIN FALSE: " + username, 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
+
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
 

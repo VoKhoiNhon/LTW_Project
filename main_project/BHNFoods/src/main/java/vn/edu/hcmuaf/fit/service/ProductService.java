@@ -435,16 +435,10 @@ public class ProductService {
     // thêm sp của bản ct_pr
     public static void addCT_Prod( int index,String nsx,String hsd, String brand, String mota, double weight, String origin, int inventory ){
         JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("INSERT INTO `product` VALUES ('prod" + index + "','" + menu + "'," + discount + "," + price + ", '" + name + "')").execute();
-        });
-    }
-
-    // thêm sp của bản ct_pr
-    public static void addCT_Prod(int index, String nsx, String hsd, String brand, String mota, double weight, String origin, int inventory) {
-        JDBIConnector.get().withHandle(handle -> {
             return handle.createUpdate("INSERT INTO `ct_pr` VALUES ('prod" + index + "','" + nsx + "','" + hsd + "','" + brand + "','" + mota + "'," + weight + ",'" + origin + "','" + LocalDate.now() + "'," + inventory + ", 0)").execute();
         });
     }
+
 
     public boolean checkAddPro() {
         return true;
