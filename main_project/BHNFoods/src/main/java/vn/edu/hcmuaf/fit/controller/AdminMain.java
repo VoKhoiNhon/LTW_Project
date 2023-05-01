@@ -37,7 +37,6 @@ public class AdminMain extends HttpServlet {
             int tur = ProductService.getInstance().getTurnover(1, 2022);
             int tur1 = ProductService.getInstance().getTurnover(1, 2023);
             int alltur = ProductService.getInstance().getAllTurnover();
-            int sumcontact = ProductService.getInstance().sumContact();
             int saledPR = ProductService.getInstance().getSalerPR();
             int stopSaledPR = ProductService.getInstance().getStopPr();
             List<SingleProduct> pr = ProductService.getInstance().getListProductHostSale();
