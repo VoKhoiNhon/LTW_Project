@@ -407,6 +407,7 @@
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <%--        nếu là admin thì hiển thị trang chủ, log, qly người dùng , logout--%>
         <%if (user.getDecentralization() == Powers.ADMIN) {%>
+<%--        nếu là admin thì hiển thị 3 cái đầu--%>
         <div class="nav-item">
             <a href="/BHNFoods/AdminMain" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-home"></i>
@@ -425,10 +426,24 @@
                 <span>Quản lý sản phẩm</span>
             </a>
         </div>
+    <div class="nav-item">
+        <a href="#" class="nav-item-link">
+            <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
+            <span>Log</span>
+        </a>
+    </div>
+
+<%--    ------%>
         <div class="nav-item">
             <a href="/BHNFoods/ListLog" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Log</span>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="" class="nav-item-link">
+                <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+                <span>Nhập kho</span>
             </a>
         </div>
         <div class="nav-item">
