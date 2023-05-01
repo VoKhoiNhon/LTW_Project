@@ -5,6 +5,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.beans.User" %>
 <%@ page import="org.w3c.dom.ls.LSOutput" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="vn.edu.hcmuaf.fit.beans.Powers" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -136,6 +137,7 @@
             border-radius: 5px;
             padding: 5px 10px;
         }
+
         .card {
             width: 400px;
             height: auto;
@@ -188,6 +190,7 @@
         .card .drag-area .visible {
             font-size: 18px;
         }
+
         .card .select {
             color: #5256ad;
             margin-left: 5px;
@@ -220,8 +223,7 @@
         }
 
 
-
-     .contai .image span {
+        .contai .image span {
             position: absolute;
             top: -2px;
             font-size: 20px;
@@ -403,7 +405,8 @@
 <!-- partial -->
 <div class="container-fluid page-body-wrapper">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
-<%--        nếu là admin thì hiển thị 3 cái đầu--%>
+        <%--        nếu là admin thì hiển thị trang chủ, log, qly người dùng , logout--%>
+        <%if (user.getDecentralization() == Powers.ADMIN) {%>
         <div class="nav-item">
             <a href="/BHNFoods/AdminMain" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-home"></i>
@@ -422,24 +425,10 @@
                 <span>Quản lý sản phẩm</span>
             </a>
         </div>
-    <div class="nav-item">
-        <a href="#" class="nav-item-link">
-            <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
-            <span>Log</span>
-        </a>
-    </div>
-
-<%--    ------%>
         <div class="nav-item">
-            <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
-                <i style="margin-right: 5px;"  class="fa-solid fa-arrow-down-wide-short"></i>
-                <span>Quản lý đơn hàng</span>
-            </a>
-        </div>
-        <div class="nav-item">
-            <a href="" class="nav-item-link">
-                <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
-                <span>Nhập kho</span>
+            <a href="/BHNFoods/ListLog" class="nav-item-link">
+                <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
+                <span>Log</span>
             </a>
         </div>
         <div class="nav-item">
@@ -448,6 +437,39 @@
                 <span>Đăng xuất</span>
             </a>
         </div>
+        <%} else{%>
+            <div class="nav-item">
+                <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
+                    <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+                    <span>Quản lý đơn hàng</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="/BHNFoods/HistoryOrdersAdmin" class="nav-item-link">
+                    <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+                    <span>Lịch sử đơn hàng</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
+                    <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
+                    <span>Quản lý sản phẩm</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="" class="nav-item-link">
+                    <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+                    <span>Nhập kho</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="/BHNFoods/Login" class="nav-item-link">
+                    <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span>Đăng xuất</span>
+                </a>
+            </div>
+        <%}%>
+
     </nav>
     <!-- partial -->
     <div class="main-panel">
@@ -613,7 +635,8 @@
 <div class="edit_formUser edit_formAdd">
     <div class="container" style="background:none;">
         <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
-            <form class="billing-form" style="margin-top: 5%;" action="/BHNFoods/AddProduct" method="post" enctype="multipart/form-data">
+            <form class="billing-form" style="margin-top: 5%;" action="/BHNFoods/AddProduct" method="post"
+                  enctype="multipart/form-data">
                 <div class="contai"></div>
                 <h4 class="mb-4 billing-heading">Thêm sản phẩm</h4>
                 <div class="row align-items-end" style="font-size: 16px;">
@@ -634,8 +657,9 @@
     		                        <span class="visible">
 				                        <span class="select" role="button">Browse</span>
 			                                                        </span>
-                                        <input name="file" id="file" type="file" class="file" multiple />
-                                        <input name="text" id="textname" type="text" class="form-control input_addpr" placeholder=""
+                                        <input name="file" id="file" type="file" class="file" multiple/>
+                                        <input name="text" id="textname" type="text" class="form-control input_addpr"
+                                               placeholder=""
                                                value="" style="display: none">
                                     </div>
 
@@ -824,7 +848,7 @@
         select = document.querySelector('.drag-area .select'),
         container = document.querySelector('.contai');
 
-    let text ;
+    let text;
     /** CLICK LISTENER */
     select.addEventListener('click', () => input.click());
     /* INPUT CHANGE EVENT */

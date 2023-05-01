@@ -75,7 +75,8 @@
                                        href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/BHNFoods/LoginGG&response_type=code
 		                                 &client_id=209315281506-9itod9oiojmbqe56ri7567e6nqi2e181.apps.googleusercontent.com&approval_prompt=force">Đăng
                                         nhập với Google</a>
-                                    <div class="fb-login-button" data-width="" data-size="small" data-button-type="login_with" data-layout="" data-auto-logout-link="" data-use-continue-as=""></div>                                      <%--   <a class="fb-login-button" href="https://www.facebook.com/dialog/oauth?client_id=223969136958408&redirect_uri=http://localhost:8080/BHNFoods/LoginFacebook">Đăng nhập với Facebook </a>--%>
+                                    <div class="fb-login-button" data-width="" data-size="small" data-button-type="login_with" data-layout="" data-auto-logout-link="" data-use-continue-as=""></div>
+                                    <%--   <a class="fb-login-button" href="https://www.facebook.com/dialog/oauth?client_id=223969136958408&redirect_uri=http://localhost:8080/BHNFoods/LoginFacebook">Đăng nhập với Facebook </a>--%>
 
                                 </div>
                                 <div class="form-group forgot_pass" style="padding-bottom:30px;">
@@ -102,8 +103,6 @@
 
 </div>
 <script>
-
-
     function statusChangeCallback(response) {
         console.log('statusChangeCallback');
         console.log(response);
@@ -122,7 +121,7 @@
 
         FB.api('/me', {fields: 'birthday,name,email'}, function (response) {
             console.log(response);
-            window.location.href = 'LoginFB?action=Face&name=' + response.name + '&email=' + response.email + '&id=' + response.id;
+            window.location.href = 'Login?action=Face&name=' + response.name + '&email=' + response.email + '&id=' + response.id;
         });
     }
 
