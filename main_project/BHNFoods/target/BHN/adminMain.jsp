@@ -210,20 +210,6 @@
                 if (user != null) {
             %>
 
-            <%--            <li class="nav-item dropdown d-none d-lg-block user-dropdown">--%>
-            <%--                <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">--%>
-            <%--                    <img class="img-xs rounded-circle" src="ImageproductNew/background/images.png" alt="Profile image">--%>
-            <%--                </a>--%>
-            <%--                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">--%>
-            <%--                    <div class="dropdown-header text-center">--%>
-            <%--                        &lt;%&ndash;            <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">&ndash;%&gt;--%>
-            <%--                        <p class="mb-1 mt-3 font-weight-semibold"><%=user.getNameUser()%>--%>
-            <%--                        </p>--%>
-            <%--                        <p class="fw-light text-muted mb-0"><%=user.getEmail()%>--%>
-            <%--                        </p>--%>
-            <%--                    </div>--%>
-            <%--                </div>--%>
-            <%--            </li>--%>
             <%}%>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
@@ -235,7 +221,12 @@
 <!-- partial -->
 <div class="container-fluid page-body-wrapper">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <%if(user.getDecentralization() == Powers.ADMIN) {%>
+        <div class="nav-item">
+            <a href="/BHNFoods/AdminMain" class="nav-item-link">
+                <i style="margin-right: 5px;" class="menu-icon mdi mdi-home"></i>
+                <span>Trang chủ</span>
+            </a>
+        </div>
         <div class="nav-item">
             <a href="/BHNFoods/AdminManageUser" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-account-circle"></i>
@@ -249,11 +240,10 @@
                 <span>Quản lý sản phẩm</span>
             </a>
         </div>
-        <%}%>
         <div class="nav-item">
-            <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
+            <a href="/BHNFoods/ListLog" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
-                <span>Quản lý đơn hàng</span>
+                <span>Log</span>
             </a>
         </div>
         <div class="nav-item">

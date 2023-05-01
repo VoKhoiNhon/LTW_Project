@@ -130,4 +130,14 @@ public class Orders {
     public void setIdOrders(String idOrders) {
         this.idOrders = idOrders;
     }
+
+    public String checkCondition() {
+        if (this.condition == 2) {
+            return "Thành công";
+        }
+        if (this.condition == 3) {
+            return "Không thành công";
+        }
+        return null;
+    }
 }

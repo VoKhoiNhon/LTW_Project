@@ -17,7 +17,11 @@ public class Log extends AbBean implements Serializable {
     LocalDateTime createAt;
     int status;
     String browserName;
+
+
+
     String locationIpClient;
+    String nameuser;
 
     static Map<Integer, String> levelMapping = new HashMap<Integer, String>();
 
@@ -49,7 +53,25 @@ public class Log extends AbBean implements Serializable {
         this.browserName = browserName;
         this.locationIpClient = locationIpClient;
     }
+    public Log(String nameuser) {
+        this.nameuser = nameuser;
+    }
 
+    public String getBrowserName() {
+        return browserName;
+    }
+
+    public void setBrowserName(String browserName) {
+        this.browserName = browserName;
+    }
+
+    public String getNameuser() {
+        return nameuser;
+    }
+
+    public void setNameuser(String nameuser) {
+        this.nameuser = nameuser;
+    }
 
     public Log(int level, String user, String src, String content, int status, String browserName, String locationIpClient) {
         this.level = level;

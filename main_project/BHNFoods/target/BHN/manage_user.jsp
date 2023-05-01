@@ -212,9 +212,9 @@
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
-                <i style="margin-right: 5px;"  class="fa-solid fa-arrow-down-wide-short"></i>
-                <span>Quản lý đơn hàng</span>
+            <a href="/BHNFoods/ListLog" class="nav-item-link">
+                <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
+                <span>Log</span>
             </a>
         </div>
         <div class="nav-item">
