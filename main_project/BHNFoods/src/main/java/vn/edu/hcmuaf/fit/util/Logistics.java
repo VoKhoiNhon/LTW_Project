@@ -213,7 +213,7 @@ public class Logistics {
         return map;
     }
 
-    public static void getLeadTime(int ditricID, int wardID, int height, int lenght, int width, int weight) {
+    public static String getLeadTime(int ditricID, int wardID, int height, int lenght, int width, int weight) {
         String apiUrl = "http://140.238.54.136/api/leadTime ";
         String json = null;
 
@@ -266,12 +266,13 @@ public class Logistics {
                 System.out.println("Timestamp: " + timestamp);
                 System.out.println("Formatted Date: " + formattedDate);
                 System.out.println();
+                return formattedDate;
             }
             connection.disconnect();
           } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
+    return null;
     }
     public static void getCalculateFee(int ditricID, int wardID, int height, int lenght, int width, int weight) {
         String apiUrl = "http://140.238.54.136/api/calculateFee  ";
@@ -386,7 +387,7 @@ public class Logistics {
         Map<String, Integer> map2 = getWard(3134);
         System.out.println(map2.get("Xã Vũ Sơn"));
 //        getWard(1463);
-//        getLeadTime(1463, 21809, 30, 30, 30, 1000);
+        getLeadTime(1463, 21809, 30, 30, 30, 5000);
 //        getCalculateFee(1463, 21809, 30, 30, 30, 1000);
 //        registerTransport(1463, 21809, 30, 30, 30, 1000);
     }

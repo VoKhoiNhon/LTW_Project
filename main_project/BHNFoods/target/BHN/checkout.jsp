@@ -49,16 +49,7 @@
                             </div>
                         </div>
                         <div class="w-100"></div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Địa chỉ giao hàng</label>
-                                <div class="select-wrap">
 
-                                    <input name="" id="address" class="form-control" placeholder="Nhập địa chỉ giao hàng" value="<%=user.getAddress()%>">
-
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-md-12" id="shipAddress">
                             <div class="form-group">
                                 <label>Tỉnh, Thành phố</label>
@@ -70,16 +61,25 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Tỉnh, Thành phố</label>
+                                <label>Quận, Huyện</label>
                                 <select id="district" type="text" class="form-control" onchange="addWard()">
 
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Tỉnh, Thành phố</label>
+                                <label>Phường, Xã</label>
                                 <select id="ward" type="text" class="form-control">
 
                                 </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Địa chỉ giao hàng (Đường, số nhà)</label>
+                                <div class="select-wrap">
+                                    <input name="" id="address" class="form-control" placeholder="Nhập địa chỉ giao hàng" value="">
+
+                                </div>
                             </div>
                         </div>
                         <div class="w-100"></div>
@@ -167,6 +167,31 @@
 <!-- Js Plugins -->
 <script>
     function pay() {
+    if($('#fullName').val() == "" || $('#phoneNumber').val() == "" || $('#address').val() == "" || $('#city').val() == "" || $('#district').val() == "" || $('#ward').val() == "") {
+        alert('Hãy nhập đầy đủ các thông tin');
+    }
+    else {
+        // Lấy phần tử select bằng id
+        var selectStringCity = document.getElementById("city");
+        var selectStringDistrict = document.getElementById("district");
+        var selectStringWard = document.getElementById("ward");
+
+    // Lấy chỉ mục của phần tử được chọn
+        var selectedIndexCity = selectStringCity.selectedIndex;
+        var selectedIndexDistrict = selectStringDistrict.selectedIndex;
+        var selectedIndexWard = selectStringWard.selectedIndex;
+
+    // Lấy đối tượng HTMLOptionElement tương ứng với chỉ mục
+        var selectedOptionCity = selectStringCity.options[selectedIndexCity];
+        var selectedOptionDistrict = selectStringDistrict.options[selectedIndexDistrict];
+        var selectedOptionWard = selectStringWard.options[selectedIndexWard];
+
+    // Lấy nội dung văn bản của phần tử HTMLOptionElement
+        var selectedTextCity = selectedOptionCity.textContent;
+        var selectedTextDistrict = selectedOptionDistrict.textContent;
+        var selectedTextWard = selectedOptionWard.textContent;
+
+
         $.ajax({
             url: "/BHNFoods/pay",
             type: 'get',
@@ -175,7 +200,12 @@
                 phoneNumber: $('#phoneNumber').val(),
                 email : $('#email').val(),
                 address : $('#address').val(),
-                city : $('#city').val(),
+                idCity : $('#city').val(),
+                idDistrict : $('#district').val(),
+                idWard : $('#ward').val(),
+                city : selectedTextCity,
+                district : selectedTextDistrict,
+                ward : selectedTextWard,
                 note: $('#note').val(),
                 day : $('#day').val(),
                 time : $('#time').val(),
@@ -193,10 +223,10 @@
             }
         });
 
-        let timerId= setInterval(setBody(), 1000);
-
-        setTimeout(() => { clearInterval(timerId); Redirect(); }, 5000);
-
+        // let timerId= setInterval(setBody(), 1000);
+        //
+        // setTimeout(() => { clearInterval(timerId); Redirect(); }, 5000);
+    }
     }
     function setBody() {
         var body = document.getElementById('body')
