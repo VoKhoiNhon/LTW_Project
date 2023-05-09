@@ -283,7 +283,6 @@
 <!-- partial -->
 <div class="container-fluid page-body-wrapper">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
-
         <div class="nav-item">
             <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>

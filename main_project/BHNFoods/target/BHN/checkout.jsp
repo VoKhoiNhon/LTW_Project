@@ -1,4 +1,5 @@
 <%@ page import="java.text.DecimalFormat" %>
+<%@ page import="java.util.Map" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +14,7 @@
     int sum = (int) request.getAttribute("sumCheckout");
     int discount = (int) request.getAttribute("discountCheckout");
     int total = (int) request.getAttribute("totalCheckout");
+    Map<String, Integer> mapProvince = (Map<String, Integer>) request.getAttribute("mapProvince");
     String all = request.getAttribute("allIdProdChecked").toString();
     request.setAttribute("allId", all);
     String maGiamGia = (String) request.getAttribute("maGiamGia");
@@ -57,28 +59,26 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12" id="shipAddress">
                             <div class="form-group">
-                                <label>Quận, Thành phố</label>
+                                <label>Tỉnh, Thành phố</label>
+                                <select id="city" type="text" class="form-control" onchange="addDistrict()">
+                                    <%
+                                        for (String key : mapProvince.keySet()) {%>
+                                        <option value="<%=mapProvince.get(key)%>"><%=key%></option>
+                                    <%}%>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Tỉnh, Thành phố</label>
+                                <select id="district" type="text" class="form-control" onchange="addWard()">
 
-                                <select id="city" type="text" class="form-control">
-                                    <option>Thủ Đức</option>
-                                    <option>Quận 1</option>
-                                    <option>Quận 3</option>
-                                    <option>Quận 4</option>
-                                    <option>Quận 5</option>
-                                    <option>Quận 6</option>
-                                    <option>Quận 7</option>
-                                    <option>Quận 8</option>
-                                    <option>Quận 10</option>
-                                    <option>Quận 11</option>
-                                    <option>Quận 12</option>
-                                    <option>Bình Chánh</option>
-                                    <option>Bình Thạnh</option>
-                                    <option>Bình Tân</option>
-                                    <option>Tân Bình</option>
-                                    <option>Tân Phú</option>
-                                    <option>Hooc Môn</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Tỉnh, Thành phố</label>
+                                <select id="ward" type="text" class="form-control">
+
                                 </select>
                             </div>
                         </div>
@@ -228,6 +228,42 @@
         });
 
     })
+
+    function addDistrict() {
+        const idProvince = $("#city").val();
+        $.ajax({
+            url: "/BHNFoods/addDistrict",
+            type: 'get',
+            data: {
+                idProvince : idProvince
+            },
+            success: function (data) {
+                const ward = document.getElementById('ward')
+                ward.innerHTML = "";
+                const content = document.getElementById('district')
+                content.innerHTML = data;
+            },
+            error: function () {
+            }
+        });
+    }
+
+    function addWard() {
+        const idDistrict = $("#district").val();
+        $.ajax({
+            url: "/BHNFoods/addWard",
+            type: 'get',
+            data: {
+                idDistrict : idDistrict
+            },
+            success: function (data) {
+                const content = document.getElementById('ward')
+                content.innerHTML = data;
+            },
+            error: function () {
+            }
+        });
+    }
 
 
 
