@@ -36,7 +36,7 @@ public class ForgotPass extends HttpServlet {
             User user = UserService.getInstance().getUserByPhoneOrEmail(account);
             String salt = Encryption.randomSalt();
             String key = Encryption.toSHA1(user.getEmail() + salt);
-            session.setAttribute("auth", user);
+            session.setAttribute("idUser", user.getIdUser());
             VerifyingService.getInstance().addKey(key, salt);
             String mailMessage = "<!DOCTYPE html>\n" +
                     "<html lang=\"en\">\n" +
