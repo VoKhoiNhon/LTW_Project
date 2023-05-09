@@ -37,6 +37,7 @@ public class VerifyingEmail extends HttpServlet {
             String newPass = Encryption.toSHA1(request.getParameter("pass"));
             DB.me().insert(new Log(Log.INFO, idUser, this.src, "CHANGE PASS, OLDPASS:" + oldPassword, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
             UserService.getInstance().updatePass(idUser, newPass);
+            session.invalidate();
             response.sendRedirect("login.jsp");
         }
 }

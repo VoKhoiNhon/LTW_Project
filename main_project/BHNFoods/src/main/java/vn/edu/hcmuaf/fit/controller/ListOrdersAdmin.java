@@ -25,7 +25,7 @@ public class ListOrdersAdmin extends HttpServlet {
             Map<String, Integer> sumOrder = ProductService.getInstance().sumOrder(mapOrder);
             request.setAttribute("mapAdminOrder", mapOrder);
             request.setAttribute("sumAdminOrder", sumOrder);
-            request.getRequestDispatcher("manage_AdminOrders.jsp").forward(request,response);
+            request.getRequestDispatcher("emloyee.jsp").forward(request,response);
         }
     }
 

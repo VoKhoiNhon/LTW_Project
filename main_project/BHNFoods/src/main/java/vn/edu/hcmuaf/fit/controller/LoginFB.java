@@ -32,7 +32,7 @@ public class LoginFB extends HttpServlet {
             UserService.getInstance().addUserFB(name, email, null, id);
             System.out.println("123");
             user = UserService.getInstance().getLastUser();
-            response.sendRedirect("http://localhost:8080/BHNFoods/index?idUser=" + user.getIdUser());
+            response.sendRedirect("/BHNFoods/index?idUser=" + user.getIdUser());
         }
 
 

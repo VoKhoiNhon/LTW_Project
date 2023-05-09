@@ -23,7 +23,8 @@ public class AdminMain extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-        if(user.getDecentralization() != Powers.ADMIN && user.getDecentralization() != Powers.EMPLOYEE) response.sendRedirect("index.jsp");
+        if (user.getDecentralization() != Powers.ADMIN && user.getDecentralization() != Powers.EMPLOYEE)
+            response.sendRedirect("index.jsp");
         else {
             i = 5;
             List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i);
@@ -32,7 +33,7 @@ public class AdminMain extends HttpServlet {
             String data0 = "" + ProductService.getInstance().getTurnover(1, 2021);
             String data = "" + ProductService.getInstance().getTurnover(1, 2022);
             String data1 = "" + ProductService.getInstance().getTurnover(1, 2023);
-            int sumcontact= ProductService.getInstance().sumContact();
+            int sumcontact = ProductService.getInstance().sumContact();
             int tur0 = ProductService.getInstance().getTurnover(1, 2021);
             int tur = ProductService.getInstance().getTurnover(1, 2022);
             int tur1 = ProductService.getInstance().getTurnover(1, 2023);
@@ -41,14 +42,14 @@ public class AdminMain extends HttpServlet {
             int stopSaledPR = ProductService.getInstance().getStopPr();
             List<SingleProduct> pr = ProductService.getInstance().getListProductHostSale();
             List<Contact> listContact = UserService.getInstance().getListContact();
-        Collections.sort(listContact, new Comparator<Contact>() {
-            @Override
-            public int compare(Contact o1, Contact o2) {
-                return o2.getCondition() - o1.getCondition();
-            }
-        });
-        request.setAttribute("listContact", listContact);
-        request.setAttribute("sumcontact",sumcontact);
+            Collections.sort(listContact, new Comparator<Contact>() {
+                @Override
+                public int compare(Contact o1, Contact o2) {
+                    return o2.getCondition() - o1.getCondition();
+                }
+            });
+            request.setAttribute("listContact", listContact);
+            request.setAttribute("sumcontact", sumcontact);
 
             for (int i = 2; i <= 12; i++) {
                 tur0 += ProductService.getInstance().getTurnover(i, 2021);
