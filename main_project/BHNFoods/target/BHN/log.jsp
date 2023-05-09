@@ -1,5 +1,6 @@
 <%@ page import="vn.edu.hcmuaf.fit.beans.User" %>
 <%@ page import="java.util.List" %>
+<%@ page import="vn.edu.hcmuaf.fit.beans.Log" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -213,7 +214,7 @@
         </div>
         <div class="nav-item">
             <a href="/BHNFoods/ListLog" class="nav-item-link">
-                <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
+                <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
                 <span>Log</span>
             </a>
         </div>
@@ -260,53 +261,49 @@
                                                                 <thead>
                                                                 <tr>
                                                                     <th>Khách hàng</th>
-                                                                    <th>Số điện thoại và Email</th>
-                                                                    <%--                                                                    <th></th>--%>
-                                                                    <th>Địa chỉ</th>
-                                                                    <th></th>
+                                                                    <th>Tên trình duyệt</th>
+                                                                    <th>Ngày-Giờ</th>
+                                                                    <th>Địa chỉ IP</th>
+                                                                    <th>Content</th>
+                                                                    <th>Src</th>
+
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <% List<User> list = (List<User>) request.getAttribute("listUser");
-                                                                    for (User u : list) {
+                                                                <% List<Log> list = (List<Log>) request.getAttribute("listlog");
+                                                                    for (Log l : list) {
                                                                 %>
                                                                 <tr>
                                                                     <td>
                                                                         <div class="d-flex ">
-                                                                            <img src="ImageproductNew/background/images.png"
-                                                                                 alt="">
                                                                             <div>
-                                                                                <h6><%=u.getNameUser()%>
+                                                                                <h6><%=l.getNameuser()%>
                                                                                 </h6>
-                                                                                <p><%=u.checkDecentralization()%>
-                                                                                </p>
                                                                             </div>
                                                                         </div>
                                                                     </td>
                                                                     <td>
-                                                                        <h6><%=u.getPhone()%>
+                                                                        <h6><%=l.getbrowserName()%>
                                                                         </h6>
-                                                                        <p><%=u.getEmail()%>
+
+                                                                    </td>
+                                                                    <td>
+                                                                        <p><%=l.getCreateAt()%>
                                                                         </p>
                                                                     </td>
                                                                     <td>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class=""><%=u.getAddress()%>
+                                                                        <div class=""><%=l.getLocationIpClient()%>
                                                                         </div>
                                                                     </td>
                                                                     <td>
-                                                                        <div class="btn_edit">
-                                                                            <button onclick="clickEdit('<%=u.getIdUser()%>','<%=u.getNameUser()%>','<%=u.getPassw()%>','<%=u.getEmail()%>','<%=u.getPhone()%>','<%=u.getDateSignup()%>','<%=u.getAddress()%>')">
-                                                                                <h4 class="card-title card-title-dash">
-                                                                                    Xem <i
-                                                                                        class="fa-regular fa-pen-to-square"></i>
-                                                                                </h4></button>
+                                                                        <div class=""><%=l.getContent()%>
                                                                         </div>
+                                                                        <div class=""><%=l.getSrc()%>
+                                                                    </div>
+
                                                                     </td>
                                                                 </tr>
                                                                 <%}%>
-
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -326,54 +323,8 @@
 </div>
 
 
-<%-- xem và update user--%>
-<div id="formEditUser">
-
-</div>
-
 
 <script>
-    // xem và update user
-    function clickEdit(idUser, nameUser, passw, email, phone, datesignup, address) {
-        $.ajax({
-            url: "/BHNFoods/appearEditUser",
-            type: 'get',
-            data: {
-                idUser: idUser,
-                nameUser: nameUser,
-                passw: passw,
-                email: email,
-                phone: phone,
-                datesignup: datesignup,
-                address: address,
-            },
-            success: function (data) {
-                const content = document.getElementById('formEditUser');
-                content.innerHTML = data;
-            },
-            error: function () {
-            }
-        });
-        $(".edit_formUser").css("display", "block");
-    }
-
-    function huy() {
-        $(".edit_formUser").css("display", "none");
-    }
-
-    // checkbox chon tat ca
-    function checkAll(elementInput) {
-        if (elementInput.checked) { // check select status
-            $(':checkbox').each(function () { //loop through each checkbox
-                this.checked = true;  //select all checkboxes with class "checkbox1"
-            });
-
-        } else {
-            $(':checkbox').each(function () { //loop through each checkbox
-                this.checked = false; //deselect all checkboxes with class "checkbox1"
-            });
-        }
-    }
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="

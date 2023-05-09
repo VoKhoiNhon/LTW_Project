@@ -44,7 +44,7 @@
     }
 
     .shoping-cart .container::before {
-        content: "Lịch sử giao dịch";
+        content: "Đơn hàng";
         font-size: 20px;
         font-weight: bold;
     }
@@ -283,17 +283,16 @@
 <!-- partial -->
 <div class="container-fluid page-body-wrapper">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
-
         <div class="nav-item">
-            <a href="/BHNFoods/AdminMain" class="nav-item-link">
-                <i style="margin-right: 5px;" class="menu-icon mdi mdi-home"></i>
-                <span>Trang chủ</span>
+            <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
+                <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+                <span>Quản lý đơn hàng</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/AdminManageUser" class="nav-item-link">
-                <i style= "margin-right:5px;"  class="menu-icon mdi mdi-account-circle"> </i>
-                <span>Quản lý người dùng</span>
+            <a href="/BHNFoods/HistoryOrdersAdmin" class="nav-item-link">
+                <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+                <span>Lịch sử đơn hàng</span>
             </a>
         </div>
         <div class="nav-item">
@@ -303,7 +302,7 @@
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
+            <a href="" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
                 <span>Nhập kho</span>
             </a>

@@ -25,10 +25,7 @@ import java.util.List;
 
 @WebServlet(name = "Login", value = "/Login")
 public class Login extends HttpServlet {
-
     String src = "LOGIN";
-
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -39,7 +36,6 @@ public class Login extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         password = Encryption.toSHA1(password);
-
         User user = UserService.getInstance().checkLogin(username, password);
         User existName = UserService.getInstance().checkUser(username);
         int lv = LogSercive.getInstance().getLevelForDayLogin(existName.getNameUser());
@@ -53,31 +49,46 @@ public class Login extends HttpServlet {
                     UserService.getInstance().lockUser(existName.getIdUser());
                 }
             }
-            if (user != null && (user.getDecentralization() == Powers.ADMIN || user.getDecentralization() == Powers.EMPLOYEE)) {
+            if (user != null && (user.getDecentralization() == Powers.ADMIN)) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("auth", user);
-
                 DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
-
                 response.sendRedirect("AdminMain");
 
-            } else if (user != null && user.getDecentralization() == Powers.USER) {
+            }
+            if (user != null && (user.getDecentralization() == Powers.EMPLOYEE)) {
+                HttpSession session = request.getSession(true);
+                session.setAttribute("auth", user);
+                DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
+                response.sendRedirect("ListOrdersAdmin");
+
+            }
+            if (user != null && user.getDecentralization() == Powers.USER) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("auth", user);
                 session.setAttribute("idUser", user.getIdUser());
                 request.setAttribute("idUser", user.getIdUser());
-
                 DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
                 response.sendRedirect("/BHNFoods/index");
             }
+
+        }
+        // 2 else này nằm trong if(existName) thì ko login vào admin vs employee đc nhưng thục hiện 2 else dưới
+        // còn nếu nằm ngoài if(existName) thì login đc nhưng thực hiện 2 cái else phía dưới
+        else if (user != null && user.getDecentralization() == Powers.BLOCK) {
+            HttpSession session = request.getSession(true);
+            session.setAttribute("auth", user);
+            session.setAttribute("idUser", user.getIdUser());
+            request.setAttribute("error", "Tài khoản đã bị khoá");
+
+            DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
             request.setAttribute("error", "Sai tài khoản hoặc mật khẩu");
-
             DB.me().insert(new Log(Log.WARNING, null, this.src, "LOGIN FALSE: " + username, 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
-
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
 
-    }
 
+    }
 }

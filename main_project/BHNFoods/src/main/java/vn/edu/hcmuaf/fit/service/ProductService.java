@@ -597,7 +597,13 @@ public int getNowYer(){
 
     public static List<Orders> listOrdersAdmin() {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT s.ID_USER, s.ID_ORDERS, i.URL, p.NAME_PR, s.PRICE_HERE, s.AMOUNT, o.`NAME`, o.PHONE, o.ADDRESS, o.NOTE, o.TIME_ORDERS, o.`CONDITION` FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on p.ID_PR= s.ID_PR join image i ON i.ID_PR= p.ID_PR")
+            return handle.createQuery("SELECT s.ID_USER, s.ID_ORDERS, i.URL, p.NAME_PR, s.PRICE_HERE, s.AMOUNT, o.`NAME`, o.PHONE, o.ADDRESS, o.NOTE, o.TIME_ORDERS, o.`CONDITION` FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on p.ID_PR= s.ID_PR join image i ON i.ID_PR= p.ID_PR WHERE o.`CONDITION`=1 or o.`CONDITION`=0")
+                    .mapToBean(Orders.class).collect(Collectors.toList());
+        });
+    }
+    public static List<Orders> gethistoryOrdersAdmin() {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT s.ID_USER, s.ID_ORDERS, i.URL, p.NAME_PR, s.PRICE_HERE, s.AMOUNT, o.`NAME`, o.PHONE, o.ADDRESS, o.NOTE, o.TIME_ORDERS, o.`CONDITION` FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on p.ID_PR= s.ID_PR join image i ON i.ID_PR= p.ID_PR WHERE o.`CONDITION`=2 or o.`CONDITION`=3")
                     .mapToBean(Orders.class).collect(Collectors.toList());
         });
     }

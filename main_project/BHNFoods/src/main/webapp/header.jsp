@@ -152,7 +152,7 @@
                         <div class="dr"> <a href="/BHNFoods/loveProduct">Sản phẩm yêu thích</a></div>
                         <div class="dr"> <a href="/BHNFoods/manageOrder">Quản lý đơn hàng</a> </div>
                         <div class="dr"> <a href="/BHNFoods/history?">Lịch sử đơn hàng</a></div>
-                        <div class="dr"> <a onclick="contact()" href="#">Liên hệ</a></div>
+                        <div class="dr"> <a  href="/BHNFoods/ContactInUser">Liên hệ- Hướng dẫn</a></div>
                         <div class="dr"> <a href="/BHNFoods/logOut">Đăng xuất</a></div>
                     </div>
                 </li>

@@ -12,20 +12,22 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(name = "ListOrdersAdmin", value = "/ListOrdersAdmin")
-public class ListOrdersAdmin extends HttpServlet {
+@WebServlet(name = "HistoryOrdersAdmin", value = "/HistoryOrdersAdmin")
+public class HistoryOrdersAdmin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-        if(user.getDecentralization() != Powers.ADMIN && user.getDecentralization() != Powers.EMPLOYEE) response.sendRedirect("index.jsp");
+        if (user.getDecentralization() != Powers.ADMIN && user.getDecentralization() != Powers.EMPLOYEE)
+            response.sendRedirect("index.jsp");
         else {
-            List<Orders> listManageOrders = ProductService.getInstance().listOrdersAdmin();
-            Map<String, List<Orders>> mapOrder = ProductService.getInstance().getMapOrder(listManageOrders);
+            List<Orders> listHistoryOrders = ProductService.getInstance().gethistoryOrdersAdmin();
+            Map<String, List<Orders>> mapOrder = ProductService.getInstance().getMapOrder(listHistoryOrders);
             Map<String, Integer> sumOrder = ProductService.getInstance().sumOrder(mapOrder);
             request.setAttribute("mapAdminOrder", mapOrder);
             request.setAttribute("sumAdminOrder", sumOrder);
-            request.getRequestDispatcher("emloyee.jsp").forward(request,response);
+            request.getRequestDispatcher("historyOrdersAdmin.jsp").forward(request, response);
+
         }
     }
 
