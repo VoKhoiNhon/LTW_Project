@@ -4,6 +4,7 @@ import vn.edu.hcmuaf.fit.beans.Cart;
 import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.CartService;
 import vn.edu.hcmuaf.fit.service.ProductService;
+import vn.edu.hcmuaf.fit.util.Logistics;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -11,6 +12,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "CheckingOut", value = "/checkingOut")
 public class CheckingOut extends HttpServlet {
@@ -27,6 +29,13 @@ public class CheckingOut extends HttpServlet {
         int sum = Integer.parseInt(request.getParameter("sumCheckout"));
         int discount = Integer.parseInt(request.getParameter("discountCheckout"));
         int total = Integer.parseInt(request.getParameter("totalCheckout"));
+        Map<String, Integer> map;
+        try {
+            map = Logistics.getProvince();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         String allIdProdChecked = request.getParameter("allIdProdChecked");
         String maGiamGia = request.getParameter("maGiamGia");
         request.setAttribute("maGiamGia", maGiamGia);
@@ -34,6 +43,8 @@ public class CheckingOut extends HttpServlet {
         request.setAttribute("discountCheckout", discount);
         request.setAttribute("totalCheckout", total);
         request.setAttribute("allIdProdChecked", allIdProdChecked);
+        request.setAttribute("mapProvince", map);
+
 
         request.getRequestDispatcher("checkout.jsp").forward(request,response);
     }
