@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.controller;
 
 import com.microsoft.schemas.office.office.STInsetMode;
+import vn.edu.hcmuaf.fit.beans.BoxSizeAndWeight;
 import vn.edu.hcmuaf.fit.beans.Cart;
 import vn.edu.hcmuaf.fit.beans.Log;
 import vn.edu.hcmuaf.fit.beans.User;
@@ -48,33 +49,18 @@ public class Pay extends HttpServlet {
         String idOrder = OrderService.getInstance().generateIdOrder();
         String timeNow = OrderService.getInstance().formatDateTimeNow();
         String timePickup = "";
-        String  [] listId = allId.trim().replace("box", "").split(" ");
+        String[] listId = allId.trim().replace("box", "").split(" ");
         List<Cart> listCart = new ArrayList<>();
         double totalWeight = 0; // kg
         for (String id : listId) {
-            totalWeight =  ProductService.getInstance().getSingleProduct(id).get(0).getWeight();
             List<Cart> temp = CartService.getInstance().getProdFormCart(idUser, id);
             listCart.addAll(temp);
         }
 
-        int width = 10;
-        int height = 10;
-        int length = 20;
-        if(totalWeight > 10) {
-            width = 40;
-            height = 40;
-            length= 40;
-        } else if(totalWeight > 5) {
-            width = 30;
-            height = 30;
-            length= 30;
-        } else if(totalWeight > 2) {
-            width = 20;
-            height = 20;
-            length= 20;
-        }
+        BoxSizeAndWeight boxSizeAndWeight = new BoxSizeAndWeight(listId);
+
         try {
-            String leadTime = Logistics.getLeadTime(idDistrict, idWard, height, length, width, (int) (totalWeight*1000));
+            String leadTime = Logistics.getLeadTime(idDistrict, idWard, boxSizeAndWeight.getHeight(), boxSizeAndWeight.getLength(), boxSizeAndWeight.getWidth(), (int) boxSizeAndWeight.getWeight());
             timePickup = leadTime.substring(0, leadTime.indexOf("T"));
         } catch (Exception e) {
             throw new RuntimeException(e);

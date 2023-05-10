@@ -68,7 +68,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Phường, Xã</label>
-                                <select id="ward" type="text" class="form-control">
+                                <select id="ward" type="text" class="form-control" onchange="changeWard()">
 
                                 </select>
                             </div>
@@ -239,25 +239,27 @@
         window.location.assign('/BHNFoods/ListProduct?kind=0&page=1');
     }
 
-    $('#city').change(function changeDistrict() {
-        $.ajax({
-            url: "/BHNFoods/changeDistrict",
-            type: 'get',
-            data: {
-                sumCheckout: $('#sumCheckout').val(),
-                discountCheckout: $('#discountCheckout').val(),
-                city: $('#city').val(),
-                totalCheckout: parseInt($('#totalCheckout').val())+ parseInt($('#shipCheckout').val())
-            },
-            success: function (data) {
-                const content = document.getElementById('totalCard')
-                content.innerHTML = data;
-            },
-            error: function () {
-            }
-        });
-
-    })
+    // $('#city').change(function changeDistrict() {
+    //     $.ajax({
+    //         url: "/BHNFoods/changeDistrict",
+    //         type: 'get',
+    //         data: {
+    //             sumCheckout: $('#sumCheckout').val(),
+    //             discountCheckout: $('#discountCheckout').val(),
+    //             idDistrict : idDistrict,
+    //             idWard : $("#ward").val(),
+    //             listId : $('#allId').val(),
+    //             totalCheckout: parseInt($('#totalCheckout').val())+ parseInt($('#shipCheckout').val())
+    //         },
+    //         success: function (data) {
+    //             const content = document.getElementById('totalCard')
+    //             content.innerHTML = data;
+    //         },
+    //         error: function () {
+    //         }
+    //     });
+    //
+    // })
 
     function addDistrict() {
         const idProvince = $("#city").val();
@@ -272,10 +274,34 @@
                 ward.innerHTML = "";
                 const content = document.getElementById('district')
                 content.innerHTML = data;
+                $.ajax({
+                    url: "/BHNFoods/changeDistrict",
+                    type: 'get',
+                    data: {
+                        sumCheckout: $('#sumCheckout').val(),
+                        discountCheckout: $('#discountCheckout').val(),
+                        idDistrict : -1,
+                        idWard : -1,
+                        listId : $('#allId').val(),
+                        totalCheckout: parseInt($('#totalCheckout').val())+ parseInt($('#shipCheckout').val())
+                    },
+                    success: function (data) {
+                        const content = document.getElementById('totalCard')
+                        content.innerHTML = data;
+                    },
+                    error: function () {
+                    }
+                });
             },
             error: function () {
             }
         });
+    }
+
+    function format1(n, currency) {
+        return n.toFixed(0).replace(/./g, function (c, i, a) {
+            return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "." + c : c;
+        }) + currency;
     }
 
     function addWard() {
@@ -288,6 +314,46 @@
             },
             success: function (data) {
                 const content = document.getElementById('ward')
+                content.innerHTML = data;
+                $.ajax({
+                    url: "/BHNFoods/changeDistrict",
+                    type: 'get',
+                    data: {
+                        sumCheckout: $('#sumCheckout').val(),
+                        discountCheckout: $('#discountCheckout').val(),
+                        idDistrict : idDistrict,
+                        idWard : $("#ward").val(),
+                        listId : $('#allId').val(),
+                        totalCheckout: parseInt($('#totalCheckout').val())+ parseInt($('#shipCheckout').val())
+                    },
+                    success: function (data) {
+                        const content = document.getElementById('totalCard')
+                        content.innerHTML = data;
+                    },
+                    error: function () {
+                    }
+                });
+            },
+            error: function () {
+            }
+        });
+    }
+
+    function changeWard() {
+        const idDistrict = $("#district").val();
+        $.ajax({
+            url: "/BHNFoods/changeDistrict",
+            type: 'get',
+            data: {
+                sumCheckout: $('#sumCheckout').val(),
+                discountCheckout: $('#discountCheckout').val(),
+                idDistrict : idDistrict,
+                idWard : $("#ward").val(),
+                listId : $('#allId').val(),
+                totalCheckout: parseInt($('#totalCheckout').val())+ parseInt($('#shipCheckout').val())
+            },
+            success: function (data) {
+                const content = document.getElementById('totalCard')
                 content.innerHTML = data;
             },
             error: function () {

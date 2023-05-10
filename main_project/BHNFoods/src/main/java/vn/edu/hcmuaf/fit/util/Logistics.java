@@ -274,7 +274,7 @@ public class Logistics {
         }
     return null;
     }
-    public static void getCalculateFee(int ditricID, int wardID, int height, int lenght, int width, int weight) {
+    public static int getCalculateFee(int ditricID, int wardID, int height, int lenght, int width, int weight) {
         String apiUrl = "http://140.238.54.136/api/calculateFee  ";
         String json = null;
 
@@ -320,6 +320,7 @@ public class Logistics {
 
                     System.out.println("Service Fee: " + serviceFee);
                     System.out.println();
+                    return (int) serviceFee;
                 }
 
             } else {
@@ -330,7 +331,7 @@ public class Logistics {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
+    return 0;
     }
     public static void registerTransport(int ditricID, int wardID, int height, int lenght, int width, int weight) {
         String apiUrl = "http://140.238.54.136/api/registerTransport";
@@ -380,15 +381,15 @@ public class Logistics {
     }
     public static void main(String[] args) throws Exception {
 //        System.out.println(getToken());
-        Map<String, Integer> map = getProvince();
-        System.out.println(map.get("Lạng Sơn"));
-        Map<String, Integer> map1 = getDistrict(247);
-        System.out.println(map1.get("Huyện Bắc Sơn"));
-        Map<String, Integer> map2 = getWard(3134);
-        System.out.println(map2.get("Xã Vũ Sơn"));
+//        Map<String, Integer> map = getProvince();
+//        System.out.println(map.get("Lạng Sơn"));
+//        Map<String, Integer> map1 = getDistrict(247);
+//        System.out.println(map1.get("Huyện Bắc Sơn"));
+//        Map<String, Integer> map2 = getWard(3134);
+//        System.out.println(map2.get("Xã Vũ Sơn"));
 //        getWard(1463);
-        getLeadTime(1463, 21809, 30, 30, 30, 5000);
-//        getCalculateFee(1463, 21809, 30, 30, 30, 1000);
+//        getLeadTime(1463, 21809, 30, 30, 30, 5000);
+        getCalculateFee(1463, 21809, 30, 30, 30, 5000);
 //        registerTransport(1463, 21809, 30, 30, 30, 1000);
     }
 }
