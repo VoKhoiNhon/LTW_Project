@@ -25,7 +25,9 @@ public class UpdateCtAccount extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String iduser = request.getParameter("iduser");
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
+        String idUser = user.getIdUser();
         String name = request.getParameter("name");
         int sex = Integer.parseInt(request.getParameter("sex"));
         String birthday = request.getParameter("birthday");
@@ -34,7 +36,7 @@ public class UpdateCtAccount extends HttpServlet {
         String passw = request.getParameter("passw");
         String address = request.getParameter("address");
         String repassw = request.getParameter("repassw");
-        String oldPass = UserService.getInstance().getEncryptPassUser(iduser);
+        String oldPass = UserService.getInstance().getEncryptPassUser(idUser);
 
 
 
@@ -46,7 +48,7 @@ public class UpdateCtAccount extends HttpServlet {
 
         } else {
             passw = passw == "" ? oldPass : Encryption.toSHA1(passw);
-            UserService.getInstance().updateCtAccount(iduser, name, sex, birthday, email, phone, passw, address, repassw);
+            UserService.getInstance().updateCtAccount(idUser, name, sex, birthday, email, phone, passw, address, repassw);
             DB.me().insert(new Log(Log.INFO, "user" + UserService.getInstance().getListUser().size(), this.src, "Signup SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
 
             response.sendRedirect("/BHNFoods/index");

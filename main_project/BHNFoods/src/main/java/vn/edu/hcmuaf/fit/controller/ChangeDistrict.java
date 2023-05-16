@@ -21,12 +21,13 @@ public class ChangeDistrict extends HttpServlet {
         int idWard = Integer.parseInt(request.getParameter("idWard"));
         String[] listId = request.getParameter("listId").trim().replace("box", "").split(" ");
 
-        BoxSizeAndWeight boxSizeAndWeight = new BoxSizeAndWeight(listId);
+
         int fee = 0;
         if(idDistrict != -1 || idWard != -1) { // Nếu tồn tại nơi gửi đến thì tính lại phí
+            BoxSizeAndWeight boxSizeAndWeight = new BoxSizeAndWeight(listId);
             fee = Logistics.getCalculateFee(idDistrict,idWard,boxSizeAndWeight.getHeight(),boxSizeAndWeight.getLength(),boxSizeAndWeight.getWidth(),boxSizeAndWeight.getHeight());
         }
-        
+
         int totalCheckout = sumCheckout - discountCheckout + fee;
         DecimalFormat dec = new DecimalFormat("#,###");
         String sumF = dec.format(sumCheckout).replace(',','.');

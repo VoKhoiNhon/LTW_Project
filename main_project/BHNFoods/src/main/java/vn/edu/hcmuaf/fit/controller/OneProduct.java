@@ -21,7 +21,9 @@ public class OneProduct extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idProd = request.getParameter("id");
         request.setAttribute("id", idProd);
-        String idUser = request.getParameter("idUser");
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
+        String idUser = user.getIdUser();
         List<SingleProduct> singleProd = ProductService.getInstance().getSingleProduct(idProd);
         List<ImgForSingleProd> listURL = ProductService.getInstance().getListImgForSingleProduct(idProd);
         List<Feedback> listFeedBack = ProductService.getInstance().getFeedBack(idProd);

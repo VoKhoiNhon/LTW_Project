@@ -20,6 +20,9 @@ public class BoxSizeAndWeight {
         calculateBoxSize();
     }
 
+    public BoxSizeAndWeight() {
+    }
+
     private void calculateWeight() {
         for (String id: listProductId) {
             weight += ProductService.getInstance().getSingleProduct(id).get(0).getWeight();
