@@ -10,7 +10,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Logistics {
     public static String getToken() throws Exception {
@@ -57,7 +59,8 @@ public class Logistics {
         return null;
     }
 
-    public static void getProvince() throws Exception {
+    public static Map<String, Integer> getProvince() throws Exception {
+        Map<String, Integer> map = new HashMap<>();
         String url = "http://140.238.54.136/api/province";
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -96,17 +99,19 @@ public class Logistics {
                 int provinceID = Integer.parseInt(province.get("ProvinceID").toString());
                 String provinceName = (String) province.get("ProvinceName");
 
-                System.out.println("Province ID: " + provinceID);
-                System.out.println("Province Name: " + provinceName);
-                System.out.println();
+                map.put(provinceName, provinceID);
+//                System.out.println("Province ID: " + provinceID);
+//                System.out.println("Province Name: " + provinceName);
+//                System.out.println();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+    return map;
     }
 
-    public static void getDistrict(int provinceID) throws Exception {
+    public static Map<String, Integer> getDistrict(int provinceID) throws Exception {
+        Map<String, Integer> map = new HashMap<>();
         String url = "http://140.238.54.136/api/district?provinceID=" + provinceID;
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -145,16 +150,19 @@ public class Logistics {
                 int districtID = Integer.parseInt(province.get("DistrictID").toString());
                 String districtName = (String) province.get("DistrictName");
 
-                System.out.println("DistrictID: " + districtID);
-                System.out.println("DistrictName: " + districtName);
-                System.out.println();
+                map.put(districtName, districtID);
+//                System.out.println("DistrictID: " + districtID);
+//                System.out.println("DistrictName: " + districtName);
+//                System.out.println();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return map;
     }
 
-    public static void getWard(int districtID) throws Exception {
+    public static Map<String, Integer> getWard(int districtID) throws Exception {
+        Map<String, Integer> map = new HashMap<>();
         String url = "http://140.238.54.136/api/ward?districtID=" + districtID;
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -193,18 +201,20 @@ public class Logistics {
 
                 int wardCode = Integer.parseInt(province.get("WardCode").toString());
                 String wardName = (String) province.get("WardName");
-
-                System.out.println("wardCode: " + wardCode);
-                System.out.println("wardName: " + wardName);
-                System.out.println();
+                map.put(wardName, wardCode);
+//                System.out.println("wardCode: " + wardCode);
+//                System.out.println("wardName: " + wardName);
+//                System.out.println();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return map;
     }
 
-    public static void getLeadTime(int ditricID, int wardID, int height, int lenght, int width, int weight) {
-        String apiUrl = "http://140.238.54.136/api/leadTime ";
+    public static String getLeadTime(int ditricID, int wardID, int height, int lenght, int width, int weight) {
+        String apiUrl = "http://140.238.54.136/api/leadTime";
         String json = null;
 
         try {
@@ -256,15 +266,16 @@ public class Logistics {
                 System.out.println("Timestamp: " + timestamp);
                 System.out.println("Formatted Date: " + formattedDate);
                 System.out.println();
+                return formattedDate;
             }
             connection.disconnect();
           } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
+    return null;
     }
-    public static void getCalculateFee(int ditricID, int wardID, int height, int lenght, int width, int weight) {
-        String apiUrl = "http://140.238.54.136/api/calculateFee  ";
+    public static int getCalculateFee(int ditricID, int wardID, int height, int lenght, int width, int weight) {
+        String apiUrl = "http://140.238.54.136/api/calculateFee";
         String json = null;
 
         try {
@@ -309,6 +320,7 @@ public class Logistics {
 
                     System.out.println("Service Fee: " + serviceFee);
                     System.out.println();
+                    return (int) serviceFee;
                 }
 
             } else {
@@ -319,7 +331,7 @@ public class Logistics {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
+    return 0;
     }
     public static void registerTransport(int ditricID, int wardID, int height, int lenght, int width, int weight) {
         String apiUrl = "http://140.238.54.136/api/registerTransport";
@@ -369,11 +381,15 @@ public class Logistics {
     }
     public static void main(String[] args) throws Exception {
 //        System.out.println(getToken());
-//        getProvince();
-//    getDistrict(202);
+//        Map<String, Integer> map = getProvince();
+//        System.out.println(map.get("Lạng Sơn"));
+//        Map<String, Integer> map1 = getDistrict(247);
+//        System.out.println(map1.get("Huyện Bắc Sơn"));
+//        Map<String, Integer> map2 = getWard(3134);
+//        System.out.println(map2.get("Xã Vũ Sơn"));
 //        getWard(1463);
-//        getLeadTime(1463, 21809, 30, 30, 30, 1000);
-//        getCalculateFee(1463, 21809, 30, 30, 30, 1000);
+//        getLeadTime(1463, 21809, 30, 30, 30, 5000);
+        getCalculateFee(1463, 21809, 30, 30, 30, 5000);
 //        registerTransport(1463, 21809, 30, 30, 30, 1000);
     }
 }

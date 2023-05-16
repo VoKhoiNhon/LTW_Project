@@ -28,7 +28,7 @@ public class Search extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-        String idUser = request.getParameter("idUser");
+        String idUser = user.getIdUser();
         List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
         request.setAttribute("listCart", listCart);
         String search = request.getParameter("searchPR");

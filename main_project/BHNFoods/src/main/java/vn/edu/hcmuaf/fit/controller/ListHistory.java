@@ -2,6 +2,7 @@ package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.Cart;
 import vn.edu.hcmuaf.fit.beans.SoldProduct;
+import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
 import javax.servlet.*;
@@ -15,7 +16,9 @@ import java.util.Map;
 public class ListHistory extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idUser = request.getParameter("idUser");
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
+        String idUser = user.getIdUser();
         List<SoldProduct> listHistory = ProductService.getInstance().getHistory(idUser);
         Map<String, List<SoldProduct>> mapOrders = ProductService.getInstance().getMapHistoryOrders(listHistory);
         List<Cart> listCart = ProductService.getInstance().getListCart(idUser);

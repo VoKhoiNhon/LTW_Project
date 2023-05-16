@@ -21,8 +21,6 @@ public class SearchUser extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idUser = request.getParameter("idUser");
-        List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
         String search = request.getParameter("searchUser");
         List<User> user = UserService.getInstance().searchUser(search);
         request.setAttribute("listSearchUser", user);

@@ -18,10 +18,9 @@ public class ListProduct extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int kind = Integer.parseInt(request.getParameter("kind"));
         int page =  Integer.parseInt(request.getParameter("page"));
-        String idUser = request.getParameter("idUser");
         int tempSize =  ProductService.getInstance().getSize(kind)/15;
         int count = ProductService.getInstance().getSize(kind)%15 > 0 ? tempSize + 1:tempSize;
-        List<Product> list= (List<Product>) ProductService.getInstance().getListProdInPage(kind, page);
+        List<Product> list= ProductService.getInstance().getListProdInPage(kind, page);
         List<Product> listDiscount = ProductService.getInstance().getListDiscountProd();
         request.setAttribute("listDiscount", listDiscount);
         request.setAttribute("listRequest", list);

@@ -1,4 +1,5 @@
 <%@ page import="java.text.DecimalFormat" %>
+<%@ page import="java.util.Map" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +14,7 @@
     int sum = (int) request.getAttribute("sumCheckout");
     int discount = (int) request.getAttribute("discountCheckout");
     int total = (int) request.getAttribute("totalCheckout");
+    Map<String, Integer> mapProvince = (Map<String, Integer>) request.getAttribute("mapProvince");
     String all = request.getAttribute("allIdProdChecked").toString();
     request.setAttribute("allId", all);
     String maGiamGia = (String) request.getAttribute("maGiamGia");
@@ -47,39 +49,37 @@
                             </div>
                         </div>
                         <div class="w-100"></div>
-                        <div class="col-md-12">
+
+                        <div class="col-md-12" id="shipAddress">
                             <div class="form-group">
-                                <label>Địa chỉ giao hàng</label>
-                                <div class="select-wrap">
+                                <label>Tỉnh, Thành phố</label>
+                                <select id="city" type="text" class="form-control" onchange="addDistrict()">
+                                    <%
+                                        for (String key : mapProvince.keySet()) {%>
+                                        <option value="<%=mapProvince.get(key)%>"><%=key%></option>
+                                    <%}%>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Quận, Huyện</label>
+                                <select id="district" type="text" class="form-control" onchange="addWard()">
 
-                                    <input name="" id="address" class="form-control" placeholder="Nhập địa chỉ giao hàng" value="<%=user.getAddress()%>">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Phường, Xã</label>
+                                <select id="ward" type="text" class="form-control" onchange="changeWard()">
 
-                                </div>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Quận, Thành phố</label>
+                                <label>Địa chỉ giao hàng (Đường, số nhà)</label>
+                                <div class="select-wrap">
+                                    <input name="" id="address" class="form-control" placeholder="Nhập địa chỉ giao hàng" value="">
 
-                                <select id="city" type="text" class="form-control">
-                                    <option>Thủ Đức</option>
-                                    <option>Quận 1</option>
-                                    <option>Quận 3</option>
-                                    <option>Quận 4</option>
-                                    <option>Quận 5</option>
-                                    <option>Quận 6</option>
-                                    <option>Quận 7</option>
-                                    <option>Quận 8</option>
-                                    <option>Quận 10</option>
-                                    <option>Quận 11</option>
-                                    <option>Quận 12</option>
-                                    <option>Bình Chánh</option>
-                                    <option>Bình Thạnh</option>
-                                    <option>Bình Tân</option>
-                                    <option>Tân Bình</option>
-                                    <option>Tân Phú</option>
-                                    <option>Hooc Môn</option>
-                                </select>
+                                </div>
                             </div>
                         </div>
                         <div class="w-100"></div>
@@ -167,6 +167,31 @@
 <!-- Js Plugins -->
 <script>
     function pay() {
+    if($('#fullName').val() == "" || $('#phoneNumber').val() == "" || $('#address').val() == "" || $('#city').val() == "" || $('#district').val() == "" || $('#ward').val() == "") {
+        alert('Hãy nhập đầy đủ các thông tin');
+    }
+    else {
+        // Lấy phần tử select bằng id
+        var selectStringCity = document.getElementById("city");
+        var selectStringDistrict = document.getElementById("district");
+        var selectStringWard = document.getElementById("ward");
+
+    // Lấy chỉ mục của phần tử được chọn
+        var selectedIndexCity = selectStringCity.selectedIndex;
+        var selectedIndexDistrict = selectStringDistrict.selectedIndex;
+        var selectedIndexWard = selectStringWard.selectedIndex;
+
+    // Lấy đối tượng HTMLOptionElement tương ứng với chỉ mục
+        var selectedOptionCity = selectStringCity.options[selectedIndexCity];
+        var selectedOptionDistrict = selectStringDistrict.options[selectedIndexDistrict];
+        var selectedOptionWard = selectStringWard.options[selectedIndexWard];
+
+    // Lấy nội dung văn bản của phần tử HTMLOptionElement
+        var selectedTextCity = selectedOptionCity.textContent;
+        var selectedTextDistrict = selectedOptionDistrict.textContent;
+        var selectedTextWard = selectedOptionWard.textContent;
+
+
         $.ajax({
             url: "/BHNFoods/pay",
             type: 'get',
@@ -175,7 +200,12 @@
                 phoneNumber: $('#phoneNumber').val(),
                 email : $('#email').val(),
                 address : $('#address').val(),
-                city : $('#city').val(),
+                idCity : $('#city').val(),
+                idDistrict : $('#district').val(),
+                idWard : $('#ward').val(),
+                city : selectedTextCity,
+                district : selectedTextDistrict,
+                ward : selectedTextWard,
                 note: $('#note').val(),
                 day : $('#day').val(),
                 time : $('#time').val(),
@@ -188,15 +218,15 @@
                 maGiamGia : $('#maGiamGia').val(),
             },
             success: function (data) {
+                let timerId= setInterval(setBody(), 1000);
+                setTimeout(() => { clearInterval(timerId); Redirect(); }, 5000);
             },
             error: function () {
             }
         });
 
-        let timerId= setInterval(setBody(), 1000);
 
-        setTimeout(() => { clearInterval(timerId); Redirect(); }, 5000);
-
+    }
     }
     function setBody() {
         var body = document.getElementById('body')
@@ -209,14 +239,117 @@
         window.location.assign('/BHNFoods/ListProduct?kind=0&page=1');
     }
 
-    $('#city').change(function changeDistrict() {
+    // $('#city').change(function changeDistrict() {
+    //     $.ajax({
+    //         url: "/BHNFoods/changeDistrict",
+    //         type: 'get',
+    //         data: {
+    //             sumCheckout: $('#sumCheckout').val(),
+    //             discountCheckout: $('#discountCheckout').val(),
+    //             idDistrict : idDistrict,
+    //             idWard : $("#ward").val(),
+    //             listId : $('#allId').val(),
+    //             totalCheckout: parseInt($('#totalCheckout').val())+ parseInt($('#shipCheckout').val())
+    //         },
+    //         success: function (data) {
+    //             const content = document.getElementById('totalCard')
+    //             content.innerHTML = data;
+    //         },
+    //         error: function () {
+    //         }
+    //     });
+    //
+    // })
+
+    function addDistrict() {
+        const idProvince = $("#city").val();
+        $.ajax({
+            url: "/BHNFoods/addDistrict",
+            type: 'get',
+            data: {
+                idProvince : idProvince
+            },
+            success: function (data) {
+                const ward = document.getElementById('ward')
+                ward.innerHTML = "";
+                const content = document.getElementById('district')
+                content.innerHTML = data;
+                $.ajax({
+                    url: "/BHNFoods/changeDistrict",
+                    type: 'get',
+                    data: {
+                        sumCheckout: $('#sumCheckout').val(),
+                        discountCheckout: $('#discountCheckout').val(),
+                        idDistrict : -1,
+                        idWard : -1,
+                        listId : $('#allId').val(),
+                        totalCheckout: parseInt($('#totalCheckout').val())+ parseInt($('#shipCheckout').val())
+                    },
+                    success: function (data) {
+                        const content = document.getElementById('totalCard')
+                        content.innerHTML = data;
+                    },
+                    error: function () {
+                    }
+                });
+            },
+            error: function () {
+            }
+        });
+    }
+
+    function format1(n, currency) {
+        return n.toFixed(0).replace(/./g, function (c, i, a) {
+            return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "." + c : c;
+        }) + currency;
+    }
+
+    function addWard() {
+        const idDistrict = $("#district").val();
+        $.ajax({
+            url: "/BHNFoods/addWard",
+            type: 'get',
+            data: {
+                idDistrict : idDistrict
+            },
+            success: function (data) {
+                const content = document.getElementById('ward')
+                content.innerHTML = data;
+                $.ajax({
+                    url: "/BHNFoods/changeDistrict",
+                    type: 'get',
+                    data: {
+                        sumCheckout: $('#sumCheckout').val(),
+                        discountCheckout: $('#discountCheckout').val(),
+                        idDistrict : idDistrict,
+                        idWard : $("#ward").val(),
+                        listId : $('#allId').val(),
+                        totalCheckout: parseInt($('#totalCheckout').val())+ parseInt($('#shipCheckout').val())
+                    },
+                    success: function (data) {
+                        const content = document.getElementById('totalCard')
+                        content.innerHTML = data;
+                    },
+                    error: function () {
+                    }
+                });
+            },
+            error: function () {
+            }
+        });
+    }
+
+    function changeWard() {
+        const idDistrict = $("#district").val();
         $.ajax({
             url: "/BHNFoods/changeDistrict",
             type: 'get',
             data: {
                 sumCheckout: $('#sumCheckout').val(),
                 discountCheckout: $('#discountCheckout').val(),
-                city: $('#city').val(),
+                idDistrict : idDistrict,
+                idWard : $("#ward").val(),
+                listId : $('#allId').val(),
                 totalCheckout: parseInt($('#totalCheckout').val())+ parseInt($('#shipCheckout').val())
             },
             success: function (data) {
@@ -226,8 +359,7 @@
             error: function () {
             }
         });
-
-    })
+    }
 
 
 

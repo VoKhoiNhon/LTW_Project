@@ -36,7 +36,7 @@ public class ForgotPass extends HttpServlet {
             User user = UserService.getInstance().getUserByPhoneOrEmail(account);
             String salt = Encryption.randomSalt();
             String key = Encryption.toSHA1(user.getEmail() + salt);
-            session.setAttribute("idUser", user.getIdUser());
+            session.setAttribute("auth", user);
             VerifyingService.getInstance().addKey(key, salt);
             String mailMessage = "<!DOCTYPE html>\n" +
                     "<html lang=\"en\">\n" +
@@ -47,7 +47,7 @@ public class ForgotPass extends HttpServlet {
                     "  <title>Document</title>\n" +
                     "</head>\n" +
                     "<body>\n" +
-                    "  <a style=\"text-decoration: none; padding: 10px 20px; color: black; background:rgb(192, 192, 241);\" href='http://localhost:8080/BHNFoods/verifyingEmail?key="+key+"&different="+salt+"'>Xác thực ngay</a>\n" +
+                    "  <a style=\"text-decoration: none; padding: 10px 20px; color: black; background:rgb(192, 192, 241);\" href='http://139.180.129.238:8080/BHNFoods/verifyingEmail?key="+key+"&different="+salt+"'>Xác thực ngay</a>\n" +
                     "</body>\n" +
                     "</html>";
             MailSender.send("Xác thực thông tin", mailMessage, user.getEmail());
