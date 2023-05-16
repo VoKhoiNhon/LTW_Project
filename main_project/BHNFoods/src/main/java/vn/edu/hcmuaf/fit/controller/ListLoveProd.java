@@ -2,6 +2,7 @@ package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.Cart;
 import vn.edu.hcmuaf.fit.beans.Product;
+import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
 import javax.servlet.*;
@@ -14,7 +15,9 @@ import java.util.List;
 public class ListLoveProd extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idUser = request.getParameter("idUser");
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
+        String idUser = user.getIdUser();
         List<Product> listLoveProd = ProductService.getInstance().getListLoveProd(idUser);
         request.setAttribute("listLoveProd", listLoveProd);
         request.getRequestDispatcher("loveProduct.jsp").forward(request,response);

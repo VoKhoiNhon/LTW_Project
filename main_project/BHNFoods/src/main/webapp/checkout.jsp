@@ -218,14 +218,14 @@
                 maGiamGia : $('#maGiamGia').val(),
             },
             success: function (data) {
+                let timerId= setInterval(setBody(), 1000);
+                setTimeout(() => { clearInterval(timerId); Redirect(); }, 5000);
             },
             error: function () {
             }
         });
 
-        // let timerId= setInterval(setBody(), 1000);
-        //
-        // setTimeout(() => { clearInterval(timerId); Redirect(); }, 5000);
+
     }
     }
     function setBody() {
