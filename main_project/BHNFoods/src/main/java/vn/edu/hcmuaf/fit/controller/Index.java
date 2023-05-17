@@ -14,16 +14,6 @@ import java.util.List;
 public class Index extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("auth");
-        String idUser = user.getIdUser();
-        if(user == null) { // xử lý trường hợp user chưa đăng nhập
-
-        }
-        List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
-        int sum = ProductService.getInstance().sumAmount(listCart);
-        session.setAttribute("sumCart",sum);
-        request.setAttribute("listCart", listCart);
         request.getRequestDispatcher("index.jsp").forward(request,response);
     }
 

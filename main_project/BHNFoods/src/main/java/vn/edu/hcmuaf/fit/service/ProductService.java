@@ -629,6 +629,15 @@ public int getNowYer(){
         });
     }
 
+    public Product getProductById(String idProduct) {
+        String sql = "select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL FROM product p JOIN image i on p.ID_PR = i.ID_PR WHERE i.`CONDITION` = 0 and p.ID_PR = :idProduct";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(sql)
+                    .bind("idProduct", idProduct)
+                    .mapToBean(Product.class)
+                    .one();
+        });
+    }
     public static void main(String[] args) {
         System.out.println(ProductService.getInstance().getSingleProduct("prod1"));
         System.out.println(ProductService.getInstance().getListPrDateImport(2));
