@@ -87,6 +87,7 @@
 <%User user= (User) session.getAttribute("auth");
     int sumCart = 0;
     Map<String, Integer> listProductFromCartInSession = (Map<String, Integer>) session.getAttribute("listProductFromCartInSession");
+    List<String> loveProductInSession = (List<String>) session.getAttribute("loveProductInSession");
     if(user == null ) {
         if(listProductFromCartInSession != null) {
             for (String idProduct : listProductFromCartInSession.keySet()) {

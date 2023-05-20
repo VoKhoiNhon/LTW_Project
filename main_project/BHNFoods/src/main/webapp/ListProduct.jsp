@@ -151,7 +151,6 @@
                     <div class="row">
                         <div class="product__discount__slider owl-carousel">
                             <%
-                                List<String> productLikedInSession = (List<String>) session.getAttribute("loveProductInSession");
                                 DecimalFormat decF = new DecimalFormat("#,###");
                                 List<Product> listDiscount = (List<Product>) request.getAttribute("listDiscount");
                                 for(Product p: listDiscount) {
@@ -177,7 +176,7 @@
                                         <%} else {%> <%--User chua dang nhap--%>
                                         <ul class="product__item__pic__hover">
 
-                                            <%if(productLikedInSession != null && productLikedInSession.contains(p.getIdPr())) {%>
+                                            <%if(loveProductInSession != null && loveProductInSession.contains(p.getIdPr())) {%>
                                             <li><button id="heart<%=p.getIdPr()%>" class="background-button" style="color: white" onclick="loveInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-heart"></i></button></li>
                                             <%} else {%>
                                             <li><button id="heart<%=p.getIdPr()%>" onclick="loveInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-heart"></i></button></li>
@@ -255,7 +254,7 @@
                                 <%} else {%> <%--User chua dang nhap--%>
                                 <ul class="product__item__pic__hover">
 
-                                    <%if(productLikedInSession != null && productLikedInSession.contains(p.getIdPr())) {%>
+                                    <%if(loveProductInSession != null && loveProductInSession.contains(p.getIdPr())) {%>
                                     <li><button id="heart<%=p.getIdPr()%>" class="background-button" style="color: white" onclick="loveInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-heart"></i></button></li>
                                     <%} else {%>
                                     <li><button id="heart<%=p.getIdPr()%>" onclick="loveInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-heart"></i></button></li>
