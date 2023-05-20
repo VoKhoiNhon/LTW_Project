@@ -89,7 +89,7 @@ public class ExportLog {
     }
 
     public static void getFilePDF(OutputStream outputStream) {
-        Document document = new Document(PageSize.A4, 50, 50, 50, 50);
+        Document document = new Document(PageSize.A4, 20, 20, 20, 20);
         Collections.reverse(list);
         try {
             // Tạo writer để ghi dữ liệu vào file PDF
