@@ -50,6 +50,7 @@
                             <%List<SingleProduct> single = (List<SingleProduct>) request.getAttribute("singleProduct");
                              DecimalFormat dec = new DecimalFormat("#,###");
                              int price= single.get(0).getPrice() - single.get(0).getPrice()*single.get(0).getDiscount()/100;
+
                              %>
                              src="<%=single.get(0).getUrl()%>" alt="">
                     </div>
@@ -101,11 +102,21 @@
                         </div>
                     </div>
                     <button onclick="addToCart()" style="padding: 15px 28px 12px; height: auto !important; background-color: #82ae46; color: white" class="primary-btn">THÊM VÀO GIỎ HÀNG</button>
-                    <%if(LoveProdService.getInstance().checkLiked(idU, request.getParameter("id"))) {%>
-                    <button id="heart" onclick="love()" class="heart-icon background-button" style="padding: 12px 17px 12px; height: auto !important;color: white" ><span class="icon_heart_alt"></span></button>
-                    <%} else {%>
-                    <button id="heart" onclick="love()" class="heart-icon" style="padding: 12px 17px 12px; height: auto !important;color: #82ae46" ><span class="icon_heart_alt"></span></button>
-                    <%}%>
+                        <%if(user == null){
+                            if(loveProductInSession == null) {%>
+                            <button id="heart" onclick="love()" class="heart-icon" style="padding: 12px 17px 12px; height: auto !important;color: #82ae46" ><span class="icon_heart_alt"></span></button>
+                            <%} else {
+                                if(loveProductInSession.contains(request.getParameter("id"))) {%>
+                                <button id="heart" onclick="love()" class="heart-icon background-button" style="padding: 12px 17px 12px; height: auto !important;color: white" ><span class="icon_heart_alt"></span></button>
+                                <%} else {%>
+                                <button id="heart" onclick="love()" class="heart-icon" style="padding: 12px 17px 12px; height: auto !important;color: #82ae46" ><span class="icon_heart_alt"></span></button>
+                                <%}%>
+                            <%}%>
+                        <%} else if(LoveProdService.getInstance().checkLiked(user.getIdUser(), request.getParameter("id"))){%>
+                        <button id="heart" onclick="love()" class="heart-icon background-button" style="padding: 12px 17px 12px; height: auto !important;color: white" ><span class="icon_heart_alt"></span></button>
+                        <%} else {%>
+                        <button id="heart" onclick="love()" class="heart-icon" style="padding: 12px 17px 12px; height: auto !important;color: #82ae46" ><span class="icon_heart_alt"></span></button>
+                        <%}%>
 <%--                    <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>--%>
                     <ul>
                         <li><b>Xuất xứ</b> <span><%=single.get(0).getOrigin()%></span></li>
@@ -222,7 +233,8 @@
     var queryString = window.location.search;
     var urlParams = new URLSearchParams(queryString);
     var idProd = urlParams.get('id');
-    var idUser = <%=idU%>;
+    <%--var idUser = <%=user.getIdUser()%>;--%>
+    var idUser = 'user1';
     var maxCountPage = $('button.btn-loadMore').length;
     $("#btn" + current).addClass('background-button');
 
@@ -310,8 +322,6 @@
     }
     function sendComment() {
         var idP = idProd;
-        console.log(idUser != null)
-        console.log(idUser)
         if(idUser != null)  {
             if($('button.lightGreenBtn').val() !== undefined && $('textarea#textComment').val() !== "") {
                 $.ajax({

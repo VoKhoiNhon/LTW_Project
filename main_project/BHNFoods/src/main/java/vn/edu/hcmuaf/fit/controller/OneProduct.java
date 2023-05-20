@@ -23,22 +23,20 @@ public class OneProduct extends HttpServlet {
         request.setAttribute("id", idProd);
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-        String idUser = user.getIdUser();
         List<SingleProduct> singleProd = ProductService.getInstance().getSingleProduct(idProd);
         List<ImgForSingleProd> listURL = ProductService.getInstance().getListImgForSingleProduct(idProd);
         List<Feedback> listFeedBack = ProductService.getInstance().getFeedBack(idProd);
         int count = listFeedBack.size()%3 == 0 ? listFeedBack.size()/3 : listFeedBack.size()/3 + 1;
         List<Product> listRelatedProduct = ProductService.getInstance().getRelatedProducts(singleProd.get(0).getIdMenu());
         Collections.shuffle(listRelatedProduct);
-        request.setAttribute("idUser", idUser);
         request.setAttribute("count", count);
         request.setAttribute("listFeedBack", listFeedBack);
         request.setAttribute("listURL", listURL);
         request.setAttribute("singleProduct", singleProd);
         request.setAttribute("relatedProducts", listRelatedProduct);
-        if (idUser == null) {
+        if (user == null) {
             DB.me().insert(new Log(Log.INFO, null, this.src, "View : " +idProd, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
-        } else DB.me().insert(new Log(Log.INFO, idUser, this.src,  "View: "+idProd, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
+        } else DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src,  "View: "+idProd, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
         request.getRequestDispatcher("singleProduct.jsp").forward(request,response);
     }
 
