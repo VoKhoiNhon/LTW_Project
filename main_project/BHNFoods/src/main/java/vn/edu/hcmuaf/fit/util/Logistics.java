@@ -214,7 +214,7 @@ public class Logistics {
     }
 
     public static String getLeadTime(int ditricID, int wardID, int height, int lenght, int width, int weight) {
-        String apiUrl = "http://140.238.54.136/api/leadTime ";
+        String apiUrl = "http://140.238.54.136/api/leadTime";
         String json = null;
 
         try {
@@ -275,7 +275,7 @@ public class Logistics {
     return null;
     }
     public static int getCalculateFee(int ditricID, int wardID, int height, int lenght, int width, int weight) {
-        String apiUrl = "http://140.238.54.136/api/calculateFee  ";
+        String apiUrl = "http://140.238.54.136/api/calculateFee";
         String json = null;
 
         try {

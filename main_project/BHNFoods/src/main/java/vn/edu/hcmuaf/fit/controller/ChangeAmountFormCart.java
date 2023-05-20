@@ -9,12 +9,13 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
+import java.util.Map;
 
 @WebServlet(name = "ChangeAmountFormCart", value = "/changeAmountFormCart")
 public class ChangeAmountFormCart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("id");
+        String idProduct = request.getParameter("id");
         DecimalFormat dec = new DecimalFormat("#,###");
         int sum = Integer.parseInt(request.getParameter("sum"));
         int discount = Integer.parseInt(request.getParameter("discount"));
@@ -26,10 +27,12 @@ public class ChangeAmountFormCart extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
         int amount = Integer.parseInt(request.getParameter("amount"));
-        String idUser = "";
 
-        if(user != null) {
-            idUser = user.getIdUser();
+        if(user == null) { // user chua dang nhap
+            Map<String, Integer> listProductFromCartInSession = (Map<String, Integer>) session.getAttribute("listProductFromCartInSession");
+            listProductFromCartInSession.put(idProduct, amount);
+        } else {
+            CartService.getInstance().updateAmountToCart(idProduct, user.getIdUser(), amount);
         }
         PrintWriter out = response.getWriter();
 
@@ -48,7 +51,7 @@ public class ChangeAmountFormCart extends HttpServlet {
                 "\t\t\t\t\t</ul>\n" +
                 "<input id=\"idProdChecked\" type=\"text\" name=\"allIdProdChecked\" value=\""+listId+"\" style=\"display: none\">" +
                 "\t\t\t\t\t<button type=\"submit\" class=\"primary-btn\">Thanh toán</button>");
-        CartService.getInstance().updateAmountToCart(id, idUser, amount);
+
     }
 
     @Override

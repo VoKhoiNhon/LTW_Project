@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.Cart;
+import vn.edu.hcmuaf.fit.beans.Product;
 import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.CartService;
 import vn.edu.hcmuaf.fit.service.ProductService;
@@ -11,7 +12,9 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "RemoveFromCart", value = "/removeFromCart")
 public class RemoveFromCart extends HttpServlet {
@@ -28,11 +31,20 @@ public class RemoveFromCart extends HttpServlet {
         String totalF = dec.format(total).replace(',','.');
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-        String idUser = "";
-
-        if(user != null) {
-            idUser = user.getIdUser();
+        List<Cart> listCart;
+        if(user == null) { // user chua dang nhap
+            listCart = new ArrayList<>();
+            Map<String, Integer> listProductFromCartInSession = (Map<String, Integer>) session.getAttribute("listProductFromCartInSession");
+            Product product;
+            for (String idProduct: listProductFromCartInSession.keySet()) {
+                product = ProductService.getInstance().getProductById(idProduct);
+                listCart.add(new Cart(product.getIdPr(), product.getDiscount(), product.getPrice(), product.getNamePr(), product.getUrl(), listProductFromCartInSession.get(idProduct)));
+            }
+        } else {
+            CartService.getInstance().deleteFromCart(id, user.getIdUser());
+            listCart = ProductService.getInstance().getListCart(user.getIdUser());
         }
+
         PrintWriter out = response.getWriter();
 
         out.println("<h5>Tổng giỏ hàng</h5>\n" +
@@ -50,10 +62,8 @@ public class RemoveFromCart extends HttpServlet {
                 "\t\t\t\t\t</ul>\n" +
                 "<input id=\"idProdChecked\" type=\"text\" name=\"allIdProdChecked\" value=\""+listId+"\" style=\"display: none\">" +
                 "\t\t\t\t\t<button type=\"submit\" class=\"primary-btn\">Thanh toán</button>");
-
-        CartService.getInstance().deleteFromCart(id, idUser);
+        
         session.removeAttribute("sumCart");
-        List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
         int sumCart = ProductService.getInstance().sumAmount(listCart);
         session.setAttribute("sumCart",sumCart);
 

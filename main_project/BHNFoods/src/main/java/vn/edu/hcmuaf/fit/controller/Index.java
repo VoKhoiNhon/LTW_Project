@@ -14,16 +14,6 @@ import java.util.List;
 public class Index extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idUser = request.getParameter("idUser");
-        User user = (User) request.getAttribute("user");
-        HttpSession session = request.getSession();
-        if(idUser == null) {
-            user = null;
-        }
-        List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
-        int sum = ProductService.getInstance().sumAmount(listCart);
-        session.setAttribute("sumCart",sum);
-        request.setAttribute("listCart", listCart);
         request.getRequestDispatcher("index.jsp").forward(request,response);
     }
 
