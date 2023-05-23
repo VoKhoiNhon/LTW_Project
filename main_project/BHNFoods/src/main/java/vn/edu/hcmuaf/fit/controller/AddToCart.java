@@ -36,9 +36,9 @@ public class AddToCart extends HttpServlet {
                 listProductFromCartInSession = new HashMap<>();
             }
             if(listProductFromCartInSession.containsKey(idProd)) {
-                listProductFromCartInSession.put(idProd, listProductFromCartInSession.get(idProd) + 1);
+                listProductFromCartInSession.put(idProd, listProductFromCartInSession.get(idProd) + amount);
             } else {
-                listProductFromCartInSession.put(idProd, 1);
+                listProductFromCartInSession.put(idProd, amount);
             }
             session.setAttribute("listProductFromCartInSession", listProductFromCartInSession);
             for (String idProduct: listProductFromCartInSession.keySet()) {
