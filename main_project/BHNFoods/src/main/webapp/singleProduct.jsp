@@ -321,8 +321,8 @@
         });
     }
     function sendComment() {
-        var idP = idProd;
-        if(idUser != null)  {
+        var user = <%=user%>;
+        if(user != null)  {
             if($('button.lightGreenBtn').val() !== undefined && $('textarea#textComment').val() !== "") {
                 $.ajax({
                     url: "/BHNFoods/sendComment",
@@ -360,7 +360,7 @@
             type: 'get',
             data: {
                 id: idProd,
-                amount: $('input#amountProd').val()
+                amount: $('#amountProd').val()
             },
             success: function (data) {
                 const content = document.getElementById('totalCart');
