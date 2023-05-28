@@ -386,7 +386,6 @@
             type: 'get',
             data: {
                 id: idProd,
-                condition : condition
             },
             error: function () {
             }
