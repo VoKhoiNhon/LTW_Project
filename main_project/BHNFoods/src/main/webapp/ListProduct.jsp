@@ -388,7 +388,6 @@
                 type: 'get',
                 data: {
                     id: id,
-                    condition : condition
                 },
                 error: function () {
                 }

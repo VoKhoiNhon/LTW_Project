@@ -1,5 +1,4 @@
 <%@ page import="vn.edu.hcmuaf.fit.beans.Product" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,17 +10,17 @@
 
 
 
-<c:set var="auth" value="${sessionScope.auth}"/>
-<c:if test="${auth==null}"/>
-
 <%@ include file="header.jsp" %>
 
 <%boolean hasACart = request.getAttribute("hasACart") == null ? false : (boolean) request.getAttribute("hasACart");
+    boolean hasAListLove = request.getAttribute("hasACart") == null ? false : (boolean) request.getAttribute("hasAListLove");
+
 
     if(hasACart) {
-        if(listProductFromCartInSession.size() > 0) {
-%>
+        if(listProductFromCartInSession.size() > 0) {%>
+<div class="over_play" style="position: fixed; width: 100%; height: 100%; background: black; opacity: 0.3; z-index: 99"></div>
 <div id="cart_session" class="container" style="position: fixed;background: white; z-index: 100;width: auto;top: 50%;left: 50%;transform:  translate(-50%, -50%);display: inline-block;border: 3px black solid;border-radius: 10px;margin:2rem auto;">
+
     <form class="form_content" style="margin: 1rem;" >
         <p>Tìm thấy <span><%=listProductFromCartInSession.size()%></span> sản phẩm trong giỏ hàng:</p>
         <ul>
@@ -41,9 +40,8 @@
         </ul>
         <div class="item_final" style="display: flex; align-items: center;">
             <p style="margin: 0; padding: 0">Bạn muốn thêm vào tài khoản này không?</p>
-            <button onclick="removeCartFromSession()" class="btn" style="padding: 0; background: #7fad39;border: none;margin: 4px;height: 24px;width: 4rem;color: white;">Đéo</button>
-            <button onclick="addCartFromSessionToUser()" class="btn" style="padding: 0; background: #7fad39;border: none;margin: 4px;height: 24px;width: 4rem;color: white;">Coá</button>
-
+                <button onclick="removeCartFromSession()" class="btn" style="padding: 0; background: #7fad39;border: none;margin: 4px;height: 24px;width: 4rem;color: white;">Đéo</button>
+                <button onclick="addCartFromSessionToUser()" class="btn" style="padding: 0; background: #7fad39;border: none;margin: 4px;height: 24px;width: 4rem;color: white;">Coá</button>
         </div>
     </form>
 </div>
@@ -339,8 +337,17 @@
     }
     console.log(`Browser name: ${browserName}`);
 
+    <%if(hasAListLove && !hasACart) {
+        if(loveProductInSession!= null) {
+            if(loveProductInSession.size() > 0) {%>
+                showLoveInSession();
+            <%}
+        }
+    }%>
+
     function removeCartFromSession() {
         $('#cart_session').remove();
+        $('.over_play').remove();
         $.ajax({
             url: "/BHNFoods/removeCartFromSession",
             type: 'get',
@@ -378,7 +385,89 @@
             <%}%>
         <%}
         }%>
+
+
+        <%if(hasAListLove) {%>
+           showLoveInSession()
+        <%}%>
+        $('.over_play').remove();
         $('#cart_session').remove();
+
+
+    }
+    function showLoveInSession() {
+        <%if(loveProductInSession != null) {
+            if(loveProductInSession.size() > 0) {%>
+                var content = '';
+                <%for(String idProduct: loveProductInSession) {
+                Product p = ProductService.getInstance().getProductById(idProduct);%>
+                 content += '<li style="display: flex; list-style-type: none; margin: 1rem 0; align-items: center;">' +
+                            '<div class="size_img">' +
+                            '<img src="<%=p.getUrl()%>" style="margin-right: 20px;width: 70px;height: auto;">' +
+                            '</div>' +
+                            '<div>' +
+                            '<p><%=p.getNamePr()%></p>' +
+                            '</div>' +
+                            '</li>'
+                <%}%>
+        $('body').prepend('<div class="over_play" style="position: fixed; width: 100%; height: 100%; background: black; opacity: 0.3; z-index: 99">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>' +
+            '<div id=\"love_session\" class=\"container\" style=\"position: fixed;background: white; z-index: 100;width: auto;top: 50%;left: 50%;transform:  translate(-50%, -50%);display: inline-block;border: 3px black solid;border-radius: 10px;margin:2rem auto;\">' +
+        '\n'+
+        '    <form class=\"form_content\" style=\"margin: 1rem;\" >\n'+
+        '        <p>Tìm thấy <span><%=loveProductInSession.size()%></span> sản phẩm trong sách yêu thích:</p>\n' +
+        '       <ul>\n' +
+                    content +
+        '        </ul>\n' +
+        '        <div class=\"item_final\" style=\"display: flex; align-items: center;\">\n' +
+        '            <p style=\"margin: 0; padding: 0\">Bạn muốn thêm vào tài khoản này không?</p>\n' +
+        '                <button onclick=\"removeLoveFromSession()\" class=\"btn\" style=\"padding: 0; background: #7fad39;border: none;margin: 4px;height: 24px;width: 4rem;color: white;\">Đéo</button>\n' +
+        '                <button onclick=\"addLoveFromSessionToUser()\" class=\"btn\" style=\"padding: 0; background: #7fad39;border: none;margin: 4px;height: 24px;width: 4rem;color: white;\">Coá</button>\n' +
+        '       </div>\n' +
+        '    </form>\n')
+            <%}
+        }%>
+    }
+    function removeLoveFromSession() {
+        $('#love_session').remove();
+        $('.over_play').remove();
+        $.ajax({
+            url: "/BHNFoods/removeLoveFromSession",
+            type: 'get',
+            error: function () {
+            }
+        });
+    }
+
+    function addLoveFromSessionToUser() {
+        <%if(loveProductInSession != null) {
+            if(loveProductInSession.size() > 0) {%>
+        <%for (int i = 0; i < loveProductInSession.size(); i++) {%>
+        $.ajax({
+            url: "/BHNFoods/addToLoveProd",
+            type: 'get',
+            data: {
+                id: '<%=loveProductInSession.get(i)%>',
+            },
+            success: function (data) {
+                <%if(i == loveProductInSession.size() - 1) {%>
+                $.ajax({
+                    url: "/BHNFoods/removeLoveFromSession",
+                    type: 'get',
+                    error: function () {
+                    }
+                });
+                <%}%>
+            },
+            error: function () {
+            }
+        });
+        <%}%>
+        <%}
+        }%>
+
+        $('.over_play').remove();
+        $('#love_session').remove();
+
     }
 </script>
 </html>
