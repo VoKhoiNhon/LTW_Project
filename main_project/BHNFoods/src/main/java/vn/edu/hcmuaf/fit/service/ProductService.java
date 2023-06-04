@@ -1,13 +1,9 @@
 package vn.edu.hcmuaf.fit.service;
 
-import com.mysql.cj.jdbc.JdbcConnection;
-import org.w3c.dom.ls.LSOutput;
 import vn.edu.hcmuaf.fit.beans.*;
-import vn.edu.hcmuaf.fit.controller.ListProduct;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.beans.Product;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -433,7 +429,7 @@ public class ProductService {
         });
     }
     // thêm sp của bản ct_pr
-    public static void addCT_Prod( int index,String nsx,String hsd, String brand, String mota, double weight, String origin, int inventory ){
+    public static void addCT_Prod(int index, String nsx, String hsd, String brand, String mota, double weight, String origin, int inventory, String wh1){
         JDBIConnector.get().withHandle(handle -> {
             return handle.createUpdate("INSERT INTO `ct_pr` VALUES ('prod" + index + "','" + nsx + "','" + hsd + "','" + brand + "','" + mota + "'," + weight + ",'" + origin + "','" + LocalDate.now() + "'," + inventory + ", 0)").execute();
         });

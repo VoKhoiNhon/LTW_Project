@@ -22,7 +22,6 @@ public class AddToLoveProd extends HttpServlet {
         String idProd = request.getParameter("id");
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-        int condition = Integer.parseInt(request.getParameter("condition"));
 
         if(user == null) { // user chua dang nhap
             if(session.getAttribute("loveProductInSession") == null) { // nếu chưa thich sản phẩm nào
@@ -44,7 +43,7 @@ public class AddToLoveProd extends HttpServlet {
         }
         else { // user đã đăng nhập
             String idUser = user.getIdUser();
-            if(condition == 0) {
+            if(LoveProdService.getInstance().checkLiked(idUser, idProd)) {
                 LoveProdService.getInstance().deleteFromLike(idUser,idProd);
                 DB.me().insert(new Log(Log.INFO, idUser, this.src,  "remove lovePr: "+idProd, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
             }else {

@@ -380,36 +380,36 @@
                                         </div>
                                     </div>
                                     <div class="row flex-grow">
-                                        <div class="col-md-6 col-lg-6 grid-margin stretch-card">
-                                            <div class="card card-rounded">
-                                                <div class="card-body card-rounded">
-                                                    <h4 class="card-title  card-title-dash">Ngày nhập lô hàng</h4>
+<%--                                        <div class="col-md-6 col-lg-6 grid-margin stretch-card">--%>
+<%--                                            <div class="card card-rounded">--%>
+<%--                                                <div class="card-body card-rounded">--%>
+<%--                                                    <h4 class="card-title  card-title-dash">Ngày nhập lô hàng</h4>--%>
 
-                                                    <% int i = 10;
+<%--                                                    <% int i = 10;--%>
 
-                                                        List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i);
-                                                        for (SingleProduct s : list) {
+<%--                                                        List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i);--%>
+<%--                                                        for (SingleProduct s : list) {--%>
 
-                                                    %>
-                                                    <div class="list align-items-center border-bottom py-2">
-                                                        <div class="wrapper w-100">
-                                                            <p class="mb-2 font-weight-medium">
-                                                                <%=s.getNamePr()%>
-                                                            </p>
-                                                            <div class="d-flex justify-content-between align-items-center">
-                                                                <div class="d-flex align-items-center">
-                                                                    <i class="mdi mdi-calendar text-muted me-1"></i>
-                                                                    <p class="mb-0 text-small text-muted"><%=s.getDateImportPr()%>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <%}%>
+<%--                                                    %>--%>
+<%--                                                    <div class="list align-items-center border-bottom py-2">--%>
+<%--                                                        <div class="wrapper w-100">--%>
+<%--                                                            <p class="mb-2 font-weight-medium">--%>
+<%--                                                                <%=s.getNamePr()%>--%>
+<%--                                                            </p>--%>
+<%--                                                            <div class="d-flex justify-content-between align-items-center">--%>
+<%--                                                                <div class="d-flex align-items-center">--%>
+<%--                                                                    <i class="mdi mdi-calendar text-muted me-1"></i>--%>
+<%--                                                                    <p class="mb-0 text-small text-muted"><%=s.getDateImportPr()%>--%>
+<%--                                                                    </p>--%>
+<%--                                                                </div>--%>
+<%--                                                            </div>--%>
+<%--                                                        </div>--%>
+<%--                                                    </div>--%>
+<%--                                                    <%}%>--%>
 
-                                                </div>
-                                            </div>
-                                        </div>
+<%--                                                </div>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
                                         <div class="col-md-6 col-lg-6 grid-margin stretch-card">
                                             <div class="card card-rounded">
                                                 <div class="card-body">
@@ -590,25 +590,7 @@
         $("#viewcontent .edit_formUser").css("display", "none");
     }
 </script>
-<script>
-    const userAgent = navigator.userAgent;
-    let browserName;
-    if (userAgent.indexOf("Firefox") > -1) {
-        browserName = "Mozilla Firefox";
-    } else if (userAgent.indexOf("Edg") > -1 || userAgent.indexOf("Edge") > -1) {
-        browserName = "Microsoft Edge";
-    } else if (userAgent.indexOf("OPR") > -1 || userAgent.indexOf("Opera") > -1) {
-        browserName = "Opera";
-    } else if (userAgent.indexOf("Chrome") > -1 && userAgent.indexOf("Edg") === -1) {
-        browserName = "Google Chrome";
-    } else if (userAgent.indexOf("Safari") > -1 && userAgent.indexOf("Chrome") === -1) {
-        browserName = "Apple Safari";
-    } else {
-        browserName = "unknown";
-    }
 
-    console.log(`Browser name: ${browserName}`);
-</script>
 <script src="admin_template/js/Chart.roundedBarCharts.js"></script>
 <!-- End custom js for this page-->
 </body>

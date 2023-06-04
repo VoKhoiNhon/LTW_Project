@@ -13,7 +13,11 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.Iterator;
 import java.util.List;
 
@@ -26,9 +30,10 @@ import static java.lang.System.out;
         maxRequestSize = 1024 * 1024 * 100   // 100 MB
 )
 public class AddProduct extends HttpServlet {
+    InputStream inputStream = null;
 
-
-    private static final String UPLOAD_DIRECTORY = "\\src\\main\\webapp\\ImageproductNew\\add";
+    private static final String UPLOAD_DIRECTORY = "D:\\hk1nam3\\LTW\\GitHub\\main_project\\BHNFoods\\src\\main\\webapp\\ImageproductNew\\add";
+//    private static final String UPLOAD_DIRECTORY = "/var/lib/tomcat9/webapps/BHNFoods/ImageproductNew/add";
     private static final long serialVersionUID = 1;
     int index = ProductService.getInstance().getListProduct().size();
 
@@ -39,52 +44,45 @@ public class AddProduct extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (ServletFileUpload.isMultipartContent(request)) {
-            try {
-                int count = 0, i = 3;
-                int chart = 97;
+        String menu = request.getParameter("menu");
+        int discount = Integer.parseInt(request.getParameter("discount"));
+        int price = Integer.parseInt(request.getParameter("price"));
+        String name = request.getParameter("name");
+        String nsx = request.getParameter("nsx");
 
-                List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
-                out.println(multiparts.size());
-                for (FileItem item : multiparts) {
-                    if (!item.isFormField()) {
-                        String menu = request.getParameter("menu");
-                        int discount = Integer.parseInt(request.getParameter("discount"));
-                        int price = Integer.parseInt(request.getParameter("price"));
-                        String name = request.getParameter("name");
-                        String nsx = request.getParameter("nsx");
+        String hsd = request.getParameter("hsd");
 
-                        String hsd = request.getParameter("hsd");
-
-                        String brand = request.getParameter("brand");
-                        String mota = request.getParameter("mota");
-                        double weight = Double.parseDouble(request.getParameter("weight"));
-                        String origin = request.getParameter("origin");
-                        int inventory = Integer.parseInt(request.getParameter("inventory"));
-
-                        ProductService.getInstance().addProd(index + 1, menu, discount, price, name);
-                        ProductService.getInstance().addCT_Prod(index + 1, nsx, hsd, brand, mota, weight, origin, inventory);
-                        String nameImg = new File(item.getName()).getName();
-                        out.println(UPLOAD_DIRECTORY + File.separator + nameImg);
-                        item.write(new File(UPLOAD_DIRECTORY + File.separator + nameImg));
-
-                        ProductService.getInstance().addImg(index + 1, "prdimg" + Character.charCount(chart++) + i++, UPLOAD_DIRECTORY + File.separator + nameImg, count);
-                        out.println("aaaa");
-                        count = 1;
-                    }
+        String brand = request.getParameter("brand");
+        String mota = request.getParameter("mota");
+        double weight = Double.parseDouble(request.getParameter("weight"));
+        String origin = request.getParameter("origin");
+        int inventory = Integer.parseInt(request.getParameter("inventory"));
+        int count = 0;
+        ProductService.getInstance().addProd(index + 1, menu, discount, price, name);
+//        ProductService.getInstance().addCT_Prod(index + 1, nsx, hsd, brand, mota, weight, origin, inventory, "wh1");
+        for (Part filePart : request.getParts()) {
+            out.println(1);
+            if (filePart.getName().equals("imageFiles")) {
+                out.println(2);
+                String fileName = filePart.getSubmittedFileName();
+                out.println(3);
+                Path filePath = Path.of(UPLOAD_DIRECTORY, fileName);
+                out.println(4);
+                try (InputStream fileContent = filePart.getInputStream()) {
+                    Files.copy(fileContent, filePath, StandardCopyOption.REPLACE_EXISTING);
+                    out.println(5);
                 }
-                request.setAttribute("message", "File uploaded successfully.");
-            } catch (Exception ex) {
-                request.setAttribute("message", "File upload failed due to : " + ex);
+                String fileUrl = "ImageproductNew/add/" + fileName;
+                out.println(fileUrl);
+                count++;
+                ProductService.getInstance().addImg(index + 1, menu + brand +count,fileUrl,1);
             }
-        } else {
-            request.setAttribute("message", "Sorry this servlet only handles file upload request.");
         }
+
+
 
         response.sendRedirect("/BHNFoods/AdminManagePr?kind=0&page=1");
     }
 
-    public static void main(String[] args) {
-        out.println(UPLOAD_DIRECTORY);
-    }
+
 }
