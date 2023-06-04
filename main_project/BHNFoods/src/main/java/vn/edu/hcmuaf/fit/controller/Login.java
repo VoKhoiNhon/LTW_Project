@@ -22,7 +22,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import java.util.List;
-import java.util.Map;
 
 @WebServlet(name = "Login", value = "/Login")
 public class Login extends HttpServlet {
@@ -40,8 +39,6 @@ public class Login extends HttpServlet {
         User user = UserService.getInstance().checkLogin(username, password);
         User existName = UserService.getInstance().checkUser(username);
         int lv = LogSercive.getInstance().getLevelForDayLogin(existName.getNameUser());
-        HttpSession session = request.getSession();
-
         if (existName != null) {
             if (!existName.getPassw().equals(password)) {
                 request.setAttribute("error", "Sai mật khẩu");
@@ -53,18 +50,21 @@ public class Login extends HttpServlet {
                 }
             }
             if (user != null && (user.getDecentralization() == Powers.ADMIN)) {
+                HttpSession session = request.getSession(true);
                 session.setAttribute("auth", user);
                 DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
                 response.sendRedirect("AdminMain");
 
             }
             if (user != null && (user.getDecentralization() == Powers.EMPLOYEE)) {
+                HttpSession session = request.getSession(true);
                 session.setAttribute("auth", user);
                 DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
                 response.sendRedirect("ListOrdersAdmin");
 
             }
             if (user != null && user.getDecentralization() == Powers.USER) {
+                HttpSession session = request.getSession(true);
                 session.setAttribute("auth", user);
                 session.setAttribute("idUser", user.getIdUser());
                 request.setAttribute("idUser", user.getIdUser());
@@ -76,7 +76,7 @@ public class Login extends HttpServlet {
         // 2 else này nằm trong if(existName) thì ko login vào admin vs employee đc nhưng thục hiện 2 else dưới
         // còn nếu nằm ngoài if(existName) thì login đc nhưng thực hiện 2 cái else phía dưới
         else if (user != null && user.getDecentralization() == Powers.BLOCK) {
-
+            HttpSession session = request.getSession(true);
             session.setAttribute("auth", user);
             session.setAttribute("idUser", user.getIdUser());
             request.setAttribute("error", "Tài khoản đã bị khoá");

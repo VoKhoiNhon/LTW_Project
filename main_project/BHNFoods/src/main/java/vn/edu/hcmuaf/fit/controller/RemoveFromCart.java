@@ -35,13 +35,11 @@ public class RemoveFromCart extends HttpServlet {
         if(user == null) { // user chua dang nhap
             listCart = new ArrayList<>();
             Map<String, Integer> listProductFromCartInSession = (Map<String, Integer>) session.getAttribute("listProductFromCartInSession");
-            listProductFromCartInSession.remove(id);
             Product product;
             for (String idProduct: listProductFromCartInSession.keySet()) {
                 product = ProductService.getInstance().getProductById(idProduct);
                 listCart.add(new Cart(product.getIdPr(), product.getDiscount(), product.getPrice(), product.getNamePr(), product.getUrl(), listProductFromCartInSession.get(idProduct)));
             }
-
         } else {
             CartService.getInstance().deleteFromCart(id, user.getIdUser());
             listCart = ProductService.getInstance().getListCart(user.getIdUser());

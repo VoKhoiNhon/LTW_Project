@@ -82,11 +82,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
           integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="cssHeaderFooter/styleHAndF.css">
 </head>
 <%User user= (User) session.getAttribute("auth");
     int sumCart = 0;
     Map<String, Integer> listProductFromCartInSession = (Map<String, Integer>) session.getAttribute("listProductFromCartInSession");
-    List<String> loveProductInSession = (List<String>) session.getAttribute("loveProductInSession");
     if(user == null ) {
         if(listProductFromCartInSession != null) {
             for (String idProduct : listProductFromCartInSession.keySet()) {
