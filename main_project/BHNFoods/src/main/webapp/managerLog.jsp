@@ -136,6 +136,7 @@
             border-radius: 5px;
             padding: 5px 10px;
         }
+
         .card {
             width: 400px;
             height: auto;
@@ -188,6 +189,7 @@
         .card .drag-area .visible {
             font-size: 18px;
         }
+
         .card .select {
             color: #5256ad;
             margin-left: 5px;
@@ -218,7 +220,6 @@
             position: relative;
             margin-bottom: 8px;
         }
-
 
 
         .contai .image span {
@@ -423,13 +424,13 @@
         </div>
         <div class="nav-item">
             <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
-                <i style="margin-right: 5px;"  class="fa-solid fa-arrow-down-wide-short"></i>
+                <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
                 <span>Quản lý đơn hàng</span>
             </a>
         </div>
         <div class="nav-item">
             <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
-                <i style="margin-right: 5px;"  class="fa-solid fa-arrow-down-wide-short"></i>
+                <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
                 <span>Quản lý Log</span>
             </a>
         </div>
@@ -478,7 +479,7 @@
                                                                     <th>Level</th>
                                                                     <th>Thông tin</th>
                                                                     <th>Thời gian</th>
-                                                                    <th>Trình duyệt </th>
+                                                                    <th>Trình duyệt</th>
                                                                     <th>Ip</th>
 
                                                                 </tr>
@@ -593,18 +594,15 @@
         </div>
 
     </div>
-
-
-
+</div>
 
 
 <script>
 
 
-</script>
-
-<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+            crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="admin_template/vendors/js/vendor.bundle.base.js"></script>

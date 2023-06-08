@@ -18,12 +18,15 @@
 <script>
     function downloadFileEX() {
 
-        window.location.href = "/BHNFoods/Test2";
+        window.location.href = "/BHNFoods/ExportUserExcel";
+    }
+    function downloadFile() {
+        window.location.href = "/BHNFoods/ExportUserPDF";
     }
 </script>
 <script>
     function downloadFile() {
-        window.location.href = "/BHNFoods/Test";
+        window.location.href = "/BHNFoods/ExportLogPDF";
     }
 </script>
 </body>
