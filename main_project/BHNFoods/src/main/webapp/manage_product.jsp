@@ -377,24 +377,8 @@
             <%--                </div>--%>
             <%--            </li>--%>
 
-            <%
-                User user = (User) session.getAttribute("auth");
-                if (user != null) {%>
-            <%--            <li class="nav-item dropdown d-none d-lg-block user-dropdown">--%>
-            <%--                <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">--%>
-            <%--                    <img class="img-xs rounded-circle" src="ImageproductNew/background/images.png"--%>
-            <%--                         alt="Profile image"> </a>--%>
-            <%--                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">--%>
-            <%--                    <div class="dropdown-header text-center">--%>
-            <%--                        &lt;%&ndash;              <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">&ndash;%&gt;--%>
-            <%--                        <p class="mb-1 mt-3 font-weight-semibold"><%=user.getNameUser()%>--%>
-            <%--                        </p>--%>
-            <%--                        <p class="fw-light text-muted mb-0"><%=user.getEmail()%>--%>
-            <%--                        </p>--%>
-            <%--                    </div>--%>
-            <%--                </div>--%>
-            <%--            </li>--%>
-            <%}%>
+
+
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
                 data-bs-toggle="offcanvas">
@@ -405,6 +389,7 @@
 <!-- partial -->
 <div class="container-fluid page-body-wrapper">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <%User user = (User) session.getAttribute("auth");%>
         <%--        nếu là admin thì hiển thị trang chủ, log, qly người dùng , logout--%>
         <%if (user.getDecentralization() == Powers.ADMIN) {%>
         <div class="nav-item">
@@ -440,13 +425,13 @@
         <%} else{%>
             <div class="nav-item">
                 <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
-                    <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+                    <i style="margin-right: 5px;" class="fa-solid fa-bars-progress"></i>
                     <span>Quản lý đơn hàng</span>
                 </a>
             </div>
             <div class="nav-item">
                 <a href="/BHNFoods/HistoryOrdersAdmin" class="nav-item-link">
-                    <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+                    <i style="margin-right: 5px;" class="fa-solid fa-clock-rotate-left"></i>
                     <span>Lịch sử đơn hàng</span>
                 </a>
             </div>
@@ -457,7 +442,7 @@
                 </a>
             </div>
             <div class="nav-item">
-                <a href="" class="nav-item-link">
+                <a href="/BHNFoods/Warehouse" class="nav-item-link">
                     <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
                     <span>Nhập kho</span>
                 </a>
@@ -632,6 +617,7 @@
         <!-- content-wrapper ends -->
     </div>
 </div>
+<%--add product--%>
 <div class="edit_formUser edit_formAdd">
     <div class="container" style="background:none;">
         <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
@@ -651,7 +637,6 @@
                         <div class="col-md-6 col_addprod">
                             <div class="form-group">
                                 <label>Hình ảnh</label>
-
                                 <div class="card">
                                     <div class="drag-area">
     		                        <span class="visible">
@@ -695,7 +680,6 @@
                             <div class="form-group">
                                 <label>Khuyến mãi(%)</label>
                                 <input type="text" class="form-control input_addpr" name="discount" placeholder=""
-
                                        value="">
                             </div>
                         </div>
@@ -705,7 +689,6 @@
                             <div class="form-group">
                                 <label>Xuất xứ</label>
                                 <input name="origin" type="text" class="form-control input_addpr" placeholder=""
-
                                        value="">
                             </div>
                         </div>
@@ -725,7 +708,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <div class=" d-flex flex-grow-1 row_input">
                         <div class="col-md-6 col_addprod">

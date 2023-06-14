@@ -34,14 +34,14 @@
         margin: 40px 10px;
     }
 
-    .form-control {
-        height: 40px !important;
-    }
+
 </style>
 
 <body>
 <%@include file="header.jsp" %>
-<% String error = (String) request.getAttribute("error");%>
+<% String error = (String) request.getAttribute("error");
+   String birthday= (String) request.getAttribute("birthday");
+%>
 
 <section class="ftco-section padding_account">
     <div class="container">
@@ -92,22 +92,26 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Ngày sinh</label>
+                                <%if(birthday !=null){%>
+                                <label style="color:#e03e2d;"><%=birthday%></label>
+                                <%}else {%>
                                 <div class="select-wrap">
                                     <input type="date" name="birthday" id="" class="form-control" value="<%=u.getBirthday()%>" placeholder="">
                                 </div>
+                                <%}%>
                             </div>
                         </div>
                         <div class="d-flex flex-grow-1">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Số điện thoại</label>
-                                    <input type="text" name="phone" class="form-control"  value="<%=u.getPhone()%>" placeholder="">
+                                    <input type="text" name="phone" class="form-control"  value="<%=u.printCtAccount(u.getPhone())%>" placeholder="">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" class="form-control" name="email"  value="<%=u.getEmail()%>" placeholder="">
+                                    <input type="text" class="form-control" name="email"  value="<%=u.printCtAccount(u.getEmail())%>" placeholder="">
                                 </div>
                             </div>
                         </div>
@@ -137,7 +141,7 @@
                             <div class="form-group">
                                 <label>Địa chỉ</label>
                                 <div class="select-wrap">
-                                    <input name="address" class="form-control" placeholder="" value="<%=u.getAddress()%>">
+                                    <input name="address" class="form-control" placeholder="" value="<%=u.printCtAccount(u.getAddress())%>">
                                 </div>
                             </div>
                         </div>

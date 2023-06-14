@@ -15,8 +15,34 @@ public class User implements Serializable {
     private boolean sex;
     private byte decentralization;
 
+    //lấy thông tin của tk gg
+    private String id;
+    private  String name;
 
-    public User(String idUser, String address, String passw, String nameUser, String phone, String email, Date birthday, Date dateSignup, boolean sex, byte decentralization) {
+
+    public boolean isSex() {
+        return sex;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+
+        return name;
+    }
+
+    public void setName(String name) {
+
+        this.name = name;
+    }
+
+    public User(String idUser, String address, String passw, String nameUser, String phone, String email, Date birthday, Date dateSignup, boolean sex, byte decentralization, String id, String name) {
         this.idUser = idUser;
         this.address = address;
         this.passw = passw;
@@ -27,7 +53,10 @@ public class User implements Serializable {
         this.dateSignup = dateSignup;
         this.sex = sex;
         this.decentralization = decentralization;
+        this.id = id;
+        this.name = name;
     }
+
     public User(){}
 
     public String getIdUser() {
@@ -115,14 +144,19 @@ public class User implements Serializable {
         if(this.decentralization==2) return "Admin";
         return "Employee";
     }
+    public String printCtAccount(String vl){
+        if (this.birthday==null || this.phone==null|| this.email==null  || this.address==null ) {
+            return "";
+        }
+        return vl;
+    }
 
     public String toString() {
+
 //        return "User " + "id=" + idUser + ", email=" + email +  ", name=" + nameUser;
-        return "User{" +
-                "iduser='" + idUser + '\'' +
-                ", nameUser='" + nameUser + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return 		"User [id=" + this.id + ", email=" + this.email  + ", name="
+                + this.name  + "]";
+
     }
 
 

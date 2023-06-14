@@ -285,13 +285,13 @@
   <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="nav-item">
       <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
-        <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+        <i style="margin-right: 5px;" class="fa-solid fa-bars-progress"></i>
         <span>Quản lý đơn hàng</span>
       </a>
     </div>
     <div class="nav-item">
       <a href="/BHNFoods/HistoryOrdersAdmin" class="nav-item-link">
-        <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+        <i style="margin-right: 5px;"class="fa-solid fa-clock-rotate-left"></i>
         <span>Lịch sử đơn hàng</span>
       </a>
     </div>
@@ -302,7 +302,7 @@
       </a>
     </div>
     <div class="nav-item">
-      <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
+      <a href="/BHNFoods/Warehouse" class="nav-item-link">
         <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
         <span>Nhập kho</span>
       </a>
