@@ -80,8 +80,6 @@ public class AdminMain extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i + 5);
-
-
     }
 
     public static void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

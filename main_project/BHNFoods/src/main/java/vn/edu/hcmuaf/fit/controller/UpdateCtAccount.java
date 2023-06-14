@@ -51,7 +51,7 @@ public class UpdateCtAccount extends HttpServlet {
         }
         else {
             passw = passw == "" ? oldPass : Encryption.toSHA1(passw);
-            UserService.getInstance().updateCtAccount(idUser, name, sex, birthday, email, phone, passw, address, repassw);
+            UserService.getInstance().updateCtAccount(iduser, name, sex, birthday, email, phone, passw, address, repassw);
             DB.me().insert(new Log(Log.INFO, "user" + UserService.getInstance().getListUser().size(), this.src, "Signup SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
             t = 2;
 
