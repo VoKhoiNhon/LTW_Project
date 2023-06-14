@@ -240,6 +240,17 @@
 
                             </ul>
                             <div>
+                                <button onclick="downloadFile()">ExportPDF</button>
+                                <button onclick="downloadFileEX()">ExportExcel</button>
+                                <script>
+                                    function downloadFileEX() {
+
+                                        window.location.href = "/BHNFoods/ExportUserExcel";
+                                    }
+                                    function downloadFile() {
+                                        window.location.href = "/BHNFoods/ExportUserPDF";
+                                    }
+                                </script>
                             </div>
                         </div>
                         <div class="tab-content tab-content-basic">

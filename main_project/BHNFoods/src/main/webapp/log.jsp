@@ -231,6 +231,8 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="home-tab">
+                        <button onclick="downloadFile()">ExportPDF</button>
+                        <button onclick="downloadFileEX()">ExportEx</button>
                         <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item">
@@ -325,8 +327,16 @@
 
 
 <script>
-</script>
 
+</script>
+<script>
+    function downloadFileEX() {
+        window.location.href = "/BHNFoods/ExportLogExcel";
+    }
+    function downloadFile() {
+        window.location.href = "/BHNFoods/ExportLogPDF";
+    }
+</script>
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
         crossorigin="anonymous"></script>
 <!-- container-scroller -->

@@ -2,6 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.fit.beans.User" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.ProductService" %>
+<%@ page import="java.util.Map" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <style>
     .row .form-group .form-control {
@@ -81,12 +82,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
           integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="cssHeaderFooter/styleHAndF.css">
 </head>
 <%User user= (User) session.getAttribute("auth");
-    request.setAttribute("user", user);
-    String idU = user != null? user.getIdUser() : "null";
-    int sumCart = user == null ? 0 : (int) ProductService.getInstance().sumAmount(ProductService.getInstance().getListCart(idU));
+    int sumCart = 0;
+    Map<String, Integer> listProductFromCartInSession = (Map<String, Integer>) session.getAttribute("listProductFromCartInSession");
+    List<String> loveProductInSession = (List<String>) session.getAttribute("loveProductInSession");
+    if(user == null ) {
+        if(listProductFromCartInSession != null) {
+            for (String idProduct : listProductFromCartInSession.keySet()) {
+                sumCart += listProductFromCartInSession.get(idProduct);
+            }
+        } else sumCart = 0;
+    }else sumCart = ProductService.getInstance().sumAmount(ProductService.getInstance().getListCart(user.getIdUser()));
 %>
 
 <div class="py-1 bg-primary">

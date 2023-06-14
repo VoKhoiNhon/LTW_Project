@@ -160,18 +160,36 @@
                                     <div class="product__discount__item__pic set-bg"
                                          data-setbg="<%=p.getUrl()%>">
                                         <div class="product__discount__percent">-<%=p.getDiscount()%>%</div>
+                                        <%if(user != null) {%> <%-- User đã đăng nhập--%>
                                         <ul class="product__item__pic__hover">
-                                            <%if(LoveProdService.getInstance().checkLiked(idU, p.getIdPr())) {%>
+                                            <%if(LoveProdService.getInstance().checkLiked(user.getIdUser(), p.getIdPr())) {%>
                                             <li><button id="heart<%=p.getIdPr()%>" class="background-button" style="color: white" onclick="loveInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-heart"></i></button></li>
                                             <%} else {%>
                                             <li><button id="heart<%=p.getIdPr()%>" onclick="loveInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-heart"></i></button></li>
                                             <%}%>
-                                            <%if(CartService.getInstance().checkExist(idU, p.getIdPr())) {%>
+                                            <%if(CartService.getInstance().checkExist(user.getIdUser(), p.getIdPr())) {%>
                                             <li><button id="cart<%=p.getIdPr()%>" class="background-button" style="color: white" onclick="addToCartInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-shopping-cart"></i></button></li>
                                             <%} else {%>
                                             <li><button id="cart<%=p.getIdPr()%>" onclick="addToCartInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-shopping-cart"></i></button></li>
                                             <%}%>
                                         </ul>
+                                        <%} else {%> <%--User chua dang nhap--%>
+                                        <ul class="product__item__pic__hover">
+
+                                            <%if(loveProductInSession != null && loveProductInSession.contains(p.getIdPr())) {%>
+                                            <li><button id="heart<%=p.getIdPr()%>" class="background-button" style="color: white" onclick="loveInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-heart"></i></button></li>
+                                            <%} else {%>
+                                            <li><button id="heart<%=p.getIdPr()%>" onclick="loveInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-heart"></i></button></li>
+                                            <%}%>
+
+
+                                            <%if(listProductFromCartInSession != null && listProductFromCartInSession.containsKey(p.getIdPr())) {%>
+                                            <li><button id="cart<%=p.getIdPr()%>" class="background-button" style="color: white" onclick="addToCartInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-shopping-cart"></i></button></li>
+                                            <%} else {%>
+                                            <li><button id="cart<%=p.getIdPr()%>" onclick="addToCartInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-shopping-cart"></i></button></li>
+                                            <%}%>
+                                        </ul>
+                                        <%}%>
                                     </div>
                                     <div class="product__discount__item__text">
 
@@ -208,6 +226,7 @@
                 <div id="content" class="row">
                     <%
 
+
                         List<Product> productList = (List<Product>) request.getAttribute("listRequest");
                         for(Product p: productList) {
                             int price = p.getPrice();
@@ -219,18 +238,36 @@
                                     price = p.getPrice() - p.getPrice()*(p.getDiscount())/100;%>
                                 <div class="discount__percent" style="">-<%=p.getDiscount()%>%</div>
                                 <%}%>
+                                <%if(user != null) {%> <%-- User đã đăng nhập--%>
                                 <ul class="product__item__pic__hover">
-                                    <%if(LoveProdService.getInstance().checkLiked(idU, p.getIdPr())) {%>
+                                    <%if(LoveProdService.getInstance().checkLiked(user.getIdUser(), p.getIdPr())) {%>
                                     <li><button id="heart<%=p.getIdPr()%>" class="background-button" style="color: white" onclick="loveInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-heart"></i></button></li>
                                     <%} else {%>
                                     <li><button id="heart<%=p.getIdPr()%>" onclick="loveInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-heart"></i></button></li>
                                     <%}%>
-                                    <%if(CartService.getInstance().checkExist(idU, p.getIdPr())) {%>
+                                    <%if(CartService.getInstance().checkExist(user.getIdUser(), p.getIdPr())) {%>
                                     <li><button id="cart<%=p.getIdPr()%>" class="background-button" style="color: white" onclick="addToCartInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-shopping-cart"></i></button></li>
                                     <%} else {%>
                                     <li><button id="cart<%=p.getIdPr()%>" onclick="addToCartInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-shopping-cart"></i></button></li>
                                     <%}%>
                                 </ul>
+                                <%} else {%> <%--User chua dang nhap--%>
+                                <ul class="product__item__pic__hover">
+
+                                    <%if(loveProductInSession != null && loveProductInSession.contains(p.getIdPr())) {%>
+                                    <li><button id="heart<%=p.getIdPr()%>" class="background-button" style="color: white" onclick="loveInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-heart"></i></button></li>
+                                    <%} else {%>
+                                    <li><button id="heart<%=p.getIdPr()%>" onclick="loveInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-heart"></i></button></li>
+                                    <%}%>
+
+
+                                    <%if(listProductFromCartInSession != null && listProductFromCartInSession.containsKey(p.getIdPr())) {%>
+                                    <li><button id="cart<%=p.getIdPr()%>" class="background-button" style="color: white" onclick="addToCartInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-shopping-cart"></i></button></li>
+                                    <%} else {%>
+                                    <li><button id="cart<%=p.getIdPr()%>" onclick="addToCartInListProd('<%=p.getIdPr()%>', this.id)"><i class="fa fa-shopping-cart"></i></button></li>
+                                    <%}%>
+                                </ul>
+                                <%}%>
                             </div>
                             <div class="product__item__text">
                                 <a href="/BHNFoods/oneProduct?id=<%=p.getIdPr()%>"><%=p.getNamePr()%><br> <span><%=decF.format(price).replace(',','.')%>đ</span></a>
@@ -351,7 +388,6 @@
                 type: 'get',
                 data: {
                     id: id,
-                    condition : condition
                 },
                 error: function () {
                 }

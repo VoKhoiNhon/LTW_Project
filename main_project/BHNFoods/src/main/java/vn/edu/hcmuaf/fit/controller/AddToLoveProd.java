@@ -11,6 +11,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "AddToLoveProd", value = "/addToLoveProd")
 public class AddToLoveProd extends HttpServlet {
@@ -20,19 +22,36 @@ public class AddToLoveProd extends HttpServlet {
         String idProd = request.getParameter("id");
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-        String idUser = user.getIdUser();
-        int condition = Integer.parseInt(request.getParameter("condition"));
-        if(condition == 0) {
-            LoveProdService.getInstance().deleteFromLike(idUser,idProd);
-            if (idUser == null) {
-                DB.me().insert(new Log(Log.INFO, null, this.src, "remove lovePr : " +idProd, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
-            } else DB.me().insert(new Log(Log.INFO, idUser, this.src,  "remove lovePr: "+idProd, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
-        }else {
-            LoveProdService.getInstance().insertToLike(idUser,idProd);
-            if (idUser == null) {
-                DB.me().insert(new Log(Log.INFO, null, this.src, "add lovePr : " +idProd, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
-            } else DB.me().insert(new Log(Log.INFO, idUser, this.src,  "add lovePr: "+idProd, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
+
+        if(user == null) { // user chua dang nhap
+            if(session.getAttribute("loveProductInSession") == null) { // nếu chưa thich sản phẩm nào
+                List<String> listIdProduct = new ArrayList<>();
+                listIdProduct.add(idProd);
+                session.setAttribute("loveProductInSession", listIdProduct);
+            } else { // đã thích ít nhất 1 sản phẩm
+                List<String> listLiked = (List<String>) session.getAttribute("loveProductInSession");
+                if(listLiked.contains(idProd)) {
+                    listLiked.remove(idProd);
+                    session.setAttribute("loveProductInSession", listLiked);
+                } else {
+                    listLiked.add(idProd);
+                    session.setAttribute("loveProductInSession", listLiked);
+                }
+
+            }
+            System.out.println(session.getAttribute("loveProductInSession").toString());
         }
+        else { // user đã đăng nhập
+            String idUser = user.getIdUser();
+            if(LoveProdService.getInstance().checkLiked(idUser, idProd)) {
+                LoveProdService.getInstance().deleteFromLike(idUser,idProd);
+                DB.me().insert(new Log(Log.INFO, idUser, this.src,  "remove lovePr: "+idProd, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
+            }else {
+                LoveProdService.getInstance().insertToLike(idUser,idProd);
+                DB.me().insert(new Log(Log.INFO, idUser, this.src,  "add lovePr: "+idProd, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
+            }
+        }
+
 
     }
 

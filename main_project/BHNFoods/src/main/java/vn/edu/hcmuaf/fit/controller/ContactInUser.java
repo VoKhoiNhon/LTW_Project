@@ -27,7 +27,9 @@ public class ContactInUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idcontact = request.getParameter("idcontact");
-        String iduser = request.getParameter("iduser");
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
+        String idUser = user.getIdUser();
         String phone = request.getParameter("phone");
         String nameuser = request.getParameter("nameuser");
         String content = request.getParameter("content");

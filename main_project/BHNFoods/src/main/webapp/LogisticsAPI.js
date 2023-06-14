@@ -35,7 +35,6 @@
      method:"GET",
      mode: "cors",
      headers:{
-
          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTQwLjIzOC41NC4xMzYvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODIyMzU0MjAsImV4cCI6MTY4MjIzNjAyMCwibmJmIjoxNjgyMjM1NDIwLCJqdGkiOiI4ZkFWMzNPTnJXMXdrOHdPIiwic3ViIjoiMjdiYTM1NjZmMDJhNDUyMjkzNjE4OGI5NDQwZmNhMjAiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.4yQvbNCCYRRzYg_qruN-MFqKBC2OudOhuG1cJyjJJag'
      }
  }).then((response)=>{ return response.json()}).then((response)=>{console.log(response.original.data)});

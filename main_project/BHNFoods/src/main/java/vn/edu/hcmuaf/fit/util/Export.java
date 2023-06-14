@@ -11,22 +11,18 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import vn.edu.hcmuaf.fit.beans.Log;
+import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.LogSercive;
-
-import java.io.FileOutputStream;
+import vn.edu.hcmuaf.fit.service.UserService;
 
 import java.io.OutputStream;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class ExportLog {
-     static List<Log> list =  LogSercive.getInstance().getAllLog();
+public class Export {
+    static List<User> list =  UserService.getInstance().getListUser();
 
-
-
-    public static void getFileExcel(OutputStream outputStream) {
+    public static void getFileUserExcel(OutputStream outputStream) {
         try {
             Collections.reverse(list);
             // Tạo workbook mới
@@ -40,40 +36,36 @@ public class ExportLog {
             XSSFCell cell = headerRow.createCell(0);
             cell.setCellValue("ID");
             cell = headerRow.createCell(1);
-            cell.setCellValue("level");
+            cell.setCellValue("address");
             cell = headerRow.createCell(2);
-            cell.setCellValue("user");
+            cell.setCellValue("username ");
             cell = headerRow.createCell(3);
-            cell.setCellValue("src");
+            cell.setCellValue("phone");
             cell = headerRow.createCell(4);
-            cell.setCellValue("content");
+            cell.setCellValue("email");
             cell = headerRow.createCell(5);
-            cell.setCellValue("status");
+            cell.setCellValue("birthday");
             cell = headerRow.createCell(6);
-            cell.setCellValue("browser name");
-            cell = headerRow.createCell(7);
-            cell.setCellValue("Ip");
+            cell.setCellValue("datesinup");
 
             // Thêm dữ liệu vào trang
             int rowNum = 1;
-            for (Log l : list) {
+            for (User l : list) {
                 XSSFRow row = sheet.createRow(rowNum++);
                 cell = row.createCell(0);
-                cell.setCellValue(l.getId());
+                cell.setCellValue(l.getIdUser());
                 cell = row.createCell(1);
-                cell.setCellValue(l.getLevelWithName());
+                cell.setCellValue(l.getAddress());
                 cell = row.createCell(2);
-                cell.setCellValue(l.getUser());
+                cell.setCellValue(l.getNameUser());
                 cell = row.createCell(3);
-                cell.setCellValue(l.getSrc());
+                cell.setCellValue(l.getPhone());
                 cell = row.createCell(4);
-                cell.setCellValue(l.getContent());
+                cell.setCellValue(l.getEmail());
                 cell = row.createCell(5);
-                cell.setCellValue(l.getStatus());
+                cell.setCellValue(l.getBirthday());
                 cell = row.createCell(6);
-                cell.setCellValue(l.getbrowserName());
-                cell = row.createCell(7);
-                cell.setCellValue(l.getLocationIpClient());
+                cell.setCellValue(l.getDateSignup());
 
 
             }
@@ -88,7 +80,7 @@ public class ExportLog {
         }
     }
 
-    public static void getFilePDF(OutputStream outputStream) {
+    public static void getFileUserPDF(OutputStream outputStream) {
         Document document = new Document(PageSize.A4, 20, 20, 20, 20);
         Collections.reverse(list);
         try {
@@ -96,29 +88,29 @@ public class ExportLog {
             PdfWriter.getInstance(document, outputStream);
             document.open();
             // Tạo bảng để chứa dữ liệu
-            PdfPTable table = new PdfPTable(8);
+            PdfPTable table = new PdfPTable(7);
             PdfPCell cell;
-            cell = new PdfPCell(new Paragraph("Log"));
-            cell.setColspan(8);
+            cell = new PdfPCell(new Paragraph("User"));
+            cell.setColspan(7);
             table.addCell(cell);
             table.addCell("ID");
-            table.addCell("level");
-            table.addCell("user");
-            table.addCell("Src");
-            table.addCell("Content");
-            table.addCell("Status");
-            table.addCell("browserName");
-            table.addCell("ip");
+            table.addCell("address");
+            table.addCell("username");
+            table.addCell("phone");
+            table.addCell("email");
+            table.addCell("birthday");
+            table.addCell("datesignup");
 
-            for (Log l : list) {
-                table.addCell(Integer.toString(l.getId()));
-                table.addCell(l.getLevelWithName());
-                table.addCell(l.getUser());
-                table.addCell(l.getSrc());
-                table.addCell(l.getContent());
-                table.addCell(Integer.toString(l.getStatus()));
-                table.addCell(l.getbrowserName());
-                table.addCell(l.getLocationIpClient().substring(l.getLocationIpClient().indexOf("{")+1,l.getLocationIpClient().indexOf(",")));
+
+            for (User l : list) {
+                table.addCell(l.getIdUser());
+                table.addCell(l.getAddress());
+                table.addCell(l.getNameUser());
+                table.addCell(l.getPhone());
+                table.addCell(l.getEmail());
+                table.addCell(String.valueOf(l.getBirthday()));
+                table.addCell(String.valueOf(l.getDateSignup()));
+
 
             }
             document.add(table);
