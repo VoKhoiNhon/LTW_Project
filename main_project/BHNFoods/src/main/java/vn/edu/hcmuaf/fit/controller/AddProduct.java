@@ -75,7 +75,7 @@ public class AddProduct extends HttpServlet {
                 String fileUrl = "ImageproductNew/add/" + fileName;
                 out.println(fileUrl);
                 count++;
-                ProductService.getInstance().addImg(index + 1, menu + brand +count,fileUrl,1);
+                ProductService.getInstance().addImg("prod"+index + 1, menu + brand +count,fileUrl,1);
             }
         }
 
