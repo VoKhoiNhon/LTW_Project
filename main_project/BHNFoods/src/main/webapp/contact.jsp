@@ -104,10 +104,10 @@
                         <input name="nameuser" type="text" class="form-control" placeholder="Họ và tên" value="<%=u.getNameUser()%>">
                     </div>
                     <div class="form-group">
-                        <input name="email" type="text" class="form-control" placeholder="Email" value="<%=u.getEmail()%>">
+                        <input name="email" type="text" class="form-control" placeholder="Email" value="<%=u.printCtAccount(u.getEmail())%>">
                     </div>
                     <div class="form-group">
-                        <input name="phone" type="text" class="form-control" placeholder="Số điện thoại" value="<%=u.getPhone()%>">
+                        <input name="phone" type="text" class="form-control" placeholder="Số điện thoại" value="<%=u.printCtAccount(u.getPhone())%>">
                     </div>
                     <div class="form-group">
                         <textarea name="content" id="" cols="30" rows="7" class="form-control"
