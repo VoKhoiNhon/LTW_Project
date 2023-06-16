@@ -1,4 +1,4 @@
- <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,17 +28,17 @@
         font-size: 16px;
     }
 
-    .ftco-section .col-xl-7 .align-items-end .row_input .col_addprod{
+    .ftco-section .col-xl-7 .align-items-end .row_input .col_addprod {
         flex: auto;
         margin-top: 8px;
     }
 
-    .ftco-section .container .input_addpr{
-        height: calc(1.5em + .75rem );
+    .ftco-section .container .input_addpr {
+        height: calc(1.5em + .75rem);
     }
 </style>
 
-<body>
+<body
 
 <section class="ftco-section" style=" background: #ededed00">
     <div class="container" style="background-color:  #ededed00">
@@ -59,7 +59,8 @@
                                 <div class="form-group">
                                     <label for="">Hình ảnh</label>
                                     <button class="form-control input_addpr" style="background-color: #b5b5b5;">Chọn
-                                        tệp</button>
+                                        tệp
+                                    </button>
                                 </div>
                             </div>
                             <div class="col-md-6 col_addprod">
@@ -117,38 +118,11 @@
                         </div>
 
 
-                        <div class="d-flex flex-grow-1  row_input">
-                            <div class="col-md-6 col_addprod">
-                                <div class="form-group">
-                                    <label for="">Ngày sản xuất</label>
-                                    <div class="select-wrap">
-                                        <input type="date" name="" id="" class="form-control input_addpr"
-                                               placeholder="Ngày/Tháng/Năm">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col_addprod">
-                                <div class="form-group">
-                                    <label for="">Ngày hết hạn</label>
-                                    <div class="select-wrap">
-                                        <input type="date" name="" id="" class="form-control input_addpr"
-                                               placeholder="Ngày/Tháng/Năm">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col_addprod">
-                                <div class="form-group">
-                                    <label for="">Số lượng nhập</label>
-                                    <input type="number" class="form-control input_addpr" placeholder="">
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="">Mô tả</label>
+                                <label>Mô tả</label>
                                 <textarea type="text" class="form-control input_addpr"
-                                          placeholder="Mô tả sản phẩm"> </textarea>
+                                          placeholder="mô tả"> </textarea>
                             </div>
                         </div>
 
@@ -157,11 +131,10 @@
                                   style="border-radius:5px; background: #7fad39; border: none;padding: 10px 40px !important;">Hủy</a>
                             </p>
                             <p><a href="#" class="btn btn-primary py-3 px-4"
-                                  style="border-radius:5px; background: #7fad39; border: none; padding: 10px !important; margin-left: 20px">Thêm sản phẩm</a>
+                                  style="border-radius:5px; background: #7fad39; border: none; padding: 10px !important; margin-left: 20px">Thêm
+                                sản phẩm</a>
                             </p>
                         </div>
-
-
 
 
                     </div>

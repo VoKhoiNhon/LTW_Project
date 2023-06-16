@@ -5,12 +5,11 @@ import vn.edu.hcmuaf.fit.util.ExportLog;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-@WebServlet(name = "Test", value = "/Test")
-public class Test extends HttpServlet {
+@WebServlet(name = "ExportLogPDF", value = "/ExportLogPDF")
+public class ExportLogPDF extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 // ...
@@ -23,7 +22,8 @@ public class Test extends HttpServlet {
 // Code ghi dữ liệu file vào outputStream ở đây
         ExportLog.getFilePDF(outputStream);
 // ...
-
+        outputStream.flush();
+        outputStream.close();
     }
 
     @Override

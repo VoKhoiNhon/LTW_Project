@@ -9,11 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-@WebServlet(name = "Test2", value = "/Test2")
-public class Test2 extends HttpServlet {
+@WebServlet(name = "ExportLogExcel", value = "/ExportLogExcel")
+public class ExportLogExcel extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
