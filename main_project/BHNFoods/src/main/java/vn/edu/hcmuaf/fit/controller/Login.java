@@ -39,10 +39,11 @@ public class Login extends HttpServlet {
         password = Encryption.toSHA1(password);
         User user = UserService.getInstance().checkLogin(username, password);
         User existName = UserService.getInstance().checkUser(username);
-        int lv = LogSercive.getInstance().getLevelForDayLogin(existName.getNameUser());
+
         HttpSession session = request.getSession();
 
         if (existName != null) {
+            int lv = LogSercive.getInstance().getLevelForDayLogin(existName.getNameUser());
             if (!existName.getPassw().equals(password)) {
                 request.setAttribute("error", "Sai mật khẩu");
                 if (lv < 5) {
