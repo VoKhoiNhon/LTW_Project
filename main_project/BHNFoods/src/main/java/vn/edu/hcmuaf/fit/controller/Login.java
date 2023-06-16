@@ -39,7 +39,6 @@ public class Login extends HttpServlet {
         password = Encryption.toSHA1(password);
         User user = UserService.getInstance().checkLogin(username, password);
         User existName = UserService.getInstance().checkUser(username);
-
         HttpSession session = request.getSession();
 
         if (existName != null) {
