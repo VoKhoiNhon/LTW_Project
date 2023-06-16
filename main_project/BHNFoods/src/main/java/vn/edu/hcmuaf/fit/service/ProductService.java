@@ -185,7 +185,7 @@ public class ProductService {
     //danh sach nhap san pham theo ngay
     public List<SingleProduct> getListPrDateImport(int i) {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select  p.NAME_PR, w.DATE_IMPORT_SHIPMENT as DATE_IMPORT_PR from ct_pr c join product p on c.ID_PR=p.ID_PR join warehouse w on w.ID_SHIPMENT = c.ID_SHIPMENT ORDER BY w.DATE_IMPORT_SHIPMENT DESC LIMIT " + i)
+            return handle.createQuery("select  p.NAME_PR, w.DATE_IMPORT_SHIPMENT as DATE_IMPORT_PR from ct_pr c join product p on c.ID_PR=p.ID_PR join detail_wh d on d.ID_PR=p.ID_PR join warehouse w on w.ID_SHIPMENT= d.ID_SHIPMENT  ORDER BY w.DATE_IMPORT_SHIPMENT DESC LIMIT " + i)
                     .mapToBean(SingleProduct.class).collect(Collectors.toList());
         });
     }
