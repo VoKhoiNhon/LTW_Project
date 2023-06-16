@@ -273,6 +273,14 @@
         .card .drag-area.dragover .visible {
             display: none;
         }
+
+        .row_input {
+            justify-content: space-around;
+        }
+
+        .row_input .col_addwh {
+            width: 30%;
+        }
     </style>
 </head>
 
@@ -391,7 +399,7 @@
         </div>
 
         <div class="nav-item">
-            <a href="/BHNFoods/Login" class="nav-item-link">
+            <a href="/BHNFoods/logOut" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span>Đăng xuất</span>
             </a>
@@ -456,7 +464,8 @@
                                                                     for (Warehouse w : listwh) {
                                                                         List<DetailsWH> detailWH = WarehouseService.getInstance().getDetail_WH(w.getId_shipment());
                                                                         for (DetailsWH d : detailWH) {
-                                                                            sumPrice += d.getPRICE_IMPORT() * d.getAMOUNT_PR();}
+                                                                            sumPrice += d.getPRICE_IMPORT() * d.getAMOUNT_PR();
+                                                                        }
                                                                 %>
                                                                 <tr>
                                                                     <td>
@@ -517,71 +526,49 @@
 <div class="edit_formUser edit_formAdd add_warehouse form_add_sp">
     <div class="container" style="background:none;">
         <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
-            <form class="billing-form" style="margin-top: 5%;" action="" method="post" enctype="multipart/form-data">
-                <div class="contai">
-                    <h4 class="mb-4 billing-heading">Nhập Lô hàng</h4>
-                    <div class="row align-items-end" style="font-size: 16px;">
-                        <div class="d-flex flex-grow-1 row_input ">
-                            <div class="col-md-6 col_addprod">
-                                <div class="form-group">
-                                    <label>Mã Lô Hàng</label>
-                                    <input id="idShipment" name="" type="text" class="form-control input_addpr"
-                                           placeholder=""
-                                           value="">
-                                </div>
-                            </div>
-                            <div class=" col-md-6 col_addprod">
-                                <div class="form-group">
-                                    <label>Nhân viên nhận hàng</label>
-                                    <input id="idEmployee" type="text" class="form-control input_addpr" name=""
-                                           placeholder="" value="">
-                                </div>
-                            </div>
+            <form id="idform" class="billing-form" style="margin-top: 5%;" action="/BHNFoods/AddWarehouse" method="post"
+                  enctype="multipart/form-data">
+                <div class="contai"></div>
+                <h4 class="mb-4 billing-heading">Nhập Lô hàng</h4>
+                <div class="d-flex flex-grow-1 row_input ">
+                    <div class="col-md-6 col_addwh">
+                        <div class="form-group">
+                            <label>Mã Lô Hàng</label>
+                            <input id="idShipment" name="codewh" type="text" class="form-control input_addpr"
+                                   placeholder=""
+                                   value="">
                         </div>
-                        <div class=" d-flex flex-grow-1 row_input">
-                            <div class=" d-flex flex-grow-1 row_input">
-                                <div class="col-md-6 col_addprod">
-                                    <div class="form-group">
-                                        <label>Tổng tiền lô hàng</label>
-                                        <input name="" type="text" class="form-control input_addpr" placeholder=""
-                                               value="">
-                                    </div>
-                                </div>
-                                <div class=" col-md-6 col_addprod">
-                                    <div class="form-group">
-                                        <label>Ngày nhập hàng</label>
-                                        <input id="idDateImport" name="" type="date" class="form-control input_addpr"
-                                               placeholder="" value="">
-                                    </div>
-                                </div>
-                                <div class=" col-md-6 col_addprod">
-                                    <div class="form-group">
-                                        <label>Số lượng mặt hàng</label>
-                                        <input id="" name="" type="text" class="form-control input_addpr" placeholder=""
-                                               value="">
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                    <div class=" col-md-6 col_addwh">
+                        <div class="form-group">
+                            <label>Nhân viên nhận hàng</label>
+                            <input id="idEmployee" type="text" class="form-control input_addpr" name="employee"
+                                   placeholder="" value="">
                         </div>
-                        <div class=" d-flex flex-grow-1 row_input">
+                    </div>
+                    <div class=" col-md-6 col_addwh">
+                        <div class="form-group">
+                            <label>Ngày nhập hàng</label>
+                            <input id="idDateImport" name="date" type="date" class="form-control input_addpr"
+                                   placeholder="" value="">
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="mb-4 billing-heading">Sản phẩm</h4>
+                <div class="row align-items-end" style="font-size: 16px;">
+                    <div id="boundingRows">
+                        <div class=" d-flex flex-grow-1 row_input rowWarehouse">
                             <div class="" style=" margin-top: 2rem">
                                 <div class="">
                                     <input class="number_pr" type="button" onclick="" value="1">
                                 </div>
                             </div>
-
-                            <div class="col-md-6 col_addprod">
-                                <div class="form-group">
-                                    <label>Tên sản phẩm</label>
-                                    <input name="" type="text" class="form-control input_addpr elementName"
-                                           placeholder=""
-                                           value="">
-                                </div>
-                            </div>
                             <div class="col-md-6 col_addprod">
                                 <div class="form-group">
                                     <label>Danh mục</label>
-                                    <select type="text" class="form-control input_addpr elementMenu" name=""> required
+                                    <select id="menu1" onchange="selectMenu('menu1', 'product1')" type="text"
+                                            class="elementMenu form-control input_addpr" name="" required>
                                         <option value="m1">Gạo</option>
                                         <option value="m2">Nếp</option>
                                         <option value="m3">Các loại hạt</option>
@@ -590,153 +577,62 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class=" col-md-6 col_addprod">
-                                <div class="form-group">
-                                    <label>Giá nhập</label>
-                                    <input name="" type="number" class="form-control input_addpr elementInputPrice"
-                                           placeholder=""
-                                           value="">
-                                </div>
-                            </div>
-                            <div class=" col-md-6 col_addprod">
-                                <div class="form-group">
-                                    <label>Số lượng</label>
-                                    <input name="weight " type="text"
-                                           class="form-control input_addpr with_50 elementQuantity"
-                                           placeholder=""
-                                           value="">
-                                </div>
-                            </div>
-                            <div class=" col-md-6 col_addprod">
-                                <div class="form-group">
-                                    <label>Trọng lượng</label>
-                                    <input name="weight" type="text"
-                                           class="form-control input_addpr with_50 elementWeight"
-                                           placeholder=""
-                                           value="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class=" d-flex flex-grow-1 row_input">
-                            <div class="" style=" margin-top: 2rem">
-                                <div class="">
-                                    <input class="number_pr" type="button" onclick="" value="1">
-                                </div>
-                            </div>
-
                             <div class="col-md-6 col_addprod">
                                 <div class="form-group">
                                     <label>Tên sản phẩm</label>
-                                    <input name="" type="text" class="form-control input_addpr elementName"
-                                           placeholder=""
-                                           value="">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col_addprod">
-                                <div class="form-group">
-                                    <label>Danh mục</label>
-                                    <select type="text" class="form-control input_addpr elementMenu" name=""> required
-                                        <option value="m1">Gạo</option>
-                                        <option value="m2">Nếp</option>
-                                        <option value="m3">Các loại hạt</option>
-                                        <option value="m4">Các loại bột</option>
-                                        <option value="m5">Các loại củ, trái</option>
+                                    <select id="product1" type="text" class="elementMenu form-control input_addpr"
+                                            name="" required>
                                     </select>
                                 </div>
                             </div>
                             <div class=" col-md-6 col_addprod">
                                 <div class="form-group">
                                     <label>Giá nhập</label>
-                                    <input name="" type="number" class="form-control input_addpr elementInputPrice"
+                                    <input id="price1" min="0" name="" type="number"
+                                           class="elementInputPrice form-control input_addpr"
                                            placeholder=""
-                                           value="">
+                                           value="" required>
                                 </div>
                             </div>
                             <div class=" col-md-6 col_addprod">
                                 <div class="form-group">
                                     <label>Số lượng</label>
-                                    <input name="weight " type="text"
-                                           class="form-control input_addpr with_50 elementQuantity"
+                                    <input id="amount1" min="1" name="weight" type="number"
+                                           class="elementQuantity form-control input_addpr "
                                            placeholder=""
-                                           value="">
+                                           value="" required>
                                 </div>
                             </div>
                             <div class=" col-md-6 col_addprod">
                                 <div class="form-group">
                                     <label>Trọng lượng</label>
-                                    <input name="weight" type="text"
-                                           class="form-control input_addpr with_50 elementWeight"
+                                    <input id="weight1" name="weight" type="text"
+                                           class="elementWeight form-control input_addpr "
                                            placeholder=""
-                                           value="">
+                                           value="" required>
                                 </div>
                             </div>
-                        </div>
-                        <div class=" d-flex flex-grow-1 row_input">
                             <div class="" style=" margin-top: 2rem">
                                 <div class="">
-                                    <input class="number_pr" type="button" onclick="" value="1">
+                                    <input class="" type="button" onclick="" value="x">
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 d-flex ">
+                        <input id="btnAddRow" type="button" value="+">
 
-                            <div class="col-md-6 col_addprod">
-                                <div class="form-group">
-                                    <label>Tên sản phẩm</label>
-                                    <input name="" type="text" class="form-control input_addpr elementName"
-                                           placeholder=""
-                                           value="">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col_addprod">
-                                <div class="form-group">
-                                    <label>Danh mục</label>
-                                    <select type="text" class="form-control input_addpr elementMenu" name=""> required
-                                        <option value="m1">Gạo</option>
-                                        <option value="m2">Nếp</option>
-                                        <option value="m3">Các loại hạt</option>
-                                        <option value="m4">Các loại bột</option>
-                                        <option value="m5">Các loại củ, trái</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class=" col-md-6 col_addprod">
-                                <div class="form-group">
-                                    <label>Giá nhập</label>
-                                    <input name="" type="number" class="form-control input_addpr elementInputPrice"
-                                           placeholder=""
-                                           value="">
-                                </div>
-                            </div>
-                            <div class=" col-md-6 col_addprod">
-                                <div class="form-group">
-                                    <label>Số lượng</label>
-                                    <input name="weight " type="text"
-                                           class="form-control input_addpr with_50 elementQuantity"
-                                           placeholder=""
-                                           value="">
-                                </div>
-                            </div>
-                            <div class=" col-md-6 col_addprod">
-                                <div class="form-group">
-                                    <label>Trọng lượng</label>
-                                    <input name="weight" type="text"
-                                           class="form-control input_addpr with_50 elementWeight"
-                                           placeholder=""
-                                           value="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 d-flex ">
-                            <input id="btnAddRow" type="button" onclick="submitform()" value="+">
-                        </div>
-                        <div class="col-md-12 d-flex btn_huy_update" style="justify-content: end;">
-                            <input type="button" onclick="huy()" value="Hủy">
-                            <input type="submit" value="Tạo">
-                        </div>
+                    </div>
+                    <div class="col-md-12 d-flex btn_huy_update" style="justify-content: end;">
+                        <input id="jsonItem" name="jsonItem" value="" style="display: none">
+                        <input type="button" onclick="huy()" value="Huỷ">
+                        <input type="submit" value="Tạo">
                     </div>
                 </div>
             </form>
         </div>
     </div>
+
 </div>
 
 <%------------Form xem chi tiết lô--%>
@@ -808,12 +704,59 @@
 
 
 <script>
+    $(document).ready(function () {
+        $('#idform').submit(function (event) {
+            event.preventDefault();
+            console.log(1)
+            let total = document.getElementsByClassName('rowWarehouse').length;
+            var arr = [];
+            for (let i = 1; i <= total; i++) {
+                var item = {
+                    ID_MENU: $('#menu' + i).val(),
+                    ID_PR: $('#product' + i).val(),
+                    PRICE_IMPORT: $('#price' + i).val(),
+                    AMOUNT_PR: $('#amount' + i).val(),
+                    WEIGHT_PR: $('#weight' + i).val()
+                }
+                arr[i - 1] = item;
+                console.log(2)
+            }
+            var jsonItem = JSON.stringify(arr);
+            console.log(jsonItem);
+            $('#jsonItem').val(jsonItem)
+            this.submit();
+
+
+            // danh sach rowWareHouse.length = ? -> có được số lượng item
+            // Tao ra var arr = [];
+            // duyệt for i = 1 i <= số item i++ {
+            //
+            // var item = {
+            //     danhmuc : $('#menu' + i).val(),
+            //     tensanpham : $('#product' + i).val(),
+            //     gianhap : 10,
+            //     soluong : 20,
+            //     trongluong : 200,
+            // }
+            // arr[i - 1] = item
+            // }
+            // var jsonItem = JSON.stringify(arr);
+            // $('#jsonItem').val(jsonItem)
+            // this.submit();
+        })
+    })
+
+
+    function testAdd() {
+        $('#boundingRows').append('<h1>Hello</h1>');
+    }
+
     function details(id_shipment) {
         $.ajax({
             url: "/BHNFoods/ViewDetailsWh",
             type: 'get',
             data: {
-                idShipment:id_shipment
+                idShipment: id_shipment
             },
             success: function (data) {
                 const content = document.getElementById('detailsWh');
@@ -839,116 +782,83 @@
     }
 
 
+    document.getElementById('btnAddRow').addEventListener('click', () => {
+        let index = document.getElementsByClassName('rowWarehouse').length + 1;
+        $('#boundingRows').append("<div class=\"d-flex flex-grow-1 row_input rowWarehouse\">\n" +
+            "                            <div class=\"\" style=\" margin-top: 2rem\">\n" +
+            "                                <div class=\"\">\n" +
+            "                                    <input class=\"number_pr\" type=\"button\" onclick=\"\" value=\"" + index + "\">\n" +
+            "                                </div>\n" +
+            "                            </div>\n" +
+            "                            <div class=\"col-md-6 col_addprod\">\n" +
+            "                                <div class=\"form-group\">\n" +
+            "                                    <label>Danh mục</label>\n" +
+            "                                    <select id=\"menu" + index + "\" onchange=\"selectMenu('menu" + index + "', 'product" + index + "')\" type=\"text\" class=\"elementMenu form-control input_addpr\" name=\"\" required>\n" +
+            "                                        <option value=\"m1\">Gạo</option>\n" +
+            "                                        <option value=\"m2\">Nếp</option>\n" +
+            "                                        <option value=\"m3\">Các loại hạt</option>\n" +
+            "                                        <option value=\"m4\">Các loại bột</option>\n" +
+            "                                        <option value=\"m5\">Các loại củ, trái</option>\n" +
+            "                                    </select>\n" +
+            "                                </div>\n" +
+            "                            </div>\n" +
+            "                            <div class=\"col-md-6 col_addprod\">\n" +
+            "                                <div class=\"form-group\">\n" +
+            "                                    <label>Tên sản phẩm</label>\n" +
+            "                                    <select id=\"product" + index + "\" type=\"text\" class=\"elementMenu form-control input_addpr\" name=\"\" required>\n" +
+            "                                    </select>\n" +
+            "                                </div>\n" +
+            "                            </div>\n" +
+            "                            <div class=\" col-md-6 col_addprod\">\n" +
+            "                                <div class=\"form-group\">\n" +
+            "                                    <label>Giá nhập</label>\n" +
+            "                                    <input  id=\"price" + index + "\" min=\"0\" name=\"price\" type=\"number\" class=\"elementInputPrice form-control input_addpr\"\n" +
+            "                                           placeholder=\"\"\n" +
+            "                                           value=\"\" required>\n" +
+            "                                </div>\n" +
+            "                            </div>\n" +
+            "                            <div class=\" col-md-6 col_addprod\">\n" +
+            "                                <div class=\"form-group\">\n" +
+            "                                    <label>Số lượng</label>\n" +
+            "                                    <input id=\"amount" + index + "\" min=\"1\" name=\"amount\" type=\"number\" class=\"elementQuantity form-control input_addpr \"\n" +
+            "                                           placeholder=\"\"\n" +
+            "                                           value=\"\" required>\n" +
+            "                                </div>\n" +
+            "                            </div>\n" +
+            "                            <div class=\" col-md-6 col_addprod\">\n" +
+            "                                <div class=\"form-group\">\n" +
+            "                                    <label>Trọng lượng</label>\n" +
+            "                                    <input id=\"weight" + index + "\" name=\"weight\" type=\"text\" class=\"elementWeight form-control input_addpr \"\n" +
+            "                                           placeholder=\"\"\n" +
+            "                                           value=\"\" required>\n" +
+            "                                </div>\n" +
+            "                            </div>\n" +
+            "                            <div class=\"\" style=\" margin-top: 2rem\">\n" +
+            "                                <div class=\"\">\n" +
+            "                                    <input class=\"\" type=\"button\" onclick=\"\" value=\"x\">\n" +
+            "                                </div>\n" +
+            "                            </div>\n" +
+            "                        </div>");
+    })
 
-    function submitform() {
-        const elementName = document.getElementsByClassName('elementName');
-        const elementMenu = document.getElementsByClassName('elementMenu');
-        const elementInputPrice = document.getElementsByClassName('elementInputPrice');
-        const elementQuantity = document.getElementsByClassName('elementQuantity');
-        const elementWeight = document.getElementsByClassName('elementWeight');
-        const idShipment = document.getElementById('idShipment').value;
-        const idEmployee = document.getElementById('idEmployee').value;
-        const idSupplier = document.getElementById('idSupplier').value;
-        const idDateImport = document.getElementById('idDateImport').value;
-        var dataName = '';
-        var dataMenu = '';
-        var dataInputPrice = '';
-        var dataQuantity = '';
-        var dataWeight = '';
-        var insert = true;
-        for (let i = 0; i < elementName.length; i++) {
-            if (elementName[i].value == '' || elementMenu[i].value == '' || elementInputPrice[i].value == '' || elementQuantity[i].value == '' || elementWeight[i].value == ''
-                || idShipment == '' || idEmployee == '' || idSupplier == '' || idDateImport == '') {
-                insert = false;
-                break;
+    function selectMenu(id, idElementSelect) {
+        var idMenu = $('#' + id).val();
+        $.ajax({
+            url: "/BHNFoods/AddMenu",
+            type: 'get',
+            data: {
+                idMenu: idMenu
+            },
+            success: function (data) {
+                const content = document.getElementById(idElementSelect);
+                content.innerHTML = data;
+            },
+            error: function () {
+                alert("Thêm lô hàng thát bại");
             }
-            dataName += " " + elementName[i].value;
-            dataMenu += " " + elementMenu[i].value;
-            dataInputPrice += " " + elementInputPrice[i].value;
-            dataQuantity += " " + elementQuantity[i].value;
-            dataWeight += " " + elementWeight[i].value;
-        }
-        if (insert) {
-            $.ajax({
-                url: "/BHNFoods/importShipment",
-                type: 'get',
-                data: {
-                    dataName: dataName,
-                    dataMenu: dataMenu,
-                    dataInputPrice: dataInputPrice,
-                    dataQuantity: dataQuantity,
-                    dataWeight: dataWeight,
-                    idShipment: idShipment,
-                    idEmployee: idEmployee,
-                    idBrand: idSupplier,
-                    idDateImport: idDateImport
-                },
-                success: function (data) {
-                    alert("Thêm lô hàng thành công");
-                },
-                error: function () {
-                    alert("Thêm lô hàng thát bại");
-                }
-            });
-        } else {
-            alert("Hãy nhập đủ thông tin");
-        }
+        });
 
     }
-
-    document.getElementById('btnAddRow').addEventListener('click', () => {
-        var index = document.getElementsByClassName('elementName').length;
-        document.getElementById('boundingRows').innerHTML += ("<div class=\" d-flex flex-grow-1 row_input\">\n" +
-            "                        <div class=\"\" style=\" margin-top: 2rem\">\n" +
-            "                            <div class=\"\">\n" +
-            "                                <input class=\"number_pr\" type=\"button\" onclick=\"\" value=\"" + parseInt(index + 1) + "\">\n" +
-            "                            </div>\n" +
-            "                        </div>\n" +
-            "  \n" +
-            "                        <div class=\"col-md-6 col_addprod\">\n" +
-            "                            <div class=\"form-group\">\n" +
-            "                                <label>Tên sản phẩm</label>\n" +
-            "                                <input name=\"\" type=\"text\" class=\"elementName form-control input_addpr\" placeholder=\"\"\n" +
-            "                                       value=\"\" required>\n" +
-            "                            </div>\n" +
-            "                        </div>\n" +
-            "                        <div class=\"col-md-6 col_addprod\">\n" +
-            "                            <div class=\"form-group\">\n" +
-            "                                <label>Danh mục</label>\n" +
-            "                                <select type=\"text\" class=\"elementMenu form-control input_addpr\" name=\"\" required> \n" +
-            "                                    <option value=\"m1\">Gạo</option>\n" +
-            "                                    <option value=\"m2\">Nếp</option>\n" +
-            "                                    <option value=\"m3\">Các loại hạt</option>\n" +
-            "                                    <option value=\"m4\">Các loại bột</option>\n" +
-            "                                    <option value=\"m5\">Các loại củ, trái</option>\n" +
-            "                                </select>\n" +
-            "                            </div>\n" +
-            "                        </div>\n" +
-            "                        <div class=\" col-md-6 col_addprod\">\n" +
-            "                            <div class=\"form-group\">\n" +
-            "                                <label>Giá nhập</label>\n" +
-            "                                <input name=\"\" type=\"number\" class=\"elementInputPrice form-control input_addpr\" placeholder=\"\"\n" +
-            "                                       value=\"\" required>\n" +
-            "                            </div>\n" +
-            "                        </div>\n" +
-            "                        <div class=\" col-md-6 col_addprod\">\n" +
-            "                            <div class=\"form-group\">\n" +
-            "                                <label>Số lượng</label>\n" +
-            "                                <input name=\"weight\" type=\"text\" class=\"elementQuantity form-control input_addpr with_50\"\n" +
-            "                                       placeholder=\"\"\n" +
-            "                                       value=\"\" required>\n" +
-            "                            </div>\n" +
-            "                        </div>\n" +
-            "                        <div class=\" col-md-6 col_addprod\">\n" +
-            "                            <div class=\"form-group\">\n" +
-            "                                <label>Trọng lượng</label>\n" +
-            "                                <input name=\"weight\" type=\"text\" class=\"elementWeight form-control input_addpr with_50\"\n" +
-            "                                       placeholder=\"\"\n" +
-            "                                       value=\"\" required>\n" +
-            "                            </div>\n" +
-            "                        </div>\n" +
-            "                    </div>");
-    })
 
 </script>
 

@@ -63,7 +63,6 @@
                             <div class="form-group">
                                 <label>Quận, Huyện</label>
                                 <select id="district" type="text" class="form-control" onchange="addWard()">
-
                                 </select>
                             </div>
                             <div class="form-group">
