@@ -145,11 +145,6 @@
 <!-- partial:partials/_navbar.html -->
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-        <%--      <div class="me-3">--%>
-        <%--        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">--%>
-        <%--          <span class="icon-menu"></span>--%>
-        <%--        </button>--%>
-        <%--      </div>--%>
         <div>
             <a class="navbar-brand brand-logo" href="index.html">
                 BHNFoods
@@ -255,9 +250,9 @@
             <%--                    </a>--%>
             <%--                </div>--%>
             <%--            </li>--%>
-            <%--            &lt;%&ndash;%>
-            <%--                User user = (User) session.getAttribute("auth");--%>
-            <%--                if (user != null) {%>--%>
+            <%--            &lt;%&ndash;%>--%>
+            <%  User user = (User) session.getAttribute("auth");
+                           if (user != null) {%>
             <%--            <li class="nav-item dropdown d-none d-lg-block user-dropdown">--%>
             <%--                <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">--%>
             <%--                    <img class="img-xs rounded-circle" src="ImageproductNew/background/images.png" alt="Profile image">--%>
@@ -272,7 +267,7 @@
             <%--                    </div>--%>
             <%--                </div>--%>
             <%--            </li>--%>
-            <%--            <%}%>--%>
+                      <%}%>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
                 data-bs-toggle="offcanvas">
@@ -285,13 +280,13 @@
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="nav-item">
             <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
-                <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+                <i style="margin-right: 5px;" class="fa-solid fa-bars-progress"></i>
                 <span>Quản lý đơn hàng</span>
             </a>
         </div>
         <div class="nav-item">
             <a href="/BHNFoods/HistoryOrdersAdmin" class="nav-item-link">
-                <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+                <i style="margin-right: 5px;"  class="fa-solid fa-clock-rotate-left"></i>
                 <span>Lịch sử đơn hàng</span>
             </a>
         </div>
@@ -302,14 +297,14 @@
             </a>
         </div>
         <div class="nav-item">
-            <a href="" class="nav-item-link">
+            <a href="/BHNFoods/Warehouse" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
                 <span>Nhập kho</span>
             </a>
         </div>
 
         <div class="nav-item">
-            <a href="/BHNFoods/Login" class="nav-item-link">
+            <a href="/BHNFoods/logOut" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span>Đăng xuất</span>
             </a>

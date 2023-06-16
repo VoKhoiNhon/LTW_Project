@@ -391,24 +391,8 @@
             <%--                </div>--%>
             <%--            </li>--%>
 
-            <%
-                User user = (User) session.getAttribute("auth");
-                if (user != null) {%>
-            <%--            <li class="nav-item dropdown d-none d-lg-block user-dropdown">--%>
-            <%--                <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">--%>
-            <%--                    <img class="img-xs rounded-circle" src="ImageproductNew/background/images.png"--%>
-            <%--                         alt="Profile image"> </a>--%>
-            <%--                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">--%>
-            <%--                    <div class="dropdown-header text-center">--%>
-            <%--                        &lt;%&ndash;              <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">&ndash;%&gt;--%>
-            <%--                        <p class="mb-1 mt-3 font-weight-semibold"><%=user.getNameUser()%>--%>
-            <%--                        </p>--%>
-            <%--                        <p class="fw-light text-muted mb-0"><%=user.getEmail()%>--%>
-            <%--                        </p>--%>
-            <%--                    </div>--%>
-            <%--                </div>--%>
-            <%--            </li>--%>
-            <%}%>
+
+
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
                 data-bs-toggle="offcanvas">
@@ -419,6 +403,7 @@
 <!-- partial -->
 <div class="container-fluid page-body-wrapper">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <%User user = (User) session.getAttribute("auth");%>
         <%--        nếu là admin thì hiển thị trang chủ, log, qly người dùng , logout--%>
         <%if (user.getDecentralization() == Powers.ADMIN) {%>
         <div class="nav-item">
@@ -446,7 +431,7 @@
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/Login" class="nav-item-link">
+            <a href="/BHNFoods/logOut" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span>Đăng xuất</span>
             </a>
@@ -454,13 +439,13 @@
         <%} else{%>
             <div class="nav-item">
                 <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
-                    <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+                    <i style="margin-right: 5px;" class="fa-solid fa-bars-progress"></i>
                     <span>Quản lý đơn hàng</span>
                 </a>
             </div>
             <div class="nav-item">
                 <a href="/BHNFoods/HistoryOrdersAdmin" class="nav-item-link">
-                    <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+                    <i style="margin-right: 5px;" class="fa-solid fa-clock-rotate-left"></i>
                     <span>Lịch sử đơn hàng</span>
                 </a>
             </div>
@@ -471,13 +456,13 @@
                 </a>
             </div>
             <div class="nav-item">
-                <a href="" class="nav-item-link">
+                <a href="/BHNFoods/Warehouse" class="nav-item-link">
                     <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
                     <span>Nhập kho</span>
                 </a>
             </div>
             <div class="nav-item">
-                <a href="/BHNFoods/Login" class="nav-item-link">
+                <a href="/BHNFoods/logOut" class="nav-item-link">
                     <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
                     <span>Đăng xuất</span>
                 </a>
@@ -649,7 +634,9 @@
         <!-- content-wrapper ends -->
     </div>
 </div>
+<%--add product--%>
 <div class="edit_formUser edit_formAdd">
+
         <div class="edit_formUser edit_formAdd">
             <div class="container" style="background:none;">
                 <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
@@ -681,6 +668,7 @@
                                                        value="" style="display: none">
                                             </div>
 
+
                                             <!-- IMAGE PREVIEW CONTAINER -->
 
                                         </div>
@@ -701,6 +689,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="d-flex flex-grow-1 row_input ">
                                 <div class="col-md-6 col_addprod">
                                     <div class="form-group">
@@ -742,7 +731,9 @@
                                                value="">
                                     </div>
                                 </div>
+
                             </div>
+
 
 
                             <div class=" d-flex flex-grow-1 row_input">
@@ -756,6 +747,7 @@
                                                    value="">
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class=" col-md-6 col_addprod">
                                     <div class="form-group">
@@ -801,42 +793,12 @@
         </div>
 </div>
 
-<%-------------Form Sửa sản phẩm--%>
-<div id="formEdit">
+
 
 </div>
 
 <script>
-    // hiện hoặc ẩn form thêm, sửa
-    function clickEdit(id, menu, discount, price, name, nsx, hsd, brand, mota, weight, origin, inventory, condition) {
-        $.ajax({
-            url: "/BHNFoods/appearFormEdit",
-            type: 'get',
-            data: {
-
-                id: id,
-                menu: menu,
-                discount: discount,
-                price: price,
-                name: name,
-                nsx: nsx,
-                hsd: hsd,
-                brand: brand,
-                mota: mota,
-                weight: weight,
-                origin: origin,
-                inventory: inventory,
-                condition: condition,
-            },
-            success: function (data) {
-                const content = document.getElementById('formEdit');
-                content.innerHTML = data;
-            },
-            error: function () {
-            }
-        });
-        $(".edit_formEdit").css("display", "block");
-    }
+ 
 
     function add() {
         $('.edit_formAdd').css('display', 'block');
@@ -846,19 +808,7 @@
         $(".edit_formAdd, .edit_formEdit").css("display", "none");
     }
 
-    // checkbox all hoặc ko
-    function checkAll(elementInput) {
-        if (elementInput.checked) { // check select status
-            $(':checkbox').each(function () { //loop through each checkbox
-                this.checked = true;  //select all checkboxes with class "checkbox1"
-            });
 
-        } else {
-            $(':checkbox').each(function () { //loop through each checkbox
-                this.checked = false; //deselect all checkboxes with class "checkbox1"
-            });
-        }
-    }
     let files = [],
         dragArea = document.querySelector('.drag-area'),
         input = document.querySelector('.drag-area input'),
