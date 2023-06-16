@@ -37,8 +37,8 @@ public class ProductService {
         String sql = "SELECT p.NAME_PR, p.PRICE, c.ID_PR, c.NSX, c.HSD, c.BRAND, c.`DESCRIBE`, c.WEIGHT, c.ORIGIN, w.DATE_IMPORT_SHIPMENT as DATE_IMPORT_PR, c.INVENTORY, c.CONDITION_PR, i.URL, p.ID_MENU, p.DISCOUNT " +
                 "FROM ct_pr c " +
                 "JOIN image i ON i.ID_PR = c.ID_PR " +
-                "JOIN product p ON p.ID_PR = c.ID_PR " +
-                "JOIN warehouse w ON c.ID_SHIPMENT = w.ID_SHIPMENT " +
+                "JOIN product p ON p.ID_PR = c.ID_PR join detail_wh d on d.ID_PR= p.ID_PR " +
+                "JOIN warehouse w ON  w.ID_SHIPMENT= d.ID_SHIPMENT " +
                 "WHERE i.`CONDITION` = 0 AND c.ID_PR = :idPro";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(sql)
@@ -180,7 +180,7 @@ public class ProductService {
     //danh sach nhap san pham theo ngay
     public List<SingleProduct> getListPrDateImport(int i) {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select  p.NAME_PR, w.DATE_IMPORT_SHIPMENT as DATE_IMPORT_PR from ct_pr c join product p on c.ID_PR=p.ID_PR join warehouse w on w.ID_SHIPMENT = c.ID_SHIPMENT ORDER BY w.DATE_IMPORT_SHIPMENT DESC LIMIT " + i)
+            return handle.createQuery("select  p.NAME_PR, w.DATE_IMPORT_SHIPMENT as DATE_IMPORT_PR from ct_pr c join product p on c.ID_PR=p.ID_PR join detail_wh d on d.ID_PR=p.ID_PR join warehouse w on w.ID_SHIPMENT= d.ID_SHIPMENT  ORDER BY w.DATE_IMPORT_SHIPMENT DESC LIMIT " + i)
                     .mapToBean(SingleProduct.class).collect(Collectors.toList());
         });
     }
