@@ -583,7 +583,11 @@
                                                                     </td>
                                                                     <td>
                                                                         <div class="btn_edit">
-                                                                            <a href="/BHNFoods/ShowProductToUpdate?id=<%=p.getIdPr()%>">Sửa<i class="fa-regular fa-pen-to-square"></i></a>
+                                                                            <button onclick="clickEdit('<%=p.getIdPr()%>','<%=p.getIdMenu()%>',  '<%=p.getDiscount()%>',  '<%=p.getPrice()%>',  '<%=p.getNamePr()%>', '<%=p.getNsx()%>', '<%=p.getHsd()%>',  '<%=p.getBrand()%>',  '<%=p.getDescribe()%>',  '<%=p.getWeight()%>',  '<%=p.getOrigin()%>',  '<%=p.getInventory()%>',  '<%=p.getConditionPr()%>')">
+                                                                                <h4 class="card-title card-title-dash">
+                                                                                    Sửa <i
+                                                                                        class="fa-regular fa-pen-to-square"></i>
+                                                                                </h4></button>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
