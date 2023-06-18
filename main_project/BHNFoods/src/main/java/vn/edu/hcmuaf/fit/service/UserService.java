@@ -29,18 +29,10 @@ public class UserService {
     }
 
     public User checkLogin(String username, String password) {
-        List<User> users = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT ID_USER,ADDRESS,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,SEX,Decentralization FROM user WHERE EMAIL = ? or PHONE=?")
-                        .bind(0, username).bind(1, username)
-                        .mapToBean(User.class).stream()
-                        .collect(Collectors.toList())
+        User user = JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT ID_USER,ADDRESS,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,SEX,Decentralization FROM user WHERE EMAIL = :username or PHONE= :username")
+                        .bind("username", username).mapToBean(User.class).one()
         );
-        if (users.size() != 1) return null;
-        User user = users.get(0);
-        if (!user.getPassw().equals((password))
-                || !(user.getEmail().equals(username) || (user.getPhone().equals(username)))) {
-            return null;
-        }
         return user;
     }
     public User checkUser(String username) {
