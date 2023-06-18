@@ -601,6 +601,7 @@
                                                                         <div class="btn_edit">
                                                                             <a href="/BHNFoods/ShowProductToUpdate?id=<%=p.getIdPr()%>">Sửa<i
                                                                                     class="fa-regular fa-pen-to-square"></i></a>
+
                                                                         </div>
                                                                     </td>
                                                                 </tr>

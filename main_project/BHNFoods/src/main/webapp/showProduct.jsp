@@ -292,10 +292,7 @@
                             </div>
 
                             <%}%>
-
                         </div>
-
-
                         <form  action="/BHNFoods/AddNewImg?id=<%=p.getIdPr()%>" id="imageForm" method="post" enctype="multipart/form-data">
                             <div class="card">
                                 <div class="drag-area">
