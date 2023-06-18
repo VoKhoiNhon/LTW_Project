@@ -588,7 +588,7 @@
                             <div class=" col-md-6 col_addprod">
                                 <div class="form-group">
                                     <label>Giá nhập</label>
-                                    <input id="price1" min="0" name="price" type="number"
+                                    <input id="price1" min="0" name="" type="number"
                                            class="elementInputPrice form-control input_addpr"
                                            placeholder=""
                                            value="" required>
@@ -626,7 +626,7 @@
                     <div class="col-md-12 d-flex btn_huy_update" style="justify-content: end;">
                         <input id="jsonItem" name="jsonItem" value="" style="display: none">
                         <input type="button" onclick="huy()" value="Huỷ">
-                        <input onclick="submitForm()" value="Tạo">
+                        <input type="submit" value="Tạo">
                     </div>
                 </div>
             </form>
@@ -704,47 +704,59 @@
 
 
 <script>
-    function submitForm() {
-        let total = document.getElementsByClassName('rowWarehouse').length;
-        var arr = [];
-        for (let i = 1; i <= total; i++) {
-            var item = {
-                ID_MENU: $('#menu' + i).val(),
-                ID_PR: $('#product' + i).val(),
-                PRICE_IMPORT: $('#price' + i).val(),
-                AMOUNT_PR: $('#amount' + i).val(),
-                WEIGHT_PR: $('#weight' + i).val()
+    $(document).ready(function () {
+        $('#idform').submit(function (event) {
+            event.preventDefault();
+            console.log(1)
+            let total = document.getElementsByClassName('rowWarehouse').length;
+            var arr = [];
+            for (let i = 1; i <= total; i++) {
+                var item = {
+                    ID_MENU: $('#menu' + i).val(),
+                    ID_PR: $('#product' + i).val(),
+                    PRICE_IMPORT: $('#price' + i).val(),
+                    AMOUNT_PR: $('#amount' + i).val(),
+                    WEIGHT_PR: $('#weight' + i).val()
+                }
+                arr[i - 1] = item;
+                console.log(2)
             }
-            arr[i - 1] = item;
-        }
-        var jsonItem = JSON.stringify(arr);
-        $('#jsonItem').val(jsonItem)
-        $.ajax({
-            url: "/BHNFoods/AddWarehouse",
-            type: 'post',
-            data: {
-                codewh : $('#idShipment').val(),
-                date : $('#idDateImport').val(),
-                jsonItem : $('#jsonItem').val(),
+            var jsonItem = JSON.stringify(arr);
+            console.log(jsonItem);
+            $('#jsonItem').val(jsonItem)
+            this.submit();
 
-            },
-            success: function (data) {
-               alert("thanh cong")
-            },
-            error: function () {
-            }
-        });
+
+            // danh sach rowWareHouse.length = ? -> có được số lượng item
+            // Tao ra var arr = [];
+            // duyệt for i = 1 i <= số item i++ {
+            //
+            // var item = {
+            //     danhmuc : $('#menu' + i).val(),
+            //     tensanpham : $('#product' + i).val(),
+            //     gianhap : 10,
+            //     soluong : 20,
+            //     trongluong : 200,
+            // }
+            // arr[i - 1] = item
+            // }
+            // var jsonItem = JSON.stringify(arr);
+            // $('#jsonItem').val(jsonItem)
+            // this.submit();
+        })
+    })
+
+
+    function testAdd() {
+        $('#boundingRows').append('<h1>Hello</h1>');
     }
-
-
 
     function details(id_shipment) {
         $.ajax({
             url: "/BHNFoods/ViewDetailsWh",
             type: 'get',
             data: {
-                idShipment: id_shipment,
-
+                idShipment: id_shipment
             },
             success: function (data) {
                 const content = document.getElementById('detailsWh');
@@ -768,6 +780,7 @@
     function huy() {
         $(".form_add_sp,.add_warehouse,  .xem_chi_tiet").css("display", "none");
     }
+
 
     document.getElementById('btnAddRow').addEventListener('click', () => {
         let index = document.getElementsByClassName('rowWarehouse').length + 1;
