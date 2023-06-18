@@ -278,6 +278,8 @@
         <% String id = (String) request.getAttribute("id");
             SingleProduct p = (SingleProduct) ProductService.getInstance().getSingleProduct(id).get(0);
             List<ImgForSingleProd> li = ProductService.getInstance().getListImgForSingleProduct(id);
+            System.out.println(p.getIdPr());
+            System.out.println(p.getBrand());
         %>
         <div class="edit_formUser edit_formAdd">
             <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
@@ -292,7 +294,6 @@
                             </div>
 
                             <%}%>
-                            <div class="image-container" id="imageContainer"></div>
                         </div>
 
 
@@ -303,15 +304,17 @@
                                 <input type="text"
                                        value="<%=p.getIdPr()%>"
                                        class="form-control input_addpr"
-                                       name="id"
-                                       placeholder="">
-                                <input name="brand"
+                                       name="idpr"
+                                       placeholder="<%=p.getIdPr()%>">
+
+                                <input name="brandpr"
                                        type="text"
                                        class="form-control  input_addpr"
                                        value="<%=p.getBrand()%>"
-                                       placeholder="">
+                                       placeholder="<%=p.getBrand()%>">
                             </div>
-                            <input type="file" name="imageInput" id="imageInput" value="chọn ảnh mới" title="chọn ảnh mới" multiple >
+                            <input type="file" name="imageInput" id="imageInput" class="imageInput" multiple >
+                            <div class="image-container" id="imageContainer"></div>
                             <input type="submit" value="xác nhận thêm ảnh"/>
                         </form>
 
