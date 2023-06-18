@@ -599,11 +599,8 @@
                                                                     </td>
                                                                     <td>
                                                                         <div class="btn_edit">
-
                                                                             <a href="/BHNFoods/ShowProductToUpdate?id=<%=p.getIdPr()%>">Sửa<i
                                                                                     class="fa-regular fa-pen-to-square"></i></a>
-
-
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -810,36 +807,7 @@
 </div>
 
 <script>
-    // hiện hoặc ẩn form thêm, sửa
-    function clickEdit(id, menu, discount, price, name, nsx, hsd, brand, mota, weight, origin, inventory, condition) {
-        $.ajax({
-            url: "/BHNFoods/appearFormEdit",
-            type: 'get',
-            data: {
 
-                id: id,
-                menu: menu,
-                discount: discount,
-                price: price,
-                name: name,
-                nsx: nsx,
-                hsd: hsd,
-                brand: brand,
-                mota: mota,
-                weight: weight,
-                origin: origin,
-                inventory: inventory,
-                condition: condition,
-            },
-            success: function (data) {
-                const content = document.getElementById('formEdit');
-                content.innerHTML = data;
-            },
-            error: function () {
-            }
-        });
-        $(".edit_formEdit").css("display", "block");
-    }
 
     function add() {
         $('.edit_formAdd').css('display', 'block');
