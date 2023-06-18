@@ -27,6 +27,7 @@ public class AddWarehouse extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String codewh = request.getParameter("codewh");
         String date = request.getParameter("date");
+        System.out.println(codewh);
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
         String jsonItem = request.getParameter("jsonItem");
