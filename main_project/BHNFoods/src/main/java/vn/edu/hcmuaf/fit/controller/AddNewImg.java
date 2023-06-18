@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 import static java.lang.System.out;
@@ -22,7 +23,7 @@ import static java.lang.System.out;
 )
 public class AddNewImg extends HttpServlet {
     private static final String UPLOAD_DIRECTORY = "D:\\hk1nam3\\LTW\\GitHub\\main_project\\BHNFoods\\src\\main\\webapp\\ImageproductNew\\add";
-    private static final String UPLOAD_DIRECTORY_Tomcat = "D:\\hk1nam3\\LTW\\GitHub\\main_project\\BHNFoods\\target\\BHN\\ImageproductNew\\add";
+        private static final String UPLOAD_DIRECTORY_Tomcat = "D:\\hk1nam3\\LTW\\apache-tomcat-9.0.68\\apache-tomcat-9.0.68\\webapps\\ImageproductNew\\add";
     //    private static final String UPLOAD_DIRECTORY = "/var/lib/tomcat9/webapps/BHNFoods/ImageproductNew/add";
     private static final long serialVersionUID = 1;
 
@@ -36,18 +37,18 @@ public class AddNewImg extends HttpServlet {
         int count = 0;
         String idprod = request.getParameter("id");
         for (Part filePart : request.getParts()) {
-            out.println(1);
+
             if (filePart.getName().equals("imageFiles")) {
-                out.println(2);
+
                 String fileName = filePart.getSubmittedFileName();
                 Path filePath1 = Path.of(UPLOAD_DIRECTORY_Tomcat, fileName);
-                out.println(3);
+
                 Path filePath = Path.of(UPLOAD_DIRECTORY, fileName);
-                out.println(4);
+
                 try (InputStream fileContent = filePart.getInputStream()) {
                     Files.copy(fileContent, filePath, StandardCopyOption.REPLACE_EXISTING);
                     Files.copy(fileContent, filePath1, StandardCopyOption.REPLACE_EXISTING);
-                    out.println(5);
+
                 }
                 String fileUrl = "ImageproductNew/add/" + fileName;
                 out.println(fileUrl);
