@@ -1,7 +1,10 @@
 package vn.edu.hcmuaf.fit.controller;
 
 import com.microsoft.schemas.office.office.STInsetMode;
-import vn.edu.hcmuaf.fit.beans.*;
+import vn.edu.hcmuaf.fit.beans.BoxSizeAndWeight;
+import vn.edu.hcmuaf.fit.beans.Cart;
+import vn.edu.hcmuaf.fit.beans.Log;
+import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.db.DB;
 import vn.edu.hcmuaf.fit.service.*;
 import vn.edu.hcmuaf.fit.util.Brower;
@@ -15,7 +18,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @WebServlet(name = "Pay", value = "/pay")
 public class Pay extends HttpServlet {
@@ -26,7 +28,7 @@ public class Pay extends HttpServlet {
         HttpSession session = request.getSession();
 
         User user = (User) session.getAttribute("auth");
-        String idUser;
+        String idUser = user.getIdUser();
         String name = request.getParameter("fullName");
         String phone = request.getParameter("phoneNumber");
         String email = request.getParameter("email");
@@ -48,8 +50,14 @@ public class Pay extends HttpServlet {
         String timeNow = OrderService.getInstance().formatDateTimeNow();
         String timePickup = "";
         String[] listId = allId.trim().replace("box", "").split(" ");
-        BoxSizeAndWeight boxSizeAndWeight = new BoxSizeAndWeight(listId);
+        List<Cart> listCart = new ArrayList<>();
         double totalWeight = 0; // kg
+        for (String id : listId) {
+            List<Cart> temp = CartService.getInstance().getProdFormCart(idUser, id);
+            listCart.addAll(temp);
+        }
+
+        BoxSizeAndWeight boxSizeAndWeight = new BoxSizeAndWeight(listId);
 
         try {
             String leadTime = Logistics.getLeadTime(idDistrict, idWard, boxSizeAndWeight.getHeight(), boxSizeAndWeight.getLength(), boxSizeAndWeight.getWidth(), (int) boxSizeAndWeight.getWeight());
@@ -57,39 +65,22 @@ public class Pay extends HttpServlet {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        List<Cart> listCart = new ArrayList<>();
 
         OrderService.getInstance().addToOrder(idOrder, name, phone, finalAddress, timeNow, timePickup, note, 0);
         if (!maGiamGia.equals("")) DiscountService.getInstance().changeAmountDiscount(maGiamGia, -1);
-
-        if(user == null) {
-            idUser = null;
-            Map<String, Integer> listProductFromCartInSession = (Map<String, Integer>) session.getAttribute("listProductFromCartInSession");
-            Product product;
-            for (String idProduct: listId) {
-                product = ProductService.getInstance().getProductById(idProduct);
-                SoldProdService.getInstance().addToSoldProd(idProduct, "unKnow", timeNow, listProductFromCartInSession.get(idProduct), idOrder, product.getPrice());
-                ProductService.getInstance().updateInventoryCT_PR(idProduct, -listProductFromCartInSession.get(idProduct));
-                if(listProductFromCartInSession.containsKey(idProduct)) listProductFromCartInSession.remove(idProduct);
-            }
-            session.setAttribute("listProductFromCartInSession", listProductFromCartInSession);
-        } else {
-            idUser = user.getIdUser();
-            for (String id : listId) {
-                List<Cart> temp = CartService.getInstance().getProdFormCart(idUser, id);
-                listCart.addAll(temp);
-            }
-            for (String id : listId) {
-                CartService.getInstance().deleteFromCart(id, idUser);
-            }
-            for (Cart c : listCart) {
-                SoldProdService.getInstance().addToSoldProd(c.getIdPr(), idUser, timeNow, c.getAmount(), idOrder, c.getPrice());
-                ProductService.getInstance().updateInventoryCT_PR(c.getIdPr(), -c.getAmount());
-            }
+        for (Cart c : listCart) {
+            SoldProdService.getInstance().addToSoldProd(c.getIdPr(), idUser, timeNow, c.getAmount(), idOrder, c.getPrice());
+            ProductService.getInstance().updateInventoryCT_PR(c.getIdPr(), -c.getAmount());
+        }
+        for (String id : listId) {
+            CartService.getInstance().deleteFromCart(id, idUser);
         }
 
-        DB.me().insert(new Log(Log.INFO, idUser, this.src, "Pay sucsess: "+allId+", total:"+request.getParameter("totalCheckout"), 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
-        response.sendRedirect("/BHNFoods/index");
+        if (idUser == null) {
+            DB.me().insert(new Log(Log.INFO, null, this.src, "Pay sucsess: " +allId+", total: "+request.getParameter("totalCheckout"), 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
+        } else DB.me().insert(new Log(Log.INFO, idUser, this.src, "Pay sucsess: "+allId+", total:"+request.getParameter("totalCheckout"), 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
+
+
     }
 
     @Override

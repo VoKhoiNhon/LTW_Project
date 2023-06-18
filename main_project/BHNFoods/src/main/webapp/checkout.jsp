@@ -32,20 +32,20 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Họ và Tên</label>
-                                <input id="fullName" type="text" class="form-control" placeholder="Nhập họ tên đầy đủ" value="<%=user != null? user.getNameUser() : ""%>" required>
+                                <input id="fullName" type="text" class="form-control" placeholder="Nhập họ tên đầy đủ" value="<%=user.getNameUser()%>">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Số điện thoại</label>
-                                <input id="phoneNumber" type="text" class="form-control" placeholder="Nhập số điện thoại" value="<%=user != null? user.getPhone() : "" %>" required>
+                                <input id="phoneNumber" type="text" class="form-control" placeholder="Nhập số điện thoại" value="<%=user.getPhone()%>">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input id="email" type="text" class="form-control" placeholder="Nhập địa chỉ Email" value="<%=user != null? user.getEmail(): ""%>">
+                                <input id="email" type="text" class="form-control" placeholder="Nhập địa chỉ Email" value="<%=user.getEmail()%>">
                             </div>
                         </div>
                         <div class="w-100"></div>
@@ -63,6 +63,7 @@
                             <div class="form-group">
                                 <label>Quận, Huyện</label>
                                 <select id="district" type="text" class="form-control" onchange="addWard()">
+
                                 </select>
                             </div>
                             <div class="form-group">
