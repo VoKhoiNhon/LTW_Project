@@ -1,19 +1,25 @@
 package vn.edu.hcmuaf.fit.controller;
 
-
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import vn.edu.hcmuaf.fit.beans.Product;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
-
+import java.util.Iterator;
+import java.util.List;
 
 import static java.lang.System.out;
 

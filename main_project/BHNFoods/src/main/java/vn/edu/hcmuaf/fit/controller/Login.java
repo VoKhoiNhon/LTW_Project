@@ -38,56 +38,105 @@ public class Login extends HttpServlet {
         String password = request.getParameter("password");
         password = Encryption.toSHA1(password);
         User user = UserService.getInstance().checkLogin(username, password);
-        User existName = UserService.getInstance().checkUser(username);
+//        User existName = UserService.getInstance().checkUser(username);
         HttpSession session = request.getSession();
 
-        if (existName != null) {
-            int lv = LogSercive.getInstance().getLevelForDayLogin(existName.getNameUser());
-            if (!existName.getPassw().equals(password)) {
-                request.setAttribute("error", "Sai mật khẩu");
-                if (lv < 5) {
-                    DB.me().insert(new Log(lv + 1, existName.getIdUser(), this.src, "LOGIN FALSE: " + username, 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
-                }
-                if (lv == 5) {
-                    UserService.getInstance().lockUser(existName.getIdUser());
-                }
-            }
-            if (user != null && (user.getDecentralization() == Powers.ADMIN)) {
-                session.setAttribute("auth", user);
-                DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
-                response.sendRedirect("AdminMain");
 
-            }
-            if (user != null && (user.getDecentralization() == Powers.EMPLOYEE)) {
-                session.setAttribute("auth", user);
-                DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
-                response.sendRedirect("ListOrdersAdmin");
-
-            }
-            if (user != null && user.getDecentralization() == Powers.USER) {
+        if(user != null) {
+            int lv = LogSercive.getInstance().getLevelForDayLogin(username);
+            System.out.println(lv);
+            if (user.getDecentralization() == Powers.BLOCK) {
                 session.setAttribute("auth", user);
                 session.setAttribute("idUser", user.getIdUser());
-                request.setAttribute("idUser", user.getIdUser());
-                DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
-                response.sendRedirect("/BHNFoods/index");
+                request.setAttribute("error", "Tài khoản đã bị khoá");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
-
+            else if(!user.getPassw().equals(password)) {
+                if (lv < 5) {
+                    DB.me().insert(new Log(lv + 1, user.getIdUser(), this.src, "LOGIN FALSE: " + username, 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
+                    request.setAttribute("error", "Sai tài khoản hoặc mật khẩu");
+                } else if (lv == 5) {
+                    request.setAttribute("error", "Nhập sai quá nhiều lần, tài khoản đã bị khoá");
+                    UserService.getInstance().lockUser(user.getIdUser());
+                }
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
+            else {
+                if(user.getDecentralization() == Powers.ADMIN) {
+                    session.setAttribute("auth", user);
+                    DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
+                    response.sendRedirect("AdminMain");
+                } else if(user.getDecentralization() == Powers.EMPLOYEE) {
+                    session.setAttribute("auth", user);
+                    DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
+                    response.sendRedirect("ListOrdersAdmin");
+                } else if(user.getDecentralization() == Powers.USER) {
+                    session.setAttribute("auth", user);
+                    session.setAttribute("idUser", user.getIdUser());
+                    request.setAttribute("idUser", user.getIdUser());
+                    DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
+                    response.sendRedirect("/BHNFoods/index");
+                }
+            }
         }
-        // 2 else này nằm trong if(existName) thì ko login vào admin vs employee đc nhưng thục hiện 2 else dưới
-        // còn nếu nằm ngoài if(existName) thì login đc nhưng thực hiện 2 cái else phía dưới
-        else if (user != null && user.getDecentralization() == Powers.BLOCK) {
-
-            session.setAttribute("auth", user);
-            session.setAttribute("idUser", user.getIdUser());
-            request.setAttribute("error", "Tài khoản đã bị khoá");
-
-            DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        } else {
+        else {
+            System.out.println("aaaaaaaaaaaaaaa");
             request.setAttribute("error", "Sai tài khoản hoặc mật khẩu");
             DB.me().insert(new Log(Log.WARNING, null, this.src, "LOGIN FALSE: " + username, 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
+
+
+
+//        if (existName != null) {
+//            int lv = LogSercive.getInstance().getLevelForDayLogin(existName.getNameUser());
+//            if (!existName.getPassw().equals(password)) {
+//                request.setAttribute("error", "Sai mật khẩu");
+//
+//                if (lv < 5) {
+//                    DB.me().insert(new Log(lv + 1, existName.getIdUser(), this.src, "LOGIN FALSE: " + username, 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
+//                }
+//                if (lv == 5) {
+//                    UserService.getInstance().lockUser(existName.getIdUser());
+//                }
+//            }
+//
+//            if (user != null && (user.getDecentralization() == Powers.ADMIN)) {
+//                session.setAttribute("auth", user);
+//                DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
+//                response.sendRedirect("AdminMain");
+//
+//            }
+//            if (user != null && (user.getDecentralization() == Powers.EMPLOYEE)) {
+//                session.setAttribute("auth", user);
+//                DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
+//                response.sendRedirect("ListOrdersAdmin");
+//
+//            }
+//            if (user != null && user.getDecentralization() == Powers.USER) {
+//                session.setAttribute("auth", user);
+//                session.setAttribute("idUser", user.getIdUser());
+//                request.setAttribute("idUser", user.getIdUser());
+//                DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
+//                response.sendRedirect("/BHNFoods/index");
+//            }
+//
+//
+//            // 2 else này nằm trong if(existName) thì ko login vào admin vs employee đc nhưng thục hiện 2 else dưới
+//            // còn nếu nằm ngoài if(existName) thì login đc nhưng thực hiện 2 cái else phía dưới
+//            if (user != null && user.getDecentralization() == Powers.BLOCK) {
+//
+//
+//
+//                DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
+//                request.getRequestDispatcher("login.jsp").forward(request, response);
+//            }
+//        }
+//        else {
+//            request.setAttribute("error", "Sai tài khoản");
+//            DB.me().insert(new Log(Log.WARNING, null, this.src, "LOGIN FALSE: " + username, 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
+//            request.getRequestDispatcher("login.jsp").forward(request, response);
+//        }
 
 
     }

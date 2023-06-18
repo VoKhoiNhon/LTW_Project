@@ -27,7 +27,7 @@ public class LogSercive {
     public int getLevelForDayLogin(String userid) {
         LocalDate date = LocalDate.now();
         return JDBIConnector.get().withHandle(handle -> {
-            Integer maxLevel = handle.createQuery("SELECT max(level) FROM log WHERE DATE(createAt) = :date AND content ='LOGIN FALSE:':userid")
+            Integer maxLevel = handle.createQuery("SELECT max(level) FROM log WHERE DATE(createAt) = :date AND content ='LOGIN FALSE: "+userid+"'")
                     .bind("date", date)
                     .bind("userid", userid)
                     .mapTo(Integer.class)
@@ -43,8 +43,7 @@ public class LogSercive {
     });
 }
 
-//    public static void main(String[] args) {
-//        System.out.println(LogSercive.getInstance().getAllLog().toString());
-//        System.out.println(123);
-//    }
+    public static void main(String[] args) {
+        System.out.println(LocalDate.now());
+    }
 }
