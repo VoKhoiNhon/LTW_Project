@@ -12,6 +12,7 @@ public class DetailsWH {
     int AMOUNT_PR;
     int WEIGHT_PR;
     String CODE_WH;
+    String ID_MENU;
     public DetailsWH(){
 
     }
@@ -32,7 +33,15 @@ public class DetailsWH {
         this.DATE_IMPORT_SHIPMENT = DATE_IMPORT_SHIPMENT;
     }
 
-    public DetailsWH(String ID_SHIPMENT, String NAME_PR, String NAME_MENU, String ID_PR, Date DATE_IMPORT_SHIPMENT, int PRICE_IMPORT, int AMOUNT_PR, int WEIGHT_PR, String CODE_WH) {
+    public String getID_MENU() {
+        return ID_MENU;
+    }
+
+    public void setID_MENU(String ID_MENU) {
+        this.ID_MENU = ID_MENU;
+    }
+
+    public DetailsWH(String ID_SHIPMENT, String NAME_PR, String NAME_MENU, String ID_PR, Date DATE_IMPORT_SHIPMENT, int PRICE_IMPORT, int AMOUNT_PR, int WEIGHT_PR, String CODE_WH, String ID_MENU) {
         this.ID_SHIPMENT = ID_SHIPMENT;
         this.NAME_PR = NAME_PR;
         this.NAME_MENU = NAME_MENU;
@@ -42,6 +51,7 @@ public class DetailsWH {
         this.AMOUNT_PR = AMOUNT_PR;
         this.WEIGHT_PR = WEIGHT_PR;
         this.CODE_WH = CODE_WH;
+        this.ID_MENU = ID_MENU;
     }
 
     public String getNAME_PR() {
