@@ -33,10 +33,9 @@ public class AddProduct extends HttpServlet {
     InputStream inputStream = null;
 
     private static final String UPLOAD_DIRECTORY = "D:\\hk1nam3\\LTW\\GitHub\\main_project\\BHNFoods\\src\\main\\webapp\\ImageproductNew\\add";
-    private static final String UPLOAD_DIRECTORY_tomcat = "\"D:\\hk1nam3\\LTW\\GitHub\\main_project\\BHNFoods\\target\\BHN\\ImageproductNew\\add\"";
 //    private static final String UPLOAD_DIRECTORY = "/var/lib/tomcat9/webapps/BHNFoods/ImageproductNew/add";
     private static final long serialVersionUID = 1;
-    int index = ProductService.getInstance().getListProduct().size() + 1;
+    int index = ProductService.getInstance().getListProduct().size();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -59,7 +58,7 @@ public class AddProduct extends HttpServlet {
         String origin = request.getParameter("origin");
         int inventory = Integer.parseInt(request.getParameter("inventory"));
         int count = 0;
-        ProductService.getInstance().addProd(index , menu, discount, price, name);
+        ProductService.getInstance().addProd(index + 1, menu, discount, price, name);
 //        ProductService.getInstance().addCT_Prod(index + 1, nsx, hsd, brand, mota, weight, origin, inventory, "wh1");
         for (Part filePart : request.getParts()) {
             out.println(1);
@@ -68,17 +67,15 @@ public class AddProduct extends HttpServlet {
                 String fileName = filePart.getSubmittedFileName();
                 out.println(3);
                 Path filePath = Path.of(UPLOAD_DIRECTORY, fileName);
-                Path filePathtomcat = Path.of(UPLOAD_DIRECTORY_tomcat, fileName);
                 out.println(4);
                 try (InputStream fileContent = filePart.getInputStream()) {
                     Files.copy(fileContent, filePath, StandardCopyOption.REPLACE_EXISTING);
-                    Files.copy(fileContent, filePathtomcat, StandardCopyOption.REPLACE_EXISTING);
                     out.println(5);
                 }
                 String fileUrl = "ImageproductNew/add/" + fileName;
                 out.println(fileUrl);
                 count++;
-                ProductService.getInstance().addImg("prod"+(index ), menu + brand +count,fileUrl,1);
+                ProductService.getInstance().addImg("prod"+index + 1, menu + brand +count,fileUrl,1);
             }
         }
 
