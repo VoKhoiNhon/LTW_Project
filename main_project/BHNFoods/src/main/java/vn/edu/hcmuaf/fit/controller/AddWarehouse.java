@@ -43,7 +43,7 @@ public class AddWarehouse extends HttpServlet {
         //  WarehouseService.getInstance().addDetailWh(index+1, idpr, price, amount, weight);
 //        ProductService.getInstance().updateInventoryCT_PR(idpr,amount);
         //}
-
+        response.sendRedirect("/BHNFoods/Warehouse");
 
     }
 }

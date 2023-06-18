@@ -24,7 +24,7 @@ public class WarehouseService {
     }
     public  List<Warehouse> getListWH(){
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT w.ID_SHIPMENT, w.CODE_WH, w.DATE_IMPORT_SHIPMENT, w.NAME_EMPLOYEE from warehouse w ")
+            return handle.createQuery("SELECT w.ID_SHIPMENT, w.CODE_WH, w.DATE_IMPORT_SHIPMENT, w.NAME_EMPLOYEE from warehouse w  ORDER BY w.DATE_IMPORT_SHIPMENT DESC")
                     .mapToBean(Warehouse.class).collect(Collectors.toList());
 
         });

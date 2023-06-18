@@ -609,7 +609,7 @@
                                     <input id="weight1" name="weight" type="text"
                                            class="elementWeight form-control input_addpr "
                                            placeholder=""
-                                           value="" required>
+                                           value="">
                                 </div>
                             </div>
                             <div class="" style=" margin-top: 2rem">
@@ -621,12 +621,12 @@
                     </div>
                     <div class="col-md-12 d-flex ">
                         <input id="btnAddRow" type="button" value="+">
-
                     </div>
                     <div class="col-md-12 d-flex btn_huy_update" style="justify-content: end;">
                         <input id="jsonItem" name="jsonItem" value="" style="display: none">
                         <input type="button" onclick="huy()" value="Huỷ">
-                        <input onclick="submitForm()" value="Tạo">
+                        <input type="button" onclick="submitForm()" value="Tạo">
+
                     </div>
                 </div>
             </form>
@@ -723,19 +723,41 @@
             url: "/BHNFoods/AddWarehouse",
             type: 'post',
             data: {
-                codewh : $('#idShipment').val(),
-                date : $('#idDateImport').val(),
-                jsonItem : $('#jsonItem').val(),
+                codewh: $('#idShipment').val(),
+                date: $('#idDateImport').val(),
+                jsonItem: $('#jsonItem').val(),
 
             },
             success: function (data) {
-               alert("thanh cong")
+                alert("thanh cong");
             },
             error: function () {
-            }
+            },
+
         });
+        $('.add_warehouse').css("display", "none");
     }
 
+    // danh sach rowWareHouse.length = ? -> có được số lượng item
+    // Tao ra var arr = [];
+    // duyệt for i = 1 i <= số item i++ {
+    //
+    // var item = {
+    //     danhmuc : $('#menu' + i).val(),
+    //     tensanpham : $('#product' + i).val(),
+    //     gianhap : 10,
+    //     soluong : 20,
+    //     trongluong : 200,
+    // }
+    // arr[i - 1] = item
+    // }
+    // var jsonItem = JSON.stringify(arr);
+    // $('#jsonItem').val(jsonItem)
+    // this.submit();
+
+    function testAdd() {
+        $('#boundingRows').append('<h1>Hello</h1>');
+    }
 
 
     function details(id_shipment) {
@@ -817,7 +839,7 @@
             "                                    <label>Trọng lượng</label>\n" +
             "                                    <input id=\"weight" + index + "\" name=\"weight\" type=\"text\" class=\"elementWeight form-control input_addpr \"\n" +
             "                                           placeholder=\"\"\n" +
-            "                                           value=\"\" required>\n" +
+            "                                           value=\"\" >\n" +
             "                                </div>\n" +
             "                            </div>\n" +
             "                            <div class=\"\" style=\" margin-top: 2rem\">\n" +
@@ -826,7 +848,7 @@
             "                                </div>\n" +
             "                            </div>\n" +
             "                        </div>");
-    })
+    });
 
     function selectMenu(id, idElementSelect) {
         var idMenu = $('#' + id).val();
@@ -844,7 +866,6 @@
                 alert("Thêm lô hàng thát bại");
             }
         });
-
     }
 
 </script>
