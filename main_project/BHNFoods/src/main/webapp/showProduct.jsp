@@ -29,6 +29,7 @@
 
     <!-- endinject -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
     <style>
         .image-container {
             display: flex;
@@ -39,6 +40,7 @@
             margin: 10px;
             width: 100px;
             height: 100px;
+            display:inline-table;
         }
 
         .image-item img {
@@ -297,24 +299,23 @@
                         </div>
 
 
-                        <form action="/BHNFoods/AddNewImg" id="imageForm" method="post" enctype="multipart/form-data">
-                            <div style="display: none"
-                                 class="form-group">
+                        <form action="/BHNFoods/AddNewImg?id=<%=p.getIdPr()%>" id="imageForm" method="post" enctype="multipart/form-data">
+                            <div class="contai"></div>
+                            <div class="card">
+                                <div class="drag-area">
+                                                <span class="visible">
+                                                    <span class="select" role="button">Browse</span>
+                                                                                </span>
+                                    <input name="imageFiles" id="imageFiles" type="file" class="imageFiles" multiple/>
+                                    <input name="text" id="textname" type="text" class="form-control input_addpr"
+                                           placeholder=""
+                                           value="" style="display: none">
+                                </div>
 
-                                <input type="text"
-                                       value="<%=p.getIdPr()%>"
-                                       class="form-control input_addpr"
-                                       name="idpr"
-                                       placeholder="<%=p.getIdPr()%>">
 
-                                <input name="brandpr"
-                                       type="text"
-                                       class="form-control  input_addpr"
-                                       value="<%=p.getBrand()%>"
-                                       placeholder="<%=p.getBrand()%>">
+                                <!-- IMAGE PREVIEW CONTAINER -->
+
                             </div>
-                            <input type="file" name="imageInput" id="imageInput" class="imageInput" multiple >
-                            <div class="image-container" id="imageContainer"></div>
                             <input type="submit" value="xác nhận thêm ảnh"/>
                         </form>
 
@@ -550,37 +551,80 @@
             }
         });
     }
-    document.getElementById('imageInput').addEventListener('change', function (event) {
-    var imageInput = event.target;
-    var imageContainer = document.getElementById('imageContainer');
+    let files = [],
+        dragArea = document.querySelector('.drag-area'),
+        input = document.querySelector('.drag-area input'),
+        button = document.querySelector('.card button'),
+        select = document.querySelector('.drag-area .select'),
+        container = document.querySelector('.contai');
 
-    for (var i = 0; i < imageInput.files.length; i++) {
-        var file = imageInput.files[i];
-        var reader = new FileReader();
 
-        reader.onload = function (e) {
-            var img = document.createElement('img');
-            img.src = e.target.result;
+    let text;
+    /** CLICK LISTENER */
+    select.addEventListener('click', () => input.click());
+    /* INPUT CHANGE EVENT */
+    input.addEventListener('change', () => {
+        let file = input.files;
 
-            var closeButton = document.createElement('button');
-            closeButton.innerHTML = 'X';
-            closeButton.addEventListener('click', function () {
-                var imageItem = this.parentNode;
-                imageItem.parentNode.removeChild(imageItem);
-            });
+        // if user select no image
+        if (file.length == 0) return;
 
-            var imageItem = document.createElement('div');
-            imageItem.className = 'image-item';
-            imageItem.appendChild(img);
-            imageItem.appendChild(closeButton);
-            imageContainer.appendChild(imageItem);
+        for (let i = 0; i < file.length; i++) {
+            if (file[i].type.split("/")[0] != 'image') continue;
+            if (!files.some(e => e.name == file[i].name)) files.push(file[i])
+            alert(files[i].name);
+            text += files[i].name;
+
         }
+        document.getElementById('textname').value = text
+        showImages();
+    });
 
-        reader.readAsDataURL(file);
+    /** SHOW IMAGES */
+    function showImages() {
+        container.innerHTML = files.reduce((prev, curr, index) => {
+            return `${prev}
+		    <div class="image">
+			    <span onclick="delImage(${index})">&times;</span>
+			    <img src="${URL.createObjectURL(curr)}" style="max-width: 100px; max-height: 100%;" />
+			</div>`
+        }, '');
+
+
+    }
+    /* DELETE IMAGE */
+    function delImage(index) {
+        files.splice(index, 1);
+        showImages();
     }
 
-    imageInput.value = '';
-});
+    /* DRAG & DROP */
+    dragArea.addEventListener('dragover', e => {
+        e.preventDefault()
+        dragArea.classList.add('dragover')
+    })
+
+    /* DRAG LEAVE */
+    dragArea.addEventListener('dragleave', e => {
+        e.preventDefault()
+        dragArea.classList.remove('dragover')
+    });
+
+    /* DROP EVENT */
+    dragArea.addEventListener('drop', e => {
+        e.preventDefault()
+        dragArea.classList.remove('dragover');
+
+        let file = e.dataTransfer.files;
+        for (let i = 0; i < file.length; i++) {
+            /** Check selected file is image */
+            if (file[i].type.split("/")[0] != 'image') continue;
+
+            if (!files.some(e => e.name == file[i].name)) files.push(file[i])
+
+        }
+        showImages();
+    });
 
 </script>
 
