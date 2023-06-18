@@ -292,6 +292,7 @@
                             </div>
 
                             <%}%>
+                            <div class="image-container" id="imageContainer"></div>
                         </div>
                         <form  action="/BHNFoods/AddNewImg?id=<%=p.getIdPr()%>" id="imageForm" method="post" enctype="multipart/form-data">
                             <div class="card">
@@ -308,8 +309,10 @@
 
                                 <!-- IMAGE PREVIEW CONTAINER -->
 
+
                             </div>
                             <div class="contai"></div>
+
                             <input type="submit" value="xác nhận thêm ảnh"/>
                         </form>
 
