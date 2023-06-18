@@ -1,7 +1,6 @@
 package vn.edu.hcmuaf.fit.service;
 
 import vn.edu.hcmuaf.fit.beans.Contact;
-import vn.edu.hcmuaf.fit.beans.Social;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.beans.User;
 
@@ -111,45 +110,32 @@ public class UserService {
         });
 
     }
-    public void addUserGG(String name, String email, String id) {
+    public void addUserGG(String name, String email, String phone, String id) {
         List<User> users = getListUser();
         String importDate = LocalDateTime.now().getYear() + "-" + LocalDateTime.now().getMonthValue() + "-" + LocalDateTime.now().getDayOfMonth();
         int count = users.size();
         JDBIConnector.get().withHandle(handle -> {
             return handle.createUpdate("INSERT INTO `user` VALUES( 'user" + (count + 1) + "',NULL,NULL,'"
-                    +  name + "',NULL"  + ",'"+email+"',"  + "NULL,'" + importDate + "', NULL,0)").execute();
+                    +  name + "','" + phone + "','" + email + "'," + "NULL,'" + importDate + "', NULL,0)").execute();
         });
         JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("INSERT INTO social VALUES(0, 'user"+(count+1)+"','"+id+"');").execute();
+            return handle.createUpdate("INSERT INTO social VALUES(0, 'user"+(count+1)+"');").execute();
         });
 
     }
-    public void addUserFB(String name, String idaccount) {
+    public void addUserFB(String name, String email, String phone, String id) {
         List<User> users = getListUser();
         String importDate = LocalDateTime.now().getYear() + "-" + LocalDateTime.now().getMonthValue() + "-" + LocalDateTime.now().getDayOfMonth();
         int count = users.size();
         JDBIConnector.get().withHandle(handle -> {
             return handle.createUpdate("INSERT INTO `user` VALUES( 'user" + (count + 1) + "',NULL,NULL,'"
-                    +  name + "',NULL"  + ",NULL,"  + "NULL,'" + importDate + "', NULL,0)").execute();
+                    +  name + "','" + phone + "','" + email + "'," + "NULL,'" + importDate + "', NULL,0)").execute();
         });
         JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("INSERT INTO social VALUES(1, 'user"+(count+1)+"','"+idaccount+"');").execute();
+            return handle.createUpdate("INSERT INTO social VALUES(1, 'user"+(count+1)+"');").execute();
         });
 
     }
-     public boolean checkIdAccount(String id){
-             List<Social> list = JDBIConnector.get().withHandle(handle -> {
-                 return handle.createQuery("SELECT `CONDITION`,ID_USER,ID_ACCOUNT FROM social")
-                         .mapToBean(Social.class).collect(Collectors.toList());
-             });
-             for (Social s : list) {
-                 if (id.equals(s.getID_ACCOUNT())) return true;
-             }
-             return false;
-
-
-     }
-
 
     public void changePass(String email, String phone, String pass) {
         List<User> users = getListUser();
@@ -240,16 +226,6 @@ public class UserService {
                         .orElse(null)
 
 
-        );
-    }
-    public User getUserByIdAccount(String str) {
-        String sql = "SELECT u.NAME_USER,u.ADDRESS, u.BIRTHDAY,u.DATE_SIGNUP,u.Decentralization,u.EMAIL,u.PHONE,u.PASSW, u.SEX,`CONDITION`,social.ID_USER,ID_ACCOUNT from social join `user` u on u.ID_USER= social.ID_USER  where ID_ACCOUNT =  :str";
-        return JDBIConnector.get().withHandle(handle ->
-                handle.createQuery(sql)
-                        .bind("str", str)
-                        .mapToBean(User.class)
-                        .findOne()
-                        .orElse(null)
         );
     }
 
