@@ -56,12 +56,12 @@ public class LoginFacebook extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String code = request.getParameter("code");
-        String accessToken = RestFB.getToken(code);
-        User u = RestFB.getUserInfo(accessToken);
-        UserService.getInstance().addUserFB(u.getName(), u.getId());
-        vn.edu.hcmuaf.fit.beans.User user=UserService.getInstance().getLastUser();
-        System.out.println("User [ name: " + u.getName()+"]");
-        response.sendRedirect("/index?idUser=" + user.getIdUser());
+//        String code = request.getParameter("code");
+//        String accessToken = RestFB.getToken(code);
+//        User u = RestFB.getUserInfo(accessToken);
+//        UserService.getInstance().addUserFB(u.getName(), u.getId());
+//        vn.edu.hcmuaf.fit.beans.User user=UserService.getInstance().getLastUser();
+//        System.out.println("User [ name: " + u.getName()+"]");
+//        response.sendRedirect("/index?idUser=" + user.getIdUser());
     }
 }
