@@ -2,6 +2,7 @@ package vn.edu.hcmuaf.fit.beans;
 
 import vn.edu.hcmuaf.fit.service.ProductService;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class BoxSizeAndWeight {
@@ -76,5 +77,16 @@ public class BoxSizeAndWeight {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    @Override
+    public String toString() {
+        return "BoxSizeAndWeight{" +
+                "listProductId=" + Arrays.toString(listProductId) +
+                ", width=" + width +
+                ", height=" + height +
+                ", length=" + length +
+                ", weight=" + weight +
+                '}';
     }
 }

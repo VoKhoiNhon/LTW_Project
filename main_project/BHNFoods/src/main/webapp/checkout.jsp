@@ -261,7 +261,7 @@
     //
     // })
 
-    function addDistrict() {
+    function    addDistrict() {
         const idProvince = $("#city").val();
         $.ajax({
             url: "/BHNFoods/addDistrict",

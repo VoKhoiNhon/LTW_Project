@@ -49,10 +49,13 @@ public class Pay extends HttpServlet {
         String timePickup = "";
         String[] listId = allId.trim().replace("box", "").split(" ");
         BoxSizeAndWeight boxSizeAndWeight = new BoxSizeAndWeight(listId);
+        System.out.println(boxSizeAndWeight);
+        System.out.println(boxSizeAndWeight.getWeight()*100);
         double totalWeight = 0; // kg
 
         try {
-            String leadTime = Logistics.getLeadTime(idDistrict, idWard, boxSizeAndWeight.getHeight(), boxSizeAndWeight.getLength(), boxSizeAndWeight.getWidth(), (int) boxSizeAndWeight.getWeight());
+            String leadTime = Logistics.getLeadTime(idDistrict, idWard, boxSizeAndWeight.getHeight(), boxSizeAndWeight.getLength(), boxSizeAndWeight.getWidth(), (int) (boxSizeAndWeight.getWeight()*1000));
+            System.out.println(leadTime);
             timePickup = leadTime.substring(0, leadTime.indexOf("T"));
         } catch (Exception e) {
             throw new RuntimeException(e);

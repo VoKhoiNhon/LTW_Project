@@ -29,10 +29,10 @@ public class UserService {
     }
 
     public User checkLogin(String username, String password) {
-        User user = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT ID_USER,ADDRESS,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,SEX,Decentralization FROM user WHERE EMAIL = :username or PHONE= :username")
-                        .bind("username", username).mapToBean(User.class).one()
-        );
+        String sql = "SELECT ID_USER,ADDRESS,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,SEX,Decentralization FROM user WHERE EMAIL = :username or PHONE= :username";
+        User user = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(sql).bind("username",username).mapToBean(User.class).findOne().orElse(null);
+        });
         return user;
     }
     public User checkUser(String username) {

@@ -283,7 +283,7 @@ public class ProductService {
     public int sumCart(List<Cart> l) {
         int result = 0;
         for (Cart c : l) {
-            result += c.getPrice() * c.getAmount();
+            result += (c.getPrice() - (c.getPrice()*c.getDiscount())/100) * c.getAmount();
         }
         return result;
     }

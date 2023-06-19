@@ -65,21 +65,21 @@
                                 </h5>
                             </td>
                             <td class="shoping__cart__price">
-                                <%=decF.format(p.getPrice()).replace(',', '.')%>đ
+                                <%=decF.format(p.getPrice() - (p.getPrice()*p.getDiscount())/100).replace(',', '.')%>đ
                             </td>
                             <td class="shoping__cart__quantity">
                                 <div class="quantity">
                                     <div class="pro-qty">
-                                        <span onclick="changeAmount(this,'<%=p.getPrice()%>', '<%=p.getIdPr()%>', document.getElementById('totalCart'))"
+                                        <span onclick="changeAmount(this,'<%=p.getPrice() - (p.getPrice()*p.getDiscount())/100%>', '<%=p.getIdPr()%>', document.getElementById('totalCart'))"
                                               class="dec qtybtn">-</span>
                                         <input id="amount<%=p.getIdPr()%>" type="text" value="<%=p.getAmount()%>">
-                                        <span onclick="changeAmount(this,'<%=p.getPrice()%>', '<%=p.getIdPr()%>', document.getElementById('totalCart'))"
+                                        <span onclick="changeAmount(this,'<%=p.getPrice() - (p.getPrice()*p.getDiscount())/100%>', '<%=p.getIdPr()%>', document.getElementById('totalCart'))"
                                               class="inc qtybtn">+</span>
                                     </div>
                                 </div>
                             </td>
                             <td id="total<%=p.getIdPr()%>" class="shoping__cart__total">
-                                <%= decF.format(p.getAmount() * p.getPrice()).replace(',', '.')%> đ
+                                <%= decF.format(p.getAmount() * (p.getPrice() - (p.getPrice()*p.getDiscount())/100)).replace(',', '.')%> đ
                             </td>
                             <td style="padding: 30px">
                                 <input name="checkboxInput" id="box<%=p.getIdPr()%>"
