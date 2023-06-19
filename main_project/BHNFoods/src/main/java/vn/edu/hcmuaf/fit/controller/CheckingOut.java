@@ -23,16 +23,12 @@ public class CheckingOut extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("auth");
-            String idUser = user.getIdUser();
         int sum = Integer.parseInt(request.getParameter("sumCheckout"));
         int discount = Integer.parseInt(request.getParameter("discountCheckout"));
         int total = Integer.parseInt(request.getParameter("totalCheckout"));
         Map<String, Integer> map;
         try {
             map = Logistics.getProvince();
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -44,8 +40,6 @@ public class CheckingOut extends HttpServlet {
         request.setAttribute("totalCheckout", total);
         request.setAttribute("allIdProdChecked", allIdProdChecked);
         request.setAttribute("mapProvince", map);
-
-
         request.getRequestDispatcher("checkout.jsp").forward(request,response);
     }
 }
