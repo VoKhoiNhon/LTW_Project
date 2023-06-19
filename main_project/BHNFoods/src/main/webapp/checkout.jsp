@@ -32,20 +32,20 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Họ và Tên</label>
-                                <input id="fullName" type="text" class="form-control" placeholder="Nhập họ tên đầy đủ" value="<%=user.getNameUser()%>">
+                                <input id="fullName" type="text" class="form-control" placeholder="Nhập họ tên đầy đủ" value="<%=user != null? user.getNameUser() : ""%>" required>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Số điện thoại</label>
-                                <input id="phoneNumber" type="text" class="form-control" placeholder="Nhập số điện thoại" value="<%=user.getPhone()%>">
+                                <input id="phoneNumber" type="text" class="form-control" placeholder="Nhập số điện thoại" value="<%=user != null? user.getPhone() : "" %>" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input id="email" type="text" class="form-control" placeholder="Nhập địa chỉ Email" value="<%=user.getEmail()%>">
+                                <input id="email" type="text" class="form-control" placeholder="Nhập địa chỉ Email" value="<%=user != null? user.getEmail(): ""%>">
                             </div>
                         </div>
                         <div class="w-100"></div>
@@ -56,7 +56,7 @@
                                 <select id="city" type="text" class="form-control" onchange="addDistrict()">
                                     <%
                                         for (String key : mapProvince.keySet()) {%>
-                                        <option value="<%=mapProvince.get(key)%>"><%=key%></option>
+                                    <option value="<%=mapProvince.get(key)%>"><%=key%></option>
                                     <%}%>
                                 </select>
                             </div>
@@ -167,66 +167,66 @@
 <!-- Js Plugins -->
 <script>
     function pay() {
-    if($('#fullName').val() == "" || $('#phoneNumber').val() == "" || $('#address').val() == "" || $('#city').val() == "" || $('#district').val() == "" || $('#ward').val() == "") {
-        alert('Hãy nhập đầy đủ các thông tin');
-    }
-    else {
-        // Lấy phần tử select bằng id
-        var selectStringCity = document.getElementById("city");
-        var selectStringDistrict = document.getElementById("district");
-        var selectStringWard = document.getElementById("ward");
+        if($('#fullName').val() == "" || $('#phoneNumber').val() == "" || $('#address').val() == "" || $('#city').val() == "" || $('#district').val() == "" || $('#ward').val() == "") {
+            alert('Hãy nhập đầy đủ các thông tin');
+        }
+        else {
+            // Lấy phần tử select bằng id
+            var selectStringCity = document.getElementById("city");
+            var selectStringDistrict = document.getElementById("district");
+            var selectStringWard = document.getElementById("ward");
 
-    // Lấy chỉ mục của phần tử được chọn
-        var selectedIndexCity = selectStringCity.selectedIndex;
-        var selectedIndexDistrict = selectStringDistrict.selectedIndex;
-        var selectedIndexWard = selectStringWard.selectedIndex;
+            // Lấy chỉ mục của phần tử được chọn
+            var selectedIndexCity = selectStringCity.selectedIndex;
+            var selectedIndexDistrict = selectStringDistrict.selectedIndex;
+            var selectedIndexWard = selectStringWard.selectedIndex;
 
-    // Lấy đối tượng HTMLOptionElement tương ứng với chỉ mục
-        var selectedOptionCity = selectStringCity.options[selectedIndexCity];
-        var selectedOptionDistrict = selectStringDistrict.options[selectedIndexDistrict];
-        var selectedOptionWard = selectStringWard.options[selectedIndexWard];
+            // Lấy đối tượng HTMLOptionElement tương ứng với chỉ mục
+            var selectedOptionCity = selectStringCity.options[selectedIndexCity];
+            var selectedOptionDistrict = selectStringDistrict.options[selectedIndexDistrict];
+            var selectedOptionWard = selectStringWard.options[selectedIndexWard];
 
-    // Lấy nội dung văn bản của phần tử HTMLOptionElement
-        var selectedTextCity = selectedOptionCity.textContent;
-        var selectedTextDistrict = selectedOptionDistrict.textContent;
-        var selectedTextWard = selectedOptionWard.textContent;
-
-
-        $.ajax({
-            url: "/BHNFoods/pay",
-            type: 'get',
-            data: {
-                fullName: $('#fullName').val(),
-                phoneNumber: $('#phoneNumber').val(),
-                email : $('#email').val(),
-                address : $('#address').val(),
-                idCity : $('#city').val(),
-                idDistrict : $('#district').val(),
-                idWard : $('#ward').val(),
-                city : selectedTextCity,
-                district : selectedTextDistrict,
-                ward : selectedTextWard,
-                note: $('#note').val(),
-                day : $('#day').val(),
-                time : $('#time').val(),
-                payment : $('input[type="radio"][name="optradio"]:checked').val(),
-                sumCheckout : $('#sumCheckout').val(),
-                discountCheckout : $('#discountCheckout').val(),
-                shipCheckout : $('#shipCheckout').val(),
-                totalCheckout : $('#totalCheckout').val(),
-                listId : $('#allId').val(),
-                maGiamGia : $('#maGiamGia').val(),
-            },
-            success: function (data) {
-                let timerId= setInterval(setBody(), 1000);
-                setTimeout(() => { clearInterval(timerId); Redirect(); }, 5000);
-            },
-            error: function () {
-            }
-        });
+            // Lấy nội dung văn bản của phần tử HTMLOptionElement
+            var selectedTextCity = selectedOptionCity.textContent;
+            var selectedTextDistrict = selectedOptionDistrict.textContent;
+            var selectedTextWard = selectedOptionWard.textContent;
 
 
-    }
+            $.ajax({
+                url: "/BHNFoods/pay",
+                type: 'get',
+                data: {
+                    fullName: $('#fullName').val(),
+                    phoneNumber: $('#phoneNumber').val(),
+                    email : $('#email').val(),
+                    address : $('#address').val(),
+                    idCity : $('#city').val(),
+                    idDistrict : $('#district').val(),
+                    idWard : $('#ward').val(),
+                    city : selectedTextCity,
+                    district : selectedTextDistrict,
+                    ward : selectedTextWard,
+                    note: $('#note').val(),
+                    day : $('#day').val(),
+                    time : $('#time').val(),
+                    payment : $('input[type="radio"][name="optradio"]:checked').val(),
+                    sumCheckout : $('#sumCheckout').val(),
+                    discountCheckout : $('#discountCheckout').val(),
+                    shipCheckout : $('#shipCheckout').val(),
+                    totalCheckout : $('#totalCheckout').val(),
+                    listId : $('#allId').val(),
+                    maGiamGia : $('#maGiamGia').val(),
+                },
+                success: function (data) {
+                    let timerId= setInterval(setBody(), 1000);
+                    setTimeout(() => { clearInterval(timerId); Redirect(); }, 5000);
+                },
+                error: function () {
+                }
+            });
+
+
+        }
     }
     function setBody() {
         var body = document.getElementById('body')
