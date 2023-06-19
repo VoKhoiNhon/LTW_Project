@@ -107,7 +107,7 @@
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <a href="/BHNFoods/oneProduct?id=<%=p.getIdPr()%>"><%=p.getNamePr()%>
+                        <a href="/oneProduct?id=<%=p.getIdPr()%>"><%=p.getNamePr()%>
                             <br> <span><%=decF.format(price).replace(',', '.')%>đ</span></a>
                     </div>
                 </div>
@@ -137,7 +137,7 @@
             condition = 1;
         }
         $.ajax({
-            url: "/BHNFoods/addToLoveProd",
+            url: "/addToLoveProd",
             type: 'get',
             data: {
                 id: id,
@@ -151,7 +151,7 @@
         $('button#' + idTag).addClass('background-button');
         $('button#' + idTag).css('color', 'white');
         $.ajax({
-            url: "/BHNFoods/addToCart",
+            url: "/addToCart",
             type: 'get',
             data: {
                 id: id,
@@ -168,7 +168,7 @@
 
     $('#sort-tableID').change(function () {
         $.ajax({
-            url: "/BHNFoods/SortSearchPR",
+            url: "/SortSearchPR",
             type: "get",
             data: {
                 key : $('#findicon').val(),

@@ -55,7 +55,7 @@
               <p class="card-description login">
                 Đăng ký
               </p>
-              <form class="forms-sample" action="/BHNFoods/SignUp" method="post">
+              <form class="forms-sample" action="/SignUp" method="post">
                 <% if( errorAcc!=null){ %>
                 <label for="exampleInputName1" style="color: #CC3636"><%=errorAcc%></label>
                 <%}%>

@@ -145,11 +145,6 @@
 <!-- partial:partials/_navbar.html -->
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-        <%--      <div class="me-3">--%>
-        <%--        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">--%>
-        <%--          <span class="icon-menu"></span>--%>
-        <%--        </button>--%>
-        <%--      </div>--%>
         <div>
             <a class="navbar-brand brand-logo" href="index.html">
                 BHNFoods
@@ -166,20 +161,20 @@
                      aria-labelledby="messageDropdown">
 
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item" href="/BHNFoods/AdminManageUser">
+                    <a class="dropdown-item preview-item" href="/AdminManageUser">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Người dùng </p>
                             <p class="fw-light small-text mb-0">Trang chi tiết người dùng</p>
                         </div>
                     </a>
-                    <a class="dropdown-item preview-item" href="/BHNFoods/AdminMain">
+                    <a class="dropdown-item preview-item" href="/AdminMain">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Admin</p>
                             <p class="fw-light small-text mb-0">Trang chi tiết Admin</p>
                         </div>
                     </a>
                     <a class="dropdown-item preview-item"
-                       href="/BHNFoods/AdminManagePr?kind=0&page=1">
+                       href="/AdminManagePr?kind=0&page=1">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Sản Phẩm </p>
                             <p class="fw-light small-text mb-0">Trang chi tiết quản lý sản phẩm</p>
@@ -202,7 +197,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <form class="search-form" action="/BHNFoods/SearchUser" method="post">
+                <form class="search-form" action="/SearchUser" method="post">
                     <i class="icon-search"></i>
                     <input type="search" class="form-control" name="searchUser" placeholder="Search Here"
                            title="Search here">
@@ -255,9 +250,9 @@
             <%--                    </a>--%>
             <%--                </div>--%>
             <%--            </li>--%>
-            <%--            &lt;%&ndash;%>
-            <%--                User user = (User) session.getAttribute("auth");--%>
-            <%--                if (user != null) {%>--%>
+            <%--            &lt;%&ndash;%>--%>
+            <%  User user = (User) session.getAttribute("auth");
+                           if (user != null) {%>
             <%--            <li class="nav-item dropdown d-none d-lg-block user-dropdown">--%>
             <%--                <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">--%>
             <%--                    <img class="img-xs rounded-circle" src="ImageproductNew/background/images.png" alt="Profile image">--%>
@@ -272,7 +267,7 @@
             <%--                    </div>--%>
             <%--                </div>--%>
             <%--            </li>--%>
-            <%--            <%}%>--%>
+                      <%}%>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
                 data-bs-toggle="offcanvas">
@@ -284,32 +279,32 @@
 <div class="container-fluid page-body-wrapper">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="nav-item">
-            <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
-                <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+            <a href="/ListOrdersAdmin" class="nav-item-link">
+                <i style="margin-right: 5px;" class="fa-solid fa-bars-progress"></i>
                 <span>Quản lý đơn hàng</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/HistoryOrdersAdmin" class="nav-item-link">
-                <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+            <a href="/HistoryOrdersAdmin" class="nav-item-link">
+                <i style="margin-right: 5px;"  class="fa-solid fa-clock-rotate-left"></i>
                 <span>Lịch sử đơn hàng</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
+            <a href="/AdminManagePr?kind=0&page=1" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Quản lý sản phẩm</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="" class="nav-item-link">
+            <a href="/Warehouse" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
                 <span>Nhập kho</span>
             </a>
         </div>
 
         <div class="nav-item">
-            <a href="/BHNFoods/Login" class="nav-item-link">
+            <a href="/logOut" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span>Đăng xuất</span>
             </a>
@@ -320,7 +315,7 @@
         <div class="content-wrapper">
             <div class="row">
                 <div class="col-sm-12">
-                    <form action="/BHNFoods/UpdateConditionOrders" method="post" class="shoping-cart spad">
+                    <form action="/UpdateConditionOrders" method="post" class="shoping-cart spad">
                         <div class="container">
                             <%
                                 Map<String, List<Orders>> mapOrder = (Map<String, List<Orders>>) request.getAttribute("mapAdminOrder");

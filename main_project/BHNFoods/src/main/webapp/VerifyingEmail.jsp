@@ -37,7 +37,7 @@
         <a style="text-decoration: none; color: black; padding: 8px; background: #f4ffe3" href="login.jsp">OK</a>
 </div>
 <%} else {%>
-<form action="/BHNFoods/verifyingEmail" method="post" id="changePassForm">
+<form action="/verifyingEmail" method="post" id="changePassForm">
     <h2>Cảm ơn bạn đã xác thực</h2>
     <input id="newPassword" type="password" placeholder="Nhập mật khẩu mới">
     <input id="confirmNewPassword" name="pass" type="password" placeholder="Xác nhận lại mật khẩu mới">

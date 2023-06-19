@@ -94,7 +94,7 @@
         %>
         <div class="row block-9">
             <div class="col-md-6 order-md-last d-flex">
-                <form action="/BHNFoods/ContactInUser" method="post" class="bg-white p-5 contact-form">
+                <form action="/ContactInUser" method="post" class="bg-white p-5 contact-form">
                     <h3 style="color: #82ae46">Gửi phản hồi cho chúng tôi</h3>
                     <div class="form-group" style="display: none">
                         <input name="iduser" type="text" class="form-control" placeholder="Họ và tên"
@@ -104,10 +104,10 @@
                         <input name="nameuser" type="text" class="form-control" placeholder="Họ và tên" value="<%=u.getNameUser()%>">
                     </div>
                     <div class="form-group">
-                        <input name="email" type="text" class="form-control" placeholder="Email" value="<%=u.getEmail()%>">
+                        <input name="email" type="text" class="form-control" placeholder="Email" value="<%=u.printCtAccount(u.getEmail())%>">
                     </div>
                     <div class="form-group">
-                        <input name="phone" type="text" class="form-control" placeholder="Số điện thoại" value="<%=u.getPhone()%>">
+                        <input name="phone" type="text" class="form-control" placeholder="Số điện thoại" value="<%=u.printCtAccount(u.getPhone())%>">
                     </div>
                     <div class="form-group">
                         <textarea name="content" id="" cols="30" rows="7" class="form-control"

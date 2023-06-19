@@ -30,6 +30,6 @@ public class UpdateProduct extends HttpServlet {
         int condition= Integer.parseInt(request.getParameter("condition"));
         ProductService.getInstance().updateProduct( id, menu, discount,  price,  name);
         ProductService.getInstance().updateCt_pr(id, nsx, hsd,  brand,  mota,  weight,  origin,  inventory,  condition);
-        response.sendRedirect("/BHNFoods/AdminManagePr?kind=0&page=1");
+        response.sendRedirect("/AdminManagePr?kind=0&page=1");
     }
 }

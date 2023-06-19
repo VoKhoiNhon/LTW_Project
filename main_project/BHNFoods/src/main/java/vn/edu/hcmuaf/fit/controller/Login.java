@@ -69,7 +69,7 @@ public class Login extends HttpServlet {
                 session.setAttribute("idUser", user.getIdUser());
                 request.setAttribute("idUser", user.getIdUser());
                 DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
-                response.sendRedirect("/BHNFoods/index");
+                response.sendRedirect("/index");
             }
 
         }

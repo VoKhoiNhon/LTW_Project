@@ -349,7 +349,7 @@
         $('#cart_session').remove();
         $('.over_play').remove();
         $.ajax({
-            url: "/BHNFoods/removeCartFromSession",
+            url: "/removeCartFromSession",
             type: 'get',
             error: function () {
             }
@@ -361,7 +361,7 @@
             if(listProductFromCartInSession.size() > 0) {%>
             <%for (int i = 0; i < listProductFromCartInSession.keySet().toArray().length; i++) {%>
                  $.ajax({
-                    url: "/BHNFoods/addToCart",
+                    url: "/addToCart",
                     type: 'get',
                     data: {
                     id: '<%=listProductFromCartInSession.keySet().toArray()[i]%>',
@@ -372,7 +372,7 @@
                     content.innerHTML = data;
                     <%if(i == listProductFromCartInSession.keySet().toArray().length - 1) {%>
                     $.ajax({
-                        url: "/BHNFoods/removeCartFromSession",
+                        url: "/removeCartFromSession",
                         type: 'get',
                         error: function () {
                         }
@@ -431,7 +431,7 @@
         $('#love_session').remove();
         $('.over_play').remove();
         $.ajax({
-            url: "/BHNFoods/removeLoveFromSession",
+            url: "/removeLoveFromSession",
             type: 'get',
             error: function () {
             }
@@ -443,7 +443,7 @@
             if(loveProductInSession.size() > 0) {%>
         <%for (int i = 0; i < loveProductInSession.size(); i++) {%>
         $.ajax({
-            url: "/BHNFoods/addToLoveProd",
+            url: "/addToLoveProd",
             type: 'get',
             data: {
                 id: '<%=loveProductInSession.get(i)%>',
@@ -451,7 +451,7 @@
             success: function (data) {
                 <%if(i == loveProductInSession.size() - 1) {%>
                 $.ajax({
-                    url: "/BHNFoods/removeLoveFromSession",
+                    url: "/removeLoveFromSession",
                     type: 'get',
                     error: function () {
                     }

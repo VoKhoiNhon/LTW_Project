@@ -21,7 +21,7 @@ public class AppearEditUser extends HttpServlet {
         out.println("<div class=\"edit_formUser\">\n" +
                 "        <div class=\"container\" style=\"background:none;\">\n" +
                 "            <div class=\"col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center\">\n" +
-                "                <form action=\"/BHNFoods/UpdateUser\"  method=\"post\" class=\"billing-form\" style=\"margin-top: 5%;\">\n" +
+                "                <form action=\" /UpdateUser\"  method=\"post\" class=\"billing-form\" style=\"margin-top: 5%;\">\n" +
                 "                    <h3 class=\"mb-4 billing-heading\">Chi tiết</h3>\n" +
                 "                    <div class=\"row align-items-end\" style=\"font-size: 16px;\">\n" +
                 "                        <div class=\"d-flex flex-grow-1 row_input \">\n" +
