@@ -81,7 +81,7 @@
                                     <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=https://app-bhnfoods-230618175454.azurewebsites.net//LoginGG&response_type=code
 		&client_id=209315281506-9itod9oiojmbqe56ri7567e6nqi2e181.apps.googleusercontent.com&approval_prompt=force">Login
                                         Google</a>
-                                    <a href="https://www.facebook.com/dialog/oauth?client_id=761456919098163&redirect_uri=https://app-bhnfoods-230618175454.azurewebsites.net/LoginFacebook&scope="
+                                    <a href="https://www.facebook.com/dialog/oauth?client_id=761456919098163&redirect_uri=https://app-bhnfoods-230618175454.azurewebsites.net//LoginFacebook&scope="
                                        +<%=StringUtils.join(permissions)%>>Login Facebook</a>
                                     <%--                                    <a href="https://www.facebook.com/vX.X/dialog/oauth?client_id=761456919098163&redirect_uri=http://localhost:8080/LoginFacebook&scope="></a>--%>
                                 </div>

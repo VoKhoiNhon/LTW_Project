@@ -56,6 +56,7 @@ public class LoginFacebook extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+//        doGet(request, response);
 //        String code = request.getParameter("code");
 //        String accessToken = RestFB.getToken(code);
 //        User u = RestFB.getUserInfo(accessToken);
