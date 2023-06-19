@@ -1,17 +1,14 @@
 package vn.edu.hcmuaf.fit.beans;
 
-
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
-import com.restfb.Parameter;
 import com.restfb.Version;
-import com.restfb.util.StringUtils;
+import com.restfb.json.JsonObject;
 import org.apache.http.client.ClientProtocolException;
+
 import org.apache.http.client.fluent.Request;
 
-import com.restfb.types.User;
 import java.io.IOException;
 
 public class RestFB {
@@ -26,7 +23,6 @@ public class RestFB {
 
     public static User getUserInfo(String accessToken) {
         FacebookClient facebookClient = new DefaultFacebookClient(accessToken, ConstantsFB.FACEBOOK_APP_SECRET, Version.LATEST);
-        return facebookClient.fetchObject("me", User.class, Parameter.with("fields","name, email,friends"));
+        return facebookClient.fetchObject("me", User.class);
     }
-
 }

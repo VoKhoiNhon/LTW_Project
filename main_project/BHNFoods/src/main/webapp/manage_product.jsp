@@ -47,6 +47,7 @@
             width: 200px;
             height: 200px;
         }
+
         .card-body a .btn_add_delete {
             width: 60px;
             height: 30px;
@@ -394,8 +395,24 @@
             <%--                </div>--%>
             <%--            </li>--%>
 
-
-
+            <%
+                User user = (User) session.getAttribute("auth");
+                if (user != null) {%>
+            <%--            <li class="nav-item dropdown d-none d-lg-block user-dropdown">--%>
+            <%--                <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">--%>
+            <%--                    <img class="img-xs rounded-circle" src="ImageproductNew/background/images.png"--%>
+            <%--                         alt="Profile image"> </a>--%>
+            <%--                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">--%>
+            <%--                    <div class="dropdown-header text-center">--%>
+            <%--                        &lt;%&ndash;              <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">&ndash;%&gt;--%>
+            <%--                        <p class="mb-1 mt-3 font-weight-semibold"><%=user.getNameUser()%>--%>
+            <%--                        </p>--%>
+            <%--                        <p class="fw-light text-muted mb-0"><%=user.getEmail()%>--%>
+            <%--                        </p>--%>
+            <%--                    </div>--%>
+            <%--                </div>--%>
+            <%--            </li>--%>
+            <%}%>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
                 data-bs-toggle="offcanvas">
@@ -406,7 +423,6 @@
 <!-- partial -->
 <div class="container-fluid page-body-wrapper">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <%User user = (User) session.getAttribute("auth");%>
         <%--        nếu là admin thì hiển thị trang chủ, log, qly người dùng , logout--%>
         <%if (user.getDecentralization() == Powers.ADMIN) {%>
         <div class="nav-item">
@@ -553,7 +569,6 @@
                                                                                 <p><%=p.getIdPr()%>
                                                                                 </p>
                                                                             </div>
-                                                                        </div>
                                                                         </a>
                                                                     </td>
                                                                     <td>
@@ -586,11 +601,8 @@
                                                                     </td>
                                                                     <td>
                                                                         <div class="btn_edit">
-                                                                            <button onclick="clickEdit('<%=p.getIdPr()%>','<%=p.getIdMenu()%>',  '<%=p.getDiscount()%>',  '<%=p.getPrice()%>',  '<%=p.getNamePr()%>', '<%=p.getNsx()%>', '<%=p.getHsd()%>',  '<%=p.getBrand()%>',  '<%=p.getDescribe()%>',  '<%=p.getWeight()%>',  '<%=p.getOrigin()%>',  '<%=p.getInventory()%>',  '<%=p.getConditionPr()%>')">
-                                                                                <h4 class="card-title card-title-dash">
-                                                                                    Sửa <i
-                                                                                        class="fa-regular fa-pen-to-square"></i>
-                                                                                </h4></button>
+                                                                            <a href="/BHNFoods/ShowProductToUpdate?id=<%=p.getIdPr()%>">Sửa<i
+                                                                                    class="fa-regular fa-pen-to-square"></i></a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -637,7 +649,6 @@
         <!-- content-wrapper ends -->
     </div>
 </div>
-<%--add product--%>
 <div class="edit_formUser edit_formAdd">
 
         <div class="edit_formUser edit_formAdd">
@@ -655,153 +666,152 @@
                                            value="">
                                 </div>
                             </div>
-                            <div class=" d-flex flex-grow-1 row_input">
-                                <div class="col-md-6 col_addprod">
-                                    <div class="form-group">
-                                        <label>Hình ảnh</label>
+                        </div>
+                        <div class=" d-flex flex-grow-1 row_input">
+                            <div class="col-md-6 col_addprod">
+                                <div class="form-group">
+                                    <label>Hình ảnh</label>
 
-                                        <div class="card">
-                                            <div class="drag-area">
+                                    <div class="card">
+                                        <div class="drag-area">
                                                 <span class="visible">
                                                     <span class="select" role="button">Browse</span>
                                                                                 </span>
-                                                <input name="imageFiles" id="imageFiles" type="file" class="imageFiles" multiple/>
-                                                <input name="text" id="textname" type="text" class="form-control input_addpr"
-                                                       placeholder=""
-                                                       value="" style="display: none">
-                                            </div>
-
-
-                                            <!-- IMAGE PREVIEW CONTAINER -->
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 col_addprod">
-                                    <div class="form-group">
-                                        <label>Danh mục</label>
-                                        <select type="text" class="form-control input_addpr" name="menu"> required
-                                            <option value="m1">Gạo</option>
-                                            <option value="m2">Nếp</option>
-                                            <option value="m3">Các loại hạt</option>
-                                            <option value="m4">Các loại bột</option>
-                                            <option value="m5">Các loại củ, trái</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="d-flex flex-grow-1 row_input ">
-                                <div class="col-md-6 col_addprod">
-                                    <div class="form-group">
-                                        <label>Giá</label>
-                                        <input name="price" type="text" class="form-control input_addpr" placeholder=""
-                                               value="">
-                                    </div>
-                                </div>
-                                <div class=" col-md-6 col_addprod">
-                                    <div class="form-group">
-                                        <label>Khuyến mãi(%)</label>
-                                        <input type="text" class="form-control input_addpr" name="discount" placeholder=""
-
-                                               value="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class=" d-flex flex-grow-1 row_input">
-                                <div class="col-md-6 col_addprod">
-                                    <div class="form-group">
-                                        <label>Xuất xứ</label>
-                                        <input name="origin" type="text" class="form-control input_addpr" placeholder=""
-
-                                               value="">
-                                    </div>
-                                </div>
-                                <div class=" col-md-6 col_addprod">
-                                    <div class="form-group">
-                                        <label>Thương hiệu</label>
-                                        <input name="brand" type="text" class="form-control input_addpr" placeholder=""
-                                               value="">
-                                    </div>
-                                </div>
-                                <div class=" col-md-6 col_addprod">
-                                    <div class="form-group">
-                                        <label>Trọng lượng</label>
-                                        <input name="weight" type="text" class="form-control input_addpr"
-                                               placeholder=""
-                                               value="">
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-
-                            <div class=" d-flex flex-grow-1 row_input">
-                                <div class="col-md-6 col_addprod">
-                                    <div class="form-group">
-                                        <label>Ngày sản xuất</label>
-                                        <div class="select-wrap">
-                                            <input type="date" name="nsx" id="dateImput"
+                                            <input name="imageFiles" id="imageFiles" type="file" class="imageFiles"
+                                                   multiple/>
+                                            <input name="text" id="textname" type="text"
                                                    class="form-control input_addpr"
-                                                   placeholder="Ngày/Tháng/Năm"
-                                                   value="">
+                                                   placeholder=""
+                                                   value="" style="display: none">
                                         </div>
+
+                                        <!-- IMAGE PREVIEW CONTAINER -->
+
                                     </div>
 
-                                </div>
-                                <div class=" col-md-6 col_addprod">
-                                    <div class="form-group">
-                                        <label>Ngày hết hạn</label>
-                                        <div class="select-wrap">
-                                            <input type="date" name="hsd" id="dateOutOf"
-                                                   class="form-control input_addpr"
-                                                   placeholder="Ngày/Tháng/Năm"
-                                                   value="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class=" col-md-6 col_addprod">
-                                    <div class="form-group">
-                                        <label>Số lượng nhập</label>
-                                        <input type="number" name="inventory"
-                                               class="form-control input_addpr"
-                                               placeholder=""
-                                               value="">
-                                    </div>
                                 </div>
                             </div>
 
-                            <div class=" col-md-12">
+                            <div class="col-md-6 col_addprod">
                                 <div class="form-group">
-                                    <label>Mô tả</label>
-                                    <textarea name="mota" type="text"
-                                              class="form-control"
-                                              placeholder="Mô tả sản phẩm"
-
-                                              value=""> </textarea>
+                                    <label>Danh mục</label>
+                                    <select type="text" class="form-control input_addpr" name="menu"> required
+                                        <option value="m1">Gạo</option>
+                                        <option value="m2">Nếp</option>
+                                        <option value="m3">Các loại hạt</option>
+                                        <option value="m4">Các loại bột</option>
+                                        <option value="m5">Các loại củ, trái</option>
+                                    </select>
                                 </div>
-                            </div>
-
-                            <div class="col-md-12 d-flex btn_huy_update" style="justify-content: end;">
-                                <input type="button" onclick="huy()" value="Hủy">
-                                <input type="submit" value=" Thêm sản phẩm">
                             </div>
                         </div>
-                    </form>
-                </div>
+                        <div class="d-flex flex-grow-1 row_input ">
+                            <div class="col-md-6 col_addprod">
+                                <div class="form-group">
+                                    <label>Giá</label>
+                                    <input name="price" type="text" class="form-control input_addpr" placeholder=""
+                                           value="">
+                                </div>
+                            </div>
+                            <div class=" col-md-6 col_addprod">
+                                <div class="form-group">
+                                    <label>Khuyến mãi(%)</label>
+                                    <input type="text" class="form-control input_addpr" name="discount" placeholder=""
+
+                                           value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" d-flex flex-grow-1 row_input">
+                            <div class="col-md-6 col_addprod">
+                                <div class="form-group">
+                                    <label>Xuất xứ</label>
+                                    <input name="origin" type="text" class="form-control input_addpr" placeholder=""
+
+                                           value="">
+                                </div>
+                            </div>
+                            <div class=" col-md-6 col_addprod">
+                                <div class="form-group">
+                                    <label>Thương hiệu</label>
+                                    <input name="brand" type="text" class="form-control input_addpr" placeholder=""
+                                           value="">
+                                </div>
+                            </div>
+                            <div class=" col-md-6 col_addprod">
+                                <div class="form-group">
+                                    <label>Trọng lượng</label>
+                                    <input name="weight" type="text" class="form-control input_addpr"
+                                           placeholder=""
+                                           value="">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class=" d-flex flex-grow-1 row_input">
+                            <div class="col-md-6 col_addprod">
+                                <div class="form-group">
+                                    <label>Ngày sản xuất</label>
+                                    <div class="select-wrap">
+                                        <input type="date" name="nsx" id="dateImput"
+                                               class="form-control input_addpr"
+                                               placeholder="Ngày/Tháng/Năm"
+                                               value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" col-md-6 col_addprod">
+                                <div class="form-group">
+                                    <label>Ngày hết hạn</label>
+                                    <div class="select-wrap">
+                                        <input type="date" name="hsd" id="dateOutOf"
+                                               class="form-control input_addpr"
+                                               placeholder="Ngày/Tháng/Năm"
+                                               value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" col-md-6 col_addprod">
+                                <div class="form-group">
+                                    <label>Số lượng nhập</label>
+                                    <input type="number" name="inventory"
+                                           class="form-control input_addpr"
+                                           placeholder=""
+                                           value="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class=" col-md-12">
+                            <div class="form-group">
+                                <label>Mô tả</label>
+                                <textarea name="mota" type="text"
+                                          class="form-control"
+                                          placeholder="Mô tả sản phẩm"
+
+                                          value=""> </textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 d-flex btn_huy_update" style="justify-content: end;">
+                            <input type="button" onclick="huy()" value="Hủy">
+                            <input type="submit" value=" Thêm sản phẩm">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
 </div>
 
-
+<%-------------Form Sửa sản phẩm--%>
+<div id="formEdit">
 
 </div>
 
 <script>
- 
+
 
     function add() {
         $('.edit_formAdd').css('display', 'block');
@@ -811,6 +821,19 @@
         $(".edit_formAdd, .edit_formEdit").css("display", "none");
     }
 
+    // checkbox all hoặc ko
+    function checkAll(elementInput) {
+        if (elementInput.checked) { // check select status
+            $(':checkbox').each(function () { //loop through each checkbox
+                this.checked = true;  //select all checkboxes with class "checkbox1"
+            });
+
+        } else {
+            $(':checkbox').each(function () { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"
+            });
+        }
+    }
 
     let files = [],
         dragArea = document.querySelector('.drag-area'),
@@ -853,6 +876,7 @@
 
 
     }
+
     /* DELETE IMAGE */
     function delImage(index) {
         files.splice(index, 1);

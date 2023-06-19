@@ -32,7 +32,8 @@
 
 
 <%@ include file="header.jsp" %>
-
+<%String error = (String) request.getAttribute("error");
+    System.out.println(error);%>
 
 <section class="shoping-cart spad">
     <div class="container">
@@ -65,21 +66,21 @@
                                 </h5>
                             </td>
                             <td class="shoping__cart__price">
-                                <%=decF.format(p.getPrice()).replace(',', '.')%>đ
+                                <%=decF.format(p.getPrice() - (p.getPrice()*p.getDiscount())/100).replace(',', '.')%>đ
                             </td>
                             <td class="shoping__cart__quantity">
                                 <div class="quantity">
                                     <div class="pro-qty">
-                                        <span onclick="changeAmount(this,'<%=p.getPrice()%>', '<%=p.getIdPr()%>', document.getElementById('totalCart'))"
+                                        <span onclick="changeAmount(this,'<%=p.getPrice() - (p.getPrice()*p.getDiscount())/100%>', '<%=p.getIdPr()%>', document.getElementById('totalCart'))"
                                               class="dec qtybtn">-</span>
                                         <input id="amount<%=p.getIdPr()%>" type="text" value="<%=p.getAmount()%>">
-                                        <span onclick="changeAmount(this,'<%=p.getPrice()%>', '<%=p.getIdPr()%>', document.getElementById('totalCart'))"
+                                        <span onclick="changeAmount(this,'<%=p.getPrice() - (p.getPrice()*p.getDiscount())/100%>', '<%=p.getIdPr()%>', document.getElementById('totalCart'))"
                                               class="inc qtybtn">+</span>
                                     </div>
                                 </div>
                             </td>
                             <td id="total<%=p.getIdPr()%>" class="shoping__cart__total">
-                                <%= decF.format(p.getAmount() * p.getPrice()).replace(',', '.')%> đ
+                                <%= decF.format(p.getAmount() * (p.getPrice() - (p.getPrice()*p.getDiscount())/100)).replace(',', '.')%> đ
                             </td>
                             <td style="padding: 30px">
                                 <input name="checkboxInput" id="box<%=p.getIdPr()%>"
@@ -116,7 +117,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <form action="/checkingOut" method="post">
+                <form id="formPay" action="/BHNFoods/checkingOut" method="post">
                     <div id="checkOut" class="shoping__checkout" style="margin-top: 0">
                         <h5>Tổng giỏ hàng</h5>
                         <ul>
@@ -149,6 +150,17 @@
 
 <script>
 
+    $("#formPay").submit(function(event) {
+        var elementValue = $('#idProdChecked').val();
+        if(elementValue == '') {
+            alert("Vui lòng mua hàng trước khi thanh toán")
+            event.preventDefault();
+        } else this.submit();
+    })
+
+    <%if(error != null) {%>
+      alert('<%=error%>');
+    <%}%>
     let allCheckbox = $('.checkBoxCart')
     var toStringIdChecked = "";
     for (let i = 0; i < allCheckbox.length; i++) {
@@ -165,6 +177,7 @@
             return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "." + c : c;
         }) + currency;
     }
+
     
     function cancelAppyDiscount() {
         $.ajax({

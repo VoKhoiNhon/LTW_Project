@@ -145,6 +145,11 @@
 <!-- partial:partials/_navbar.html -->
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+        <%--      <div class="me-3">--%>
+        <%--        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">--%>
+        <%--          <span class="icon-menu"></span>--%>
+        <%--        </button>--%>
+        <%--      </div>--%>
         <div>
             <a class="navbar-brand brand-logo" href="index.html">
                 BHNFoods
@@ -250,9 +255,9 @@
             <%--                    </a>--%>
             <%--                </div>--%>
             <%--            </li>--%>
-            <%--            &lt;%&ndash;%>--%>
-            <%  User user = (User) session.getAttribute("auth");
-                           if (user != null) {%>
+            <%--            &lt;%&ndash;%>
+            <%--                User user = (User) session.getAttribute("auth");--%>
+            <%--                if (user != null) {%>--%>
             <%--            <li class="nav-item dropdown d-none d-lg-block user-dropdown">--%>
             <%--                <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">--%>
             <%--                    <img class="img-xs rounded-circle" src="ImageproductNew/background/images.png" alt="Profile image">--%>
@@ -267,7 +272,7 @@
             <%--                    </div>--%>
             <%--                </div>--%>
             <%--            </li>--%>
-                      <%}%>
+            <%--            <%}%>--%>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
                 data-bs-toggle="offcanvas">
@@ -315,7 +320,6 @@
         <div class="content-wrapper">
             <div class="row">
                 <div class="col-sm-12">
-                    <form action="/UpdateConditionOrders" method="post" class="shoping-cart spad">
                         <div class="container">
                             <%
                                 Map<String, List<Orders>> mapOrder = (Map<String, List<Orders>>) request.getAttribute("mapAdminOrder");
@@ -331,6 +335,7 @@
                                     String iduser="";
 
                             %>
+                            <form action="/BHNFoods/UpdateConditionOrders" method="post" class="shoping-cart spad">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="shoping__cart__table">
@@ -362,7 +367,7 @@
 
                                                 </td>
                                                 <td class="shoping__cart__item">
-                                                    <h5><%=o.getNamePr()%></h5>
+                                                    <h5><%=o.getNamePr()%>     <%=o.getIdOrders()%></h5>
                                                     <input name="idOrders" style="display: none" value="<%=o.getIdOrders()%>">
                                                 </td>
                                                 <td class="shoping__cart__price">
@@ -378,7 +383,9 @@
                                             <%}%>
                                             </tbody>
                                         </table>
-                                        <div class="d-flex justify-content-between pt-5 align-items-center">
+
+                                        <input name="addr" style="display: none" value="<%=address%>">
+                                          <div class="d-flex justify-content-between pt-5 align-items-center">
                                             <div style="width: 50%">
                                                 <h5>Tên và SĐT Khách hàng: <span style="color: red;"> <%=name%> <%=phone%></span></h5>
                                                 <h5>Địa chỉ đơn hàng: <span style="color: red;"><%=address%></span></h5>
@@ -397,9 +404,10 @@
                                     </div>
                                 </div>
                             </div>
+                            </form>
                             <%}%>
                         </div>
-                    </form>
+
                 </div>
             </div>
         </div>

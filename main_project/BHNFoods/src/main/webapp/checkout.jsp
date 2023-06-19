@@ -56,13 +56,14 @@
                                 <select id="city" type="text" class="form-control" onchange="addDistrict()">
                                     <%
                                         for (String key : mapProvince.keySet()) {%>
-                                        <option value="<%=mapProvince.get(key)%>"><%=key%></option>
+                                    <option value="<%=mapProvince.get(key)%>"><%=key%></option>
                                     <%}%>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Quận, Huyện</label>
                                 <select id="district" type="text" class="form-control" onchange="addWard()">
+
                                 </select>
                             </div>
                             <div class="form-group">
@@ -166,29 +167,29 @@
 <!-- Js Plugins -->
 <script>
     function pay() {
-    if($('#fullName').val() == "" || $('#phoneNumber').val() == "" || $('#address').val() == "" || $('#city').val() == "" || $('#district').val() == "" || $('#ward').val() == "") {
-        alert('Hãy nhập đầy đủ các thông tin');
-    }
-    else {
-        // Lấy phần tử select bằng id
-        var selectStringCity = document.getElementById("city");
-        var selectStringDistrict = document.getElementById("district");
-        var selectStringWard = document.getElementById("ward");
+        if($('#fullName').val() == "" || $('#phoneNumber').val() == "" || $('#address').val() == "" || $('#city').val() == "" || $('#district').val() == "" || $('#ward').val() == "") {
+            alert('Hãy nhập đầy đủ các thông tin');
+        }
+        else {
+            // Lấy phần tử select bằng id
+            var selectStringCity = document.getElementById("city");
+            var selectStringDistrict = document.getElementById("district");
+            var selectStringWard = document.getElementById("ward");
 
-    // Lấy chỉ mục của phần tử được chọn
-        var selectedIndexCity = selectStringCity.selectedIndex;
-        var selectedIndexDistrict = selectStringDistrict.selectedIndex;
-        var selectedIndexWard = selectStringWard.selectedIndex;
+            // Lấy chỉ mục của phần tử được chọn
+            var selectedIndexCity = selectStringCity.selectedIndex;
+            var selectedIndexDistrict = selectStringDistrict.selectedIndex;
+            var selectedIndexWard = selectStringWard.selectedIndex;
 
-    // Lấy đối tượng HTMLOptionElement tương ứng với chỉ mục
-        var selectedOptionCity = selectStringCity.options[selectedIndexCity];
-        var selectedOptionDistrict = selectStringDistrict.options[selectedIndexDistrict];
-        var selectedOptionWard = selectStringWard.options[selectedIndexWard];
+            // Lấy đối tượng HTMLOptionElement tương ứng với chỉ mục
+            var selectedOptionCity = selectStringCity.options[selectedIndexCity];
+            var selectedOptionDistrict = selectStringDistrict.options[selectedIndexDistrict];
+            var selectedOptionWard = selectStringWard.options[selectedIndexWard];
 
-    // Lấy nội dung văn bản của phần tử HTMLOptionElement
-        var selectedTextCity = selectedOptionCity.textContent;
-        var selectedTextDistrict = selectedOptionDistrict.textContent;
-        var selectedTextWard = selectedOptionWard.textContent;
+            // Lấy nội dung văn bản của phần tử HTMLOptionElement
+            var selectedTextCity = selectedOptionCity.textContent;
+            var selectedTextDistrict = selectedOptionDistrict.textContent;
+            var selectedTextWard = selectedOptionWard.textContent;
 
 
         $.ajax({
@@ -225,7 +226,7 @@
         });
 
 
-    }
+        }
     }
     function setBody() {
         var body = document.getElementById('body')
@@ -260,7 +261,7 @@
     //
     // })
 
-    function addDistrict() {
+    function    addDistrict() {
         const idProvince = $("#city").val();
         $.ajax({
             url: "/addDistrict",

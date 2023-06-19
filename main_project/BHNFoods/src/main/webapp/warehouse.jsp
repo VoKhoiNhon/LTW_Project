@@ -1,12 +1,10 @@
 <%@ page import="java.text.DecimalFormat" %>
+<%@ page import="vn.edu.hcmuaf.fit.beans.Product" %>
 <%@ page import="java.util.List" %>
+<%@ page import="vn.edu.hcmuaf.fit.beans.SingleProduct" %>
+<%@ page import="vn.edu.hcmuaf.fit.beans.User" %>
 <%@ page import="org.w3c.dom.ls.LSOutput" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="org.apache.commons.math3.stat.descriptive.summary.Sum" %>
-<%@ page import="org.apache.poi.ss.formula.functions.Count" %>
-<%@ page import="com.sun.source.tree.CompilationUnitTree" %>
-<%@ page import="vn.edu.hcmuaf.fit.beans.*" %>
-<%@ page import="vn.edu.hcmuaf.fit.service.WarehouseService" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,9 +32,6 @@
 
     <!-- endinject -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <style>
         .card-body a .btn_add_delete {
             width: 60px;
@@ -105,7 +100,7 @@
             display: none;
         }
 
-        #detailsWh.xem_chi_tiet {
+        .xem_chi_tiet {
             display: none;
         }
 
@@ -237,7 +232,7 @@
             justify-content: flex-start;
             align-items: flex-start;
             flex-wrap: wrap;
-            max-height: 500px;
+            max-height: 200px;
             overflow-y: auto;
             margin-top: 10px;
         }
@@ -272,14 +267,6 @@
         .card .drag-area .on-drop,
         .card .drag-area.dragover .visible {
             display: none;
-        }
-
-        .row_input {
-            justify-content: space-around;
-        }
-
-        .row_input .col_addwh {
-            width: 30%;
         }
     </style>
 </head>
@@ -369,9 +356,7 @@
     </div>
 </nav>
 <!-- partial -->
-
 <div class="container-fluid page-body-wrapper">
-
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="nav-item">
             <a href="/ListOrdersAdmin" class="nav-item-link">
@@ -405,7 +390,6 @@
             </a>
         </div>
     </nav>
-
     <!-- partial -->
     <div class="main-panel">
         <div class="content-wrapper">
@@ -443,68 +427,65 @@
                                                                 </a>
                                                             </div>
                                                         </div>
-
                                                         <div class="table-responsive  mt-1">
                                                             <table class="table select-table">
                                                                 <thead>
                                                                 <tr>
                                                                     <th>Mã lô hàng</th>
-                                                                    <th>Số mặt hàng</th>
-                                                                    <th>Nhân viên nhập</th>
                                                                     <th>Ngày nhập lô</th>
-                                                                    <th>Tổng tiền</th>
+                                                                    <th>Số lượng sản phẩm</th>
+                                                                    <th>Nhân viên nhập</th>
+                                                                    <th>Tổng giá lô</th>
                                                                     <th></th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <%
-                                                                    List<Warehouse> listwh = (List<Warehouse>) request.getAttribute("listwh");
-
-                                                                    int sumPrice = 0;
-                                                                    for (Warehouse w : listwh) {
-                                                                        List<DetailsWH> detailWH = WarehouseService.getInstance().getDetail_WH(w.getId_shipment());
-                                                                        for (DetailsWH d : detailWH) {
-                                                                            sumPrice += d.getPRICE_IMPORT() * d.getAMOUNT_PR();
-                                                                        }
-                                                                %>
                                                                 <tr>
                                                                     <td>
                                                                         <div class="d-flex ">
                                                                             <div>
-                                                                                <h6>[<%=w.getCode_wh()%>]
-                                                                                </h6>
+                                                                                <h6>MÃ lô</h6>
                                                                             </div>
                                                                         </div>
                                                                     </td>
-
                                                                     <td>
-                                                                        <div class=" ">
-                                                                            <p><%=detailWH.size()%>
-                                                                            </p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class=""><%=w.getName_employee()%>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <h6><%=w.getDate_import_shipment()%>
+                                                                        <h6>ngày nhập lô
                                                                         </h6>
                                                                     </td>
                                                                     <td>
-                                                                        <div class=""><%=sumPrice%>
+                                                                        <div>
+                                                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
+                                                                                <p>giá lượng mặt hàng
+                                                                                </p>
+                                                                            </div>
+                                                                            <div class="progress progress-md">
+                                                                                <div class="progress-bar bg-success"
+                                                                                     role="progressbar"
+                                                                                     style="width: 100px"
+
+                                                                                     aria-valuemin="0"
+                                                                                     aria-valuemax="100"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="">Nguyễn Văn A
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="">13.000.000
                                                                         </div>
                                                                     </td>
                                                                     <td>
                                                                         <div class="btn_edit">
-                                                                            <button onclick="details('<%=w.getId_shipment()%>')">
+                                                                            <button onclick="details()">
                                                                                 <h4 class="card-title card-title-dash">
-                                                                                    Xem chi tiết
+                                                                                    Xem chi tiết <i
+                                                                                        class="fa-regular fa-pen-to-square"></i>
                                                                                 </h4></button>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
-                                                                <%}%>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -626,12 +607,146 @@
             </form>
         </div>
     </div>
+</div>
+x
+<%--// form thêm sp trong lô--%>
+<div class="edit_formUser edit_formAdd form_add_sp">
+    <div class="container" style="background:none;">
+        <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
+            <form class="billing-form" style="margin-top: 5%;" action="" method="post"
+                  enctype="multipart/form-data">
+                <div class="contai"></div>
+                <h4 class="mb-4 billing-heading">Sản phẩm</h4>
+                <div class="row align-items-end" style="font-size: 16px;">
+                    <div class=" d-flex flex-grow-1 row_input">
+                        <div class="" style=" margin-top: 2rem">
+                            <div class="">
+                                <input class="number_pr" type="button" onclick="" value="1">
+                            </div>
+                        </div>
 
+                        <div class="col-md-6 col_addprod">
+                            <div class="form-group">
+                                <label>Tên sản phẩm</label>
+                                <input name="" type="text" class="form-control input_addpr" placeholder=""
+                                       value="">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col_addprod">
+                            <div class="form-group">
+                                <label>Danh mục</label>
+                                <select type="text" class="form-control input_addpr" name=""> required
+                                    <option value="m1">Gạo</option>
+                                    <option value="m2">Nếp</option>
+                                    <option value="m3">Các loại hạt</option>
+                                    <option value="m4">Các loại bột</option>
+                                    <option value="m5">Các loại củ, trái</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class=" col-md-6 col_addprod">
+                            <div class="form-group">
+                                <label>Giá nhập</label>
+                                <input name="" type="number" class="form-control input_addpr" placeholder=""
+                                       value="">
+                            </div>
+                        </div>
+                        <div class=" col-md-6 col_addprod">
+                            <div class="form-group">
+                                <label>Số lượng</label>
+                                <input name="weight" type="text" class="form-control input_addpr with_50"
+                                       placeholder=""
+                                       value="">
+                            </div>
+                        </div>
+                        <div class=" col-md-6 col_addprod">
+                            <div class="form-group">
+                                <label>Trọng lượng</label>
+                                <input name="weight" type="text" class="form-control input_addpr with_50"
+                                       placeholder=""
+                                       value="">
+                            </div>
+                        </div>
+                    </div>
+<%--                    djhfsjdf--%>
+                    <div class=" d-flex flex-grow-1 row_input">
+                        <div class="" style=" margin-top: 2rem">
+                            <div class="">
+                                <input class="number_pr" type="button" onclick="" value="2">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col_addprod">
+                            <div class="form-group">
+                                <label>Tên sản phẩm</label>
+                                <input name="" type="text" class="form-control input_addpr" placeholder=""
+                                       value="">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col_addprod">
+                            <div class="form-group">
+                                <label>Danh mục</label>
+                                <select type="text" class="form-control input_addpr" name=""> required
+                                    <option value="m1">Gạo</option>
+                                    <option value="m2">Nếp</option>
+                                    <option value="m3">Các loại hạt</option>
+                                    <option value="m4">Các loại bột</option>
+                                    <option value="m5">Các loại củ, trái</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class=" col-md-6 col_addprod">
+                            <div class="form-group">
+                                <label>Giá nhập</label>
+                                <input name="" type="number" class="form-control input_addpr" placeholder=""
+                                       value="">
+                            </div>
+                        </div>
+                        <div class=" col-md-6 col_addprod">
+                            <div class="form-group">
+                                <label>Số lượng</label>
+                                <input name="weight" type="text" class="form-control input_addpr with_50"
+                                       placeholder=""
+                                       value="">
+                            </div>
+                        </div>
+                        <div class=" col-md-6 col_addprod">
+                            <div class="form-group">
+                                <label>Trọng lượng</label>
+                                <input name="weight" type="text" class="form-control input_addpr with_50"
+                                       placeholder=""
+                                       value="">
+                            </div>
+                        </div>
+                    </div>
+<%--                    jhfjsd--%>
+                    <div class="col-md-12 d-flex ">
+                        <input type="button" onclick="" value="+">
+                    </div>
+                    <div class="col-md-12 d-flex btn_huy_update" style="justify-content: end;">
+                        <input type="button" onclick="huy()" value="Huỷ">
+                        <input type="submit" value="Tạo">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
-<%------------Form xem chi tiết lô--%>
-<div id="detailsWh">
-
+<%-------------Form xem chi tiết lô--%>
+<div class="edit_formUser  xem_chi_tiet">
+    <div class="container" style="background:none;">
+        <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
+            <form class="billing-form" style="margin-top: 5%;" action="" method="post"
+                  enctype="multipart/form-data">
+                <div class="contai"></div>
+                <h4 class="mb-4 billing-heading">Thêm sản phẩm</h4>
+                <div class="col-md-12 d-flex btn_huy_update" style="justify-content: end;">
+                    <input type="button" onclick="huy()" value="Hủy">
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 <%--<div class="edit_formUser form_add_sp xem_chi_tiet">--%>
 <%--    <div class="container" style="background:none;">--%>

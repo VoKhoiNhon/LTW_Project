@@ -1,7 +1,9 @@
 package vn.edu.hcmuaf.fit.beans;
 
+import vn.edu.hcmuaf.fit.service.OrderService;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class BoxSizeAndWeight {
@@ -24,25 +26,27 @@ public class BoxSizeAndWeight {
     }
 
     private void calculateWeight() {
-        for (String id: listProductId) {
-            weight += ProductService.getInstance().getSingleProduct(id).get(0).getWeight();
+        for (String id : listProductId) {
+            weight += (ProductService.getInstance().getSingleProduct(id).get(0).getWeight());
         }
+
+
     }
 
     private void calculateBoxSize() {
         calculateWeight();
-        if(weight > 10) {
+        if (weight > 10) {
             width = 40;
             height = 40;
-            length= 40;
-        } else if(weight > 5) {
+            length = 40;
+        } else if (weight > 5) {
             width = 30;
             height = 30;
-            length= 30;
-        } else if(weight > 2) {
+            length = 30;
+        } else if (weight > 2) {
             width = 20;
             height = 20;
-            length= 20;
+            length = 20;
         }
     }
 
@@ -77,4 +81,16 @@ public class BoxSizeAndWeight {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+
+    @Override
+    public String toString() {
+        return "BoxSizeAndWeight{" +
+                "listProductId=" + Arrays.toString(listProductId) +
+                ", width=" + width +
+                ", height=" + height +
+                ", length=" + length +
+                ", weight=" + weight +
+                '}';
+    }
+
 }

@@ -1,4 +1,3 @@
-<%@ page import="com.restfb.util.StringUtils" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,17 +24,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
 </head>
-<style>
-    .login_social {
-        margin-top: 1rem;
-    }
 
-
-</style>
 <body>
 <% String error = (String) request.getAttribute("error");
     String block = (String) request.getAttribute("block");
-    String[] permissions = {"public_profile", "email"};
 %>
 
 <div class="container-scroller background">
@@ -45,6 +37,7 @@
         <div class="main-panel" style=" width: 100%;">
             <div class="content-wrapper">
                 <div class="row">
+
                     <div class="card" style=" margin:auto;">
                         <div class="card-body">
                             <p class="card-description">

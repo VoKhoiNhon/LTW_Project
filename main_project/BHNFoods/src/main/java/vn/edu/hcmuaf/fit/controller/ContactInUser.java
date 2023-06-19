@@ -29,7 +29,7 @@ public class ContactInUser extends HttpServlet {
         String idcontact = request.getParameter("idcontact");
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-        String iduser = user.getIdUser();
+        String idUser = user.getIdUser();
         String phone = request.getParameter("phone");
         String nameuser = request.getParameter("nameuser");
         String content = request.getParameter("content");
