@@ -15,9 +15,8 @@ public class AdminManagePr extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-        if(user.getDecentralization() != Powers.ADMIN && user.getDecentralization() != Powers.EMPLOYEE)
-            response.sendRedirect("index.jsp");
-        else {
+//        if(user.getDecentralization() != Powers.ADMIN || user.getDecentralization() != Powers.EMPLOYEE) response.sendRedirect("index.jsp");
+//        else {
             int kind = Integer.parseInt(request.getParameter("kind"));
             int page = Integer.parseInt(request.getParameter("page"));
             int tempSize = ProductService.getInstance().getSize(kind) / 15;
@@ -28,7 +27,7 @@ public class AdminManagePr extends HttpServlet {
             request.setAttribute("page", page);
             request.setAttribute("count", count);
             request.getRequestDispatcher("manage_product.jsp").forward(request, response);
-        }
+//        }
     }
 
     @Override

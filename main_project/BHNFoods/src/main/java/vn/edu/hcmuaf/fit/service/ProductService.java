@@ -1,13 +1,9 @@
 package vn.edu.hcmuaf.fit.service;
 
-import com.mysql.cj.jdbc.JdbcConnection;
-import org.w3c.dom.ls.LSOutput;
 import vn.edu.hcmuaf.fit.beans.*;
-import vn.edu.hcmuaf.fit.controller.ListProduct;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.beans.Product;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -38,7 +34,8 @@ public class ProductService {
                 "FROM ct_pr c " +
                 "JOIN image i ON i.ID_PR = c.ID_PR " +
                 "JOIN product p ON p.ID_PR = c.ID_PR " +
-                "JOIN warehouse w ON c.ID_SHIPMENT = w.ID_SHIPMENT " +
+                "JOIN detail_wh detailWh ON c.ID_PR = detailWh.ID_PR " +
+                "JOIN warehouse w ON detailWh.ID_SHIPMENT = w.ID_SHIPMENT " +
                 "WHERE i.`CONDITION` = 0 AND c.ID_PR = :idPro";
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery(sql)
@@ -56,6 +53,14 @@ public class ProductService {
                     .bind("idPro", idPro)
                     .mapToBean(ImgForSingleProd.class)
                     .collect(Collectors.toList());
+        });
+    }
+    public void deleteIMG(String URL) {
+        String sql = "DELETE FROM image WHERE URL = :url";
+        JDBIConnector.get().useHandle(handle -> {
+            handle.createUpdate(sql)
+                    .bind("url", URL)
+                    .execute();
         });
     }
 
@@ -433,7 +438,7 @@ public class ProductService {
         });
     }
     // thêm sp của bản ct_pr
-    public static void addCT_Prod( int index,String nsx,String hsd, String brand, String mota, double weight, String origin, int inventory ){
+    public static void addCT_Prod(int index, String nsx, String hsd, String brand, String mota, double weight, String origin, int inventory, String wh1){
         JDBIConnector.get().withHandle(handle -> {
             return handle.createUpdate("INSERT INTO `ct_pr` VALUES ('prod" + index + "','" + nsx + "','" + hsd + "','" + brand + "','" + mota + "'," + weight + ",'" + origin + "','" + LocalDate.now() + "'," + inventory + ", 0)").execute();
         });
@@ -555,10 +560,11 @@ public int getNowYer(){
     }
 
     
-    public void addImg(int idPr, String idImg, String url, int condition) {
-        String sql = "INSERT INTO image VALUES ('prod" + idPr + "', :idImg, :url, :condition)";
+    public void addImg(String idPr, String idImg, String url, int condition) {
+        String sql = "INSERT INTO image VALUES (:idPr , :idImg, :url, :condition)";
         JDBIConnector.get().withHandle(handle -> {
             return handle.createUpdate(sql)
+                    .bind("idPr", idPr)
                     .bind("idImg", idImg)
                     .bind("url", url)
                     .bind("condition", condition)

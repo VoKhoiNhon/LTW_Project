@@ -27,8 +27,8 @@ public class AdminMain extends HttpServlet {
             response.sendRedirect("index.jsp");
         else {
             i = 5;
-            List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i);
-            request.setAttribute("listPrDate", list);
+//            List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i);
+//            request.setAttribute("listPrDate", list);
             int newbie = UserService.getInstance().getNewbie();
             String data0 = "" + ProductService.getInstance().getTurnover(1, 2021);
             String data = "" + ProductService.getInstance().getTurnover(1, 2022);
@@ -79,7 +79,9 @@ public class AdminMain extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i + 5);
+//        List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i + 5);
+
+
     }
 
     public static void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
