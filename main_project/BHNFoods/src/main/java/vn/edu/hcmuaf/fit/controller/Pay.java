@@ -52,7 +52,7 @@ public class Pay extends HttpServlet {
         double totalWeight = 0; // kg
 
         try {
-            String leadTime = Logistics.getLeadTime(idDistrict, idWard, boxSizeAndWeight.getHeight(), boxSizeAndWeight.getLength(), boxSizeAndWeight.getWidth(), (int) boxSizeAndWeight.getWeight());
+            String leadTime = Logistics.getLeadTime(idDistrict, idWard, boxSizeAndWeight.getHeight(), boxSizeAndWeight.getLength(), boxSizeAndWeight.getWidth(), (int) (boxSizeAndWeight.getWeight()*1000));
             timePickup = leadTime.substring(0, leadTime.indexOf("T"));
         } catch (Exception e) {
             throw new RuntimeException(e);

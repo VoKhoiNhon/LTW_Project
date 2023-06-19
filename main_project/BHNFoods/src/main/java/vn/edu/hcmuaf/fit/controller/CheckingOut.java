@@ -22,7 +22,6 @@ public class CheckingOut extends HttpServlet {
         Map<String, Integer> map;
         try {
             map = Logistics.getProvince();
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -34,8 +33,6 @@ public class CheckingOut extends HttpServlet {
         request.setAttribute("totalCheckout", total);
         request.setAttribute("allIdProdChecked", allIdProdChecked);
         request.setAttribute("mapProvince", map);
-
-
         request.getRequestDispatcher("checkout.jsp").forward(request,response);
     }
 }
