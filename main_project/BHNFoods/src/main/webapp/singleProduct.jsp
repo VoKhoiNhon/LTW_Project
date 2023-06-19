@@ -212,7 +212,7 @@
                     </div>
                     <div class="product__item__text">
                         <h6>
-                            <a href="/BHNFoods/oneProduct?id=<%=relatedProducts.get(i).getIdPr()%>"><%=relatedProducts.get(i).getNamePr()%>
+                            <a href="/oneProduct?id=<%=relatedProducts.get(i).getIdPr()%>"><%=relatedProducts.get(i).getNamePr()%>
                             </a></h6>
                         <h5><%=dec.format(relatedProducts.get(i).getPrice())%>đ</h5>
                     </div>
@@ -262,7 +262,7 @@
         current = index;
         $("#btn" + current).addClass('background-button');
         $.ajax({
-            url: "/BHNFoods/loadMoreComment",
+            url: "/loadMoreComment",
             type: 'get',
             data: {
                 id: idProd,
@@ -284,7 +284,7 @@
         }
         $("#btn" + current).addClass('background-button');
         $.ajax({
-            url: "/BHNFoods/loadMoreComment",
+            url: "/loadMoreComment",
             type: 'get',
             data: {
                 id: idProd,
@@ -306,7 +306,7 @@
         }
         $("#btn" + current).addClass('background-button');
         $.ajax({
-            url: "/BHNFoods/loadMoreComment",
+            url: "/loadMoreComment",
             type: 'get',
             data: {
                 id: idProd,
@@ -325,7 +325,7 @@
         if(user != null)  {
             if($('button.lightGreenBtn').val() !== undefined && $('textarea#textComment').val() !== "") {
                 $.ajax({
-                    url: "/BHNFoods/sendComment",
+                    url: "/sendComment",
                     type: 'get',
                     data: {
                         text: $('textarea#textComment').val(),
@@ -356,7 +356,7 @@
     }
     function addToCart() {
         $.ajax({
-            url: "/BHNFoods/addToCart",
+            url: "/addToCart",
             type: 'get',
             data: {
                 id: idProd,
@@ -382,7 +382,7 @@
             condition = 1;
         }
         $.ajax({
-            url: "/BHNFoods/addToLoveProd",
+            url: "/addToLoveProd",
             type: 'get',
             data: {
                 id: idProd,

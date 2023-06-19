@@ -125,7 +125,7 @@
 <script>
     function huyDon(idOder) {
         $.ajax({
-            url: "/BHNFoods/removeFromManageOrder",
+            url: "/removeFromManageOrder",
             type: 'get',
             data: {
                 id: idOder,

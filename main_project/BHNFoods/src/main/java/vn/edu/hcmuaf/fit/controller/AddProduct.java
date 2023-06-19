@@ -49,9 +49,7 @@ public class AddProduct extends HttpServlet {
         int price = Integer.parseInt(request.getParameter("price"));
         String name = request.getParameter("name");
         String nsx = request.getParameter("nsx");
-
         String hsd = request.getParameter("hsd");
-
         String brand = request.getParameter("brand");
         String mota = request.getParameter("mota");
         double weight = Double.parseDouble(request.getParameter("weight"));
@@ -59,7 +57,7 @@ public class AddProduct extends HttpServlet {
         int inventory = Integer.parseInt(request.getParameter("inventory"));
         int count = 0;
         ProductService.getInstance().addProd(index + 1, menu, discount, price, name);
-//        ProductService.getInstance().addCT_Prod(index + 1, nsx, hsd, brand, mota, weight, origin, inventory, "wh1");
+        ProductService.getInstance().addCT_Prod(index + 1, nsx, hsd, brand, mota, weight, origin, inventory );
         for (Part filePart : request.getParts()) {
             out.println(1);
             if (filePart.getName().equals("imageFiles")) {
@@ -81,7 +79,7 @@ public class AddProduct extends HttpServlet {
 
 
 
-        response.sendRedirect("/BHNFoods/AdminManagePr?kind=0&page=1");
+        response.sendRedirect("/AdminManagePr?kind=0&page=1");
     }
 
 

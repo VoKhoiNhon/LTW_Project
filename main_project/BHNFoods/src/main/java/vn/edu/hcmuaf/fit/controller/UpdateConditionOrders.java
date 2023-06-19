@@ -19,6 +19,6 @@ public class UpdateConditionOrders extends HttpServlet {
         int condition = Integer.parseInt(request.getParameter("condition"));
         String idOrders= request.getParameter("idOrders");
         ProductService.getInstance().UpdateConditionOrders(condition, idOrders);
-        response.sendRedirect("/BHNFoods/ListOrdersAdmin");
+        response.sendRedirect("/ListOrdersAdmin");
     }
 }

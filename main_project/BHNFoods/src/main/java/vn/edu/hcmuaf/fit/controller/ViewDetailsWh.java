@@ -55,7 +55,7 @@ public class ViewDetailsWh extends HttpServlet {
         out.println("<div class=\"edit_formUser form_add_sp xem_chi_tiet\" style=\"display: block\" >\n" +
                 "    <div class=\"container\" style=\"background:none;\">\n" +
                 "        <div class=\"col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center\">\n" +
-                "            <form class=\"billing-form\" style=\"margin-top: 5%;\" action=\"/BHNFoods/Warehouse\" method=\"post\"\n" +
+                "            <form class=\"billing-form\" style=\"margin-top: 5%;\" action=\"/Warehouse\" method=\"post\"\n" +
                 "                  enctype=\"multipart/form-data\">\n" +
                 "                <h4 class=\"mb-4 billing-heading\">Chi tiết lô hàng: ["+warehouse.getCode_wh()+"]</h4>\n" +
                 "                <h4 class=\"mb-4 billing-heading\">Ngày nhập: "+warehouse.getDate_import_shipment()+"</h4>\n" +
@@ -77,7 +77,7 @@ public class ViewDetailsWh extends HttpServlet {
                 "                    </table>\n" +
                 "                </div>\n" +
                 "                <div class=\"col-md-12 d-flex btn_huy_update\" style=\"justify-content: end;\">\n" +
-                "                    <input type=\"button\" onclick=\"huy()\" value=\"Hủy\">\n" +
+                "                    <input type=\"button\" onclick=\"huy()\" value=\"Đóng\">\n" +
                 "                </div>\n" +
                 "            </form>\n" +
                 "        </div>\n" +

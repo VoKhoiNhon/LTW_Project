@@ -192,7 +192,7 @@
 
 
         $.ajax({
-            url: "/BHNFoods/pay",
+            url: "/pay",
             type: 'get',
             data: {
                 fullName: $('#fullName').val(),
@@ -235,12 +235,12 @@
 
 
     function Redirect() {
-        window.location.assign('/BHNFoods/ListProduct?kind=0&page=1');
+        window.location.assign('/ListProduct?kind=0&page=1');
     }
 
     // $('#city').change(function changeDistrict() {
     //     $.ajax({
-    //         url: "/BHNFoods/changeDistrict",
+    //         url: "/changeDistrict",
     //         type: 'get',
     //         data: {
     //             sumCheckout: $('#sumCheckout').val(),
@@ -263,7 +263,7 @@
     function addDistrict() {
         const idProvince = $("#city").val();
         $.ajax({
-            url: "/BHNFoods/addDistrict",
+            url: "/addDistrict",
             type: 'get',
             data: {
                 idProvince : idProvince
@@ -274,7 +274,7 @@
                 const content = document.getElementById('district')
                 content.innerHTML = data;
                 $.ajax({
-                    url: "/BHNFoods/changeDistrict",
+                    url: "/changeDistrict",
                     type: 'get',
                     data: {
                         sumCheckout: $('#sumCheckout').val(),
@@ -306,7 +306,7 @@
     function addWard() {
         const idDistrict = $("#district").val();
         $.ajax({
-            url: "/BHNFoods/addWard",
+            url: "/addWard",
             type: 'get',
             data: {
                 idDistrict : idDistrict
@@ -315,7 +315,7 @@
                 const content = document.getElementById('ward')
                 content.innerHTML = data;
                 $.ajax({
-                    url: "/BHNFoods/changeDistrict",
+                    url: "/changeDistrict",
                     type: 'get',
                     data: {
                         sumCheckout: $('#sumCheckout').val(),
@@ -341,7 +341,7 @@
     function changeWard() {
         const idDistrict = $("#district").val();
         $.ajax({
-            url: "/BHNFoods/changeDistrict",
+            url: "/changeDistrict",
             type: 'get',
             data: {
                 sumCheckout: $('#sumCheckout').val(),

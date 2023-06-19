@@ -102,7 +102,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
-                    <a href="/BHNFoods/ListProduct?kind=0&page=1" class="primary-btn cart-btn">Tiếp tục mua hàng</a>
+                    <a href="/ListProduct?kind=0&page=1" class="primary-btn cart-btn">Tiếp tục mua hàng</a>
 
                 </div>
             </div>
@@ -116,7 +116,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <form action="/BHNFoods/checkingOut" method="post">
+                <form action="/checkingOut" method="post">
                     <div id="checkOut" class="shoping__checkout" style="margin-top: 0">
                         <h5>Tổng giỏ hàng</h5>
                         <ul>
@@ -168,7 +168,7 @@
     
     function cancelAppyDiscount() {
         $.ajax({
-            url: "/BHNFoods/canelApplyDiscount",
+            url: "/canelApplyDiscount",
             type: 'get',
             data: {
                 sum: $('#sum').val(),
@@ -192,7 +192,7 @@
 
     function applyDiscount() {
         $.ajax({
-            url: "/BHNFoods/applyDiscount",
+            url: "/applyDiscount",
             type: 'get',
             data: {
                 code: $('#maGiamGia').val(),
@@ -238,7 +238,7 @@
         }
         $('#idProdChecked').val(toStringIdChecked);
         $.ajax({
-            url: "/BHNFoods/checkInventory",
+            url: "/checkInventory",
             type: 'get',
             data: {
                 id: idProd,
@@ -264,12 +264,12 @@
                     }
                 }
                 elementI.val(newVal);
-                elementHeader.innerHTML = "<a href=\"/BHNFoods/Cart\" class=\"nav-link\">\n" +
+                elementHeader.innerHTML = "<a href=\"/Cart\" class=\"nav-link\">\n" +
                     "                        <span class=\"fa-solid fa-cart-shopping\"></span>[" + sumCart + "]</a>";
                 const totalF = format1(parseInt(orginPrice) * parseInt(newVal), ' đ')
                 $('#total' + idProd).text(totalF);
                 $.ajax({
-                    url: "/BHNFoods/changeAmountFormCart",
+                    url: "/changeAmountFormCart",
                     type: 'get',
                     data: {
                         id: idProd,
@@ -316,7 +316,7 @@
             total = total - price * amount;
         }
         $.ajax({
-            url: "/BHNFoods/removeFromCart",
+            url: "/removeFromCart",
             type: 'get',
             data: {
                 id: idProduct,
@@ -329,7 +329,7 @@
                 const content = document.getElementById('checkOut')
                 content.innerHTML = data;
                 sumCart = sumCart - amount;
-                elementHeader.innerHTML = "<a href=\"/BHNFoods/Cart?\" class=\"nav-link\">\n" +
+                elementHeader.innerHTML = "<a href=\"/Cart?\" class=\"nav-link\">\n" +
                     "                        <span class=\"fa-solid fa-cart-shopping\"></span>[" + sumCart + "]</a>";
             },
             error: function () {
@@ -361,7 +361,7 @@
         let discount = $('#discount').val();
 
         $.ajax({
-            url: "/BHNFoods/unCheckFromCart",
+            url: "/unCheckFromCart",
             type: 'get',
             data: {
                 id: idProduct,

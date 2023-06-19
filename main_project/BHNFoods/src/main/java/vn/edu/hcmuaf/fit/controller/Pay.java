@@ -89,7 +89,7 @@ public class Pay extends HttpServlet {
         }
 
         DB.me().insert(new Log(Log.INFO, idUser, this.src, "Pay sucsess: "+allId+", total:"+request.getParameter("totalCheckout"), 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
-        response.sendRedirect("/BHNFoods/index");
+        response.sendRedirect("/index");
     }
 
     @Override

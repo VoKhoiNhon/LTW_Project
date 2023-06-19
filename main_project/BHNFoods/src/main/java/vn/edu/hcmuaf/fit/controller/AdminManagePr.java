@@ -22,7 +22,7 @@ public class AdminManagePr extends HttpServlet {
             int page = Integer.parseInt(request.getParameter("page"));
             int tempSize = ProductService.getInstance().getSize(kind) / 15;
             int count = ProductService.getInstance().getSize(kind) % 15 > 0 ? tempSize + 1 : tempSize;
-            List<SingleProduct> list = (List<SingleProduct>) ProductService.getInstance().getListSingleProdInPage(kind, page);
+            List<SingleProduct> list =  ProductService.getInstance().getListSingleProdInPage(kind, page);
             request.setAttribute("manageList", list);
             request.setAttribute("kind", kind);
             request.setAttribute("page", page);

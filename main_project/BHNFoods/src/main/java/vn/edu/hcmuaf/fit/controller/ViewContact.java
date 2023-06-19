@@ -21,7 +21,7 @@ public class ViewContact extends HttpServlet {
         out.println("<div class=\"edit_formUser\">\n" +
                 "        <div class=\"container\" style=\"background:none; margin-top: 10%\">\n" +
                 "            <div class=\"col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center\">\n" +
-                "                <form action=\"/BHNFoods/ContactInAdmin\" method=\"post\" class=\"billing-form\" style=\"margin-top: 2%;\">\n" +
+                "                <form action=\"/ContactInAdmin\" method=\"post\" class=\"billing-form\" style=\"margin-top: 2%;\">\n" +
                 "                    <h3 class=\"mb-4 billing-heading\" style=\"color: #7fad39;\">PHẢN HỒI KHÁCH HÀNG</h3>\n" +
                 "                    <div class=\"row align-items-end\" style=\"font-size: 16px;\">\n" +
                 "                        <div class=\"col-md-12 col_addprod\">\n" +

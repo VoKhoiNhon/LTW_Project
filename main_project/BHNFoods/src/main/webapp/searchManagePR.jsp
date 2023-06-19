@@ -142,35 +142,35 @@
             <p class="mb-0 font-weight-medium float-left">Lọc</p>
           </a> -->
           <div class="dropdown-divider"></div>
-          <a href="/BHNFoods/AdminManagePr?kind=0&page=1 "class="dropdown-item preview-item">
+          <a href="/AdminManagePr?kind=0&page=1 "class="dropdown-item preview-item">
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis font-weight-medium text-dark">Tất cả </p>
             </div>
           </a>
-          <a href="/BHNFoods/AdminManagePr?kind=1&page=1" class="dropdown-item preview-item">
+          <a href="/AdminManagePr?kind=1&page=1" class="dropdown-item preview-item">
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis font-weight-medium text-dark">Gạo</p>
             </div>
           </a>
-          <a href="/BHNFoods/AdminManagePr?kind=2&page=1 "class="dropdown-item preview-item">
+          <a href="/AdminManagePr?kind=2&page=1 "class="dropdown-item preview-item">
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis font-weight-medium text-dark">Nếp </p>
 
             </div>
           </a>
-          <a href="/BHNFoods/AdminManagePr?kind=3&page=1" class="dropdown-item preview-item">
+          <a href="/AdminManagePr?kind=3&page=1" class="dropdown-item preview-item">
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại hạt </p>
 
             </div>
           </a>
-          <a href="/BHNFoods/AdminManagePr?kind=4&page=1" class="dropdown-item preview-item">
+          <a href="/AdminManagePr?kind=4&page=1" class="dropdown-item preview-item">
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại bột </p>
 
             </div>
           </a>
-          <a href="/BHNFoods/AdminManagePr?kind=5&page=1 "class="dropdown-item preview-item">
+          <a href="/AdminManagePr?kind=5&page=1 "class="dropdown-item preview-item">
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại củ, trái </p>
             </div>
@@ -232,19 +232,19 @@
 <div class="container-fluid page-body-wrapper">
   <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="nav-item">
-      <a href="/BHNFoods/AdminMain" class="nav-item-link">
+      <a href="/AdminMain" class="nav-item-link">
         <i style="margin-right: 5px;" class="menu-icon mdi mdi-home"></i>
         <span>Trang chủ</span>
       </a>
     </div>
     <div class="nav-item">
-      <a href="/BHNFoods/AdminManageUser" class="nav-item-link">
+      <a href="/AdminManageUser" class="nav-item-link">
         <i style="margin-right: 5px;" class="menu-icon mdi mdi-account-circle"></i>
         <span>Quản lý người dùng</span>
       </a>
     </div>
     <div class="nav-item">
-      <a href="/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
+      <a href="/AdminManagePr?kind=0&page=1" class="nav-item-link">
         <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
         <span>Quản lý sản phẩm</span>
       </a>

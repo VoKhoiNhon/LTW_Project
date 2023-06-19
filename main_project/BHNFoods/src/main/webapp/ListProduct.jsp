@@ -50,11 +50,11 @@
                                 <span>Danh sách sản phẩm</span>
                             </div>
                             <ul>
-                                <li><a href="/BHNFoods/ListProduct?kind=1&page=1">Gạo</a></li>
-                                <li><a href="/BHNFoods/ListProduct?kind=2&page=1">Nếp</a></li>
-                                <li><a href="/BHNFoods/ListProduct?kind=3&page=1">Các loại hạt</a></li>
-                                <li><a href="/BHNFoods/ListProduct?kind=4&page=1">Các loại bột</a></li>
-                                <li><a href="/BHNFoods/ListProduct?kind=5&page=1">Các loại củ, trái</a></li>
+                                <li><a href="/ListProduct?kind=1&page=1">Gạo</a></li>
+                                <li><a href="/ListProduct?kind=2&page=1">Nếp</a></li>
+                                <li><a href="/ListProduct?kind=3&page=1">Các loại hạt</a></li>
+                                <li><a href="/ListProduct?kind=4&page=1">Các loại bột</a></li>
+                                <li><a href="/ListProduct?kind=5&page=1">Các loại củ, trái</a></li>
                             </ul>
                         </div>
                     </div>
@@ -193,7 +193,7 @@
                                     </div>
                                     <div class="product__discount__item__text">
 
-                                        <a href="/BHNFoods/oneProduct?id=<%=p.getIdPr()%>"><span>Gạo</span>
+                                        <a href="/oneProduct?id=<%=p.getIdPr()%>"><span>Gạo</span>
                                             <h5><%=p.getNamePr()%></h5>
                                             <div class="product__item__price"><%=decF.format(p.getPrice() - (p.getPrice()*p.getDiscount())/100).replace(',','.')%>đ <span><%=decF.format(p.getPrice()).replace(',','.')%>đ</span></div></a>
                                     </div>
@@ -270,7 +270,7 @@
                                 <%}%>
                             </div>
                             <div class="product__item__text">
-                                <a href="/BHNFoods/oneProduct?id=<%=p.getIdPr()%>"><%=p.getNamePr()%><br> <span><%=decF.format(price).replace(',','.')%>đ</span></a>
+                                <a href="/oneProduct?id=<%=p.getIdPr()%>"><%=p.getNamePr()%><br> <span><%=decF.format(price).replace(',','.')%>đ</span></a>
                             </div>
                         </div>
                     </div>
@@ -310,7 +310,7 @@
         $("#btn" + current).addClass('background-button');
 
             $.ajax({
-            url: "/BHNFoods/loadMoreProduct",
+            url: "/loadMoreProduct",
             type: 'get',
             data: {
                 kind : kind,
@@ -333,7 +333,7 @@
         }
         $("#btn" + current).addClass('background-button');
         $.ajax({
-            url: "/BHNFoods/loadMoreProduct",
+            url: "/loadMoreProduct",
             type: 'get',
             data: {
                 kind : kind,
@@ -356,7 +356,7 @@
         }
         $("#btn" + current).addClass('background-button');
         $.ajax({
-            url: "/BHNFoods/loadMoreProduct",
+            url: "/loadMoreProduct",
             type: 'get',
             data: {
                 kind : kind,
@@ -384,7 +384,7 @@
                 condition = 1;
             }
             $.ajax({
-                url: "/BHNFoods/addToLoveProd",
+                url: "/addToLoveProd",
                 type: 'get',
                 data: {
                     id: id,
@@ -397,7 +397,7 @@
         $('button#' + idTag).addClass('background-button');
         $('button#' + idTag).css('color', 'white');
         $.ajax({
-            url: "/BHNFoods/addToCart",
+            url: "/addToCart",
             type: 'get',
             data: {
                 id: id,
@@ -414,7 +414,7 @@
 
     $('#sort-tableID').change(function () {
         $.ajax({
-            url: "/BHNFoods/loadMoreProduct",
+            url: "/loadMoreProduct",
             type: "get",
             data: {
                 kind: kind,
@@ -432,7 +432,7 @@
     function searchByName(param) {
         var txtSearch = param.value;
         $.ajax({
-            url: "/BHNFoods/searchByAjax",
+            url: "/searchByAjax",
             type: "get",
             data: {
                 txt: txtSearch

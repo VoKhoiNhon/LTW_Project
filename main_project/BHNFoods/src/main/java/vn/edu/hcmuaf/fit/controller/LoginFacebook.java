@@ -62,6 +62,6 @@ public class LoginFacebook extends HttpServlet {
         UserService.getInstance().addUserFB(u.getName(), u.getId());
         vn.edu.hcmuaf.fit.beans.User user=UserService.getInstance().getLastUser();
         System.out.println("User [ name: " + u.getName()+"]");
-        response.sendRedirect("/BHNFoods/index?idUser=" + user.getIdUser());
+        response.sendRedirect("/index?idUser=" + user.getIdUser());
     }
 }

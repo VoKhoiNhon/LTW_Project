@@ -94,7 +94,7 @@
         %>
         <div class="row block-9">
             <div class="col-md-6 order-md-last d-flex">
-                <form action="/BHNFoods/ContactInUser" method="post" class="bg-white p-5 contact-form">
+                <form action="/ContactInUser" method="post" class="bg-white p-5 contact-form">
                     <h3 style="color: #82ae46">Gửi phản hồi cho chúng tôi</h3>
                     <div class="form-group" style="display: none">
                         <input name="iduser" type="text" class="form-control" placeholder="Họ và tên"

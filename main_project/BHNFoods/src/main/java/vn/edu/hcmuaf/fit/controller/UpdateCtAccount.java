@@ -59,10 +59,10 @@ public class UpdateCtAccount extends HttpServlet {
         }
       switch (t) {
           case 1:
-              request.getRequestDispatcher("/BHNFoods/account").forward(request, response);
+              request.getRequestDispatcher("/account").forward(request, response);
               break;
           case 2:
-              response.sendRedirect("/BHNFoods/index");
+              response.sendRedirect("/index");
               break;
       }
 

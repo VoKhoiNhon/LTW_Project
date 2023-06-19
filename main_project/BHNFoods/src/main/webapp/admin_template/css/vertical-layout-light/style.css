@@ -35688,6 +35688,9 @@ div.tagsinput span.tag a {
   color: green;
   background-color: white;
 }
+a, div, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, p, span, h6, .h6 {
+  text-decoration-line: none;
+}
 
 
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */

@@ -166,20 +166,20 @@
              aria-labelledby="messageDropdown">
 
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item preview-item" href="/BHNFoods/AdminManageUser">
+          <a class="dropdown-item preview-item" href="/AdminManageUser">
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis font-weight-medium text-dark">Người dùng </p>
               <p class="fw-light small-text mb-0">Trang chi tiết người dùng</p>
             </div>
           </a>
-          <a class="dropdown-item preview-item" href="/BHNFoods/AdminMain">
+          <a class="dropdown-item preview-item" href="/AdminMain">
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis font-weight-medium text-dark">Admin</p>
               <p class="fw-light small-text mb-0">Trang chi tiết Admin</p>
             </div>
           </a>
           <a class="dropdown-item preview-item"
-             href="/BHNFoods/AdminManagePr?kind=0&page=1">
+             href="/AdminManagePr?kind=0&page=1">
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis font-weight-medium text-dark">Sản Phẩm </p>
               <p class="fw-light small-text mb-0">Trang chi tiết quản lý sản phẩm</p>
@@ -202,7 +202,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <form class="search-form" action="/BHNFoods/SearchUser" method="post">
+        <form class="search-form" action="/SearchUser" method="post">
           <i class="icon-search"></i>
           <input type="search" class="form-control" name="searchUser" placeholder="Search Here"
                  title="Search here">
@@ -284,32 +284,32 @@
 <div class="container-fluid page-body-wrapper">
   <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="nav-item">
-      <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
+      <a href="/ListOrdersAdmin" class="nav-item-link">
         <i style="margin-right: 5px;" class="fa-solid fa-bars-progress"></i>
         <span>Quản lý đơn hàng</span>
       </a>
     </div>
     <div class="nav-item">
-      <a href="/BHNFoods/HistoryOrdersAdmin" class="nav-item-link">
+      <a href="/HistoryOrdersAdmin" class="nav-item-link">
         <i style="margin-right: 5px;"class="fa-solid fa-clock-rotate-left"></i>
         <span>Lịch sử đơn hàng</span>
       </a>
     </div>
     <div class="nav-item">
-      <a href="/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
+      <a href="/AdminManagePr?kind=0&page=1" class="nav-item-link">
         <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
         <span>Quản lý sản phẩm</span>
       </a>
     </div>
     <div class="nav-item">
-      <a href="/BHNFoods/Warehouse" class="nav-item-link">
+      <a href="/Warehouse" class="nav-item-link">
         <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
         <span>Nhập kho</span>
       </a>
     </div>
 
     <div class="nav-item">
-      <a href="/BHNFoods/logOut" class="nav-item-link">
+      <a href="/logOut" class="nav-item-link">
         <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
         <span>Đăng xuất</span>
       </a>
@@ -320,7 +320,7 @@
     <div class="content-wrapper">
       <div class="row">
         <div class="col-sm-12">
-          <form action="/BHNFoods/UpdateConditionOrders" method="post" class="shoping-cart spad">
+          <form action="/UpdateConditionOrders" method="post" class="shoping-cart spad">
             <div class="container">
               <%
                 Map<String, List<Orders>> mapOrder = (Map<String, List<Orders>>) request.getAttribute("mapAdminOrder");
@@ -395,7 +395,7 @@
                       </div>
                       <div style="display:grid;">
                         <button name="condition"  value="<%=condition%>
-                  " type="submit" onclick="changeColor()" class="uCanClick changeColor" style="background:#7fad39; margin: 3px 0px; color: white; border: none;">
+                  " type="" onclick="changeColor()" class="uCanClick changeColor" style="background:#7fad39; margin: 3px 0px; color: white; border: none;">
                           <%=check%></button>
 <%--                        <button name="condition"  value="2"  type="submit"  class="uCanClick " style="background:#7fad39; margin: 3px 0px; color: white; border: none;">Thành công</button>--%>
 <%--                        <button name="condition"  value="3" type="submit"  class="uCanClick " style="background:#7fad39; margin: 3px 0px; color: white; border: none;">Không thành công</button>--%>

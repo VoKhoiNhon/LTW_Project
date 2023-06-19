@@ -16,7 +16,7 @@ import java.util.List;
 
 @WebServlet(name = "AddWarehouse", value = "/AddWarehouse")
 public class AddWarehouse extends HttpServlet {
-    int index = WarehouseService.getInstance().getListWH().size();
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,6 +25,7 @@ public class AddWarehouse extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int index = WarehouseService.getInstance().getListWH().size();
         String codewh = request.getParameter("codewh");
         String date = request.getParameter("date");
         System.out.println(codewh);
@@ -43,7 +44,7 @@ public class AddWarehouse extends HttpServlet {
         //  WarehouseService.getInstance().addDetailWh(index+1, idpr, price, amount, weight);
 //        ProductService.getInstance().updateInventoryCT_PR(idpr,amount);
         //}
-        response.sendRedirect("/BHNFoods/Warehouse");
+        response.sendRedirect(" /Warehouse");
 
     }
 }

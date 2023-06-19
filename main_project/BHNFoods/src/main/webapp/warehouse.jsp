@@ -305,38 +305,38 @@
                       <p class="mb-0 font-weight-medium float-left">Lọc</p>
                     </a> -->
                     <div class="dropdown-divider"></div>
-                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=0&page=1 "
+                    <a href="http://localhost:8080/AdminManagePr?kind=0&page=1 "
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Tất cả </p>
                         </div>
                     </a>
-                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=1&page=1"
+                    <a href="http://localhost:8080/AdminManagePr?kind=1&page=1"
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Gạo</p>
                         </div>
                     </a>
-                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=2&page=1 "
+                    <a href="http://localhost:8080/AdminManagePr?kind=2&page=1 "
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Nếp </p>
                         </div>
                     </a>
-                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=3&page=1"
+                    <a href="http://localhost:8080/AdminManagePr?kind=3&page=1"
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại hạt </p>
                         </div>
                     </a>
-                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=4&page=1"
+                    <a href="http://localhost:8080/AdminManagePr?kind=4&page=1"
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại bột </p>
 
                         </div>
                     </a>
-                    <a href="http://localhost:8080/BHNFoods/AdminManagePr?kind=5&page=1 "
+                    <a href="http://localhost:8080/AdminManagePr?kind=5&page=1 "
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại củ, trái </p>
@@ -354,7 +354,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <form class="search-form" action="/BHNFoods/SearchAdmin" method="post">
+                <form class="search-form" action="/SearchAdmin" method="post">
                     <i class="icon-search"></i>
                     <input type="search" class="form-control" placeholder="Search Here" name="searchAD"
                            title="Search here">
@@ -374,32 +374,32 @@
 
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="nav-item">
-            <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
+            <a href="/ListOrdersAdmin" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-bars-progress"></i>
                 <span>Quản lý đơn hàng</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/HistoryOrdersAdmin" class="nav-item-link">
+            <a href="/HistoryOrdersAdmin" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-clock-rotate-left"></i>
                 <span>Lịch sử đơn hàng</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
+            <a href="/AdminManagePr?kind=0&page=1" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Quản lý sản phẩm</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/Warehouse" class="nav-item-link">
+            <a href="/Warehouse" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
                 <span>Nhập kho</span>
             </a>
         </div>
 
         <div class="nav-item">
-            <a href="/BHNFoods/logOut" class="nav-item-link">
+            <a href="/logOut" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span>Đăng xuất</span>
             </a>
@@ -523,10 +523,10 @@
     </div>
 </div>
 <%--form thêm lô hàng--%>
-<div class="edit_formUser edit_formAdd add_warehouse form_add_sp">
+<div  class="edit_formUser edit_formAdd add_warehouse form_add_sp">
     <div class="container" style="background:none;">
         <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
-            <form id="idform" class="billing-form" style="margin-top: 5%;" action="/BHNFoods/AddWarehouse" method="post"
+            <form id="idform" class="billing-form" style="margin-top: 5%;" action="/AddWarehouse" method="post"
                   enctype="multipart/form-data">
                 <div class="contai"></div>
                 <h4 class="mb-4 billing-heading">Nhập Lô hàng</h4>
@@ -539,13 +539,7 @@
                                    value="">
                         </div>
                     </div>
-                    <div class=" col-md-6 col_addwh">
-                        <div class="form-group">
-                            <label>Nhân viên nhận hàng</label>
-                            <input id="idEmployee" type="text" class="form-control input_addpr" name="employee"
-                                   placeholder="" value="">
-                        </div>
-                    </div>
+
                     <div class=" col-md-6 col_addwh">
                         <div class="form-group">
                             <label>Ngày nhập hàng</label>
@@ -558,17 +552,17 @@
                 <h4 class="mb-4 billing-heading">Sản phẩm</h4>
                 <div class="row align-items-end" style="font-size: 16px;">
                     <div id="boundingRows">
-                        <div class=" d-flex flex-grow-1 row_input rowWarehouse">
+                        <div id="warehouse1" class=" d-flex flex-grow-1 row_input rowWarehouse">
                             <div class="" style=" margin-top: 2rem">
                                 <div class="">
-                                    <input class="number_pr" type="button" onclick="" value="1">
+                                    <input class="number_pr" type="button" name="indexRow" onclick="" value="1">
                                 </div>
                             </div>
                             <div class="col-md-6 col_addprod">
                                 <div class="form-group">
                                     <label>Danh mục</label>
                                     <select id="menu1" onchange="selectMenu('menu1', 'product1')" type="text"
-                                            class="elementMenu form-control input_addpr" name="" required>
+                                            class="elementMenu form-control input_addpr" name="menu" required>
                                         <option value="m1">Gạo</option>
                                         <option value="m2">Nếp</option>
                                         <option value="m3">Các loại hạt</option>
@@ -581,7 +575,7 @@
                                 <div class="form-group">
                                     <label>Tên sản phẩm</label>
                                     <select id="product1" type="text" class="elementMenu form-control input_addpr"
-                                            name="" required>
+                                            name="nameProduct" required>
                                     </select>
                                 </div>
                             </div>
@@ -597,7 +591,7 @@
                             <div class=" col-md-6 col_addprod">
                                 <div class="form-group">
                                     <label>Số lượng</label>
-                                    <input id="amount1" min="1" name="weight" type="number"
+                                    <input id="amount1" min="1" name="amount" type="number"
                                            class="elementQuantity form-control input_addpr "
                                            placeholder=""
                                            value="" required>
@@ -614,7 +608,7 @@
                             </div>
                             <div class="" style=" margin-top: 2rem">
                                 <div class="">
-                                    <input class="" type="button" onclick="" value="x">
+                                    <input class="" type="button" onclick="remove('warehouse1')" value="x">
                                 </div>
                             </div>
                         </div>
@@ -642,7 +636,7 @@
 <%--<div class="edit_formUser form_add_sp xem_chi_tiet">--%>
 <%--    <div class="container" style="background:none;">--%>
 <%--        <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">--%>
-<%--            <form class="billing-form" style="margin-top: 5%;" action="/BHNFoods/Warehouse" method="post"--%>
+<%--            <form class="billing-form" style="margin-top: 5%;" action="/Warehouse" method="post"--%>
 <%--                  enctype="multipart/form-data">--%>
 <%--                <h4 class="mb-4 billing-heading">Chi tiết lô hàng:</h4>--%>
 <%--                <h4 class="mb-4 billing-heading">Ngày nhập: </h4>--%>
@@ -705,22 +699,28 @@
 
 <script>
     function submitForm() {
+        const listMenu = document.getElementsByName('menu');
+        const listName = document.getElementsByName('nameProduct');
+        const listPrice = document.getElementsByName('price');
+        const listAmount = document.getElementsByName('amount');
+        const listWeight = document.getElementsByName('weight');
         let total = document.getElementsByClassName('rowWarehouse').length;
         var arr = [];
-        for (let i = 1; i <= total; i++) {
+        for (let i = 0; i < total; i++) {
             var item = {
-                ID_MENU: $('#menu' + i).val(),
-                ID_PR: $('#product' + i).val(),
-                PRICE_IMPORT: $('#price' + i).val(),
-                AMOUNT_PR: $('#amount' + i).val(),
-                WEIGHT_PR: $('#weight' + i).val()
+                ID_MENU: listMenu[i].value,
+                ID_PR: listName[i].value,
+                PRICE_IMPORT: listPrice[i].value,
+                AMOUNT_PR: listAmount[i].value,
+                WEIGHT_PR: listWeight[i].value
             }
-            arr[i - 1] = item;
+            arr[i] = item;
         }
+        console.log(arr)
         var jsonItem = JSON.stringify(arr);
         $('#jsonItem').val(jsonItem)
         $.ajax({
-            url: "/BHNFoods/AddWarehouse",
+            url: "/AddWarehouse",
             type: 'post',
             data: {
                 codewh: $('#idShipment').val(),
@@ -730,6 +730,7 @@
             },
             success: function (data) {
                 alert("thanh cong");
+                location.reload();
             },
             error: function () {
             },
@@ -762,7 +763,7 @@
 
     function details(id_shipment) {
         $.ajax({
-            url: "/BHNFoods/ViewDetailsWh",
+            url: "/ViewDetailsWh",
             type: 'get',
             data: {
                 idShipment: id_shipment,
@@ -790,19 +791,27 @@
     function huy() {
         $(".form_add_sp,.add_warehouse,  .xem_chi_tiet").css("display", "none");
     }
+    function remove(id){
+        document.getElementById(id).remove();
+        const totalRow = document.getElementsByClassName('rowWarehouse').length;
+        var elementIndexRow = document.getElementsByName('indexRow');
+        for (let i = 1; i <= totalRow; i++) {
+            elementIndexRow[i - 1].value = i;
+        }
+    }
 
     document.getElementById('btnAddRow').addEventListener('click', () => {
         let index = document.getElementsByClassName('rowWarehouse').length + 1;
-        $('#boundingRows').append("<div class=\"d-flex flex-grow-1 row_input rowWarehouse\">\n" +
+        $('#boundingRows').append("<div id=\"warehouse"+index+"\" class=\"d-flex flex-grow-1 row_input rowWarehouse\">\n" +
             "                            <div class=\"\" style=\" margin-top: 2rem\">\n" +
             "                                <div class=\"\">\n" +
-            "                                    <input class=\"number_pr\" type=\"button\" onclick=\"\" value=\"" + index + "\">\n" +
+            "                                    <input class=\"number_pr\" type=\"button\" name=\"indexRow\" onclick=\"\" value=\"" + index + "\">\n" +
             "                                </div>\n" +
             "                            </div>\n" +
             "                            <div class=\"col-md-6 col_addprod\">\n" +
             "                                <div class=\"form-group\">\n" +
             "                                    <label>Danh mục</label>\n" +
-            "                                    <select id=\"menu" + index + "\" onchange=\"selectMenu('menu" + index + "', 'product" + index + "')\" type=\"text\" class=\"elementMenu form-control input_addpr\" name=\"\" required>\n" +
+            "                                    <select id=\"menu" + index + "\" onchange=\"selectMenu('menu" + index + "', 'product" + index + "')\" type=\"text\" class=\"elementMenu form-control input_addpr\" name=\"menu\" required>\n" +
             "                                        <option value=\"m1\">Gạo</option>\n" +
             "                                        <option value=\"m2\">Nếp</option>\n" +
             "                                        <option value=\"m3\">Các loại hạt</option>\n" +
@@ -814,7 +823,7 @@
             "                            <div class=\"col-md-6 col_addprod\">\n" +
             "                                <div class=\"form-group\">\n" +
             "                                    <label>Tên sản phẩm</label>\n" +
-            "                                    <select id=\"product" + index + "\" type=\"text\" class=\"elementMenu form-control input_addpr\" name=\"\" required>\n" +
+            "                                    <select id=\"product" + index + "\" type=\"text\" class=\"elementMenu form-control input_addpr\" name=\"nameProduct\" required>\n" +
             "                                    </select>\n" +
             "                                </div>\n" +
             "                            </div>\n" +
@@ -844,7 +853,7 @@
             "                            </div>\n" +
             "                            <div class=\"\" style=\" margin-top: 2rem\">\n" +
             "                                <div class=\"\">\n" +
-            "                                    <input class=\"\" type=\"button\" onclick=\"\" value=\"x\">\n" +
+            "                                    <input class=\"\" type=\"button\" onclick=\"remove('warehouse"+index+"')\" value=\"x\">\n" +
             "                                </div>\n" +
             "                            </div>\n" +
             "                        </div>");
@@ -853,7 +862,7 @@
     function selectMenu(id, idElementSelect) {
         var idMenu = $('#' + id).val();
         $.ajax({
-            url: "/BHNFoods/AddMenu",
+            url: "/AddMenu",
             type: 'get',
             data: {
                 idMenu: idMenu

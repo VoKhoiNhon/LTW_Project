@@ -71,7 +71,6 @@ public class UserService {
         JDBIConnector.get().withHandle(handle -> {
             return   handle.createUpdate("UPDATE `user` u set u.Decentralization= "+decentralization+"  WHERE u.ID_USER='"+idUser+"'").execute();
         });
-
     }
 
 

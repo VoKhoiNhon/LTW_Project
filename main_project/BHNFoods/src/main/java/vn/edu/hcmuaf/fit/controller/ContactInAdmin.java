@@ -24,7 +24,7 @@ public class ContactInAdmin extends HttpServlet {
         int condition= Integer.parseInt(request.getParameter("condition"));
         ProductService.getInstance().viewContact(idcontact);
         ProductService.getInstance().seenContact(idcontact, condition);
-        response.sendRedirect("/BHNFoods/AdminMain");
+        response.sendRedirect("/AdminMain");
 
     }
 }

@@ -76,38 +76,38 @@
                       <p class="mb-0 font-weight-medium float-left">Lọc</p>
                     </a> -->
                     <div class="dropdown-divider"></div>
-                    <a href="/BHNFoods/AdminManagePr?kind=0&page=1 "
+                    <a href="/AdminManagePr?kind=0&page=1 "
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Tất cả </p>
                         </div>
                     </a>
-                    <a href="/BHNFoods/AdminManagePr?kind=1&page=1"
+                    <a href="/AdminManagePr?kind=1&page=1"
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Gạo</p>
                         </div>
                     </a>
-                    <a href="/BHNFoods/AdminManagePr?kind=2&page=1 "
+                    <a href="/AdminManagePr?kind=2&page=1 "
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Nếp </p>
                         </div>
                     </a>
-                    <a href="/BHNFoods/AdminManagePr?kind=3&page=1"
+                    <a href="/AdminManagePr?kind=3&page=1"
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại hạt </p>
                         </div>
                     </a>
-                    <a href="/BHNFoods/AdminManagePr?kind=4&page=1"
+                    <a href="/AdminManagePr?kind=4&page=1"
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại bột </p>
 
                         </div>
                     </a>
-                    <a href="/BHNFoods/AdminManagePr?kind=5&page=1 "
+                    <a href="/AdminManagePr?kind=5&page=1 "
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại củ, trái </p>
@@ -125,7 +125,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <form class="search-form" action="/BHNFoods/SearchAdmin" method="post">
+                <form class="search-form" action="/SearchAdmin" method="post">
                     <i class="icon-search"></i>
                     <input type="search" class="form-control" placeholder="Search Here" name="searchAD"
                            title="Search here">
@@ -210,50 +210,50 @@
         <%--        nếu là admin thì hiển thị trang chủ, log, qly người dùng , logout--%>
         <%if (user.getDecentralization() == Powers.ADMIN) {%>
         <div class="nav-item">
-            <a href="/BHNFoods/AdminMain" class="nav-item-link">
+            <a href="/AdminMain" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-home"></i>
                 <span>Trang chủ</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/AdminManageUser" class="nav-item-link">
+            <a href="/AdminManageUser" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-account-circle"></i>
                 <span>Quản lý người dùng</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
+            <a href="/AdminManagePr?kind=0&page=1" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Quản lý sản phẩm</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/ListLog" class="nav-item-link">
+            <a href="/ListLog" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Log</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/Login" class="nav-item-link">
+            <a href="/Login" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span>Đăng xuất</span>
             </a>
         </div>
         <%} else {%>
         <div class="nav-item">
-            <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
+            <a href="/ListOrdersAdmin" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
                 <span>Quản lý đơn hàng</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/HistoryOrdersAdmin" class="nav-item-link">
+            <a href="/HistoryOrdersAdmin" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
                 <span>Lịch sử đơn hàng</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
+            <a href="/AdminManagePr?kind=0&page=1" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Quản lý sản phẩm</span>
             </a>
@@ -265,7 +265,7 @@
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/Login" class="nav-item-link">
+            <a href="/Login" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span>Đăng xuất</span>
             </a>
@@ -296,7 +296,7 @@
                         </div>
 
 
-                        <form action="/BHNFoods/AddNewImg" id="imageForm" method="post" enctype="multipart/form-data">
+                        <form action="/AddNewImg" id="imageForm" method="post" enctype="multipart/form-data">
                             <div style="display: none"
                                  class="form-group">
 
@@ -317,7 +317,7 @@
 
                     </div>
                 </div>
-                <form action="/BHNFoods/UpdateProduct"
+                <form action="/UpdateProduct"
                       method="post" class="billing-form"
                       enctype="multipart/form-data"
                       style="margin-top: 5%;">
@@ -534,7 +534,7 @@
 <script>
     function deleteIMG(url, id) {
         $.ajax({
-            url: "/BHNFoods/deleteIMGProd",
+            url: "/deleteIMGProd",
             type: 'get',
             data: {
                 URL:url
