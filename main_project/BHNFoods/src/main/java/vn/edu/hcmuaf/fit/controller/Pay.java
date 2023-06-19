@@ -39,7 +39,7 @@ public class Pay extends HttpServlet {
         String city = request.getParameter("city");
         String district = request.getParameter("district");
         String ward = request.getParameter("ward");
-        String finalAddress = address + " " + ward + " " + district + " " + city;
+        String finalAddress = address + ", " + ward + ", " + district + ", " + city;
         int day = Integer.parseInt(request.getParameter("day"));
         String time = request.getParameter("time");
         String note = request.getParameter("note");
@@ -51,7 +51,6 @@ public class Pay extends HttpServlet {
         String timePickup = "";
         String[] listId = allId.trim().replace("box", "").split(" ");
         List<Cart> listCart = new ArrayList<>();
-        double totalWeight = 0; // kg
         for (String id : listId) {
             List<Cart> temp = CartService.getInstance().getProdFormCart(idUser, id);
             listCart.addAll(temp);
@@ -60,7 +59,7 @@ public class Pay extends HttpServlet {
         BoxSizeAndWeight boxSizeAndWeight = new BoxSizeAndWeight(listId);
 
         try {
-            String leadTime = Logistics.getLeadTime(idDistrict, idWard, boxSizeAndWeight.getHeight(), boxSizeAndWeight.getLength(), boxSizeAndWeight.getWidth(), (int) boxSizeAndWeight.getWeight());
+            String leadTime = Logistics.getLeadTime(idDistrict, idWard, boxSizeAndWeight.getHeight(), boxSizeAndWeight.getLength(), boxSizeAndWeight.getWidth(), (int) boxSizeAndWeight.getWeight()*1000);
             timePickup = leadTime.substring(0, leadTime.indexOf("T"));
         } catch (Exception e) {
             throw new RuntimeException(e);

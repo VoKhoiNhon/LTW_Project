@@ -117,7 +117,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <form id="formPay" action="BHNFoods/checkingOut" method="post">
+                <form id="formPay" action="/BHNFoods/checkingOut" method="post">
                     <div id="checkOut" class="shoping__checkout" style="margin-top: 0">
                         <h5>Tổng giỏ hàng</h5>
                         <ul>
