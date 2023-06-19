@@ -80,7 +80,6 @@ public class Login extends HttpServlet {
             }
         }
         else {
-            System.out.println("aaaaaaaaaaaaaaa");
             request.setAttribute("error", "Sai tài khoản hoặc mật khẩu");
             DB.me().insert(new Log(Log.WARNING, null, this.src, "LOGIN FALSE: " + username, 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
             request.getRequestDispatcher("login.jsp").forward(request, response);

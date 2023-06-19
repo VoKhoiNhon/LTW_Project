@@ -25,7 +25,7 @@ public class ChangeDistrict extends HttpServlet {
         int fee = 0;
         if(idDistrict != -1 || idWard != -1) { // Nếu tồn tại nơi gửi đến thì tính lại phí
             BoxSizeAndWeight boxSizeAndWeight = new BoxSizeAndWeight(listId);
-            fee = Logistics.getCalculateFee(idDistrict,idWard,boxSizeAndWeight.getHeight(),boxSizeAndWeight.getLength(),boxSizeAndWeight.getWidth(),boxSizeAndWeight.getHeight());
+            fee = Logistics.getCalculateFee(idDistrict,idWard,boxSizeAndWeight.getHeight(),boxSizeAndWeight.getLength(),boxSizeAndWeight.getWidth(),(int)boxSizeAndWeight.getWeight());
         }
 
         int totalCheckout = sumCheckout - discountCheckout + fee;

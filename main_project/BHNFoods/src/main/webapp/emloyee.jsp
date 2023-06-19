@@ -320,7 +320,7 @@
         <div class="content-wrapper">
             <div class="row">
                 <div class="col-sm-12">
-                    <form action="/BHNFoods/UpdateConditionOrders" method="post" class="shoping-cart spad">
+
                         <div class="container">
                             <%
                                 Map<String, List<Orders>> mapOrder = (Map<String, List<Orders>>) request.getAttribute("mapAdminOrder");
@@ -336,6 +336,7 @@
                                     String iduser="";
 
                             %>
+                            <form action="/BHNFoods/UpdateConditionOrders" method="post" class="shoping-cart spad">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="shoping__cart__table">
@@ -367,7 +368,7 @@
 
                                                 </td>
                                                 <td class="shoping__cart__item">
-                                                    <h5><%=o.getNamePr()%></h5>
+                                                    <h5><%=o.getNamePr()%>     <%=o.getIdOrders()%></h5>
                                                     <input name="idOrders" style="display: none" value="<%=o.getIdOrders()%>">
                                                 </td>
                                                 <td class="shoping__cart__price">
@@ -383,7 +384,9 @@
                                             <%}%>
                                             </tbody>
                                         </table>
-                                        <div class="d-flex justify-content-between pt-5 align-items-center">
+
+                                        <input name="addr" style="display: none" value="<%=address%>">
+                                          <div class="d-flex justify-content-between pt-5 align-items-center">
                                             <div style="width: 50%">
                                                 <h5>Tên và SĐT Khách hàng: <span style="color: red;"> <%=name%> <%=phone%></span></h5>
                                                 <h5>Địa chỉ đơn hàng: <span style="color: red;"><%=address%></span></h5>
@@ -402,9 +405,10 @@
                                     </div>
                                 </div>
                             </div>
+                            </form>
                             <%}%>
                         </div>
-                    </form>
+
                 </div>
             </div>
         </div>
