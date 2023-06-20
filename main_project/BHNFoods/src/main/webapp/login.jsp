@@ -81,7 +81,7 @@
                                     <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=https://app-bhnfoods-230618175454.azurewebsites.net//LoginGG&response_type=code
 		&client_id=209315281506-9itod9oiojmbqe56ri7567e6nqi2e181.apps.googleusercontent.com&approval_prompt=force">Login
                                         Google</a>
-                                    <a href="https://www.facebook.com/dialog/oauth?client_id=761456919098163&redirect_uri=https://app-bhnfoods-230618175454.azurewebsites.net/LoginFacebook&scope="
+                                    <a href="https://www.facebook.com/dialog/oauth?client_id=761456919098163&redirect_uri=https://app-bhnfoods-230618175454.azurewebsites.net//LoginFacebook&scope="
                                        +<%=StringUtils.join(permissions)%>>Login Facebook</a>
                                     <%--                                    <a href="https://www.facebook.com/vX.X/dialog/oauth?client_id=761456919098163&redirect_uri=http://localhost:8080/LoginFacebook&scope="></a>--%>
                                 </div>
@@ -108,55 +108,6 @@
     </div>
 </div>
 <script>
-
-    import FB from "./js/aos";
-
-    function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-        console.log('statusChangeCallback');
-        console.log(response);                   // The current login status of the person.
-        if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-            testAPI();
-        } else {                                 // Not logged into your webpage or we are unable to tell.
-            document.getElementById('status').innerHTML = 'Please log ' +
-                'into this webpage.';
-        }
-    }
-
-
-    function checkLoginState() {               // Called when a person is finished with the Login Button.
-        FB.getLoginStatus(function (response) {   // See the onlogin handler
-            statusChangeCallback(response);
-        });
-    }
-
-
-    window.fbAsyncInit = function () {
-        FB.init({
-            appId: '{761456919098163}',
-            cookie: true,                     // Enable cookies to allow the server to access the session.
-            xfbml: true,                     // Parse social plugins on this webpage.
-            version: '{v16.0}'           // Use this Graph API version for this call.
-        });
-
-
-        FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
-            statusChangeCallback(response);        // Returns the login status.
-        });
-    };
-
-    function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-        console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me', function (response) {
-            console.log('Successful login for: ' + response.name);
-            document.getElementById('status').innerHTML =
-                'Thanks for logging in, ' + response.name + '!';
-        });
-    }
-
-</script>
-
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
 <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v17.0&appId=761456919098163&autoLogAppEvents=1"
         nonce="NZH3m4vo"></script>
