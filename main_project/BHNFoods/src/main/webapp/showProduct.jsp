@@ -295,6 +295,7 @@
                             <%for (ImgForSingleProd l : li) {%>
                             <div  class=" edit_img">
                                 <img class="image-item img " src="<%=l.getUrl()%>">
+                      
                                 <button  onclick="deleteIMG('<%=l.getUrl()%>')">x</button>
                             </div>
 
