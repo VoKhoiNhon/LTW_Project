@@ -142,6 +142,7 @@ public class User implements Serializable {
     public String checkDecentralization( ){
         if(this.decentralization==0) return "User";
         if(this.decentralization==2) return "Admin";
+        if(this.decentralization==-1) return "Ẩn";
         return "Employee";
     }
     public String printCtAccount(String vl){

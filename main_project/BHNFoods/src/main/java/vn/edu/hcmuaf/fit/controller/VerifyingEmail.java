@@ -30,13 +30,11 @@ public class VerifyingEmail extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("auth");
-            String idUser = user.getIdUser();
-            String oldPassword = UserService.getInstance().getEncryptPassUser(idUser);
-            String newPass = Encryption.toSHA1(request.getParameter("pass"));
-            DB.me().insert(new Log(Log.INFO, idUser, this.src, "CHANGE PASS, OLDPASS:" + oldPassword, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
-            UserService.getInstance().updatePass(idUser, newPass);
-            response.sendRedirect("login.jsp");
+        HttpSession session = request.getSession();
+        User user = UserService.getInstance().getUserById((String) session.getAttribute("userId"));
+        String newPass = request.getParameter("pass");
+        UserService.getInstance().updatePass(user.getIdUser(), Encryption.toSHA1(newPass));
+            session.setAttribute("auth",user);
+            response.sendRedirect("/index");
         }
 }

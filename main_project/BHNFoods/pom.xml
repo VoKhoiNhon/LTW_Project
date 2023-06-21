@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>vn.edu.hcmuaf.fit</groupId>
-  <artifactId>BHNFoods</artifactId>
+  <artifactId>BHN</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
   <properties>
@@ -125,6 +125,6 @@
   </dependencies>
 
   <build>
-    <finalName>BHNFoods</finalName>
+    <finalName>BHN</finalName>
   </build>
 </project>

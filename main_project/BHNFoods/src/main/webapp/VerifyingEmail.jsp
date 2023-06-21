@@ -1,4 +1,5 @@
-<%--
+<%@ page import="vn.edu.hcmuaf.fit.beans.User" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.UserService" %><%--
   Created by IntelliJ IDEA.
   User: baota
   Date: 06/03/2023
@@ -37,8 +38,12 @@
         <a style="text-decoration: none; color: black; padding: 8px; background: #f4ffe3" href="login.jsp">OK</a>
 </div>
 <%} else {%>
+<%User user = UserService.getInstance().getUserById(request.getParameter("userId"));
+session.setAttribute("userId", user.getIdUser());%>
 <form action="/verifyingEmail" method="post" id="changePassForm">
     <h2>Cảm ơn bạn đã xác thực</h2>
+    <input disabled value="<%=user.getEmail()%>">
+    <input style="display: none" value="<%=user.getEmail()%>">
     <input id="newPassword" type="password" placeholder="Nhập mật khẩu mới">
     <input id="confirmNewPassword" name="pass" type="password" placeholder="Xác nhận lại mật khẩu mới">
     <button type="submit">Đổi mật khẩu</button>
