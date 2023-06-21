@@ -18,9 +18,9 @@ public class VerifyingService {
 
     public static void addKey(String key, String differentEvent) {
         onEvent_scheduler();
-        String sql = "INSERT INTO identity values('"+key+"')";
+        String sql = "INSERT INTO identity values(?)";
             JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate(sql).execute()
+                handle.createUpdate(sql).bind(0, key).execute()
             );
             createEvent(differentEvent, 5, key);
         }
