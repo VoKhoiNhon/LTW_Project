@@ -32,20 +32,20 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Họ và Tên</label>
-                                <input id="fullName" type="text" class="form-control" placeholder="Nhập họ tên đầy đủ" value="<%=user.getNameUser()%>">
+                                <input id="fullName" type="text" class="form-control" placeholder="Nhập họ tên đầy đủ" value="<%=user != null? user.getNameUser() : ""%>" required>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Số điện thoại</label>
-                                <input id="phoneNumber" type="text" class="form-control" placeholder="Nhập số điện thoại" value="<%=user.getPhone()%>">
+                                <input id="phoneNumber" type="text" class="form-control" placeholder="Nhập số điện thoại" value="<%=user != null? user.getPhone() : "" %>" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input id="email" type="text" class="form-control" placeholder="Nhập địa chỉ Email" value="<%=user.getEmail()%>">
+                                <input id="email" type="text" class="form-control" placeholder="Nhập địa chỉ Email" value="<%=user != null? user.getEmail(): ""%>">
                             </div>
                         </div>
                         <div class="w-100"></div>
@@ -63,7 +63,6 @@
                             <div class="form-group">
                                 <label>Quận, Huyện</label>
                                 <select id="district" type="text" class="form-control" onchange="addWard()">
-
                                 </select>
                             </div>
                             <div class="form-group">
@@ -193,7 +192,7 @@
 
 
         $.ajax({
-            url: "/BHNFoods/pay",
+            url: "/pay",
             type: 'get',
             data: {
                 fullName: $('#fullName').val(),
@@ -236,12 +235,12 @@
 
 
     function Redirect() {
-        window.location.assign('/BHNFoods/ListProduct?kind=0&page=1');
+        window.location.assign('/ListProduct?kind=0&page=1');
     }
 
     // $('#city').change(function changeDistrict() {
     //     $.ajax({
-    //         url: "/BHNFoods/changeDistrict",
+    //         url: "/changeDistrict",
     //         type: 'get',
     //         data: {
     //             sumCheckout: $('#sumCheckout').val(),
@@ -264,7 +263,7 @@
     function addDistrict() {
         const idProvince = $("#city").val();
         $.ajax({
-            url: "/BHNFoods/addDistrict",
+            url: "/addDistrict",
             type: 'get',
             data: {
                 idProvince : idProvince
@@ -275,7 +274,7 @@
                 const content = document.getElementById('district')
                 content.innerHTML = data;
                 $.ajax({
-                    url: "/BHNFoods/changeDistrict",
+                    url: "/changeDistrict",
                     type: 'get',
                     data: {
                         sumCheckout: $('#sumCheckout').val(),
@@ -307,7 +306,7 @@
     function addWard() {
         const idDistrict = $("#district").val();
         $.ajax({
-            url: "/BHNFoods/addWard",
+            url: "/addWard",
             type: 'get',
             data: {
                 idDistrict : idDistrict
@@ -316,7 +315,7 @@
                 const content = document.getElementById('ward')
                 content.innerHTML = data;
                 $.ajax({
-                    url: "/BHNFoods/changeDistrict",
+                    url: "/changeDistrict",
                     type: 'get',
                     data: {
                         sumCheckout: $('#sumCheckout').val(),
@@ -342,7 +341,7 @@
     function changeWard() {
         const idDistrict = $("#district").val();
         $.ajax({
-            url: "/BHNFoods/changeDistrict",
+            url: "/changeDistrict",
             type: 'get',
             data: {
                 sumCheckout: $('#sumCheckout').val(),

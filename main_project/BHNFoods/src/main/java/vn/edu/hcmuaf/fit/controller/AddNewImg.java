@@ -21,11 +21,6 @@ import java.nio.file.StandardCopyOption;
 import static java.lang.System.out;
 
 @WebServlet(name = "AddNewImg", value = "/AddNewImg")
-@MultipartConfig(
-        fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
-        maxFileSize = 1024 * 1024 * 10,      // 10 MB
-        maxRequestSize = 1024 * 1024 * 100   // 100 MB
-)
 public class AddNewImg extends HttpServlet {
     private static final String UPLOAD_DIRECTORY = "D:\\hk1nam3\\LTW\\GitHub\\main_project\\BHNFoods\\src\\main\\webapp\\ImageproductNew\\add";
     private static final String UPLOAD_DIRECTORY_Tomcat = "D:\\hk1nam3\\LTW\\GitHub\\main_project\\BHNFoods\\target\\BHNFoods\\ImageproductNew\\add";
@@ -41,6 +36,7 @@ public class AddNewImg extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int count = 0;
         String idprod = request.getParameter("id");
+        String brand = request.getParameter("brand");
         for (Part filePart : request.getParts()) {
 
             if (filePart.getName().equals("imageFiles")) {

@@ -142,35 +142,35 @@
             <p class="mb-0 font-weight-medium float-left">Lọc</p>
           </a> -->
           <div class="dropdown-divider"></div>
-          <a href="/BHNFoods/AdminManagePr?kind=0&page=1 "class="dropdown-item preview-item">
+          <a href="/AdminManagePr?kind=0&page=1 "class="dropdown-item preview-item">
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis font-weight-medium text-dark">Tất cả </p>
             </div>
           </a>
-          <a href="/BHNFoods/AdminManagePr?kind=1&page=1" class="dropdown-item preview-item">
+          <a href="/AdminManagePr?kind=1&page=1" class="dropdown-item preview-item">
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis font-weight-medium text-dark">Gạo</p>
             </div>
           </a>
-          <a href="/BHNFoods/AdminManagePr?kind=2&page=1 "class="dropdown-item preview-item">
+          <a href="/AdminManagePr?kind=2&page=1 "class="dropdown-item preview-item">
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis font-weight-medium text-dark">Nếp </p>
 
             </div>
           </a>
-          <a href="/BHNFoods/AdminManagePr?kind=3&page=1" class="dropdown-item preview-item">
+          <a href="/AdminManagePr?kind=3&page=1" class="dropdown-item preview-item">
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại hạt </p>
 
             </div>
           </a>
-          <a href="/BHNFoods/AdminManagePr?kind=4&page=1" class="dropdown-item preview-item">
+          <a href="/AdminManagePr?kind=4&page=1" class="dropdown-item preview-item">
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại bột </p>
 
             </div>
           </a>
-          <a href="/BHNFoods/AdminManagePr?kind=5&page=1 "class="dropdown-item preview-item">
+          <a href="/AdminManagePr?kind=5&page=1 "class="dropdown-item preview-item">
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại củ, trái </p>
             </div>
@@ -193,34 +193,6 @@
         </form>
       </li>
 
-      <%
-        User user = (User) session.getAttribute("auth");
-        if (user != null) {%>
-      <li class="nav-item dropdown d-none d-lg-block user-dropdown">
-        <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-          <img class="img-xs rounded-circle" src="ImageproductNew/background/images.png"
-               alt="Profile image"> </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-          <div class="dropdown-header text-center">
-            <%--              <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">--%>
-            <p class="mb-1 mt-3 font-weight-semibold"><%=user.getNameUser()%>
-            </p>
-            <p class="fw-light text-muted mb-0"><%=user.getEmail()%>
-            </p>
-          </div>
-          <a class="dropdown-item"><i
-                  class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Trang cá nhân</a>
-          <a class="dropdown-item"><i
-                  class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>
-            Tin nhắn</a>
-          <%--            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i>--%>
-          <%--              Hoạt động</a>--%>
-          <%--            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>--%>
-          <%--              Các câu hỏi thường gặp</a>--%>
-          <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Đăng xuất</a>
-        </div>
-      </li>
-      <%}%>
     </ul>
     <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
             data-bs-toggle="offcanvas">
@@ -231,24 +203,71 @@
 <!-- partial -->
 <div class="container-fluid page-body-wrapper">
   <nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <%User user = (User) session.getAttribute("auth");%>
+    <%--        nếu là admin thì hiển thị trang chủ, log, qly người dùng , logout--%>
+    <%if (user.getDecentralization() == Powers.ADMIN) {%>
     <div class="nav-item">
-      <a href="/BHNFoods/AdminMain" class="nav-item-link">
+      <a href="/AdminMain" class="nav-item-link">
         <i style="margin-right: 5px;" class="menu-icon mdi mdi-home"></i>
         <span>Trang chủ</span>
       </a>
     </div>
     <div class="nav-item">
-      <a href="/BHNFoods/AdminManageUser" class="nav-item-link">
+      <a href="/AdminManageUser" class="nav-item-link">
         <i style="margin-right: 5px;" class="menu-icon mdi mdi-account-circle"></i>
         <span>Quản lý người dùng</span>
       </a>
     </div>
     <div class="nav-item">
-      <a href="/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
+      <a href="/AdminManagePr?kind=0&page=1" class="nav-item-link">
         <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
         <span>Quản lý sản phẩm</span>
       </a>
     </div>
+    <div class="nav-item">
+      <a href="/ListLog" class="nav-item-link">
+        <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
+        <span>Log</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <a href="/logOut" class="nav-item-link">
+        <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Đăng xuất</span>
+      </a>
+    </div>
+    <%} else{%>
+    <div class="nav-item">
+      <a href="/ListOrdersAdmin" class="nav-item-link">
+        <i style="margin-right: 5px;" class="fa-solid fa-bars-progress"></i>
+        <span>Quản lý đơn hàng</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <a href="/HistoryOrdersAdmin" class="nav-item-link">
+        <i style="margin-right: 5px;" class="fa-solid fa-clock-rotate-left"></i>
+        <span>Lịch sử đơn hàng</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <a href="/AdminManagePr?kind=0&page=1" class="nav-item-link">
+        <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
+        <span>Quản lý sản phẩm</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <a href="/Warehouse" class="nav-item-link">
+        <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
+        <span>Nhập kho</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <a href="/logOut" class="nav-item-link">
+        <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Đăng xuất</span>
+      </a>
+    </div>
+    <%}%>
   </nav>
   <!-- partial -->
   <div class="main-panel">

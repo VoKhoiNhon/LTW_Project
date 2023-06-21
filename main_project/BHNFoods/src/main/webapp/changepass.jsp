@@ -52,7 +52,7 @@
               <p class="card-description login">
                 Thay đổi mật khẩu
               </p>
-              <form id="changePassForm" class="forms-sample" action="/BHNFoods/ForgotPass" method="post">
+              <form id="changePassForm" class="forms-sample" action="/ForgotPass" method="post">
                 <div class="form-group">
                   <label for="userName">Email hoặc Số điện thoại</label>
                   <% if( errorName!=null){ %>

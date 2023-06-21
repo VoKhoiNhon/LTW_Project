@@ -34,18 +34,6 @@ public class OrderService {
 
         return "orders" + num;
     }
-    public String[] getListIDPrInOrder(String idOrder) {
-        String query = "SELECT ID_PR FROM sold_pr  WHERE ID_ORDERS = '"+idOrder+"'";
-        List<String> list= JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(query)
-                    .mapTo(String.class)
-                    .list();
-        });
-        String[] array = list.toArray(new String[0]);
-        return array;
-
-    }
-
 
     public String formatDateTimeNow() {
         LocalDateTime date = LocalDateTime.now();
@@ -120,24 +108,13 @@ public class OrderService {
         }
         return namNhuan;
     }
-public int getWeightOrder(String idOrder){
 
-    String query = "SELECT SUM(c.WEIGHT*1000) FROM sold_pr s, ct_pr c  WHERE s.ID_PR=c.ID_PR AND ID_ORDERS = '"+idOrder+"'";
-    List<Integer> list= JDBIConnector.get().withHandle(handle -> {
-        return handle.createQuery(query)
-                .mapTo(Integer.class)
-                .list();
-    });
-    return list.get(0);
 
-}
 
-    public static void main(String[] args) {
-        System.out.println( OrderService.getInstance().getWeightOrder("orders1"));
-    }
     public void changeConditionOrder(String idOrder, int condition) {
         JDBIConnector.get().withHandle(handle -> {
             return handle.createUpdate("UPDATE orders SET `CONDITION` = "+condition+" WHERE ID_ORDERS = '"+idOrder+"'" ).execute();
         });
     }
 }
+

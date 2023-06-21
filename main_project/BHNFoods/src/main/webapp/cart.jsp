@@ -32,8 +32,7 @@
 
 
 <%@ include file="header.jsp" %>
-<%String error = (String) request.getAttribute("error");
-    System.out.println(error);%>
+
 
 <section class="shoping-cart spad">
     <div class="container">
@@ -66,21 +65,21 @@
                                 </h5>
                             </td>
                             <td class="shoping__cart__price">
-                                <%=decF.format(p.getPrice()).replace(',', '.')%>đ
+                                <%=decF.format(p.getPrice() - (p.getPrice()*p.getDiscount())/100).replace(',', '.')%>đ
                             </td>
                             <td class="shoping__cart__quantity">
                                 <div class="quantity">
                                     <div class="pro-qty">
-                                        <span onclick="changeAmount(this,'<%=p.getPrice()%>', '<%=p.getIdPr()%>', document.getElementById('totalCart'))"
+                                        <span onclick="changeAmount(this,'<%=p.getPrice() - (p.getPrice()*p.getDiscount())/100%>', '<%=p.getIdPr()%>', document.getElementById('totalCart'))"
                                               class="dec qtybtn">-</span>
                                         <input id="amount<%=p.getIdPr()%>" type="text" value="<%=p.getAmount()%>">
-                                        <span onclick="changeAmount(this,'<%=p.getPrice()%>', '<%=p.getIdPr()%>', document.getElementById('totalCart'))"
+                                        <span onclick="changeAmount(this,'<%=p.getPrice() - (p.getPrice()*p.getDiscount())/100%>', '<%=p.getIdPr()%>', document.getElementById('totalCart'))"
                                               class="inc qtybtn">+</span>
                                     </div>
                                 </div>
                             </td>
                             <td id="total<%=p.getIdPr()%>" class="shoping__cart__total">
-                                <%= decF.format(p.getAmount() * p.getPrice()).replace(',', '.')%> đ
+                                <%= decF.format(p.getAmount() * (p.getPrice() - (p.getPrice()*p.getDiscount())/100)).replace(',', '.')%> đ
                             </td>
                             <td style="padding: 30px">
                                 <input name="checkboxInput" id="box<%=p.getIdPr()%>"
@@ -103,7 +102,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
-                    <a href="/BHNFoods/ListProduct?kind=0&page=1" class="primary-btn cart-btn">Tiếp tục mua hàng</a>
+                    <a href="/ListProduct?kind=0&page=1" class="primary-btn cart-btn">Tiếp tục mua hàng</a>
 
                 </div>
             </div>
@@ -117,7 +116,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <form id="formPay" action="/BHNFoods/checkingOut" method="post">
+                <form action="/checkingOut" method="post">
                     <div id="checkOut" class="shoping__checkout" style="margin-top: 0">
                         <h5>Tổng giỏ hàng</h5>
                         <ul>
@@ -150,17 +149,6 @@
 
 <script>
 
-    $("#formPay").submit(function(event) {
-        var elementValue = $('#idProdChecked').val();
-        if(elementValue == '') {
-            alert("Vui lòng mua hàng trước khi thanh toán")
-            event.preventDefault();
-        } else this.submit();
-    })
-
-    <%if(error != null) {%>
-      alert('<%=error%>');
-    <%}%>
     let allCheckbox = $('.checkBoxCart')
     var toStringIdChecked = "";
     for (let i = 0; i < allCheckbox.length; i++) {
@@ -177,11 +165,10 @@
             return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "." + c : c;
         }) + currency;
     }
-
     
     function cancelAppyDiscount() {
         $.ajax({
-            url: "/BHNFoods/canelApplyDiscount",
+            url: "/canelApplyDiscount",
             type: 'get',
             data: {
                 sum: $('#sum').val(),
@@ -205,7 +192,7 @@
 
     function applyDiscount() {
         $.ajax({
-            url: "/BHNFoods/applyDiscount",
+            url: "/applyDiscount",
             type: 'get',
             data: {
                 code: $('#maGiamGia').val(),
@@ -251,7 +238,7 @@
         }
         $('#idProdChecked').val(toStringIdChecked);
         $.ajax({
-            url: "/BHNFoods/checkInventory",
+            url: "/checkInventory",
             type: 'get',
             data: {
                 id: idProd,
@@ -277,12 +264,12 @@
                     }
                 }
                 elementI.val(newVal);
-                elementHeader.innerHTML = "<a href=\"/BHNFoods/Cart\" class=\"nav-link\">\n" +
+                elementHeader.innerHTML = "<a href=\"/Cart\" class=\"nav-link\">\n" +
                     "                        <span class=\"fa-solid fa-cart-shopping\"></span>[" + sumCart + "]</a>";
                 const totalF = format1(parseInt(orginPrice) * parseInt(newVal), ' đ')
                 $('#total' + idProd).text(totalF);
                 $.ajax({
-                    url: "/BHNFoods/changeAmountFormCart",
+                    url: "/changeAmountFormCart",
                     type: 'get',
                     data: {
                         id: idProd,
@@ -329,7 +316,7 @@
             total = total - price * amount;
         }
         $.ajax({
-            url: "/BHNFoods/removeFromCart",
+            url: "/removeFromCart",
             type: 'get',
             data: {
                 id: idProduct,
@@ -342,7 +329,7 @@
                 const content = document.getElementById('checkOut')
                 content.innerHTML = data;
                 sumCart = sumCart - amount;
-                elementHeader.innerHTML = "<a href=\"/BHNFoods/Cart?\" class=\"nav-link\">\n" +
+                elementHeader.innerHTML = "<a href=\"/Cart?\" class=\"nav-link\">\n" +
                     "                        <span class=\"fa-solid fa-cart-shopping\"></span>[" + sumCart + "]</a>";
             },
             error: function () {
@@ -374,7 +361,7 @@
         let discount = $('#discount').val();
 
         $.ajax({
-            url: "/BHNFoods/unCheckFromCart",
+            url: "/unCheckFromCart",
             type: 'get',
             data: {
                 id: idProduct,

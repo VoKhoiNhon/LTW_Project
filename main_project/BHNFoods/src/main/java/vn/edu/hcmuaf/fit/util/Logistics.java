@@ -389,8 +389,7 @@ public class Logistics {
 //        System.out.println(map2.get("Xã Vũ Sơn"));
 //        getWard(1463);
 //        getLeadTime(1463, 21809, 30, 30, 30, 5000);
-        getLeadTime(1463, 21809, 30, 30, 30, 15000);
-//        getCalculateFee(1463, 21809, 30, 30, 30, 5000);
+        getCalculateFee(1463, 21809, 30, 30, 30, 5000);
 //        registerTransport(1463, 21809, 30, 30, 30, 1000);
     }
 }

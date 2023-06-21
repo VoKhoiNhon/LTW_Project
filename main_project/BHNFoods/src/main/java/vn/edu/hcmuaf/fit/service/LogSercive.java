@@ -43,7 +43,8 @@ public class LogSercive {
     });
 }
 
-    public static void main(String[] args) {
-        System.out.println(LocalDate.now());
-    }
+//    public static void main(String[] args) {
+//        System.out.println(LogSercive.getInstance().getAllLog().toString());
+//        System.out.println(123);
+//    }
 }

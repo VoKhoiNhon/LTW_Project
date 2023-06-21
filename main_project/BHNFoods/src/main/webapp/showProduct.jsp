@@ -77,38 +77,38 @@
                       <p class="mb-0 font-weight-medium float-left">Lọc</p>
                     </a> -->
                     <div class="dropdown-divider"></div>
-                    <a href="/BHNFoods/AdminManagePr?kind=0&page=1 "
+                    <a href="/AdminManagePr?kind=0&page=1 "
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Tất cả </p>
                         </div>
                     </a>
-                    <a href="/BHNFoods/AdminManagePr?kind=1&page=1"
+                    <a href="/AdminManagePr?kind=1&page=1"
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Gạo</p>
                         </div>
                     </a>
-                    <a href="/BHNFoods/AdminManagePr?kind=2&page=1 "
+                    <a href="/AdminManagePr?kind=2&page=1 "
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Nếp </p>
                         </div>
                     </a>
-                    <a href="/BHNFoods/AdminManagePr?kind=3&page=1"
+                    <a href="/AdminManagePr?kind=3&page=1"
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại hạt </p>
                         </div>
                     </a>
-                    <a href="/BHNFoods/AdminManagePr?kind=4&page=1"
+                    <a href="/AdminManagePr?kind=4&page=1"
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại bột </p>
 
                         </div>
                     </a>
-                    <a href="/BHNFoods/AdminManagePr?kind=5&page=1 "
+                    <a href="/AdminManagePr?kind=5&page=1 "
                        class="dropdown-item preview-item">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Các loại củ, trái </p>
@@ -126,7 +126,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <form class="search-form" action="/BHNFoods/SearchAdmin" method="post">
+                <form class="search-form" action="/SearchAdmin" method="post">
                     <i class="icon-search"></i>
                     <input type="search" class="form-control" placeholder="Search Here" name="searchAD"
                            title="Search here">
@@ -211,50 +211,50 @@
         <%--        nếu là admin thì hiển thị trang chủ, log, qly người dùng , logout--%>
         <%if (user.getDecentralization() == Powers.ADMIN) {%>
         <div class="nav-item">
-            <a href="/BHNFoods/AdminMain" class="nav-item-link">
+            <a href="/AdminMain" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-home"></i>
                 <span>Trang chủ</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/AdminManageUser" class="nav-item-link">
+            <a href="/AdminManageUser" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-account-circle"></i>
                 <span>Quản lý người dùng</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
+            <a href="/AdminManagePr?kind=0&page=1" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Quản lý sản phẩm</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/ListLog" class="nav-item-link">
+            <a href="/ListLog" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Log</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/Login" class="nav-item-link">
+            <a href="/Login" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span>Đăng xuất</span>
             </a>
         </div>
         <%} else {%>
         <div class="nav-item">
-            <a href="/BHNFoods/ListOrdersAdmin" class="nav-item-link">
+            <a href="/ListOrdersAdmin" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
                 <span>Quản lý đơn hàng</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/HistoryOrdersAdmin" class="nav-item-link">
+            <a href="/HistoryOrdersAdmin" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-down-wide-short"></i>
                 <span>Lịch sử đơn hàng</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
+            <a href="/AdminManagePr?kind=0&page=1" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Quản lý sản phẩm</span>
             </a>
@@ -266,7 +266,7 @@
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/Login" class="nav-item-link">
+            <a href="/Login" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span>Đăng xuất</span>
             </a>
@@ -304,30 +304,30 @@
                             <%}%>
                             </div>
                         </div>
-                        <form  action="/BHNFoods/AddNewImg?id=<%=p.getIdPr()%>" id="imageForm" method="post" enctype="multipart/form-data">
-                            <div class="card">
-                                <div class="drag-area">
-                                                <span class="visible">
-                                                    <span class="select" role="button">Browse</span>
-                                                                                </span>
-                                    <input name="imageFiles" id="imageFiles" type="file" class="imageFiles" multiple/>
-                                    <input name="text" id="textname" type="text" class="form-control input_addpr"
-                                           placeholder=""
-                                           value="" style="display: none">
-                                </div>
-
-                                <!-- IMAGE PREVIEW CONTAINER -->
 
 
+                        <form action="/AddNewImg" id="imageForm" method="post" enctype="multipart/form-data">
+                            <div style="display: none"
+                                 class="form-group">
+
+                                <input type="text"
+                                       value="<%=p.getIdPr()%>"
+                                       class="form-control input_addpr"
+                                       name="id"
+                                       placeholder="">
+                                <input name="brand"
+                                       type="text"
+                                       class="form-control  input_addpr"
+                                       value="<%=p.getBrand()%>"
+                                       placeholder="">
                             </div>
-                            <div class="contai"></div>
-
+                            <input type="file" name="imageInput" id="imageInput" value="chọn ảnh mới" title="chọn ảnh mới" multiple >
                             <input type="submit" value="xác nhận thêm ảnh"/>
                         </form>
 
                     </div>
                 </div>
-                <form action="/BHNFoods/UpdateProduct"
+                <form action="/UpdateProduct"
                       method="post" class="billing-form"
                       enctype="multipart/form-data"
                       style="margin-top: 5%;">
@@ -544,7 +544,7 @@
 <script>
     function deleteIMG(url, id) {
         $.ajax({
-            url: "/BHNFoods/deleteIMGProd",
+            url: "/deleteIMGProd",
             type: 'get',
             data: {
                 URL:url
@@ -557,81 +557,37 @@
             }
         });
     }
-    let files = [],
-        dragArea = document.querySelector('.drag-area'),
-        input = document.querySelector('.drag-area input'),
-        button = document.querySelector('.card button'),
-        select = document.querySelector('.drag-area .select'),
-        container = document.querySelector('.contai');
+    document.getElementById('imageInput').addEventListener('change', function (event) {
+    var imageInput = event.target;
+    var imageContainer = document.getElementById('imageContainer');
 
+    for (var i = 0; i < imageInput.files.length; i++) {
+        var file = imageInput.files[i];
+        var reader = new FileReader();
 
-    let text;
-    /** CLICK LISTENER */
-    select.addEventListener('click', () => input.click());
-    /* INPUT CHANGE EVENT */
-    input.addEventListener('change', () => {
-        let file = input.files;
+        reader.onload = function (e) {
+            var img = document.createElement('img');
+            img.src = e.target.result;
 
-        // if user select no image
-        if (file.length == 0) return;
+            var closeButton = document.createElement('button');
+            closeButton.innerHTML = 'X';
+            closeButton.addEventListener('click', function () {
+                var imageItem = this.parentNode;
+                imageItem.parentNode.removeChild(imageItem);
+            });
 
-        for (let i = 0; i < file.length; i++) {
-            if (file[i].type.split("/")[0] != 'image') continue;
-            if (!files.some(e => e.name == file[i].name)) files.push(file[i])
-            alert(files[i].name);
-            text += files[i].name;
-
+            var imageItem = document.createElement('div');
+            imageItem.className = 'image-item';
+            imageItem.appendChild(img);
+            imageItem.appendChild(closeButton);
+            imageContainer.appendChild(imageItem);
         }
-        document.getElementById('textname').value = text
-        showImages();
-    });
 
-    /** SHOW IMAGES */
-    function showImages() {
-        container.innerHTML = files.reduce((prev, curr, index) => {
-            return `${prev}
-		    <div class="image">
-			    <span onclick="delImage(${index})">&times;</span>
-			    <img src="${URL.createObjectURL(curr)}" style="max-width: 100px; max-height: 100%;" />
-			</div>`
-        }, '');
-
-
+        reader.readAsDataURL(file);
     }
 
-    /* DELETE IMAGE */
-    function delImage(index) {
-        files.splice(index, 1);
-        showImages();
-    }
-
-    /* DRAG & DROP */
-    dragArea.addEventListener('dragover', e => {
-        e.preventDefault()
-        dragArea.classList.add('dragover')
-    })
-
-    /* DRAG LEAVE */
-    dragArea.addEventListener('dragleave', e => {
-        e.preventDefault()
-        dragArea.classList.remove('dragover')
-    });
-
-    /* DROP EVENT */
-    dragArea.addEventListener('drop', e => {
-        e.preventDefault()
-        dragArea.classList.remove('dragover');
-
-        let file = e.dataTransfer.files;
-        for (let i = 0; i < file.length; i++) {
-            /** Check selected file is image */
-            if (file[i].type.split("/")[0] != 'image') continue;
-
-            if (!files.some(e => e.name == file[i].name)) files.push(file[i])
-
-        }
-        showImages();
-    });
+    imageInput.value = '';
+});
 
 </script>
 

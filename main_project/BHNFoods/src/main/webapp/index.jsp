@@ -320,7 +320,22 @@
 
 </body>
 <script>
-
+    const userAgent = navigator.userAgent;
+    let browserName;
+    if (userAgent.indexOf("Firefox") > -1) {
+        browserName = "Mozilla Firefox";
+    } else if (userAgent.indexOf("Edg") > -1 || userAgent.indexOf("Edge") > -1) {
+        browserName = "Microsoft Edge";
+    } else if (userAgent.indexOf("OPR") > -1 || userAgent.indexOf("Opera") > -1) {
+        browserName = "Opera";
+    } else if (userAgent.indexOf("Chrome") > -1 && userAgent.indexOf("Edg") === -1) {
+        browserName = "Google Chrome";
+    } else if (userAgent.indexOf("Safari") > -1 && userAgent.indexOf("Chrome") === -1) {
+        browserName = "Apple Safari";
+    } else {
+        browserName = "unknown";
+    }
+    console.log(`Browser name: ${browserName}`);
 
     <%if(hasAListLove && !hasACart) {
         if(loveProductInSession!= null) {
@@ -334,7 +349,7 @@
         $('#cart_session').remove();
         $('.over_play').remove();
         $.ajax({
-            url: "/BHNFoods/removeCartFromSession",
+            url: "/removeCartFromSession",
             type: 'get',
             error: function () {
             }
@@ -346,7 +361,7 @@
             if(listProductFromCartInSession.size() > 0) {%>
             <%for (int i = 0; i < listProductFromCartInSession.keySet().toArray().length; i++) {%>
                  $.ajax({
-                    url: "/BHNFoods/addToCart",
+                    url: "/addToCart",
                     type: 'get',
                     data: {
                     id: '<%=listProductFromCartInSession.keySet().toArray()[i]%>',
@@ -357,7 +372,7 @@
                     content.innerHTML = data;
                     <%if(i == listProductFromCartInSession.keySet().toArray().length - 1) {%>
                     $.ajax({
-                        url: "/BHNFoods/removeCartFromSession",
+                        url: "/removeCartFromSession",
                         type: 'get',
                         error: function () {
                         }
@@ -416,7 +431,7 @@
         $('#love_session').remove();
         $('.over_play').remove();
         $.ajax({
-            url: "/BHNFoods/removeLoveFromSession",
+            url: "/removeLoveFromSession",
             type: 'get',
             error: function () {
             }
@@ -428,7 +443,7 @@
             if(loveProductInSession.size() > 0) {%>
         <%for (int i = 0; i < loveProductInSession.size(); i++) {%>
         $.ajax({
-            url: "/BHNFoods/addToLoveProd",
+            url: "/addToLoveProd",
             type: 'get',
             data: {
                 id: '<%=loveProductInSession.get(i)%>',
@@ -436,7 +451,7 @@
             success: function (data) {
                 <%if(i == loveProductInSession.size() - 1) {%>
                 $.ajax({
-                    url: "/BHNFoods/removeLoveFromSession",
+                    url: "/removeLoveFromSession",
                     type: 'get',
                     error: function () {
                     }

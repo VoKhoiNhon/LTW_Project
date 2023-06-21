@@ -44,11 +44,15 @@ public class Login extends HttpServlet {
 
         if(user != null) {
             int lv = LogSercive.getInstance().getLevelForDayLogin(username);
-            System.out.println(lv);
+
             if (user.getDecentralization() == Powers.BLOCK) {
                 session.setAttribute("auth", user);
                 session.setAttribute("idUser", user.getIdUser());
                 request.setAttribute("error", "Tài khoản đã bị khoá");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
+            else if(password == "" || user.getPassw() == null) {
+                request.setAttribute("error", "Sai tài khoản hoặc mật khẩu");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
             else if(!user.getPassw().equals(password)) {
@@ -75,7 +79,7 @@ public class Login extends HttpServlet {
                     session.setAttribute("idUser", user.getIdUser());
                     request.setAttribute("idUser", user.getIdUser());
                     DB.me().insert(new Log(Log.INFO, user.getIdUser(), this.src, "LOGIN SUCCESS", 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
-                    response.sendRedirect("/BHNFoods/index");
+                    response.sendRedirect("/index");
                 }
             }
         }

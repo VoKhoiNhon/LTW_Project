@@ -140,20 +140,20 @@
                      aria-labelledby="messageDropdown">
 
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item" href="/BHNFoods/AdminManageUser">
+                    <a class="dropdown-item preview-item" href="/AdminManageUser">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Người dùng </p>
                             <p class="fw-light small-text mb-0">Trang chi tiết người dùng</p>
                         </div>
                     </a>
-                    <a class="dropdown-item preview-item" href="/BHNFoods/AdminMain">
+                    <a class="dropdown-item preview-item" href="/AdminMain">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Admin</p>
                             <p class="fw-light small-text mb-0">Trang chi tiết Admin</p>
                         </div>
                     </a>
                     <a class="dropdown-item preview-item"
-                       href="/BHNFoods/AdminManagePr?kind=0&page=1">
+                       href="/AdminManagePr?kind=0&page=1">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Sản Phẩm </p>
                             <p class="fw-light small-text mb-0">Trang chi tiết quản lý sản phẩm</p>
@@ -177,7 +177,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <form class="search-form" action="/BHNFoods/SearchUser" method="post">
+                <form class="search-form" action="/SearchUser" method="post">
                     <i class="icon-search"></i>
                     <input type="search" class="form-control" name="searchUser" placeholder="Search Here"
                            title="Search here">
@@ -194,31 +194,31 @@
 <div class="container-fluid page-body-wrapper">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="nav-item">
-            <a href="/BHNFoods/AdminMain" class="nav-item-link">
+            <a href="/AdminMain" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-home"></i>
                 <span>Trang chủ</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/AdminManageUser" class="nav-item-link">
+            <a href="/AdminManageUser" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-account-circle"></i>
                 <span>Quản lý người dùng</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/AdminManagePr?kind=0&page=1" class="nav-item-link">
+            <a href="/AdminManagePr?kind=0&page=1" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Quản lý sản phẩm</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/ListLog" class="nav-item-link">
+            <a href="/ListLog" class="nav-item-link">
                 <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
                 <span>Log</span>
             </a>
         </div>
         <div class="nav-item">
-            <a href="/BHNFoods/Login" class="nav-item-link">
+            <a href="/logOut" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span>Đăng xuất</span>
             </a>
@@ -246,10 +246,10 @@
                                 <script>
                                     function downloadFileEX() {
 
-                                        window.location.href = "/BHNFoods/ExportUserExcel";
+                                        window.location.href = "/ExportUserExcel";
                                     }
                                     function downloadFile() {
-                                        window.location.href = "/BHNFoods/ExportUserPDF";
+                                        window.location.href = "/ExportUserPDF";
                                     }
                                 </script>
                             </div>
@@ -348,7 +348,7 @@
     // xem và update user
     function clickEdit(idUser, nameUser, passw, email, phone, datesignup, address) {
         $.ajax({
-            url: "/BHNFoods/appearEditUser",
+            url: "/appearEditUser",
             type: 'get',
             data: {
                 idUser: idUser,

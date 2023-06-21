@@ -21,11 +21,10 @@ public class ChangeDistrict extends HttpServlet {
         int idWard = Integer.parseInt(request.getParameter("idWard"));
         String[] listId = request.getParameter("listId").trim().replace("box", "").split(" ");
 
-
         int fee = 0;
         if(idDistrict != -1 || idWard != -1) { // Nếu tồn tại nơi gửi đến thì tính lại phí
             BoxSizeAndWeight boxSizeAndWeight = new BoxSizeAndWeight(listId);
-            fee = Logistics.getCalculateFee(idDistrict,idWard,boxSizeAndWeight.getHeight(),boxSizeAndWeight.getLength(),boxSizeAndWeight.getWidth(),(int)boxSizeAndWeight.getWeight());
+            fee = Logistics.getCalculateFee(idDistrict,idWard,boxSizeAndWeight.getHeight(),boxSizeAndWeight.getLength(),boxSizeAndWeight.getWidth(),(int) (boxSizeAndWeight.getWeight()*1000));
         }
 
         int totalCheckout = sumCheckout - discountCheckout + fee;
@@ -46,4 +45,5 @@ public class ChangeDistrict extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
+
 }

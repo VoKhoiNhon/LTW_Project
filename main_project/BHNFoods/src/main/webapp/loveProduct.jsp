@@ -107,7 +107,7 @@
 <script>
 	function addToCart(idProd) {
 		$.ajax({
-			url: "/BHNFoods/addToCart",
+			url: "/addToCart",
 			type: 'get',
 			data: {
 				id: idProd,
@@ -125,7 +125,7 @@
 
 	function remove(idProd) {
 		$.ajax({
-			url: "/BHNFoods/removeFromLove",
+			url: "/removeFromLove",
 			type: 'get',
 			data: {
 				id: idProd,
