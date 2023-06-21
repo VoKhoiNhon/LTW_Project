@@ -32,11 +32,9 @@ public class ForgotPass extends HttpServlet {
             request.setAttribute("errorName", "* Tài khoản ko tồn tại");
             request.getRequestDispatcher("changepass.jsp").forward(request, response);
         } else {
-            HttpSession session = request.getSession();
             User user = UserService.getInstance().getUserByPhoneOrEmail(account);
             String salt = Encryption.randomSalt();
-            String key = Encryption.toSHA1(user.getEmail() + salt);
-            session.setAttribute("auth", user);
+            String key = Encryption.randomSalt() + Encryption.randomSalt();
             VerifyingService.getInstance().addKey(key, salt);
             String mailMessage = "<!DOCTYPE html>\n" +
                     "<html lang=\"en\">\n" +
@@ -47,7 +45,7 @@ public class ForgotPass extends HttpServlet {
                     "  <title>Document</title>\n" +
                     "</head>\n" +
                     "<body>\n" +
-                    "  <a style=\"text-decoration: none; padding: 10px 20px; color: black; background:rgb(192, 192, 241);\" href='https://app-bhnfoods-230618175454.azurewebsites.net/verifyingEmail?key="+key+"&different="+salt+"'>Xác thực ngay</a>\n" +
+                    "  <a style=\"text-decoration: none; padding: 10px 20px; color: black; background:rgb(192, 192, 241);\" href='https://app-bhnfoods-230618175454.azurewebsites.net/verifyingEmail?key="+key+"&different="+salt+"&userId="+user.getIdUser()+"'>Xác thực ngay</a>\n" +
                     "</body>\n" +
                     "</html>";
             MailSender.send("Xác thực thông tin", mailMessage, user.getEmail());
