@@ -475,7 +475,7 @@
                                           class="form-control input_addpr"
                                           value="<%=p.getDescribe()%>"
                                           name="mota"
-                                          placeholder="Mô tả sản phẩm">"  mota  "</textarea>
+                                          placeholder="Mô tả sản phẩm"></textarea>
                             </div>
                         </div>
                         <div class="col-md d-flex col_addprod">
