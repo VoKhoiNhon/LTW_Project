@@ -158,14 +158,32 @@ public class UserService {
 
     public List<User> searchUser(String text) {
         List<User> list = new ArrayList<>();
-        for (User u : getListUser()) {
-            if (u.getIdUser().toUpperCase().contains(text.toUpperCase()) || u.getNameUser().toUpperCase().contains(text.toUpperCase())|| u.getPhone().toUpperCase().contains(text.toUpperCase())|| u.getEmail().toUpperCase().contains(text.toUpperCase())) {
-                list.add(u);
+        List<User> ur= getListUser();
+        for (User u : ur) {
+            if(null!=u.getEmail()&&null==u.getPhone()){
+                if (u.getIdUser().toUpperCase().contains(text.toUpperCase()) || u.getNameUser().toUpperCase().contains(text.toUpperCase()) || u.getEmail().toUpperCase().contains(text.toUpperCase())) {
+                    list.add(u);
+                }
+            }else
+            if(null==u.getEmail()&&null!=u.getPhone()) {
+                if (u.getIdUser().toUpperCase().contains(text.toUpperCase()) || u.getNameUser().toUpperCase().contains(text.toUpperCase()) || u.getPhone().toUpperCase().contains(text.toUpperCase()) ) {
+                    list.add(u);
+                }
+            }else
+            if(null==u.getEmail()&&null==u.getPhone()) {
+                if (u.getIdUser().toUpperCase().contains(text.toUpperCase()) || u.getNameUser().toUpperCase().contains(text.toUpperCase())) {
+                    list.add(u);
+                }
+            }else{
+                if (u.getIdUser().toUpperCase().contains(text.toUpperCase()) || u.getNameUser().toUpperCase().contains(text.toUpperCase())|| u.getPhone().toUpperCase().contains(text.toUpperCase())|| u.getEmail().toUpperCase().contains(text.toUpperCase())) {
+                    list.add(u);
+                }
             }
+
         }
         return list;
-
     }
+
     public  void  addcontact(String idcontact, String iduser, String content,String nameuser, String phone, String email ){
         List<Contact> contact = getListContact();
         int count = contact.size();

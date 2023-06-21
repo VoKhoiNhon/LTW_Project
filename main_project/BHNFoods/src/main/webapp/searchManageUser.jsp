@@ -246,6 +246,10 @@
       <%
         User user = (User) session.getAttribute("auth");
         if (user != null) {%>
+      <% String err =(String) request.getAttribute("err");
+        if(err!=null){%>
+      <script>alert(<%=err%>)</script>
+      <%}%>
       <li class="nav-item dropdown d-none d-lg-block user-dropdown">
         <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
           <img class="img-xs rounded-circle" src="ImageproductNew/background/images.png" alt="Profile image">
