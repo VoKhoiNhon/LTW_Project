@@ -32,10 +32,11 @@ public class UserService {
     public User checkLogin(String username, String password) {
         String sql = "SELECT ID_USER,ADDRESS,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,SEX,Decentralization FROM user WHERE EMAIL = :username or PHONE= :username";
         User user = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery(sql).bind("username",username).mapToBean(User.class).findOne().orElse(null);
+            return handle.createQuery(sql).bind("username", username).mapToBean(User.class).findOne().orElse(null);
         });
         return user;
     }
+
     public User checkUser(String username) {
         List<User> users = JDBIConnector.get().withHandle(h ->
                 h.createQuery("SELECT ID_USER,ADDRESS,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,SEX,Decentralization FROM user WHERE EMAIL = ? or PHONE=?")
@@ -59,9 +60,10 @@ public class UserService {
             return null;
         }
     }
-    public static void  updateUser( String idUser, int decentralization){
+
+    public static void updateUser(String idUser, int decentralization) {
         JDBIConnector.get().withHandle(handle -> {
-            return   handle.createUpdate("UPDATE `user` u set u.Decentralization= "+decentralization+"  WHERE u.ID_USER='"+idUser+"'").execute();
+            return handle.createUpdate("UPDATE `user` u set u.Decentralization= " + decentralization + "  WHERE u.ID_USER='" + idUser + "'").execute();
         });
     }
 
@@ -72,6 +74,7 @@ public class UserService {
                     .mapToBean(User.class).collect(Collectors.toList());
         });
     }
+
     public List<Contact> getListContact() {
         return JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("SELECT c.ID_USER, c.CONTENT, c.DATETIME, c.CONDITION, c.ID_CONTACT, c.EMAIL, c.NAMEUSER, c.PHONE FROM contact c")
@@ -102,44 +105,47 @@ public class UserService {
         });
 
     }
+
     public void addUserGG(String name, String email, String id) {
         List<User> users = getListUser();
         String importDate = LocalDateTime.now().getYear() + "-" + LocalDateTime.now().getMonthValue() + "-" + LocalDateTime.now().getDayOfMonth();
         int count = users.size();
         JDBIConnector.get().withHandle(handle -> {
             return handle.createUpdate("INSERT INTO `user` VALUES( 'user" + (count + 1) + "',NULL,NULL,'"
-                    +  name + "',NULL"  + ",'"+email+"',"  + "NULL,'" + importDate + "', NULL,0)").execute();
+                    + name + "',NULL" + ",'" + email + "'," + "NULL,'" + importDate + "', NULL,0)").execute();
         });
         JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("INSERT INTO social VALUES(0, 'user"+(count+1)+"','"+id+"');").execute();
+            return handle.createUpdate("INSERT INTO social VALUES(0, 'user" + (count + 1) + "','" + id + "');").execute();
         });
 
     }
+
     public void addUserFB(String name, String idaccount) {
         List<User> users = getListUser();
         String importDate = LocalDateTime.now().getYear() + "-" + LocalDateTime.now().getMonthValue() + "-" + LocalDateTime.now().getDayOfMonth();
         int count = users.size();
         JDBIConnector.get().withHandle(handle -> {
             return handle.createUpdate("INSERT INTO `user` VALUES( 'user" + (count + 1) + "',NULL,NULL,'"
-                    +  name + "',NULL"  + ",NULL,"  + "NULL,'" + importDate + "', NULL,0)").execute();
+                    + name + "',NULL" + ",NULL," + "NULL,'" + importDate + "', NULL,0)").execute();
         });
         JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("INSERT INTO social VALUES(1, 'user"+(count+1)+"','"+idaccount+"');").execute();
+            return handle.createUpdate("INSERT INTO social VALUES(1, 'user" + (count + 1) + "','" + idaccount + "');").execute();
         });
 
     }
-     public boolean checkIdAccount(String id){
-             List<Social> list = JDBIConnector.get().withHandle(handle -> {
-                 return handle.createQuery("SELECT `CONDITION`,ID_USER,ID_ACCOUNT FROM social")
-                         .mapToBean(Social.class).collect(Collectors.toList());
-             });
-             for (Social s : list) {
-                 if (id.equals(s.getID_ACCOUNT())) return true;
-             }
-             return false;
+
+    public boolean checkIdAccount(String id) {
+        List<Social> list = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT `CONDITION`,ID_USER,ID_ACCOUNT FROM social")
+                    .mapToBean(Social.class).collect(Collectors.toList());
+        });
+        for (Social s : list) {
+            if (id.equals(s.getID_ACCOUNT())) return true;
+        }
+        return false;
 
 
-     }
+    }
 
 
     public void changePass(String email, String phone, String pass) {
@@ -171,33 +177,49 @@ public class UserService {
 
     public List<User> searchUser(String text) {
         List<User> list = new ArrayList<>();
-        for (User u : getListUser()) {
-            if (u.getIdUser().toUpperCase().contains(text.toUpperCase()) || u.getNameUser().toUpperCase().contains(text.toUpperCase())|| u.getPhone().toUpperCase().contains(text.toUpperCase())|| u.getEmail().toUpperCase().contains(text.toUpperCase())) {
-                list.add(u);
+        List<User> ur = getListUser();
+        for (User u : ur) {
+            if (null != u.getEmail() && null == u.getPhone()) {
+                if (u.getIdUser().toUpperCase().contains(text.toUpperCase()) || u.getNameUser().toUpperCase().contains(text.toUpperCase()) || u.getEmail().toUpperCase().contains(text.toUpperCase())) {
+                    list.add(u);
+                }
+            } else if (null == u.getEmail() && null != u.getPhone()) {
+                if (u.getIdUser().toUpperCase().contains(text.toUpperCase()) || u.getNameUser().toUpperCase().contains(text.toUpperCase()) || u.getPhone().toUpperCase().contains(text.toUpperCase())) {
+                    list.add(u);
+                }
+            } else if (null == u.getEmail() && null == u.getPhone()) {
+                if (u.getIdUser().toUpperCase().contains(text.toUpperCase()) || u.getNameUser().toUpperCase().contains(text.toUpperCase())) {
+                    list.add(u);
+                }
+            } else {
+                if (u.getIdUser().toUpperCase().contains(text.toUpperCase()) || u.getNameUser().toUpperCase().contains(text.toUpperCase()) || u.getPhone().toUpperCase().contains(text.toUpperCase()) || u.getEmail().toUpperCase().contains(text.toUpperCase())) {
+                    list.add(u);
+                }
             }
         }
         return list;
 
     }
-    public  void  addcontact(String idcontact, String iduser, String content,String nameuser, String phone, String email ){
+
+    public void addcontact(String idcontact, String iduser, String content, String nameuser, String phone, String email) {
         List<Contact> contact = getListContact();
         int count = contact.size();
         JDBIConnector.get().withHandle(handle -> {
-           return handle.createUpdate("INSERT INTO `contact` VALUES ( 'cont" + (count + 1) + "','"+iduser+"', '"+content+"', '"+LocalDateTime.now()+"', '"+nameuser+"', '"+email+"','"+phone+"'"+",1 );").execute();
+            return handle.createUpdate("INSERT INTO `contact` VALUES ( 'cont" + (count + 1) + "','" + iduser + "', '" + content + "', '" + LocalDateTime.now() + "', '" + nameuser + "', '" + email + "','" + phone + "'" + ",1 );").execute();
         });
     }
 
 
-    public  List<User> listCTAccount(String iduser){
-        return  JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT u.ID_USER, u.NAME_USER, u.SEX,u.BIRTHDAY, u.PHONE, u.EMAIL, u.ADDRESS, u.PASSW FROM `user` u WHERE u.ID_USER='"+iduser+"'")
+    public List<User> listCTAccount(String iduser) {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT u.ID_USER, u.NAME_USER, u.SEX,u.BIRTHDAY, u.PHONE, u.EMAIL, u.ADDRESS, u.PASSW FROM `user` u WHERE u.ID_USER='" + iduser + "'")
                     .mapToBean(User.class).collect(Collectors.toList());
         });
     }
 
-    public  static  void updateCtAccount(String iduser, String name, int sex,  String birthday, String email, String phone, String passw, String address, String repassw ){
+    public static void updateCtAccount(String iduser, String name, int sex, String birthday, String email, String phone, String passw, String address, String repassw) {
         JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("UPDATE  `user` u set u.NAME_USER='"+name+"',u.SEX="+sex+", u.BIRTHDAY='"+birthday+"', u.PHONE='"+phone+"',u.EMAIL='"+email+"', u.PASSW='"+passw+"', u.ADDRESS='"+address+"' WHERE u.ID_USER='"+iduser+"';").execute();
+            return handle.createUpdate("UPDATE  `user` u set u.NAME_USER='" + name + "',u.SEX=" + sex + ", u.BIRTHDAY='" + birthday + "', u.PHONE='" + phone + "',u.EMAIL='" + email + "', u.PASSW='" + passw + "', u.ADDRESS='" + address + "' WHERE u.ID_USER='" + iduser + "';").execute();
         });
     }
 
@@ -221,6 +243,7 @@ public class UserService {
                         .execute()
         );
     }
+
     public User getUserByPhoneOrEmail(String str) {
         String sql = "SELECT ID_USER,ADDRESS,PASSW,NAME_USER, PHONE, EMAIL,DATE_SIGNUP,SEX,Decentralization FROM user where PHONE = :str OR EMAIL = :str";
         return JDBIConnector.get().withHandle(handle ->
@@ -233,6 +256,7 @@ public class UserService {
 
         );
     }
+
     public User getUserByIdAccount(String str) {
         String sql = "SELECT u.NAME_USER,u.ADDRESS, u.BIRTHDAY,u.DATE_SIGNUP,u.Decentralization,u.EMAIL,u.PHONE,u.PASSW, u.SEX,`CONDITION`,social.ID_USER,ID_ACCOUNT from social join `user` u on u.ID_USER= social.ID_USER  where ID_ACCOUNT =  :str";
         return JDBIConnector.get().withHandle(handle ->
@@ -256,18 +280,18 @@ public class UserService {
 
         );
     }
-    public User getLastUser(){
+
+    public User getLastUser() {
         User user;
-        List<User>  list= getListUser();
-        int max =0;
-        for (User u: list){
-            max = Math.max(max, Integer.parseInt(u.getIdUser().replaceAll("user","")));
+        List<User> list = getListUser();
+        int max = 0;
+        for (User u : list) {
+            max = Math.max(max, Integer.parseInt(u.getIdUser().replaceAll("user", "")));
         }
 
-        return UserService.getInstance().getUserById("user"+max);
+        return UserService.getInstance().getUserById("user" + max);
 
     }
-
 
 
     public void lockUser(String idUser) {
@@ -278,6 +302,7 @@ public class UserService {
                         .execute()
         );
     }
+
     public void unLockUser(String idUser) {
         String sql = "UPDATE `user` SET Decentralization =0 WHERE ID_USER = :idUser";
         JDBIConnector.get().withHandle(handle ->

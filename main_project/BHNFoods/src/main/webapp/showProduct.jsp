@@ -283,7 +283,7 @@
             <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
                 <div class="col-md-12 ">
                     <div class="form-group">
-                        <label>Hình ảnh</label>
+<%--                        <label>Hình ảnh</label>--%>
                         <div class="d-flex flex-grow-1  row_input ">
                             <%for (ImgForSingleProd l : li) {%>
                             <div  class=" edit_img">
@@ -296,22 +296,20 @@
                         </div>
 
 
-                        <form action="/AddNewImg" id="imageForm" method="post" enctype="multipart/form-data">
-                            <div style="display: none"
-                                 class="form-group">
-
-                                <input type="text"
-                                       value="<%=p.getIdPr()%>"
-                                       class="form-control input_addpr"
-                                       name="id"
-                                       placeholder="">
-                                <input name="brand"
-                                       type="text"
-                                       class="form-control  input_addpr"
-                                       value="<%=p.getBrand()%>"
-                                       placeholder="">
+                        <form  action="/AddNewImg?id=<%=p.getIdPr()%>" id="imageForm" method="post" enctype="multipart/form-data">
+                            <div class="card">
+                                <div class="drag-area">
+                                                <span class="visible">
+                                                    <span class="select" role="button">Browse</span>
+                                                                                </span>
+                                    <input name="imageFiles" id="imageFiles" type="file" class="imageFiles" multiple/>
+                                    <input name="text" id="textname" type="text" class="form-control input_addpr"
+                                           placeholder=""
+                                           value="" style="display: none">
+                                </div>
                             </div>
-                            <input type="file" name="imageInput" id="imageInput" value="chọn ảnh mới" title="chọn ảnh mới" multiple >
+                            <div class="contai"></div>
+                                <!-- IMAGE PREVIEW CONTAINER -->
                             <input type="submit" value="xác nhận thêm ảnh"/>
                         </form>
 
@@ -532,52 +530,81 @@
 
 
 <script>
-    function deleteIMG(url, id) {
-        $.ajax({
-            url: "/deleteIMGProd",
-            type: 'get',
-            data: {
-                URL:url
-            },
-            success: function (data) {
-               alert("đã xóa ảnh sản phẩm")
-                location.reload()
-            },
-            error: function () {
-            }
-        });
-    }
-    document.getElementById('imageInput').addEventListener('change', function (event) {
-    var imageInput = event.target;
-    var imageContainer = document.getElementById('imageContainer');
+    let files = [],
+        dragArea = document.querySelector('.drag-area'),
+        input = document.querySelector('.drag-area input'),
+        button = document.querySelector('.card button'),
+        select = document.querySelector('.drag-area .select'),
+        container = document.querySelector('.contai');
 
-    for (var i = 0; i < imageInput.files.length; i++) {
-        var file = imageInput.files[i];
-        var reader = new FileReader();
 
-        reader.onload = function (e) {
-            var img = document.createElement('img');
-            img.src = e.target.result;
+    let text;
+    /** CLICK LISTENER */
+    select.addEventListener('click', () => input.click());
+    /* INPUT CHANGE EVENT */
+    input.addEventListener('change', () => {
+        let file = input.files;
 
-            var closeButton = document.createElement('button');
-            closeButton.innerHTML = 'X';
-            closeButton.addEventListener('click', function () {
-                var imageItem = this.parentNode;
-                imageItem.parentNode.removeChild(imageItem);
-            });
+        // if user select no image
+        if (file.length == 0) return;
 
-            var imageItem = document.createElement('div');
-            imageItem.className = 'image-item';
-            imageItem.appendChild(img);
-            imageItem.appendChild(closeButton);
-            imageContainer.appendChild(imageItem);
+        for (let i = 0; i < file.length; i++) {
+            if (file[i].type.split("/")[0] != 'image') continue;
+            if (!files.some(e => e.name == file[i].name)) files.push(file[i])
+            alert(files[i].name);
+            text += files[i].name;
+
         }
+        document.getElementById('textname').value = text
+        showImages();
+    });
 
-        reader.readAsDataURL(file);
+    /** SHOW IMAGES */
+    function showImages() {
+        container.innerHTML = files.reduce((prev, curr, index) => {
+            return `${prev}
+		    <div class="image">
+			    <span onclick="delImage(${index})">&times;</span>
+			    <img src="${URL.createObjectURL(curr)}" style="max-width: 100px; max-height: 100%;" />
+			</div>`
+        }, '');
+
+
+    }
+    /* DELETE IMAGE */
+    function delImage(index) {
+        files.splice(index, 1);
+        showImages();
     }
 
-    imageInput.value = '';
-});
+    /* DRAG & DROP */
+    dragArea.addEventListener('dragover', e => {
+        e.preventDefault()
+        dragArea.classList.add('dragover')
+    })
+
+    /* DRAG LEAVE */
+    dragArea.addEventListener('dragleave', e => {
+        e.preventDefault()
+        dragArea.classList.remove('dragover')
+    });
+
+    /* DROP EVENT */
+    dragArea.addEventListener('drop', e => {
+        e.preventDefault()
+        dragArea.classList.remove('dragover');
+
+        let file = e.dataTransfer.files;
+        for (let i = 0; i < file.length; i++) {
+            /** Check selected file is image */
+            if (file[i].type.split("/")[0] != 'image') continue;
+
+            if (!files.some(e => e.name == file[i].name)) files.push(file[i])
+
+        }
+        showImages();
+    });
+
 
 </script>
 
