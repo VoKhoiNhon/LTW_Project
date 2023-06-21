@@ -292,7 +292,7 @@
                             </div>
 
                             <%}%>
-                            <div class="image-container" id="imageContainer"></div>
+
                         </div>
 
 
