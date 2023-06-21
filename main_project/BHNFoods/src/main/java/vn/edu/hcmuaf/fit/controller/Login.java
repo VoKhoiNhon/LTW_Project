@@ -51,6 +51,10 @@ public class Login extends HttpServlet {
                 request.setAttribute("error", "Tài khoản đã bị khoá");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
+            else if(password == "" || user.getPassw() == null) {
+                request.setAttribute("error", "Sai tài khoản hoặc mật khẩu");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
             else if(!user.getPassw().equals(password)) {
                 if (lv < 5) {
                     DB.me().insert(new Log(lv + 1, user.getIdUser(), this.src, "LOGIN FALSE: " + username, 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
