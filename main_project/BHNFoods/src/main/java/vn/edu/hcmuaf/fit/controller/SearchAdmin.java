@@ -1,10 +1,9 @@
 package vn.edu.hcmuaf.fit.controller;
 
-import vn.edu.hcmuaf.fit.beans.Cart;
-import vn.edu.hcmuaf.fit.beans.Product;
-import vn.edu.hcmuaf.fit.beans.SingleProduct;
-import vn.edu.hcmuaf.fit.beans.User;
+import vn.edu.hcmuaf.fit.beans.*;
+import vn.edu.hcmuaf.fit.db.DB;
 import vn.edu.hcmuaf.fit.service.ProductService;
+import vn.edu.hcmuaf.fit.util.Brower;
 
 import javax.mail.Session;
 import javax.servlet.*;
@@ -28,6 +27,8 @@ public class SearchAdmin extends HttpServlet {
         List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
         String search = request.getParameter("searchAD");
         List<SingleProduct> productList = ProductService.getInstance().getListPrNameSearchADmin(search);
+
+        DB.me().insert(new Log(Log.INFO,user.getIdUser(), "Admin search",  "Search that : "+ search, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
         request.setAttribute("listSearchPRAD", productList);
         request.getRequestDispatcher("searchManagePR.jsp").forward(request,response);
     }

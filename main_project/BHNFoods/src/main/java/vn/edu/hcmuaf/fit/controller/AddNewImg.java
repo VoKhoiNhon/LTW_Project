@@ -1,6 +1,10 @@
 package vn.edu.hcmuaf.fit.controller;
 
+import vn.edu.hcmuaf.fit.beans.Log;
+import vn.edu.hcmuaf.fit.beans.User;
+import vn.edu.hcmuaf.fit.db.DB;
 import vn.edu.hcmuaf.fit.service.ProductService;
+import vn.edu.hcmuaf.fit.util.Brower;
 import vn.edu.hcmuaf.fit.util.RandomOTP;
 
 import javax.servlet.*;
@@ -22,7 +26,7 @@ import static java.lang.System.out;
 )
 public class AddNewImg extends HttpServlet {
     private static final String UPLOAD_DIRECTORY = "D:\\hk1nam3\\LTW\\GitHub\\main_project\\BHNFoods\\src\\main\\webapp\\ImageproductNew\\add";
-    private static final String UPLOAD_DIRECTORY_Tomcat = "D:\\hk1nam3\\LTW\\GitHub\\main_project\\BHNFoods\\target\\BHN\\ImageproductNew\\add";
+    private static final String UPLOAD_DIRECTORY_Tomcat = "D:\\hk1nam3\\LTW\\GitHub\\main_project\\BHNFoods\\target\\BHNFoods\\ImageproductNew\\add";
     //    private static final String UPLOAD_DIRECTORY = "/var/lib/tomcat9/webapps/BHNFoods/ImageproductNew/add";
     private static final long serialVersionUID = 1;
 
@@ -53,6 +57,9 @@ public class AddNewImg extends HttpServlet {
                 out.println(fileUrl);
                 count++;
                 ProductService.getInstance().addImg(idprod, RandomOTP.generateRandomString() + count, fileUrl, 1);
+                HttpSession session = request.getSession();
+                User user = (User) session.getAttribute("auth");
+                DB.me().insert(new Log(Log.INFO,user.getIdUser(), "/AddNewImg",  "add Img for : "+idprod, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
             }
         }
         response.sendRedirect("/BHNFoods/ShowProductToUpdate?id=" + idprod);
