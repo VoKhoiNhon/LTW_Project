@@ -320,7 +320,7 @@
                                             </div>
                                             <div>
                                                 <p class="statistics-title">Sản phẩm bán chạy nhất</p>
-                                                <h3 class="rate-percentage"><a href="/BHNFoods/ShowProductToUpdate?id=<%=hotSale.get(0).getIdPr()%>"> <%=hotSale.get(0).getIdPr()%></a>
+                                                <h3 class="rate-percentage"><a href="/ShowProductToUpdate?id=<%=hotSale.get(0).getIdPr()%>"> <%=hotSale.get(0).getIdPr()%></a>
                                                 </h3>
 
                                             </div>
@@ -421,7 +421,7 @@
                                                         <%for (int j = 0; j < 15; j++) {%>
                                                         <li>
                                                             <div class="d-flex justify-content-between">
-                                                                <a href="/BHNFoods/ShowProductToUpdate?id=<%=hotSale.get(j).getIdPr()%>">
+                                                                <a href="/ShowProductToUpdate?id=<%=hotSale.get(j).getIdPr()%>">
                                                                 <div><span
                                                                         class="text-light-green"><%=hotSale.get(j).getNamePr()%> </span>
                                                                 </div>

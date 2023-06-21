@@ -2,6 +2,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.UserService" %>
 <%@ page import="vn.edu.hcmuaf.fit.beans.*" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.StatisticsService" %>
+<%@ page import="java.util.Map" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -274,11 +276,16 @@
 
     </nav>
     <!-- partial -->
-    <div class="main-panel">
+    <div class="main-panel" style="padding: 3%">
         <% String id = (String) request.getAttribute("id");
             SingleProduct p = (SingleProduct) ProductService.getInstance().getSingleProduct(id).get(0);
             List<ImgForSingleProd> li = ProductService.getInstance().getListImgForSingleProduct(id);
+            Map<String, Integer> view= StatisticsService.getInstance().getQuantityProduct();
         %>
+
+        <div>
+            <h3 class="rate-percentage">Sản phẩm <%=p.getNamePr()%> đã có: <%=view.get(id)%> lượt xem</h3>
+        </div>
         <div class="edit_formUser edit_formAdd">
             <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
                 <div class="col-md-12 ">
@@ -320,8 +327,7 @@
                       enctype="multipart/form-data"
                       style="margin-top: 5%;">
 
-                    <h4 class="mb-4 billing-heading">Sửa sản
-                        phẩm</h4>
+
                     <div class="row align-items-end"
                          style="font-size: 16px;">
 
@@ -530,6 +536,21 @@
 
 
 <script>
+    function deleteIMG(url, id) {
+        $.ajax({
+            url: "/deleteIMGProd",
+            type: 'get',
+            data: {
+                URL:url
+            },
+            success: function (data) {
+                alert("đã xóa ảnh sản phẩm")
+                location.reload()
+            },
+            error: function () {
+            }
+        });
+    }
     let files = [],
         dragArea = document.querySelector('.drag-area'),
         input = document.querySelector('.drag-area input'),
