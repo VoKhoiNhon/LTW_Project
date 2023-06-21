@@ -81,7 +81,7 @@ public class StatisticsService {
 
     }
 
-    // Lấy ra danh sách khách hàng, nhân viên, a    dmin VD: {employee=[vn.edu.hcmuaf.fit.beans.User@421e361, vn.edu.hcmuaf.fit.beans.User@59d4cd39], customer=[vn.edu.hcmuaf.fit.beans.User@389c4eb1]}
+    // Lấy ra danh sách khách hàng, nhân viên, admin VD: {employee=[vn.edu.hcmuaf.fit.beans.User@421e361, vn.edu.hcmuaf.fit.beans.User@59d4cd39], customer=[vn.edu.hcmuaf.fit.beans.User@389c4eb1]}
     public Map<String, List<User>> getQuantityAllAccount() {
         Map<String, List<User>> map = new HashMap<>();
         String sql = "SELECT ID_USER, NAME_USER, SEX,BIRTHDAY, PHONE, EMAIL, ADDRESS, Decentralization FROM `user`";

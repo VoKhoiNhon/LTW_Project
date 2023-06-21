@@ -2,7 +2,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.UserService" %>
 <%@ page import="vn.edu.hcmuaf.fit.beans.*" %>
-<%@ page import="static java.lang.System.out" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -290,19 +289,10 @@
                             <div  class=" edit_img">
                                 <img class="image-item img " src="<%=l.getUrl()%>">
                                 <button  onclick="deleteIMG('<%=l.getUrl()%>')">x</button>
-
-                            <%
-                                String fileUrlEncoded = (String) request.getAttribute("fileUrlEncoded");
-                                if (fileUrlEncoded != null) {
-                                    String absolutePath = request.getContextPath() + "/" + fileUrlEncoded;
-                                   System.out.println(fileUrlEncoded);
-                            %>
-                            <img src="<%= absolutePath %>" alt="Uploaded Image">
-                            <%
-                                }
-                            %>
-                            <%}%>
                             </div>
+
+                            <%}%>
+
                         </div>
 
 

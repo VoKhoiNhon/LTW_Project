@@ -23,14 +23,7 @@ public class SearchUser extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String search = request.getParameter("searchUser");
         List<User> user = UserService.getInstance().searchUser(search);
-        System.out.println(user.size());
-        if(user.size()!=0){
-            request.setAttribute("listSearchUser", user);
-            request.getRequestDispatcher("searchManageUser.jsp").forward(request,response);
-        }else{
-            request.setAttribute("err", "không tìm thấy User nào có tên như vậy");
-            request.getRequestDispatcher("searchManageUser.jsp").forward(request,response);
-        }
-
+        request.setAttribute("listSearchUser", user);
+        request.getRequestDispatcher("searchManageUser.jsp").forward(request,response);
     }
 }
