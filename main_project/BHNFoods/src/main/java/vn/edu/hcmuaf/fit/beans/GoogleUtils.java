@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.beans;
 
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.apache.http.client.ClientProtocolException;

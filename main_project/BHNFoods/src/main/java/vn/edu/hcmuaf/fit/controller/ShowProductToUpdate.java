@@ -1,9 +1,11 @@
 package vn.edu.hcmuaf.fit.controller;
 
+import vn.edu.hcmuaf.fit.beans.Powers;
 import vn.edu.hcmuaf.fit.beans.Product;
 import vn.edu.hcmuaf.fit.beans.SingleProduct;
 import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.ProductService;
+import vn.edu.hcmuaf.fit.service.StatisticsService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -17,11 +19,14 @@ public class ShowProductToUpdate extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idProd = request.getParameter("id");
         request.setAttribute("id", idProd);
-//        if(user.getDecentralization() != Powers.ADMIN || user.getDecentralization() != Powers.EMPLOYEE) response.sendRedirect("index.jsp");
-//        else {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
+        if(user.getDecentralization() != Powers.ADMIN && user.getDecentralization() != Powers.EMPLOYEE)
+            response.sendRedirect("index.jsp");
+        else {
 
         request.getRequestDispatcher("showProduct.jsp").forward(request, response);
-//        }
+        }
     }
 
     @Override
