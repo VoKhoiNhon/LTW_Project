@@ -7,6 +7,7 @@ import vn.edu.hcmuaf.fit.db.JDBIConnector;
 
 import javax.xml.crypto.Data;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -68,6 +69,16 @@ public class WarehouseService {
                     .mapToBean(Product.class).collect(Collectors.toList());
 
         });
+    }
+    public List<Warehouse> search(String code) {
+        List<Warehouse> listWh = new ArrayList<>();
+        for(Warehouse w: getInstance().getListWH()){
+            if (w.getCode_wh().toUpperCase().contains(code.toUpperCase())){
+                listWh.add(w);
+            }
+
+        }
+        return  listWh;
     }
 
 }

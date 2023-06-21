@@ -354,9 +354,9 @@
                 </div>
             </li>
             <li class="nav-item">
-                <form class="search-form" action="/SearchAdmin" method="post">
+                <form class="search-form" >
                     <i class="icon-search"></i>
-                    <input type="search" class="form-control" placeholder="Search Here" name="searchAD"
+                    <input oninput="searchwh(this)" type="search" class="form-control" placeholder="Search Here" name="searchAD"
                            title="Search here">
                 </form>
             </li>
@@ -456,12 +456,12 @@
                                                                     <th></th>
                                                                 </tr>
                                                                 </thead>
-                                                                <tbody>
+                                                                <tbody id="idTbody">
                                                                 <%
                                                                     List<Warehouse> listwh = (List<Warehouse>) request.getAttribute("listwh");
 
-                                                                    int sumPrice = 0;
                                                                     for (Warehouse w : listwh) {
+                                                                        int sumPrice = 0;
                                                                         List<DetailsWH> detailWH = WarehouseService.getInstance().getDetail_WH(w.getId_shipment());
                                                                         for (DetailsWH d : detailWH) {
                                                                             sumPrice += d.getPRICE_IMPORT() * d.getAMOUNT_PR();
@@ -875,6 +875,22 @@
                 alert("Thêm lô hàng thát bại");
             }
         });
+    }
+    function searchwh(data){
+        var code= data.value;
+        console.log(code)
+        $.ajax({
+            url:"/SearchWH",
+            type: 'get',
+            data:{
+                code: code
+            },
+            success: function (data){
+                var row= document.getElementById('idTbody');
+                row.innerHTML= data;
+                console.log(data)
+            }
+        })
     }
 
 </script>
