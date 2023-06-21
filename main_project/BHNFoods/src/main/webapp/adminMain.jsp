@@ -6,6 +6,8 @@
 <%@ page import="vn.edu.hcmuaf.fit.beans.Contact" %>
 <%@ page import="java.time.LocalDateTime" %>
 <%@ page import="vn.edu.hcmuaf.fit.beans.Powers" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.StatisticsService" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -136,7 +138,7 @@
                     <input type="search" class="form-control" placeholder="Search Here" title="Search here">
                 </form>
             </li>
-         <% int sumcontact=  (int) request.getAttribute("sumcontact");%>
+            <% int sumcontact = (int) request.getAttribute("sumcontact");%>
             <li class="nav-item dropdown">
                 <a class="nav-link count-indicator" id="countDropdown" href="" data-bs-toggle="dropdown"
                    aria-expanded="false">
@@ -154,7 +156,7 @@
                         System.out.println(listContact);
                         for (Contact c : listContact) {%>
                     <%
-                        if(c.getCondition()== 1) {
+                        if (c.getCondition() == 1) {
                     %>
 
                     <a class="dropdown-item preview-item" style="background: #c5e2f8; border-bottom:1px solid #808080"
@@ -320,7 +322,9 @@
                                             </div>
                                             <div>
                                                 <p class="statistics-title">Sản phẩm bán chạy nhất</p>
-                                                <h3 class="rate-percentage"><a href="/ShowProductToUpdate?id=<%=hotSale.get(0).getIdPr()%>"> <%=hotSale.get(0).getIdPr()%></a>
+                                                <h3 class="rate-percentage"><a
+                                                        href="/ShowProductToUpdate?id=<%=hotSale.get(0).getIdPr()%>"><%=hotSale.get(0).getIdPr()%>
+                                                </a>
                                                 </h3>
 
                                             </div>
@@ -380,36 +384,36 @@
                                         </div>
                                     </div>
                                     <div class="row flex-grow">
-<%--                                        <div class="col-md-6 col-lg-6 grid-margin stretch-card">--%>
-<%--                                            <div class="card card-rounded">--%>
-<%--                                                <div class="card-body card-rounded">--%>
-<%--                                                    <h4 class="card-title  card-title-dash">Ngày nhập lô hàng</h4>--%>
+                                        <%--                                        <div class="col-md-6 col-lg-6 grid-margin stretch-card">--%>
+                                        <%--                                            <div class="card card-rounded">--%>
+                                        <%--                                                <div class="card-body card-rounded">--%>
+                                        <%--                                                    <h4 class="card-title  card-title-dash">Ngày nhập lô hàng</h4>--%>
 
-<%--                                                    <% int i = 10;--%>
+                                        <%--                                                    <% int i = 10;--%>
 
-<%--                                                        List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i);--%>
-<%--                                                        for (SingleProduct s : list) {--%>
+                                        <%--                                                        List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i);--%>
+                                        <%--                                                        for (SingleProduct s : list) {--%>
 
-<%--                                                    %>--%>
-<%--                                                    <div class="list align-items-center border-bottom py-2">--%>
-<%--                                                        <div class="wrapper w-100">--%>
-<%--                                                            <p class="mb-2 font-weight-medium">--%>
-<%--                                                                <%=s.getNamePr()%>--%>
-<%--                                                            </p>--%>
-<%--                                                            <div class="d-flex justify-content-between align-items-center">--%>
-<%--                                                                <div class="d-flex align-items-center">--%>
-<%--                                                                    <i class="mdi mdi-calendar text-muted me-1"></i>--%>
-<%--                                                                    <p class="mb-0 text-small text-muted"><%=s.getDateImportPr()%>--%>
-<%--                                                                    </p>--%>
-<%--                                                                </div>--%>
-<%--                                                            </div>--%>
-<%--                                                        </div>--%>
-<%--                                                    </div>--%>
-<%--                                                    <%}%>--%>
+                                        <%--                                                    %>--%>
+                                        <%--                                                    <div class="list align-items-center border-bottom py-2">--%>
+                                        <%--                                                        <div class="wrapper w-100">--%>
+                                        <%--                                                            <p class="mb-2 font-weight-medium">--%>
+                                        <%--                                                                <%=s.getNamePr()%>--%>
+                                        <%--                                                            </p>--%>
+                                        <%--                                                            <div class="d-flex justify-content-between align-items-center">--%>
+                                        <%--                                                                <div class="d-flex align-items-center">--%>
+                                        <%--                                                                    <i class="mdi mdi-calendar text-muted me-1"></i>--%>
+                                        <%--                                                                    <p class="mb-0 text-small text-muted"><%=s.getDateImportPr()%>--%>
+                                        <%--                                                                    </p>--%>
+                                        <%--                                                                </div>--%>
+                                        <%--                                                            </div>--%>
+                                        <%--                                                        </div>--%>
+                                        <%--                                                    </div>--%>
+                                        <%--                                                    <%}%>--%>
 
-<%--                                                </div>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
+                                        <%--                                                </div>--%>
+                                        <%--                                            </div>--%>
+                                        <%--                                        </div>--%>
                                         <div class="col-md-6 col-lg-6 grid-margin stretch-card">
                                             <div class="card card-rounded">
                                                 <div class="card-body">
@@ -418,15 +422,15 @@
                                                         <%--                        <p class="mb-0">fliter</p>--%>
                                                     </div>
                                                     <ul class="bullet-line-list">
-                                                        <%for (int j = 0; j < 15; j++) {%>
+                                                        <%for (int j = 0; j < 8; j++) {%>
                                                         <li>
                                                             <div class="d-flex justify-content-between">
                                                                 <a href="/ShowProductToUpdate?id=<%=hotSale.get(j).getIdPr()%>">
-                                                                <div><span
-                                                                        class="text-light-green"><%=hotSale.get(j).getNamePr()%> </span>
-                                                                </div>
-                                                                <p><%=hotSale.get(j).getPrice()%>
-                                                                    VND</p>
+                                                                    <div><span
+                                                                            class="text-light-green"><%=hotSale.get(j).getNamePr()%> </span>
+                                                                    </div>
+                                                                    <p><%=hotSale.get(j).getPrice()%>
+                                                                        VND</p>
                                                                 </a>
                                                             </div>
                                                         </li>
@@ -437,7 +441,21 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="card card-rounded">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                                <h4 class="card-title card-title-dash">Thống kê người dùng sử dụng Browser để vào website</h4>
+                                                            </div>
+                                                            <canvas class="my-auto" id="doughnutChart" height="200"></canvas>
+                                                            <div id="doughnut-chart-legend" class="mt-5 text-center"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -463,6 +481,94 @@
 <script src="admin_template/js/todolist.js"></script>
 <script src="admin_template/js/jquery.cookie.js" type="text/javascript"></script>
 <script>
+    <%Map<String, Integer> viewBrowser= StatisticsService.getInstance().getQuantityBrowser();%>
+    if ($("#doughnutChart").length) {
+        var doughnutChartCanvas = $("#doughnutChart").get(0).getContext("2d");
+        var doughnutPieData = {
+            datasets: [{
+                data: [<%=viewBrowser.get("Google Chrome")%>, <%=viewBrowser.get("Mozilla Firefox")%>, <%=viewBrowser.get("Microsoft Edge")%>, <%=viewBrowser.get("Apple Safari")%>,<%=viewBrowser.get("Opera")%>],
+                backgroundColor: [
+                    "#ffdd02",
+                    "#f51313",
+                    "#52CDFF",
+                    "#1d8f01",
+                    "#da81a0"
+                ],
+                borderColor: [
+                    "#ffdd02",
+                    "#f51313",
+                    "#52CDFF",
+                    "#1d8f01",
+                    "#da81a0"
+                ],
+            }],
+
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels: [
+                'Google Chrome',
+                'Mozilla Firefox',
+                'Microsoft Edge',
+                'Apple Safari',
+                'Opera',
+            ]
+        };
+        var doughnutPieOptions = {
+            cutoutPercentage: 50,
+            animationEasing: "easeOutBounce",
+            animateRotate: true,
+            animateScale: false,
+            responsive: true,
+            maintainAspectRatio: true,
+            showScale: true,
+            legend: false,
+            legendCallback: function (chart) {
+                var text = [];
+                text.push('<div class="chartjs-legend"><ul class="justify-content-center">');
+                for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
+                    text.push('<li><span style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
+                    text.push('</span>');
+                    if (chart.data.labels[i]) {
+                        text.push(chart.data.labels[i]);
+                    }
+                    text.push('</li>');
+                }
+                text.push('</div></ul>');
+                return text.join("");
+            },
+
+            layout: {
+                padding: {
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    bottom: 0
+                }
+            },
+            tooltips: {
+                callbacks: {
+                    title: function(tooltipItem, data) {
+                        return data['labels'][tooltipItem[0]['index']];
+                    },
+                    label: function(tooltipItem, data) {
+                        return data['datasets'][0]['data'][tooltipItem['index']];
+                    }
+                },
+
+                backgroundColor: '#fff',
+                titleFontSize: 14,
+                titleFontColor: '#0B0F32',
+                bodyFontColor: '#737F8B',
+                bodyFontSize: 11,
+                displayColors: false
+            }
+        };
+        var doughnutChart = new Chart(doughnutChartCanvas, {
+            type: 'doughnut',
+            data: doughnutPieData,
+            options: doughnutPieOptions
+        });
+        document.getElementById('doughnut-chart-legend').innerHTML = doughnutChart.generateLegend();
+    }
     if ($("#marketingOverview").length) {
         var marketingOverviewChart = document.getElementById("marketingOverview").getContext('2d');
         var marketingOverviewData = {
@@ -565,12 +671,12 @@
         document.getElementById('marketing-overview-legend').innerHTML = marketingOverview.generateLegend();
     }
 
-    function viewContent(idcontact,iduser, nameUser, phone, email, content, condition) {
+    function viewContent(idcontact, iduser, nameUser, phone, email, content, condition) {
         $.ajax({
             url: "/ViewContact",
             type: 'get',
             data: {
-                idcontact:idcontact,
+                idcontact: idcontact,
                 iduser: iduser,
                 nameUser: nameUser,
                 email: email,
