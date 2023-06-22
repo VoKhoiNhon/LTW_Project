@@ -71,7 +71,7 @@
     <link rel="stylesheet" href="css/aos.css">
 
     <link rel="stylesheet" href="css/ionicons.min.css">
-    <link rel="shortcut icon" type="image/png" href="ImageproductNew/logo.jpg"/>
+    <link rel="shortcut icon" type="image/png" href="/ImageproductNew/logo.jpg"/>
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
 
