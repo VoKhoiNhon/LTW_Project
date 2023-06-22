@@ -116,7 +116,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <form action="/checkingOut" method="post">
+                <form id="checkoutForm" action="/checkingOut" method="post">
                     <div id="checkOut" class="shoping__checkout" style="margin-top: 0">
                         <h5>Tổng giỏ hàng</h5>
                         <ul>
@@ -148,6 +148,16 @@
 <!-- Footer Section End -->
 
 <script>
+    $(document).ready(function() {
+        $("#checkoutForm").submit(function(event) {
+            var idProdChecked = $("#idProdChecked").val();
+
+            if (idProdChecked == "") {
+                event.preventDefault(); // Chặn việc submit form
+                alert("Bạn hãy mua hàng");
+            }
+        });
+    });
 
     let allCheckbox = $('.checkBoxCart')
     var toStringIdChecked = "";
@@ -165,7 +175,7 @@
             return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "." + c : c;
         }) + currency;
     }
-    
+
     function cancelAppyDiscount() {
         $.ajax({
             url: "/canelApplyDiscount",
