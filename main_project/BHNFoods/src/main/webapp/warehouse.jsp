@@ -633,69 +633,6 @@
 <div id="detailsWh">
 
 </div>
-<%--<div class="edit_formUser form_add_sp xem_chi_tiet">--%>
-<%--    <div class="container" style="background:none;">--%>
-<%--        <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">--%>
-<%--            <form class="billing-form" style="margin-top: 5%;" action="/Warehouse" method="post"--%>
-<%--                  enctype="multipart/form-data">--%>
-<%--                <h4 class="mb-4 billing-heading">Chi tiết lô hàng:</h4>--%>
-<%--                <h4 class="mb-4 billing-heading">Ngày nhập: </h4>--%>
-<%--                <h4 class="mb-4 billing-heading" style="display: none">ID: </h4>--%>
-<%--                &lt;%&ndash;  in ra danh sách sp trong lô hàng&ndash;%&gt;--%>
-<%--                <div class="table-responsive  mt-1">--%>
-<%--                    <table class="table select-table">--%>
-<%--                        <thead>--%>
-<%--                        <tr>--%>
-<%--                            <th>Tên sản phẩm</th>--%>
-<%--                            <th>Danh mục</th>--%>
-<%--                            <th>Số lượng</th>--%>
-<%--                            <th>Giá nhập</th>--%>
-<%--                            <th>Trọng lượng</th>--%>
-<%--                        </tr>--%>
-<%--                        </thead>--%>
-<%--                        <tbody>--%>
-<%--                        <tr>--%>
-<%--                            <td>--%>
-<%--                                <div class="d-flex ">--%>
-<%--                                    <div>--%>
-<%--                                        <p>Gạo thơm hạt ngọc trời Thiên Vương 5kg</p>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </td>--%>
-<%--                            <td>--%>
-<%--                                <p>gạo</p>--%>
-<%--                            </td>--%>
-<%--                            <td>--%>
-<%--                                <div>--%>
-<%--                                    <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">--%>
-<%--                                        <p>200--%>
-<%--                                        </p>--%>
-<%--                                    </div>--%>
-
-<%--                                </div>--%>
-<%--                            </td>--%>
-<%--                            <td>--%>
-<%--                                <div class="">16.000--%>
-<%--                                </div>--%>
-<%--                            </td>--%>
-<%--                            <td>--%>
-<%--                                <div class="">600g--%>
-<%--                                </div>--%>
-<%--                            </td>--%>
-<%--                        </tr>--%>
-<%--                        </tbody>--%>
-
-<%--                    </table>--%>
-<%--                </div>--%>
-<%--                &lt;%&ndash;-----&ndash;%&gt;--%>
-<%--                <div class="col-md-12 d-flex btn_huy_update" style="justify-content: end;">--%>
-<%--                    <input type="button" onclick="huy()" value="Hủy">--%>
-<%--                </div>--%>
-<%--            </form>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
-
 
 <script>
     function submitForm() {

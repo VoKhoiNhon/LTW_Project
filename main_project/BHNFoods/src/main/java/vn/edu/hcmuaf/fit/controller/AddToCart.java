@@ -62,7 +62,7 @@ public class AddToCart extends HttpServlet {
         session.setAttribute("sumCart",newSumCart);
 
         PrintWriter out = response.getWriter();
-        out.println("<a href=\"/BHNFoods/Cart\" class=\"nav-link\">\n" +
+        out.println("<a href=\"/Cart\" class=\"nav-link\">\n" +
                 "<span class=\"fa-solid fa-cart-shopping\"></span>["+newSumCart+"]</a>");
     }
 

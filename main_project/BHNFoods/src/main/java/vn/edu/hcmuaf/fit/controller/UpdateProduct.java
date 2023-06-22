@@ -1,5 +1,9 @@
 package vn.edu.hcmuaf.fit.controller;
 
+import com.google.gson.Gson;
+import com.restfb.json.Json;
+import vn.edu.hcmuaf.fit.beans.DetailsWH;
+import vn.edu.hcmuaf.fit.beans.SingleProduct;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
 import javax.servlet.*;
@@ -30,6 +34,8 @@ public class UpdateProduct extends HttpServlet {
         int condition= Integer.parseInt(request.getParameter("condition"));
         ProductService.getInstance().updateProduct( id, menu, discount,  price,  name);
         ProductService.getInstance().updateCt_pr(id, nsx, hsd,  brand,  mota,  weight,  origin,  inventory,  condition);
+        System.out.println(name+id);
         response.sendRedirect("/AdminManagePr?kind=0&page=1");
+//        response.sendRedirect("/ShowProductToUpdate");
     }
 }

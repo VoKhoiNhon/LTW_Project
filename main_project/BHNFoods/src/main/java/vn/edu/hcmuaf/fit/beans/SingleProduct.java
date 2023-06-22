@@ -2,7 +2,6 @@ package vn.edu.hcmuaf.fit.beans;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
 
 public class SingleProduct implements Serializable {
 
@@ -10,8 +9,8 @@ public class SingleProduct implements Serializable {
 
     int price;
     String idPr;
-    Date nsx;
-    Date hsd;
+    String nsx;
+    String hsd;
     String brand;
     String describe;
     double weight;
@@ -28,7 +27,7 @@ public class SingleProduct implements Serializable {
     public SingleProduct() {
     }
 
-    public SingleProduct(String namePr, int price, String idPr, Date nsx, Date hsd, String brand, String describe, double weight, String origin, Date dateImportPr, int inventory, byte conditionPr, String url, String idMenu,String saled, int discount) {
+    public SingleProduct(String namePr, int price, String idPr, String nsx, String hsd, String brand, String describe, double weight, String origin, Date dateImportPr, int inventory, byte conditionPr, String url, String idMenu,String saled, int discount) {
         this.namePr = namePr;
         this.price = price;
         this.idPr = idPr;
@@ -79,19 +78,19 @@ public class SingleProduct implements Serializable {
         this.idPr = idPr;
     }
 
-    public Date getNsx() {
+    public String getNsx() {
         return nsx;
     }
 
-    public void setNsx(Date nsx) {
+    public void setNsx(String nsx) {
         this.nsx = nsx;
     }
 
-    public Date getHsd() {
+    public String getHsd() {
         return hsd;
     }
 
-    public void setHsd(Date hsd) {
+    public void setHsd(String hsd) {
         this.hsd = hsd;
     }
 

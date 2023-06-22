@@ -49,7 +49,7 @@ public class SearchByAjax extends HttpServlet {
                     "                            </div>\n" +
                     "                            <div class=\"product__item__text\">\n" +
 
-                    "                                <a href=\"/BHNFoods/oneProduct?id=" + p.getIdPr() + "&idUser=user1\">" + p.getNamePr() + "<br> <span>" + price + "đ</span></a>\n" +
+                    "                                <a href=\"/oneProduct?id=" + p.getIdPr() + "&idUser=user1\">" + p.getNamePr() + "<br> <span>" + price + "đ</span></a>\n" +
 
                     "                            </div>\n" +
                     "                        </div>\n" +
