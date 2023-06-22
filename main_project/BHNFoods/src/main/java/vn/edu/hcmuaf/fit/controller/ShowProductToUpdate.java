@@ -21,9 +21,12 @@ public class ShowProductToUpdate extends HttpServlet {
         request.setAttribute("id", idProd);
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-        if(user.getDecentralization() != Powers.ADMIN && user.getDecentralization() != Powers.EMPLOYEE)
-            response.sendRedirect("index.jsp");
-        else {
+        if (user == null) {
+            response.sendRedirect("/`");
+        }
+        if (user.getDecentralization() != Powers.ADMIN && user.getDecentralization() != Powers.EMPLOYEE)
+            response.sendRedirect("/`");
+        else{
         request.getRequestDispatcher("showProduct.jsp").forward(request, response);
         }
     }
