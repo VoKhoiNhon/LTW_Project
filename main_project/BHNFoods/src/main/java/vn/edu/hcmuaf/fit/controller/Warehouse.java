@@ -20,9 +20,11 @@ public class Warehouse extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-
+        if (user == null) {
+            response.sendRedirect("/`");
+        }
         if (user.getDecentralization() != Powers.EMPLOYEE)
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("/`");
         else {
             List<vn.edu.hcmuaf.fit.beans.Warehouse> listwh = WarehouseService.getInstance().getListWH();
             request.setAttribute("listwh", listwh);

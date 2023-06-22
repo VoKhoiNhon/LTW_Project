@@ -18,8 +18,11 @@ public class HistoryOrdersAdmin extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
+        if (user == null) {
+            response.sendRedirect("/`");
+        }
         if (user.getDecentralization() != Powers.EMPLOYEE)
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("/`");
         else {
             List<Orders> listHistoryOrders = ProductService.getInstance().gethistoryOrdersAdmin();
             Map<String, List<Orders>> mapOrder = ProductService.getInstance().getMapOrder(listHistoryOrders);

@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.Log;
+import vn.edu.hcmuaf.fit.beans.Powers;
 import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.db.DB;
 import vn.edu.hcmuaf.fit.service.ProductService;
@@ -35,10 +36,16 @@ public class AddNewImg extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String UPLOAD_DIRECTORY= getServletContext().getRealPath("/");
-        int count = 0;
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
+        if (user == null) {
+            response.sendRedirect("/`");
+        }
+        if (user.getDecentralization() != Powers.ADMIN && user.getDecentralization() != Powers.EMPLOYEE)
+            response.sendRedirect("/`");
+        else {
+        String UPLOAD_DIRECTORY= getServletContext().getRealPath("/");
+        int count = 0;
         String idprod = request.getParameter("id");
         for (Part filePart : request.getParts()) {
 
@@ -60,5 +67,5 @@ public class AddNewImg extends HttpServlet {
             }
         }
         response.sendRedirect("/ShowProductToUpdate?id=" + idprod);
-    }
+    }}
 }
