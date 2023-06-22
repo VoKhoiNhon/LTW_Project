@@ -165,7 +165,7 @@
         var selectedTextCity = selectedOptionCity.textContent;
         var selectedTextDistrict = selectedOptionDistrict.textContent;
         var selectedTextWard = selectedOptionWard.textContent;
-
+        document.body.style.cursor = 'wait';
 
         $.ajax({
             url: "/pay",
