@@ -258,9 +258,7 @@
 
                                 <button onclick="deleteIMG('<%=l.getUrl()%>')">x</button>
                             </div>
-
                             <%}%>
-
                         </div>
 
 

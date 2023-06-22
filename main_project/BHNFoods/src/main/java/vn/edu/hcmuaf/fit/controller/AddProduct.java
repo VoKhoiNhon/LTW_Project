@@ -7,6 +7,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import vn.edu.hcmuaf.fit.beans.Product;
 import vn.edu.hcmuaf.fit.service.ProductService;
+import vn.edu.hcmuaf.fit.util.RandomOTP;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -32,8 +33,6 @@ import static java.lang.System.out;
 public class AddProduct extends HttpServlet {
     InputStream inputStream = null;
 
-    private static final String UPLOAD_DIRECTORY = "D:\\hk1nam3\\LTW\\GitHub\\main_project\\BHNFoods\\src\\main\\webapp\\ImageproductNew\\add";
-//    private static final String UPLOAD_DIRECTORY = "/var/lib/tomcat9/webapps/BHNFoods/ImageproductNew/add";
     private static final long serialVersionUID = 1;
     int index = ProductService.getInstance().getListProduct().size();
 
@@ -44,6 +43,7 @@ public class AddProduct extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String UPLOAD_DIRECTORY= getServletContext().getRealPath("/");
         String menu = request.getParameter("menu");
         int discount = Integer.parseInt(request.getParameter("discount"));
         int price = Integer.parseInt(request.getParameter("price"));
@@ -59,21 +59,16 @@ public class AddProduct extends HttpServlet {
         ProductService.getInstance().addProd(index + 1, menu, discount, price, name);
         ProductService.getInstance().addCT_Prod(index + 1, nsx, hsd, brand, mota, weight, origin, inventory );
         for (Part filePart : request.getParts()) {
-            out.println(1);
             if (filePart.getName().equals("imageFiles")) {
-                out.println(2);
                 String fileName = filePart.getSubmittedFileName();
-                out.println(3);
                 Path filePath = Path.of(UPLOAD_DIRECTORY, fileName);
-                out.println(4);
                 try (InputStream fileContent = filePart.getInputStream()) {
                     Files.copy(fileContent, filePath, StandardCopyOption.REPLACE_EXISTING);
-                    out.println(5);
                 }
                 String fileUrl = "ImageproductNew/add/" + fileName;
-                out.println(fileUrl);
+
                 count++;
-                ProductService.getInstance().addImg("prod"+index + 1, menu + brand +count,fileUrl,1);
+                ProductService.getInstance().addImg("prod"+index + 1, menu + brand +count+ RandomOTP.generateRandomString(),fileUrl,1);
             }
         }
 

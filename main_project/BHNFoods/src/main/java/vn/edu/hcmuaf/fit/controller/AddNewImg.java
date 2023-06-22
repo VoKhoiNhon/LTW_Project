@@ -12,6 +12,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
@@ -36,8 +37,11 @@ public class AddNewImg extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String UPLOAD_DIRECTORY= getServletContext().getRealPath("/");
         int count = 0;
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
         String idprod = request.getParameter("id");
         for (Part filePart : request.getParts()) {
+
             if (filePart.getName().equals("imageFiles")) {
                 String fileName = filePart.getSubmittedFileName();
 
@@ -49,9 +53,10 @@ public class AddNewImg extends HttpServlet {
                 count++;
                 ProductService.getInstance().addImg(idprod, RandomOTP.generateRandomString() + count, fileUrl, 1);
 
-                HttpSession session = request.getSession();
-                User user = (User) session.getAttribute("auth");
                 DB.me().insert(new Log(Log.INFO,user.getIdUser(), "/AddNewImg",  "add Img for : "+idprod, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
+
+                out.println("<img src='" + request.getContextPath() + "/" + fileUrl + "' />");
+
             }
         }
         response.sendRedirect("/ShowProductToUpdate?id=" + idprod);
