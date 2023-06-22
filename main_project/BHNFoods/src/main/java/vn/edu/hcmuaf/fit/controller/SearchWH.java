@@ -34,7 +34,6 @@ public class SearchWH extends HttpServlet {
                 for (DetailsWH d : detailWH) {
                     sumPrice += d.getPRICE_IMPORT() * d.getAMOUNT_PR();
                 }
-                System.out.println(w.getCode_wh() + "-" + detailWH.size() + "-" + w.getDate_import_shipment() + "-" + w.getName_employee() + "-" + sumPrice);
                 result += "<tr>\n" +
                         "                                                                    <td>\n" +
                         "                                                                        <div class=\"d-flex \">\n" +

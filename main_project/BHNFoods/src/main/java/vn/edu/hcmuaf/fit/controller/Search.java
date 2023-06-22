@@ -28,9 +28,6 @@ public class Search extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-        String idUser = user.getIdUser();
-        List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
-        request.setAttribute("listCart", listCart);
         String search = request.getParameter("searchPR");
         if (user == null) {
             DB.me().insert(new Log(Log.INFO, null, this.src, "Search that: " + search, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));

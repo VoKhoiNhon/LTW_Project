@@ -177,9 +177,9 @@
                 </div>
             </li>
             <li class="nav-item">
-                <form class="search-form" action="/SearchUser" method="post">
+                <form class="search-form" action="/" method="post">
                     <i class="icon-search"></i>
-                    <input type="search" class="form-control" name="searchUser" placeholder="Search Here"
+                    <input onclick="searchUser(this)" type="search" class="form-control" name="searchUser" placeholder="Search Here"
                            title="Search here">
                 </form>
             </li>
