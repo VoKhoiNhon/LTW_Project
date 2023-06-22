@@ -386,9 +386,9 @@
                                                 <h5 style="display: none">Iduser: <span style=" "><%=iduser%></span></h5>
                                             </div>
                                             <div style="display:grid;">
-                                                <button name="condition"  value="1" type="submit" onclick="changeColor()" class="uCanClick changeColor" style="background:#7fad39; margin: 3px 0px; color: white; border: none;">Đang giao hàng</button>
+                                                <button name="condition" <%=condition>0?"disabled":""%> value="1" type="submit" onclick="changeColor()" class="uCanClick changeColor" style="background:<%=condition>0?"gray":"#7fad39"%>; margin: 3px 0px; color: white; border: none;">Đang giao hàng</button>
                                                 <button name="condition"  value="2"  type="submit"  class="uCanClick " style="background:#7fad39; margin: 3px 0px; color: white; border: none;">Thành công</button>
-                                                <button name="condition"  value="3" type="submit"  class="uCanClick " style="background:#7fad39; margin: 3px 0px; color: white; border: none;">Không thành công</button>
+                                                <button name="condition"  value="3" type="submit"  disclass="uCanClick " style="background:#7fad39; margin: 3px 0px; color: white; border: none;">Không thành công</button>
                                             </div>
                                             <div>
                                                 <h4>Tổng đơn hàng: <span ><%=dec.format(sumOrder.get(entry.getKey())).replace(',','.')%>đ</span></h4>

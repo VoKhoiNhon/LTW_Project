@@ -89,31 +89,7 @@
                                           placeholder="Khách hàng có những yêu cầu khác vui lòng nhập vào đây để cửa hàng có thể phục vụ tốt nhất"></textarea>
                             </div>
                         </div>
-
                         <div class="w-100"></div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Thời gian nhận hàng</label>
-
-                                <select id="day" type="text" class="form-control">
-                                    <option value="0">Ngày hôm nay</option>
-                                    <option value="1">Ngày mai</option>
-                                    <option value="2">Ngày mốt</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <select id="time" type="text" class="form-control">
-                                    <option value="8:00:00">8h00-10h00</option>
-                                    <option value="10:00:00">10h00-12h00</option>
-                                    <option value="14:00:00">14h00-16h00</option>
-                                    <option value="17:00:00">17h00-19h00</option>
-                                    <option value="19:00:00">19h00-21h00</option>
-                                </select>
-                            </div>
-                        </div>
-
                     </div>
                 </form><!-- END -->
             </div>

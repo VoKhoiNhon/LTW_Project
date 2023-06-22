@@ -96,8 +96,6 @@ public class Pay extends HttpServlet {
                 "    <title>Document</title>\n" +
                 "    <style>\n" +
                 "        .container {\n" +
-                "            display: flex;\n" +
-                "            flex-direction: column;\n" +
                 "            border: 1px solid black;\n" +
                 "            max-width: 500px;\n" +
                 "            background: rgb(224, 221, 221);\n" +

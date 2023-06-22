@@ -125,12 +125,12 @@
 </nav>
 
 <section class="container page-content">
-    <img src="https://raw.githubusercontent.com/ilko1999/404Page/master/Scarecrow.png" alt="Scarecrow">
+    <img id="image" src="https://raw.githubusercontent.com/ilko1999/404Page/master/Scarecrow.png" alt="Scarecrow">
 
     <div class="content ">
         <h1>Bạn ơi có tin này hay lắm nè</h1>
         <p>
-           Trang mà bạn đang kiếm á nó không có hoặc không khả dụng ạ!!
+            Trang mà bạn đang kiếm á nó không có hoặc không khả dụng ạ!!
             Xin mời bạn quay trở lại trang chủ.
         </p>
         <div class="buttons">
@@ -141,6 +141,15 @@
 
 <footer class="container footer">
 </footer>
-
+<script>
+    const img = document.getElementById('image');
+    var deg = 0;
+    var rotate = 0.2;
+    setInterval(function() {
+        if(deg >= 15 || deg <= - 15) rotate*=-1;
+        deg += rotate;
+        img.style.transform = 'rotate('+deg+'deg)';
+    },10)
+</script>
 </body>
 </html>
