@@ -1,6 +1,8 @@
 package vn.edu.hcmuaf.fit.controller;
 
 import vn.edu.hcmuaf.fit.beans.Log;
+import vn.edu.hcmuaf.fit.beans.Powers;
+import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.LogSercive;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
@@ -14,11 +16,18 @@ import java.util.List;
 public class ListLog extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Log> listlog = LogSercive.getInstance().listLog();
-       
-        request.setAttribute("listlog", listlog);
-        request.getRequestDispatcher("log.jsp").forward(request,response);
-
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
+        if (user == null) {
+            response.sendRedirect("/`");
+        }
+        if (user.getDecentralization() != Powers.ADMIN )
+            response.sendRedirect("/`");
+        else {
+            List<Log> listlog = LogSercive.getInstance().listLog();
+            request.setAttribute("listlog", listlog);
+            request.getRequestDispatcher("log.jsp").forward(request, response);
+        }
     }
 
     @Override

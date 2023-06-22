@@ -5,7 +5,9 @@ import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import vn.edu.hcmuaf.fit.beans.Powers;
 import vn.edu.hcmuaf.fit.beans.Product;
+import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.ProductService;
 import vn.edu.hcmuaf.fit.util.RandomOTP;
 
@@ -43,39 +45,46 @@ public class AddProduct extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String UPLOAD_DIRECTORY= getServletContext().getRealPath("/");
-        String menu = request.getParameter("menu");
-        int discount = Integer.parseInt(request.getParameter("discount"));
-        int price = Integer.parseInt(request.getParameter("price"));
-        String name = request.getParameter("name");
-        String nsx = request.getParameter("nsx");
-        String hsd = request.getParameter("hsd");
-        String brand = request.getParameter("brand");
-        String mota = request.getParameter("mota");
-        double weight = Double.parseDouble(request.getParameter("weight"));
-        String origin = request.getParameter("origin");
-        int inventory = Integer.parseInt(request.getParameter("inventory"));
-        int count = 0;
-        ProductService.getInstance().addProd(index + 1, menu, discount, price, name);
-        ProductService.getInstance().addCT_Prod(index + 1, nsx, hsd, brand, mota, weight, origin, inventory );
-        for (Part filePart : request.getParts()) {
-            if (filePart.getName().equals("imageFiles")) {
-                String fileName = filePart.getSubmittedFileName();
-                Path filePath = Path.of(UPLOAD_DIRECTORY, fileName);
-                try (InputStream fileContent = filePart.getInputStream()) {
-                    Files.copy(fileContent, filePath, StandardCopyOption.REPLACE_EXISTING);
-                }
-                String fileUrl = "ImageproductNew/add/" + fileName;
-
-                count++;
-                ProductService.getInstance().addImg("prod"+index + 1, menu + brand +count+ RandomOTP.generateRandomString(),fileUrl,1);
-            }
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
+        if (user == null) {
+            response.sendRedirect("/`");
         }
+        if (user.getDecentralization() != Powers.ADMIN )
+            response.sendRedirect("/`");
+        else {
+            String UPLOAD_DIRECTORY = getServletContext().getRealPath("/");
+            String menu = request.getParameter("menu");
+            int discount = Integer.parseInt(request.getParameter("discount"));
+            int price = Integer.parseInt(request.getParameter("price"));
+            String name = request.getParameter("name");
+            String nsx = request.getParameter("nsx");
+            String hsd = request.getParameter("hsd");
+            String brand = request.getParameter("brand");
+            String mota = request.getParameter("mota");
+            double weight = Double.parseDouble(request.getParameter("weight"));
+            String origin = request.getParameter("origin");
+            int inventory = Integer.parseInt(request.getParameter("inventory"));
+            int count = 0;
+            ProductService.getInstance().addProd(index + 1, menu, discount, price, name);
+            ProductService.getInstance().addCT_Prod(index + 1, nsx, hsd, brand, mota, weight, origin, inventory);
+            for (Part filePart : request.getParts()) {
+                if (filePart.getName().equals("imageFiles")) {
+                    String fileName = filePart.getSubmittedFileName();
+                    Path filePath = Path.of(UPLOAD_DIRECTORY, fileName);
+                    try (InputStream fileContent = filePart.getInputStream()) {
+                        Files.copy(fileContent, filePath, StandardCopyOption.REPLACE_EXISTING);
+                    }
+                    String fileUrl = "ImageproductNew/add/" + fileName;
+
+                    count++;
+                    ProductService.getInstance().addImg("prod" + index + 1, menu + brand + count + RandomOTP.generateRandomString(), fileUrl, 1);
+                }
+            }
 
 
-
-        response.sendRedirect("/AdminManagePr?kind=0&page=1");
+            response.sendRedirect("/AdminManagePr?kind=0&page=1");
+        }
     }
-
 
 }
