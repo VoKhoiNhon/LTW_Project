@@ -296,7 +296,7 @@ public class ProductService {
     public static List<Product> getListPrNameSearch(String search) {
         List<Product> list = new ArrayList<Product>();
         List<Product> pr = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from product p join image i on p.ID_PR = i.ID_PR").mapToBean(Product.class).collect(Collectors.toList());
+            return handle.createQuery("select p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from product p join image i on p.ID_PR = i.ID_PR and i.`CONDITION` = 0").mapToBean(Product.class).collect(Collectors.toList());
         });
         for (Product p : pr) {
             if (p.getNamePr().toUpperCase().contains(search.toUpperCase()) || p.getIdPr().toUpperCase().contains(search.toUpperCase()) || p.getIdMenu().toUpperCase().contains(search.toUpperCase())) {
@@ -307,7 +307,7 @@ public class ProductService {
     }
 
     public static List<Product> getListProductByName(String name) {
-        String sql = "SELECT p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from product p join image i on p.ID_PR = i.ID_PR WHERE p.NAME_PR like CONCAT('%', :name, '%')";
+        String sql = "SELECT p.ID_PR, p.ID_MENU, p.DISCOUNT, p.PRICE, p.NAME_PR, i.URL from product p join image i on p.ID_PR = i.ID_PR WHERE p.NAME_PR like CONCAT('%', :name, '%') and i.`CONDITION` = 0";
         return JDBIConnector.get().withHandle(handle ->
                 handle.createQuery(sql)
                         .bind("name", name)
@@ -607,15 +607,32 @@ public int getNowYer(){
         });
     }
 
+    public List<String> getSortListIdOrders() {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT ID_ORDERS FROM orders WHERE `CONDITION`=1 or `CONDITION`=0 ORDER BY TIME_ORDERS DESC")
+                    .mapTo(String.class).collect(Collectors.toList());
+        });
+    }
+
+    public List<Orders> getOrderById(String id) {
+        String sql = "SELECT  s.ID_ORDERS, i.URL, p.NAME_PR, s.PRICE_HERE, s.AMOUNT, o.`NAME`, o.PHONE, o.ADDRESS, o.NOTE, o.TIME_ORDERS, o.`CONDITION` FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on p.ID_PR= s.ID_PR join image i ON i.ID_PR= p.ID_PR WHERE o.ID_ORDERS = ? and i.`CONDITION` = 0";
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(sql)
+                    .bind(0, id)
+                    .mapToBean(Orders.class)
+                    .collect(Collectors.toList());
+        });
+    }
+
     public static List<Orders> listOrdersAdmin() {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT  s.ID_ORDERS, i.URL, p.NAME_PR, s.PRICE_HERE, s.AMOUNT, o.`NAME`, o.PHONE, o.ADDRESS, o.NOTE, o.TIME_ORDERS, o.`CONDITION` FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on p.ID_PR= s.ID_PR join image i ON i.ID_PR= p.ID_PR WHERE o.`CONDITION`=1 or o.`CONDITION`=0")
+            return handle.createQuery("SELECT  s.ID_ORDERS, i.URL, p.NAME_PR, s.PRICE_HERE, s.AMOUNT, o.`NAME`, o.PHONE, o.ADDRESS, o.NOTE, o.TIME_ORDERS, o.`CONDITION` FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on p.ID_PR= s.ID_PR join image i ON i.ID_PR= p.ID_PR WHERE o.`CONDITION`=1 or o.`CONDITION`=0 ORDER BY TIME_ORDERS DESC")
                     .mapToBean(Orders.class).collect(Collectors.toList());
         });
     }
     public static List<Orders> gethistoryOrdersAdmin() {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT s.ID_ORDERS, i.URL, p.NAME_PR, s.PRICE_HERE, s.AMOUNT, o.`NAME`, o.PHONE, o.ADDRESS, o.NOTE, o.TIME_ORDERS, o.`CONDITION` FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on p.ID_PR= s.ID_PR join image i ON i.ID_PR= p.ID_PR WHERE o.`CONDITION`=2 or o.`CONDITION`=3")
+            return handle.createQuery("SELECT s.ID_ORDERS, i.URL, p.NAME_PR, s.PRICE_HERE, s.AMOUNT, o.`NAME`, o.PHONE, o.ADDRESS, o.NOTE, o.TIME_ORDERS, o.`CONDITION` FROM orders o JOIN sold_pr s on o.ID_ORDERS= s.ID_ORDERS JOIN product p on p.ID_PR= s.ID_PR join image i ON i.ID_PR= p.ID_PR WHERE o.`CONDITION`=2 or o.`CONDITION`=3 ORDER BY TIME_ORDERS DESC")
                     .mapToBean(Orders.class).collect(Collectors.toList());
         });
     }
