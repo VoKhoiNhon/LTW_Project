@@ -182,8 +182,6 @@
                 district : selectedTextDistrict,
                 ward : selectedTextWard,
                 note: $('#note').val(),
-                day : $('#day').val(),
-                time : $('#time').val(),
                 payment : $('input[type="radio"][name="optradio"]:checked').val(),
                 sumCheckout : $('#sumCheckout').val(),
                 discountCheckout : $('#discountCheckout').val(),
