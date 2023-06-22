@@ -48,7 +48,7 @@ public class Brower {
             // Nếu địa chỉ IP là IPv6 của localhost, sử dụng IPv4 thay thế
             ipAddress = Brower.getIpWlanConect();
         }
-        String url = "https://api.ipgeolocation.io/ipgeo?apiKey=cc95064209594bce8860960b663edd44&ip=" + ipAddress;
+        String url = "https://api.ipgeolocation.io/ipgeo?apiKey=25bf311674ee44249298d45dcd86a649&ip=" + ipAddress;
         URLConnection connection = new URL(url).openConnection();
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         String inputLine;
