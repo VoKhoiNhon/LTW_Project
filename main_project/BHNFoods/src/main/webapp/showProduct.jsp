@@ -4,6 +4,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.beans.*" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.StatisticsService" %>
 <%@ page import="java.util.Map" %>
+<%@ page import="com.google.gson.internal.bind.util.ISO8601Utils" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +52,25 @@
 
     </style>
 </head>
+<style>
+    .image-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
 
+    .image-item {
+        margin: 10px;
+        width: 100px;
+        height: 100px;
+    }
+
+    .image-item img {
+        width: 100px;
+        height: 100px;
+    }
+
+
+</style>
 <body>
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
@@ -133,71 +152,12 @@
                            title="Search here">
                 </form>
             </li>
-            <%--            <li class="nav-item dropdown">--%>
-            <%--                <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"--%>
-            <%--                   aria-expanded="false">--%>
-            <%--                    <i class="icon-mail icon-lg"></i>--%>
-            <%--                </a>--%>
-            <%--                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"--%>
-            <%--                     aria-labelledby="countDropdown">--%>
-            <%--                    <a class="dropdown-item py-3">--%>
-            <%--                        <p class="mb-0 font-weight-medium float-left">Bạn có 7 thông báo </p>--%>
-            <%--                        <span class="badge badge-pill badge-primary float-right">Xem tất cả</span>--%>
-            <%--                    </a>--%>
-            <%--                    <div class="dropdown-divider"></div>--%>
-            <%--                    <a class="dropdown-item preview-item">--%>
-            <%--                        <div class="preview-thumbnail">--%>
-            <%--                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"--%>
-            <%--                                 alt="image" class="img-sm profile-pic"--%>
-            <%--                                 style=" width: 70px;height: 50px;border-radius: 100%;">--%>
-            <%--                        </div>--%>
-            <%--                        <div class="preview-item-content flex-grow py-2">--%>
-            <%--                            <p class="preview-subject ellipsis font-weight-medium text-dark">Võ Khôi Nhơn </p>--%>
-            <%--                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>--%>
-            <%--                        </div>--%>
-            <%--                    </a>--%>
-            <%--                    <a class="dropdown-item preview-item">--%>
-            <%--                        <div class="preview-thumbnail">--%>
-            <%--                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"--%>
-            <%--                                 style=" width: 70px;height: 50px;border-radius: 100%;"--%>
-            <%--                                 alt="image" class="img-sm profile-pic">--%>
-            <%--                        </div>--%>
-            <%--                        <div class="preview-item-content flex-grow py-2">--%>
-            <%--                            <p class="preview-subject ellipsis font-weight-medium text-dark">Phạm Gia Bảo </p>--%>
-            <%--                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>--%>
-            <%--                        </div>--%>
-            <%--                    </a>--%>
-            <%--                    <a class="dropdown-item preview-item">--%>
-            <%--                        <div class="preview-thumbnail">--%>
-            <%--                            <img src="https://assets.materialup.com/uploads/378d2c84-810d-477a-802b-d495646b9c4e/preview.jpg"--%>
-            <%--                                 style=" width: 70px;height: 50px;border-radius: 100%;"--%>
-            <%--                                 alt="image" class="img-sm profile-pic">--%>
-            <%--                        </div>--%>
-            <%--                        <div class="preview-item-content flex-grow py-2">--%>
-            <%--                            <p class="preview-subject ellipsis font-weight-medium text-dark">Nguyễn Thị Xuân Hoa </p>--%>
-            <%--                            <p class="fw-light small-text mb-0"> 15-12-2022 15:01 </p>--%>
-            <%--                        </div>--%>
-            <%--                    </a>--%>
-            <%--                </div>--%>
-            <%--            </li>--%>
+
 
             <%
                 User user = (User) session.getAttribute("auth");
                 if (user != null) {%>
-            <%--            <li class="nav-item dropdown d-none d-lg-block user-dropdown">--%>
-            <%--                <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">--%>
-            <%--                    <img class="img-xs rounded-circle" src="ImageproductNew/background/images.png"--%>
-            <%--                         alt="Profile image"> </a>--%>
-            <%--                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">--%>
-            <%--                    <div class="dropdown-header text-center">--%>
-            <%--                        &lt;%&ndash;              <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">&ndash;%&gt;--%>
-            <%--                        <p class="mb-1 mt-3 font-weight-semibold"><%=user.getNameUser()%>--%>
-            <%--                        </p>--%>
-            <%--                        <p class="fw-light text-muted mb-0"><%=user.getEmail()%>--%>
-            <%--                        </p>--%>
-            <%--                    </div>--%>
-            <%--                </div>--%>
-            <%--            </li>--%>
+
             <%}%>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
@@ -236,7 +196,7 @@
             </a>
         </div>
         <div class="nav-item">
-            <a href="/Login" class="nav-item-link">
+            <a href="/logOut" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span>Đăng xuất</span>
             </a>
@@ -267,7 +227,7 @@
             </a>
         </div>
         <div class="nav-item">
-            <a href="/Login" class="nav-item-link">
+            <a href="/logOut" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span>Đăng xuất</span>
             </a>
@@ -280,7 +240,7 @@
         <% String id = (String) request.getAttribute("id");
             SingleProduct p = (SingleProduct) ProductService.getInstance().getSingleProduct(id).get(0);
             List<ImgForSingleProd> li = ProductService.getInstance().getListImgForSingleProduct(id);
-            Map<String, Integer> view= StatisticsService.getInstance().getQuantityProduct();
+            Map<String, Integer> view = StatisticsService.getInstance().getQuantityProduct();
         %>
 
         <div>
@@ -290,20 +250,20 @@
             <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
                 <div class="col-md-12 ">
                     <div class="form-group">
-<%--                        <label>Hình ảnh</label>--%>
+                        <%--                        <label>Hình ảnh</label>--%>
                         <div class="d-flex flex-grow-1  row_input ">
                             <%for (ImgForSingleProd l : li) {%>
-                            <div  class=" edit_img">
+                            <div class=" edit_img">
                                 <img class="image-item img " src="<%=l.getUrl()%>">
-                                <button  onclick="deleteIMG('<%=l.getUrl()%>')">x</button>
+
+                                <button onclick="deleteIMG('<%=l.getUrl()%>')">x</button>
                             </div>
-
                             <%}%>
-
                         </div>
 
 
-                        <form  action="/AddNewImg?id=<%=p.getIdPr()%>" id="imageForm" method="post" enctype="multipart/form-data">
+                        <form action="/AddNewImg?id=<%=p.getIdPr()%>" id="imageForm" method="post"
+                              enctype="multipart/form-data">
                             <div class="card">
                                 <div class="drag-area">
                                                 <span class="visible">
@@ -316,50 +276,40 @@
                                 </div>
                             </div>
                             <div class="contai"></div>
-                                <!-- IMAGE PREVIEW CONTAINER -->
+                            <!-- IMAGE PREVIEW CONTAINER -->
                             <input type="submit" value="xác nhận thêm ảnh"/>
                         </form>
 
                     </div>
                 </div>
-                <form action="/UpdateProduct"
-                      method="post" class="billing-form"
-                      enctype="multipart/form-data"
+                <form action="/" method="post" class="billing-form" enctype="multipart/form-data"
                       style="margin-top: 5%;">
-
-
                     <div class="row align-items-end"
                          style="font-size: 16px;">
-
-                        <div class="col-md-12 ">
-                            <div class="form-group">
-                                <label>Tên sản phẩm</label>
-                                <input type="text"
-                                       class="form-control input_addpr"
-                                       placeholder=""
-                                       name="name"
-                                       value="<%=p.getNamePr()%>  ">
-                                <div style="display: none"
-                                     class="form-group">
-                                    <label for=>ID</label>
-                                    <input type="text"
-                                           value="<%=p.getIdPr()%>"
+                        <div class="d-flex flex-grow-1 row_input ">
+                            <div class="col-md-6 col_addprod me-3">
+                                <div class="form-group">
+                                    <label>Tên sản phẩm</label>
+                                    <input id="name" type="text"
                                            class="form-control input_addpr"
-                                           name="id"
-                                           placeholder="">
+                                           placeholder=""
+                                           name="name"
+                                           value="<%=p.getNamePr()%>  ">
+                                    <div style="display: none"
+                                         class="form-group">
+                                        <label for=>ID</label>
+                                        <input id="id" type="text"
+                                               value="<%=p.getIdPr()%>"
+                                               class="form-control input_addpr"
+                                               name="id"
+                                               placeholder="">
+                                    </div>
                                 </div>
-
                             </div>
-                        </div>
-                        <div class="d-flex flex-grow-1  row_input  ">
-                            <div class="col-md-6 col_addprod">
-                            </div>
-
-
-                            <div class="col-md-6 col_addprod">
+                            <div class="col-md-6 col_addprod me-3">
                                 <div class="form-group">
                                     <label>Danh mục</label>
-                                    <select type="text"
+                                    <select id="menu" type="text"
                                             class="form-control input_addpr"
                                             name="menu">
                                         <option value="m1">Gạo
@@ -380,20 +330,20 @@
                             </div>
                         </div>
                         <div class="d-flex flex-grow-1 row_input ">
-                            <div class="col-md-6 col_addprod">
+                            <div class="col-md-6 col_addprod me-3">
                                 <div class="form-group">
                                     <label>Giá</label>
-                                    <input name="price"
+                                    <input id="price" name="price"
                                            type="text"
                                            class="form-control input_addpr"
                                            placeholder=""
                                            value="<%=p.getPrice()%>">
                                 </div>
                             </div>
-                            <div class="col-md-6 col_addprod">
+                            <div class="col-md-6 col_addprod me-3">
                                 <div class="form-group">
                                     <label>Khuyến mãi(%)</label>
-                                    <input name="discount"
+                                    <input id="discount" name="discount"
                                            type="text"
                                            class="form-control input_addpr"
                                            placeholder=""
@@ -402,30 +352,30 @@
                             </div>
                         </div>
                         <div class="d-flex flex-grow-1 row_input ">
-                            <div class="col-md-6 col_addprod">
+                            <div class="col-md-6 col_addprod me-3">
                                 <div class="form-group">
                                     <label>Xuất xứ</label>
-                                    <input name="origin"
+                                    <input id="origin" name="origin"
                                            type="text"
                                            class="form-control input_addpr"
                                            placeholder=""
                                            value="<%=p.getOrigin()%>">
                                 </div>
                             </div>
-                            <div class="col-md-6 col_addprod">
+                            <div class="col-md-6 col_addprod me-3">
                                 <div class="form-group">
                                     <label>Thương hiệu</label>
-                                    <input name="brand"
+                                    <input id="brand" name="brand"
                                            type="text"
                                            class="form-control  input_addpr"
                                            value="<%=p.getBrand()%>"
                                            placeholder="">
                                 </div>
                             </div>
-                            <div class="col-md-6 col_addprod">
+                            <div class="col-md-6 col_addprod me-3">
                                 <div class="form-group">
                                     <label>Trọng lượng</label>
-                                    <input name="weight"
+                                    <input id="weight" name="weight"
                                            type="text"
                                            class="form-control input_addpr"
                                            value="<%=p.getWeight()%>"
@@ -436,11 +386,11 @@
 
 
                         <div class="d-flex flex-grow-1  row_input">
-                            <div class="col-md-6 col_addprod">
+                            <div class="col-md-6 col_addprod me-3">
                                 <div class="form-group">
                                     <label>Ngày sản xuất</label>
                                     <div class="select-wrap">
-                                        <input type="date"
+                                        <input id="nsx" type="date"
                                                name="nsx"
                                                class="form-control input_addpr"
                                                value="<%=p.getNsx()%>"
@@ -448,11 +398,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col_addprod">
+                            <div class="col-md-6 col_addprod me-3">
                                 <div class="form-group">
                                     <label>Ngày hết hạn</label>
                                     <div class="select-wrap">
-                                        <input type="date"
+                                        <input id="hsd" type="date"
                                                name="hsd"
                                                class="form-control input_addpr"
                                                value="<%=p.getHsd()%>"
@@ -460,10 +410,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col_addprod">
+                            <div class="col-md-6 col_addprod me-3">
                                 <div class="form-group">
                                     <label>Số lượng nhập</label>
-                                    <input name="inventory"
+                                    <input id="inventory" name="inventory"
                                            type="number"
                                            class="form-control input_addpr"
                                            value="<%=p.getInventory()%>"
@@ -475,11 +425,9 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Mô tả</label>
-                                <textarea type="text"
-                                          class="form-control input_addpr"
-                                          value="<%=p.getDescribe()%>"
-                                          name="mota"
-                                          placeholder="Mô tả sản phẩm"></textarea>
+                                <textarea value="<%=p.getDescribe()%>" id="mota" type="text" class="form-control"
+                                          name="mota"><%=p.getDescribe()%></textarea>
+
                             </div>
                         </div>
                         <div class="col-md d-flex col_addprod">
@@ -488,8 +436,7 @@
                                 <label class="">Trạng
                                     thái:</label>
                             </div>
-                            <div class="form-group  padd_right"
-                                 style="">
+                            <div class="form-group  padd_right" style="">
                                 <input type="radio"
                                        class="form-"
                                        placeholder="">
@@ -504,7 +451,7 @@
                             </div>
                             <div class="form-group padd_right "
                                  style="">
-                                <input type="radio"
+                                <input id="condition" type="radio"
                                        class="form-"
                                        name="condition"
                                        value="1" placeholder="">
@@ -512,7 +459,7 @@
                             </div>
                             <div class="form-group padd_right "
                                  style="">
-                                <input type="radio" checked
+                                <input id="" type="radio" checked
                                        class="form-"
                                        name="condition"
                                        value="0" placeholder="">
@@ -522,9 +469,10 @@
 
                         <div class="col-md-12 d-flex  btn_huy_update"
                              style="justify-content: end;">
+                            <input id="jsonItem" name="jsonItem" value="" style="display: none">
                             <input onclick="huy()" type="button"
                                    value="Hủy">
-                            <input type="submit"
+                            <input type="button" onclick="submitForm()"
                                    value=" Cập nhật">
                         </div>
                     </div>
@@ -536,12 +484,57 @@
 
 
 <script>
+
+    function submitForm() {
+        var id = document.getElementById('id').value;
+        var name = document.getElementById('name').value;
+        var menu = document.getElementById('menu').value;
+        var discount = document.getElementById('discount').value;
+        var nsx = document.getElementById('nsx').value;
+        var hsd = document.getElementById('hsd').value;
+        var mota = document.getElementById('mota').value;
+        var price = document.getElementById('price').value;
+        var brand = document.getElementById('brand').value;
+        var weight = document.getElementById('weight').value;
+        var condition = document.getElementById('condition').value;
+        var inventory = document.getElementById('inventory').value;
+        var origin = document.getElementById('origin').value;
+        console.log(name,id,price, mota);
+        $.ajax({
+        url: "/UpdateProduct",
+        type: 'post',
+        data: {
+            id: id,
+            name: name,
+            menu: menu,
+            discount: discount,
+            nsx: nsx,
+            hsd: hsd,
+            mota: mota,
+            price: price,
+            brand: brand,
+            weight: weight,
+            condition: condition,
+            inventory: inventory,
+            origin: origin
+        },
+        success: function (data) {
+            alert("thanh cong");
+            location.reload();
+        },
+        error: function () {
+        },
+    });
+    
+    }
+
+
     function deleteIMG(url, id) {
         $.ajax({
             url: "/deleteIMGProd",
             type: 'get',
             data: {
-                URL:url
+                URL: url
             },
             success: function (data) {
                 alert("đã xóa ảnh sản phẩm")
@@ -551,6 +544,7 @@
             }
         });
     }
+
     let files = [],
         dragArea = document.querySelector('.drag-area'),
         input = document.querySelector('.drag-area input'),
@@ -592,6 +586,7 @@
 
 
     }
+
     /* DELETE IMAGE */
     function delImage(index) {
         files.splice(index, 1);

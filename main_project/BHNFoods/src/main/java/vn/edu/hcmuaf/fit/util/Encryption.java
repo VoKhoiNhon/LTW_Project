@@ -23,13 +23,13 @@ public class Encryption {
     public static String randomSalt() {
         SplittableRandom splittableRandom = new SplittableRandom();
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             sb.append((char)splittableRandom.nextInt(97,123));
         }
         return sb.toString();
     }
 
     public static void main(String[] args) {
-        System.out.println(toSHA1("123456789"));
+        System.out.println(randomSalt() + randomSalt());
     }
 }

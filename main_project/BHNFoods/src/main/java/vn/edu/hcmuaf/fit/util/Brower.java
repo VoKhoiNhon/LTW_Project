@@ -29,8 +29,6 @@ public class Brower {
         } else {
             browserName = "unknown";
         }
-        System.out.println("Browser Name: " + browserName);
-
         return browserName;
     }
 
@@ -60,13 +58,9 @@ public class Brower {
         }
         in.close();
         String location = responses.toString();
-//        System.out.println("IP Address: " + location);
+
         return "IP Address: " + location;
     }
 
-    public static void main(String[] args) throws IOException {
-//        System.out.println(getLocationIp(getIpWlanConect()));
 
-
-    }
 }

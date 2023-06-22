@@ -636,7 +636,6 @@
 </div>
 <%--add product--%>
 <div class="edit_formUser edit_formAdd">
-
         <div class="edit_formUser edit_formAdd">
             <div class="container" style="background:none;">
                 <div class="col-xl-7 ftco-animate cen-div  row ftco-section justify-content-center">
@@ -733,9 +732,6 @@
                                 </div>
 
                             </div>
-
-
-
                             <div class=" d-flex flex-grow-1 row_input">
                                 <div class="col-md-6 col_addprod">
                                     <div class="form-group">
@@ -784,7 +780,7 @@
 
                             <div class="col-md-12 d-flex btn_huy_update" style="justify-content: end;">
                                 <input type="button" onclick="huy()" value="Hủy">
-                                <input type="submit" value=" Thêm sản phẩm">
+                                <input type="submit" value="Thêm sản phẩm">
                             </div>
                         </div>
                     </form>
@@ -792,9 +788,6 @@
             </div>
         </div>
 </div>
-
-
-
 </div>
 
 <script>

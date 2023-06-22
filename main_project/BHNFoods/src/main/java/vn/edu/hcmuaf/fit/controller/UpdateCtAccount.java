@@ -30,7 +30,7 @@ public class UpdateCtAccount extends HttpServlet {
         String name = request.getParameter("name");
         int sex = Integer.parseInt(request.getParameter("sex"));
         String birthday = request.getParameter("birthday");
-        System.out.println("birthday: "+ birthday);
+
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String passw = request.getParameter("passw");
@@ -38,7 +38,7 @@ public class UpdateCtAccount extends HttpServlet {
         String repassw = request.getParameter("repassw");
         String oldPass = UserService.getInstance().getEncryptPassUser(iduser);
         int t = 0;
-        System.out.println(1);
+
         if (!passw.equals(repassw)) {
             request.setAttribute("error", "* Mật khẩu không trùng khớp");
             request.getRequestDispatcher("/account").forward(request, response);

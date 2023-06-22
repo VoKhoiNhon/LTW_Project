@@ -45,6 +45,7 @@ public class AddToCart extends HttpServlet {
                 newSumCart += listProductFromCartInSession.get(idProduct);
             }
             System.out.println(listProductFromCartInSession.toString());
+            DB.me().insert(new Log(Log.INFO, null, "Single Product", "View : " +idProd, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
             DB.me().insert(new Log(Log.INFO, null, this.src, "add product : " +idProd, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
         } else { // user da dang nhap
             String idUser = user.getIdUser();
@@ -56,13 +57,16 @@ public class AddToCart extends HttpServlet {
             } else {
                 CartService.getInstance().updateToCart(idUser,idProd,amount);
             }
+            DB.me().insert(new Log(Log.INFO, idUser, "Single Product", "View : " +idProd, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
+
             DB.me().insert(new Log(Log.INFO, idUser, this.src,  "add product : "+idProd, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
         }
+
         session.removeAttribute("sumCart");
         session.setAttribute("sumCart",newSumCart);
 
         PrintWriter out = response.getWriter();
-        out.println("<a href=\"/BHNFoods/Cart\" class=\"nav-link\">\n" +
+        out.println("<a href=\"/Cart\" class=\"nav-link\">\n" +
                 "<span class=\"fa-solid fa-cart-shopping\"></span>["+newSumCart+"]</a>");
     }
 

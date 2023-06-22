@@ -271,7 +271,7 @@
           <%--              Hoạt động</a>--%>
           <%--            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>--%>
           <%--              Các câu hỏi thường gặp</a>--%>
-          <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Đăng xuất</a>
+          <a href="/logOut" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Đăng xuất</a>
         </div>
       </li>
       <%}%>

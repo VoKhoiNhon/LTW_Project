@@ -40,8 +40,8 @@
         </ul>
         <div class="item_final" style="display: flex; align-items: center;">
             <p style="margin: 0; padding: 0">Bạn muốn thêm vào tài khoản này không?</p>
-                <button onclick="removeCartFromSession()" class="btn" style="padding: 0; background: #7fad39;border: none;margin: 4px;height: 24px;width: 4rem;color: white;">Đéo</button>
-                <button onclick="addCartFromSessionToUser()" class="btn" style="padding: 0; background: #7fad39;border: none;margin: 4px;height: 24px;width: 4rem;color: white;">Coá</button>
+                <button onclick="removeCartFromSession()" class="btn" style="padding: 0; background: #7fad39;border: none;margin: 4px;height: 24px;width: 4rem;color: white;">Không</button>
+                <button onclick="addCartFromSessionToUser()" class="btn" style="padding: 0; background: #7fad39;border: none;margin: 4px;height: 24px;width: 4rem;color: white;">Có</button>
         </div>
     </form>
 </div>
@@ -420,8 +420,8 @@
         '        </ul>\n' +
         '        <div class=\"item_final\" style=\"display: flex; align-items: center;\">\n' +
         '            <p style=\"margin: 0; padding: 0\">Bạn muốn thêm vào tài khoản này không?</p>\n' +
-        '                <button onclick=\"removeLoveFromSession()\" class=\"btn\" style=\"padding: 0; background: #7fad39;border: none;margin: 4px;height: 24px;width: 4rem;color: white;\">Đéo</button>\n' +
-        '                <button onclick=\"addLoveFromSessionToUser()\" class=\"btn\" style=\"padding: 0; background: #7fad39;border: none;margin: 4px;height: 24px;width: 4rem;color: white;\">Coá</button>\n' +
+        '                <button onclick=\"removeLoveFromSession()\" class=\"btn\" style=\"padding: 0; background: #7fad39;border: none;margin: 4px;height: 24px;width: 4rem;color: white;\">Không</button>\n' +
+        '                <button onclick=\"addLoveFromSessionToUser()\" class=\"btn\" style=\"padding: 0; background: #7fad39;border: none;margin: 4px;height: 24px;width: 4rem;color: white;\">Có</button>\n' +
         '       </div>\n' +
         '    </form>\n')
             <%}

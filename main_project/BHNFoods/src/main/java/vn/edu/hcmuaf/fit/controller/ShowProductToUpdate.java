@@ -24,7 +24,6 @@ public class ShowProductToUpdate extends HttpServlet {
         if(user.getDecentralization() != Powers.ADMIN && user.getDecentralization() != Powers.EMPLOYEE)
             response.sendRedirect("index.jsp");
         else {
-
         request.getRequestDispatcher("showProduct.jsp").forward(request, response);
         }
     }

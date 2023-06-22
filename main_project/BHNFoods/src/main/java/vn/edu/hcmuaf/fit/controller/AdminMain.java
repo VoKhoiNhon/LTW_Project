@@ -23,9 +23,8 @@ public class AdminMain extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-        if (user.getDecentralization() != Powers.ADMIN && user.getDecentralization() != Powers.EMPLOYEE)
-            response.sendRedirect("index.jsp");
-        else {
+        if(user!=null){
+        if (user.getDecentralization() == Powers.ADMIN) {
             i = 5;
 //            List<SingleProduct> list = ProductService.getInstance().getListPrDateImport(i);
 //            request.setAttribute("listPrDate", list);
@@ -74,6 +73,10 @@ public class AdminMain extends HttpServlet {
             request.setAttribute("data1", data1);
             request.setAttribute("hotSale", pr);
             request.getRequestDispatcher("adminMain.jsp").forward(request, response);
+        }else{
+            response.sendRedirect("/`");
+        }
+    }else{response.sendRedirect("/`");
         }
     }
 

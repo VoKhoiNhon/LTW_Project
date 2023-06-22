@@ -15,8 +15,11 @@ public class AdminManagePr extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
+        if(user==null){
+            response.sendRedirect("/`");
+        }
         if(user.getDecentralization() != Powers.ADMIN && user.getDecentralization() != Powers.EMPLOYEE)
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("/`");
         else {
             int kind = Integer.parseInt(request.getParameter("kind"));
             int page = Integer.parseInt(request.getParameter("page"));
