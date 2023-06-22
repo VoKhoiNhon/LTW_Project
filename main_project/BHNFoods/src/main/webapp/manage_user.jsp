@@ -177,9 +177,9 @@
                 </div>
             </li>
             <li class="nav-item">
-                <form class="search-form" action="/" method="post">
+                <form class="search-form" action="" method="">
                     <i class="icon-search"></i>
-                    <input onclick="searchUser(this)" type="search" class="form-control" name="searchUser" placeholder="Search Here"
+                    <input id="myInput" oninput="searchUser(this)" type="search" class="form-control" name="" placeholder="Search Here"
                            title="Search here">
                 </form>
             </li>
@@ -277,7 +277,7 @@
                                                                     <th></th>
                                                                 </tr>
                                                                 </thead>
-                                                                <tbody>
+                                                                <tbody id="idTbody">
                                                                 <% List<User> list = (List<User>) request.getAttribute("listUser");
                                                                     for (User u : list) {
                                                                 %>
@@ -344,6 +344,32 @@
 
 
 <script>
+    var myInput = document.getElementById("myInput");
+
+    myInput.addEventListener("keydown", function(event) {
+        if(event.keyCode==13){
+
+            event.preventDefault()
+        }
+    });
+
+    //search name user
+    function searchUser(data){
+        var name= data.value;
+        console.log(name)
+        $.ajax({
+            url:"/SearchUser",
+            type: 'get',
+            data:{
+                name: name
+            },
+            success: function (data){
+                var row= document.getElementById('idTbody');
+                row.innerHTML= data;
+console.log(data)
+            }
+        })
+    }
     // xem và update user
     function clickEdit(idUser, nameUser, passw, email, phone, datesignup, address) {
         $.ajax({

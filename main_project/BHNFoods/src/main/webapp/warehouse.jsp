@@ -638,7 +638,11 @@
     var myInput = document.getElementById("myInput");
 
     myInput.addEventListener("keydown", function(event) {
-        event.preventDefault();
+        if(event.keyCode==13){
+
+            event.preventDefault()
+        }
+    });
 
 
     function submitForm() {
@@ -823,7 +827,7 @@
         var code= data.value;
         console.log(code)
         $.ajax({
-            url:"/SearchWH",
+            url:"/SearchUser",
             type: 'get',
             data:{
                 code: code

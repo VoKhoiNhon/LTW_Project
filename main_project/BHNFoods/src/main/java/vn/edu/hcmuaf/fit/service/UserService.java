@@ -316,7 +316,7 @@ public class UserService {
     public List<User> search(String name) {
         List<User> listUser = new ArrayList<>();
         for(User u: getInstance().getListUser()){
-            if (u.getName().toUpperCase().contains(name.toUpperCase())){
+            if (u.getNameUser().toUpperCase().contains(name.toUpperCase())){
                 listUser.add(u);
             }
 
