@@ -234,7 +234,7 @@
             </a>
         </div>
         <div class="nav-item">
-            <a href="/Login" class="nav-item-link">
+            <a href="/logOut" class="nav-item-link">
                 <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span>Đăng xuất</span>
             </a>

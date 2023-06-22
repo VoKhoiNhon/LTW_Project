@@ -310,6 +310,7 @@ public class Logistics {
                 }
                 reader.close();
                 json = response.toString();
+                System.out.println(json);
                 JSONParser parser = new JSONParser();
                 JSONObject resp = (JSONObject) parser.parse(json);
                 JSONArray data = (JSONArray) resp.get("data");
@@ -381,6 +382,7 @@ public class Logistics {
     }
     public static void main(String[] args) throws Exception {
 //        System.out.println(getToken());
+
 //        Map<String, Integer> map = getProvince();
 //        System.out.println(map.get("Lạng Sơn"));
 //        Map<String, Integer> map1 = getDistrict(247);
@@ -388,8 +390,9 @@ public class Logistics {
 //        Map<String, Integer> map2 = getWard(3134);
 //        System.out.println(map2.get("Xã Vũ Sơn"));
 //        getWard(1463);
+
 //        getLeadTime(1463, 21809, 30, 30, 30, 5000);
-        getCalculateFee(1463, 21809, 30, 30, 30, 5000);
+        getCalculateFee(1463, 21809, 30, 30, 30, 500);
 //        registerTransport(1463, 21809, 30, 30, 30, 1000);
     }
 }
