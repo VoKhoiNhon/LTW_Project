@@ -477,6 +477,12 @@ public int getNowYer(){
         });
         return l.get(0).getTurnover();
     }
+    public int getSalerPRAll() {
+        List<Turnover> l = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("select sum(s.AMOUNT) as turnover   from orders o join sold_pr s on o.ID_ORDERS=s.ID_ORDERS ").mapToBean(Turnover.class).collect(Collectors.toList());
+        });
+        return l.get(0).getTurnover();
+    }
 
     public int getStopPr() {
         List<Turnover> l = JDBIConnector.get().withHandle(handle -> {

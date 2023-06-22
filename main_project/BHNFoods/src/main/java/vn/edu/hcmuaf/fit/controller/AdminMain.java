@@ -38,6 +38,7 @@ public class AdminMain extends HttpServlet {
             int tur1 = ProductService.getInstance().getTurnover(1, 2023);
             int alltur = ProductService.getInstance().getAllTurnover();
             int saledPR = ProductService.getInstance().getSalerPR();
+            int saledAll = ProductService.getInstance().getSalerPRAll();
             int stopSaledPR = ProductService.getInstance().getStopPr();
             List<SingleProduct> pr = ProductService.getInstance().getListProductHostSale();
             List<Contact> listContact = UserService.getInstance().getListContact();
@@ -63,6 +64,7 @@ public class AdminMain extends HttpServlet {
 //        request.setAttribute("pec", percentY);
             request.setAttribute("stopSaled", stopSaledPR);
             request.setAttribute("saledPr", saledPR);
+            request.setAttribute("saledPrAll", saledAll);
             request.setAttribute("newbie", newbie);
             request.setAttribute("nowTur", nowTur);
             request.setAttribute("tur", tur);
