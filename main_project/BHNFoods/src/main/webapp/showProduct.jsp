@@ -484,7 +484,16 @@
 
 
 <script>
-
+    document.getElementById("imageForm").addEventListener("submit", function(event) {
+        // Kiểm tra số lượng file được chọn
+        var files = document.getElementById("imageFiles").files;
+        if (files.length === 0) {
+            // Hiển thị thông báo khi không có file nào được chọn
+            alert("Vui lòng chọn ít nhất một file ảnh.");
+            // Dừng lại sự kiện submit form
+            event.preventDefault();
+        } 
+    });
     function submitForm() {
         var id = document.getElementById('id').value;
         var name = document.getElementById('name').value;
