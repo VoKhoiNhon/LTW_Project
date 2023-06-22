@@ -528,7 +528,7 @@
                                                                     <%--                                                                        </div>--%>
                                                                     <%--                                                                    </th>--%>
                                                                     <th>Sản phẩm</th>
-                                                                    <th>Ngày hết hạn</th>
+                                                                    <th>Thương hiệu</th>
                                                                     <th>Số lượng hàng đã bán</th>
                                                                     <th>Giá</th>
                                                                     <th></th>
@@ -557,7 +557,7 @@
                                                                         </a>
                                                                     </td>
                                                                     <td>
-                                                                        <h6><%=p.getHsd()%>
+                                                                        <h6><%=p.getBrand()%>
                                                                         </h6>
                                                                     </td>
                                                                     <td>
@@ -659,7 +659,7 @@
                                         <div class="card">
                                             <div class="drag-area">
                                                 <span class="visible">
-                                                    <span class="select" role="button">Browse</span>
+                                                    <span class="select" role="button">Chọn Ảnh</span>
                                                                                 </span>
                                                 <input name="imageFiles" id="imageFiles" type="file" class="imageFiles" multiple/>
                                                 <input name="text" id="textname" type="text" class="form-control input_addpr"

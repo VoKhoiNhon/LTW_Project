@@ -267,7 +267,7 @@
                             <div class="card">
                                 <div class="drag-area">
                                                 <span class="visible">
-                                                    <span class="select" role="button">Browse</span>
+                                                    <span class="select" role="button">Chọn ảnh</span>
                                                                                 </span>
                                     <input name="imageFiles" id="imageFiles" type="file" class="imageFiles" multiple/>
                                     <input name="text" id="textname" type="text" class="form-control input_addpr"
