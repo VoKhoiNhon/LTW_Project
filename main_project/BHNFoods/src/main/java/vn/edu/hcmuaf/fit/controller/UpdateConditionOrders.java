@@ -59,4 +59,9 @@ public class UpdateConditionOrders extends HttpServlet {
         response.sendRedirect("/ListOrdersAdmin");
         }
     }
+
+    public static void main(String[] args) throws Exception {
+        System.out.println(Logistics.getProvince().get("Hồ Chí Minh"));
+        System.out.println(Logistics.getDistrict(Logistics.getProvince().get("Hồ Chí Minh")).get("Thành Phố Thủ Đức"));
+    }
 }

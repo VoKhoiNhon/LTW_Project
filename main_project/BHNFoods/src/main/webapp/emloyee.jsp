@@ -3,6 +3,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.beans.Orders" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.text.DecimalFormat" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.ProductService" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -316,9 +317,10 @@
             <div class="row">
                 <div class="col-sm-12">
                     <%
-                        Map<String, List<Orders>> mapOrder = (Map<String, List<Orders>>) request.getAttribute("mapAdminOrder");
+//                        Map<String, List<Orders>> mapOrder = (Map<String, List<Orders>>) request.getAttribute("mapAdminOrder");
+                        List<String> listSortIdOrders = ProductService.getInstance().getSortListIdOrders();
                         Map<String, Integer> sumOrder = (Map<String, Integer>) request.getAttribute("sumAdminOrder");
-                        for (Map.Entry<String, List<Orders>> entry : mapOrder.entrySet()) {
+                        for (String s : listSortIdOrders) {
                             int condition = 0;
                             String cursor = "pointer";
                             double opacity = 1.0;
@@ -346,7 +348,7 @@
                                             <tbody>
                                             <%
                                                 DecimalFormat dec = new DecimalFormat("#,###");
-                                                for (Orders o : mapOrder.get(entry.getKey())) {
+                                                for (Orders o : ProductService.getInstance().getOrderById(s)) {
                                                     condition = o.getCondition();
                                                     name=o.getName();
                                                     phone= o.getPhone();
@@ -394,7 +396,7 @@
                                                 <button name="condition"  value="3" type="submit"  class="uCanClick " style="background:#7fad39; margin: 3px 0px; color: white; border: none;">Không thành công</button>
                                             </div>
                                             <div>
-                                                <h4>Tổng đơn hàng: <span><%=dec.format(sumOrder.get(entry.getKey())).replace(',','.')%>đ</span></h4>
+                                                <h4>Tổng đơn hàng: <span><%=dec.format(sumOrder.get(s)).replace(',','.')%>đ</span></h4>
                                             </div>
                                         </div>
                                     </div>
