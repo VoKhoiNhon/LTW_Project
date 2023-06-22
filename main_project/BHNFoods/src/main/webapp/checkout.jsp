@@ -165,7 +165,7 @@
         var selectedTextCity = selectedOptionCity.textContent;
         var selectedTextDistrict = selectedOptionDistrict.textContent;
         var selectedTextWard = selectedOptionWard.textContent;
-
+        document.body.style.cursor = 'wait';
 
         $.ajax({
             url: "/pay",
@@ -182,8 +182,6 @@
                 district : selectedTextDistrict,
                 ward : selectedTextWard,
                 note: $('#note').val(),
-                day : $('#day').val(),
-                time : $('#time').val(),
                 payment : $('input[type="radio"][name="optradio"]:checked').val(),
                 sumCheckout : $('#sumCheckout').val(),
                 discountCheckout : $('#discountCheckout').val(),

@@ -39,8 +39,6 @@ public class Pay extends HttpServlet {
         String district = request.getParameter("district");
         String ward = request.getParameter("ward");
         String finalAddress = address + " " + ward + " " + district + " " + city;
-        int day = Integer.parseInt(request.getParameter("day"));
-        String time = request.getParameter("time");
         String note = request.getParameter("note");
         String payment = request.getParameter("payment");
         String allId = request.getParameter("listId");
