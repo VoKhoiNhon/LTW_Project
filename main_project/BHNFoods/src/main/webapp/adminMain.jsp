@@ -204,6 +204,7 @@
                 int stopPr = (int) request.getAttribute("stopSaled");
                 int newbie = (int) request.getAttribute("newbie");
                 int saledPr = (int) request.getAttribute("saledPr");
+                int saledPrAll = (int) request.getAttribute("saledPrAll");
                 String data1 = (String) request.getAttribute("data1");
                 int nowTur = (int) request.getAttribute("nowTur");
                 int allTur = (int) request.getAttribute("alltur");
@@ -294,8 +295,8 @@
                                                 <h3 class="rate-percentage"><%=nowTur%> VNĐ</h3>
                                             </div>
                                             <div>
-                                                <p class="statistics-title">Số mặt hàng đã bán</p>
-                                                <h3 class="rate-percentage"><%=saledPr%>
+                                                <p class="statistics-title">Tổng số mặt hàng đã được bán</p>
+                                                <h3 class="rate-percentage"><%=saledPrAll%>
                                                 </h3>
 
                                             </div>
@@ -315,30 +316,22 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="statistics-details  align-items-center justify-content-between grid_statistical">
-                                            <div>
-                                                <p class="statistics-title">Hàng tồn kho</p>
-                                                <h3 class="rate-percentage"><%=nowTur%> VNĐ</h3>
 
-                                            </div>
                                             <div>
                                                 <p class="statistics-title">Sản phẩm bán chạy nhất</p>
                                                 <h3 class="rate-percentage"><a
-                                                        href="/ShowProductToUpdate?id=<%=hotSale.get(0).getIdPr()%>"><%=hotSale.get(0).getIdPr()%>
+                                                        href="/ShowProductToUpdate?id=<%=hotSale.get(0).getIdPr()%>"><%=hotSale.get(0).getNamePr()%>
                                                 </a>
                                                 </h3>
 
                                             </div>
                                             <div>
-                                                <p class="statistics-title">Sản phẩm cần nhập kho</p>
-                                                <h3 class="rate-percentage"><%=stopPr%>
+                                                <p class="statistics-title">Số mặt hàng đã bán trong tháng</p>
+                                                <h3 class="rate-percentage"><%=saledPr%>
                                                 </h3>
 
                                             </div>
-                                            <div class="d-none d-md-block">
-                                                <p class="statistics-title">Sản phẩm bị hoàn trả</p>
-                                                <h3 class="rate-percentage"><%=newbie%>
-                                                </h3>
-                                            </div>
+
 
                                         </div>
                                     </div>
