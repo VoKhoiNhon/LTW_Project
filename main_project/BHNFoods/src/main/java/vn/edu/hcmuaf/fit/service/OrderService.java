@@ -94,6 +94,17 @@ public class OrderService {
 
         return nam + "-" + thang + "-" + ngay;
     }
+    public String[] getListIDPrInOrder(String idOrder) {
+        String query = "SELECT ID_PR FROM sold_pr  WHERE ID_ORDERS = '"+idOrder+"'";
+        List<String> list= JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery(query)
+                    .mapTo(String.class)
+                    .list();
+        });
+        String[] array = list.toArray(new String[0]);
+        return array;
+
+    }
 
     public boolean isNamNhuan(int year) {
         boolean namNhuan = false;

@@ -356,7 +356,7 @@
             <li class="nav-item">
                 <form class="search-form" >
                     <i class="icon-search"></i>
-                    <input oninput="searchwh(this)" type="search" class="form-control" placeholder="Search Here" name="searchAD"
+                    <input id="myInput" oninput="searchwh(this)" type="search" class="form-control" placeholder="Search Here" name="searchAD"
                            title="Search here">
                 </form>
             </li>
@@ -635,6 +635,16 @@
 </div>
 
 <script>
+    var myInput = document.getElementById("myInput");
+
+    myInput.addEventListener("keydown", function(event) {
+        if(event.keyCode==13){
+
+            event.preventDefault()
+        }
+    });
+
+
     function submitForm() {
         const listMenu = document.getElementsByName('menu');
         const listName = document.getElementsByName('nameProduct');

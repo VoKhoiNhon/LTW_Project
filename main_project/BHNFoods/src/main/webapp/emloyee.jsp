@@ -315,22 +315,21 @@
         <div class="content-wrapper">
             <div class="row">
                 <div class="col-sm-12">
+                    <%
+                        Map<String, List<Orders>> mapOrder = (Map<String, List<Orders>>) request.getAttribute("mapAdminOrder");
+                        Map<String, Integer> sumOrder = (Map<String, Integer>) request.getAttribute("sumAdminOrder");
+                        for (Map.Entry<String, List<Orders>> entry : mapOrder.entrySet()) {
+                            int condition = 0;
+                            String cursor = "pointer";
+                            double opacity = 1.0;
+                            String name= "";
+                            String phone="";
+                            String address="";
+                            String note="";
+
+                    %>
                     <form action="/UpdateConditionOrders" method="post" class="shoping-cart spad">
                         <div class="container">
-                            <%
-                                Map<String, List<Orders>> mapOrder = (Map<String, List<Orders>>) request.getAttribute("mapAdminOrder");
-                                Map<String, Integer> sumOrder = (Map<String, Integer>) request.getAttribute("sumAdminOrder");
-                                for (Map.Entry<String, List<Orders>> entry : mapOrder.entrySet()) {
-                                    int condition = 0;
-                                    String cursor = "pointer";
-                                    double opacity = 1.0;
-                                    String name= "";
-                                    String phone="";
-                                    String address="";
-                                    String note="";
-                                    String iduser="";
-
-                            %>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="shoping__cart__table">
@@ -353,7 +352,6 @@
                                                     phone= o.getPhone();
                                                     address= o.getAddress();
                                                     note=o.getNote();
-                                                    iduser= o.getIduser();
 
                                             %>
                                             <tr>
@@ -363,6 +361,10 @@
                                                 </td>
                                                 <td class="shoping__cart__item">
                                                     <h5><%=o.getNamePr()%></h5>
+                                                    <input name="idOrders" style="display: none" value="<%=o.getIdOrders()%>">
+                                                </td>
+                                                <td style="display: none" class="shoping__cart__item">
+                                                    <h5><%=o.getIdOrders()%></h5>
                                                     <input name="idOrders" style="display: none" value="<%=o.getIdOrders()%>">
                                                 </td>
                                                 <td class="shoping__cart__price">
@@ -378,28 +380,29 @@
                                             <%}%>
                                             </tbody>
                                         </table>
+                                        <input name="addr" style="display: none" value="<%=address%>">
                                         <div class="d-flex justify-content-between pt-5 align-items-center">
                                             <div style="width: 50%">
                                                 <h5>Tên và SĐT Khách hàng: <span style="color: red;"> <%=name%> <%=phone%></span></h5>
                                                 <h5>Địa chỉ đơn hàng: <span style="color: red;"><%=address%></span></h5>
                                                 <h5>Ghi chú: <span style="color: red;"><%=note%></span></h5>
-                                                <h5 style="display: none">Iduser: <span style=" "><%=iduser%></span></h5>
+<%--                                                <h5 style="display: none">Iduser: <span style=" "><%=iduser%></span></h5>--%>
                                             </div>
                                             <div style="display:grid;">
-                                                <button name="condition" <%=condition>0?"disabled":""%> value="1" type="submit" onclick="changeColor()" class="uCanClick changeColor" style="background:<%=condition>0?"gray":"#7fad39"%>; margin: 3px 0px; color: white; border: none;">Đang giao hàng</button>
+                                                <button name="condition"  <%=condition>0?"disabled":" "%>  value="1" type="submit"  class="uCanClick " style="background:<%=condition>0?"gray":"#7fad39"%>; margin: 3px 0px; color: white; border: none;">Đang giao hàng</button>
                                                 <button name="condition"  value="2"  type="submit"  class="uCanClick " style="background:#7fad39; margin: 3px 0px; color: white; border: none;">Thành công</button>
-                                                <button name="condition"  value="3" type="submit"  disclass="uCanClick " style="background:#7fad39; margin: 3px 0px; color: white; border: none;">Không thành công</button>
+                                                <button name="condition"  value="3" type="submit"  class="uCanClick " style="background:#7fad39; margin: 3px 0px; color: white; border: none;">Không thành công</button>
                                             </div>
                                             <div>
-                                                <h4>Tổng đơn hàng: <span ><%=dec.format(sumOrder.get(entry.getKey())).replace(',','.')%>đ</span></h4>
+                                                <h4>Tổng đơn hàng: <span><%=dec.format(sumOrder.get(entry.getKey())).replace(',','.')%>đ</span></h4>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <%}%>
                         </div>
                     </form>
+                    <%}%>
                 </div>
             </div>
         </div>

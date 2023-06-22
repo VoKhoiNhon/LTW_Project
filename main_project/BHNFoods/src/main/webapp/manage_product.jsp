@@ -653,8 +653,8 @@
                             </div>
                             <div class=" d-flex flex-grow-1 row_input">
                                 <div class="col-md-6 col_addprod">
-                                    <div class="form-group">
-                                        <label>Hình ảnh</label>
+                                        <div class="form-group">
+                                            <label>Hình ảnh</label>
 
                                         <div class="card">
                                             <div class="drag-area">

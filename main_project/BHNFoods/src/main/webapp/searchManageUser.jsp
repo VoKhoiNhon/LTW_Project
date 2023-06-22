@@ -157,9 +157,10 @@
         </div>
       </li>
       <li class="nav-item">
-        <form class="search-form" action="">
+        <form class="search-form" action="/" method="post">
           <i class="icon-search"></i>
-          <input type="search" class="form-control" name="searchUser" placeholder="Search Here" title="Search here">
+          <input onclick="searchUser(this)" type="search" class="form-control" name="searchUser" placeholder="Search Here"
+                 title="Search here">
         </form>
       </li>
       <%--        <li class="nav-item dropdown">--%>
@@ -301,6 +302,18 @@
       <a href="/AdminManagePr?kind=0&page=1" class="nav-item-link">
         <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
         <span>Quản lý sản phẩm</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <a href="/ListLog" class="nav-item-link">
+        <i style="margin-right: 5px;" class="menu-icon mdi mdi-view-module"></i>
+        <span>Log</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <a href="/logOut" class="nav-item-link">
+        <i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Đăng xuất</span>
       </a>
     </div>
   </nav>

@@ -1,7 +1,9 @@
 package vn.edu.hcmuaf.fit.service;
 
+import org.apache.xmlbeans.impl.xb.xsdschema.Attribute;
 import vn.edu.hcmuaf.fit.beans.Contact;
 import vn.edu.hcmuaf.fit.beans.Social;
+import vn.edu.hcmuaf.fit.beans.Warehouse;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 import vn.edu.hcmuaf.fit.beans.User;
 
@@ -310,5 +312,15 @@ public class UserService {
                         .bind("idUser", idUser)
                         .execute()
         );
+    }
+    public List<User> search(String name) {
+        List<User> listUser = new ArrayList<>();
+        for(User u: getInstance().getListUser()){
+            if (u.getNameUser().toUpperCase().contains(name.toUpperCase())){
+                listUser.add(u);
+            }
+
+        }
+        return  listUser;
     }
 }
