@@ -380,6 +380,7 @@
                                             <%}%>
                                             </tbody>
                                         </table>
+                                        <input name="addr" style="display: none" value="<%=address%>">
                                         <div class="d-flex justify-content-between pt-5 align-items-center">
                                             <div style="width: 50%">
                                                 <h5>Tên và SĐT Khách hàng: <span style="color: red;"> <%=name%> <%=phone%></span></h5>

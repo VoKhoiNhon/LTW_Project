@@ -33,15 +33,22 @@ public class UpdateConditionOrders extends HttpServlet {
         String idOrders= request.getParameter("idOrders");
         ProductService.getInstance().UpdateConditionOrders(condition, idOrders);
         String address = request.getParameter("addr");
-        String addressCT[] = address.split(", ");
+        String addressCT[] = address.split(",");
+        for (int i=0;i<addressCT.length;i++){
+            addressCT[i]=addressCT[i].trim();
+            System.out.println(addressCT[i]);
+        }
         BoxSizeAndWeight boxSizeAndWeight = new BoxSizeAndWeight(OrderService.getInstance().getListIDPrInOrder(idOrders));
         int idProv = 0;
         int idWard = 0;
         int idDistric = 0;
         try {
             idProv = Logistics.getProvince().get(addressCT[3]);
+            System.out.println(idProv);
             idDistric = Logistics.getDistrict(idProv).get(addressCT[2]);
+            System.out.println(idDistric);
             idWard = Logistics.getWard(idDistric).get(addressCT[1]);
+            System.out.println(idWard);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
