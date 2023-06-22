@@ -18,8 +18,11 @@ public class ListOrdersAdmin extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-        if(user.getDecentralization() != Powers.EMPLOYEE)
-            response.sendRedirect("index.jsp");
+        if (user == null) {
+            response.sendRedirect("/`");
+        }
+        if (user.getDecentralization() != Powers.ADMIN && user.getDecentralization() != Powers.EMPLOYEE)
+            response.sendRedirect("/`");
         else {
             List<Orders> listManageOrders = ProductService.getInstance().listOrdersAdmin();
             Map<String, List<Orders>> mapOrder = ProductService.getInstance().getMapOrder(listManageOrders);

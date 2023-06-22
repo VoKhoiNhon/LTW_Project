@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.controller;
 
+import vn.edu.hcmuaf.fit.beans.Powers;
 import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.ProductService;
 import vn.edu.hcmuaf.fit.service.UserService;
@@ -13,10 +14,19 @@ import java.io.IOException;
 public class UpdateUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idUser= request.getParameter("idUser");
-        int decentralization= Integer.parseInt(request.getParameter("decentralization"));
-        UserService.getInstance().updateUser( idUser, decentralization);
-        response.sendRedirect("/AdminManageUser");
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
+        if (user == null) {
+            response.sendRedirect("/`");
+        }
+        if (user.getDecentralization() != Powers.ADMIN )
+            response.sendRedirect("/`");
+        else {
+            String idUser = request.getParameter("idUser");
+            int decentralization = Integer.parseInt(request.getParameter("decentralization"));
+            UserService.getInstance().updateUser(idUser, decentralization);
+            response.sendRedirect("/AdminManageUser");
+        }
     }
 
     @Override

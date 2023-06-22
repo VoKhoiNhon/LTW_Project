@@ -3,7 +3,9 @@ package vn.edu.hcmuaf.fit.controller;
 import com.google.gson.Gson;
 import com.restfb.json.Json;
 import vn.edu.hcmuaf.fit.beans.DetailsWH;
+import vn.edu.hcmuaf.fit.beans.Powers;
 import vn.edu.hcmuaf.fit.beans.SingleProduct;
+import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
 import javax.servlet.*;
@@ -19,6 +21,14 @@ public class UpdateProduct extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
+        if (user == null) {
+            response.sendRedirect("/`");
+        }
+        if (user.getDecentralization() != Powers.ADMIN && user.getDecentralization() != Powers.EMPLOYEE)
+            response.sendRedirect("/`");
+        else{
         String id = request.getParameter("id");
         String menu= request.getParameter("menu");
         int discount= Integer.parseInt(request.getParameter("discount"));
@@ -37,5 +47,5 @@ public class UpdateProduct extends HttpServlet {
         System.out.println(name+id);
         response.sendRedirect("/AdminManagePr?kind=0&page=1");
 //        response.sendRedirect("/ShowProductToUpdate");
-    }
+    }}
 }

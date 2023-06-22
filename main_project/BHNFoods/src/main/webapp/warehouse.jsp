@@ -827,7 +827,7 @@
         var code= data.value;
         console.log(code)
         $.ajax({
-            url:"/SearchUser",
+            url:"/SearchWH",
             type: 'get',
             data:{
                 code: code

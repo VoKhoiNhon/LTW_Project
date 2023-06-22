@@ -360,7 +360,6 @@
                           phone = o.getPhone();
                           address = o.getAddress();
                           note = o.getNote();
-                          iduser = o.getIduser();
                           check = o.checkCondition();
 
                       %>
@@ -391,7 +390,7 @@
                         <h5>Tên và SĐT Khách hàng: <span style="color: red;"> <%=name%> <%=phone%></span></h5>
                         <h5>Địa chỉ đơn hàng: <span style="color: red;"><%=address%></span></h5>
                         <h5>Ghi chú: <span style="color: red;"><%=note%></span></h5>
-                        <h5 style="display: none">Iduser: <span style=" "><%=iduser%></span></h5>
+<%--                        <h5 style="display: none">Iduser: <span style=" "><%=iduser%></span></h5>--%>
                       </div>
                       <div style="display:grid;">
                         <button name="condition"  value="<%=condition%>
