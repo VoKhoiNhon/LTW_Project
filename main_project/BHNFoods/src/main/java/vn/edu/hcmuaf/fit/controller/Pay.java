@@ -6,6 +6,7 @@ import vn.edu.hcmuaf.fit.db.DB;
 import vn.edu.hcmuaf.fit.service.*;
 import vn.edu.hcmuaf.fit.util.Brower;
 import vn.edu.hcmuaf.fit.util.Logistics;
+import vn.edu.hcmuaf.fit.util.MailSender;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -87,8 +88,54 @@ public class Pay extends HttpServlet {
                 ProductService.getInstance().updateInventoryCT_PR(c.getIdPr(), -c.getAmount());
             }
         }
+        String content = "<!DOCTYPE html>\n" +
+                "<html lang=\"en\">\n" +
+                "<head>\n" +
+                "    <meta charset=\"UTF-8\">\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                "    <title>Document</title>\n" +
+                "    <style>\n" +
+                "        .container {\n" +
+                "            display: flex;\n" +
+                "            flex-direction: column;\n" +
+                "            border: 1px solid black;\n" +
+                "            max-width: 500px;\n" +
+                "            background: rgb(224, 221, 221);\n" +
+                "        }\n" +
+                "        .title {\n" +
+                "            color: cadetblue;\n" +
+                "        }\n" +
+                "        p {\n" +
+                "          display: inline-block;  \n" +
+                "        }\n" +
+                "    </style>\n" +
+                "</head>\n" +
+                "\n" +
+                "<body>\n" +
+                "    <h2>Cảm ơn bạn đã tin tưởng và mua hàng ở cửa hàng của chúng tôi, dưới đây là thông tin về đơn hàng của bạn</h2>\n" +
+                "    <div class=\"container\">\n" +
+                "        <div class=\"item\">\n" +
+                "            <p class=\"title\">Tên: </p>\n" +
+                "            <p>"+name+"</p>\n" +
+                "        </div>\n" +
+                "        <div class=\"item\">\n" +
+                "            <p class=\"title\">Số điện thoại: </p>\n" +
+                "            <p>"+phone+"</p>\n" +
+                "        </div>\n" +
+                "        <div class=\"item\">\n" +
+                "            <p class=\"title\">Địa chỉ: </p>\n" +
+                "            <p>"+finalAddress+"</p>\n" +
+                "        </div>\n" +
+                "        <div class=\"item\">\n" +
+                "            <p class=\"title\">Thời gian dự kiến nhận hàng: </p>\n" +
+                "            <p>"+timePickup+"</p>\n" +
+                "        </div>\n" +
+                "    </div>\n" +
+                "</body>\n" +
+                "</html>";
 
         DB.me().insert(new Log(Log.INFO, idUser, this.src, "Pay sucsess: "+allId+", total:"+request.getParameter("totalCheckout"), 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
+        MailSender.send("Cảm ơn bạn đã mua hàng", content, email);
         response.sendRedirect("/index");
     }
 

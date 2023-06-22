@@ -1,5 +1,7 @@
 package vn.edu.hcmuaf.fit.controller;
 
+import vn.edu.hcmuaf.fit.beans.Powers;
+import vn.edu.hcmuaf.fit.beans.User;
 import vn.edu.hcmuaf.fit.util.ExportLog;
 
 import javax.servlet.*;
@@ -12,18 +14,24 @@ import java.io.OutputStream;
 public class ExportLogPDF extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-// ...
-// Thiết lập thông tin của HTTP response
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
+        if (user == null) {
+            response.sendRedirect("/`");
+        }
+        if (user.getDecentralization() != Powers.ADMIN )
+            response.sendRedirect("/`");
+        else {
         response.setContentType("application/pdf");
         response.setHeader("Content-Disposition", "attachment; filename=\"file.pdf\"");
 
-// Ghi dữ liệu file vào OutputStream của HTTP response
+
         OutputStream outputStream = response.getOutputStream();
-// Code ghi dữ liệu file vào outputStream ở đây
+
         ExportLog.getFilePDF(outputStream);
-// ...
+
         outputStream.flush();
-        outputStream.close();
+        outputStream.close();}
     }
 
     @Override

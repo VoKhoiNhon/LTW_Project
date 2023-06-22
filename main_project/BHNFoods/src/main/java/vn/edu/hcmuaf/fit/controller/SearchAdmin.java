@@ -23,13 +23,20 @@ public class SearchAdmin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-        String idUser = user.getIdUser();
-        List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
-        String search = request.getParameter("searchAD");
-        List<SingleProduct> productList = ProductService.getInstance().getListPrNameSearchADmin(search);
+        if (user == null) {
+            response.sendRedirect("/`");
+        }
+        if (user.getDecentralization() != Powers.ADMIN && user.getDecentralization() != Powers.EMPLOYEE)
+            response.sendRedirect("/`");
+        else {
+            String idUser = user.getIdUser();
+            List<Cart> listCart = ProductService.getInstance().getListCart(idUser);
+            String search = request.getParameter("searchAD");
+            List<SingleProduct> productList = ProductService.getInstance().getListPrNameSearchADmin(search);
 
-        DB.me().insert(new Log(Log.INFO,user.getIdUser(), "Admin search",  "Search that : "+ search, 0, Brower.getBrowerName(request.getHeader("User-Agent")),Brower.getLocationIp(request.getRemoteAddr())));
-        request.setAttribute("listSearchPRAD", productList);
-        request.getRequestDispatcher("searchManagePR.jsp").forward(request,response);
+            DB.me().insert(new Log(Log.INFO, user.getIdUser(), "Admin search", "Search that : " + search, 0, Brower.getBrowerName(request.getHeader("User-Agent")), Brower.getLocationIp(request.getRemoteAddr())));
+            request.setAttribute("listSearchPRAD", productList);
+            request.getRequestDispatcher("searchManagePR.jsp").forward(request, response);
+        }
     }
 }
